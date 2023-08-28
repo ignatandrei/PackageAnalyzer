@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />		
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+		<None Include="../../../docs/ico.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<PropertyGroup>
+		<Version>7.2023.828.739</Version>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>PackageAnalyzer</ToolCommandName>
+		<Authors>Andrei Ignat</Authors>
+		<Description>This package make you an interface and  record from static properties / methods </Description>
+		<Title>PackageAnalyzer</Title>
+		<PackageTags>C#;.NET;.NET Core;Analyzer;</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>ico.png</PackageIcon>
+		<RepositoryUrl>https://github.com/ignatandrei/PackageAnalyzer</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/ignatandrei/PackageAnalyzer</PackageProjectUrl>
+		<RepositoryType>GIT</RepositoryType>
+		<Copyright>MIT</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<IncludeSymbols>true</IncludeSymbols>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<Deterministic>true</Deterministic>
+		<DebugType>embedded</DebugType>
+
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+
+	
+	<ItemGroup>
+		<Watch Include="**\*.cshtml" />
+	</ItemGroup>
+
+		<ItemGroup>
+		<AdditionalFiles Include="generatedJson\deprecatedV1.gen.json" />
+		<AdditionalFiles Include="generatedJson\outdatedV1.gen.json" />
+		<AdditionalFiles Include="generatedJson\includeV1.gen.json" />
+		<AdditionalFiles Include="mixin\Packages.mixin" />
+		<AdditionalFiles Include="Templates/**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="rscgutils" Version="2023.827.1021" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<PackageReference Include="Morris.Moxy" Version="1.5.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<PackageReference Include="RazorBlade" Version="0.4.3" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="mixin\" />
+	</ItemGroup>
+	
+	<PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup >
+	  <WarningsNotAsErrors>CS0436</WarningsNotAsErrors>
+	</PropertyGroup>
+
+</Project>

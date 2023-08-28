@@ -1,0 +1,52 @@
+@inherits RazorBlade.HtmlTemplate<DisplayDataMoreThan1Version>;
+@{
+    var keysPackageMultiple = Model.KeysPackageMultipleMajorDiffers();
+    
+}
+
+
+    @foreach (var key in keysPackageMultiple)
+    {
+    var pack = Model.IDPackageWithProjects[key];
+    var versProj = pack.VersionsPerProject;
+        var projects = versProj.Values.SelectMany(it => it).Select(it => it.NameCSproj()).Distinct().ToArray();
+        var versions = versProj.Select(it => it.Key).ToArray();
+        
+<span id="@key">
+```mermaid
+---
+@Html.Raw("title:") @key
+---
+        flowchart TB
+        subgraph packages
+            @Html.Raw(key + "\r\n")
+        end
+        subgraph projects
+        @foreach(var proj in projects)
+        {
+            var text = $"{proj}((({proj})))";
+            @Html.Raw(text+"\r\n")
+
+        }
+    subgraph versions
+   @foreach(var vers in versions){
+
+        var text = $"{vers}>{vers}]";
+        @Html.Raw(text+"\r\n")
+
+    }
+    end
+    @foreach (var version in pack.VersionsPerProject)
+    {
+        var text = $"{key}-->{version.Key}\r\n";
+        foreach (var proj in version.Value)
+        {
+            text += $"{version.Key}-->{proj.NameCSproj()}\r\n";
+        }
+        @Html.Raw(text)
+    }
+
+    end
+```
+</span>
+}

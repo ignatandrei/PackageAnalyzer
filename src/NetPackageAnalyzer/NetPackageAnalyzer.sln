@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerConsole", "NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj", "{135F0104-C414-4646-904C-ADFCE022A234}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPackageAnalyzerWork", "NetPackageAnalyzerWork\NetPackageAnalyzerWork.csproj", "{1F304AA4-5E99-48CD-AEC8-6CA734A71E95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{135F0104-C414-4646-904C-ADFCE022A234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{135F0104-C414-4646-904C-ADFCE022A234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{135F0104-C414-4646-904C-ADFCE022A234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{135F0104-C414-4646-904C-ADFCE022A234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F304AA4-5E99-48CD-AEC8-6CA734A71E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F304AA4-5E99-48CD-AEC8-6CA734A71E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F304AA4-5E99-48CD-AEC8-6CA734A71E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F304AA4-5E99-48CD-AEC8-6CA734A71E95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76E53742-3C96-4AB5-B48B-6A864B9D9BF6}
+	EndGlobalSection
+EndGlobal

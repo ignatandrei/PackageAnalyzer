@@ -1,0 +1,134 @@
+@inherits RazorBlade.HtmlTemplate<DisplayDataMoreThan1Version>;
+@{
+    var keysPackageMultiple = Model.KeysPackageMultiple();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Reset some default table styles */
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+
+        /* Style the table header */
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        /* Alternate row background color */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* Hover effect */
+        tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    Number of packages:
+    <a href="javascript:filterTable(@((int)TypePackageData.OneVersion));"> @Model.NrPackages()</a>
+    
+    </a>
+    <br />
+    Packages with more than 1 version:
+    <a href="javascript:filterTable(@((int)TypePackageData.MultipleVersionNotMajorDiff));"> @keysPackageMultiple.Length</a>
+    <span>( @(keysPackageMultiple.Length * 100 / @Model.NrPackages()) % from total packages)</span>
+    <br />
+    Number of packages with
+    
+    <span style='color: red'>
+        major version differs: 
+        <a href="javascript:filterTable(@((int)TypePackageData.MultipleVersionMajorDiff));">
+            @Model.MajorVersionDiffers()
+        </a>
+        <span>( @(Model.MajorVersionDiffers() * 100 / keysPackageMultiple.Length) % from packages with >1 version)</span>
+        
+    </span>
+    <table id="packages">
+        <thead>
+            <tr><th>Nr</th><th>ID</th><td>References/Projects</td></tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+            }
+            @foreach (var item in Model.Sorted())
+            {
+                i++;
+                var pack = item.Value;
+                var vals = pack.VersionsPerProject;
+                var majorDiff = pack.MajorVersionDiffer();
+                string color = "";
+                switch (vals.Count)
+                {
+                    case 0:
+                    case 1:
+                        break;
+                    case 2:
+                        color = "blue";
+                        break;
+                    case 3:
+                        color = "purple";
+                        break;
+                    case 4:
+                        color = "red";
+                        break;
+
+                }
+                string textReferences = vals.Count > 1 ? $"<div style='color: {color}'>(References: {vals.Count})</div>" : "";
+                string diffMajor = majorDiff ? $"<div style='color: red'>Major differs</div>" : "";
+                <tr data-majorDiff="@((int)pack.typePackageData())">
+                    <td>@(i )</td>
+                    <td>@item.Key @Html.Raw(textReferences) </td>
+                    <td>
+                        @Html.Raw(diffMajor)
+                        @foreach (var vers in vals)
+                        {
+                            <br /> <br />
+                            @Html.Raw(vers.Key) @Html.Raw("&nbsp;") @Html.Raw(string.Join(",",vers.Value.Select(it=>it.NameCSproj())))
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+
+        function filterTable(filterValue) {
+            filterValue = parseInt(filterValue);
+            const table = document.getElementById('packages').getElementsByTagName('tbody')[0];
+            const rows = table.getElementsByTagName('tr');
+
+            for (let row of rows) {
+                const valRow =parseInt( row.getAttribute('data-majorDiff'));
+                console.log(filterValue, valRow, filterValue >= valRow);
+                if (filterValue > valRow) {
+                    row.style.display = 'none';
+                } else {
+                    row.style.display = '';
+                    
+                }
+            }
+        }
+        filterTable(@((int)TypePackageData.MultipleVersionMajorDiff));
+    </script>
+</body>
+</html>

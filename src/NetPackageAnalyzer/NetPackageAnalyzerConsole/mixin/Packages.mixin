@@ -1,0 +1,146 @@
+@moxy
+@attribute required bool IncludeTransitive
+@moxy
+namespace {{ moxy.Class.Namespace }}
+{
+#nullable enable
+  partial class {{ moxy.Class.Name}}: IOperations
+  {
+    private bool? HasProj;
+    private bool HasProjects()
+    {
+        if (HasProj.HasValue) return HasProj.Value;
+        HasProj = (Projects != null && this.Projects.Count > 0);
+        return HasProj.Value;
+    }
+    public void ClearWrongData()
+    {
+        if (HasProjects())
+        {
+            Projects = Projects!.Where(it => it?.Frameworks != null).ToList();
+        }
+
+    }
+    public string[] ProjectsPath()
+    {
+        if (this.Projects == null)
+            return new string[0];
+
+        return this.Projects
+            .Where(it => !string.IsNullOrWhiteSpace(it?.Path))
+            .Select(it => it.Path!)
+            .ToArray();
+    }
+    {{if IncludeTransitive == true }}
+    //with transitive {{IncludeTransitive }}
+    {{else}}
+    //asdasd {{IncludeTransitive }}    
+    {{end}}
+    public Frameworks[] Frameworks(){
+        
+        if (this.Projects == null)
+            return new Frameworks[0];
+        
+        return Projects        
+            .Where(it=>it != null && it.Frameworks?.Count>0)
+            .SelectMany(it=>it!.Frameworks!)
+            .Where(it=>it != null)
+            .ToArray();
+    }
+    
+    {{if IncludeTransitive == true }}
+    public string[] TransitivePackagesIDs(){
+        if (this.Projects == null)
+            return new string[0];
+        return Frameworks()!
+        .Where(it => it?.TransitivePackages?.Count > 0)
+        .SelectMany(it => it!.TransitivePackages!)
+        .Select(it => it.Id)
+        .Where(it => !string.IsNullOrWhiteSpace(it))
+        .Select(it=>it!)
+        .ToArray();
+    }
+    {{end}}
+    
+    public string[] TopLevelPackagesIDs(){
+        if (this.Projects == null)
+            return new string[0];
+        return  TopLevelPackages()!
+        .Select(it=>it!.Id)
+        .Select(it=>it!)
+        .ToArray();
+    }
+    
+    public TopLevelPackages[] TopLevelPackages(){
+        if (this.Projects == null)
+            return new TopLevelPackages[0];
+        return  Frameworks()!
+        .Where(it=>it!=null && it.TopLevelPackages?.Count>0)
+        .SelectMany(it=>it.TopLevelPackages!)
+        .Where(it=>it != null && !string.IsNullOrWhiteSpace(it.Id) )        
+        .ToArray();
+    }
+    {{if IncludeTransitive == true }}
+
+    public Dictionary<string, TransitivePackages[]> PerProjectPathTransitive(){
+        if (this.Projects == null)
+            return new Dictionary<string, TransitivePackages[]>();
+
+        return 
+            Projects!
+            .Where(it=>!string.IsNullOrWhiteSpace(it.Path))
+            .Where(it => it.Frameworks?.Count>0 )
+
+            .ToDictionary(it => it.Path!,
+            it=> it!.Frameworks!.SelectMany(it => it?.TransitivePackages??new List<TransitivePackages>())            
+            .ToArray())
+            ??new Dictionary<string, TransitivePackages[]>()
+            ;
+        
+    }
+
+    {{end}}
+
+    public Dictionary<string, TopLevelPackages[]> PerProjectPath(){
+        if (this.Projects == null)
+            return new Dictionary<string, TopLevelPackages[]>();
+
+        return 
+            Projects!
+            .Where(it=>!string.IsNullOrWhiteSpace(it.Path))
+            .Where(it => it.Frameworks?.Count>0 )
+
+            .ToDictionary(it => it.Path!,
+            it=> it!.Frameworks!.SelectMany(it => it?.TopLevelPackages??new List<TopLevelPackages>())            
+            .ToArray())
+            ??new Dictionary<string, TopLevelPackages[]>()
+            ;
+        
+    }
+    {{if IncludeTransitive == true }}
+    public Dictionary<string, PackageWithVersion[]> PerProjectPathWithVersionTransitive(){
+         var data= PerProjectPathTransitive()
+        .ToDictionary(
+        it => it.Key,
+        it => it.Value
+            .Select(it=>new PackageWithVersion(it.Id!,it.ResolvedVersion!))
+            .ToArray()
+            );
+        return data;
+    }
+
+    {{end}}
+    public Dictionary<string, PackageWithVersion[]> PerProjectPathWithVersion(){
+         var data= PerProjectPath()
+        .ToDictionary(
+        it => it.Key,
+        it => it.Value
+            .Select(it=>new PackageWithVersion(it.Id!,it.RequestedVersion!))
+            .ToArray()
+            );
+        return data;
+    }
+
+  }
+#nullable restore
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "netpackageanalyzerconsole": {
+      "version": "7.2023.828.739",
+      "commands": [
+        "PackageAnalyzer"
+      ]
+    }
+  }
+}
