@@ -9,7 +9,10 @@
 	<ItemGroup>
 		<None Include="..\..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />		
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
-		<None Include="../../../docs/ico.png" Pack="true" PackagePath="\" />
+		<None Include="..\..\..\docs\ico.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerWork.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
 		<Version>7.2023.828.739</Version>
@@ -40,34 +43,9 @@
 
 
 	
-	<ItemGroup>
-		<Watch Include="**\*.cshtml" />
-	</ItemGroup>
 
-		<ItemGroup>
-		<AdditionalFiles Include="generatedJson\deprecatedV1.gen.json" />
-		<AdditionalFiles Include="generatedJson\outdatedV1.gen.json" />
-		<AdditionalFiles Include="generatedJson\includeV1.gen.json" />
-		<AdditionalFiles Include="mixin\Packages.mixin" />
-		<AdditionalFiles Include="Templates/**" />
-	</ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="rscgutils" Version="2023.827.1021" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-		<PackageReference Include="Morris.Moxy" Version="1.5.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-		<PackageReference Include="RazorBlade" Version="0.4.3" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="mixin\" />
-	</ItemGroup>
-	
 	<PropertyGroup>
-		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)Generated</CompilerGeneratedFilesOutputPath>
-	</PropertyGroup>
-
-	<PropertyGroup >
 	  <WarningsNotAsErrors>CS0436</WarningsNotAsErrors>
 	</PropertyGroup>
 

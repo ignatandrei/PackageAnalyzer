@@ -6,7 +6,7 @@ public enum PackageOptions
     Deprecated = 2,
     Include_Transitive = 3
 }
-internal class ProcessOutput
+public class ProcessOutput
 {
     public string OutputDotnet(string folder, PackageOptions packageOptions)
     {

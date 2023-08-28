@@ -1,4 +1,6 @@
-﻿var folder=Environment.CurrentDirectory;
+﻿using NetPackageAnalyzerWork;
+
+var folder=Environment.CurrentDirectory;
 folder = @"C:\gth\TILT\src\backend\Net7\NetTilt";
 WriteLine($"Start analyzing {folder}");
 var p = new ProcessOutput();
@@ -82,11 +84,11 @@ if(!Directory.Exists(folderResults))
     Directory.CreateDirectory(folderResults);
 DisplayDataMoreThan1Version model = new(packagedDict, folder);
 
-var moreThanOne = new DisplayMoreThan1Version(model);
-var file = Path.Combine(folderResults, $"{nameof(DisplayMoreThan1Version)}.html");
-await File.WriteAllTextAsync(file, await moreThanOne.RenderAsync());
+TemplateGenerator generator=new();
 
-var mermaid = new MermaidVisualizerMajorDiffer(model);
-file = Path.Combine(folderResults, $"{nameof(MermaidVisualizerMajorDiffer)}.md");
-await File.WriteAllTextAsync(file, await mermaid.RenderAsync());
+var file = Path.Combine(folderResults, "DisplayMoreThan1Version.html");
+await File.WriteAllTextAsync(file, await generator.Generate_DisplayMoreThan1Version(model));
+
+file = Path.Combine(folderResults, $"MermaidVisualizerMajorDiffer.md");
+await File.WriteAllTextAsync(file, await generator.Generate_MermaidVisualizerMajorDiffer(model));
 

@@ -1,6 +1,6 @@
 ﻿namespace NetPackageAnalyzerConsole.generatedPartial;
 
-internal interface IOperations
+public interface IOperations
 {
     void ClearWrongData();
     public string[] ProjectsPath();

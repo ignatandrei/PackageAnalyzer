@@ -1,6 +1,6 @@
 ﻿namespace NS_GeneratedJson_deprecatedV1_gen_json;
 [Packages(false)]
-partial class deprecatedV1_gen_json
+public partial class deprecatedV1_gen_json
 {   
     public string[]? PackagesID()
     {
