@@ -11,7 +11,7 @@
 		<AdditionalFiles Include="generatedJson/outdatedV1.gen.json" />
 		<AdditionalFiles Include="generatedJson/includeV1.gen.json" />
 		<AdditionalFiles Include="mixin/Packages.mixin" />
-		<AdditionalFiles Include="Templates/**" />
+		<AdditionalFiles Include="Templates/**/*.cshtml" />
 	</ItemGroup>
 
 	<ItemGroup>
