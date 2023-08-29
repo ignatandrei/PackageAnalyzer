@@ -30,7 +30,7 @@ jobs:
       run: |
         cd src
         cd NetPackageAnalyzer
-        dotnet build --no-restore
+        dotnet build
         dotnet pack -o ../nugetPackages        
     
     - name: 'Upload nuget'
