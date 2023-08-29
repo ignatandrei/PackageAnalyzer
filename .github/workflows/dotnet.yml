@@ -44,5 +44,5 @@ jobs:
     - name: push to nuget
       if: ${{ github.ref == 'refs/heads/main' }}
       run: |
-        dotnet nuget push ${{github.workspace}}/src/nugetPackages/*.symbols.nupkg --api-key  ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
+        dotnet nuget push ${{github.workspace}}/src/nugetPackages/*.nupkg --api-key  ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
     
