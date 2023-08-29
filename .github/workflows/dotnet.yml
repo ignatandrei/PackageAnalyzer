@@ -19,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
     - name: Restore dependencies
       run: |
         cd src
@@ -31,4 +31,18 @@ jobs:
         cd src
         cd NetPackageAnalyzer
         dotnet build --no-restore
+        dotnet pack -o ../nugetPackages        
+    
+    - name: 'Upload nuget'
+      if: ${{ github.ref == 'refs/heads/main' }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: Nuget_${{github.run_number}}
+        path: src/nugetPackages
+        retention-days: 1
+  
+    - name: push to nuget
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: |
+        dotnet nuget push ${{github.workspace}}/src/nugetPackages/*.symbols.nupkg --api-key  ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
     

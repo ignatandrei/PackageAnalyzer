@@ -10,5 +10,4 @@ public interface IOperations
 }
 public record PackageWithVersion(string PackageId,string RequestedVersion)
 {
-
 }

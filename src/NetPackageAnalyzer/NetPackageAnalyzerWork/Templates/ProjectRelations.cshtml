@@ -1,0 +1,16 @@
+@inherits RazorBlade.HtmlTemplate<ProjectsDict>;
+```mermaid
+---
+title: Project Relations
+---
+flowchart TB    
+@foreach(var proj in Model.Values)
+{
+    foreach(var rel in proj.ProjectsReferences)
+    {
+        <text>
+@proj.NameCSproj()-->@rel.NameCSproj()
+        </text>
+    }
+}
+```

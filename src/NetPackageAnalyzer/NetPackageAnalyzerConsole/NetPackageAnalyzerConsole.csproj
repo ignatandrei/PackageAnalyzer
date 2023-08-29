@@ -10,12 +10,13 @@
 		<None Include="..\..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />		
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
 		<None Include="..\..\..\docs\ico.png" Pack="true" PackagePath="\" />
+		<PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerWork.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>7.2023.828.739</Version>
+		<Version>7.2023.829.1850</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>

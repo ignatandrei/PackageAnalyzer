@@ -63,6 +63,7 @@ public record PackageData(string packageVersionId)
 
 public record ProjectData(string PathProject, string folderSolution)
 {
+    public List<ProjectData> ProjectsReferences { get; set; }=new();
     public string NameCSproj()
     {
         var indexDot=PathProject.LastIndexOf(".");

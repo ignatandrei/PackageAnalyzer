@@ -59,7 +59,6 @@
         <a href="javascript:filterTable(@((int)TypePackageData.MultipleVersionMajorDiff));">
             @Model.MajorVersionDiffers()
         </a>
-        <span>( @(Model.MajorVersionDiffers() * 100 / keysPackageMultiple.Length) % from packages with >1 version)</span>
         
     </span>
     <table id="packages">
@@ -102,8 +101,9 @@
                         @Html.Raw(diffMajor)
                         @foreach (var vers in vals)
                         {
-                            <br /> <br />
+                            
                             @Html.Raw(vers.Key) @Html.Raw("&nbsp;") @Html.Raw(string.Join(",",vers.Value.Select(it=>it.NameCSproj())))
+                            <br /> <br />
                         }
                     </td>
                 </tr>
@@ -119,7 +119,7 @@
 
             for (let row of rows) {
                 const valRow =parseInt( row.getAttribute('data-majorDiff'));
-                console.log(filterValue, valRow, filterValue >= valRow);
+                //console.log(filterValue, valRow, filterValue >= valRow);
                 if (filterValue > valRow) {
                     row.style.display = 'none';
                 } else {
@@ -128,7 +128,17 @@
                 }
             }
         }
-        filterTable(@((int)TypePackageData.MultipleVersionMajorDiff));
+        @if (keysPackageMultiple.Length > 0)
+        {
+            <text>
+                filterTable(@((int)TypePackageData.MultipleVersionNotMajorDiff));
+            </text>
+        }
+        @if (@Model.MajorVersionDiffers() > 0) {
+            <text>
+            filterTable(@((int)TypePackageData.MultipleVersionMajorDiff));
+            </text>
+        }
     </script>
 </body>
 </html>

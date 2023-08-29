@@ -8,7 +8,39 @@ public enum PackageOptions
 }
 public class ProcessOutput
 {
-    public string OutputDotnet(string folder, PackageOptions packageOptions)
+    public string OutputDotnetReference(string pathToCsproj)
+    {
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = "dotnet.exe",
+            WorkingDirectory = Path.GetDirectoryName(pathToCsproj),
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            Arguments = $"list \"{pathToCsproj}\" reference "
+        };
+
+        // Create and start the process
+        Process process = new Process
+        {
+            StartInfo = startInfo
+        };
+        process.Start();
+
+        // Read the output
+        string output = process.StandardOutput.ReadToEnd();
+        string errorOutput = process.StandardError.ReadToEnd();
+
+        // Wait for the process to exit
+        process.WaitForExit();
+        if (errorOutput.Length > 0)
+        {
+            throw new Exception(errorOutput);
+        }
+        return output;
+    }
+    public string OutputDotnetPackage(string folder, PackageOptions packageOptions)
     {
         string arg = packageOptions.ToString().Replace("_", "-").ToLower();
         ProcessStartInfo startInfo = new ProcessStartInfo

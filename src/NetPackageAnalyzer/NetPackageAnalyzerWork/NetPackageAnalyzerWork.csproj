@@ -31,5 +31,5 @@
 	<ItemGroup>
 		<Watch Include="**\*.cshtml" />
 	</ItemGroup>
-
+	
 </Project>
