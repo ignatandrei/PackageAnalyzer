@@ -31,7 +31,8 @@ jobs:
         cd src
         cd NetPackageAnalyzer
         dotnet build
-        dotnet pack -o ../nugetPackages        
+        cd NetPackageAnalyzerConsole
+        dotnet pack -o ../../nugetPackages        
     
     - name: 'Upload nuget'
       if: ${{ github.ref == 'refs/heads/main' }}
