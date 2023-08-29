@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace NetPackageAnalyzerConsole;
+﻿namespace NetPackageAnalyzerConsole;
 
 public record DisplayDataMoreThan1Version(Dictionary<string, PackageData> IDPackageWithProjects, string folderName)
 {

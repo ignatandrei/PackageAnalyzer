@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,10 +7,10 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<AdditionalFiles Include="generatedJson\deprecatedV1.gen.json" />
-		<AdditionalFiles Include="generatedJson\outdatedV1.gen.json" />
-		<AdditionalFiles Include="generatedJson\includeV1.gen.json" />
-		<AdditionalFiles Include="mixin\Packages.mixin" />
+		<AdditionalFiles Include="generatedJson/deprecatedV1.gen.json" />
+		<AdditionalFiles Include="generatedJson/outdatedV1.gen.json" />
+		<AdditionalFiles Include="generatedJson/includeV1.gen.json" />
+		<AdditionalFiles Include="mixin/Packages.mixin" />
 		<AdditionalFiles Include="Templates/**" />
 	</ItemGroup>
 
