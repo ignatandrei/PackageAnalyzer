@@ -2,7 +2,7 @@
 {
     static async Task<int> Main(string[] args)
     {
-        //debug
+        /*
         args = new[]
         {
           @"generateFiles",
@@ -17,6 +17,7 @@
             @"C:\gth\PackageAnalyzer\src\NetPackageAnalyzer\"
 
         };
+        */
         RootCommand rootCommand = new();
         Command cmdGenerate = new("generateFiles", "Generate files for documentation");
 

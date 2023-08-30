@@ -35,7 +35,10 @@ jobs:
         dotnet pack -o ../../nugetPackages        
     
     - name: 'Upload nuget'
-      if: ${{ github.ref == 'refs/heads/main' }}
+      if: |
+        ${{ github.ref == 'refs/heads/main' }}
+        &&
+        ${{ github.ref_type == 'tag' }}
       uses: actions/upload-artifact@v2
       with:
         name: Nuget_${{github.run_number}}
@@ -43,7 +46,12 @@ jobs:
         retention-days: 1
   
     - name: push to nuget
-      if: ${{ github.ref == 'refs/heads/main' }}
+      if: | 
+        ${{ github.ref == 'refs/heads/main' }}
+        &&
+        ${{ github.ref_type == 'tag' }}
+        && 
+        ${{ startsWith(github.ref, 'refs/tags/vRelease')}}
       run: |
         dir src/nugetPackages/*.*
         echo '1'
