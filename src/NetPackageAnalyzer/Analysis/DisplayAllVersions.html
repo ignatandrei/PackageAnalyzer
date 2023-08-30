@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Reset some default table styles */
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+
+        /* Style the table header */
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        /* Alternate row background color */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* Hover effect */
+        tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    Number of packages:
+    <a href="javascript:filterTable(1);"> 13</a>
+    
+    </a>
+    <br />
+    Packages with more than 1 version:
+    <a href="javascript:filterTable(2);"> 0</a>
+    <span>( 0 % from total packages)</span>
+    <br />
+    Number of packages with
+    
+    <span style='color: red'>
+        major version differs: 
+        <a href="javascript:filterTable(3);">
+            0
+        </a>
+        
+    </span>
+    <table id="packages">
+        <thead>
+            <tr><th>Nr</th><th>ID</th><td>References/Projects</td></tr>
+        </thead>
+        <tbody>
+                <tr data-majorDiff="1">
+                    <td>1</td>
+                    <td>Microsoft.Build.Tasks.Git  </td>
+                    <td>
+                        
+1.1.1&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>2</td>
+                    <td>Microsoft.CSharp  </td>
+                    <td>
+                        
+4.7.0&nbsp;NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>3</td>
+                    <td>Microsoft.SourceLink.Common  </td>
+                    <td>
+                        
+1.1.1&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>4</td>
+                    <td>Microsoft.SourceLink.GitHub  </td>
+                    <td>
+                        
+1.1.1&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>5</td>
+                    <td>Morris.Moxy  </td>
+                    <td>
+                        
+1.5.0&nbsp;NetPackageAnalyzerWork,NetPackageAnalyzerWork,NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>6</td>
+                    <td>NetPackageAnalyzerWork  </td>
+                    <td>
+                        
+7.2023.829.1850&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>7</td>
+                    <td>RazorBlade  </td>
+                    <td>
+                        
+0.4.3&nbsp;NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>8</td>
+                    <td>rscgutils  </td>
+                    <td>
+                        
+2023.827.1021&nbsp;NetPackageAnalyzerWork,NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>9</td>
+                    <td>System.CommandLine  </td>
+                    <td>
+                        
+2.0.0-beta4.22272.1&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>10</td>
+                    <td>System.Text.Encodings.Web  </td>
+                    <td>
+                        
+7.0.0&nbsp;NetPackageAnalyzerConsole,NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>11</td>
+                    <td>System.Text.Json  </td>
+                    <td>
+                        
+7.0.3&nbsp;NetPackageAnalyzerConsole,NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>12</td>
+                    <td>System.Threading.Tasks.Extensions  </td>
+                    <td>
+                        
+4.5.4&nbsp;NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>13</td>
+                    <td>ThisAssembly.AssemblyInfo  </td>
+                    <td>
+                        
+1.4.0&nbsp;NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <script>
+
+        function filterTable(filterValue) {
+            filterValue = parseInt(filterValue);
+            const table = document.getElementById('packages').getElementsByTagName('tbody')[0];
+            const rows = table.getElementsByTagName('tr');
+
+            for (let row of rows) {
+                const valRow =parseInt( row.getAttribute('data-majorDiff'));
+                //console.log(filterValue, valRow, filterValue >= valRow);
+                if (filterValue > valRow) {
+                    row.style.display = 'none';
+                } else {
+                    row.style.display = '';
+                    
+                }
+            }
+        }
+    </script>
+    <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 7.2023.829.1850</small>
+
+</body>
+</html>

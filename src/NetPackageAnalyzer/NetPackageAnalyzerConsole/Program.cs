@@ -3,13 +3,20 @@
     static async Task<int> Main(string[] args)
     {
         //debug
-        //args = new[]
-        //{
-        //  @"generateFiles",
-        //    "--folder",
-        //    @"C:\gth\TILT\src\backend\Net7\NetTilt"
+        args = new[]
+        {
+          @"generateFiles",
+            "--folder",
+            @"C:\gth\TILT\src\backend\Net7\NetTilt"
 
-        //}; 
+        };
+        args = new[]
+        {
+          @"generateFiles",
+            "--folder",
+            @"C:\gth\PackageAnalyzer\src\NetPackageAnalyzer\"
+
+        };
         RootCommand rootCommand = new();
         Command cmdGenerate = new("generateFiles", "Generate files for documentation");
 

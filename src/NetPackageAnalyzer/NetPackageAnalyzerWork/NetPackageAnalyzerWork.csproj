@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<Version>7.2023.829.1850</Version>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -17,6 +18,10 @@
 		<PackageReference Include="rscgutils" Version="2023.827.1021" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<PackageReference Include="Morris.Moxy" Version="1.5.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<PackageReference Include="RazorBlade" Version="0.4.3" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>
