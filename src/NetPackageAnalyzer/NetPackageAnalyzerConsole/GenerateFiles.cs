@@ -93,8 +93,9 @@ internal class GenerateFiles
     }
     public async Task GenerateNow(string folder)
     {
-        WriteLine($"generate in {folder}");
+        
         var folderResults = Path.Combine(folder, "Analysis");
+        WriteLine($"generate in {folderResults}");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);
         DisplayDataMoreThan1Version model = new(packagedDict, folder);

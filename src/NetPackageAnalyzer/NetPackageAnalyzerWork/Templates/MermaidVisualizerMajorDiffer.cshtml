@@ -1,19 +1,22 @@
 @inherits RazorBlade.HtmlTemplate<DisplayDataMoreThan1Version>;
 @{
     var keysPackageMultiple = Model.KeysPackageMultipleMajorDiffers();
-    
+    int i = 0;
 }
 
 # Number of packages that differ in major version : @keysPackageMultiple.Length
 
     @foreach (var key in keysPackageMultiple)
     {
+    i++;
     var pack = Model.IDPackageWithProjects[key];
     var versProj = pack.VersionsPerProject;
-        var projects = versProj.Values.SelectMany(it => it).Select(it => it.NameCSproj()).Distinct().ToArray();
-        var versions = versProj.Select(it => it.Key).ToArray();
-        
-<span id="@key">
+    var projects = versProj.Values.SelectMany(it => it).Select(it => it.NameCSproj()).Distinct().ToArray();
+    var versions = versProj.Select(it => it.Key).ToArray();
+
+<text>
+## @i @key
+
 ```mermaid
 ---
 @Html.Raw("title:") @key
@@ -49,6 +52,7 @@
 
     end
 ```
-</span>
+</text>
+
 }
 <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version @Model.Version</small>
