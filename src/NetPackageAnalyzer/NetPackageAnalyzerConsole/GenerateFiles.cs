@@ -93,7 +93,7 @@ internal class GenerateFiles
     }
     public async Task GenerateNow(string folder)
     {
-        
+        WriteLine($"generate in {folder}");
         var folderResults = Path.Combine(folder, "Analysis");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);

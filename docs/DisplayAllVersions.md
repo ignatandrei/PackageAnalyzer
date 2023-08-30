@@ -11,7 +11,7 @@
 | 3 | Microsoft.SourceLink.Common  |    *1.1.1* NetPackageAnalyzerConsole|
 | 4 | Microsoft.SourceLink.GitHub  |    *1.1.1* NetPackageAnalyzerConsole|
 | 5 | Morris.Moxy  |    *1.5.0* NetPackageAnalyzerWork,NetPackageAnalyzerWork,NetPackageAnalyzerConsole|
-| 6 | NetPackageAnalyzerWork  |    *7.2023.830.722* NetPackageAnalyzerConsole|
+| 6 | NetPackageAnalyzerWork  |    *7.2023.830.853* NetPackageAnalyzerConsole|
 | 7 | RazorBlade  |    *0.4.3* NetPackageAnalyzerWork|
 | 8 | rscgutils  |    *2023.827.1021* NetPackageAnalyzerWork,NetPackageAnalyzerConsole|
 | 9 | System.CommandLine  |    *2.0.0-beta4.22272.1* NetPackageAnalyzerConsole|
@@ -20,4 +20,4 @@
 | 12 | System.Threading.Tasks.Extensions  |    *4.5.4* NetPackageAnalyzerWork|
 | 13 | ThisAssembly.AssemblyInfo  |    *1.4.0* NetPackageAnalyzerWork|
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 7.2023.830.722</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 7.2023.830.853</small>

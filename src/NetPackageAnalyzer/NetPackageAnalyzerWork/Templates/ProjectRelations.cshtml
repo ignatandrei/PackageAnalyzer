@@ -1,4 +1,7 @@
 @inherits RazorBlade.HtmlTemplate<ProjectsDict>;
+
+# Project relations
+
 ```mermaid
 ---
 title: Project Relations
@@ -8,9 +11,9 @@ flowchart TB
 {
     foreach(var rel in proj.ProjectsReferences)
     {
-        <text>
+<text>
 @proj.NameCSproj()-->@rel.NameCSproj()
-        </text>
+</text>
     }
 }
 ```

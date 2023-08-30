@@ -3,10 +3,10 @@
     var keysPackageMultiple = Model.KeysPackageMultiple();
 }
 
-    # Number of packages:@Model.NrPackages()
-    ## Packages with more than 1 version: @keysPackageMultiple.Length ( @(keysPackageMultiple.Length * 100 / @Model.NrPackages()) % from total packages)
+# Number of packages:@Model.NrPackages()
+## Packages with more than 1 version: @keysPackageMultiple.Length ( @(keysPackageMultiple.Length * 100 / @Model.NrPackages()) % from total packages)
 
-    ## Number of packages with major version differs: @Model.MajorVersionDiffers()
+## Number of packages with major version differs: @Model.MajorVersionDiffers()
 
 |Nr|ID|References/Projects|
 | ----------- | ----------- | ----------- |
@@ -19,25 +19,8 @@
     var pack = item.Value;
     var vals = pack.VersionsPerProject;
     var majorDiff = pack.MajorVersionDiffer();
-    string color = "";
-    switch (vals.Count)
-    {
-        case 0:
-        case 1:
-            break;
-        case 2:
-            color = "blue";
-            break;
-        case 3:
-            color = "purple";
-            break;
-        case 4:
-            color = "red";
-            break;
-
-    }
-    string textReferences = vals.Count > 1 ? $"<div style='color: {color}'>(References: {vals.Count})</div>" : "";
-    string diffMajor = majorDiff ? $"<div style='color: red'>Major differs</div>" : "";
+    string textReferences = vals.Count > 1 ? $" *(References: {vals.Count})* " : "";
+    string diffMajor = majorDiff ? $" **Major differs** " : "";
     string refs = "";
     @foreach (var vers in vals)
     {
