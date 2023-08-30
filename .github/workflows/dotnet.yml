@@ -25,7 +25,6 @@ jobs:
         cd src
         cd NetPackageAnalyzer
         dotnet restore
-        dotnet tool restore
     - name: Build
       run: |
         cd src
