@@ -1,6 +1,7 @@
 ﻿namespace NetPackageAnalyzerWork;
 public class ProjectsDict : Dictionary<string, ProjectData>
 {
+    public string Version = ThisAssembly.Info.Version;
     public ProjectsDict(Dictionary<string, ProjectData> data) : base(data)
     {
 
