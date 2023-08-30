@@ -2,7 +2,7 @@
 {
     static async Task<int> Main(string[] args)
     {
-        
+        /*
         args = new[]
         {
           @"generateFiles",
@@ -10,7 +10,7 @@
             @"C:\gth\TILT\src\backend\Net7\NetTilt"
 
         };
-        /*
+        
         args = new[]
         {
           @"generateFiles",

@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "netpackageanalyzerconsole": {
-      "version": "7.2023.830.921",
+      "version": "7.2023.830.2334",
       "commands": [
         "PackageAnalyzer"
       ]
