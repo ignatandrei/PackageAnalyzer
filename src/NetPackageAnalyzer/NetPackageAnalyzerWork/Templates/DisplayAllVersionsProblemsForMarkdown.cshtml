@@ -1,0 +1,34 @@
+@inherits RazorBlade.HtmlTemplate<DisplayDataMoreThan1Version>;
+@{
+    var keysPackageMultiple = Model.KeysWithProblems();
+}
+# Packages to be upgraded/removed : @keysPackageMultiple.Length 
+
+## Number of packages:@Model.NrPackages()
+
+## Packages with problems : @keysPackageMultiple.Length ( @(keysPackageMultiple.Length * 100 / @Model.NrPackages()) % from total packages)
+
+|Nr|ID|References/Projects|
+| ----------- | ----------- | ----------- |
+@{
+    int i = 0;
+}
+@foreach (var key in keysPackageMultiple)
+{
+    var item = Model.IDPackageWithProjects[key];
+    i++;
+    var pack = item;
+    var vals = pack.VersionsPerProject;
+    var majorDiff = pack.MajorVersionDiffer();
+    var refs = "";
+    @foreach (var vers in vals)
+    {
+        refs += " *"+vers.Key + "* " + string.Join(",", vers.Value.Select(it => it.NameCSproj()).ToArray());
+
+    }
+
+<text>| @Html.Raw(i) | @Html.Raw(key)  |  @refs|
+</text>
+}
+
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version @Model.Version</small>

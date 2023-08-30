@@ -15,7 +15,7 @@ internal class GenerateFiles
 
         var outdatedPackages = JsonSerializer.Deserialize<OutDated.outdatedV1_gen_json>(text);
 
-
+        
         text = p.OutputDotnetPackage(folder, PackageOptions.Deprecated);
 
         var deprecatedPackages = JsonSerializer.Deserialize<Deprecated.deprecatedV1_gen_json>(text);
@@ -89,6 +89,24 @@ internal class GenerateFiles
                 vers[package.RequestedVersion].Add(projData);
             }
         }
+
+        var problems=
+            outdatedPackages!.PerProjectPathWithVersion()
+            .Union(deprecatedPackages!.PerProjectPathWithVersion())
+            .ToArray();
+
+        foreach (var pathPackage in problems)
+        {
+            var projData = projectsDict[pathPackage.Key];
+            foreach (var package in pathPackage.Value)
+            {
+                var vers = packagedDict[package.PackageId].VersionsPerProjectWithProblems;
+                if (!vers.ContainsKey(package.RequestedVersion))
+                    vers.Add(package.RequestedVersion, new());
+                vers[package.RequestedVersion].Add(projData);
+            }
+        }
+
         return true;
     }
     public async Task GenerateNow(string folder)
@@ -114,6 +132,11 @@ internal class GenerateFiles
         file = Path.Combine(folderResults, "ProjectRelation.md");
         ArgumentNullException.ThrowIfNull(projectsDict);
         await File.WriteAllTextAsync(file, await generator.Generate_ProjectRelations(projectsDict));
+
+        file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
+        ArgumentNullException.ThrowIfNull(projectsDict);
+        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
+
 
     }
 }

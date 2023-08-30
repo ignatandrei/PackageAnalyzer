@@ -7,6 +7,14 @@ public record DisplayDataMoreThan1Version(Dictionary<string, PackageData> IDPack
     {
         return IDPackageWithProjects.OrderBy(it=>it.Key).ToArray();
     }
+    public string[] KeysWithProblems()
+    {
+        return IDPackageWithProjects
+            .Where(it=>it.Value.HasProblems())
+            .Select(it=>it.Key)
+            .OrderBy(it=>it)
+            .ToArray();
+    }
     public int NrPackages() { return IDPackageWithProjects.Count; }
     public string[] KeysPackageMultiple()
     {

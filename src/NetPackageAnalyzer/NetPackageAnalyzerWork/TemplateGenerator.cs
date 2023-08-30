@@ -13,7 +13,12 @@ public class TemplateGenerator
         return await rz.RenderAsync();
 
     }
+    public async Task<string?> Generate_DisplayAllVersionsWithProblemsMarkdown(DisplayDataMoreThan1Version model)
+    {
+        var rz = new DisplayAllVersionsProblemsForMarkdown(model);
+        return await rz.RenderAsync();
 
+    }
     public async Task<string> Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version model)
     {
         var rz = new MermaidVisualizerMajorDiffer(model);

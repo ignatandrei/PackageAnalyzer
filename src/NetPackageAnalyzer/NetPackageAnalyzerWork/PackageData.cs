@@ -22,4 +22,9 @@ public record PackageData(string packageVersionId)
         return (vers.Count >1) ;
 
     }
+    public bool HasProblems() 
+    {
+        return VersionsPerProjectWithProblems.Count > 0;
+    }
+    public Dictionary<string, List<ProjectData>> VersionsPerProjectWithProblems { get; set; } = new();
 }
