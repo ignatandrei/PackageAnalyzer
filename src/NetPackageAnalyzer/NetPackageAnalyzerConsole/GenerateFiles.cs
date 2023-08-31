@@ -6,9 +6,17 @@ internal class GenerateFiles
     ProjectsDict? projectsDict;
     public async Task<bool> GenerateData(string folder)
     {
+        
         await Task.Delay(100);
         WriteLine($"Start analyzing {folder}");
         var p = new ProcessOutput();
+        var build = p.Build(folder);
+        if(!build)
+        {
+            WriteLine($"cannot build solution from {folder}");
+            return false;
+        }
+
         string text;
 
         text = p.OutputDotnetPackage(folder, PackageOptions.Outdated);
