@@ -30,7 +30,7 @@ public class ProjectsDict : Dictionary<string, ProjectData>
                 var realCsproj = Path.Combine(startFolder, csproj);
                 var nameCsproj = Path.GetFileNameWithoutExtension(csproj);
                 var arr = this
-                    .Where(it => it.Value.NameCSproj() == nameCsproj)
+                    .Where(it => string.Equals( it.Value.NameCSproj() , nameCsproj,StringComparison.InvariantCultureIgnoreCase))
                     .ToArray();
                 if (arr.Length == 0)
                 {
