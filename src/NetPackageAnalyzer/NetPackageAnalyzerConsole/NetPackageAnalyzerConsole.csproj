@@ -16,7 +16,7 @@
 	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerWork.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>7.2023.831.2011</Version>
+		<Version>7.2023901.818</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>
@@ -47,9 +47,12 @@
 		<Watch Include="**\*.cshtml" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 
-	<PropertyGroup>
-	  <WarningsNotAsErrors>CS0436</WarningsNotAsErrors>
-	</PropertyGroup>
+	</ItemGroup>
 
 </Project>

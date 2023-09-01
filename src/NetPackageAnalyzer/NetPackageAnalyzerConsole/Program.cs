@@ -3,13 +3,14 @@
     static async Task<int> Main(string[] args)
     {
         
-        args = new[]
-        {
-          @"generateFiles",
-            "--folder",
-            @"C:\gth\TILT\src\backend\Net7\NetTilt"
+        WriteLine("Version:"+ThisAssembly.Info.Version.ToString());
+        //args = new[]
+        //{
+        //  @"generateFiles",
+        //    "--folder",
+        //    @"C:\gth\TILT\src\backend\Net7\NetTilt"
 
-        };
+        //};
         /*
         args = new[]
         {
