@@ -18,20 +18,17 @@
 ## @i @key
 
 ```mermaid
----
-@Html.Raw("title:") @key
----
-        flowchart TB
-        subgraph packages
-            @Html.Raw(key + "\r\n")
-        end
-        subgraph projects
-        @foreach(var proj in projects)
-        {
-            var text = $"{proj}((({proj})))";
-            @Html.Raw(text+"\r\n")
+graph TB
+subgraph packages
+    @Html.Raw(key + "\r\n")
+end
+subgraph projects
+@foreach(var proj in projects)
+{
+    var text = $"{proj}((({proj})))";
+    @Html.Raw(text+"\r\n")
 
-        }
+}
     subgraph versions
    @foreach(var vers in versions){
 

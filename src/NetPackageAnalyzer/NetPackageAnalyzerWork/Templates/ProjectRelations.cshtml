@@ -3,10 +3,7 @@
 # Project relations
 
 ```mermaid
----
-title: Project Relations
----
-flowchart TB    
+graph TB    
 @foreach(var proj in Model.Values)
 {
     foreach(var rel in proj.ProjectsReferences)
