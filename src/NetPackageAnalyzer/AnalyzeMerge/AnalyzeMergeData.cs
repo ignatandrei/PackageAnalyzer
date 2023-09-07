@@ -50,8 +50,37 @@ public class AnalyzeMergeData
 
         using (var repo = new Repository(folderRoot))
         {
-            var currentBranch = repo.Head.Tip; // Get the current branch (the one you are currently on)
-            Console.WriteLine("branch name"+repo.Head.FriendlyName);
+            //var name = GetBranchName();
+            var mainBranch = repo.Branches["main"];
+            var shaCommits = mainBranch.Commits.Select(it => it.Sha).ToArray();    
+            //Console.WriteLine("=>"+name);
+            //Branch? currentBranch = null;
+            //foreach (var item in repo.Branches)
+            //{
+            //    if(item.FriendlyName == name)
+            //    {
+            //        currentBranch = item;
+            //        break;
+            //    }
+            //}
+            //var currentBranch = repo.Branches[name]; // Get the current branch (the one you are currently on)
+            var currentBranch = repo.Head;
+            ArgumentNullException.ThrowIfNull(currentBranch);
+            Console.WriteLine("branch name"+currentBranch.FriendlyName);
+            var commits=currentBranch
+                .Commits
+                .Where(it=>!shaCommits.Contains(it.Sha) )
+                .ToArray();
+            Console.WriteLine("commits " + commits.Length);
+            foreach(var commit in commits)
+            {
+
+                var changes = repo.Diff.Compare<TreeChanges>(mainBranch.Tip.Tree, commit.Tree);
+                foreach(var change in changes)
+                {
+                    Console.WriteLine(commit.MessageShort +"=>"+ change.Status + " " + change.Path);
+                }
+            }
             var status = repo.RetrieveStatus();
             foreach (var entry in status)
             {
@@ -78,7 +107,7 @@ public class AnalyzeMergeData
 
                             var latestLines = currentContent.Split('\n', '\r');
                             var headLines = mainContent.Split('\n', '\r');
-                            Console.WriteLine("tst" + latestLines.Length + "--" + headLines.Length);
+                            //Console.WriteLine("tst" + latestLines.Length + "--" + headLines.Length);
                             for (int i = 0; i < Math.Min(latestLines.Length, headLines.Length); i++)
                             {
                                 if (latestLines[i] != headLines[i])
@@ -122,14 +151,19 @@ public class AnalyzeMergeData
     }
 
     string[] FileNames() {
-        var p = new ProcessOutput();
-        return p.ExecuteGit(folder, GitData.Files)
-            .Split('\r', '\n')
-            .ToArray();
+        return new string[1] { "doesnt work multiple commits same branch" };
+        //var p = new ProcessOutput();
+        //return p.ExecuteGit(folder, GitData.Files)
+        //    .Split('\r', '\n')
+        //    .ToArray();
     }
     string GetBranchName()
     {
         var p = new ProcessOutput();
-        return p.ExecuteGit(folder, GitData.BranchName);
+        return p.ExecuteGit(folder, GitData.BranchName)
+            .Split('\r','\n')
+            .Where(it=>!string.IsNullOrWhiteSpace(it))
+            .Single();
+
     }
 }
