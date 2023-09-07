@@ -1,12 +1,5 @@
 ﻿namespace NetPackageAnalyzerConsole;
-public enum PackageOptions
-{
-    None = 0,
-    Outdated = 1,
-    Deprecated = 2,
-    Include_Transitive = 3
-}
-public class ProcessOutput
+internal class ProcessOutput
 {
     public bool Build(string folder)
     {

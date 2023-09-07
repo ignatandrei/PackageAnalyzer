@@ -1,6 +1,6 @@
 ﻿namespace NetPackageAnalyzerConsole;
 
-internal class GenerateFiles
+public class GenerateFiles
 {
     Dictionary<string, PackageData> packagedDict=new();
     ProjectsDict? projectsDict;

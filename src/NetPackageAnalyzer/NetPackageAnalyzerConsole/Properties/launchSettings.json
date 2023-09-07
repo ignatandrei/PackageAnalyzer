@@ -2,7 +2,7 @@
   "profiles": {
     "NetPackageAnalyzerConsole": {
       "commandName": "Project",
-      "commandLineArgs": "generateFiles"
+      "commandLineArgs": "analyzeBranch"
     }
   }
 }

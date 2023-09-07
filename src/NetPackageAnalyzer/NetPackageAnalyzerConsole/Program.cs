@@ -1,4 +1,6 @@
-﻿public class Program
+﻿using AnalyzeMerge;
+
+public class Program
 {
     static async Task<int> Main(string[] args)
     {
@@ -23,8 +25,7 @@
         RootCommand rootCommand = new();
         Command cmdGenerate = new("generateFiles", "Generate files for documentation");
 
-        rootCommand.Add(cmdGenerate);
-
+        
         var folderToHaveSln = new Option<string>
             (name: "--folder",
             description: "folder where find the solution .sln",
@@ -47,9 +48,34 @@
             }
 
         }, folderToHaveSln);
+
+        Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
+
+        var cmdAnalyzeBranchFolder = new Option<string>
+            (name: "--folder",
+            description: "folder where branch is ",
+            getDefaultValue: () => Environment.CurrentDirectory);
         
+        cmdAnalyzeBranch.AddAlias("-f");
+        cmdAnalyzeBranch.AddOption(cmdAnalyzeBranchFolder);
+        cmdAnalyzeBranch.SetHandler(async (folder) =>
+        {
+            
+            //folder = @"C:\gth\PackageAnalyzer\";
+            WriteLine($"analyzing branch ");
+            var g = new AnalyzeMergeData(folder);
+            await g.GenerateNow();
+
+
+        }, cmdAnalyzeBranchFolder);
+
+
+
+        rootCommand.Add(cmdGenerate);
+        rootCommand.Add(cmdAnalyzeBranch);
+
         await rootCommand.InvokeAsync(args);
-        
+
         return 0;
 
     }
