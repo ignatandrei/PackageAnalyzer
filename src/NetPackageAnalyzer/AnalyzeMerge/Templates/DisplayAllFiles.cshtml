@@ -1,0 +1,96 @@
+@inherits RazorBlade.HtmlTemplate<DataToDisplayMerge>;
+@{
+    //    var keysPackageMultiple = Model.KeysPackageMultiple();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Reset some default table styles */
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+
+        /* Style the table header */
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        /* Alternate row background color */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* Hover effect */
+        tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    @if (Model.addedCsproj.Length>0){
+        foreach(var csproj in Model.addedCsproj)
+        {
+            <h1>New Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h1>
+            <ol>
+                @foreach (var file in csproj.files)
+                {
+                    <li>@file.relPath</li>
+                }
+            </ol>
+        }
+
+    }
+
+    @if (Model.modifiedCsproj.Length > 0)
+    {
+        foreach (var csproj in Model.modifiedCsproj)
+        {
+            <h1>Modified Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h1>
+            <ol>
+                @foreach (var file in csproj.files)
+                {
+                    <li>@file.relPath</li>
+                }
+            </ol>
+        }
+
+    }
+
+    @foreach (var item in Model.AfterStatus)
+    {
+        <h1>@item.Key : @item.Value.Length</h1>
+        <ol>
+            @foreach (var file in item.Value)
+            {
+                <li>@file.relPath</li>
+            }
+        </ol>
+    }
+    @foreach(var item in Model.AfterExtension)
+    {
+        <h1>@item.Key : @item.Value.Length</h1>
+        <ol>
+        @foreach(var file in item.Value)
+        {
+            <li>@file.fileDataEnum.ToString() : @file.relPath</li>
+        }
+        </ol>
+    }
+
+</body>
+</html>

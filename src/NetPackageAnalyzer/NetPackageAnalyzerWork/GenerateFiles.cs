@@ -1,6 +1,6 @@
 ﻿namespace NetPackageAnalyzerConsole;
 
-internal class GenerateFiles
+public class GenerateFiles
 {
     Dictionary<string, PackageData> packagedDict=new();
     ProjectsDict? projectsDict;
@@ -127,7 +127,7 @@ internal class GenerateFiles
         DisplayDataMoreThan1Version model = new(packagedDict, folder);
 
         TemplateGenerator generator = new();
-
+ 
         var file = Path.Combine(folderResults, "DisplayAllVersions.html");
         await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersions(model));
 
