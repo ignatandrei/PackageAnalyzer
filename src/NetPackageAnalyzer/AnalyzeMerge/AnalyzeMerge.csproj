@@ -17,6 +17,10 @@
       <IsRazorBlade>True</IsRazorBlade>
       <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
     </AdditionalFiles>
+	  <AdditionalFiles Include="Templates\DisplayProjectAnalyzeMarkdown.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+	  </AdditionalFiles>
   </ItemGroup>
 
   <ItemGroup>

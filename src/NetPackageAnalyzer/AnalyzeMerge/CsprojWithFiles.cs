@@ -1,6 +1,6 @@
 ﻿namespace AnalyzeMerge;
 
-public record CsprojWithFiles(FileData csproj, FileData[] files)
+public record ProjectWithFiles(FileData csproj, FileData[] files)
 {
 
 }    
