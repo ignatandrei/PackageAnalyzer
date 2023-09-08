@@ -1,48 +1,4 @@
 ﻿namespace AnalyzeMerge;
-public record CsprojWithFiles(FileData csproj, FileData[] files)
-{
-
-}    
-public record DataToDisplayMerge(string nameBranch, FileData[] files)
-{
-    public Dictionary<string, FileData[]> AfterExtension { get; internal set; } = new();
-    public Dictionary<FileDataEnum, FileData[]> AfterStatus { get; internal set; } = new();
-    public CsprojWithFiles[] addedCsproj = new CsprojWithFiles[0];
-    public CsprojWithFiles[] modifiedCsproj = new CsprojWithFiles[0];
-
-    public void Analyze()
-    {
-        AfterExtension = files
-           .Select(it => new KeyValuePair<string, FileData>(Path.GetExtension(it.relPath), it))
-           .GroupBy(it => it.Key)
-           .ToDictionary(
-            it => it.Key
-            , it => it.Select(it => it.Value)
-            .ToArray());
-        AfterStatus = files
-           .Select(it => new KeyValuePair<FileDataEnum, FileData>(it.fileDataEnum, it))
-           .GroupBy(it => it.Key)
-           .ToDictionary(
-            it => it.Key
-            , it => it.Select(it => it.Value)
-            .ToArray());
-        var csprojs = AfterExtension
-            .Where(it => it.Key == ".csproj")
-            .SelectMany(it => it.Value)
-            .ToArray();
-        addedCsproj = csprojs
-            .Where(it=>it.fileDataEnum == FileDataEnum.Added)
-            .Select(it=>new {csproj=it,files= files.Where(f=>f.relPath.StartsWith(it.relFolderPath())).ToArray()})
-            .Select(it=> new CsprojWithFiles(it.csproj,it.files))
-            .ToArray();
-        modifiedCsproj = csprojs
-            .Where(it => it.fileDataEnum == FileDataEnum.Modified)
-            .Select(it => new { csproj = it, files = files.Where(f => f.relPath.StartsWith(it.relFolderPath())).ToArray() })
-            .Select(it => new CsprojWithFiles(it.csproj, it.files))
-            .ToArray();
-
-    }
-}
 public class AnalyzeMergeData
 {
     private readonly string folder;
@@ -119,15 +75,18 @@ public class AnalyzeMergeData
                     ChangeKind.Renamed=>FileDataEnum.Renamed,
                     _ => FileDataEnum.NotInterested
                 })).ToArray();
-            var data = new DataToDisplayMerge(currentBranch1.FriendlyName,files);
+            var data = new DataToDisplayMerge(currentBranch1.FriendlyName,folderRoot,files);
             data.Analyze();
             var g = new TemplateGenerator();
             var folderResults = Path.Combine(folderRoot, "changes");
             if(!Path.Exists(folderResults))
                 Directory.CreateDirectory(folderResults);
-            var file = Path.Combine(folderResults, $"AllFiles{currentBranch1.FriendlyName}.html");
+            var file = Path.Combine(folderResults, $"Changes_{currentBranch1.FriendlyName}.html");
             await File.WriteAllTextAsync(file, await g.Generate_DisplayAllFiles (data));
-             
+            
+            file = Path.Combine(folderResults, $"Changes_{currentBranch1.FriendlyName}.md");
+            await File.WriteAllTextAsync(file, await g.Generate_DisplayAllFilesMD(data));
+
             //Console.WriteLine("=>"+name);
             //Branch? currentBranch = null;
             //foreach (var item in repo.Branches)

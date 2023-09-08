@@ -1,0 +1,101 @@
+@inherits RazorBlade.HtmlTemplate<DataToDisplayMerge>;
+@{
+    //    var keysPackageMultiple = Model.KeysPackageMultiple();
+}
+
+# Analyzing branch @Model.nameBranch with @Model.files.Length modifications
+@{
+    var existProjModified = (Model.addedCsproj.Length + Model.modifiedCsproj.Length + Model.modifiedFilesInside.Length)>0;
+    int nr = 0;
+}
+    @if (Model.addedCsproj.Length>0){
+
+    
+    foreach(var csproj in Model.addedCsproj)
+    {
+        nr= 0;
+<text># New Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
+
+            @Html.Raw(Environment.NewLine)
+                @foreach (var file in csproj.files)
+                {
+                @($"{++nr}.") @file.relPath
+                @Html.Raw(Environment.NewLine)
+                }
+            
+        }
+</text>
+    }
+
+
+    @if (Model.modifiedCsproj.Length > 0) 
+    {
+        foreach (var csproj in Model.modifiedCsproj)
+        {
+            nr = 0;
+            <text>
+## Modified Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
+</text>
+            @Html.Raw(Environment.NewLine)
+            @foreach (var file in csproj.files)
+            {
+                @($"{++nr}.") @file.relPath
+                @Html.Raw(Environment.NewLine)
+            }
+
+        }
+    }
+    }
+
+
+    @if (Model.modifiedFilesInside.Length > 0)
+    {
+        foreach (var csproj in Model.modifiedFilesInside)
+        {
+        nr = 0;
+            <text>
+## Files modified inside Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
+</text>
+        @Html.Raw(Environment.NewLine)
+        @foreach (var file in csproj.files){
+        
+            @($"{++nr}.") @file.relPath
+            @Html.Raw(Environment.NewLine)
+        }
+    }
+    }
+
+
+
+
+
+<h1 id="status"> By Status </h1>
+    @foreach (var item in Model.AfterStatus)
+    {
+    nr = 0;
+<text>
+## @item.Key : @item.Value.Length
+</text>
+    @Html.Raw(Environment.NewLine)
+    @foreach (var file in item.Value)
+    {
+        @($"{++nr}.") @file.relPath
+        @Html.Raw(Environment.NewLine)
+    }
+}
+<h1 id="extension">By Extension</h1>
+
+    @foreach(var item in Model.AfterExtension)
+    { 
+    nr = 0;
+<text>
+## @item.Key : @item.Value.Length
+</text>
+    @Html.Raw(Environment.NewLine)
+    @foreach (var file in item.Value)
+    {
+        @($"{++nr}.") @file.relPath
+        @Html.Raw(Environment.NewLine)
+    }
+}
+

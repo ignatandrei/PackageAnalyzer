@@ -6,11 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  
+  
   <ItemGroup>
-    <None Remove="Templates\DisplayAllFiles.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <AdditionalFiles Include="Templates\DisplayAllFilesMarkdown.cshtml">
+      <IsRazorBlade>True</IsRazorBlade>
+      <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+    </AdditionalFiles>
     <AdditionalFiles Include="Templates\DisplayAllFiles.cshtml">
       <IsRazorBlade>True</IsRazorBlade>
       <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
