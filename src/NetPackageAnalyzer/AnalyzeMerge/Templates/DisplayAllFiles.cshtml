@@ -45,7 +45,7 @@
 
     Analyzing branch @Model.nameBranch with @Model.files.Length modifications
     @{
-        var existProjModified = (Model.addedCsproj.Length + Model.modifiedCsproj.Length)>0;
+        var existProjModified = (Model.addedCsproj.Length + Model.modifiedCsproj.Length + Model.modifiedFilesInside.Length)>0;
 
     }
     @if (existProjModified)
@@ -73,6 +73,7 @@
         }
 
     }
+    <br />
 
     @if (Model.modifiedCsproj.Length > 0)
     {
@@ -87,7 +88,21 @@
             </ol>
         }
     }
-<br />
+    <br />
+    @if (Model.modifiedFilesInside.Length > 0)
+    {
+        foreach (var csproj in Model.modifiedFilesInside)
+        {
+            <h2>Files modified inside Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
+            <ol>
+                @foreach (var file in csproj.files)
+                {
+                    <li>@file.relPath</li>
+                }
+            </ol>
+        }
+    }
+
 
 
 <h1 id="status"> By Status </h1>
