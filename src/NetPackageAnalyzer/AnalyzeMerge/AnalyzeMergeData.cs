@@ -74,7 +74,17 @@ public class AnalyzeMergeData
 
         using (var repo = new Repository(folderRoot))
         {
+            //Commit? debugCommit = null;
             Branch? mainBranch = null;
+            //foreach (var item in repo.Commits)
+            //{
+            //    if (item.Sha == "fdeddfa037105ec84d8e92f1be9eb7ee00f63f20")
+            //    {
+            //        debugCommit= item;
+            //        break;
+            //    }
+            //}
+            //ArgumentNullException.ThrowIfNull(debugCommit);
             foreach (var branch in repo.Branches)
             {
                 if (branch.FriendlyName == "main")
@@ -92,11 +102,12 @@ public class AnalyzeMergeData
             //var mainBranch = repo.Branches["main"];
             //var name = GetBranchName();
             //var currentBranch1 = repo.Branches[name];
-            var currentBranch1 = repo.Head;
+            var currentBranch1 = repo.Head;            
             var treeChanges = repo.Diff.Compare<TreeChanges>(mainBranch.Tip.Tree, currentBranch1.Tip.Tree);
+            //treeChanges = repo.Diff.Compare<TreeChanges>(debugCommit.Tree, mainBranch.Tip.Tree);
 
             foreach (var change in treeChanges)
-            {                
+            {                                
                 Console.WriteLine($"{change.Status}: {change.Path}");
             }
             var files = treeChanges.Select(it => new FileData(it.Path ,
