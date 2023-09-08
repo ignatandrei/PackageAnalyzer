@@ -1,0 +1,65 @@
+@inherits RazorBlade.HtmlTemplate<AnalyzeForProject>;
+@{
+    //    var keysPackageMultiple = Model.KeysPackageMultiple();
+}
+@{
+    var existProjModified = (Model.addedProj.Length + Model.modifiedProj.Length + Model.modifiedFilesInside.Length) > 0;
+    int nr = 0;
+}
+@if (Model.addedProj.Length > 0)
+{
+
+    
+    foreach (var csproj in Model.addedProj)
+    {
+        nr= 0;
+<text># New : @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
+
+            @Html.Raw(Environment.NewLine)
+                @foreach (var file in csproj.files)
+                {
+                @($"{++nr}.") @file.relPath
+                @Html.Raw(Environment.NewLine)
+                }
+            
+        }
+</text>
+    }
+
+
+    @if (Model.modifiedProj.Length > 0)
+    {
+        foreach (var csproj in Model.modifiedProj)
+        {
+            nr = 0;
+            <text>
+## Modified : @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
+</text>
+            @Html.Raw(Environment.NewLine)
+            @foreach (var file in csproj.files)
+            {
+                @($"{++nr}.") @file.relPath
+                @Html.Raw(Environment.NewLine)
+            }
+
+        }
+    }
+    }
+
+
+@if (Model.modifiedFilesInside.Length > 0)
+    {
+    foreach (var csproj in Model.modifiedFilesInside)
+        {
+        nr = 0;
+            <text>
+## Files modified inside : @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
+</text>
+        @Html.Raw(Environment.NewLine)
+        @foreach (var file in csproj.files){
+        
+            @($"{++nr}.") @file.relPath
+            @Html.Raw(Environment.NewLine)
+        }
+    }
+    }

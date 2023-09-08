@@ -1,71 +1,31 @@
 @inherits RazorBlade.HtmlTemplate<DataToDisplayMerge>;
 @{
-    //    var keysPackageMultiple = Model.KeysPackageMultiple();
+    int nr = 0;
+
 }
 
 # Analyzing branch @Model.nameBranch with @Model.files.Length modifications
+
+
+@(new DisplayProjectAnalyzeMarkdown(Model.analyzeCsproj!))
+
+@(new DisplayProjectAnalyzeMarkdown(Model.analyzeNode!))
+
+
+<h1 id="status"> By folder </h1>
 @{
-    var existProjModified = (Model.addedCsproj.Length + Model.modifiedCsproj.Length + Model.modifiedFilesInside.Length)>0;
-    int nr = 0;
+    var dataFolder = Model.AfterFolder.OrderByDescending(it => it.Value.Length).ToArray();
 }
-    @if (Model.addedCsproj.Length>0){
-
-    
-    foreach(var csproj in Model.addedCsproj)
-    {
-        nr= 0;
-<text># New Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
-
-            @Html.Raw(Environment.NewLine)
-                @foreach (var file in csproj.files)
-                {
-                @($"{++nr}.") @file.relPath
-                @Html.Raw(Environment.NewLine)
-                }
-            
-        }
-</text>
-    }
-
-
-    @if (Model.modifiedCsproj.Length > 0) 
-    {
-        foreach (var csproj in Model.modifiedCsproj)
+@foreach (var item in dataFolder)
+{
+    <h2>@item.Key : @item.Value.Length</h2>
+    <ol>
+        @foreach (var file in item.Value)
         {
-            nr = 0;
-            <text>
-## Modified Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
-</text>
-            @Html.Raw(Environment.NewLine)
-            @foreach (var file in csproj.files)
-            {
-                @($"{++nr}.") @file.relPath
-                @Html.Raw(Environment.NewLine)
-            }
-
+            <li>@file.relPath</li>
         }
-    }
-    }
-
-
-    @if (Model.modifiedFilesInside.Length > 0)
-    {
-        foreach (var csproj in Model.modifiedFilesInside)
-        {
-        nr = 0;
-            <text>
-## Files modified inside Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files
-</text>
-        @Html.Raw(Environment.NewLine)
-        @foreach (var file in csproj.files){
-        
-            @($"{++nr}.") @file.relPath
-            @Html.Raw(Environment.NewLine)
-        }
-    }
-    }
-
-
+    </ol>
+}
 
 
 

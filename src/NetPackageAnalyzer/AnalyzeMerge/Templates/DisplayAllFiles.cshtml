@@ -45,23 +45,31 @@
 
     Analyzing branch @Model.nameBranch with @Model.files.Length modifications
     @{
-        var existProjModified = (Model.addedCsproj.Length + Model.modifiedCsproj.Length + Model.modifiedFilesInside.Length)>0;
+        var existCSProjModified = (Model.analyzeCsproj!.addedProj.Length + Model.analyzeCsproj!.modifiedProj.Length + Model.analyzeCsproj!.modifiedFilesInside.Length) > 0;
+        var existNodeProjModified = (Model.analyzeNode!.addedProj.Length + Model.analyzeNode!.modifiedProj.Length + Model.analyzeNode!.modifiedFilesInside.Length) > 0;
 
     }
-    @if (existProjModified)
+    @if (existCSProjModified)
     {
-        <h1> <a href="#csproj">ByCsproj</a></h1>
+        <h1> <a href="#csproj">By CSharp Project</a></h1>
+    }
+    @if (existNodeProjModified)
+    {
+        <h1> <a href="#node">By Node</a></h1>
     }
     <h1> <a href="#status">By Status</a></h1>
     <h1> <a href="#extension">By Extension</a></h1>
+    <h1> <a href="#folders">By Folders</a></h1>
 
-    @if (existProjModified)
+    @if (existCSProjModified)
     {
-        <h1 id="csproj">By csproj</h1>
+        <h1 id="csproj">By CSharp project</h1>
     }
-    @if (Model.addedCsproj.Length>0){
     
-        foreach(var csproj in Model.addedCsproj)
+    @if (Model.analyzeCsproj!.addedProj.Length > 0)
+    {
+
+        foreach (var csproj in Model.analyzeCsproj!.addedProj)
         {
             <h2>New Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
             <ol>
@@ -73,11 +81,12 @@
         }
 
     }
+
     <br />
 
-    @if (Model.modifiedCsproj.Length > 0)
+    @if (Model.analyzeCsproj!.modifiedProj.Length > 0)
     {
-        foreach (var csproj in Model.modifiedCsproj)
+        foreach (var csproj in Model.analyzeCsproj!.modifiedProj)
         {
             <h2>Modified Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
             <ol>
@@ -89,9 +98,9 @@
         }
     }
     <br />
-    @if (Model.modifiedFilesInside.Length > 0)
+    @if (Model.analyzeCsproj!.modifiedFilesInside.Length > 0)
     {
-        foreach (var csproj in Model.modifiedFilesInside)
+        foreach (var csproj in Model.analyzeCsproj!.modifiedFilesInside)
         {
             <h2>Files modified inside Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
             <ol>
@@ -103,6 +112,75 @@
         }
     }
 
+
+
+    @if (existNodeProjModified)
+    {
+        <h1 id="node">By Node</h1>
+    }
+
+    @if (Model.analyzeNode!.addedProj.Length > 0)
+    {
+
+        foreach (var csproj in Model.analyzeNode!.addedProj)
+        {
+            <h2>New node : @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
+            <ol>
+                @foreach (var file in csproj.files)
+                {
+                    <li>@file.relPath</li>
+                }
+            </ol>
+        }
+
+    }
+
+    <br />
+
+    @if (Model.analyzeNode!.modifiedProj.Length > 0)
+    {
+        foreach (var csproj in Model.analyzeNode!.modifiedProj)
+        {
+            <h2>Modified Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
+            <ol>
+                @foreach (var file in csproj.files)
+                {
+                    <li>@file.relPath</li>
+                }
+            </ol>
+        }
+    }
+    <br />
+    @if (Model.analyzeNode!.modifiedFilesInside.Length > 0)
+    {
+        foreach (var csproj in Model.analyzeNode!.modifiedFilesInside)
+        {
+            <h2>Files modified inside Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
+            <ol>
+                @foreach (var file in csproj.files)
+                {
+                    <li>@file.relPath</li>
+                }
+            </ol>
+        }
+    }
+
+
+
+    <h1 id="folders"> By folder </h1>
+    @{
+        var dataFolder = Model.AfterFolder.OrderByDescending(it => it.Value.Length).ToArray();
+    }
+    @foreach (var item in dataFolder)
+    {
+        <h2>@item.Key : @item.Value.Length</h2>
+        <ol>
+            @foreach (var file in item.Value)
+            {
+                <li>@file.relPath</li>
+            }
+        </ol>
+    }
 
 
 <h1 id="status"> By Status </h1>
