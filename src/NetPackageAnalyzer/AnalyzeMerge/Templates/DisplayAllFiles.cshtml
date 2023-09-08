@@ -42,10 +42,28 @@
     </style>
 </head>
 <body>
+
+    Analyzing branch @Model.nameBranch with @Model.files.Length modifications
+    @{
+        var existProjModified = (Model.addedCsproj.Length + Model.modifiedCsproj.Length)>0;
+
+    }
+    @if (existProjModified)
+    {
+        <h1> <a href="#csproj">ByCsproj</a></h1>
+    }
+    <h1> <a href="#status">By Status</a></h1>
+    <h1> <a href="#extension">By Extension</a></h1>
+
+    @if (existProjModified)
+    {
+        <h1 id="csproj">By csproj</h1>
+    }
     @if (Model.addedCsproj.Length>0){
+    
         foreach(var csproj in Model.addedCsproj)
         {
-            <h1>New Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h1>
+            <h2>New Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
             <ol>
                 @foreach (var file in csproj.files)
                 {
@@ -60,7 +78,7 @@
     {
         foreach (var csproj in Model.modifiedCsproj)
         {
-            <h1>Modified Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h1>
+            <h2>Modified Csproj: @csproj.csproj.Name() ( @csproj.csproj.relPath ) with @csproj.files.Length files</h2>
             <ol>
                 @foreach (var file in csproj.files)
                 {
@@ -68,12 +86,14 @@
                 }
             </ol>
         }
-
     }
+<br />
 
+
+<h1 id="status"> By Status </h1>
     @foreach (var item in Model.AfterStatus)
     {
-        <h1>@item.Key : @item.Value.Length</h1>
+        <h2>@item.Key : @item.Value.Length</h2>
         <ol>
             @foreach (var file in item.Value)
             {
@@ -81,9 +101,10 @@
             }
         </ol>
     }
+<h1 id="extension">By Extension</h1>
     @foreach(var item in Model.AfterExtension)
     {
-        <h1>@item.Key : @item.Value.Length</h1>
+        <h2>@item.Key : @item.Value.Length</h2>
         <ol>
         @foreach(var file in item.Value)
         {

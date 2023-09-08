@@ -55,13 +55,12 @@ public class Program
             (name: "--folder",
             description: "folder where branch is ",
             getDefaultValue: () => Environment.CurrentDirectory);
-        
+         
         cmdAnalyzeBranch.AddAlias("-f");
         cmdAnalyzeBranch.AddOption(cmdAnalyzeBranchFolder);
         cmdAnalyzeBranch.SetHandler(async (folder) =>
         {            
             //folder = @"C:\gth\PackageAnalyzer\";
-            WriteLine($"analyzing branch ");
             var g = new AnalyzeMergeData(folder);
             await g.GenerateNow();
 

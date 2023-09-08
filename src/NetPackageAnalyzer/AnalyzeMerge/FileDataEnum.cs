@@ -1,5 +1,4 @@
 ﻿namespace AnalyzeMerge;
-
 public enum FileDataEnum
 {
     NotInterested,
