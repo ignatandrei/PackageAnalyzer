@@ -59,8 +59,7 @@ public class Program
         cmdAnalyzeBranch.AddAlias("-f");
         cmdAnalyzeBranch.AddOption(cmdAnalyzeBranchFolder);
         cmdAnalyzeBranch.SetHandler(async (folder) =>
-        {
-            
+        {            
             //folder = @"C:\gth\PackageAnalyzer\";
             WriteLine($"analyzing branch ");
             var g = new AnalyzeMergeData(folder);
