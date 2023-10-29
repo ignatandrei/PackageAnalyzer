@@ -6,6 +6,8 @@
 graph TB    
 @foreach(var proj in Model.Values)
 {
+    @proj.NameCSproj()
+
     foreach(var rel in proj.ProjectsReferences)
     {
 <text>
