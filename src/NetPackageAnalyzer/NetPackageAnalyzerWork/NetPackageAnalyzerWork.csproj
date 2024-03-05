@@ -16,6 +16,14 @@
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
 		</AdditionalFiles>
+		<AdditionalFiles Include="Templates\ProjectPackages.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
+		<AdditionalFiles Include="Templates\ProjectRelations.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -41,12 +49,18 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
+	  <None Remove="Templates\ProjectPackages.cshtml" />
+	  <None Remove="Templates\ProjectRelations.cshtml" />
+	  <None Remove="Templates\ProjectsRelations.cshtml" />
 	</ItemGroup>
 	<ItemGroup>
 	  <RazorBlade Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Watch Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
+	  <Watch Remove="Templates\ProjectPackages.cshtml" />
+	  <Watch Remove="Templates\ProjectRelations.cshtml" />
+	  <Watch Remove="Templates\ProjectsRelations.cshtml" />
 	</ItemGroup>
 	
 	

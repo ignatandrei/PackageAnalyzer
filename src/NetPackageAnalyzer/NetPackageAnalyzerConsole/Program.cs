@@ -3,7 +3,7 @@
 public class Program
 {
     static async Task<int> Main(string[] args)
-    {
+    { 
         
         WriteLine("Version:"+ThisAssembly.Info.Version.ToString());
         //args = new[]

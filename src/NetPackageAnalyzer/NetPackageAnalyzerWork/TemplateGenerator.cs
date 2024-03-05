@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzerWork;
+﻿
+
+namespace NetPackageAnalyzerWork;
 public class TemplateGenerator
 {
     public async Task<string> Generate_DisplayAllVersions(DisplayDataMoreThan1Version model)
@@ -24,10 +26,21 @@ public class TemplateGenerator
         var rz = new MermaidVisualizerMajorDiffer(model);
         return await rz.RenderAsync();
     }
-    public async Task<string> Generate_ProjectRelations(ProjectsDict model)
+    public async Task<string> Generate_ProjectsRelations(ProjectsDict model)
     {
-        var rz = new ProjectRelations(model);
+        var rz = new ProjectsRelations(model);
         return await rz.RenderAsync();
     }
 
+    internal async Task<string?> Generate_ProjectPackages(ProjectData model)
+    {
+        var rz= new ProjectPackages(model);
+        return await rz.RenderAsync();
+    }
+
+    internal async Task<string?> Generate_ProjectRelations(ProjectData projData)
+    {
+        var rz=new ProjectRelations(projData);
+        return await rz.RenderAsync();
+    }
 }

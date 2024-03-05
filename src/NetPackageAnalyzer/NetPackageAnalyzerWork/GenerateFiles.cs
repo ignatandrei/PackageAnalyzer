@@ -119,7 +119,25 @@ public class GenerateFiles
                 vers[package.RequestedVersion].Add(projData);
             }
         }
-
+        //now we have all data
+        //add to the projects the package references
+        foreach (var item in this.projectsDict)
+        {
+            var pathProject = item.Value.RelativePath();
+            foreach (var package in packagedDict.Values)
+            {
+                foreach (var vers in package.VersionsPerProject)
+                {
+                    foreach (var proj in vers.Value)
+                    {
+                        if (proj.RelativePath() == pathProject)
+                        {
+                            item.Value.Packages.Add(package);                            
+                        }
+                    }
+                }
+            }
+        }
         return true;
     }
     public async Task GenerateNow(string folder)
@@ -144,8 +162,26 @@ public class GenerateFiles
 
         file = Path.Combine(folderResults, "ProjectRelation.md");
         ArgumentNullException.ThrowIfNull(projectsDict);
-        await File.WriteAllTextAsync(file, await generator.Generate_ProjectRelations(projectsDict));
-         
+        await File.WriteAllTextAsync(file, await generator.Generate_ProjectsRelations(projectsDict));
+
+        var folderProjects= Path.Combine(folderResults, "Projects");
+        if (!Directory.Exists(folderProjects))
+            Directory.CreateDirectory(folderProjects);
+        foreach (var projData in projectsDict.AlphabeticOrderedProjects)
+        {
+            var folderProject = Path.Combine(folderProjects, projData.NameCSproj());
+            if (!Directory.Exists(folderProject))
+                Directory.CreateDirectory(folderProject);
+            
+            file= Path.Combine(folderProject, "ProjectReferences.md");
+            await File.WriteAllTextAsync(file, await generator.Generate_ProjectRelations(projData));
+
+            file = Path.Combine(folderProject, "Packages.md");
+            await File.WriteAllTextAsync(file, await generator.Generate_ProjectPackages(projData));
+
+
+
+        }
         //file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
         //ArgumentNullException.ThrowIfNull(projectsDict);
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));

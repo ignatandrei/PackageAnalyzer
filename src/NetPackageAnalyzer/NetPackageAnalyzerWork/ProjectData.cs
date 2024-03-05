@@ -2,7 +2,27 @@
 
 public record ProjectData(string PathProject, string folderSolution)
 {
+    public string Version = ThisAssembly.Info.Version; 
     public List<ProjectData> ProjectsReferences { get; set; }=new();
+
+    public List<PackageData> Packages { get; set; }=new();
+    public ProjectData[] AlphabeticalProjectsReferences
+    { 
+        get
+        {
+            return ProjectsReferences.OrderBy(p => p.NameCSproj()).ToArray();
+        }
+    }
+
+    public PackageData[] AlphabeticalProjectPackages
+    {
+        get
+        {
+            return Packages.OrderBy(p => p.packageVersionId).ToArray();
+        }
+    }
+
+
     public string NameCSproj()
     {
         var indexDot=PathProject.LastIndexOf(".");

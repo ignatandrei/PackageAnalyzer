@@ -7,6 +7,19 @@ public record PackageData(string packageVersionId)
         if (VersionsPerProject.Count < 2) return TypePackageData.OneVersion;
         return (MajorVersionDiffer()? TypePackageData.MultipleVersionMajorDiff: TypePackageData.MultipleVersionNotMajorDiff);
     }
+    public string[] VersionsForProject(ProjectData projectData)
+    {
+        List<string> versions = new ();
+        var relPath = projectData.RelativePath();
+        foreach (var item in VersionsPerProject)
+        {
+            if (item.Value.Any(it=>it.RelativePath()==relPath))
+            {
+                versions.Add(item.Key);
+            }
+        }
+        return versions.Order().ToArray();
+    }
     public bool MajorVersionDiffer()
     {
         if(VersionsPerProject.Keys.Count < 2)return false;

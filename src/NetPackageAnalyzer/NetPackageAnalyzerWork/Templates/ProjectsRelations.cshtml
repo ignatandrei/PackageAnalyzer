@@ -1,0 +1,44 @@
+@inherits RazorBlade.PlainTextTemplate<ProjectsDict>;
+# Projects relations
+
+```mermaid
+graph TB    
+%% start projects
+
+@foreach (var proj in Model.AlphabeticOrderedProjects)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var name = nameCsproj + "[" + relativePath + "]";
+<text>
+@name
+
+</text>
+}
+
+%% end projects
+
+@foreach (var proj in Model.AlphabeticOrderedProjects)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var comment = $"%% start project reference {relativePath}";
+    <text>
+
+@comment
+
+        @foreach (var rel in proj.AlphabeticalProjectsReferences)
+{
+<text>
+@nameCsproj-->@rel.NameCSproj()
+
+</text>
+
+}
+</text>
+
+}
+
+```
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version @Model.Version</small>
+

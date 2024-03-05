@@ -5,21 +5,23 @@
     var name = nameCsproj + "[" + relativePath + "]";
 }
 
-# Project relations
+# Project packages
 
-```mermaid
-graph TB    
-
-@name
-
-@foreach (var rel in Model.AlphabeticalProjectsReferences)
+|Nr|ID|Version|
+| ----------- | ----------- | ----------- |
+@{
+    int i = 0;
+}
+@foreach (var item in Model.AlphabeticalProjectPackages)
 {
-    <text>
-        @nameCsproj-->@rel.NameCSproj()
-    </text>
+    i++;
+    var vers = item.VersionsForProject(Model);
+    var display= string.Join(", ", vers);
 
+<text>| @i | @item.packageVersionId | @display |
+</text>
 }
 
-```
+
 <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version @Model.Version</small>
 
