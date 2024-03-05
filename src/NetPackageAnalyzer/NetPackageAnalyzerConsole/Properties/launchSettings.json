@@ -1,8 +1,7 @@
 {
   "profiles": {
     "NetPackageAnalyzerConsole": {
-      "commandName": "Project",
-      "commandLineArgs": "analyzeBranch"
+      "commandName": "Project"
     }
   }
 }

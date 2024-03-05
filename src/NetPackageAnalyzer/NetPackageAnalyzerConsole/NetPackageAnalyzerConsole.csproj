@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
@@ -17,7 +17,7 @@
 	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerWork.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>7.2023.1029.811</Version>
+		<Version>8.2024.305.2011</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>

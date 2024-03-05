@@ -49,29 +49,33 @@ public class Program
 
         }, folderToHaveSln);
 
-        Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
+        //Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
 
-        var cmdAnalyzeBranchFolder = new Option<string>
-            (name: "--folder",
-            description: "folder where branch is ",
-            getDefaultValue: () => Environment.CurrentDirectory);
+        //var cmdAnalyzeBranchFolder = new Option<string>
+        //    (name: "--folder",
+        //    description: "folder where branch is ",
+        //    getDefaultValue: () => Environment.CurrentDirectory);
          
-        cmdAnalyzeBranch.AddAlias("-f");
-        cmdAnalyzeBranch.AddOption(cmdAnalyzeBranchFolder);
-        cmdAnalyzeBranch.SetHandler(async (folder) =>
-        {            
-            //folder = @"C:\gth\PackageAnalyzer\";
-            var g = new AnalyzeMergeData(folder);
-            await g.GenerateNow();
+        //cmdAnalyzeBranch.AddAlias("-f");
+        //cmdAnalyzeBranch.AddOption(cmdAnalyzeBranchFolder);
+        //cmdAnalyzeBranch.SetHandler(async (folder) =>
+        //{            
+        //    //folder = @"C:\gth\PackageAnalyzer\";
+        //    var g = new AnalyzeMergeData(folder);
+        //    await g.GenerateNow();
 
 
-        }, cmdAnalyzeBranchFolder);
-
-
+        //}, cmdAnalyzeBranchFolder);
 
         rootCommand.Add(cmdGenerate);
-        rootCommand.Add(cmdAnalyzeBranch);
-
+        //rootCommand.Add(cmdAnalyzeBranch);
+        if(args.Length == 0)
+        {
+            args= new[] { "-h" };
+            args= new[] { "generateFiles", "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\" };
+            
+        }
+        WriteLine("args:" + string.Join(" ",args));
         await rootCommand.InvokeAsync(args);
 
         return 0;
