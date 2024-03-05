@@ -94,7 +94,12 @@ public class GenerateFiles
                 var vers = packagedDict[package.PackageId].VersionsPerProject;
                 if (!vers.ContainsKey(package.RequestedVersion))
                     vers.Add(package.RequestedVersion, new());
-                vers[package.RequestedVersion].Add(projData);
+                var relPath= projData.RelativePath();
+                if (!vers[package.RequestedVersion].Any(item=>item.RelativePath()== relPath))
+                {
+                    vers[package.RequestedVersion].Add(projData);
+
+                }
             }
         }
 
@@ -140,10 +145,10 @@ public class GenerateFiles
         file = Path.Combine(folderResults, "ProjectRelation.md");
         ArgumentNullException.ThrowIfNull(projectsDict);
         await File.WriteAllTextAsync(file, await generator.Generate_ProjectRelations(projectsDict));
-
-        file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
-        ArgumentNullException.ThrowIfNull(projectsDict);
-        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
+         
+        //file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
+        //ArgumentNullException.ThrowIfNull(projectsDict);
+        //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
 
 
     }

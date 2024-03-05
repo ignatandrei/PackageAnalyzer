@@ -1,20 +1,44 @@
-@inherits RazorBlade.HtmlTemplate<ProjectsDict>;
-
+@inherits RazorBlade.PlainTextTemplate<ProjectsDict>;
 # Project relations
 
 ```mermaid
 graph TB    
-@foreach(var proj in Model.Values)
-{
-    @proj.NameCSproj()
+%% start projects
 
-    foreach(var rel in proj.ProjectsReferences)
-    {
+@foreach (var proj in Model.AlphabeticOrderedProjects)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var name = nameCsproj + "[" + relativePath + "]";
 <text>
-@proj.NameCSproj()-->@rel.NameCSproj()
+@name
+
 </text>
-    }
 }
+
+%% end projects
+
+@foreach (var proj in Model.AlphabeticOrderedProjects)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var comment = $"%% start project reference {relativePath}";
+    <text>
+
+@comment   
+
+@foreach(var rel in proj.ProjectsReferences)
+{
+<text>
+@nameCsproj-->@rel.NameCSproj()
+
+</text>
+
+}
+</text>
+
+}
+
 ```
 <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version @Model.Version</small>
 

@@ -76,9 +76,7 @@ public class Program
             
         }
         WriteLine("args:" + string.Join(" ",args));
-        await rootCommand.InvokeAsync(args);
-
+        await rootCommand.InvokeAsync(args); 
         return 0;
-
     }
 }

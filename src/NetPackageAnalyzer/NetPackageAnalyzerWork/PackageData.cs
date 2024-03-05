@@ -1,7 +1,7 @@
 ﻿namespace NetPackageAnalyzerConsole;
 public record PackageData(string packageVersionId)
 {
-    public Dictionary<string, List<ProjectData>> VersionsPerProject { get; set; } = new();
+    public Dictionary<string, HashSet<ProjectData>> VersionsPerProject { get; set; } = new();
     public TypePackageData typePackageData()
     {
         if (VersionsPerProject.Count < 2) return TypePackageData.OneVersion;

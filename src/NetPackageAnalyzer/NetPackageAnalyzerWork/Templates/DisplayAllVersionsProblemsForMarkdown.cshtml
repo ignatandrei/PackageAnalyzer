@@ -20,6 +20,10 @@
     var pack = item;
     var vals = pack.VersionsPerProject;
     var majorDiff = pack.MajorVersionDiffer();
+    if (!majorDiff)
+    {
+        continue;
+    }
     var refs = "";
     @foreach (var vers in vals)
     {

@@ -6,6 +6,13 @@ public class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
+    public ProjectData[] AlphabeticOrderedProjects
+    {
+        get
+        {
+            return this.Values.OrderBy(it => it.NameCSproj()).ToArray();
+        }
+    }
     public void FindReferences()
     {
         ProcessOutput po = new();
