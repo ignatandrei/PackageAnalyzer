@@ -72,7 +72,7 @@ public class Program
         if(args.Length == 0)
         {
             args= new[] { "-h" };
-            args= new[] { "generateFiles", "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\" };
+            //args= new[] { "generateFiles", "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\" };
             
         }
         WriteLine("args:" + string.Join(" ",args));
