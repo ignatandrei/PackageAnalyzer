@@ -13,5 +13,6 @@ internal class TemplateGenerator
     {
         var rz = new DisplayAllFilesMarkdown(model);
         return await rz.RenderAsync();
+        
     }
 }

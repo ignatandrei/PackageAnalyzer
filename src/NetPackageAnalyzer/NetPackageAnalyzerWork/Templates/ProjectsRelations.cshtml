@@ -1,22 +1,70 @@
 @inherits RazorBlade.PlainTextTemplate<ProjectsDict>;
+@{
+    var rootProjects = Model.RootProjects;
+}
+
 # Projects relations
 
-```mermaid
-graph TB    
-%% start projects
+## Root Projects
 
-@foreach (var proj in Model.AlphabeticOrderedProjects)
+```mermaid
+graph TB
+%% start root projects 
+
+Solution[Solution]
+
+@foreach (var projRoot in rootProjects)
 {
-    var nameCsproj = proj.NameCSproj();
-    var relativePath = proj.RelativePath();
-    var name = nameCsproj + "[" + relativePath + "]";
+    var nameCsproj = projRoot.NameCSproj();
+    var relativePath = projRoot.RelativePath();
+    var name = projRoot.FullNameMermaid();
 <text>
 @name
+Solution-->@nameCsproj
+
 
 </text>
 }
 
-%% end projects
+```
+
+@foreach (var proj in rootProjects)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var name = proj.FullNameMermaid();
+    var comment = $"%% start project reference {relativePath}";
+<text>
+
+## @relativePath
+
+```mermaid
+graph TB
+@comment
+
+@name
+@{
+foreach (var item in proj.AlphabeticalProjectsReferences)
+    {
+        var recModel = new Tuple<string, ProjectData>(nameCsproj, item);
+        var rec = new SimpleDisplayProjectWithReferencesProject(recModel);
+        var data = rec.Render();
+        @data
+    }
+}
+
+
+```
+</text>
+}
+
+
+
+## All Projects
+
+```mermaid
+graph TB
+
 
 @foreach (var proj in Model.AlphabeticOrderedProjects)
 {
@@ -27,7 +75,7 @@ graph TB
 
 @comment
 
-        @foreach (var rel in proj.AlphabeticalProjectsReferences)
+@foreach (var rel in proj.AlphabeticalProjectsReferences)
 {
 <text>
 @nameCsproj-->@rel.NameCSproj()

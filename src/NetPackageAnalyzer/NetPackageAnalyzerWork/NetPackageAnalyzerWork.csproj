@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<Version>8.2024.305.2011</Version>
+	<Version>8.2024.306.2011</Version>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -21,6 +21,10 @@
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
 		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\ProjectRelations.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
+		<AdditionalFiles Include="Templates\SimpleDisplayProjectWithReferencesProject.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
 		</AdditionalFiles>
@@ -52,6 +56,7 @@
 	  <None Remove="Templates\ProjectPackages.cshtml" />
 	  <None Remove="Templates\ProjectRelations.cshtml" />
 	  <None Remove="Templates\ProjectsRelations.cshtml" />
+	  <None Remove="Templates\SimpleDisplayProjectWithReferencesProject.cshtml" />
 	</ItemGroup>
 	<ItemGroup>
 	  <RazorBlade Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
@@ -61,6 +66,7 @@
 	  <Watch Remove="Templates\ProjectPackages.cshtml" />
 	  <Watch Remove="Templates\ProjectRelations.cshtml" />
 	  <Watch Remove="Templates\ProjectsRelations.cshtml" />
+	  <Watch Remove="Templates\SimpleDisplayProjectWithReferencesProject.cshtml" />
 	</ItemGroup>
 	
 	

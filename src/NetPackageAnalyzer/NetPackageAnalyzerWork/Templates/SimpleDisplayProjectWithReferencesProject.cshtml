@@ -1,0 +1,21 @@
+@inherits RazorBlade.PlainTextTemplate<Tuple<string,ProjectData>>;
+@{
+    var nameCsproj = Model.Item2.NameCSproj();
+    var relativePath = Model.Item2.RelativePath();
+    var name = Model.Item2.FullNameMermaid();
+    string link = $"{Model.Item1}-->{nameCsproj}";
+}
+
+@name
+
+@link
+
+@{
+foreach (var item in Model.Item2.AlphabeticalProjectsReferences)
+{
+    var recModel = new Tuple<string, ProjectData>(nameCsproj, item);
+    SimpleDisplayProjectWithReferencesProject rec = new SimpleDisplayProjectWithReferencesProject(recModel);
+    var data=rec.Render();
+@data
+}
+}

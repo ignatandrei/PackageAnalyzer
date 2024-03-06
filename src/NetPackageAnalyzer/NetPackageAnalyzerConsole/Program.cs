@@ -71,7 +71,7 @@ public class Program
         //rootCommand.Add(cmdAnalyzeBranch);
         if(args.Length == 0)
         {
-            args= new[] { "-h" };
+            args = ["-h"];
             //args= new[] { "generateFiles", "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\" };
             
         }

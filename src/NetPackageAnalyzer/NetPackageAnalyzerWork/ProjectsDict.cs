@@ -6,6 +6,37 @@ public class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
+    public ProjectData[] RootProjects
+    {
+        get
+        {
+            List<ProjectData> result = new();
+            var allRefs = this
+                .SelectMany(it => it.Value.ProjectsReferences)
+                .Select(it => it.RelativePath())
+                .Distinct()
+                .ToArray();
+            if (allRefs.Length == 0)
+            {
+                return this.Values
+                    .OrderBy(it => it.NameCSproj()).ToArray();
+            }
+
+            var data =
+                this.Values
+                    .Select(it => it)
+                    .ToArray();
+
+            var q = data!.ExceptBy(allRefs, it => it.RelativePath())
+                .OrderBy(it => it.NameCSproj())
+                    .ToArray();
+            if (q == null)
+            {
+                return [];
+            }
+            return q;
+        }
+    }
     public ProjectData[] AlphabeticOrderedProjects
     {
         get
