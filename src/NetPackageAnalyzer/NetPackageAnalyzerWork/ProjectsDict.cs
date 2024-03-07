@@ -6,6 +6,14 @@ public class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
+    public ProjectData[] BuildingBlocks()
+    {
+        var ret = this.Values
+            .Where(it=>it.ProjectsReferences.Count==0)
+            .OrderBy(it => it.NameCSproj())
+            .ToArray();    
+        return ret;
+    }
     public ProjectData[] RootProjects
     {
         get
@@ -42,6 +50,16 @@ public class ProjectsDict : Dictionary<string, ProjectData>
         get
         {
             return this.Values.OrderBy(it => it.NameCSproj()).ToArray();
+        }
+    }
+    public void FindUpStreamReferences()
+    {
+        foreach (var project in this.Values)
+        {
+            foreach (var refProject in project.ProjectsReferences)
+            {
+                refProject.UpStreamProjectReferences.Add(project);
+            }
         }
     }
     public void FindReferences()

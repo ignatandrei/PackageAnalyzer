@@ -5,6 +5,8 @@ public record ProjectData(string PathProject, string folderSolution)
     public string Version = ThisAssembly.Info.Version; 
     public List<ProjectData> ProjectsReferences { get; set; }=new();
 
+    public List<ProjectData> UpStreamProjectReferences { get; set; } = new();
+
     public List<PackageData> Packages { get; set; }=new();
     public ProjectData[] AlphabeticalProjectsReferences
     { 
@@ -13,7 +15,13 @@ public record ProjectData(string PathProject, string folderSolution)
             return ProjectsReferences.OrderBy(p => p.NameCSproj()).ToArray();
         }
     }
-
+    public ProjectData[] AlphabeticalUpStreamProjectReferences
+    {
+        get
+        {
+            return UpStreamProjectReferences.OrderBy(p => p.NameCSproj()).ToArray();
+        }
+    }
     public PackageData[] AlphabeticalProjectPackages
     {
         get
@@ -35,8 +43,8 @@ public record ProjectData(string PathProject, string folderSolution)
     public string FullNameMermaid()
     {
         var ret= $"{NameCSproj()}[{RelativePath()}]"; 
-        ret=ret.Replace(@"[\","]");
-        ret=ret.Replace(@"[/","]");
+        ret=ret.Replace(@"[\","[");
+        ret=ret.Replace(@"[/","[");
         return ret;
     }
     public string RelativePath()

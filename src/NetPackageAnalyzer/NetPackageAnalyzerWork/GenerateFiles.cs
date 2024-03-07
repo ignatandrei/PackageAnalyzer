@@ -62,7 +62,8 @@ public class GenerateFiles
             ); 
 
         WriteLine($"Number projects : {projectsDict.Count}");
-        projectsDict.FindReferences();        
+        projectsDict.FindReferences();    
+        projectsDict.FindUpStreamReferences();
         //adding transitive packages
         if (allPackages?.Frameworks()?.Length > 0)
         {

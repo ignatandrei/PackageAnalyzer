@@ -5,7 +5,7 @@
     var name = Model.FullNameMermaid();
 }
 
-# Project relations for @relativePath
+# Project relations for @nameCsproj
 
 ```mermaid
 graph TB    
@@ -14,13 +14,47 @@ graph TB
 
 @foreach (var rel in Model.AlphabeticalProjectsReferences)
 {
-    <text>
-        @nameCsproj-->@rel.NameCSproj()
-    </text>
+<text>
+@nameCsproj-->@rel.NameCSproj()
+</text>
+}
+
+```
+
+
+# Projects that reference @nameCsproj
+```mermaid
+graph TB
+
+@name
+@foreach (var rel in Model.AlphabeticalUpStreamProjectReferences)
+{
+<text>
+@rel.NameCSproj()-->@nameCsproj
+</text>
+}
+
+```
+
+
+# Full Project relations for @nameCsproj
+
+```mermaid
+graph TB
+
+@name
+
+@foreach (var rel in Model.AlphabeticalProjectsReferences)
+{
+    var recModel = new Tuple<string, ProjectData>(nameCsproj, rel);
+    var rec = new SimpleDisplayProjectWithReferencesProject(recModel);
+    var data = rec.Render();
+    @data
 
 }
 
 ```
+
 
 [Packages](Packages.md)
 
