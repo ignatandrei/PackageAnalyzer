@@ -35,7 +35,7 @@ public record ProjectData(string PathProject, string folderSolution)
     public string FullNameMermaid()
     {
         var ret= $"{NameCSproj()}[{RelativePath()}]"; 
-        ret=ret.Replace(@"[\","[");
+        ret=ret.Replace(@"[\","]");
         ret=ret.Replace(@"[/","]");
         return ret;
     }
