@@ -1,6 +1,31 @@
 
 # Projects relations
 
+## Data
+
+```mermaid
+
+quadrantChart
+    title Number of Packages and Relations of solution
+    x-axis Small number Package --> High number Package
+    y-axis Low number Relations --> High number Relations
+    quadrant-1 Difficult
+    quadrant-2 Business experience
+    quadrant-3 Easy
+    quadrant-4 Nuget experience
+
+
+AnalyzeMerge: [0.21,0.00]
+
+NetPackageAnalyzerConsole: [0.93,0.67]
+
+NetPackageAnalyzerWork: [0.57,0.00]
+    
+```
+
+
+
+
 ## Building Blocks - Projects with 0 project references
 
 
@@ -53,7 +78,7 @@ Solution-->NetPackageAnalyzerConsole
 
 
 
-## NetPackageAnalyzerConsole
+### NetPackageAnalyzerConsole
 
 [Relations](Projects/NetPackageAnalyzerConsole/ProjectReferences.md)
 
@@ -108,5 +133,5 @@ NetPackageAnalyzerConsole-->NetPackageAnalyzerWork
 
 
 ```
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.308.841</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.308.2104</small>
 

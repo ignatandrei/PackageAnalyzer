@@ -1,9 +1,42 @@
 @inherits RazorBlade.PlainTextTemplate<ProjectsDict>;
 @{
     var rootProjects = Model.RootProjects;
+    var nrPackages = Model.MaxPackages+1;
+    var nrRelations = Model.MaxReferences+1;
+
 }
 
 # Projects relations
+
+## Data
+
+```mermaid
+
+quadrantChart
+    title Number of Packages and Relations of solution
+    x-axis Small number Package --> High number Package
+    y-axis Low number Relations --> High number Relations
+    quadrant-1 Difficult
+    quadrant-2 Business experience
+    quadrant-3 Easy
+    quadrant-4 Nuget experience
+
+@foreach (var proj in Model.AlphabeticOrderedProjects)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var nrPackagesProj = Decimal.Divide( proj.Packages.Count ,nrPackages);
+    var nrRelationsProj = Decimal.Divide(proj.ProjectsReferences.Count,nrRelations);
+    string data = $"{nameCsproj}: [{nrPackagesProj.ToString("F2")},{nrRelationsProj.ToString("F2")}]";
+<text>
+@data
+</text>
+}
+    
+```
+
+
+
 
 ## Building Blocks - Projects with 0 project references
 
@@ -64,7 +97,7 @@ Solution-->@nameCsproj
     var comment = $"%% start project reference {relativePath}";
 <text>
 
-## @nameCsproj
+### @nameCsproj
 
 [Relations](Projects/@nameCsproj/ProjectReferences.md)
 

@@ -45,5 +45,5 @@ click AnalyzeMerge "../../Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge
 
 [Back To Solution](../../ProjectRelation.md)
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.308.841</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.308.2104</small>
 

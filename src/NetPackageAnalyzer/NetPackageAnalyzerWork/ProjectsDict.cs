@@ -6,6 +6,21 @@ public class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
+    public long MaxPackages
+    {
+        get
+        {
+            return this.Values.Select(it => it.Packages.Count).Max();
+        }
+    }
+
+    public long MaxReferences
+    {
+        get
+        {
+            return this.Values.Select(it => it.ProjectsReferences.Count).Max();
+        }
+    }
     public ProjectData[] BuildingBlocks()
     {
         var ret = this.Values

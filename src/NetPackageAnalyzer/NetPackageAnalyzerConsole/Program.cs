@@ -1,5 +1,9 @@
 ﻿using AnalyzeMerge;
-
+public enum WhatToGenerate
+{
+    Default = 0,
+    Docusaurus = 1,
+}
 public class Program
 {
     static async Task<int> Main(string[] args)
@@ -24,7 +28,8 @@ public class Program
         */
         RootCommand rootCommand = new();
         Command cmdGenerate = new("generateFiles", "Generate files for documentation");
-
+        cmdGenerate.AddAlias("gf");
+        
         
         var folderToHaveSln = new Option<string>
             (name: "--folder",
@@ -38,7 +43,13 @@ public class Program
         (name: "--where",
         description: "where generated files",
         getDefaultValue: () => Path.Combine(Environment.CurrentDirectory,"Analysis"));
-            folderToHaveSln.AddAlias("-w");
+        folderGenerate.AddAlias("-w");
+
+        var generateData = new Option<WhatToGenerate>
+        (name: "--whatGenerate",
+        description: "what to generate - 0 = markdown, 1= docusaurus",
+        getDefaultValue: () => 0);
+        folderGenerate.AddAlias("-wg");
 
         cmdGenerate.AddOption(folderGenerate);
         //cmdGenerate.Handler = CommandHandler.Create<string,string>(async (folder,where) =>
@@ -55,21 +66,20 @@ public class Program
         //    }
 
         //});
-        cmdGenerate.SetHandler(async (string folder, string where) =>
+        cmdGenerate.SetHandler(async (string folder, string where,  WhatToGenerate what) =>
         {
             
             WriteLine($"analyzing {folder}");
             var g = new GenerateFiles();
-            if (await g.GenerateData(folder))
-            {
-                await g.GenerateNow(folder,where);
-            }
-            else
+            if (!await g.GenerateData(folder))
             {
                 Console.WriteLine("not capable to generate data");
+                return;
             }
+            await g.GenerateNow(folder, where);
 
-        }, folderToHaveSln,folderGenerate);
+
+        }, folderToHaveSln,folderGenerate, generateData);
 
         //Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
 
