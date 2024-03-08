@@ -141,10 +141,10 @@ public class GenerateFiles
         }
         return true;
     }
-    public async Task GenerateNow(string folder)
+    public async Task GenerateNow(string folder,string where)
     {
         
-        var folderResults = Path.Combine(folder, "Analysis");
+        var folderResults =string.IsNullOrWhiteSpace(where)? Path.Combine(folder, "Analysis"): where;
         WriteLine($"generate in {folderResults}");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);

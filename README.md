@@ -1,6 +1,6 @@
 # PackageAnalyzer
 
-Analyzer for .NET solution / projects . Latest version 8.2024.307.2311
+Analyzer for .NET solution / projects . Latest version 8.2024.308.841
 
 
 ## Install as local tool
@@ -24,20 +24,7 @@ and see the template results at Analysis folder
 
 This are the files generated :
 
-1. 
-https://ignatandrei.github.io/PackageAnalyzer/DisplayAllVersions.html
-
-List of nuget  package versions - can be filtered by differences in version
-
-2.  https://github.com/ignatandrei/PackageAnalyzer/blob/main/docs/DisplayAllVersions.md
-
-3. https://github.com/ignatandrei/PackageAnalyzer/blob/main/docs/MermaidVisualizerMajorDiffer.md
-
-A mermaid enabled display for projects where major versions differ 
-
-3.  https://github.com/ignatandrei/PackageAnalyzer/blob/main/docs/ProjectRelation.md
-
-Relations between projects
+https://ignatandrei.github.io/PackageAnalyzer/
 
 # Contributors needed!
 

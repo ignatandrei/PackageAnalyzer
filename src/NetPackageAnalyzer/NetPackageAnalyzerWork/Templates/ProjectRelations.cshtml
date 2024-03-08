@@ -10,12 +10,19 @@
 ```mermaid
 graph TB    
 
-@name
+@name""
+click @nameCsproj "../../Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalProjectsReferences)
 {
 <text>
+@rel.FullNameMermaid()
+
 @nameCsproj-->@rel.NameCSproj()
+
+click @rel.NameCSproj() "../../Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+
+
 </text>
 }
 
@@ -27,9 +34,15 @@ graph TB
 graph TB
 
 @name
+click @nameCsproj "../../Projects/@nameCsproj/ProjectReferences" "@relativePath"
+
 @foreach (var rel in Model.AlphabeticalUpStreamProjectReferences)
 {
 <text>
+@rel.FullNameMermaid()
+
+click @rel.NameCSproj() "../../Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+
 @rel.NameCSproj()-->@nameCsproj
 </text>
 }
@@ -43,6 +56,7 @@ graph TB
 graph TB
 
 @name
+click @nameCsproj "../../Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalProjectsReferences)
 {

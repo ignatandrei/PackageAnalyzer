@@ -5,7 +5,29 @@
 
 # Projects relations
 
-## Root Projects
+## Building Blocks - Projects with 0 project references
+
+@foreach (var bbProj in Model.BuildingBlocks())
+{
+    var nameCsproj = bbProj.NameCSproj();
+    var relativePath = bbProj.RelativePath();
+    <text>
+
+
+        ### @nameCsproj
+
+        Full Name : @relativePath
+
+        [@nameCsproj Relations ](Projects/@nameCsproj/ProjectReferences.md)
+
+        [@nameCsproj Packages](Projects/@nameCsproj/Packages.md)
+
+    </text>
+}
+
+
+
+## Root Projects - projects that are not referenced anywhere
 
 ```mermaid
 graph TB
@@ -20,11 +42,18 @@ Solution[Solution]
     var name = projRoot.FullNameMermaid();
 <text>
 @name
+
+click @nameCsproj "./Projects/@nameCsproj/ProjectReferences" "@relativePath"
+
 Solution-->@nameCsproj
 
 
 </text>
 }
+
+
+
+
 
 ```
 
@@ -47,33 +76,21 @@ graph TB
 @comment
 
 @name
+click @nameCsproj "./Projects/@nameCsproj/ProjectReferences" "@relativePath"
+
 @foreach (var rel in proj.AlphabeticalProjectsReferences)
 {
 <text>
 @rel.FullNameMermaid()
+click @rel.NameCSproj() "./Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+
 @nameCsproj-->@rel.NameCSproj()
+
 </text>
 }
 ```
 </text>
 }
-
-## Building Blocks - Projects with 0 project references 
-
-@foreach (var bbProj in Model.BuildingBlocks())
-{
-            var nameCsproj = bbProj.NameCSproj();
-            var relativePath = bbProj.RelativePath();
-<text>
-
-
-### [@nameCsproj Relations ](Projects/@nameCsproj/ProjectReferences.md)
-
-### [@nameCsproj Packages](Projects/@nameCsproj/Packages.md)
-
-</text>
-}
-
 
 
 ## All Projects Graph

@@ -34,20 +34,42 @@ public class Program
 
         cmdGenerate.AddOption(folderToHaveSln);
 
-        cmdGenerate.SetHandler(async (folder) =>
+        var folderGenerate = new Option<string>
+        (name: "--where",
+        description: "where generated files",
+        getDefaultValue: () => Path.Combine(Environment.CurrentDirectory,"Analysis"));
+            folderToHaveSln.AddAlias("-w");
+
+        cmdGenerate.AddOption(folderGenerate);
+        //cmdGenerate.Handler = CommandHandler.Create<string,string>(async (folder,where) =>
+        //{
+        //    WriteLine($"analyzing {folder}");
+        //    var g = new GenerateFiles();
+        //    if (await g.GenerateData(folder))
+        //    {
+        //        await g.GenerateNow(folder,where);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("not capable to generate data");
+        //    }
+
+        //});
+        cmdGenerate.SetHandler(async (string folder, string where) =>
         {
+            
             WriteLine($"analyzing {folder}");
             var g = new GenerateFiles();
             if (await g.GenerateData(folder))
             {
-                await g.GenerateNow(folder);
+                await g.GenerateNow(folder,where);
             }
             else
             {
                 Console.WriteLine("not capable to generate data");
             }
 
-        }, folderToHaveSln);
+        }, folderToHaveSln,folderGenerate);
 
         //Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
 
@@ -59,8 +81,8 @@ public class Program
         //cmdAnalyzeBranch.AddAlias("-f");
         //cmdAnalyzeBranch.AddOption(cmdAnalyzeBranchFolder);
         //cmdAnalyzeBranch.SetHandler(async (folder) =>
-        //{            
-        //    //folder = @"C:\gth\PackageAnalyzer\";
+        //{          
+        //    //folder = @"C:\gth\PackageAnalyzer\"; 
         //    var g = new AnalyzeMergeData(folder);
         //    await g.GenerateNow();
 
@@ -72,7 +94,10 @@ public class Program
         if(args.Length == 0)
         {
             args = ["-h"];
-            args= new[] { "generateFiles", "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\" };
+            args= new[] { "generateFiles", 
+                "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+                "--where", @"D:\gth\PackageAnalyzer\docs\documentation\docs\Analysis",
+            };
             
         }
         WriteLine("args:" + string.Join(" ",args));
