@@ -88,7 +88,7 @@ const config: Config = {
           items: [
             {
               label: 'Analyzer',
-              to: '/docs/intro',
+              to: '/docs/category/my-solutions',
             },
           ],
         },
@@ -116,10 +116,10 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
+            // {
+            //   label: 'Blog',
+            //   to: '/blog',
+            // },
             {
               label: 'GitHub',
               href: 'https://github.com/ignatandrei/packageAnalyzer',
