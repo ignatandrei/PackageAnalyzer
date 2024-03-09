@@ -5,7 +5,7 @@
 graph TB    
 
 AnalyzeMerge[AnalyzeMerge/AnalyzeMerge.csproj]""
-click AnalyzeMerge "../../Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
+click AnalyzeMerge "../../AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
 
 
 ```
@@ -16,12 +16,12 @@ click AnalyzeMerge "../../Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge
 graph TB
 
 AnalyzeMerge[AnalyzeMerge/AnalyzeMerge.csproj]
-click AnalyzeMerge "../../Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
+click AnalyzeMerge "../../AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
 
 
 NetPackageAnalyzerConsole[NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj]
 
-click NetPackageAnalyzerConsole "../../Projects/NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
+click NetPackageAnalyzerConsole "../../NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
 
 NetPackageAnalyzerConsole-->AnalyzeMerge
 
@@ -34,7 +34,7 @@ NetPackageAnalyzerConsole-->AnalyzeMerge
 graph TB
 
 AnalyzeMerge[AnalyzeMerge/AnalyzeMerge.csproj]
-click AnalyzeMerge "../../Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
+click AnalyzeMerge "../../AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
 
 
 ```

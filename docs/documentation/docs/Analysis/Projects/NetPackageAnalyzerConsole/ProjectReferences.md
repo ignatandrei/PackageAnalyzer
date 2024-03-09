@@ -5,14 +5,14 @@
 graph TB    
 
 NetPackageAnalyzerConsole[NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj]""
-click NetPackageAnalyzerConsole "../../Projects/NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
+click NetPackageAnalyzerConsole "../../NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
 
 
 AnalyzeMerge[AnalyzeMerge/AnalyzeMerge.csproj]
 
 NetPackageAnalyzerConsole-->AnalyzeMerge
 
-click AnalyzeMerge "../../Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
+click AnalyzeMerge "../../AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
 
 
 
@@ -20,7 +20,7 @@ NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
 
 NetPackageAnalyzerConsole-->NetPackageAnalyzerWork
 
-click NetPackageAnalyzerWork "../../Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
+click NetPackageAnalyzerWork "../../NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
 
 
 
@@ -32,7 +32,7 @@ click NetPackageAnalyzerWork "../../Projects/NetPackageAnalyzerWork/ProjectRefer
 graph TB
 
 NetPackageAnalyzerConsole[NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj]
-click NetPackageAnalyzerConsole "../../Projects/NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
+click NetPackageAnalyzerConsole "../../NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
 
 
 ```
@@ -44,12 +44,12 @@ click NetPackageAnalyzerConsole "../../Projects/NetPackageAnalyzerConsole/Projec
 graph TB
 
 NetPackageAnalyzerConsole[NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj]
-click NetPackageAnalyzerConsole "../../Projects/NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
+click NetPackageAnalyzerConsole "../../NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
 
 
 AnalyzeMerge[AnalyzeMerge/AnalyzeMerge.csproj]
 
-click AnalyzeMerge "../../Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
+click AnalyzeMerge "../../AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
 
 
 NetPackageAnalyzerConsole-->AnalyzeMerge
@@ -57,7 +57,7 @@ NetPackageAnalyzerConsole-->AnalyzeMerge
 
 NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
 
-click NetPackageAnalyzerWork "../../Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
+click NetPackageAnalyzerWork "../../NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
 
 
 NetPackageAnalyzerConsole-->NetPackageAnalyzerWork

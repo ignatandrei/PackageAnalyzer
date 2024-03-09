@@ -11,7 +11,7 @@
 graph TB    
 
 @name""
-click @nameCsproj "../../Projects/@nameCsproj/ProjectReferences" "@relativePath"
+click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalProjectsReferences)
 {
@@ -20,7 +20,7 @@ click @nameCsproj "../../Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @nameCsproj-->@rel.NameCSproj()
 
-click @rel.NameCSproj() "../../Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+click @rel.NameCSproj() "../../@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
 
 
 </text>
@@ -34,14 +34,14 @@ click @rel.NameCSproj() "../../Projects/@rel.NameCSproj()/ProjectReferences" "@r
 graph TB
 
 @name
-click @nameCsproj "../../Projects/@nameCsproj/ProjectReferences" "@relativePath"
+click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalUpStreamProjectReferences)
 {
 <text>
 @rel.FullNameMermaid()
 
-click @rel.NameCSproj() "../../Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+click @rel.NameCSproj() "../../@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
 
 @rel.NameCSproj()-->@nameCsproj
 </text>
@@ -56,7 +56,7 @@ click @rel.NameCSproj() "../../Projects/@rel.NameCSproj()/ProjectReferences" "@r
 graph TB
 
 @name
-click @nameCsproj "../../Projects/@nameCsproj/ProjectReferences" "@relativePath"
+click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalProjectsReferences)
 {

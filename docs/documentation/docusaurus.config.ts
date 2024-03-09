@@ -6,6 +6,8 @@ const config: Config = {
   title: 'ToBeReplaced',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
+  trailingSlash:true,
+  
   markdown: {
     mermaid: true,
   },
