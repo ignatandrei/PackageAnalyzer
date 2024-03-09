@@ -76,7 +76,7 @@ Solution[Solution]
 <text>
 @name
 
-click @nameCsproj "./Projects/@nameCsproj/ProjectReferences" "@relativePath"
+click @nameCsproj "../Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 Solution-->@nameCsproj
 
@@ -109,13 +109,13 @@ graph TB
 @comment
 
 @name
-click @nameCsproj "./Projects/@nameCsproj/ProjectReferences" "@relativePath"
+click @nameCsproj "../Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in proj.AlphabeticalProjectsReferences)
 {
 <text>
 @rel.FullNameMermaid()
-click @rel.NameCSproj() "./Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+click @rel.NameCSproj() "../Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
 
 @nameCsproj-->@rel.NameCSproj()
 

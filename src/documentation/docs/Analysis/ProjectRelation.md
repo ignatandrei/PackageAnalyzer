@@ -64,7 +64,7 @@ Solution[Solution]
 
 NetPackageAnalyzerConsole[NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj]
 
-click NetPackageAnalyzerConsole "./Projects/NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
+click NetPackageAnalyzerConsole "../Projects/NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
 
 Solution-->NetPackageAnalyzerConsole
 
@@ -90,17 +90,17 @@ graph TB
 %% start project reference NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj
 
 NetPackageAnalyzerConsole[NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj]
-click NetPackageAnalyzerConsole "./Projects/NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
+click NetPackageAnalyzerConsole "../Projects/NetPackageAnalyzerConsole/ProjectReferences" "NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"
 
 
 AnalyzeMerge[AnalyzeMerge/AnalyzeMerge.csproj]
-click AnalyzeMerge "./Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
+click AnalyzeMerge "../Projects/AnalyzeMerge/ProjectReferences" "AnalyzeMerge/AnalyzeMerge.csproj"
 
 NetPackageAnalyzerConsole-->AnalyzeMerge
 
 
 NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
-click NetPackageAnalyzerWork "./Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
+click NetPackageAnalyzerWork "../Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
 
 NetPackageAnalyzerConsole-->NetPackageAnalyzerWork
 
@@ -133,5 +133,5 @@ NetPackageAnalyzerConsole-->NetPackageAnalyzerWork
 
 
 ```
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.308.2104</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.1109</small>
 

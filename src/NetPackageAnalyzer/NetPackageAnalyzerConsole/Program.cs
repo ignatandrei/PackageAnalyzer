@@ -104,10 +104,10 @@ public class Program
         if(args.Length == 0)
         {
             args = ["-h"];
-            args= new[] { "generateFiles", 
-                "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
-                "--where", @"D:\gth\PackageAnalyzer\docs\documentation\docs\Analysis",
-            };
+            //args= new[] { "generateFiles", 
+            //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation\docs\Analysis",
+            //};
             
         }
         WriteLine("args:" + string.Join(" ",args));
