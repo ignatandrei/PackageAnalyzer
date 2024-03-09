@@ -198,6 +198,15 @@ public class GenerateFiles
 
 
         }
+        file = Path.Combine(folderResults, "BuildingBlocks.md");
+        await File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));
+
+        file = Path.Combine(folderResults, "TestProjects.md");
+        await File.WriteAllTextAsync(file, await generator.Generate_TestProjects(projectsDict));
+
+        file = Path.Combine(folderResults, "RootProjects.md");
+        await File.WriteAllTextAsync(file, await generator.Generate_RootProjects(projectsDict));
+
         //file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
         //ArgumentNullException.ThrowIfNull(projectsDict);
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));

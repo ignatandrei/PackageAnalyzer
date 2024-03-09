@@ -1,0 +1,77 @@
+@inherits RazorBlade.PlainTextTemplate<ProjectsDict>;
+@{
+    var rootProjects = Model.RootProjects;
+    var nrPackages = Model.MaxPackages + 1;
+    var nrRelations = Model.MaxReferences + 1;
+    var prefix = GlobalsForGenerating.globalPrefix();
+}
+
+## Root Projects - projects that are not referenced anywhere
+
+```mermaid
+graph TB
+%% start root projects
+
+Solution[Solution]
+
+@foreach (var projRoot in rootProjects)
+{
+    var nameCsproj = projRoot.NameCSproj();
+    var relativePath = projRoot.RelativePath();
+    var name = projRoot.FullNameMermaid();
+    <text>
+        @name
+
+        %% find a way to interpret first the path
+        %% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
+
+        Solution-->@nameCsproj
+
+
+    </text>
+}
+```
+
+@foreach (var proj in rootProjects)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var name = proj.FullNameMermaid();
+    var comment = $"%% start project reference {relativePath}";
+    <text>
+
+        ### @nameCsproj
+
+        [Relations](@prefix/Projects/@nameCsproj/ProjectReferences)
+
+        [Packages](@prefix/Projects/@nameCsproj/Packages)
+
+
+        ```mermaid
+        graph TB
+        @comment
+
+        @name
+
+        %% find a way to interpret first the path
+        %% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
+
+        @foreach (var rel in proj.AlphabeticalProjectsReferences)
+        {
+            <text>
+                @rel.FullNameMermaid()
+
+                %% find a way to interpret first the path
+                %% click @rel.NameCSproj() "@prefix/Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+
+                @nameCsproj-->@rel.NameCSproj()
+
+            </text>
+        }
+        ```
+    </text>
+}
+
+
+
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version @Model.Version</small>

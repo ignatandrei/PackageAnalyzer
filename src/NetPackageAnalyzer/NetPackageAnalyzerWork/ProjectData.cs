@@ -30,7 +30,10 @@ public record ProjectData(string PathProject, string folderSolution)
         }
     }
 
-
+    public bool IsTestProject()
+    {
+        return Packages.Any(it => it.IsTest());
+    }
     public string NameCSproj()
     {
         var indexDot=PathProject.LastIndexOf(".");

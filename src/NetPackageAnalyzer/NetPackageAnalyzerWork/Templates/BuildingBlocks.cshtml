@@ -1,0 +1,32 @@
+@inherits RazorBlade.PlainTextTemplate<ProjectsDict>;
+@{
+    var prefix = GlobalsForGenerating.globalPrefix();
+    var nrMaxProjects = Math.Max(Model.MaxReferences/3,3);
+}
+# Projects Building Blocks
+
+@for (int i = 0; i < nrMaxProjects; i++)
+{
+    <text>## Building Blocks - Projects with @i project references
+
+    @foreach(var bbProj in Model.BuildingBlocks(i))
+{
+        var nameCsproj = bbProj.NameCSproj();
+        var relativePath = bbProj.RelativePath();
+        <text>
+
+
+            ###  @nameCsproj
+
+            Full Name : @relativePath
+
+            [@nameCsproj Relations ](@prefix/Projects/@nameCsproj/ProjectReferences)
+
+            [@nameCsproj Packages](@prefix/Projects/@nameCsproj/Packages)
+
+        </text>
+    }
+    </text>
+
+}
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version @Model.Version</small>

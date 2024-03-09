@@ -7,28 +7,31 @@
 
 }
 
-# Projects relations
+# Projects relations (not included tests)
 
-## Data
+## Quadrant Packages / Relations
 
 ```mermaid
 
 quadrantChart
     title Number of Packages and Relations of solution
-    x-axis Small number Package --> High number Package
+    x-axis Small number Packages --> High number Packages
     y-axis Low number Relations --> High number Relations
-    quadrant-1 Difficult
+@*     quadrant-1 Difficult
     quadrant-2 Business experience
     quadrant-3 Easy
     quadrant-4 Nuget experience
-
-@foreach (var proj in Model.AlphabeticOrderedProjects)
+ *@
+@foreach (var proj in Model.AlphabeticOrderedProjectsNoTests)
 {
+    if(proj.IsTestProject()) continue;
     var nameCsproj = proj.NameCSproj();
     var relativePath = proj.RelativePath();
     var nrPackagesProj = Decimal.Divide( proj.Packages.Count ,nrPackages);
     var nrRelationsProj = Decimal.Divide(proj.ProjectsReferences.Count,nrRelations);
-    string data = $"{nameCsproj}: [{nrPackagesProj.ToString("F2")},{nrRelationsProj.ToString("F2")}]";
+    if(((int)nrPackagesProj) == nrPackagesProj) nrPackagesProj = nrPackagesProj + 0.01M;
+    if(((int)nrRelationsProj) == nrRelationsProj) nrRelationsProj = nrRelationsProj + 0.01M;
+        string data = $"{nameCsproj}: [{nrPackagesProj.ToString("F2")},{nrRelationsProj.ToString("F2")}]";
 <text>
 @data
 </text>
@@ -36,104 +39,13 @@ quadrantChart
     
 ```
 
-
-
-
-## Building Blocks - Projects with 0 project references
-
-@foreach (var bbProj in Model.BuildingBlocks())
-{
-    var nameCsproj = bbProj.NameCSproj();
-    var relativePath = bbProj.RelativePath();
-    <text>
-
-
-### @nameCsproj
-
-Full Name : @relativePath
-
-[@nameCsproj Relations ](@prefix/Projects/@nameCsproj/ProjectReferences)
-
-[@nameCsproj Packages](@prefix/Projects/@nameCsproj/Packages)
-
-    </text>
-}
-
-
-
-## Root Projects - projects that are not referenced anywhere
-
-```mermaid
-graph TB
-%% start root projects 
-
-Solution[Solution]
-
-@foreach (var projRoot in rootProjects)
-{
-    var nameCsproj = projRoot.NameCSproj();
-    var relativePath = projRoot.RelativePath();
-    var name = projRoot.FullNameMermaid();
-<text>
-@name
-
-%% find a way to interpret first the path 
-%% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
-
-Solution-->@nameCsproj
-
-
-</text>
-}
-```
-
-@foreach (var proj in rootProjects){
-    var nameCsproj = proj.NameCSproj();
-    var relativePath = proj.RelativePath();
-    var name = proj.FullNameMermaid();
-    var comment = $"%% start project reference {relativePath}";
-<text>
-
-### @nameCsproj
-
-[Relations](@prefix/Projects/@nameCsproj/ProjectReferences)
-
-[Packages](@prefix/Projects/@nameCsproj/Packages)
-
-
-```mermaid
-graph TB
-@comment
-
-@name
-
-%% find a way to interpret first the path
-%% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
-
-@foreach (var rel in proj.AlphabeticalProjectsReferences)
-{
-<text>
-@rel.FullNameMermaid()
-
-%% find a way to interpret first the path
-%% click @rel.NameCSproj() "@prefix/Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
-
-@nameCsproj-->@rel.NameCSproj()
-
-</text>
-}
-```
-</text>
-}
-
-
 ## All Projects Graph
 
 ```mermaid
 graph TB
 
 
-@foreach (var proj in Model.AlphabeticOrderedProjects)
+@foreach (var proj in Model.AlphabeticOrderedProjectsNoTests)
 {
     var nameCsproj = proj.NameCSproj();
     var relativePath = proj.RelativePath();

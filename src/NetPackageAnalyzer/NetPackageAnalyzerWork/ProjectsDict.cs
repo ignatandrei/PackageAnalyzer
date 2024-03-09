@@ -21,10 +21,30 @@ public class ProjectsDict : Dictionary<string, ProjectData>
             return this.Values.Select(it => it.ProjectsReferences.Count).Max();
         }
     }
-    public ProjectData[] BuildingBlocks()
+    public ProjectData[] TestsProjects
     {
-        var ret = this.Values
-            .Where(it=>it.ProjectsReferences.Count==0)
+        get
+        {
+            return this.Values
+                .Where(it => it.Packages.Any(it=>it.IsTest()))
+                .ToArray();
+                ;
+        }
+    }
+    public ProjectData[] ProjectsNoTest
+    {
+        get
+        {
+            var tests = this.TestsProjects;
+            return this.Values
+                .Where(it => !tests.Contains(it))
+                .ToArray();
+        }
+    }
+    public ProjectData[] BuildingBlocks(int nrReferences)
+    {
+        var ret = this.ProjectsNoTest
+            .Where(it=>it.ProjectsReferences.Count==nrReferences)
             .OrderBy(it => it.NameCSproj())
             .ToArray();    
         return ret;
@@ -41,12 +61,12 @@ public class ProjectsDict : Dictionary<string, ProjectData>
                 .ToArray();
             if (allRefs.Length == 0)
             {
-                return this.Values
+                return this.ProjectsNoTest
                     .OrderBy(it => it.NameCSproj()).ToArray();
             }
 
             var data =
-                this.Values
+                this.ProjectsNoTest
                     .Select(it => it)
                     .ToArray();
 
@@ -58,6 +78,16 @@ public class ProjectsDict : Dictionary<string, ProjectData>
                 return [];
             }
             return q;
+        }
+    }
+    public ProjectData[] AlphabeticOrderedProjectsNoTests
+    {
+        get
+        {
+            return this.Values
+                .Where(it=>it.IsTestProject()==false)
+                .OrderBy(it => it.NameCSproj())
+                .ToArray();
         }
     }
     public ProjectData[] AlphabeticOrderedProjects

@@ -1,6 +1,18 @@
 ﻿namespace NetPackageAnalyzerConsole;
 public record PackageData(string packageVersionId)
 {
+    public bool IsTest()
+    {
+        if (packageVersionId.ToLowerInvariant().StartsWith("microsoft.test"))
+            return true;
+
+        if (packageVersionId.ToLowerInvariant().StartsWith("nunit"))
+            return true;
+        if (packageVersionId.ToLowerInvariant().StartsWith("xunit"))
+            return true;
+        
+        return false;
+    }
     public Dictionary<string, HashSet<ProjectData>> VersionsPerProject { get; set; } = new();
     public TypePackageData typePackageData()
     {

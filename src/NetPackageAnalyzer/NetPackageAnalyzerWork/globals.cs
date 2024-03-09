@@ -16,7 +16,7 @@ public static class GlobalsForGenerating
 {
     public static string prefixSite = "pathname:///docs/Analysis/";//for markdown
     public static string NameSolution = "";
-
+     
     public static string globalPrefix()
     {
         return prefixSite + NameSolution;

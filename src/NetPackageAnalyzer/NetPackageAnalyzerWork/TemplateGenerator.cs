@@ -37,6 +37,21 @@ public class TemplateGenerator
         var rz= new ProjectPackages(model);
         return await rz.RenderAsync();
     }
+    internal async Task<string?> Generate_BuildingBlocks(ProjectsDict model)
+    {
+        var rz = new BuildingBlocks(model);
+        return await rz.RenderAsync();
+    }
+    internal async Task<string?> Generate_RootProjects(ProjectsDict model)
+    {
+        var rz = new ProjectRoot(model);
+        return await rz.RenderAsync();
+    }
+    internal async Task<string?> Generate_TestProjects(ProjectsDict model)
+    {
+        var rz = new TestProjects(model);
+        return await rz.RenderAsync();
+    }
 
     internal async Task<string?> Generate_ProjectRelations(ProjectData projData)
     {

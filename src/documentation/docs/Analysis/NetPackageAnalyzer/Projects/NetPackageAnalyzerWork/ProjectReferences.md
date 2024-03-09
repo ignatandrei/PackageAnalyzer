@@ -66,5 +66,5 @@ click NetPackageAnalyzerWork "pathname:///docs/Analysis/NetPackageAnalyzer/Proje
 
 [Back To Solution](pathname:///docs/Analysis/NetPackageAnalyzer//ProjectRelation)
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.1834</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.2334</small>
 

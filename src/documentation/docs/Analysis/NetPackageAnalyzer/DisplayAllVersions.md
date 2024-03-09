@@ -43,4 +43,4 @@
 | 35 | TestableIO.System.IO.Abstractions.Wrappers  |    *20.0.15* NetPackageAnalyzerWork,NetPackageAnalyzerConsole,NetPackageAnalyzerTests|
 | 36 | ThisAssembly.AssemblyInfo  |    *1.4.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork|
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.1834</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.2334</small>
