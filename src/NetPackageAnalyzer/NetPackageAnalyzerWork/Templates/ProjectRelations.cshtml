@@ -3,15 +3,21 @@
     var nameCsproj = Model.NameCSproj();
     var relativePath = Model.RelativePath();
     var name = Model.FullNameMermaid();
+    var prefix = GlobalsForGenerating.globalPrefix();
+
 }
 
 # Project relations for @nameCsproj
 
+
+
 ```mermaid
 graph TB    
 
-@name""
-click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
+@name
+
+%% find a way to interpret first the path
+%% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalProjectsReferences)
 {
@@ -20,13 +26,22 @@ click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
 
 @nameCsproj-->@rel.NameCSproj()
 
-click @rel.NameCSproj() "../../@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+%% find a way to interpret first the path
+%% click @rel.NameCSproj() "@prefix/Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
 
 
 </text>
 }
 
 ```
+
+@foreach (var rel in Model.AlphabeticalProjectsReferences)
+{
+    <text>
+        [@rel.NameCSproj()](@prefix/Projects/@rel.NameCSproj()/ProjectReferences)
+    </text>
+}
+
 
 
 # Projects that reference @nameCsproj
@@ -34,20 +49,30 @@ click @rel.NameCSproj() "../../@rel.NameCSproj()/ProjectReferences" "@rel.Relati
 graph TB
 
 @name
-click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
+
+%% find a way to interpret first the path
+%% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalUpStreamProjectReferences)
 {
 <text>
 @rel.FullNameMermaid()
 
-click @rel.NameCSproj() "../../@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+%% find a way to interpret first the path
+%% click @rel.NameCSproj() "@prefix/Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
 
 @rel.NameCSproj()-->@nameCsproj
 </text>
 }
 
 ```
+
+@foreach (var rel in Model.AlphabeticalUpStreamProjectReferences)
+{
+    <text>
+        [@rel.NameCSproj()](@prefix/Projects/@rel.NameCSproj()/ProjectReferences)
+    </text>
+}
 
 
 # Full Project relations for @nameCsproj
@@ -56,7 +81,7 @@ click @rel.NameCSproj() "../../@rel.NameCSproj()/ProjectReferences" "@rel.Relati
 graph TB
 
 @name
-click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
+click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalProjectsReferences)
 {
@@ -70,10 +95,10 @@ click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
 ```
 
 
-[Packages](Packages.md)
+[Packages](Packages)
 
 
-[Back To Solution](../../ProjectRelation.md)
+[Back To Solution](@prefix//ProjectRelation)
 
 <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version @Model.Version</small>
 

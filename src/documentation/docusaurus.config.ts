@@ -6,7 +6,7 @@ const config: Config = {
   title: 'ToBeReplaced',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
-  trailingSlash:true,
+  trailingSlash:false,
   
   markdown: {
     mermaid: true,
@@ -25,7 +25,7 @@ const config: Config = {
   projectName: 'ToBeReplaced', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you

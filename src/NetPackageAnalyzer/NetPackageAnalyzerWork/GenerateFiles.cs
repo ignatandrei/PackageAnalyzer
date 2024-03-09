@@ -2,11 +2,25 @@
 
 public class GenerateFiles
 {
+    public GenerateFiles(IFileSystem system)
+    {
+        this.system = system;
+    }
+    string NameSolution ="";
     Dictionary<string, PackageData> packagedDict=new();
     ProjectsDict? projectsDict;
+    private readonly IFileSystem system;
+
     public async Task<bool> GenerateData(string folder)
     {
-        
+        var sln = system.Directory.GetFiles(folder, "*.sln");
+        if (sln.Length != 1)
+        {
+            WriteLine($"Must be 1 sln in the {folder}");
+            return false;
+        }
+        NameSolution =system.Path.GetFileNameWithoutExtension(sln[0]);
+        GlobalsForGenerating.NameSolution = NameSolution;
         await Task.Delay(100);
         WriteLine($"Start analyzing {folder}");
         var p = new ProcessOutput();
@@ -145,6 +159,7 @@ public class GenerateFiles
     {
         
         var folderResults =string.IsNullOrWhiteSpace(where)? Path.Combine(folder, "Analysis"): where;
+        folderResults = Path.Combine(folderResults, NameSolution);
         WriteLine($"generate in {folderResults}");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);

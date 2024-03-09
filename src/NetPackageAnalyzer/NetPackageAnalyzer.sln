@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerConsole",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerWork", "NetPackageAnalyzerWork\NetPackageAnalyzerWork.csproj", "{1F304AA4-5E99-48CD-AEC8-6CA734A71E95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyzeMerge", "AnalyzeMerge\AnalyzeMerge.csproj", "{6B1AF12B-AF28-4F8D-8213-B048932867A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalyzeMerge", "AnalyzeMerge\AnalyzeMerge.csproj", "{6B1AF12B-AF28-4F8D-8213-B048932867A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPackageAnalyzerTests", "NetPackageAnalyzerTests\NetPackageAnalyzerTests.csproj", "{AC767AF4-F9E8-48D5-AF2D-5D88E23A1299}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6B1AF12B-AF28-4F8D-8213-B048932867A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B1AF12B-AF28-4F8D-8213-B048932867A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B1AF12B-AF28-4F8D-8213-B048932867A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC767AF4-F9E8-48D5-AF2D-5D88E23A1299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC767AF4-F9E8-48D5-AF2D-5D88E23A1299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC767AF4-F9E8-48D5-AF2D-5D88E23A1299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC767AF4-F9E8-48D5-AF2D-5D88E23A1299}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

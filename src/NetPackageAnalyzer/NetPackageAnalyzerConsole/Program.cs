@@ -1,5 +1,4 @@
-﻿using AnalyzeMerge;
-public enum WhatToGenerate
+﻿public enum WhatToGenerate
 {
     Default = 0,
     Docusaurus = 1,
@@ -9,23 +8,7 @@ public class Program
     static async Task<int> Main(string[] args)
     { 
         
-        WriteLine("Version:"+ThisAssembly.Info.Version.ToString());
-        //args = new[]
-        //{
-        //  @"generateFiles",
-        //    "--folder",
-        //    @"C:\gth\TILT\src\backend\Net7\NetTilt"
-
-        //};
-        /*
-        args = new[]
-        {
-          @"generateFiles",
-            "--folder",
-            @"C:\gth\PackageAnalyzer\src\NetPackageAnalyzer\"
-
-        };
-        */
+        WriteLine("Version:"+ThisAssembly.Info.Version.ToString());        
         RootCommand rootCommand = new();
         Command cmdGenerate = new("generateFiles", "Generate files for documentation");
         cmdGenerate.AddAlias("gf");
@@ -70,7 +53,7 @@ public class Program
         {
             
             WriteLine($"analyzing {folder}");
-            var g = new GenerateFiles();
+            var g = new GenerateFiles(new FileSystem());
             if (!await g.GenerateData(folder))
             {
                 Console.WriteLine("not capable to generate data");
@@ -104,11 +87,11 @@ public class Program
         if(args.Length == 0)
         {
             args = ["-h"];
-            //args= new[] { "generateFiles", 
-            //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
-            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation\docs\Analysis",
-            //};
-            
+            args = new[] { "generateFiles",
+                "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+                "--where", @"D:\gth\PackageAnalyzer\src\documentation\docs\Analysis",
+            };
+
         }
         WriteLine("args:" + string.Join(" ",args));
         await rootCommand.InvokeAsync(args); 

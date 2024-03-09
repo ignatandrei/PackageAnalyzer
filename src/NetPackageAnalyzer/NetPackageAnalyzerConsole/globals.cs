@@ -10,3 +10,5 @@ global using NetPackageAnalyzerConsole.generatedPartial;
 global using NS_GeneratedJson_deprecatedV1_gen_json;
 global using NetPackageAnalyzerWork;
 global using System.CommandLine;
+global using AnalyzeMerge;
+global using System.IO.Abstractions;

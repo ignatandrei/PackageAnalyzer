@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Reset some default table styles */
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+
+        /* Style the table header */
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        /* Alternate row background color */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* Hover effect */
+        tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    Number of packages:
+    <a href="javascript:filterTable(1);"> 36</a>
+    
+    </a>
+    <br />
+    Packages with more than 1 version:
+    <a href="javascript:filterTable(2);"> 0</a>
+    <span>( 0 % from total packages)</span>
+    <br />
+    Number of packages with
+    
+    <span style='color: red'>
+        major version differs: 
+        <a href="javascript:filterTable(3);">
+            0
+        </a>
+        
+    </span>
+    <table id="packages">
+        <thead>
+            <tr><th>Nr</th><th>ID</th><td>References/Projects</td></tr>
+        </thead>
+        <tbody>
+                <tr data-majorDiff="1">
+                    <td>1</td>
+                    <td>coverlet.collector  </td>
+                    <td>
+                        
+6.0.1&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>2</td>
+                    <td>LibGit2Sharp  </td>
+                    <td>
+                        
+0.27.2&nbsp;AnalyzeMerge,NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>3</td>
+                    <td>LibGit2Sharp.NativeBinaries  </td>
+                    <td>
+                        
+2.0.320&nbsp;NetPackageAnalyzerConsole,AnalyzeMerge                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>4</td>
+                    <td>Microsoft.ApplicationInsights  </td>
+                    <td>
+                        
+2.21.0&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>5</td>
+                    <td>Microsoft.Build.Tasks.Git  </td>
+                    <td>
+                        
+1.1.1&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>6</td>
+                    <td>Microsoft.CodeCoverage  </td>
+                    <td>
+                        
+17.9.0&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>7</td>
+                    <td>Microsoft.CSharp  </td>
+                    <td>
+                        
+4.7.0&nbsp;NetPackageAnalyzerConsole,NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>8</td>
+                    <td>Microsoft.NET.Test.Sdk  </td>
+                    <td>
+                        
+17.9.0&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>9</td>
+                    <td>Microsoft.SourceLink.Common  </td>
+                    <td>
+                        
+1.1.1&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>10</td>
+                    <td>Microsoft.SourceLink.GitHub  </td>
+                    <td>
+                        
+1.1.1&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>11</td>
+                    <td>Microsoft.Testing.Extensions.Telemetry  </td>
+                    <td>
+                        
+1.0.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>12</td>
+                    <td>Microsoft.Testing.Extensions.TrxReport.Abstractions  </td>
+                    <td>
+                        
+1.0.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>13</td>
+                    <td>Microsoft.Testing.Extensions.VSTestBridge  </td>
+                    <td>
+                        
+1.0.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>14</td>
+                    <td>Microsoft.Testing.Platform  </td>
+                    <td>
+                        
+1.0.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>15</td>
+                    <td>Microsoft.Testing.Platform.MSBuild  </td>
+                    <td>
+                        
+1.0.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>16</td>
+                    <td>Microsoft.TestPlatform.ObjectModel  </td>
+                    <td>
+                        
+17.9.0&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>17</td>
+                    <td>Microsoft.TestPlatform.TestHost  </td>
+                    <td>
+                        
+17.9.0&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>18</td>
+                    <td>Morris.Moxy  </td>
+                    <td>
+                        
+1.5.0&nbsp;NetPackageAnalyzerWork,NetPackageAnalyzerConsole,NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>19</td>
+                    <td>MSTest  </td>
+                    <td>
+                        
+3.2.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>20</td>
+                    <td>MSTest.Analyzers  </td>
+                    <td>
+                        
+3.2.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>21</td>
+                    <td>MSTest.TestAdapter  </td>
+                    <td>
+                        
+3.2.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>22</td>
+                    <td>MSTest.TestFramework  </td>
+                    <td>
+                        
+3.2.2&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>23</td>
+                    <td>Newtonsoft.Json  </td>
+                    <td>
+                        
+13.0.1&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>24</td>
+                    <td>RazorBlade  </td>
+                    <td>
+                        
+0.4.3&nbsp;NetPackageAnalyzerWork,AnalyzeMerge                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>25</td>
+                    <td>rscgutils  </td>
+                    <td>
+                        
+2023.827.1021&nbsp;NetPackageAnalyzerWork,NetPackageAnalyzerConsole,NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>26</td>
+                    <td>System.CommandLine  </td>
+                    <td>
+                        
+2.0.0-beta4.22272.1&nbsp;NetPackageAnalyzerConsole                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>27</td>
+                    <td>System.Diagnostics.DiagnosticSource  </td>
+                    <td>
+                        
+5.0.0&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>28</td>
+                    <td>System.IO.Abstractions.TestingHelpers  </td>
+                    <td>
+                        
+20.0.15&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>29</td>
+                    <td>System.Reflection.Metadata  </td>
+                    <td>
+                        
+1.6.0&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>30</td>
+                    <td>System.Text.Encodings.Web  </td>
+                    <td>
+                        
+7.0.0&nbsp;NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>31</td>
+                    <td>System.Text.Json  </td>
+                    <td>
+                        
+7.0.3&nbsp;NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>32</td>
+                    <td>System.Threading.Tasks.Extensions  </td>
+                    <td>
+                        
+4.5.4&nbsp;NetPackageAnalyzerConsole,NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>33</td>
+                    <td>TestableIO.System.IO.Abstractions  </td>
+                    <td>
+                        
+20.0.15&nbsp;NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>34</td>
+                    <td>TestableIO.System.IO.Abstractions.TestingHelpers  </td>
+                    <td>
+                        
+20.0.15&nbsp;NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>35</td>
+                    <td>TestableIO.System.IO.Abstractions.Wrappers  </td>
+                    <td>
+                        
+20.0.15&nbsp;NetPackageAnalyzerWork,NetPackageAnalyzerConsole,NetPackageAnalyzerTests                            <br /> <br />
+                    </td>
+                </tr>
+                <tr data-majorDiff="1">
+                    <td>36</td>
+                    <td>ThisAssembly.AssemblyInfo  </td>
+                    <td>
+                        
+1.4.0&nbsp;NetPackageAnalyzerConsole,NetPackageAnalyzerWork                            <br /> <br />
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <script>
+
+        function filterTable(filterValue) {
+            filterValue = parseInt(filterValue);
+            const table = document.getElementById('packages').getElementsByTagName('tbody')[0];
+            const rows = table.getElementsByTagName('tr');
+
+            for (let row of rows) {
+                const valRow =parseInt( row.getAttribute('data-majorDiff'));
+                //console.log(filterValue, valRow, filterValue >= valRow);
+                if (filterValue > valRow) {
+                    row.style.display = 'none';
+                } else {
+                    row.style.display = '';
+                    
+                }
+            }
+        }
+    </script>
+    <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.1834</small>
+
+</body>
+</html>

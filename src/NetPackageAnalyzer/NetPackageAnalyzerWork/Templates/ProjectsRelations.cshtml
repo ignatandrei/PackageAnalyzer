@@ -3,6 +3,7 @@
     var rootProjects = Model.RootProjects;
     var nrPackages = Model.MaxPackages+1;
     var nrRelations = Model.MaxReferences+1;
+    var prefix = GlobalsForGenerating.globalPrefix();
 
 }
 
@@ -47,13 +48,13 @@ quadrantChart
     <text>
 
 
-        ### @nameCsproj
+### @nameCsproj
 
-        Full Name : @relativePath
+Full Name : @relativePath
 
-        [@nameCsproj Relations ](Projects/@nameCsproj/ProjectReferences.md)
+[@nameCsproj Relations ](@prefix/Projects/@nameCsproj/ProjectReferences)
 
-        [@nameCsproj Packages](Projects/@nameCsproj/Packages.md)
+[@nameCsproj Packages](@prefix/Projects/@nameCsproj/Packages)
 
     </text>
 }
@@ -76,18 +77,14 @@ Solution[Solution]
 <text>
 @name
 
-click @nameCsproj "../Projects/@nameCsproj/ProjectReferences" "@relativePath"
+%% find a way to interpret first the path 
+%% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 Solution-->@nameCsproj
 
 
 </text>
 }
-
-
-
-
-
 ```
 
 @foreach (var proj in rootProjects){
@@ -99,9 +96,9 @@ Solution-->@nameCsproj
 
 ### @nameCsproj
 
-[Relations](Projects/@nameCsproj/ProjectReferences.md)
+[Relations](@prefix/Projects/@nameCsproj/ProjectReferences)
 
-[Packages](Projects/@nameCsproj/Packages.md)
+[Packages](@prefix/Projects/@nameCsproj/Packages)
 
 
 ```mermaid
@@ -109,13 +106,17 @@ graph TB
 @comment
 
 @name
-click @nameCsproj "../Projects/@nameCsproj/ProjectReferences" "@relativePath"
+
+%% find a way to interpret first the path
+%% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in proj.AlphabeticalProjectsReferences)
 {
 <text>
 @rel.FullNameMermaid()
-click @rel.NameCSproj() "../Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
+
+%% find a way to interpret first the path
+%% click @rel.NameCSproj() "@prefix/Projects/@rel.NameCSproj()/ProjectReferences" "@rel.RelativePath()"
 
 @nameCsproj-->@rel.NameCSproj()
 

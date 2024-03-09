@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<Version>8.2024.309.1109</Version>
+	<Version>8.2024.309.1834</Version>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -34,6 +34,7 @@
 		<PackageReference Include="rscgutils" Version="2023.827.1021" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<PackageReference Include="Morris.Moxy" Version="1.5.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<PackageReference Include="RazorBlade" Version="0.4.3" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="20.0.15" />
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.0">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

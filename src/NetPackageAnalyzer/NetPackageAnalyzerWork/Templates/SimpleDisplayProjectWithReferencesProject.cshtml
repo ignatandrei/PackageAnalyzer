@@ -4,11 +4,14 @@
     var relativePath = Model.Item2.RelativePath();
     var name = Model.Item2.FullNameMermaid();
     string link = $"{Model.Item1}-->{nameCsproj}";
+    var prefix = GlobalsForGenerating.globalPrefix();
+
 }
 
 @name
 
-click @nameCsproj "../../@nameCsproj/ProjectReferences" "@relativePath"
+%% find a way to interpret first the path
+%% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 
 @link
