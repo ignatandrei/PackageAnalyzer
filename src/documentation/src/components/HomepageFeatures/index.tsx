@@ -14,8 +14,10 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Package/Solution Analyzer is generated to see the 
+        projects / packages in your solution.
+
+        You can see the building blocks of your solution and how they are connected.
       </>
     ),
   },
@@ -24,18 +26,21 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        It will generate for every project in your solution a
+          - diagram of the project dependencies
+          - list of the packages used
+          - list of the projects that use the project
+
+
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Powered by dotnet ',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+Uses dotnet build, list and others in order to gather the information.
       </>
     ),
   },
