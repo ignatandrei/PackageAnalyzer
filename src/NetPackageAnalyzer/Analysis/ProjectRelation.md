@@ -84,5 +84,5 @@ NetPackageAnalyzerConsole-->NetPackageAnalyzerWork
 
 
 ```
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.310.1936</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.310.2107</small>
 

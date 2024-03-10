@@ -1,6 +1,6 @@
 # PackageAnalyzer
 
-Analyzer for .NET solution / projects . Latest version 8.2024.310.1936
+Analyzer for .NET solution / projects . Latest version 8.2024.310.2107
 
 
 ## Install as local tool

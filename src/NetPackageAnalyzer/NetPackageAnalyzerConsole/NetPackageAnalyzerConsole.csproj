@@ -17,7 +17,7 @@
 	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>8.2024.310.1936</Version>
+		<Version>8.2024.310.2107</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>
