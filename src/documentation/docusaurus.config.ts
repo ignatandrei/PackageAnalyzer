@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'Analyze and document Relationships between .NET packages and project solutions',
   favicon: 'img/favicon.ico',
   trailingSlash:false,
-  
+  plugins: [require.resolve('docusaurus-lunr-search')],
   markdown: {
     mermaid: true,
   },
