@@ -55,7 +55,7 @@ click NetPackageAnalyzerObjects "pathname:///docs/Analysis/NetPackageAnalyzer/Pr
 [Packages](Packages)
 
 
-[Back To Solution](pathname:///docs/Analysis/NetPackageAnalyzer//ProjectRelation)
+[Back To Solution](pathname:///docs/Analysis/NetPackageAnalyzer/ProjectRelation)
 
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerDocusaurus , version 8.2024.310.1936</small>
 

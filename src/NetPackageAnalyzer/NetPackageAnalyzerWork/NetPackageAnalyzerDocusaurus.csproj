@@ -44,6 +44,10 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="EmbedResourceCSharp" Version="1.1.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -54,6 +58,7 @@
 		<Watch Include="**\*.cshtml" />
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="docusaurus.zip" />
 	  <None Remove="Templates\BuildingBlocks.cshtml" />
 	  <None Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
 	  <None Remove="Templates\ProjectPackages.cshtml" />
@@ -75,6 +80,9 @@
 	  <Watch Remove="Templates\ProjectsRelations.cshtml" />
 	  <Watch Remove="Templates\SimpleDisplayProjectWithReferencesProject.cshtml" />
 	  <Watch Remove="Templates\TestProjects.cshtml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="docusaurus.zip" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />

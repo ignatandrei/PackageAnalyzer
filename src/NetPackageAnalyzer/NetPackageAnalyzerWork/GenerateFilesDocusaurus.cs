@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzerDocusaurus;
+﻿using System.IO.Compression;
+
+namespace NetPackageAnalyzerDocusaurus;
 
 public class GenerateFilesDocusaurus:GenerateFiles
 {
@@ -10,7 +12,15 @@ public class GenerateFilesDocusaurus:GenerateFiles
     public override async Task GenerateNow(string folder, string where)
     {
 
-        var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
+        var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Documentation") : where;
+        if(!Directory.Exists(folderResults))
+            Directory.CreateDirectory(folderResults);
+        var zip = Path.Combine(folderResults, "docusaurus.zip");
+        Console.WriteLine("generate docusaurus at" + zip);
+        await File.WriteAllBytesAsync(zip, MyResource.GetDocusaurusZip().ToArray());
+        ZipFile.ExtractToDirectory(zip, folderResults);
+
+
         string generalSolution = $$"""
 {
   "label": "Solutions",
@@ -20,11 +30,12 @@ public class GenerateFilesDocusaurus:GenerateFiles
   }
 }
 """;
+        folderResults = Path.Combine(folderResults, "docs");
         var fileRoot = Path.Combine(folderResults, "_category_.json");
         await File.WriteAllTextAsync(fileRoot, generalSolution);
 
 
-        folderResults = Path.Combine(folderResults, NameSolution);
+        folderResults = Path.Combine(folderResults,"Analysis", NameSolution);
         WriteLine($"generate in {folderResults}");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);

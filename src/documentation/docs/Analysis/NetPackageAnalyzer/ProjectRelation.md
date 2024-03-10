@@ -14,7 +14,7 @@ AnalyzeMerge: [0.11,0.01]
 
 NetPackageAnalyzerConsole: [0.56,0.67]
 
-NetPackageAnalyzerDocusaurus: [0.37,0.33]
+NetPackageAnalyzerDocusaurus: [0.41,0.33]
 
 NetPackageAnalyzerObjects: [0.33,0.01]
     
