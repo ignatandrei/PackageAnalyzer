@@ -194,7 +194,7 @@ public class GenerateFiles
 }
 """;
 
-        await File.WriteAllTextAsync(Path.Combine(folderResults, "_category_.json"), projects);
+        await File.WriteAllTextAsync(Path.Combine(folderProjects, "_category_.json"), projects);
 
         foreach (var projData in projectsDict.AlphabeticOrderedProjects)
         {
