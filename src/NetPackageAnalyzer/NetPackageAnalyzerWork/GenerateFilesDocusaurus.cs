@@ -18,9 +18,14 @@ public class GenerateFilesDocusaurus:GenerateFiles
         var zip = Path.Combine(folderResults, "docusaurus.zip");
         Console.WriteLine("generate docusaurus at" + zip);
         await File.WriteAllBytesAsync(zip, MyResource.GetDocusaurusZip().ToArray());
-        ZipFile.ExtractToDirectory(zip, folderResults);
+        ZipFile.ExtractToDirectory(zip, folderResults,true);
 
-
+        //generate copyright
+        var fileConfig = Path.Combine(folderResults, "docusaurus.config.ts");
+        var data=await File.ReadAllTextAsync(fileConfig);
+        data = data.Replace("My Project, Inc", "SolutionAnalyzer");
+        data=data.Replace("Built with Docusaurus", "version "+GlobalsForGenerating.Version);
+        await File.WriteAllTextAsync(fileConfig, data);
         string generalSolution = $$"""
 {
   "label": "Solutions",

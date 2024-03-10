@@ -57,5 +57,5 @@ click AnalyzeMerge "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/Analyz
 
 [Back To Solution](pathname:///docs/Analysis/NetPackageAnalyzer/ProjectRelation)
 
-<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerDocusaurus , version 8.2024.310.2107</small>
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerDocusaurus , version 8.2024.310.2139</small>
 
