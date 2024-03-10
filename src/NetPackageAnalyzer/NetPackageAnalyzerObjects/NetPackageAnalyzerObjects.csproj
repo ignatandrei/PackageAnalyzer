@@ -5,11 +5,26 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  
+  <ItemGroup>
+    <AdditionalFiles Include="generatedJson\deprecatedV1.gen.json" />
+    <AdditionalFiles Include="generatedJson\includeV1.gen.json" />
+    <AdditionalFiles Include="generatedJson\outdatedV1.gen.json" />
+    <AdditionalFiles Include="mixin\Packages.mixin" />
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-	</ItemGroup>
+		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="20.0.15" />
+		<PackageReference Include="Morris.Moxy" Version="1.5.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<PackageReference Include="rscgutils" Version="2023.827.1021" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 
+	</ItemGroup>
+	<PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
+	</PropertyGroup>
 </Project>

@@ -53,7 +53,7 @@ public class Program
         {
             
             WriteLine($"analyzing {folder}");
-            var g = new GenerateFiles(new FileSystem());
+            var g = new GenerateFilesDocusaurus(new FileSystem());
             if (!await g.GenerateData(folder))
             {
                 Console.WriteLine("not capable to generate data");

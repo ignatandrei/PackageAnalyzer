@@ -16,17 +16,6 @@
         
 
 
-            ###  NetPackageAnalyzerDocusaurus
-
-            Full Name : NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj
-
-            [NetPackageAnalyzerDocusaurus Relations ](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences)
-
-            [NetPackageAnalyzerDocusaurus Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages)
-
-        
-
-
             ###  NetPackageAnalyzerObjects
 
             Full Name : NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj

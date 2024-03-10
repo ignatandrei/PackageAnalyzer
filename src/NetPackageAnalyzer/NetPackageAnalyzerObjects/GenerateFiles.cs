@@ -1,16 +1,27 @@
-﻿namespace NetPackageAnalyzerConsole;
+﻿using NetPackageAnalyzerConsole;
+using NetPackageAnalyzerWork;
+using System;
+using System.Collections.Generic;
+using System.IO.Abstractions;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 
-public class GenerateFiles
+namespace NetPackageAnalyzerObjects;
+public abstract class GenerateFiles
 {
     public GenerateFiles(IFileSystem system)
     {
         this.system = system;
     }
-    string NameSolution ="";
-    Dictionary<string, PackageData> packagedDict=new();
-    ProjectsDict? projectsDict;
-    private readonly IFileSystem system;
+    protected string NameSolution = "";
+    protected Dictionary<string, PackageData> packagedDict = new();
+    protected ProjectsDict? projectsDict;
+    protected readonly IFileSystem system;
 
+    public abstract Task GenerateNow(string folder, string where);
     public async Task<bool> GenerateData(string folder)
     {
         var sln = system.Directory.GetFiles(folder, "*.sln");
@@ -19,13 +30,13 @@ public class GenerateFiles
             WriteLine($"Must be 1 sln in the {folder}");
             return false;
         }
-        NameSolution =system.Path.GetFileNameWithoutExtension(sln[0]);
+        NameSolution = system.Path.GetFileNameWithoutExtension(sln[0]);
         GlobalsForGenerating.NameSolution = NameSolution;
         await Task.Delay(100);
         WriteLine($"Start analyzing {folder}");
         var p = new ProcessOutput();
         var build = p.Build(folder);
-        if(!build)
+        if (!build)
         {
             WriteLine($"cannot build solution from {folder}");
             return false;
@@ -37,7 +48,7 @@ public class GenerateFiles
 
         var outdatedPackages = JsonSerializer.Deserialize<OutDated.outdatedV1_gen_json>(text);
 
-        
+
         text = p.OutputDotnetPackage(folder, PackageOptions.Deprecated);
 
         var deprecatedPackages = JsonSerializer.Deserialize<Deprecated.deprecatedV1_gen_json>(text);
@@ -69,14 +80,14 @@ public class GenerateFiles
             WriteLine($"No projects in folder {folder}");
             return false;
         }
-        projectsDict =new ProjectsDict(
+        projectsDict = new ProjectsDict(
             arrDataProjectsPath
             .Distinct()
             .ToDictionary(it => it, it => new ProjectData(it, folder))
-            ); 
+            );
 
         WriteLine($"Number projects : {projectsDict.Count}");
-        projectsDict.FindReferences();    
+        projectsDict.FindReferences();
         projectsDict.FindUpStreamReferences();
         //adding transitive packages
         if (allPackages?.Frameworks()?.Length > 0)
@@ -109,8 +120,8 @@ public class GenerateFiles
                 var vers = packagedDict[package.PackageId].VersionsPerProject;
                 if (!vers.ContainsKey(package.RequestedVersion))
                     vers.Add(package.RequestedVersion, new());
-                var relPath= projData.RelativePath();
-                if (!vers[package.RequestedVersion].Any(item=>item.RelativePath()== relPath))
+                var relPath = projData.RelativePath();
+                if (!vers[package.RequestedVersion].Any(item => item.RelativePath() == relPath))
                 {
                     vers[package.RequestedVersion].Add(projData);
 
@@ -118,7 +129,7 @@ public class GenerateFiles
             }
         }
 
-        var problems=
+        var problems =
             outdatedPackages!.PerProjectPathWithVersion()
             .Union(deprecatedPackages!.PerProjectPathWithVersion())
             .ToArray();
@@ -147,109 +158,12 @@ public class GenerateFiles
                     {
                         if (proj.RelativePath() == pathProject)
                         {
-                            item.Value.Packages.Add(package);                            
+                            item.Value.Packages.Add(package);
                         }
                     }
                 }
             }
         }
         return true;
-    }
-    public async Task GenerateNow(string folder, string where)
-    {
-
-        var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
-        folderResults = Path.Combine(folderResults, NameSolution);
-        WriteLine($"generate in {folderResults}");
-        if (!Directory.Exists(folderResults))
-            Directory.CreateDirectory(folderResults);
-        DisplayDataMoreThan1Version model = new(packagedDict, folder);
-
-        TemplateGenerator generator = new();
-
-        var file = Path.Combine(folderResults, "DisplayAllVersions.html");
-        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersions(model));
-
-        file = Path.Combine(folderResults, "DisplayAllVersions.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsMarkdown(model));
-
-        file = Path.Combine(folderResults, $"MermaidVisualizerMajorDiffer.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_MermaidVisualizerMajorDiffer(model));
-
-        file = Path.Combine(folderResults, "ProjectRelation.md");
-        ArgumentNullException.ThrowIfNull(projectsDict);
-        await File.WriteAllTextAsync(file, await generator.Generate_ProjectsRelations(projectsDict));
-
-        var folderProjects = Path.Combine(folderResults, "Projects");
-        if (!Directory.Exists(folderProjects))
-            Directory.CreateDirectory(folderProjects);
-
-        var projects = $$"""
-{
-  "label": "Projects",
-  "position": 1,
-  "link": {
-    "type": "generated-index"
-  }
-}
-""";
-
-        await File.WriteAllTextAsync(Path.Combine(folderProjects, "_category_.json"), projects);
-
-        foreach (var projData in projectsDict.AlphabeticOrderedProjects)
-        {
-            var folderProject = Path.Combine(folderProjects, projData.NameCSproj());
-            if (!Directory.Exists(folderProject))
-                Directory.CreateDirectory(folderProject);
-
-            var project = $$"""
-{
-  "label": "{{projData.NameCSproj()}}",
-  "position": 1,
-  "link": {
-    "type": "generated-index"
-  }
-}
-""";
-
-            await File.WriteAllTextAsync(Path.Combine(folderProject, "_category_.json"), project);
-
-            file = Path.Combine(folderProject, "ProjectReferences.md");
-            await File.WriteAllTextAsync(file, await generator.Generate_ProjectRelations(projData));
-
-            file = Path.Combine(folderProject, "Packages.md");
-            await File.WriteAllTextAsync(file, await generator.Generate_ProjectPackages(projData));
-
-
-
-        }
-
-        file = Path.Combine(folderResults, "_category_.json");
-        string categoryGenerated = $$"""
-{
-  "label": "{{NameSolution}}",
-  "position": 1,
-  "link": {
-    "type": "generated-index"
-  }
-}
-""";
-        await File.WriteAllTextAsync(file, categoryGenerated);
-
-
-        file = Path.Combine(folderResults, "BuildingBlocks.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));
-
-        file = Path.Combine(folderResults, "TestProjects.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_TestProjects(projectsDict));
-
-        file = Path.Combine(folderResults, "RootProjects.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_RootProjects(projectsDict));
-
-        //file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
-        //ArgumentNullException.ThrowIfNull(projectsDict);
-        //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
-
-
     }
 }

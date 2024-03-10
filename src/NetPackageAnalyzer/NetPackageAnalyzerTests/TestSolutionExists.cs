@@ -10,7 +10,7 @@ public class TestSolutionExists
             {
                 { @"c:\myfile.txt", new MockFileData("Testing is meh.") },
            });
-        var g = new GenerateFiles(fileSystem);
+        var g = new GenerateFilesDocusaurus(fileSystem);
         var res =await g.GenerateData(@"C:\");
         Assert.IsFalse(res);
     }

@@ -1,4 +1,4 @@
-﻿namespace NetPackageAnalyzerConsole.generatedPartial;
+﻿namespace NetPackageAnalyzerObjects;
 
 public interface IOperations
 {

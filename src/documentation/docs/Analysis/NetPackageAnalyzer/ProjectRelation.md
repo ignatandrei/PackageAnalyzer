@@ -14,9 +14,7 @@ AnalyzeMerge: [0.11,0.01]
 
 NetPackageAnalyzerConsole: [0.56,0.67]
 
-NetPackageAnalyzerDocusaurus: [0.01,0.01]
-
-NetPackageAnalyzerObjects: [0.11,0.01]
+NetPackageAnalyzerObjects: [0.33,0.01]
 
 NetPackageAnalyzerWork: [0.37,0.33]
     
@@ -41,10 +39,6 @@ NetPackageAnalyzerConsole-->AnalyzeMerge
 
 
 NetPackageAnalyzerConsole-->NetPackageAnalyzerWork
-
-
-
-%% start project reference NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj
 
 
 

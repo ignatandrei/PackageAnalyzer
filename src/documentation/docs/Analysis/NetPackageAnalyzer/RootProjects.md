@@ -16,15 +16,6 @@ Solution[Solution]
         Solution-->NetPackageAnalyzerConsole
 
 
-    
-        NetPackageAnalyzerDocusaurus[NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj]
-
-        %% find a way to interpret first the path
-        %% click NetPackageAnalyzerDocusaurus "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences" "NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj"
-
-        Solution-->NetPackageAnalyzerDocusaurus
-
-
     ```
 
 
@@ -62,25 +53,6 @@ Solution[Solution]
                 NetPackageAnalyzerConsole-->NetPackageAnalyzerWork
 
                     ```
-    
-
-        ### NetPackageAnalyzerDocusaurus
-
-        [Relations](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences)
-
-        [Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages)
-
-
-        ```mermaid
-        graph TB
-        %% start project reference NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj
-
-        NetPackageAnalyzerDocusaurus[NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj]
-
-        %% find a way to interpret first the path
-        %% click NetPackageAnalyzerDocusaurus "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences" "NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj"
-
-        ```
     
 
 

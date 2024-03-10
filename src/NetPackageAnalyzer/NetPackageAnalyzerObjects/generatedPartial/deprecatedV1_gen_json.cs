@@ -1,4 +1,5 @@
 ﻿namespace NS_GeneratedJson_deprecatedV1_gen_json;
+
 [Packages(false)]
 public partial class deprecatedV1_gen_json
 {   
