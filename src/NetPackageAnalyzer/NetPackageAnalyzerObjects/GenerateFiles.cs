@@ -1,5 +1,5 @@
-﻿using NetPackageAnalyzerConsole;
-using NetPackageAnalyzerWork;
+﻿using NetPackageAnalyzerObjects;
+using NetPackageAnalyzerObjects;
 using System;
 using System.Collections.Generic;
 using System.IO.Abstractions;

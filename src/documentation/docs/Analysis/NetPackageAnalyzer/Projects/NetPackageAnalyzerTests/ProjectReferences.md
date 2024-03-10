@@ -12,19 +12,19 @@ NetPackageAnalyzerTests[NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj]
 %% click NetPackageAnalyzerTests "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerTests/ProjectReferences" "NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj"
 
 
-NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
+NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj]
 
-NetPackageAnalyzerTests-->NetPackageAnalyzerWork
+NetPackageAnalyzerTests-->NetPackageAnalyzerDocusaurus
 
 %% find a way to interpret first the path
-%% click NetPackageAnalyzerWork "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
+%% click NetPackageAnalyzerDocusaurus "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj"
 
 
 
 ```
 
 
-        [NetPackageAnalyzerWork](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences)
+        [NetPackageAnalyzerDocusaurus](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences)
     
 
 
@@ -51,13 +51,13 @@ NetPackageAnalyzerTests[NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj]
 click NetPackageAnalyzerTests "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerTests/ProjectReferences" "NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj"
 
 
-NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
+NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj]
 
 %% find a way to interpret first the path
-%% click NetPackageAnalyzerWork "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
+%% click NetPackageAnalyzerDocusaurus "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj"
 
 
-NetPackageAnalyzerTests-->NetPackageAnalyzerWork
+NetPackageAnalyzerTests-->NetPackageAnalyzerDocusaurus
 
 
 NetPackageAnalyzerObjects[NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj]
@@ -66,7 +66,7 @@ NetPackageAnalyzerObjects[NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.cs
 %% click NetPackageAnalyzerObjects "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerObjects/ProjectReferences" "NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"
 
 
-NetPackageAnalyzerWork-->NetPackageAnalyzerObjects
+NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerObjects
 
 
 ```
@@ -77,5 +77,5 @@ NetPackageAnalyzerWork-->NetPackageAnalyzerObjects
 
 [Back To Solution](pathname:///docs/Analysis/NetPackageAnalyzer//ProjectRelation)
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerDocusaurus , version 8.2024.310.1936</small>
 

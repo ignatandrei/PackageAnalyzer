@@ -27,17 +27,17 @@ NetPackageAnalyzerObjects[NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.cs
 %% click NetPackageAnalyzerObjects "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerObjects/ProjectReferences" "NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"
 
 
-NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
+NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj]
 
 %% find a way to interpret first the path
-%% click NetPackageAnalyzerWork "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
+%% click NetPackageAnalyzerDocusaurus "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj"
 
-NetPackageAnalyzerWork-->NetPackageAnalyzerObjects
+NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerObjects
 
 ```
 
 
-        [NetPackageAnalyzerWork](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences)
+        [NetPackageAnalyzerDocusaurus](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences)
     
 
 # Full Project relations for NetPackageAnalyzerObjects
@@ -57,5 +57,5 @@ click NetPackageAnalyzerObjects "pathname:///docs/Analysis/NetPackageAnalyzer/Pr
 
 [Back To Solution](pathname:///docs/Analysis/NetPackageAnalyzer//ProjectRelation)
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerDocusaurus , version 8.2024.310.1936</small>
 

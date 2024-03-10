@@ -14,10 +14,10 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AnalyzeMerge\AnalyzeMerge.csproj" />
-	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerWork.csproj" />
+	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>8.2024.309.2334</Version>
+		<Version>8.2024.310.1936</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>

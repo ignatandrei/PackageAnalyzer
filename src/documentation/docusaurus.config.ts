@@ -88,7 +88,7 @@ const config: Config = {
           items: [
             {
               label: 'Analyzer',
-              to: '/docs/category/my-solutions',
+              to: '/docs/category/solutions',
             },
           ],
         },

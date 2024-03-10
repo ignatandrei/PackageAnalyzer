@@ -1,6 +1,6 @@
 ﻿
 
-namespace NetPackageAnalyzerWork;
+namespace NetPackageAnalyzerDocusaurus;
 public class TemplateGenerator
 {
     public async Task<string> Generate_DisplayAllVersions(DisplayDataMoreThan1Version model)

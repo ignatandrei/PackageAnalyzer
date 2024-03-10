@@ -29,13 +29,13 @@
 
 
 
-            ###  NetPackageAnalyzerWork
+            ###  NetPackageAnalyzerDocusaurus
 
-            Full Name : NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj
+            Full Name : NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj
 
-            [NetPackageAnalyzerWork Relations ](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences)
+            [NetPackageAnalyzerDocusaurus Relations ](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences)
 
-            [NetPackageAnalyzerWork Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/Packages)
+            [NetPackageAnalyzerDocusaurus Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages)
 
             ## Building Blocks - Projects with 2 project references
 
@@ -50,4 +50,4 @@
 
             [NetPackageAnalyzerConsole Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Packages)
 
-            <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>
+            <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerDocusaurus , version 8.2024.310.1936</small>

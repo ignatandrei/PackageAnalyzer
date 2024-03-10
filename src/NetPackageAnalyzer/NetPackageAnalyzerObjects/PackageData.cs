@@ -1,4 +1,4 @@
-﻿namespace NetPackageAnalyzerConsole;
+﻿namespace NetPackageAnalyzerObjects;
 public record PackageData(string packageVersionId)
 {
     public bool IsTest()

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace NetPackageAnalyzerConsole;
+namespace NetPackageAnalyzerObjects;
 public class ProcessOutput
 {
     public bool Build(string folder)

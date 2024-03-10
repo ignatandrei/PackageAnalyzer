@@ -12,7 +12,7 @@
 | 4 | Microsoft.ApplicationInsights  |    *2.21.0* NetPackageAnalyzerTests|
 | 5 | Microsoft.Build.Tasks.Git  |    *1.1.1* NetPackageAnalyzerConsole|
 | 6 | Microsoft.CodeCoverage  |    *17.9.0* NetPackageAnalyzerTests|
-| 7 | Microsoft.CSharp  |    *4.7.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerObjects|
+| 7 | Microsoft.CSharp  |    *4.7.0* NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerObjects|
 | 8 | Microsoft.NET.Test.Sdk  |    *17.9.0* NetPackageAnalyzerTests|
 | 9 | Microsoft.SourceLink.Common  |    *1.1.1* NetPackageAnalyzerConsole|
 | 10 | Microsoft.SourceLink.GitHub  |    *1.1.1* NetPackageAnalyzerConsole|
@@ -23,24 +23,24 @@
 | 15 | Microsoft.Testing.Platform.MSBuild  |    *1.0.2* NetPackageAnalyzerTests|
 | 16 | Microsoft.TestPlatform.ObjectModel  |    *17.9.0* NetPackageAnalyzerTests|
 | 17 | Microsoft.TestPlatform.TestHost  |    *17.9.0* NetPackageAnalyzerTests|
-| 18 | Morris.Moxy  |    *1.5.0* NetPackageAnalyzerObjects,NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests|
+| 18 | Morris.Moxy  |    *1.5.0* NetPackageAnalyzerObjects,NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerTests|
 | 19 | MSTest  |    *3.2.2* NetPackageAnalyzerTests|
 | 20 | MSTest.Analyzers  |    *3.2.2* NetPackageAnalyzerTests|
 | 21 | MSTest.TestAdapter  |    *3.2.2* NetPackageAnalyzerTests|
 | 22 | MSTest.TestFramework  |    *3.2.2* NetPackageAnalyzerTests|
 | 23 | Newtonsoft.Json  |    *13.0.1* NetPackageAnalyzerTests|
-| 24 | RazorBlade  |    *0.4.3* NetPackageAnalyzerWork,AnalyzeMerge|
-| 25 | rscgutils  |    *2023.827.1021* NetPackageAnalyzerObjects,NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests|
+| 24 | RazorBlade  |    *0.4.3* NetPackageAnalyzerDocusaurus,AnalyzeMerge|
+| 25 | rscgutils  |    *2023.827.1021* NetPackageAnalyzerObjects,NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerTests|
 | 26 | System.CommandLine  |    *2.0.0-beta4.22272.1* NetPackageAnalyzerConsole|
 | 27 | System.Diagnostics.DiagnosticSource  |    *5.0.0* NetPackageAnalyzerTests|
 | 28 | System.IO.Abstractions.TestingHelpers  |    *20.0.15* NetPackageAnalyzerTests|
 | 29 | System.Reflection.Metadata  |    *1.6.0* NetPackageAnalyzerTests|
-| 30 | System.Text.Encodings.Web  |    *7.0.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests,NetPackageAnalyzerObjects|
-| 31 | System.Text.Json  |    *7.0.3* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests,NetPackageAnalyzerObjects|
-| 32 | System.Threading.Tasks.Extensions  |    *4.5.4* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerObjects|
-| 33 | TestableIO.System.IO.Abstractions  |    *20.0.15* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests,NetPackageAnalyzerObjects|
+| 30 | System.Text.Encodings.Web  |    *7.0.0* NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerTests,NetPackageAnalyzerObjects|
+| 31 | System.Text.Json  |    *7.0.3* NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerTests,NetPackageAnalyzerObjects|
+| 32 | System.Threading.Tasks.Extensions  |    *4.5.4* NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerObjects|
+| 33 | TestableIO.System.IO.Abstractions  |    *20.0.15* NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerTests,NetPackageAnalyzerObjects|
 | 34 | TestableIO.System.IO.Abstractions.TestingHelpers  |    *20.0.15* NetPackageAnalyzerTests|
-| 35 | TestableIO.System.IO.Abstractions.Wrappers  |    *20.0.15* NetPackageAnalyzerObjects,NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests|
-| 36 | ThisAssembly.AssemblyInfo  |    *1.4.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerObjects|
+| 35 | TestableIO.System.IO.Abstractions.Wrappers  |    *20.0.15* NetPackageAnalyzerObjects,NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerTests|
+| 36 | ThisAssembly.AssemblyInfo  |    *1.4.0* NetPackageAnalyzerConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerObjects|
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerDocusaurus , version 8.2024.310.1936</small>

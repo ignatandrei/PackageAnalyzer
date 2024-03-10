@@ -1,4 +1,4 @@
-﻿namespace NetPackageAnalyzerConsole;
+﻿namespace NetPackageAnalyzerObjects;
 
 public enum PackageOptions
 {

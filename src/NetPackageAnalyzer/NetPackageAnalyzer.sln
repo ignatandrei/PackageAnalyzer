@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerConsole", "NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj", "{135F0104-C414-4646-904C-ADFCE022A234}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerWork", "NetPackageAnalyzerWork\NetPackageAnalyzerWork.csproj", "{1F304AA4-5E99-48CD-AEC8-6CA734A71E95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerDocusaurus", "NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj", "{1F304AA4-5E99-48CD-AEC8-6CA734A71E95}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnalyzeMerge", "AnalyzeMerge\AnalyzeMerge.csproj", "{6B1AF12B-AF28-4F8D-8213-B048932867A9}"
 EndProject

@@ -1,8 +1,7 @@
-﻿namespace NetPackageAnalyzerConsole;
+﻿namespace NetPackageAnalyzerObjects;
 
 public record ProjectData(string PathProject, string folderSolution)
 {
-    public string Version = ThisAssembly.Info.Version; 
     public List<ProjectData> ProjectsReferences { get; set; }=new();
 
     public List<ProjectData> UpStreamProjectReferences { get; set; } = new();

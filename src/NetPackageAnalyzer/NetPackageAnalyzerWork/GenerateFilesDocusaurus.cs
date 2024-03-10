@@ -1,6 +1,4 @@
-﻿using NetPackageAnalyzerObjects;
-
-namespace NetPackageAnalyzerConsole;
+﻿namespace NetPackageAnalyzerDocusaurus;
 
 public class GenerateFilesDocusaurus:GenerateFiles
 {
@@ -13,6 +11,19 @@ public class GenerateFilesDocusaurus:GenerateFiles
     {
 
         var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
+        string generalSolution = $$"""
+{
+  "label": "Solutions",
+  "position": 1,
+  "link": {
+    "type": "generated-index"
+  }
+}
+""";
+        var fileRoot = Path.Combine(folderResults, "_category_.json");
+        await File.WriteAllTextAsync(fileRoot, generalSolution);
+
+
         folderResults = Path.Combine(folderResults, NameSolution);
         WriteLine($"generate in {folderResults}");
         if (!Directory.Exists(folderResults))

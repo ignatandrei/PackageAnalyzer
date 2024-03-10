@@ -1,8 +1,7 @@
-﻿namespace NetPackageAnalyzerConsole;
+﻿namespace NetPackageAnalyzerObjects;
 
 public record DisplayDataMoreThan1Version(Dictionary<string, PackageData> IDPackageWithProjects, string folderName)
 {
-    public string Version = ThisAssembly.Info.Version;
     public KeyValuePair<string,PackageData>[] Sorted()
     {
         return IDPackageWithProjects.OrderBy(it=>it.Key).ToArray();

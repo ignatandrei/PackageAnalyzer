@@ -22,15 +22,15 @@
         %% click NetPackageAnalyzerTests "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerTests/ProjectReferences" "NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj"
 
 
-                NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
+                NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj]
 
                 %% find a way to interpret first the path
-                %% click NetPackageAnalyzerWork "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
+                %% click NetPackageAnalyzerDocusaurus "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj"
 
-                NetPackageAnalyzerTests-->NetPackageAnalyzerWork
+                NetPackageAnalyzerTests-->NetPackageAnalyzerDocusaurus
 
                     ```
 
 
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerDocusaurus , version 8.2024.310.1936</small>

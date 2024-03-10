@@ -1,13 +1,9 @@
-﻿public enum WhatToGenerate
-{
-    Default = 0,
-    Docusaurus = 1,
-}
+﻿
 public class Program
 {
     static async Task<int> Main(string[] args)
-    { 
-        
+    {
+        GlobalsForGenerating.Version = ThisAssembly.Info.Version.ToString();
         WriteLine("Version:"+ThisAssembly.Info.Version.ToString());        
         RootCommand rootCommand = new();
         Command cmdGenerate = new("generateFiles", "Generate files for documentation");
@@ -28,13 +24,16 @@ public class Program
         getDefaultValue: () => Path.Combine(Environment.CurrentDirectory,"Analysis"));
         folderGenerate.AddAlias("-w");
 
+        cmdGenerate.AddOption(folderGenerate);
+
         var generateData = new Option<WhatToGenerate>
         (name: "--whatGenerate",
-        description: "what to generate - 0 = markdown, 1= docusaurus",
-        getDefaultValue: () => 0);
-        folderGenerate.AddAlias("-wg");
+        description: "what to generate - 1= docusaurus",
+        getDefaultValue: () => WhatToGenerate.Docusaurus);
 
-        cmdGenerate.AddOption(folderGenerate);
+        generateData.AddAlias("-wg");
+
+        cmdGenerate.AddOption(generateData);
         //cmdGenerate.Handler = CommandHandler.Create<string,string>(async (folder,where) =>
         //{
         //    WriteLine($"analyzing {folder}");
@@ -53,7 +52,15 @@ public class Program
         {
             
             WriteLine($"analyzing {folder}");
-            var g = new GenerateFilesDocusaurus(new FileSystem());
+            GenerateFiles? g=null;
+            switch(what)
+            {
+                case WhatToGenerate.Docusaurus:
+                    g = new GenerateFilesDocusaurus(new FileSystem());
+                    break;
+                default:
+                    throw new NotImplementedException($"what={what}");
+            }
             if (!await g.GenerateData(folder))
             {
                 Console.WriteLine("not capable to generate data");

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[2868],{313:e=>{e.exports=JSON.parse('{"title":"Solutions","slug":"/category/solutions","permalink":"/PackageAnalyzer/docs/category/solutions","navigation":{"next":{"title":"NetPackageAnalyzer","permalink":"/PackageAnalyzer/docs/category/netpackageanalyzer"}}}')}}]);
