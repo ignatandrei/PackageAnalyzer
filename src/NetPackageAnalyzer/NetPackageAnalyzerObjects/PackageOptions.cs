@@ -1,6 +1,6 @@
 ﻿namespace NetPackageAnalyzerConsole;
 
-enum PackageOptions
+public enum PackageOptions
 {
     None = 0,
     Outdated = 1,

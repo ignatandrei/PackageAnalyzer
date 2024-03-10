@@ -16,6 +16,30 @@
         
 
 
+            ###  NetPackageAnalyzerDocusaurus
+
+            Full Name : NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj
+
+            [NetPackageAnalyzerDocusaurus Relations ](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences)
+
+            [NetPackageAnalyzerDocusaurus Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages)
+
+        
+
+
+            ###  NetPackageAnalyzerObjects
+
+            Full Name : NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj
+
+            [NetPackageAnalyzerObjects Relations ](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerObjects/ProjectReferences)
+
+            [NetPackageAnalyzerObjects Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerObjects/Packages)
+
+            ## Building Blocks - Projects with 1 project references
+
+
+
+
             ###  NetPackageAnalyzerWork
 
             Full Name : NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj
@@ -24,9 +48,7 @@
 
             [NetPackageAnalyzerWork Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/Packages)
 
-            ## Building Blocks - Projects with 1 project references
-
-    ## Building Blocks - Projects with 2 project references
+            ## Building Blocks - Projects with 2 project references
 
 
 
@@ -39,4 +61,4 @@
 
             [NetPackageAnalyzerConsole Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Packages)
 
-            <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.2334</small>
+            <small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>

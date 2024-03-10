@@ -12,9 +12,20 @@ NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
 %% click NetPackageAnalyzerWork "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
 
 
+NetPackageAnalyzerObjects[NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj]
+
+NetPackageAnalyzerWork-->NetPackageAnalyzerObjects
+
+%% find a way to interpret first the path
+%% click NetPackageAnalyzerObjects "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerObjects/ProjectReferences" "NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"
+
+
+
 ```
 
 
+        [NetPackageAnalyzerObjects](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerObjects/ProjectReferences)
+    
 
 
 # Projects that reference NetPackageAnalyzerWork
@@ -58,6 +69,15 @@ NetPackageAnalyzerWork[NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj]
 click NetPackageAnalyzerWork "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerWork/ProjectReferences" "NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj"
 
 
+NetPackageAnalyzerObjects[NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj]
+
+%% find a way to interpret first the path
+%% click NetPackageAnalyzerObjects "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerObjects/ProjectReferences" "NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"
+
+
+NetPackageAnalyzerWork-->NetPackageAnalyzerObjects
+
+
 ```
 
 
@@ -66,5 +86,5 @@ click NetPackageAnalyzerWork "pathname:///docs/Analysis/NetPackageAnalyzer/Proje
 
 [Back To Solution](pathname:///docs/Analysis/NetPackageAnalyzer//ProjectRelation)
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.2334</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>
 

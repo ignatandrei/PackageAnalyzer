@@ -1,11 +1,8 @@
 
-# Project packages AnalyzeMerge/AnalyzeMerge.csproj
+# Project packages NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj
 
 |Nr|ID|Version|
 | ----------- | ----------- | ----------- |
-| 1 | LibGit2Sharp | 0.27.2 |
-| 2 | LibGit2Sharp.NativeBinaries | 2.0.320 |
-| 3 | RazorBlade | 0.4.3 |
 
 
 

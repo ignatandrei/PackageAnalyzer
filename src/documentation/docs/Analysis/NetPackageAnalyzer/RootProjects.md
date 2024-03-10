@@ -16,6 +16,15 @@ Solution[Solution]
         Solution-->NetPackageAnalyzerConsole
 
 
+    
+        NetPackageAnalyzerDocusaurus[NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj]
+
+        %% find a way to interpret first the path
+        %% click NetPackageAnalyzerDocusaurus "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences" "NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj"
+
+        Solution-->NetPackageAnalyzerDocusaurus
+
+
     ```
 
 
@@ -55,5 +64,24 @@ Solution[Solution]
                     ```
     
 
+        ### NetPackageAnalyzerDocusaurus
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.2334</small>
+        [Relations](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences)
+
+        [Packages](pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages)
+
+
+        ```mermaid
+        graph TB
+        %% start project reference NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj
+
+        NetPackageAnalyzerDocusaurus[NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj]
+
+        %% find a way to interpret first the path
+        %% click NetPackageAnalyzerDocusaurus "pathname:///docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences" "NetPackageAnalyzerDocusaurus/NetPackageAnalyzerDocusaurus.csproj"
+
+        ```
+    
+
+
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>

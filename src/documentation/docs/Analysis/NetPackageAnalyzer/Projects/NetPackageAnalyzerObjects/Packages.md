@@ -1,11 +1,11 @@
 
-# Project packages AnalyzeMerge/AnalyzeMerge.csproj
+# Project packages NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj
 
 |Nr|ID|Version|
 | ----------- | ----------- | ----------- |
-| 1 | LibGit2Sharp | 0.27.2 |
-| 2 | LibGit2Sharp.NativeBinaries | 2.0.320 |
-| 3 | RazorBlade | 0.4.3 |
+| 1 | Microsoft.CSharp | 4.7.0 |
+| 2 | System.Threading.Tasks.Extensions | 4.5.4 |
+| 3 | ThisAssembly.AssemblyInfo | 1.4.0 |
 
 
 

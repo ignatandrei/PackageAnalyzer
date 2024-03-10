@@ -12,7 +12,7 @@
 | 4 | Microsoft.ApplicationInsights  |    *2.21.0* NetPackageAnalyzerTests|
 | 5 | Microsoft.Build.Tasks.Git  |    *1.1.1* NetPackageAnalyzerConsole|
 | 6 | Microsoft.CodeCoverage  |    *17.9.0* NetPackageAnalyzerTests|
-| 7 | Microsoft.CSharp  |    *4.7.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork|
+| 7 | Microsoft.CSharp  |    *4.7.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerObjects|
 | 8 | Microsoft.NET.Test.Sdk  |    *17.9.0* NetPackageAnalyzerTests|
 | 9 | Microsoft.SourceLink.Common  |    *1.1.1* NetPackageAnalyzerConsole|
 | 10 | Microsoft.SourceLink.GitHub  |    *1.1.1* NetPackageAnalyzerConsole|
@@ -37,10 +37,10 @@
 | 29 | System.Reflection.Metadata  |    *1.6.0* NetPackageAnalyzerTests|
 | 30 | System.Text.Encodings.Web  |    *7.0.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests|
 | 31 | System.Text.Json  |    *7.0.3* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests|
-| 32 | System.Threading.Tasks.Extensions  |    *4.5.4* NetPackageAnalyzerConsole,NetPackageAnalyzerWork|
+| 32 | System.Threading.Tasks.Extensions  |    *4.5.4* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerObjects|
 | 33 | TestableIO.System.IO.Abstractions  |    *20.0.15* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerTests|
 | 34 | TestableIO.System.IO.Abstractions.TestingHelpers  |    *20.0.15* NetPackageAnalyzerTests|
 | 35 | TestableIO.System.IO.Abstractions.Wrappers  |    *20.0.15* NetPackageAnalyzerWork,NetPackageAnalyzerConsole,NetPackageAnalyzerTests|
-| 36 | ThisAssembly.AssemblyInfo  |    *1.4.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork|
+| 36 | ThisAssembly.AssemblyInfo  |    *1.4.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork,NetPackageAnalyzerObjects|
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.309.2334</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 1.0.0.0</small>

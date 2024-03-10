@@ -87,6 +87,9 @@
 	  <Watch Remove="Templates\SimpleDisplayProjectWithReferencesProject.cshtml" />
 	  <Watch Remove="Templates\TestProjects.cshtml" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
+	</ItemGroup>
 	
 	
 </Project>

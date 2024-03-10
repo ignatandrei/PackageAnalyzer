@@ -1,5 +1,7 @@
-﻿namespace NetPackageAnalyzerConsole;
-internal class ProcessOutput
+﻿using System.Diagnostics;
+
+namespace NetPackageAnalyzerConsole;
+public class ProcessOutput
 {
     public bool Build(string folder)
     {
