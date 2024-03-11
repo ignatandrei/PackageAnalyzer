@@ -14,6 +14,16 @@ public class ProjectsDict : Dictionary<string, ProjectData>
             return this.Values.Select(it => it.Packages.Count).Max();
         }
     }
+    public long MaxUpStreamReferences
+    {
+        get
+        {
+            return this.
+                Values
+                .Select(it => it.UpStreamProjectReferences.Count)
+                .Max();
+        }
+    }
 
     public long MaxReferences
     {

@@ -39,6 +39,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="RazorBlade" Version="0.4.3" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.0">
 		  <PrivateAssets>all</PrivateAssets>
