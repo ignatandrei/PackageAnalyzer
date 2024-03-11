@@ -6,10 +6,18 @@
     var prefix = GlobalsForGenerating.globalPrefix();
 
 }
+---
+sidebar_position: 10
+---
 
+# Project references for @nameCsproj
+
+## Downstream @Model.ProjectsReferences.Count, Upstream : @Model.UpStreamProjectReferences.Count
+
+@if(Model.AlphabeticalProjectsReferences.Length>0)
+{
+<text>
 # Project relations for @nameCsproj
-
-
 
 ```mermaid
 flowchart     
@@ -42,8 +50,11 @@ flowchart
     </text>
 }
 
+</text>
+}
 
-
+@if (Model.AlphabeticalUpStreamProjectReferences.Length>0){
+<text>
 # Projects that reference @nameCsproj
 ```mermaid
 flowchart 
@@ -74,14 +85,19 @@ flowchart
     </text>
 }
 
+</text>
+}
 
+@if (Model.AlphabeticalProjectsReferences.Length>0){
+
+<text>
 # Full Project relations for @nameCsproj
 
 ```mermaid
 flowchart 
 
 @name
-click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
+%% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
 @foreach (var rel in Model.AlphabeticalProjectsReferences)
 {
@@ -93,7 +109,8 @@ click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePat
 }
 
 ```
-
+</text>
+}
 
 [Packages](Packages)
 
