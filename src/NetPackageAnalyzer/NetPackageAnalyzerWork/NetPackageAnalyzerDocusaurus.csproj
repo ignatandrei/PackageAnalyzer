@@ -64,8 +64,8 @@
 	  <None Remove="Templates\ProjectPackages.cshtml" />
 	  <None Remove="Templates\ProjectRelations.cshtml" />
 	  <None Remove="Templates\ProjectRoot.cshtml" />
-	  <None Remove="Templates\ProjectsRelations.cshtml" />
 	  <None Remove="Templates\SimpleDisplayProjectWithReferencesProject.cshtml" />
+	  <None Remove="Templates\SolutionRelations.cshtml" />
 	  <None Remove="Templates\TestProjects.cshtml" />
 	</ItemGroup>
 	<ItemGroup>
@@ -77,8 +77,8 @@
 	  <Watch Remove="Templates\ProjectPackages.cshtml" />
 	  <Watch Remove="Templates\ProjectRelations.cshtml" />
 	  <Watch Remove="Templates\ProjectRoot.cshtml" />
-	  <Watch Remove="Templates\ProjectsRelations.cshtml" />
 	  <Watch Remove="Templates\SimpleDisplayProjectWithReferencesProject.cshtml" />
+	  <Watch Remove="Templates\SolutionRelations.cshtml" />
 	  <Watch Remove="Templates\TestProjects.cshtml" />
 	</ItemGroup>
 	<ItemGroup>

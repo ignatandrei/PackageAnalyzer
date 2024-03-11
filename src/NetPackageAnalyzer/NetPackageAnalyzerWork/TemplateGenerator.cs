@@ -26,9 +26,9 @@ public class TemplateGenerator
         var rz = new MermaidVisualizerMajorDiffer(model);
         return await rz.RenderAsync();
     }
-    public async Task<string> Generate_ProjectsRelations(ProjectsDict model)
+    public async Task<string> Generate_SolutionRelations(ProjectsDict model)
     {
-        var rz = new ProjectsRelations(model);
+        var rz = new SolutionRelations(model);
         return await rz.RenderAsync();
     }
 

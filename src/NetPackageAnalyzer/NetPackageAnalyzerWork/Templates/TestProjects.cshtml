@@ -2,8 +2,13 @@
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
 }
+---
+sidebar_position: 60
+---
+
 # Test Projects 
 
+## Test projects number:    @Model.TestsProjects.Length
 
 @foreach(var bbProj in Model.TestsProjects)
 {
@@ -22,7 +27,7 @@
 
     ### Diagram
         ```mermaid
-        graph TB
+        flowchart 
 
         @bbProj.FullNameMermaid()
 

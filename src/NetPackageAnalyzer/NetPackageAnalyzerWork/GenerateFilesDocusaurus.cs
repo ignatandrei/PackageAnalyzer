@@ -59,7 +59,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
 
         file = Path.Combine(folderResults, "ProjectRelation.md");
         ArgumentNullException.ThrowIfNull(projectsDict);
-        await File.WriteAllTextAsync(file, await generator.Generate_ProjectsRelations(projectsDict));
+        await File.WriteAllTextAsync(file, await generator.Generate_SolutionRelations(projectsDict));
 
         var folderProjects = Path.Combine(folderResults, "Projects");
         if (!Directory.Exists(folderProjects))
@@ -68,7 +68,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         var projects = $$"""
 {
   "label": "Projects",
-  "position": 1,
+  "position": 1000,
   "link": {
     "type": "generated-index"
   }

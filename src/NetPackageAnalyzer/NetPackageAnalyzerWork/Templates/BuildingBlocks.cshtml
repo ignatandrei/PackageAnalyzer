@@ -3,8 +3,13 @@
     var prefix = GlobalsForGenerating.globalPrefix();
     var nrMaxProjects = Math.Max(Model.MaxReferences/3,3);
 }
+---
+sidebar_position: 40
+---
+
 # Projects Building Blocks
 
+## Number of BB0 :    @Model.BuildingBlocks(0).Length
 @for (int i = 0; i < nrMaxProjects; i++)
 {
     <text>## Building Blocks - Projects with @i project references

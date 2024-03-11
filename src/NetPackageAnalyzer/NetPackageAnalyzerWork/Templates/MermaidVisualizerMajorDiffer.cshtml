@@ -3,8 +3,13 @@
     var keysPackageMultiple = Model.KeysPackageMultipleMajorDiffers();
     int i = 0;
 }
+---
+sidebar_position: 70
+---
 
-# Number of packages that differ in major version : @keysPackageMultiple.Length
+# Different major version packages
+
+##  Packages major version differ : @keysPackageMultiple.Length
 
     @foreach (var key in keysPackageMultiple)
     {
@@ -18,7 +23,7 @@
 ## @i @key
 
 ```mermaid
-graph TB
+flowchart 
 subgraph packages
     @Html.Raw(key + "\r\n")
 end

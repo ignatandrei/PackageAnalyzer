@@ -5,11 +5,14 @@
     var nrRelations = Model.MaxReferences + 1;
     var prefix = GlobalsForGenerating.globalPrefix();
 }
+---
+sidebar_position: 50
+---
+# Root Projects - projects that are not referenced anywhere
 
-## Root Projects - projects that are not referenced anywhere
-
+## Root projects number:    @rootProjects.Length
 ```mermaid
-graph TB
+flowchart 
 %% start root projects
 
 Solution[Solution]
@@ -48,7 +51,7 @@ Solution[Solution]
 
 
         ```mermaid
-        graph TB
+        flowchart 
         @comment
 
         @name

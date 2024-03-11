@@ -6,8 +6,12 @@
     var prefix = GlobalsForGenerating.globalPrefix();
 
 }
+---
+sidebar_position: 10
+---
 
-# Projects relations (not included tests)
+
+# Solution relations (without tests)
 
 ## Quadrant Packages / Relations
 
@@ -42,7 +46,7 @@ quadrantChart
 ## All Projects Graph
 
 ```mermaid
-graph TB
+flowchart 
 
 
 @foreach (var proj in Model.AlphabeticOrderedProjectsNoTests)

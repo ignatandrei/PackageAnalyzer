@@ -2,8 +2,13 @@
 @{
     var keysPackageMultiple = Model.KeysPackageMultiple();
 }
+---
+sidebar_position: 30
+---
+# Packages
 
-# Number of packages:@Model.NrPackages()
+## Number of packages : @Model.NrPackages()
+
 ## Packages with more than 1 version: @keysPackageMultiple.Length ( @(keysPackageMultiple.Length * 100 / @Model.NrPackages()) % from total packages)
 
 ## Number of packages with major version differs: @Model.MajorVersionDiffers()
