@@ -14,20 +14,20 @@ sidebar_position: 10
 
 ## Downstream @Model.ProjectsReferences.Count, Upstream : @Model.UpStreamProjectReferences.Count
 
-@if(Model.AlphabeticalProjectsReferences.Length>0)
+@if(Model.AlphabeticalProjectsReferences().Length>0)
 {
 <text>
 # Project relations for @nameCsproj
 
 ```mermaid
-flowchart     
+flowchart LR     
 
 @name
 
 %% find a way to interpret first the path
 %% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
-@foreach (var rel in Model.AlphabeticalProjectsReferences)
+@foreach (var rel in Model.AlphabeticalProjectsReferences())
 {
 <text>
 @rel.FullNameMermaid()
@@ -43,7 +43,7 @@ flowchart
 
 ```
 
-@foreach (var rel in Model.AlphabeticalProjectsReferences)
+@foreach (var rel in Model.AlphabeticalProjectsReferences())
 {
     <text>
         [@rel.NameCSproj()](@prefix/Projects/@rel.NameCSproj()/ProjectReferences)
@@ -57,7 +57,7 @@ flowchart
 <text>
 # Projects that reference @nameCsproj
 ```mermaid
-flowchart 
+flowchart LR 
 
 @name
 
@@ -88,18 +88,18 @@ flowchart
 </text>
 }
 
-@if (Model.AlphabeticalProjectsReferences.Length>0){
+@if (Model.AlphabeticalProjectsReferences().Length>0){
 
 <text>
 # Full Project relations for @nameCsproj
 
 ```mermaid
-flowchart 
+flowchart LR 
 
 @name
 %% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
-@foreach (var rel in Model.AlphabeticalProjectsReferences)
+@foreach (var rel in Model.AlphabeticalProjectsReferences())
 {
     var recModel = new Tuple<string, ProjectData>(nameCsproj, rel);
     var rec = new SimpleDisplayProjectWithReferencesProject(recModel);

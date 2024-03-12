@@ -7,12 +7,12 @@ public record ProjectData(string PathProject, string folderSolution)
     public List<ProjectData> UpStreamProjectReferences { get; set; } = new();
 
     public List<PackageData> Packages { get; set; }=new();
-    public ProjectData[] AlphabeticalProjectsReferences
+    
+    public ProjectData[] AlphabeticalProjectsReferences_MemoPure()
     { 
-        get
-        {
-            return ProjectsReferences.OrderBy(p => p.NameCSproj()).ToArray();
-        }
+        
+        return ProjectsReferences.OrderBy(p => p.NameCSproj()).ToArray();
+        
     }
     public ProjectData[] AlphabeticalUpStreamProjectReferences
     {

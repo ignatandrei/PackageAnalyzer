@@ -79,7 +79,7 @@ quadrantChart
 ## All Projects Graph
 
 ```mermaid
-flowchart 
+flowchart LR 
 
 
 @foreach (var proj in Model.AlphabeticOrderedProjectsNoTests)
@@ -91,7 +91,7 @@ flowchart
 
 @comment
 
-@foreach (var rel in proj.AlphabeticalProjectsReferences)
+@foreach (var rel in proj.AlphabeticalProjectsReferences())
 {
 <text>
 @nameCsproj-->@rel.NameCSproj()

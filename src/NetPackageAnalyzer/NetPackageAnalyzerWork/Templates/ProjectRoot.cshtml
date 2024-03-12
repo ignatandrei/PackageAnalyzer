@@ -12,7 +12,7 @@ sidebar_position: 50
 
 ## Root projects number:    @rootProjects.Length
 ```mermaid
-flowchart 
+flowchart LR 
 %% start root projects
 
 Solution[Solution]
@@ -51,7 +51,7 @@ Solution[Solution]
 
 
         ```mermaid
-        flowchart 
+        flowchart LR 
         @comment
 
         @name
@@ -59,7 +59,7 @@ Solution[Solution]
         %% find a way to interpret first the path
         %% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
-        @foreach (var rel in proj.AlphabeticalProjectsReferences)
+        @foreach (var rel in proj.AlphabeticalProjectsReferences())
         {
             <text>
                 @rel.FullNameMermaid()

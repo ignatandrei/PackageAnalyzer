@@ -27,14 +27,14 @@ sidebar_position: 60
 
     ### Diagram
         ```mermaid
-        flowchart 
+        flowchart LR 
 
         @bbProj.FullNameMermaid()
 
         %% find a way to interpret first the path
         %% click @nameCsproj "@prefix/Projects/@nameCsproj/ProjectReferences" "@relativePath"
 
-        @foreach (var rel in bbProj.AlphabeticalProjectsReferences)
+        @foreach (var rel in bbProj.AlphabeticalProjectsReferences())
         {
             <text>
                 @rel.FullNameMermaid()
