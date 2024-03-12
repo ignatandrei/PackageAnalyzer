@@ -8,7 +8,7 @@ public record ProjectData(string PathProject, string folderSolution)
 
     public List<PackageData> Packages { get; set; }=new();
     
-    public ProjectData[] AlphabeticalProjectsReferences_MemoPure()
+    public ProjectData[] AlphabeticalProjectsReferences()
     { 
         
         return ProjectsReferences.OrderBy(p => p.NameCSproj()).ToArray();

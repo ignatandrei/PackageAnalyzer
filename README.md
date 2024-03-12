@@ -17,7 +17,28 @@ Then you can run
 dotnet PackageAnalyzer generateFiles
 ```
 
-and see the template results at Analysis folder
+and see results at Analysis folder as a Docusaurus site .
+
+Just run
+
+```
+npm i
+npm run start
+```
+
+to see what is generated ( see https://ignatandrei.github.io/PackageAnalyzer/docs/category/solutions )
+
+
+It will show
+
+1. Solution Analyzer 
+2. Project Building Blocks
+3. Root Projects
+4. Test Projects
+5. Packages Versions
+6. Packages that differ in major versions
+7. Each project with their packages 
+8. Each project and relations with another - upstream and downstream
 
 
 ## How it looks
