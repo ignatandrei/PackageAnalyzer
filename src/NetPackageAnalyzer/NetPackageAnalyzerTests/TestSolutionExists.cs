@@ -1,3 +1,4 @@
+
 namespace NetPackageAnalyzerTests;
 
 [TestClass]

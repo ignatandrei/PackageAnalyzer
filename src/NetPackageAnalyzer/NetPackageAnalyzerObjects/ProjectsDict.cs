@@ -1,7 +1,7 @@
 ﻿using NetPackageAnalyzerObjects;
 
 namespace NetPackageAnalyzerObjects;
-public class ProjectsDict : Dictionary<string, ProjectData>
+public partial class ProjectsDict : Dictionary<string, ProjectData>
 {
     public ProjectsDict(Dictionary<string, ProjectData> data) : base(data)
     {
@@ -52,7 +52,7 @@ public class ProjectsDict : Dictionary<string, ProjectData>
                 .ToArray();
         }
     }
-    public ProjectData[] BuildingBlocks(int nrReferences)
+    public ProjectData[] BuildingBlocks_MemoPure(int nrReferences)
     {
         var ret = this.ProjectsNoTest
             .Where(it=>it.ProjectsReferences.Count==nrReferences)

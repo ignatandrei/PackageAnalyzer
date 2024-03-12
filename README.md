@@ -31,14 +31,15 @@ to see what is generated ( see https://ignatandrei.github.io/PackageAnalyzer/doc
 
 It will show
 
-1. Solution Analyzer 
-2. Project Building Blocks
-3. Root Projects
-4. Test Projects
-5. Packages Versions
-6. Packages that differ in major versions
-7. Each project with their packages 
-8. Each project and relations with another - upstream and downstream
+1. Solution Analyzer - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/ProjectRelation
+2. Project Building Blocks - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/BuildingBlocks
+3. Root Projects - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/RootProjects
+4. Test Projects - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/TestProjects
+5. Packages Versions - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/DisplayAllVersions
+6. Packages that differ in major versions  -  https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/MermaidVisualizerMajorDiffer 
+7. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/category/projects
+8. Each project and relations with another - upstream and downstream - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences
+9. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages
 
 
 ## How it looks

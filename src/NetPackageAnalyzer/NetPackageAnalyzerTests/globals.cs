@@ -1,2 +1,2 @@
-﻿global using NetPackageAnalyzerConsole;
-global using System.IO.Abstractions.TestingHelpers;
+﻿global using System.IO.Abstractions.TestingHelpers;
+global using NetPackageAnalyzerDocusaurus;

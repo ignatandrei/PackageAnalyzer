@@ -3,6 +3,12 @@ global using NetPackageAnalyzerObjects;
 global using OutDated = NS_GeneratedJson_outdatedV1_gen_json;
 global using Deprecated = NS_GeneratedJson_deprecatedV1_gen_json;
 global using All = NS_GeneratedJson_includeV1_gen_json;
+global using System;
+global using System.Collections.Generic;
+global using System.IO.Abstractions;
+global using System.Linq;
+global using System.Text.Json;
+global using System.Threading.Tasks;
 public static class GlobalsForGenerating
 {
     public static string prefixSite = "pathname:///docs/Analysis/";//for markdown
@@ -13,3 +19,4 @@ public static class GlobalsForGenerating
         return prefixSite + NameSolution;
     }
 }
+
