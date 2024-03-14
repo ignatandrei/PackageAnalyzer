@@ -80,7 +80,7 @@ public class ProcessOutput
             CreateNoWindow = true,
             Arguments = $"list package --{arg} --format json"
         };
-        Console.WriteLine("analyzing " + startInfo.Arguments);
+        Console.WriteLine("analyzing output of dotnet " + startInfo.Arguments);
         // Create and start the process
         Process process = new Process
         {

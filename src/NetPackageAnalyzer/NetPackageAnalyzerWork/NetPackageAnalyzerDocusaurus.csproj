@@ -4,10 +4,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<Version>8.2024.314.815</Version>
+	<Version>8.2024.314.2224</Version>
   </PropertyGroup>
 
 	<ItemGroup>
+		<AdditionalFiles Include="Templates\DeprecatedOutdated.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\ProjectRoot.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
@@ -61,6 +65,7 @@
 	<ItemGroup>
 	  <None Remove="docusaurus.zip" />
 	  <None Remove="Templates\BuildingBlocks.cshtml" />
+	  <None Remove="Templates\DeprecatedOutdated.cshtml" />
 	  <None Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
 	  <None Remove="Templates\ProjectPackages.cshtml" />
 	  <None Remove="Templates\ProjectRelations.cshtml" />
@@ -74,6 +79,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Watch Remove="Templates\BuildingBlocks.cshtml" />
+	  <Watch Remove="Templates\DeprecatedOutdated.cshtml" />
 	  <Watch Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
 	  <Watch Remove="Templates\ProjectPackages.cshtml" />
 	  <Watch Remove="Templates\ProjectRelations.cshtml" />

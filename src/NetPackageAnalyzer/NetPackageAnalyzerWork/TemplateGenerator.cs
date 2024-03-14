@@ -8,7 +8,12 @@ public class TemplateGenerator
         var rz = new DisplayAllVersions(model);
         return await rz.RenderAsync();
     }
+    public async Task<string?> Generate_OutDeprMarkdown(PackageWithVersion[] model)
+    {
+        var rz = new DeprecatedOutdated(model);
+        return await rz.RenderAsync();
 
+    }
     public async Task<string?> Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version model)
     {
         var rz = new DisplayAllVersionsForMarkdown(model);

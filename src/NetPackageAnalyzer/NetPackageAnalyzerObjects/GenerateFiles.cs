@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzerObjects;
+﻿using NS_GeneratedJson_outdatedV1_gen_json;
+
+namespace NetPackageAnalyzerObjects;
 public abstract class GenerateFiles
 {
     public GenerateFiles(IFileSystem system)
@@ -9,7 +11,19 @@ public abstract class GenerateFiles
     protected Dictionary<string, PackageData> packagedDict = new();
     protected ProjectsDict? projectsDict;
     protected readonly IFileSystem system;
+    protected PackageWithVersionDeprecated[] deprecated=[];
+    protected PackageWithVersionOutdated[] outdated = [];
 
+    public PackageWithVersion[] Problems()
+    {
+        return deprecated
+            .Select(it => (PackageWithVersion)it)
+            .Union(
+            outdated
+            .Select(it => (PackageWithVersion)it)
+
+            ).ToArray();        
+    }
     public abstract Task GenerateNow(string folder, string where);
     public async Task<bool> GenerateData(string folder)
     {
@@ -23,7 +37,7 @@ public abstract class GenerateFiles
         NameSolution = system.Path.GetFileNameWithoutExtension(sln[0]);
         GlobalsForGenerating.NameSolution = NameSolution;
         await Task.Delay(100);
-        WriteLine($"Start analyzing {folder}");
+        WriteLine($"Start analyzing {folder} for solution {NameSolution}");
         var p = new ProcessOutput();
         var build = p.Build(folder);
         if (!build)
@@ -33,18 +47,51 @@ public abstract class GenerateFiles
         }
 
         string text;
+        outdatedV1_gen_json? outdatedPackages = null;
+        Deprecated.deprecatedV1_gen_json? deprecatedPackages = null;
+        All.includeV1_gen_json? allPackages = null;
+        try
+        {
+            text = p.OutputDotnetPackage(folder, PackageOptions.Outdated);
 
-        text = p.OutputDotnetPackage(folder, PackageOptions.Outdated);
-
-        var outdatedPackages = JsonSerializer.Deserialize<OutDated.outdatedV1_gen_json>(text);
+            outdatedPackages = JsonSerializer.Deserialize<OutDated.outdatedV1_gen_json>(text);
 
 
-        text = p.OutputDotnetPackage(folder, PackageOptions.Deprecated);
+            text = p.OutputDotnetPackage(folder, PackageOptions.Deprecated);
 
-        var deprecatedPackages = JsonSerializer.Deserialize<Deprecated.deprecatedV1_gen_json>(text);
+            deprecatedPackages = JsonSerializer.Deserialize<Deprecated.deprecatedV1_gen_json>(text);
 
-        text = p.OutputDotnetPackage(folder, PackageOptions.Include_Transitive);
-        var allPackages = JsonSerializer.Deserialize<All.includeV1_gen_json>(text);
+            text = p.OutputDotnetPackage(folder, PackageOptions.Include_Transitive);
+            allPackages = JsonSerializer.Deserialize<All.includeV1_gen_json>(text);
+        }
+        catch(Exception ex)
+        {
+            WriteLine($"Error! {ex.Message}");
+            WriteLine("please run the latest dotnet command");
+            WriteLine("and , if possible, make an issue at https://github.com/ignatandrei/packageAnalyzer/issues with the result");
+            return false;
+        }
+        if (outdatedPackages?.TopLevelPackagesIDs()?.Length > 0)
+        {
+            outdated = outdatedPackages
+                .TopLevelPackages()
+                .Where(it => it != null)
+                .Select(it => it!)
+                .Where(it => it.Id != null && it.RequestedVersion !=null)
+                .Select(it=> new PackageWithVersionOutdated(it.Id??"",it.RequestedVersion??""))
+                .ToArray();
+        }
+        if(deprecatedPackages?.TopLevelPackagesIDs()?.Length > 0)
+        {
+            deprecated = deprecatedPackages
+                .TopLevelPackages()
+                .Where(it=>it!=null)
+                .Select(it=>it!)
+                .Where(it => it.Id != null && it.RequestedVersion != null)
+                .Select(it => new PackageWithVersionDeprecated(it.Id??"", it.RequestedVersion ?? ""))
+                .ToArray();
+        }
+        
         IOperations[] operations = new IOperations?[3]
         {
     outdatedPackages,
@@ -54,6 +101,7 @@ public abstract class GenerateFiles
         .Where(it => it != null)
         .Select(it => it!)
         .ToArray();
+
 
         List<string> arrDataProjectsPath = new();
         List<string> arrData = new();

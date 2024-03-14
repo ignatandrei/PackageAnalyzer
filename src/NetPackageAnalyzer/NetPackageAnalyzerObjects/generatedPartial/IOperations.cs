@@ -8,6 +8,7 @@ public interface IOperations
     Dictionary<string, PackageWithVersion[]> PerProjectPathWithVersion();
 
 }
-public record PackageWithVersion(string PackageId,string RequestedVersion)
+public record PackageWithVersion(string PackageId,string RequestedVersion, PackageOptions PackageOptions = PackageOptions.None)
 {
+    
 }

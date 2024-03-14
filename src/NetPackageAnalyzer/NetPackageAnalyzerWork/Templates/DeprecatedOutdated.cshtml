@@ -1,0 +1,38 @@
+@inherits RazorBlade.PlainTextTemplate<PackageWithVersion[]>;
+@{
+    var prefix = GlobalsForGenerating.globalPrefix();
+    var outDated = Model.Where(it => it.PackageOptions == PackageOptions.Outdated)
+    .OrderBy(it => it.PackageId)
+    .ToArray();
+    var deprecated = Model.Where(it => it.PackageOptions == PackageOptions.Deprecated)
+        .OrderBy(it => it.PackageId)
+        .ToArray();
+}
+---
+sidebar_position: 80
+---
+
+# Packages Deprecated / Outdated 
+
+## Number items @Model.Length
+
+## OutDated 
+@for (int i = 0; i < outDated.Length ; i++)
+{
+<text>
+
+        @outDated[i].PackageId @outDated[i].RequestedVersion
+
+</text>
+}
+
+## Deprecated
+@for (int i = 0; i < deprecated.Length; i++)
+{
+    <text>
+
+        @deprecated[i].PackageId @deprecated[i].RequestedVersion
+
+    </text>
+}
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

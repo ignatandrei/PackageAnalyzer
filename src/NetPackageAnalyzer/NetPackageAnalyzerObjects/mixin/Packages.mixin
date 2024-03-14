@@ -6,6 +6,7 @@ namespace {{ moxy.Class.Namespace }}
 #nullable enable
   partial class {{ moxy.Class.Name}}: IOperations
   {
+    
     private bool? HasProj;
     private bool HasProjects()
     {
