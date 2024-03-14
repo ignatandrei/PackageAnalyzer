@@ -67,7 +67,7 @@ public class Program
                 return;
             }
             await g.GenerateNow(folder, where);
-
+            
 
         }, folderToHaveSln,folderGenerate, generateData);
 

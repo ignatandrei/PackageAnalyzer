@@ -12,6 +12,8 @@ global using System.Threading.Tasks;
 public static class GlobalsForGenerating
 {
     public static string prefixSite = "pathname:///docs/Analysis/";//for markdown
+
+    public static string FullPathToSolution = "";
     public static string NameSolution = "";
     public static string Version { get; set; }=string.Empty;
     public static string globalPrefix() 

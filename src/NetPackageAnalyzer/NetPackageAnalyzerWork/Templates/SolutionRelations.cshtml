@@ -11,70 +11,9 @@
 sidebar_position: 10
 ---
 
-
 # Solution relations 
 
 ## Number projects (without tests): @Model.MaxReferences
-
-## Quadrant relations in / out
-
-```mermaid
-
-quadrantChart
-    title Number of Relations of each project
-    x-axis Low number Upstream --> High number Upstream
-    y-axis Small number Relations  --> High number Relations
-@*     quadrant-1 Difficult
-    quadrant-2 Business experience
-    quadrant-3 Easy
-    quadrant-4 Nuget experience
- *@
-@foreach (var proj in Model.AlphabeticOrderedProjectsNoTests)
-{
-    if (proj.IsTestProject()) continue;
-    var nameCsproj = proj.NameCSproj();
-    var relativePath = proj.RelativePath();
-    var nrUpstreamProj = Decimal.Divide(proj.UpStreamProjectReferences.Count, nrUpstream);
-    var nrRelationsProj = Decimal.Divide(proj.ProjectsReferences.Count, nrRelations);
-    if (((int)nrUpstreamProj) == nrUpstreamProj) nrUpstreamProj = nrUpstreamProj + 0.01M;
-    if (((int)nrRelationsProj) == nrRelationsProj) nrRelationsProj = nrRelationsProj + 0.01M;
-    string data = $"{nameCsproj}: [{nrUpstreamProj.ToString("F2")},{nrRelationsProj.ToString("F2")}]";
-    <text>
-        @data
-    </text>
-}
-
-```
-
-## Quadrant packages / relations
-
-```mermaid
-
-quadrantChart
-    title Number of Packages and Relations of solution
-    x-axis Small number Packages --> High number Packages
-    y-axis Low number Relations --> High number Relations
-@*     quadrant-1 Difficult
-    quadrant-2 Business experience
-    quadrant-3 Easy
-    quadrant-4 Nuget experience
- *@
-@foreach (var proj in Model.AlphabeticOrderedProjectsNoTests)
-{
-    if(proj.IsTestProject()) continue;
-    var nameCsproj = proj.NameCSproj();
-    var relativePath = proj.RelativePath();
-    var nrPackagesProj = Decimal.Divide( proj.Packages.Count ,nrPackages);
-    var nrRelationsProj = Decimal.Divide(proj.ProjectsReferences.Count,nrRelations);
-    if(((int)nrPackagesProj) == nrPackagesProj) nrPackagesProj = nrPackagesProj + 0.01M;
-    if(((int)nrRelationsProj) == nrRelationsProj) nrRelationsProj = nrRelationsProj + 0.01M;
-        string data = $"{nameCsproj}: [{nrPackagesProj.ToString("F2")},{nrRelationsProj.ToString("F2")}]";
-<text>
-@data
-</text>
-}
-    
-```
 
 ## All Projects Graph
 

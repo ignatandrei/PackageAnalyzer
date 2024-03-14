@@ -7,6 +7,8 @@ sidebar_position: 30
 hide_table_of_contents: true
 ---
 
+# Packages list
+
 export const Highlight = ({children, color}) => (
 <span style={{
       backgroundColor: color,
@@ -18,17 +20,22 @@ export const Highlight = ({children, color}) => (
 </span>
 );
 
-
-# Packages
-
 ## Number of packages : @Model.NrPackages()
 
 ## Packages with more than 1 version: @keysPackageMultiple.Length ( @(keysPackageMultiple.Length * 100 / @Model.NrPackages()) % from total packages)
 
 ## Number of packages with major version differs: @Model.MajorVersionDiffers()
 
-|Nr|ID|References/Projects|
-| ----------- | ----------- | ----------- |
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>ID</th>
+            <th>References</th>
+            <th>Projects</th>            
+        </tr>
+    </thead>
+    <tbody>
 @{
     int i = 0;
 }
@@ -43,13 +50,22 @@ export const Highlight = ({children, color}) => (
     string refs = "";
     @foreach (var vers in vals)
     {
-        refs += " *"+vers.Key + "* " + string.Join(",", vers.Value.Select(it => it.NameCSproj()).ToArray());
-        @* @(vers.Key) @("&nbsp;") @(string.Join(",",vers.Value.Select(it=>it.NameCSproj()))) *@
-
+        
+        refs += " <b>"+vers.Key + "</b> " + string.Join(",", vers.Value.Select(it => it.NameCSproj()).ToArray());
+                @* @(vers.Key) @("&nbsp;") @(string.Join(",",vers.Value.Select(it=>it.NameCSproj()))) *@
+                refs += "<br/>";
     }
 
-<text>| @(i) | @(item.Key) @(textReferences) | @(diffMajor)  @refs|
-</text>
+
+    <tr>
+<td>@i</td>
+<td>@item.Key</td>
+<td>@textReferences @diffMajor</td>
+<td>@refs</td>  
+
+    </tr>
 }
+    </tbody>
+</table>
 
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

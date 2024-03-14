@@ -19,6 +19,7 @@ public abstract class GenerateFiles
             WriteLine($"Must be 1 sln in the {folder}");
             return false;
         }
+        GlobalsForGenerating.FullPathToSolution = sln[0];
         NameSolution = system.Path.GetFileNameWithoutExtension(sln[0]);
         GlobalsForGenerating.NameSolution = NameSolution;
         await Task.Delay(100);

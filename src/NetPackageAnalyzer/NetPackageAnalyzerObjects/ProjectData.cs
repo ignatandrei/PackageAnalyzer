@@ -51,11 +51,12 @@ public partial record ProjectData(string PathProject, string folderSolution)
     }
     public string RelativePath_MemoPure()
     {
-        var path1 = PathProject.Replace("/", "").Replace("\\", "");
-        var path2= folderSolution.Replace("/", "").Replace("\\", "");
-        if (path1.StartsWith(path2))
-            return PathProject.Substring(folderSolution.Length);
+        return Path.GetRelativePath(folderSolution, PathProject);
+        //var path1 = PathProject.Replace("/", "").Replace("\\", "");
+        //var path2= folderSolution.Replace("/", "").Replace("\\", "");
+        //if (path1.StartsWith(path2))
+        //    return PathProject.Substring(folderSolution.Length);
 
-        return PathProject;
+        //return PathProject;
     }
 }

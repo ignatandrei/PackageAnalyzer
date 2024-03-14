@@ -41,7 +41,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
 
 
         folderResults = Path.Combine(folderResults,"Analysis", NameSolution);
-        WriteLine($"generate in {folderResults}");
+        WriteLine($"generate documentation in {folderResults}");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);
         DisplayDataMoreThan1Version model = new(packagedDict, folder);
@@ -131,6 +131,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //ArgumentNullException.ThrowIfNull(projectsDict);
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
 
+        WriteLine($"now npm i && npm run start in  {where}");
 
     }
 }
