@@ -11,8 +11,8 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
-    #runs-on: ubuntu-latest
+    #runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -41,7 +41,7 @@ jobs:
         cd src
         cd NetPackageAnalyzer
         cd NetPackageAnalyzerConsole
-        dotnet run [generateFiles]
+        dotnet run generateFiles
         cd Analysis
         # npm install
         # npm run build
