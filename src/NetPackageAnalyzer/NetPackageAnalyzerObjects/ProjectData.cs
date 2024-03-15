@@ -8,7 +8,7 @@ public partial record ProjectData(string PathProject, string folderSolution)
 
     public List<PackageData> Packages { get; set; }=new();
     
-    public ProjectData[] AlphabeticalProjectsReferences_MemoPure()
+    public ProjectData[] AlphabeticalProjectsReferences()
     { 
         
         return ProjectsReferences.OrderBy(p => p.NameCSproj()).ToArray();
@@ -29,11 +29,11 @@ public partial record ProjectData(string PathProject, string folderSolution)
         }
     }
 
-    public bool IsTestProject_MemoPure()
+    public bool IsTestProject()
     {
         return Packages.Any(it => it.IsTest());
     }
-    public string NameCSproj_MemoPure()
+    public string NameCSproj()
     {
         var indexDot=PathProject.LastIndexOf(".");
         var remains=PathProject.Substring(0, indexDot);
@@ -42,14 +42,14 @@ public partial record ProjectData(string PathProject, string folderSolution)
         var index = Math.Max(index1, index2)+1;
         return remains.Substring(index);
     }
-    public string FullNameMermaid_MemoPure()
+    public string FullNameMermaid()
     {
         var ret= $"{NameCSproj()}[{RelativePath()}]"; 
         ret=ret.Replace(@"[\","[");
         ret=ret.Replace(@"[/","[");
         return ret;
     }
-    public string RelativePath_MemoPure()
+    public string RelativePath()
     {
         return Path.GetRelativePath(folderSolution, PathProject);
         //var path1 = PathProject.Replace("/", "").Replace("\\", "");

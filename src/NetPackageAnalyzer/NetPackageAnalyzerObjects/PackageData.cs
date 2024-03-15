@@ -1,7 +1,7 @@
 ﻿namespace NetPackageAnalyzerObjects;
 public partial record PackageData(string packageVersionId)
 {
-    public bool IsTest_MemoPure()
+    public bool IsTest()
     {
         if (packageVersionId.ToLowerInvariant().StartsWith("microsoft.test"))
             return true;
@@ -32,7 +32,7 @@ public partial record PackageData(string packageVersionId)
         }
         return versions.Order().ToArray();
     }
-    public bool MajorVersionDiffer_MemoPure()
+    public bool MajorVersionDiffer()
     {
         if(VersionsPerProject.Keys.Count < 2)return false;
         var vers=VersionsPerProject
@@ -47,7 +47,7 @@ public partial record PackageData(string packageVersionId)
         return (vers.Count >1) ;
 
     }
-    public bool HasProblems_MemoPure() 
+    public bool HasProblems() 
     {
         return VersionsPerProjectWithProblems.Count > 0;
     }

@@ -52,7 +52,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
                 .ToArray();
         }
     }
-    public ProjectData[] BuildingBlocks_MemoPure(int nrReferences)
+    public ProjectData[] BuildingBlocks(int nrReferences)
     {
         var ret = this.ProjectsNoTest
             .Where(it=>it.ProjectsReferences.Count==nrReferences)
