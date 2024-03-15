@@ -1,6 +1,4 @@
-﻿using NS_GeneratedJson_outdatedV1_gen_json;
-
-namespace NetPackageAnalyzerObjects;
+﻿namespace NetPackageAnalyzerObjects;
 public abstract class GenerateFiles
 {
     public GenerateFiles(IFileSystem system)
@@ -47,7 +45,7 @@ public abstract class GenerateFiles
         }
 
         string text;
-        outdatedV1_gen_json? outdatedPackages = null;
+        OutDated.outdatedV1_gen_json? outdatedPackages = null;
         Deprecated.deprecatedV1_gen_json? deprecatedPackages = null;
         All.includeV1_gen_json? allPackages = null;
         try

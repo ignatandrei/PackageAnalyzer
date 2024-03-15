@@ -1,6 +1,4 @@
-﻿using System.IO.Compression;
-
-namespace NetPackageAnalyzerDocusaurus;
+﻿namespace NetPackageAnalyzerDocusaurus;
 
 public class GenerateFilesDocusaurus:GenerateFiles
 {
