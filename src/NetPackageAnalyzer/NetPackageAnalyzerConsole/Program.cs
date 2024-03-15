@@ -97,7 +97,7 @@ public class Program
             //args = new[] { "generateFiles",
             //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
             //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
-            };
+            //};
 
         }
         WriteLine("args:" + string.Join(" ",args));
