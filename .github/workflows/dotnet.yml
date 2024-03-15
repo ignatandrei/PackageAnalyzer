@@ -11,8 +11,8 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
-    #runs-on: ubuntu-latest
+    #runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -20,6 +20,10 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.x
+    - name: setup node
+      uses: actions/setup -node@v4
+      with:
+        node-version: '20.9.0'
     - name: Restore dependencies
       run: |
         cd src
@@ -31,13 +35,18 @@ jobs:
         cd NetPackageAnalyzer
         dotnet build
         cd NetPackageAnalyzerConsole
-        dotnet pack -o ../../nugetPackages        
-    
+        dotnet pack -o ../../nugetPackages       
+    - name: Build site
+      run: |
+        cd src
+        cd NetPackageAnalyzer
+        cd NetPackageAnalyzerConsole
+        dotnet run [generateFiles]
+        cd Analysis
+        npm install
+        npm run build
+
     - name: 'Upload nuget'
-      if: |
-        ${{ github.ref == 'refs/heads/main' }}
-        &&
-        ${{ github.ref_type == 'tag' }}
       uses: actions/upload-artifact@v2
       with:
         name: Nuget_${{github.run_number}}
@@ -45,12 +54,6 @@ jobs:
         retention-days: 1
   
     - name: push to nuget
-      if: | 
-        ${{ github.ref == 'refs/heads/main' }}
-        &&
-        ${{ github.ref_type == 'tag' }}
-        && 
-        ${{ startsWith(github.ref, 'refs/tags/vRelease')}}
       run: |
         dir src/nugetPackages/*.*
         echo '1'
