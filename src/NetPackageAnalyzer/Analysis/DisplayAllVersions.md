@@ -21,4 +21,4 @@
 | 13 | System.Threading.Tasks.Extensions  |    *4.5.4* NetPackageAnalyzerConsole,NetPackageAnalyzerWork|
 | 14 | ThisAssembly.AssemblyInfo  |    *1.4.0* NetPackageAnalyzerConsole,NetPackageAnalyzerWork|
 
-<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.314.2224</small>
+<small>Generated  by https://www.nuget.org/packages/netpackageanalyzerconsole , version 8.2024.315.1900</small>
