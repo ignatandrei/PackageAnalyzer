@@ -29,11 +29,11 @@ jobs:
         cd src
         cd NetPackageAnalyzer
         dotnet restore
+        dotnet build --no-restore
     - name: Build
       run: |
         cd src
-        cd NetPackageAnalyzer
-        dotnet build
+        cd NetPackageAnalyzer        
         cd NetPackageAnalyzerConsole
         dotnet pack -o ../../nugetPackages       
     - name: Build site
