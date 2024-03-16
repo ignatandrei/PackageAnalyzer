@@ -41,10 +41,10 @@ jobs:
         cd src
         cd NetPackageAnalyzer
         cd NetPackageAnalyzerConsole
-        dotnet run generateFiles
+        dotnet run generateFiles --folder .. 
         cd Analysis
-        # npm install
-        # npm run build
+        npm install
+        npm run build
 
     - name: 'Upload nuget'
       uses: actions/upload-artifact@v2
