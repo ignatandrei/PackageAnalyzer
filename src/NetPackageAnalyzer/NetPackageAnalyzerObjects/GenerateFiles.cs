@@ -22,15 +22,17 @@ public abstract class GenerateFiles
 
             ).ToArray();        
     }
-    public abstract Task GenerateNow(string folder, string where);
+    public abstract Task<int> GenerateNow(string folder, string where);
     public async Task<bool> GenerateData(string folder)
     {
         var sln = system.Directory.GetFiles(folder, "*.sln");
         if (sln.Length != 1)
         {
             WriteLine($"Must be 1 sln in the {folder}");
+            //throw new ArgumentException($"Must be 1 sln in the {folder}");
             return false;
         }
+
         GlobalsForGenerating.FullPathToSolution = sln[0];
         NameSolution = system.Path.GetFileNameWithoutExtension(sln[0]);
         GlobalsForGenerating.NameSolution = NameSolution;

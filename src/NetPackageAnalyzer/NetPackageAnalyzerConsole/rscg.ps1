@@ -8,7 +8,7 @@ while($true)
     dotnet clean
     dotnet restore
     dotnet build /p:EmitCompilerGeneratedFiles=true --disable-build-servers --force
-    # dotnet run
+    dotnet run
     Read-Host -Prompt "Press Enter to continue"
 
 }

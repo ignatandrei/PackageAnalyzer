@@ -13,6 +13,11 @@
     <AdditionalFiles Include="generatedJson/outdatedV1.gen.json" />
     <AdditionalFiles Include="mixin/Packages.mixin" />
   </ItemGroup>
+
+  
+  <ItemGroup>
+    <Compile Include="..\WhatIAmDoingData\Interceptors.cs" Link="Interceptors.cs" />
+  </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.0">
 			<PrivateAssets>all</PrivateAssets>
@@ -24,8 +29,15 @@
 		<PackageReference Include="rscgutils" Version="2024.2000.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 
 	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10316.2235" />
+		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10316.2235" />
+
+	</ItemGroup>
 	<PropertyGroup>
+
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
+		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);RSCG_InterceptorTemplate</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
 </Project>

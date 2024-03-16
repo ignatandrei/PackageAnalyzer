@@ -1,7 +1,23 @@
-﻿
+﻿using LibGit2Sharp;
+using RSCG_WhatIAmDoing_Common;
+
 public class Program
 {
     static async Task<int> Main(string[] args)
+    {
+        try
+        {
+            return await RealMain(args);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            WhatIAmDoingData.DisplayData.DisplayJustErrors();
+
+            return 1;
+        }
+    }
+    static async Task<int> RealMain(string[] args)
     {
         GlobalsForGenerating.Version = ThisAssembly.Info.Version.ToString();
         WriteLine("Version:"+ThisAssembly.Info.Version.ToString());        
@@ -48,28 +64,8 @@ public class Program
         //    }
 
         //});
-        cmdGenerate.SetHandler(async (string folder, string where,  WhatToGenerate what) =>
-        {
-            
-            WriteLine($"analyzing {folder}");
-            GenerateFiles? g=null;
-            switch(what)
-            {
-                case WhatToGenerate.Docusaurus:
-                    g = new GenerateFilesDocusaurus(new FileSystem());
-                    break;
-                default:
-                    throw new NotImplementedException($"what={what}");
-            }
-            if (!await g.GenerateData(folder))
-            {
-                Console.WriteLine("not capable to generate data");
-                return;
-            }
-            await g.GenerateNow(folder, where);
-            
-
-        }, folderToHaveSln,folderGenerate, generateData);
+        
+        cmdGenerate.SetHandler(GenerateHandler, folderToHaveSln,folderGenerate, generateData);
 
         //Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
 
@@ -93,15 +89,50 @@ public class Program
         //rootCommand.Add(cmdAnalyzeBranch);
         if(args.Length == 0)
         {
-            args = ["-h"]; 
-            //args = new[] { "generateFiles",
-            //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
-            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
-            //};
+            args = ["-h"];
+            args = new[] { "generateFiles",
+                "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+                //"--folder",@"D:\gth\PackageAnalyzer\src\documentation1\",
+                "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
+            };
 
         }
         WriteLine("args:" + string.Join(" ",args));
         await rootCommand.InvokeAsync(args); 
         return 0;
     }
+    private static async Task GenerateHandler(string folder, string where, WhatToGenerate what)
+    {
+        try
+        {
+            await RealGenerateHandler(folder, where, what);
+        }
+        catch (Exception ex)
+        {
+            WriteLine("Exception!! "+ex.Message);
+            
+            
+
+        }
+    }
+    private static async Task RealGenerateHandler(string folder, string where, WhatToGenerate what)
+    {
+
+        WriteLine($"analyzing {folder}");
+        GenerateFiles? g = null;
+        switch (what)
+        {
+            case WhatToGenerate.Docusaurus:
+                g = new GenerateFilesDocusaurus(new FileSystem());
+                break;
+            default:
+                throw new NotImplementedException($"what={what}");
+        }
+        if (!await g.GenerateData(folder))
+        {
+            Console.WriteLine("not capable to generate data");
+            return;
+        }
+        await g.GenerateNow(folder, where);
+   }
 }

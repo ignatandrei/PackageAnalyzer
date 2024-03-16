@@ -5,6 +5,7 @@ public class ProcessOutput
 {
     public bool Build(string folder)
     {
+
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = "dotnet.exe",

@@ -49,6 +49,16 @@
 		<Watch Include="**\*.cshtml" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <None Remove="rscg.ps1" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Compile Include="..\WhatIAmDoingData\Interceptors.cs" Link="Interceptors.cs" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.0">
 			<PrivateAssets>all</PrivateAssets>
@@ -56,5 +66,24 @@
 		</PackageReference>
 
 	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10316.2235" />
+		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10316.2235" />
+
+	</ItemGroup>
+	<PropertyGroup>
+
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
+		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);RSCG_InterceptorTemplate</InterceptorsPreviewNamespaces>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+	</PropertyGroup>
 
 </Project>

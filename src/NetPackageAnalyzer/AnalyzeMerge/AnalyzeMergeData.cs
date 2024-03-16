@@ -9,7 +9,7 @@ public class AnalyzeMergeData
         folderRoot=folder;
     }
 
-    public async Task GenerateNow()
+    public async Task<int> GenerateNow()
     {
         await Task.Delay(1000);
         
@@ -28,7 +28,7 @@ public class AnalyzeMergeData
             folderRoot = folderRoot.Substring(0, folder.Length - relPath.Length);
         }
 
-        using (var repo = new Repository(folderRoot))
+        using var repo = new Repository(folderRoot) ;
         {
             //Commit? debugCommit = null;
             Branch? mainBranch = null;
@@ -175,6 +175,7 @@ public class AnalyzeMergeData
 
         }
         //data.Analyze();
+        return 1;
     }
     string? relFolder()
     {

@@ -89,11 +89,25 @@
 	  <Watch Remove="Templates\TestProjects.cshtml" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Compile Include="..\WhatIAmDoingData\Interceptors.cs" Link="Interceptors.cs" />
+	</ItemGroup>
+	<ItemGroup>
 	  <EmbeddedResource Include="docusaurus.zip" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
 	</ItemGroup>
-	
-	
+
+	<ItemGroup>
+		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10316.2235" />
+		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10316.2235" />
+
+	</ItemGroup>
+	<PropertyGroup>
+
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
+		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);RSCG_InterceptorTemplate</InterceptorsPreviewNamespaces>
+	</PropertyGroup>
+
 </Project>

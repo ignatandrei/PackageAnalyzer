@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerTests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerObjects", "NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj", "{579A9B8E-FD8D-4E0E-9BF8-C3AF5BE2B682}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhatIAmDoingData", "WhatIAmDoingData\WhatIAmDoingData.csproj", "{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{579A9B8E-FD8D-4E0E-9BF8-C3AF5BE2B682}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579A9B8E-FD8D-4E0E-9BF8-C3AF5BE2B682}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{579A9B8E-FD8D-4E0E-9BF8-C3AF5BE2B682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

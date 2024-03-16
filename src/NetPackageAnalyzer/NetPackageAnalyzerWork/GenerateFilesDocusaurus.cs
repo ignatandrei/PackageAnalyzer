@@ -7,7 +7,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         
     }
     
-    public override async Task GenerateNow(string folder, string where)
+    public override async Task<int> GenerateNow(string folder, string where)
     {
 
         var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Documentation") : where;
@@ -133,6 +133,6 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
 
         WriteLine($"now npm i && npm run start in  {where}");
-
+        return 1;
     }
 }
