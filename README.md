@@ -1,6 +1,6 @@
 # PackageAnalyzer
 
-Analyzer for .NET solution / projects . Latest version 8.2024.315.1900
+Analyzer for .NET solution / projects . Latest version 8.2024.403.2200
 
 
 ## Install as local tool
@@ -51,3 +51,16 @@ https://ignatandrei.github.io/PackageAnalyzer/
 # Contributors needed!
 
 If you want more to generate, add a Razor / .cshtml file to templates folder and generate in GenerateNow
+
+# Errors
+
+If you have errors, please run with 
+
+```
+dotnet PackageAnalyzer generateFiles --verbose true 
+```
+
+and open an issue with the verbose file mentioned in the output at 
+
+Please see verbose file at
+
