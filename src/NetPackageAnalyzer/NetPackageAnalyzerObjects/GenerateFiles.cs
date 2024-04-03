@@ -39,6 +39,9 @@ public abstract class GenerateFiles
         await Task.Delay(100);
         WriteLine($"Start analyzing {folder} for solution {NameSolution}");
         var p = new ProcessOutput();
+        Console.WriteLine("List SDKs");
+        var listSDKs = p.ListSDKS(folder);
+        WriteLine(listSDKs);
         var build = p.Build(folder);
         if (!build)
         {

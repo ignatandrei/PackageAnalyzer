@@ -1,5 +1,6 @@
 ﻿using LibGit2Sharp;
 using RSCG_WhatIAmDoing_Common;
+using WhatIAmDoingData;
 
 public class Program
 {
@@ -95,12 +96,12 @@ public class Program
         if(args.Length == 0)
         {
             args = ["-h"];
-            args = new[] { "generateFiles",
-                "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
-                //"--folder",@"D:\gth\PackageAnalyzer\src\documentation1\",
-                "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
-                "--verbose","true"
-            };
+            //args = new[] { "generateFiles",
+            //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+            //    //"--folder",@"D:\gth\PackageAnalyzer\src\documentation1\",
+            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
+            //    "--verbose","true"
+            //};
 
         }
         WriteLine("args:" + string.Join(" ",args));
@@ -111,25 +112,8 @@ public class Program
     {
         try
         {
-            if (verbose)
-            {
-                CachingData.OnMethodCalled += (id, acc, method) =>
-                {
-            //        WriteLine($"{id} {acc} ");
-
-                    WriteLine($"({id}){acc} at {method.StartedAtDate}");
-                    Console.WriteLine($" => Method {method.typeAndMethodData.MethodName} from class {method.typeAndMethodData.TypeOfClass}   ");
-                    Console.WriteLine($" => Arguments: {method.ArgumentsAsString()}");
-                    if((acc & AccumulatedStateMethod.HasFinishedWithResult) == AccumulatedStateMethod.HasFinishedWithResult)
-                    {
-                        Console.WriteLine($" => result: {method.Result}");
-                    }
-                    if ((acc & AccumulatedStateMethod.RaiseException) == AccumulatedStateMethod.RaiseException)
-                    {
-                        Console.WriteLine($" => exception: {method.Exception.Message}");
-                    }
-                };
-            }
+            DisplayData.Verbose = verbose;
+            Console.WriteLine("Please see verbose file at "+DisplayData.VerboseFile());
             await RealGenerateHandler(folder, where, what);
         }
         catch (Exception ex)

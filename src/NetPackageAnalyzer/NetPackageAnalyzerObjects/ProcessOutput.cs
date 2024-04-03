@@ -3,6 +3,38 @@
 namespace NetPackageAnalyzerObjects;
 public class ProcessOutput
 {
+    public string ListSDKS(string folder)
+    {
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = "dotnet.exe",
+            WorkingDirectory = folder,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            Arguments = $"--list-sdks"
+        };
+
+        // Create and start the process
+        Process process = new Process
+        {
+            StartInfo = startInfo
+        };
+        process.Start();
+
+        // Read the output
+        string output = process.StandardOutput.ReadToEnd();
+        string errorOutput = process.StandardError.ReadToEnd();
+
+        // Wait for the process to exit
+        process.WaitForExit();
+        if (errorOutput.Length > 0)
+        {
+            return errorOutput;
+        }
+        return output;
+    }
     public bool Build(string folder)
     {
 
