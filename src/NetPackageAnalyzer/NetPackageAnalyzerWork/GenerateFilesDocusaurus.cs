@@ -14,7 +14,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         if(!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);
         var zip = Path.Combine(folderResults, "docusaurus.zip");
-        Console.WriteLine("generate docusaurus at" + zip);
+        Console.WriteLine("generate docusaurus at " + zip);
         await File.WriteAllBytesAsync(zip, MyResource.GetDocusaurusZip().ToArray());
         ZipFile.ExtractToDirectory(zip, folderResults,true);
 

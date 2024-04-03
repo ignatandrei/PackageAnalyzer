@@ -8,14 +8,15 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />		
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<None Include="..\..\..\docs\ico.png" Pack="true" PackagePath="\" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AnalyzeMerge\AnalyzeMerge.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj" />
+	  <ProjectReference Include="..\WhatIAmDoingData\WhatIAmDoingData.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
 		<Version>8.2024.315.1900</Version>
@@ -60,15 +61,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.0">
+		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10316.2235" />
-		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10316.2235" />
+		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10402.810" />
+		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10402.810" />
 
 	</ItemGroup>
 	<PropertyGroup>

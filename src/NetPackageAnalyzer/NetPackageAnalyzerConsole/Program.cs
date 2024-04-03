@@ -17,6 +17,7 @@ public class Program
             return 1;
         }
     }
+    static Option<bool>  verbose = new ("--verbose", "Show verbose output");
     static async Task<int> RealMain(string[] args)
     {
         GlobalsForGenerating.Version = ThisAssembly.Info.Version.ToString();
@@ -24,7 +25,7 @@ public class Program
         RootCommand rootCommand = new();
         Command cmdGenerate = new("generateFiles", "Generate files for documentation");
         cmdGenerate.AddAlias("gf");
-        
+        rootCommand.AddGlobalOption(verbose);
         
         var folderToHaveSln = new Option<string>
             (name: "--folder",
@@ -65,7 +66,11 @@ public class Program
 
         //});
         
-        cmdGenerate.SetHandler(GenerateHandler, folderToHaveSln,folderGenerate, generateData);
+        cmdGenerate.SetHandler(GenerateHandler,
+            folderToHaveSln,
+            folderGenerate, 
+            generateData,
+            verbose);
 
         //Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
 
@@ -94,6 +99,7 @@ public class Program
                 "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
                 //"--folder",@"D:\gth\PackageAnalyzer\src\documentation1\",
                 "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
+                "--verbose","true"
             };
 
         }
@@ -101,10 +107,29 @@ public class Program
         await rootCommand.InvokeAsync(args); 
         return 0;
     }
-    private static async Task GenerateHandler(string folder, string where, WhatToGenerate what)
+    private static async Task GenerateHandler(string folder, string where, WhatToGenerate what,bool verbose)
     {
         try
         {
+            if (verbose)
+            {
+                CachingData.OnMethodCalled += (id, acc, method) =>
+                {
+            //        WriteLine($"{id} {acc} ");
+
+                    WriteLine($"({id}){acc} at {method.StartedAtDate}");
+                    Console.WriteLine($" => Method {method.typeAndMethodData.MethodName} from class {method.typeAndMethodData.TypeOfClass}   ");
+                    Console.WriteLine($" => Arguments: {method.ArgumentsAsString()}");
+                    if((acc & AccumulatedStateMethod.HasFinishedWithResult) == AccumulatedStateMethod.HasFinishedWithResult)
+                    {
+                        Console.WriteLine($" => result: {method.Result}");
+                    }
+                    if ((acc & AccumulatedStateMethod.RaiseException) == AccumulatedStateMethod.RaiseException)
+                    {
+                        Console.WriteLine($" => exception: {method.Exception.Message}");
+                    }
+                };
+            }
             await RealGenerateHandler(folder, where, what);
         }
         catch (Exception ex)
