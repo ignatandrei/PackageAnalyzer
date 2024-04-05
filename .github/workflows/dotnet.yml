@@ -27,7 +27,6 @@ jobs:
     - name: Restore dependencies
       run: |
         cd src
-        cd NetPackageAnalyzer
         dotnet restore
         dotnet build /p:EmitCompilerGeneratedFiles=true --disable-build-servers --force
         # dotnet build --no-restore
