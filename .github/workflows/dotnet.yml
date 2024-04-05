@@ -19,7 +19,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.103
+        dotnet-version: 8.0.x
     # - name: setup node
     #   uses: actions/setup-node@v4
     #   with:
@@ -27,8 +27,9 @@ jobs:
     - name: Restore dependencies
       run: |
         cd src
+        cd NetPackageAnalyzer
         dotnet restore
-        dotnet build /p:EmitCompilerGeneratedFiles=true --disable-build-servers --force
+          dotnet build /p:EmitCompilerGeneratedFiles=true --disable-build-servers --force
         # dotnet build --no-restore
     - name: Build
       run: |
