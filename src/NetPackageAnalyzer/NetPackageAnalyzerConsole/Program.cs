@@ -98,7 +98,7 @@ public class Program
             args = ["-h"];
             //args = new[] { "generateFiles",
             //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
-            //    //"--folder",@"D:\gth\PackageAnalyzer\src\documentation1\",
+            //    "--folder",@"D:\gth\PackageAnalyzer\src\documentation1\",
             //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
             //    "--verbose","true"
             //};

@@ -19,7 +19,7 @@
 	  <ProjectReference Include="..\WhatIAmDoingData\WhatIAmDoingData.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>8.2024.403.2200</Version>
+		<Version>8.2024.405.0700</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>
@@ -68,8 +68,8 @@
 
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10402.2257" />
-		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10402.2257" />
+		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10404.2057" />
+		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10404.2057" />
 
 	</ItemGroup>
 	<PropertyGroup>
