@@ -26,13 +26,16 @@
 		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.0.2" />
 		<PackageReference Include="Morris.Moxy" Version="1.8.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<!--<PackageReference Include="rscgutils" Version="2024.1859.1955" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
-		<PackageReference Include="rscgutils" Version="2024.2000.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<!--<PackageReference Include="rscgutils" Version="2024.2000.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
 
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10404.2057" />
 		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10404.2057" />
 
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="rscgutilsGenerated\" />
 	</ItemGroup>
 	<PropertyGroup>
 
