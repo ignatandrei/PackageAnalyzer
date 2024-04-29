@@ -49,9 +49,19 @@ public class Program
         description: "what to generate - 1= docusaurus",
         getDefaultValue: () => WhatToGenerate.Docusaurus);
 
+        
         generateData.AddAlias("-wg");
-
         cmdGenerate.AddOption(generateData);
+
+        var runProduct = new Option<bool>
+        (name: "--runProduct",
+        description: "run product after",
+        getDefaultValue: () => false);
+
+        runProduct.AddAlias("-rp");
+
+
+        cmdGenerate.AddOption(runProduct);
         //cmdGenerate.Handler = CommandHandler.Create<string,string>(async (folder,where) =>
         //{
         //    WriteLine($"analyzing {folder}");
@@ -70,8 +80,9 @@ public class Program
         cmdGenerate.SetHandler(GenerateHandler,
             folderToHaveSln,
             folderGenerate, 
-            generateData,
-            verbose);
+            generateData,            
+            verbose,
+            runProduct);
 
         //Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
 
@@ -108,19 +119,30 @@ public class Program
         await rootCommand.InvokeAsync(args); 
         return 0;
     }
-    private static async Task GenerateHandler(string folder, string where, WhatToGenerate what,bool verbose)
+    private static async Task GenerateHandler(string folder, string where, WhatToGenerate what,bool verbose, bool runProduct)
     {
         try
         {
             DisplayData.Verbose = verbose;
             Console.WriteLine("Please see verbose file at "+DisplayData.VerboseFile());
             await RealGenerateHandler(folder, where, what);
+            if (runProduct)
+            {
+                WriteLine("running product");
+                var p = new ProcessStartInfo
+                {
+                    FileName = "cmd",
+                    Arguments = $"/c npm i && npm run start",
+                    WorkingDirectory = where,
+                    UseShellExecute = false,
+                    CreateNoWindow = false
+                };
+                Process.Start(p);
+            }
         }
         catch (Exception ex)
         {
             WriteLine("Exception!! "+ex.Message);
-            
-            
 
         }
     }
@@ -143,5 +165,8 @@ public class Program
             return;
         }
         await g.GenerateNow(folder, where);
-   }
+        WriteLine($"now npm i && npm run start in  {where}");
+
+
+    }
 }

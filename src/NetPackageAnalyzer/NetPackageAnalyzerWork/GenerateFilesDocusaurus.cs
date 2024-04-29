@@ -132,7 +132,6 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //ArgumentNullException.ThrowIfNull(projectsDict);
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
 
-        WriteLine($"now npm i && npm run start in  {where}");
         return 1;
     }
 }
