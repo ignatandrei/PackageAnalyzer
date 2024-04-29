@@ -149,7 +149,8 @@ internal class RealMainExecuting
             default:
                 throw new NotImplementedException($"what={what}");
         }
-        if (!await g.GenerateData(folder))
+        bool b = await g.GenerateDataForSln(folder);
+        if (!b)
         {
             Console.WriteLine("not capable to generate data");
             return;

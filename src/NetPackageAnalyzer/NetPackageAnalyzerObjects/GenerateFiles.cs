@@ -23,7 +23,7 @@ public abstract class GenerateFiles
             ).ToArray();        
     }
     public abstract Task<int> GenerateNow(string folder, string where);
-    public async Task<bool> GenerateData(string folder)
+    public async Task<bool> GenerateDataForSln(string folder)
     {
         var sln = system.Directory.GetFiles(folder, "*.sln");
         if (sln.Length != 1)
