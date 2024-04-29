@@ -155,7 +155,7 @@ internal class RealMainExecuting
             Console.WriteLine("not capable to generate data");
             return;
         }
-        await g.GenerateNow(folder, where);
+        var data= await g.GenerateNow(folder, where);
         WriteLine($"now npm i && npm run start in  {where}");
 
 
