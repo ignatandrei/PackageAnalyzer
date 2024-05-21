@@ -207,4 +207,14 @@ public abstract class GenerateFiles
         }
         return true;
     }
+
+    public void AddHistory()
+    {
+        ArgumentNullException.ThrowIfNull(projectsDict);
+        projectsDict.FindHistoryProjects();
+        foreach (var item in projectsDict)
+        {
+            Console.WriteLine($"History for {item.Value.PathProject} is {item.Value.nrCommits}"); ;
+        }
+    }
 }

@@ -37,6 +37,9 @@
 	<ItemGroup>
 	  <Folder Include="rscgutilsGenerated\" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj" />
+	</ItemGroup>
 	<PropertyGroup>
 
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>

@@ -1,4 +1,5 @@
-﻿using NetPackageAnalyzerObjects;
+﻿using NetPackageAnalyzeHistory;
+using NetPackageAnalyzerObjects;
 
 namespace NetPackageAnalyzerObjects;
 public partial class ProjectsDict : Dictionary<string, ProjectData>
@@ -116,6 +117,15 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             {
                 refProject.UpStreamProjectReferences.Add(project);
             }
+        }
+    }
+    public void FindHistoryProjects()
+    {
+        foreach (var project in this.Values)
+        {
+            FileHistorySimple fileHistorySimple = new(project.PathProject);
+            fileHistorySimple.Initialize();
+            project.nrCommits = fileHistorySimple.numberCommits;
         }
     }
     public void FindReferences()
