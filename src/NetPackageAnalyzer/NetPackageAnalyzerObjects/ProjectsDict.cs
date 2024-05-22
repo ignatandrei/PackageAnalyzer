@@ -53,6 +53,20 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
                 .ToArray();
         }
     }
+    public IOrderedEnumerable<ProjectData> ProjectByCommitsFile()
+    {
+        
+            return this.Values
+                .OrderBy(it => it.nrCommitsFile);
+        
+    }
+    public IOrderedEnumerable<ProjectData> ProjectByCommitsFolder()
+    {
+
+        return this.Values
+            .OrderBy(it => it.nrCommitsFolder);
+
+    }
     public ProjectData[] BuildingBlocks(int nrReferences)
     {
         var ret = this.ProjectsNoTest
@@ -123,9 +137,10 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
         foreach (var project in this.Values)
         {
-            FileHistorySimple fileHistorySimple = new(project.PathProject);
+            FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
             fileHistorySimple.Initialize();
-            project.nrCommits = fileHistorySimple.numberCommits;
+            project.nrCommitsFile = fileHistorySimple.numberCommitsFile;
+            project.nrCommitsFolder = fileHistorySimple.numberCommitsFolder;
         }
     }
     public void FindReferences()

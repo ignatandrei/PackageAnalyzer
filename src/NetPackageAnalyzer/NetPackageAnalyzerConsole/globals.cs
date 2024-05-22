@@ -8,3 +8,4 @@ global using AnalyzeMerge;
 global using System.IO.Abstractions;
 global using NetPackageAnalyzerDocusaurus;
 global using NetPackageAnalyzerObjects;
+global using WhatIAmDoingData;

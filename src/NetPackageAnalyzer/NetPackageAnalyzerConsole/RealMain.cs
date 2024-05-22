@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WhatIAmDoingData;
-
-namespace NetPackageAnalyzerConsole;
+﻿namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting
 {
     static Option<bool> verbose = new("--verbose", "Show verbose output");
@@ -131,8 +124,7 @@ internal class RealMainExecuting
         }
         catch (Exception ex)
         {
-            WriteLine("Exception!! " + ex.Message);
-
+            WriteLine("Exception!! " + ex.Message);             
         }
     }
     private static async Task RealGenerateHandler(string folder, string where, WhatToGenerate what)

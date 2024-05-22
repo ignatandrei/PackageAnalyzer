@@ -212,9 +212,9 @@ public abstract class GenerateFiles
     {
         ArgumentNullException.ThrowIfNull(projectsDict);
         projectsDict.FindHistoryProjects();
-        foreach (var item in projectsDict)
-        {
-            Console.WriteLine($"History for {item.Value.PathProject} is {item.Value.nrCommits}"); ;
-        }
+        //foreach (var item in projectsDict)
+        //{
+        //    Console.WriteLine($"History for {item.Value.PathProject} is {item.Value.nrCommits}"); ;
+        //}
     }
 }

@@ -7,9 +7,9 @@
 sidebar_position: 30
 ---
 
-# Projects Building Blocks
+# Projects Analysis
 
-## Number of BB0 :    @Model.BuildingBlocks(0).Length
+## Number of Bulding Blocks 0 :    @Model.BuildingBlocks(0).Length
 @for (int i = 0; i < nrMaxProjects; i++)
 {
     <text>## Building Blocks - Projects with @i project references
@@ -34,4 +34,52 @@ sidebar_position: 30
     </text>
 
 }
+
+@{
+    var data=Model.ProjectByCommitsFile().ToArray();
+    var names = data.Select(x => x.NameCSproj()).ToArray();
+    var xaxis = string.Join(",", names);
+    var yaxis = string.Join(",", data.Select(x => x.nrCommitsFile));
+    var maxCommits = data.Max(x => x.nrCommitsFile);
+    //var minCommits = Model.Values.Min(x => x.nrCommits);
+
+}
+
+<text>
+    ## Commits number per project
+
+    ### Number commits for project files
+</text>
+```mermaid
+xychart-beta horizontal
+title "Number commits for .csproj files"
+x-axis [@xaxis]
+y-axis "NumberCommits" 0 --> @maxCommits
+bar [@yaxis]
+line [@yaxis]
+```
+
+
+@{
+    data = Model.ProjectByCommitsFolder().ToArray();
+    names = data.Select(x => x.NameCSproj()).ToArray();
+    xaxis = string.Join(",", names);
+    yaxis = string.Join(",", data.Select(x => x.nrCommitsFolder));
+    maxCommits = data.Max(x => x.nrCommitsFolder);
+    //var minCommits = Model.Values.Min(x => x.nrCommits);
+
+}
+
+
+<text>
+    ### Number commits per project folder
+</text>
+```mermaid
+xychart-beta horizontal
+title "Number commits per project folder"
+x-axis [@xaxis]
+y-axis "NumberCommits" 0 --> @maxCommits
+bar [@yaxis]
+line [@yaxis]
+```
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

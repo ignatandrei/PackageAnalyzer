@@ -2,7 +2,8 @@
 
 public partial record ProjectData(string PathProject, string folderSolution)
 {
-    public int nrCommits { get; set; }
+    public int nrCommitsFile { get; set; }
+    public int nrCommitsFolder { get; set; }
     public List<ProjectData> ProjectsReferences { get; set; }=new();
 
     public List<ProjectData> UpStreamProjectReferences { get; set; } = new();

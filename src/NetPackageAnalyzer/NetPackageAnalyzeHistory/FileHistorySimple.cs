@@ -1,17 +1,16 @@
 ﻿namespace NetPackageAnalyzeHistory;
 
-public class FileHistorySimple
+public class FileFolderHistorySimple
 {
     public readonly string nameFile;
-    public int numberCommits { get; private set; }
-    public FileHistorySimple(string nameFile)
+    public int numberCommitsFile { get; private set; }
+    public int numberCommitsFolder { get; private set; }
+    public FileFolderHistorySimple(string nameFile)
     {
         this.nameFile = nameFile;
     }
-    public void Initialize()
+    private int NrCommits(string folder,string what)
     {
-        ArgumentNullException.ThrowIfNull(nameFile);
-        var folder=Path.GetDirectoryName(nameFile);
         ProcessStartInfo startInfo = new()
         {
             //TODO: make time sensitive comment
@@ -22,7 +21,7 @@ public class FileHistorySimple
             RedirectStandardError = true,
             UseShellExecute = false,
             CreateNoWindow = true,
-            Arguments = "log --pretty=oneline -n 100000  -- " + nameFile
+            Arguments = "log --pretty=oneline -n 100000  -- " + what
         };
 
         // Create and start the process
@@ -42,10 +41,20 @@ public class FileHistorySimple
         {
             throw new ArgumentException(errorOutput);
         }
-        var nrLines = output.Split('\r', '\n') ?? [] ;
-        numberCommits = nrLines
-            .Where(it=>!string.IsNullOrWhiteSpace(it) )
+        var nrLines = output.Split('\r', '\n') ?? [];
+        return  nrLines
+            .Where(it => !string.IsNullOrWhiteSpace(it))
             .ToArray()
             .Length;
+
+    }
+    public void Initialize()
+    {
+        ArgumentNullException.ThrowIfNull(nameFile);
+        var folder=Path.GetDirectoryName(nameFile);
+        ArgumentNullException.ThrowIfNull(folder);
+        numberCommitsFile = NrCommits(folder, nameFile);
+        numberCommitsFolder = NrCommits(folder, ".");
+
     }
 }
