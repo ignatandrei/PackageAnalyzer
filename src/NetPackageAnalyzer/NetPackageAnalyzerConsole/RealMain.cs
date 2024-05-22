@@ -90,11 +90,11 @@ internal class RealMainExecuting
         if (args.Length == 0)
         {
             args = ["-h"];
-            args = new[] { "generateFiles",
-                "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
-                "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
-                "--verbose","true"
-            };
+            //args = new[] { "generateFiles",
+            //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
+            //    "--verbose","true"
+            //};
 
         }
         WriteLine("args:" + string.Join(" ", args));
