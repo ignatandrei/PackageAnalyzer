@@ -208,7 +208,7 @@ public abstract class GenerateFiles
         return true;
     }
 
-    public void AddHistory()
+    public void AddHistoryCsproj()
     {
         ArgumentNullException.ThrowIfNull(projectsDict);
         projectsDict.FindHistoryProjects();

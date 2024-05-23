@@ -4,7 +4,7 @@ public class FileFolderHistorySimple
 {
     public readonly string nameFile;
     public int numberCommitsFile { get; private set; }
-    public int numberCommitsFolder { get; private set; }
+    public int? numberCommitsFolder { get; private set; }
     public FileFolderHistorySimple(string nameFile)
     {
         this.nameFile = nameFile;
@@ -48,13 +48,14 @@ public class FileFolderHistorySimple
             .Length;
 
     }
-    public void Initialize()
+    public void Initialize(bool AddHistoryForFolder)
     {
         ArgumentNullException.ThrowIfNull(nameFile);
         var folder=Path.GetDirectoryName(nameFile);
         ArgumentNullException.ThrowIfNull(folder);
         numberCommitsFile = NrCommits(folder, nameFile);
-        numberCommitsFolder = NrCommits(folder, ".");
+        if(AddHistoryForFolder)
+            numberCommitsFolder = NrCommits(folder, ".");
 
     }
 }

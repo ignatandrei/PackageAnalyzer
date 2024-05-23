@@ -138,9 +138,9 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         foreach (var project in this.Values)
         {
             FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
-            fileHistorySimple.Initialize();
+            fileHistorySimple.Initialize(true);
             project.nrCommitsFile = fileHistorySimple.numberCommitsFile;
-            project.nrCommitsFolder = fileHistorySimple.numberCommitsFolder;
+            project.nrCommitsFolder = fileHistorySimple.numberCommitsFolder.GetValueOrDefault(-1);
         }
     }
     public void FindReferences()
