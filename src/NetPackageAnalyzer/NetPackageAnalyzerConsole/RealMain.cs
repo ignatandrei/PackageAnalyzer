@@ -39,7 +39,7 @@ internal class RealMainExecuting
         var runProduct = new Option<bool>
         (name: "--runProduct",
         description: "run product after",
-        getDefaultValue: () => false);
+        getDefaultValue: () => false); 
 
         runProduct.AddAlias("-rp");
 
@@ -90,11 +90,11 @@ internal class RealMainExecuting
         if (args.Length == 0)
         {
             args = ["-h"];
-            //args = new[] { "generateFiles",
-            //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
-            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
-            //    "--verbose","true"
-            //};
+            args = new[] { "generateFiles",
+                "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+                "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
+                "--verbose","true" 
+            };
 
         }
         WriteLine("args:" + string.Join(" ", args));
@@ -106,7 +106,10 @@ internal class RealMainExecuting
         try
         {
             DisplayData.Verbose = verbose;
-            Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
+            if (verbose)
+            {
+                Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
+            }
             await RealGenerateHandler(folder, where, what);
             if (runProduct)
             {

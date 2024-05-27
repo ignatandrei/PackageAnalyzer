@@ -1,7 +1,14 @@
 @inherits RazorBlade.PlainTextTemplate<ProjectsDict>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
-    var nrMaxProjects = Math.Max(Model.MaxReferences/3,3);
+    //int nrMaxProjects = Math.Max(Model.MaxReferences/3,3);
+    int nrMaxProjects = 2;
+    while (
+        (nrMaxProjects>0) && (Model.BuildingBlocks(nrMaxProjects).Length == 0)
+        )
+    {
+        nrMaxProjects--;
+    }
 }
 ---
 sidebar_position: 30
@@ -58,7 +65,29 @@ y-axis "NumberCommits" 0 --> @maxCommits
 bar [@yaxis]
 line [@yaxis]
 ```
-
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>Project</th>
+            <th>Commits</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var nrProj = 0;
+        }
+        @foreach (var item in data)
+        {
+            nrProj++;
+            <tr>
+                <td>@nrProj</td>
+                <td>@item.NameCSproj()</td>
+                <td>@item.nrCommitsFile</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 @{
     data = Model.ProjectByCommitsFolder().ToArray();
@@ -82,4 +111,32 @@ y-axis "NumberCommits" 0 --> @maxCommits
 bar [@yaxis]
 line [@yaxis]
 ```
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>Project folder</th>
+            <th>Commits</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            nrProj = 0;
+        }
+        @foreach (var item in data)
+        {
+            nrProj++;
+            <tr>
+                <td>@nrProj</td>
+                <td>@item.NameCSproj()</td>
+                <td>@item.nrCommitsFolder</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
