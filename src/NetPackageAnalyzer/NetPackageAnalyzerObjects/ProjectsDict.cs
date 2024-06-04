@@ -141,6 +141,8 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             fileHistorySimple.Initialize(true);
             project.nrCommitsFile = fileHistorySimple.numberCommitsFile;
             project.nrCommitsFolder = fileHistorySimple.numberCommitsFolder.GetValueOrDefault(-1);
+            project.FirstCommit = fileHistorySimple.FirstCommit;
+            project.LastCommit = fileHistorySimple.LastCommit;
         }
     }
     public void FindReferences()

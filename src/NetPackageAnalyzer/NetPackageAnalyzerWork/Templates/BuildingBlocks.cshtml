@@ -70,7 +70,10 @@ line [@yaxis]
         <tr>
             <th>Nr</th>
             <th>Project</th>
-            <th>Commits</th>
+            <th>Total Commits</th>
+            <th>Commits per month</th>
+            <th>First Commit</th>
+            <th>Last Commit</th>
         </tr>
     </thead>
     <tbody>
@@ -84,6 +87,15 @@ line [@yaxis]
                 <td>@nrProj</td>
                 <td>@item.NameCSproj()</td>
                 <td>@item.nrCommitsFile</td>
+                <td>
+                    @item.CommitsPerMonth
+                    
+                </td>
+                
+                <td>
+                    @item.FirstCommit?.ToString("yyyy MMM dd")
+                </td>
+                <td>@item.LastCommit?.ToString("yyyy MMM dd")</td>
             </tr>
         }
     </tbody>
@@ -116,7 +128,11 @@ line [@yaxis]
         <tr>
             <th>Nr</th>
             <th>Project folder</th>
-            <th>Commits</th>
+            <th>Total Commits</th>
+            <th>Commits per month</th>
+            <th>First Commit</th>
+            <th>Last Commit</th>
+            
         </tr>
     </thead>
     <tbody>
@@ -130,6 +146,15 @@ line [@yaxis]
                 <td>@nrProj</td>
                 <td>@item.NameCSproj()</td>
                 <td>@item.nrCommitsFolder</td>
+                <td>
+                    @item.CommitsPerMonth
+
+                </td>
+
+                <td>
+                    @item.FirstCommit?.ToString("yyyy MMM dd")
+                </td>
+                <td>@item.LastCommit?.ToString("yyyy MMM dd")</td>
             </tr>
         }
     </tbody>

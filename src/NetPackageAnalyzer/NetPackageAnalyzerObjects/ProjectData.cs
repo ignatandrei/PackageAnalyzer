@@ -4,6 +4,37 @@ public partial record ProjectData(string PathProject, string folderSolution)
 {
     public int nrCommitsFile { get; set; }
     public int nrCommitsFolder { get; set; }
+    public DateTime? LastCommit { get; set; }
+    public DateTime? FirstCommit { get; set; }
+
+    public TimeSpan? DiffCommits
+    {
+        get{
+            
+            if(LastCommit == null || FirstCommit == null)
+                return null;
+
+            return LastCommit - FirstCommit;
+        }
+    }
+    public int? CommitsPerMonth
+    {
+
+        get
+        {
+            if (LastCommit == null || FirstCommit == null)
+                return null;
+
+            var diff = DiffCommits;
+            if (diff == null)
+                return null;
+            var nrMonths = (int) diff.Value.TotalDays / 30;
+            if (nrMonths == 0)
+                nrMonths++;
+            return (int)( nrCommitsFile   / nrMonths);
+        }
+    }
+
     public List<ProjectData> ProjectsReferences { get; set; }=new();
 
     public List<ProjectData> UpStreamProjectReferences { get; set; } = new();
