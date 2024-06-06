@@ -1,0 +1,154 @@
+@inherits RazorBlade.PlainTextTemplate<ProjectsDict>;
+@{
+    var prefix = GlobalsForGenerating.globalPrefix();
+}
+---
+sidebar_position: 30
+---
+
+# Commits Analysis
+@{
+    var data = Model.ProjectByCommitsFile().ToArray();
+    var names = data.Select(x => x.NameCSproj()).ToArray();
+    var xaxis = string.Join(",", names);
+    var yaxis = string.Join(",", data.Select(x => x.nrCommitsFile));
+    var maxCommits = data.Max(x => x.nrCommitsFile);
+    var maxCommitsMonth = Model.Values.Max(x => x.CommitsPerMonth);
+
+}
+
+<text>
+    ## Number commits for project files
+</text>
+```mermaid
+xychart-beta horizontal
+title "Number commits for .csproj files"
+x-axis [@xaxis]
+y-axis "NumberCommits" 0 --> @maxCommits
+bar [@yaxis]
+line [@yaxis]
+```
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>Project</th>
+            <th>Total Commits</th>
+            <th>Commits per month</th>
+            <th>First Commit</th>
+            <th>Last Commit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var nrProj = 0;
+        }
+        @foreach (var item in data) 
+        {
+            
+            string name = ""+item.nrCommitsFile;
+            if (item.nrCommitsFile == maxCommits){
+                name = $"<div style={{{{color: 'red'}}}}>{item.nrCommitsFile}</div>";
+            }
+            string nameMonth = "" + item.CommitsPerMonth;
+            if (item.CommitsPerMonth == maxCommitsMonth)
+            {
+                nameMonth = $"<div style={{{{color: 'red'}}}}>{item.CommitsPerMonth}</div>";
+            }
+            nrProj++;
+            
+            <text>
+            <tr>
+                <td>@nrProj</td>
+                <td>@item.NameCSproj()</td>
+
+                <td>
+                    @name   
+                </td>
+                <td>
+                        @nameMonth
+
+                </td>
+
+                <td>
+                    @item.FirstCommit?.ToString("yyyy MMM dd")
+                </td>
+                <td>@item.LastCommit?.ToString("yyyy MMM dd")</td>
+            </tr>
+            </text>
+        }
+    </tbody>
+</table>
+
+@{
+    data = Model.ProjectByCommitsFolder().ToArray();
+    names = data.Select(x => x.NameCSproj()).ToArray();
+    xaxis = string.Join(",", names);
+    yaxis = string.Join(",", data.Select(x => x.nrCommitsFolder));
+    maxCommits = data.Max(x => x.nrCommitsFolder);
+    maxCommitsMonth = Model.Values.Max(x => x.CommitsPerMonth);
+
+}
+
+
+<text>
+    ## Number commits per project folder
+</text>
+```mermaid
+xychart-beta horizontal
+title "Number commits per project folder"
+x-axis [@xaxis]
+y-axis "NumberCommits" 0 --> @maxCommits
+bar [@yaxis]
+line [@yaxis]
+```
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>Project folder</th>
+            <th>Total Commits</th>
+            <th>Commits per month</th>
+            <th>First Commit</th>
+            <th>Last Commit</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            nrProj = 0;
+        }
+        @foreach (var item in data)
+        {
+
+            string name = "" + item.nrCommitsFile;
+            if (item.nrCommitsFolder == maxCommits)
+            {
+                name = $"<div style={{{{color: 'red'}}}}>{item.nrCommitsFile}</div>";
+            }
+            string nameMonth = "" + item.CommitsPerMonth;
+            if (item.CommitsPerMonth == maxCommitsMonth)
+            {
+                nameMonth = $"<div style={{{{color: 'red'}}}}>{item.CommitsPerMonth}</div>";
+            }
+
+            nrProj++;
+            <tr>
+                <td>@nrProj</td>
+                <td>@item.NameCSproj()</td>
+                <td>@name </td>
+                <td>
+                    @nameMonth
+
+                </td>
+
+                <td>
+                    @item.FirstCommit?.ToString("yyyy MMM dd")
+                </td>
+                <td>@item.LastCommit?.ToString("yyyy MMM dd")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

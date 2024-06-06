@@ -47,6 +47,11 @@ public class TemplateGenerator
         var rz = new BuildingBlocks(model);
         return await rz.RenderAsync();
     }
+    internal async Task<string?> Generate_Commits(ProjectsDict model)
+    {
+        var rz = new Commits(model);
+        return await rz.RenderAsync();
+    }
     internal async Task<string?> Generate_RootProjects(ProjectsDict model)
     {
         var rz = new ProjectRoot(model);

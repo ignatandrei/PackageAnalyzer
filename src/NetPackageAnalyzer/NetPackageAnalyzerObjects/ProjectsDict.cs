@@ -57,7 +57,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
         
             return this.Values
-                .OrderBy(it => it.nrCommitsFile);
+                .OrderBy(it => it.NameCSproj());
         
     }
     public IOrderedEnumerable<ProjectData> ProjectByCommitsFolder()

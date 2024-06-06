@@ -122,6 +122,10 @@ public class GenerateFilesDocusaurus:GenerateFiles
         file = Path.Combine(folderResults, "BuildingBlocks.md");
         await File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));
 
+        file = Path.Combine(folderResults, "Commits.md");
+        await File.WriteAllTextAsync(file, await generator.Generate_Commits(projectsDict));
+
+
         file = Path.Combine(folderResults, "TestProjects.md");
         await File.WriteAllTextAsync(file, await generator.Generate_TestProjects(projectsDict));
 

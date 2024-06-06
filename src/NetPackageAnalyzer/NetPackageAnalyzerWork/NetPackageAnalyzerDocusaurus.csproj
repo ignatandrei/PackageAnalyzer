@@ -8,6 +8,10 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<AdditionalFiles Include="Templates\Commits.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\DeprecatedOutdated.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
@@ -78,15 +82,6 @@
 	  <RazorBlade Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Watch Remove="Templates\BuildingBlocks.cshtml" />
-	  <Watch Remove="Templates\DeprecatedOutdated.cshtml" />
-	  <Watch Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
-	  <Watch Remove="Templates\ProjectPackages.cshtml" />
-	  <Watch Remove="Templates\ProjectRelations.cshtml" />
-	  <Watch Remove="Templates\ProjectRoot.cshtml" />
-	  <Watch Remove="Templates\SimpleDisplayProjectWithReferencesProject.cshtml" />
-	  <Watch Remove="Templates\SolutionRelations.cshtml" />
-	  <Watch Remove="Templates\TestProjects.cshtml" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Include="..\WhatIAmDoingData\Interceptors.cs" Link="Interceptors.cs" />
