@@ -1,17 +1,19 @@
 ﻿namespace NetPackageAnalyzeHistory;
-
+record History(int? nrCommits, DateTime? FirstCommit, DateTime? LastCommit);
 public class FileFolderHistorySimple
 {
     public readonly string nameFile;
-    public int numberCommitsFile { get; private set; }
+    public int? numberCommitsFile { get; private set; }
     public int? numberCommitsFolder { get; private set; }
-    public DateTime? LastCommit { get; private set; }
-    public DateTime? FirstCommit { get; private set; }
+    public DateTime? LastCommitFile { get; private set; }
+    public DateTime? FirstCommitFile { get; private set; }
+    public DateTime? LastCommitFolder { get; private set; }
+    public DateTime? FirstCommitFolder { get; private set; }
     public FileFolderHistorySimple(string nameFile)
     {
         this.nameFile = nameFile;
     }
-    private int NrCommits(string folder,string what)
+    private History NrCommits(string folder,string what)
     {
         ProcessStartInfo startInfo = new()
         {
@@ -64,13 +66,14 @@ public class FileFolderHistorySimple
             }
             
         }
+        DateTime? LastCommit= null, FirstCommit=null;
         if(dates.Count > 0)
         {
             LastCommit = dates.Max();
-            FirstCommit = dates.Min();
+            FirstCommit= dates.Min();
         }
         
-        return  nrLines.Length;
+        return  new History( nrLines.Length,FirstCommit, LastCommit);
 
     }
     public void Initialize(bool AddHistoryForFolder)
@@ -78,9 +81,11 @@ public class FileFolderHistorySimple
         ArgumentNullException.ThrowIfNull(nameFile);
         var folder=Path.GetDirectoryName(nameFile);
         ArgumentNullException.ThrowIfNull(folder);
-        numberCommitsFile = NrCommits(folder, nameFile);
+        (numberCommitsFile,FirstCommitFile,LastCommitFile) = NrCommits(folder, nameFile);
         if(AddHistoryForFolder)
-            numberCommitsFolder = NrCommits(folder, ".");
-
+            (numberCommitsFolder,FirstCommitFolder,LastCommitFolder) = NrCommits(folder, ".");
+        
+        //Console.WriteLine("done with " + nameFile + $"{LastCommitFolder != LastCommitFile}");
+        
     }
 }

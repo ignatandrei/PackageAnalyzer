@@ -4,34 +4,65 @@ public partial record ProjectData(string PathProject, string folderSolution)
 {
     public int nrCommitsFile { get; set; }
     public int nrCommitsFolder { get; set; }
-    public DateTime? LastCommit { get; set; }
-    public DateTime? FirstCommit { get; set; }
+    public DateTime? LastCommitFile { get; internal set; }
+    public DateTime? FirstCommitFile { get; internal set; }
+    public DateTime? LastCommitFolder { get; internal set; }
+    public DateTime? FirstCommitFolder { get; internal set; }
 
-    public TimeSpan? DiffCommits
+    public TimeSpan? DiffCommitsFile
     {
         get{
             
-            if(LastCommit == null || FirstCommit == null)
+            if(LastCommitFile == null || FirstCommitFile == null)
                 return null;
 
-            return LastCommit - FirstCommit;
+            return LastCommitFile - FirstCommitFile;
         }
     }
-    public int? CommitsPerMonth
+    public int? CommitsPerMonthFile
     {
 
         get
         {
-            if (LastCommit == null || FirstCommit == null)
+            if (LastCommitFile == null || FirstCommitFile == null)
                 return null;
 
-            var diff = DiffCommits;
+            var diff = DiffCommitsFile;
             if (diff == null)
                 return null;
             var nrMonths = (int) diff.Value.TotalDays / 30;
             if (nrMonths == 0)
                 nrMonths++;
             return (int)( nrCommitsFile   / nrMonths);
+        }
+    }
+
+    public TimeSpan? DiffCommitsFolder
+    {
+        get
+        {
+
+            if (LastCommitFolder == null || FirstCommitFolder == null)
+                return null;
+
+            return LastCommitFolder - FirstCommitFolder;
+        }
+    }
+    public int? CommitsPerMonthFolder
+    {
+
+        get
+        {
+            if (LastCommitFolder == null || FirstCommitFolder == null)
+                return null;
+
+            var diff = DiffCommitsFolder;
+            if (diff == null)
+                return null;
+            var nrMonths = (int)diff.Value.TotalDays / 30;
+            if (nrMonths == 0)
+                nrMonths++;
+            return (int)(nrCommitsFolder / nrMonths);
         }
     }
 

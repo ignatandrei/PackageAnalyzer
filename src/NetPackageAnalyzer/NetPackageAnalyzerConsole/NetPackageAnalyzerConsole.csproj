@@ -19,7 +19,7 @@
 	  <ProjectReference Include="..\WhatIAmDoingData\WhatIAmDoingData.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>8.2024.607.800</Version>
+		<Version>8.2024.607.2100</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>

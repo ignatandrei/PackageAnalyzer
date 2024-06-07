@@ -53,20 +53,26 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
                 .ToArray();
         }
     }
-    public IOrderedEnumerable<ProjectData> ProjectByCommitsFile()
+    public IOrderedEnumerable<ProjectData> ProjectByName()
     {
-        
-            return this.Values
-                .OrderBy(it => it.NameCSproj());
-        
-    }
-    public IOrderedEnumerable<ProjectData> ProjectByCommitsFolder()
-    {
-
         return this.Values
-            .OrderBy(it => it.nrCommitsFolder);
+        .OrderBy(it => it.NameCSproj());
 
     }
+    //public IOrderedEnumerable<ProjectData> ProjectByCommitsFile()
+    //{
+
+    //        return this.Values
+    //            .OrderBy(it => it.nr());
+
+    //}
+    //public IOrderedEnumerable<ProjectData> ProjectByCommitsFolder()
+    //{
+
+    //    return this.Values
+    //        .OrderBy(it => it.nrCommitsFolder);
+
+    //}
     public ProjectData[] BuildingBlocks(int nrReferences)
     {
         var ret = this.ProjectsNoTest
@@ -139,10 +145,13 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         {
             FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
             fileHistorySimple.Initialize(true);
-            project.nrCommitsFile = fileHistorySimple.numberCommitsFile;
+            project.nrCommitsFile = fileHistorySimple.numberCommitsFile??0;
             project.nrCommitsFolder = fileHistorySimple.numberCommitsFolder.GetValueOrDefault(-1);
-            project.FirstCommit = fileHistorySimple.FirstCommit;
-            project.LastCommit = fileHistorySimple.LastCommit;
+            project.FirstCommitFile = fileHistorySimple.FirstCommitFile;
+            project.FirstCommitFolder = fileHistorySimple.FirstCommitFolder;
+            project.LastCommitFile = fileHistorySimple.LastCommitFile;
+            project.LastCommitFolder = fileHistorySimple.LastCommitFolder;
+            //Console.WriteLine("!done with " + project.PathProject + $"{project.LastCommitFolder} {project.LastCommitFile}");
         }
     }
     public void FindReferences()
