@@ -121,7 +121,7 @@ line [@yaxis]
         @foreach (var item in data)
         {
 
-            string name = "" + item.nrCommitsFile;
+            string name = "" + item.nrCommitsFolder;
             if (item.nrCommitsFolder == maxCommits)
             {
                 name = $"<div style={{{{color: 'red'}}}}>{item.nrCommitsFile}</div>";
