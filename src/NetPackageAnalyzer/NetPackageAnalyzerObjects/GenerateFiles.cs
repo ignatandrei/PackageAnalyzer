@@ -14,13 +14,18 @@ public abstract class GenerateFiles
 
     public PackageWithVersion[] Problems()
     {
-        return deprecated
+        var res= deprecated
             .Select(it => (PackageWithVersion)it)
             .Union(
             outdated
             .Select(it => (PackageWithVersion)it)
 
-            ).ToArray();        
+            ).ToArray();
+        foreach (var item in res)
+        {
+            item.Projects = packagedDict[item.PackageId].VersionsPerProjectWithProblems[item.RequestedVersion].ToArray();
+        }
+        return res;
     }
     public abstract Task<int> GenerateNow(string folder, string where);
     public async Task<bool> GenerateDataForSln(string folder)

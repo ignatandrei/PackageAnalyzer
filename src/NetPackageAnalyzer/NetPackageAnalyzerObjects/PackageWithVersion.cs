@@ -8,5 +8,5 @@ public record PackageWithVersionOutdated(string packageId, string version)
 public record PackageWithVersionDeprecated(string packageId, string version)
     : PackageWithVersion(packageId, version,PackageOptions.Deprecated)
 {
-
+    
 }

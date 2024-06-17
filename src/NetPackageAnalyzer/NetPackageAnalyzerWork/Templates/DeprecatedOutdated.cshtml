@@ -17,13 +17,23 @@ sidebar_position: 80
 ## Number items @Model.Length
 
 ## OutDated 
+
 @for (int i = 0; i < outDated.Length ; i++)
 {
 <text>
 
-        @outDated[i].PackageId @outDated[i].RequestedVersion
+## @outDated[i].PackageId 
 
+should be @outDated[i].RequestedVersion for next @outDated[i].Projects.Length projects
+
+@foreach(var project in outDated[i].Projects)
+{
+    <text>
+@project.NameCSproj()
+    </text>
+}
 </text>
+
 }
 
 ## Deprecated
@@ -31,7 +41,17 @@ sidebar_position: 80
 {
     <text>
 
-        @deprecated[i].PackageId @deprecated[i].RequestedVersion
+## @deprecated[i].PackageId
+
+should be @deprecated[i].RequestedVersion for next @deprecated[i].Projects.Length projects
+
+
+    @foreach (var project in outDated[i].Projects)
+    {
+        <text>
+            @project.NameCSproj()
+        </text>
+    }
 
     </text>
 }

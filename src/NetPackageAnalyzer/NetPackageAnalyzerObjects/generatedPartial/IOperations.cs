@@ -10,5 +10,5 @@ public interface IOperations
 }
 public record PackageWithVersion(string PackageId,string RequestedVersion, PackageOptions PackageOptions = PackageOptions.None)
 {
-    
+    public ProjectData[] Projects { get; set; } = Array.Empty<ProjectData>();
 }
