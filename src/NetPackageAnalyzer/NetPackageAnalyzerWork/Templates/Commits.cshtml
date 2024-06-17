@@ -10,10 +10,10 @@ sidebar_position: 30
 # Commits Analysis
 @{
     var data = Model.ProjectByName().ToArray();
-    
-    var names = data.Select(x => x.NameCSproj()).ToArray();
+    var ordered = data.OrderByDescending(x => x.nrCommitsFile).ToArray();
+    var names = ordered.Select(x => x.NameCSproj()).ToArray();
     var xaxis = string.Join(",", names);
-    var yaxis = string.Join(",", data.Select(x => x.nrCommitsFile));
+    var yaxis = string.Join(",", ordered.Select(x => x.nrCommitsFile));
     var maxCommits = data.Max(x => x.nrCommitsFile);
     var maxCommitsMonth = Model.Values.Max(x => x.CommitsPerMonthFile);
     int height = 100 + data.Count() * 20;
@@ -21,10 +21,6 @@ sidebar_position: 30
 
 <text>
     ## Number commits for project files
-
-    @data.First().NameCSproj()  @data.First().LastCommitFile @data.First().LastCommitFolder
-    <br/>
-    @data.Last().NameCSproj() @data.Last().LastCommitFile @data.Last().LastCommitFolder
 
 </text>
 ```mermaid
@@ -98,10 +94,11 @@ line [@yaxis]
 
 @{
     data = Model.ProjectByName().ToArray();
+    ordered = data.OrderByDescending(x => x.nrCommitsFolder).ToArray();
 
-    names = data.Select(x => x.NameCSproj()).ToArray();
+    names = ordered.Select(x => x.NameCSproj()).ToArray();
     xaxis = string.Join(",", names);
-    yaxis = string.Join(",", data.Select(x => x.nrCommitsFolder));
+    yaxis = string.Join(",", ordered.Select(x => x.nrCommitsFolder));
     maxCommits = data.Max(x => x.nrCommitsFolder);
     maxCommitsMonth = Model.Values.Max(x => x.CommitsPerMonthFile);
 
@@ -183,14 +180,25 @@ line [@yaxis]
 
 ```mermaid
 gantt
-    title Gantt duration of modifications
+    title Gantt duration of modifications project
     dateFormat  YYYY-MM-DD
-    section Data
+    section Project
     @foreach (var item in data)
 {
     <text>
-        @item.NameCSproj() project           :done, @item.FirstCommitFile?.ToString("yyyy-MM-dd"), @(item.DiffCommitsFile?.Days+"d")
-        @item.NameCSproj() folder           :crit, @item.FirstCommitFolder?.ToString("yyyy-MM-dd"), @(item.DiffCommitsFolder?.Days + "d")
+        @item.NameCSproj() :done, @item.FirstCommitFile?.ToString("yyyy-MM-dd"), @(item.DiffCommitsFile?.Days+"d")
+    </text>
+}
+```
+```mermaid
+gantt
+    title Gantt duration of modifications folder
+    dateFormat  YYYY-MM-DD
+    section Folder
+@foreach (var item in data)
+{
+    <text>
+        @item.NameCSproj() :crit, @item.FirstCommitFolder?.ToString("yyyy-MM-dd"), @(item.DiffCommitsFolder?.Days + "d")
     </text>
 }
 ```
