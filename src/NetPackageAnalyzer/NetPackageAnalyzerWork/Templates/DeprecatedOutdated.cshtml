@@ -22,7 +22,7 @@ sidebar_position: 80
 {
 <text>
 
-## @outDated[i].PackageId 
+### @outDated[i].PackageId 
 
 should be @outDated[i].RequestedVersion for next @outDated[i].Projects.Length projects
 
@@ -41,16 +41,16 @@ should be @outDated[i].RequestedVersion for next @outDated[i].Projects.Length pr
 {
     <text>
 
-## @deprecated[i].PackageId
+### @deprecated[i].PackageId
 
 should be @deprecated[i].RequestedVersion for next @deprecated[i].Projects.Length projects
 
 
-    @foreach (var project in outDated[i].Projects)
+        @foreach (var project in deprecated[i].Projects)
     {
-        <text>
-            @project.NameCSproj()
-        </text>
+<text>
+    @project.NameCSproj()
+</text>
     }
 
     </text>
