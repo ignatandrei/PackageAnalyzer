@@ -1,6 +1,4 @@
-﻿
-
-namespace NetPackageAnalyzerDocusaurus;
+﻿namespace NetPackageAnalyzerDocusaurus;
 public class TemplateGenerator
 {
     public async Task<string> Generate_DisplayAllVersions(DisplayDataMoreThan1Version model)
@@ -40,6 +38,11 @@ public class TemplateGenerator
     internal async Task<string?> Generate_ProjectPackages(ProjectData model)
     {
         var rz= new ProjectPackages(model);
+        return await rz.RenderAsync();
+    }
+    internal async Task<string?> Generate_ProjectCommits(ProjectData model)
+    {
+        var rz = new ProjectCommits(model);
         return await rz.RenderAsync();
     }
     internal async Task<string?> Generate_BuildingBlocks(ProjectsDict model)

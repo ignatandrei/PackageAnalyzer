@@ -20,6 +20,10 @@
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
 		</AdditionalFiles>
+		<AdditionalFiles Include="Templates\ProjectCommits.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\ProjectRoot.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
@@ -76,6 +80,7 @@
 	  <None Remove="Templates\CommitsPerData.cshtml" />
 	  <None Remove="Templates\DeprecatedOutdated.cshtml" />
 	  <None Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
+	  <None Remove="Templates\ProjectCommits.cshtml" />
 	  <None Remove="Templates\ProjectPackages.cshtml" />
 	  <None Remove="Templates\ProjectRelations.cshtml" />
 	  <None Remove="Templates\ProjectRoot.cshtml" />

@@ -103,6 +103,8 @@ public class GenerateFilesDocusaurus:GenerateFiles
             file = Path.Combine(folderProject, "Packages.md");
             await File.WriteAllTextAsync(file, await generator.Generate_ProjectPackages(projData));
 
+            file = Path.Combine(folderProject, "Commits.md");
+            await File.WriteAllTextAsync(file, await generator.Generate_ProjectCommits(projData));
 
 
         }

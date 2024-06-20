@@ -1,0 +1,57 @@
+@inherits RazorBlade.PlainTextTemplate<ProjectData>;
+@{
+    var nameCsproj = Model.NameCSproj();
+    var relativePath = Model.RelativePath();
+    var name = Model.FullNameMermaid();
+    var prefix = GlobalsForGenerating.globalPrefix();
+    var years= Model.AllHistoryFile.Select(it => it.Key).OrderByDescending(it => it).ToArray();
+    var xaxis = string.Join(", ", years);
+    var nrCommits = years.Select(it => Model.AllHistoryFile[it].nrCommits).ToArray();
+    var yaxis = string.Join(", ", nrCommits);
+}
+---
+sidebar_position: 30
+---
+
+# Commits per year for @nameCsproj
+
+## Project commits for @nameCsproj
+
+```mermaid
+xychart-beta
+title "Nr Commits Csproj"
+x-axis [@xaxis]
+y-axis "NrCommits" 0 --> @nrCommits.Max()
+bar [@yaxis]
+line [@yaxis]
+```
+
+@{
+    years = Model.AllHistoryFolder.Select(it => it.Key).OrderByDescending(it => it).ToArray();
+    xaxis = string.Join(", ", years);
+    nrCommits = years.Select(it => Model.AllHistoryFolder[it].nrCommits).ToArray();
+    yaxis = string.Join(", ", nrCommits);
+}
+
+## Folder commits for @nameCsproj
+
+```mermaid
+xychart-beta
+title "Nr Commits folder"
+x-axis [@xaxis]
+y-axis "NrCommits" 0 --> @nrCommits.Max()
+bar [@yaxis]
+line [@yaxis]
+```
+
+
+
+[Packages](Packages)
+
+[Project References](ProjectReferences)
+
+
+[Back To Solution](@prefix/ProjectRelation)
+
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
+
