@@ -100,7 +100,7 @@ line [@yaxis]
     xaxis = string.Join(",", names);
     yaxis = string.Join(",", ordered.Select(x => x.nrCommitsFolder));
     maxCommits = data.Max(x => x.nrCommitsFolder);
-    maxCommitsMonth = Model.Values.Max(x => x.CommitsPerMonthFile);
+    maxCommitsMonth = Model.Values.Max(x => x.CommitsPerMonthFolder);
 
 }
 
@@ -173,35 +173,6 @@ line [@yaxis]
         }
     </tbody>
 </table>
-
-<text>
-    ## Gantt data
-</text>
-
-```mermaid
-gantt
-    title Gantt duration of modifications project
-    dateFormat  YYYY-MM-DD
-    section Project
-    @foreach (var item in data)
-{
-    <text>
-        @item.NameCSproj() :done, @item.FirstCommitFile?.ToString("yyyy-MM-dd"), @(item.DiffCommitsFile?.Days+"d")
-    </text>
-}
-```
-```mermaid
-gantt
-    title Gantt duration of modifications folder
-    dateFormat  YYYY-MM-DD
-    section Folder
-@foreach (var item in data)
-{
-    <text>
-        @item.NameCSproj() :crit, @item.FirstCommitFolder?.ToString("yyyy-MM-dd"), @(item.DiffCommitsFolder?.Days + "d")
-    </text>
-}
-```
 
 
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
