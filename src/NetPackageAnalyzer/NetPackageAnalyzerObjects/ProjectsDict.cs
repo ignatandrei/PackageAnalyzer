@@ -8,6 +8,24 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
+    public int MaxYearCommits()
+    {
+        return this.Values
+            .Select(it => it.AllHistoryFolder)
+            .Where(it => it != null)
+            .Select(it => it!.MaxYear())
+            .Max();
+
+    }
+    public int MinYearCommits()
+    {
+        return this.Values
+            .Select(it => it.AllHistoryFolder)
+            .Where(it => it != null)
+            .Select(it => it!.MinYear())
+            .Min();
+
+    }
     public long MaxPackages
     {
         get

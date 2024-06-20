@@ -4,9 +4,18 @@ namespace NetPackageAnalyzerObjects;
 
 public partial record ProjectData(string PathProject, string folderSolution)
 {
-    public History? AllHistoryFile { get; set; }
-    public History? AllHistoryFolder { get; set; }
+    public HistoryPerYear? AllHistoryFile { get; set; }
+    public HistoryPerYear? AllHistoryFolder { get; set; }
 
+    public History AllHistoryFileYear(int year)
+    {
+        return AllHistoryFile?.HistoryYear(year)??History.Empty;
+    }
+    public History AllHistoryFolderYear(int year)
+    {
+
+        return AllHistoryFolder?.HistoryYear(year) ?? History.Empty;
+    }
     public List<ProjectData> ProjectsReferences { get; set; }=new();
 
     public List<ProjectData> UpStreamProjectReferences { get; set; } = new();

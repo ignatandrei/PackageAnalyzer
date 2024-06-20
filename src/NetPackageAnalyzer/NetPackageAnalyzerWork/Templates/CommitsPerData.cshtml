@@ -6,14 +6,21 @@
 
 @{
     var projects = Model.Item1;
+
     var hist = Model.Item2;
-    var data = projects.ProjectByName().ToArray();
-    var ordered = projects.OrderByDescending(x => hist(x.Value).nrCommits).ToArray();
+    var data = projects.ProjectByName()
+    .ToArray();
+    var ordered = projects
+    .OrderByDescending(x => hist(x.Value).nrCommits)
+        .ToArray();
+    ordered = ordered
+    .Where(kv => hist(kv.Value)?.nrCommits > 0)
+    .ToArray();
     var names = ordered.Select(x => x.Value.NameCSproj()).ToArray();
     var xaxis = string.Join(",", names);
-    var yaxis = string.Join(",", ordered.Select(x => hist(x.Value).nrCommits));
-    var maxCommits = data.Max(x => hist(x).nrCommits);
-    var maxCommitsMonth = projects.Max(x => hist(x.Value).CommitsPerMonth);
+    var yaxis = string.Join(",", ordered.Select(x => hist(x.Value).nrCommits??0));
+    var maxCommits = data.Max(x => hist(x).nrCommits??0);
+    var maxCommitsMonth = projects.Max(x => hist(x.Value).CommitsPerMonth??0);
     int height = 100 + data.Count() * 20;
 }
 

@@ -9,11 +9,13 @@ sidebar_position: 30
 
 # Commits Analysis
 
-## Number commits per csproj files
+## All time 
+
+### Number commits per csproj files
 
 @{
     Tuple<ProjectsDict, Func<ProjectData, NetPackageAnalyzeHistory.History>> newModel=
-    new(Model, x => x.AllHistoryFile);
+    new(Model, x => x.AllHistoryFile.AllHistory());
     var c = new CommitsPerData(newModel);
     var data = c.Render();
 }
@@ -22,18 +24,45 @@ sidebar_position: 30
 
 
 
-## Number commits per folder
+### Number commits per folder
 
 @{
     newModel =
-    new(Model, x => x.AllHistoryFolder);
+    new(Model, x => x.AllHistoryFolder.AllHistory());
     c = new CommitsPerData(newModel);
     data = c.Render();
 }
 
 @data
+@{
+    var maxYear = Model.MaxYearCommits();
+    var minYear= Model.MinYearCommits();
+}
 
+@for(var year = maxYear; year >= minYear; year--)
+{
+ 
+    newModel =
+    new(Model, x => x.AllHistoryFileYear(year));
+    c = new CommitsPerData(newModel);
+    data = c.Render();
+<text>
+## YEAR @year
 
+### Number commits per file
+@data
 
+### Number commits per folder
 
+@{
+    newModel =
+    new(Model, x => x.AllHistoryFolderYear(year));
+    c = new CommitsPerData(newModel);
+    data = c.Render();
+}
+
+@data
+</text>
+
+}
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

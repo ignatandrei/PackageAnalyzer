@@ -1,6 +1,8 @@
 ﻿namespace NetPackageAnalyzeHistory;
+
 public record History(int? nrCommits, DateTime? FirstCommit, DateTime? LastCommit)
 {
+    public static readonly History Empty = new(null, null, null);
     public TimeSpan? DiffCommits
     {
         get
@@ -31,17 +33,47 @@ public record History(int? nrCommits, DateTime? FirstCommit, DateTime? LastCommi
     }
 }
 
+public class HistoryPerYear : Dictionary<int, History>
+{
+    public HistoryPerYear(IDictionary<int, History> data):base(data)
+    {
+        
+    }
+    public History HistoryYear(int year)
+    {
+        if(!this.ContainsKey(year))
+            return History.Empty;
+
+        return this[year];
+    }
+    public History AllHistory()
+    {
+        var min = this.Min(it => it.Value.FirstCommit);
+        var max = this.Max(it => it.Value.LastCommit);
+        var nr = this.Sum(it => it.Value.nrCommits);
+        return new History(nr, min, max);
+    }
+    public int MaxYear()
+    {
+        return this.Max(it => it.Key);
+    }
+    public int MinYear()
+    {
+        return this.Min(it => it.Key);
+    }
+}
+
 public class FileFolderHistorySimple
 {
     public readonly string nameFile;
-    public History? AllHistoryFile { get;private set; }
-    public History? AllHistoryFolder { get; private set; }
+    public HistoryPerYear? AllHistoryFile { get;private set; }
+    public HistoryPerYear? AllHistoryFolder { get; private set; }
 
     public FileFolderHistorySimple(string nameFile)
     {
         this.nameFile = nameFile;
     }
-    private History NrCommits(string folder,string what)
+    private HistoryPerYear NrCommits(string folder,string what)
     {
         ProcessStartInfo startInfo = new()
         {
@@ -76,7 +108,7 @@ public class FileFolderHistorySimple
         }
         var nrLines = output.Split('\r', '\n') ?? [];
         nrLines = nrLines.Where(it => !string.IsNullOrWhiteSpace(it)).ToArray();
-        HashSet<DateTime> dates = new();
+        Dictionary<DateTime,int> dates = new();
         foreach (var line in nrLines)
         {
             if(string.IsNullOrWhiteSpace(line))
@@ -90,18 +122,30 @@ public class FileFolderHistorySimple
             var str = line.Substring(0,10);
             if (DateTime.TryParseExact(str,"yyyy-MM-dd",null,System.Globalization.DateTimeStyles.None, out var date))
             {
-                dates.Add(date);
+                if(!dates.ContainsKey(date))
+                    dates.Add(date, 0);
+                dates[date] = dates[date]+1;
             }
             
         }
         DateTime? LastCommit= null, FirstCommit=null;
         if(dates.Count > 0)
         {
-            LastCommit = dates.Max();
-            FirstCommit= dates.Min();
+            LastCommit = dates.Max(it=>it.Key);
+            FirstCommit= dates.Min(it=>it.Key);
         }
-        
-        return  new History( nrLines.Length,FirstCommit, LastCommit);
+        var ret= dates
+            .GroupBy(it => it.Key.Year)
+
+            .ToDictionary(it=>it.Key
+            ,it=>
+            new History(it.Count(),
+            it.Min(it=>it.Key),
+            it.Max(it=>it.Key)
+            )
+            );
+
+        return  new HistoryPerYear(ret);
 
     }
     public void Initialize(bool AddHistoryForFolder)
