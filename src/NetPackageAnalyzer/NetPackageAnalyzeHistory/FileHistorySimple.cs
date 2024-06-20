@@ -1,14 +1,42 @@
 ﻿namespace NetPackageAnalyzeHistory;
-record History(int? nrCommits, DateTime? FirstCommit, DateTime? LastCommit);
+public record History(int? nrCommits, DateTime? FirstCommit, DateTime? LastCommit)
+{
+    public TimeSpan? DiffCommits
+    {
+        get
+        {
+
+            if (LastCommit == null || FirstCommit == null)
+                return null;
+
+            return LastCommit- FirstCommit;
+        }
+    }
+    public int? CommitsPerMonth
+    {
+
+        get
+        {
+            if (LastCommit == null || FirstCommit == null)
+                return null;
+
+            var diff = DiffCommits;
+            if (diff == null)
+                return null;
+            var nrMonths = (int)diff.Value.TotalDays / 30;
+            if (nrMonths == 0)
+                nrMonths++;
+            return (int)(nrCommits/ nrMonths);
+        }
+    }
+}
+
 public class FileFolderHistorySimple
 {
     public readonly string nameFile;
-    public int? numberCommitsFile { get; private set; }
-    public int? numberCommitsFolder { get; private set; }
-    public DateTime? LastCommitFile { get; private set; }
-    public DateTime? FirstCommitFile { get; private set; }
-    public DateTime? LastCommitFolder { get; private set; }
-    public DateTime? FirstCommitFolder { get; private set; }
+    public History? AllHistoryFile { get;private set; }
+    public History? AllHistoryFolder { get; private set; }
+
     public FileFolderHistorySimple(string nameFile)
     {
         this.nameFile = nameFile;
@@ -81,9 +109,9 @@ public class FileFolderHistorySimple
         ArgumentNullException.ThrowIfNull(nameFile);
         var folder=Path.GetDirectoryName(nameFile);
         ArgumentNullException.ThrowIfNull(folder);
-        (numberCommitsFile,FirstCommitFile,LastCommitFile) = NrCommits(folder, nameFile);
+        AllHistoryFile = NrCommits(folder, nameFile);
         if(AddHistoryForFolder)
-            (numberCommitsFolder,FirstCommitFolder,LastCommitFolder) = NrCommits(folder, ".");
+            AllHistoryFolder = NrCommits(folder, ".");
         
         //Console.WriteLine("done with " + nameFile + $"{LastCommitFolder != LastCommitFile}");
         

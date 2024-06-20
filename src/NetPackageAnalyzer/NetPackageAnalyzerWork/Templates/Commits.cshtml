@@ -8,171 +8,32 @@ sidebar_position: 30
 ---
 
 # Commits Analysis
-@{
-    var data = Model.ProjectByName().ToArray();
-    var ordered = data.OrderByDescending(x => x.nrCommitsFile).ToArray();
-    var names = ordered.Select(x => x.NameCSproj()).ToArray();
-    var xaxis = string.Join(",", names);
-    var yaxis = string.Join(",", ordered.Select(x => x.nrCommitsFile));
-    var maxCommits = data.Max(x => x.nrCommitsFile);
-    var maxCommitsMonth = Model.Values.Max(x => x.CommitsPerMonthFile);
-    int height = 100 + data.Count() * 20;
-}
 
-<text>
-    ## Number commits for project files
-
-</text>
-```mermaid
----
-config:
-    xyChart:
-        width: 900
-        height: @height
-    themeVariables:
-        xyChart:
-            titleColor: "#ff0000"
----
-xychart-beta horizontal
-title "Number commits for .csproj files"
-x-axis [@xaxis]
-y-axis "NumberCommits" 0 --> @maxCommits
-bar [@yaxis]
-line [@yaxis]
-```
-<table>
-    <thead>
-        <tr>
-            <th>Nr</th>
-            <th>Project</th>
-            <th>Total Commits</th>
-            <th>Commits per month</th>
-            <th>First Commit</th>
-            <th>Last Commit</th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            var nrProj = 0;
-        }
-        @foreach (var item in data) 
-        {
-            
-            string name = ""+item.nrCommitsFile;
-            if (item.nrCommitsFile == maxCommits){
-                name = $"<div style={{{{color: 'red'}}}}>{item.nrCommitsFile}</div>";
-            }
-            string nameMonth = "" + item.CommitsPerMonthFile;
-            if (item.CommitsPerMonthFile == maxCommitsMonth)
-            {
-                nameMonth = $"<div style={{{{color: 'red'}}}}>{item.CommitsPerMonthFile}</div>";
-            }
-            nrProj++;
-            
-            <text>
-            <tr>
-                <td>@nrProj</td>
-                <td>@item.NameCSproj()</td>
-
-                <td>
-                    @name   
-                </td>
-                <td>
-                        @nameMonth
-
-                </td>
-
-                <td>
-                    @item.FirstCommitFile?.ToString("yyyy MMM dd")
-                </td>
-                <td>@item.LastCommitFile?.ToString("yyyy MMM dd")</td>
-            </tr>
-            </text>
-        }
-    </tbody>
-</table>
+## Number commits per csproj files
 
 @{
-    data = Model.ProjectByName().ToArray();
-    ordered = data.OrderByDescending(x => x.nrCommitsFolder).ToArray();
-
-    names = ordered.Select(x => x.NameCSproj()).ToArray();
-    xaxis = string.Join(",", names);
-    yaxis = string.Join(",", ordered.Select(x => x.nrCommitsFolder));
-    maxCommits = data.Max(x => x.nrCommitsFolder);
-    maxCommitsMonth = Model.Values.Max(x => x.CommitsPerMonthFolder);
-
+    Tuple<ProjectsDict, Func<ProjectData, NetPackageAnalyzeHistory.History>> newModel=
+    new(Model, x => x.AllHistoryFile);
+    var c = new CommitsPerData(newModel);
+    var data = c.Render();
 }
 
+@data
 
-<text>
-    ## Number commits per project folder
-</text>
-```mermaid
----
-config:
-    xyChart:
-        width: 900
-        height: @height
-    themeVariables:
-        xyChart:
-            titleColor: "#ff0000"
----
-xychart-beta horizontal
-title "Number commits per project folder"
-x-axis [@xaxis]
-y-axis "NumberCommits" 0 --> @maxCommits
-bar [@yaxis]
-line [@yaxis]
-```
-<table>
-    <thead>
-        <tr>
-            <th>Nr</th>
-            <th>Project folder</th>
-            <th>Total Commits</th>
-            <th>Commits per month</th>
-            <th>First Commit</th>
-            <th>Last Commit</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            nrProj = 0;
-        }
-        @foreach (var item in data)
-        {
 
-            string name = "" + item.nrCommitsFolder;
-            if (item.nrCommitsFolder == maxCommits)
-            {
-                name = $"<div style={{{{color: 'red'}}}}>{item.nrCommitsFolder}</div>";
-            }
-            string nameMonth = "" + item.CommitsPerMonthFolder;
-            if (item.CommitsPerMonthFolder == maxCommitsMonth)
-            {
-                nameMonth = $"<div style={{{{color: 'red'}}}}>{item.CommitsPerMonthFolder}</div>";
-            }
+## Number commits per folder
 
-            nrProj++;
-            <tr>
-                <td>@nrProj</td>
-                <td>@item.NameCSproj()</td>
-                <td>@name </td>
-                <td>
-                    @nameMonth
+@{
+    newModel =
+    new(Model, x => x.AllHistoryFolder);
+    c = new CommitsPerData(newModel);
+    data = c.Render();
+}
 
-                </td>
+@data
 
-                <td>
-                    @item.FirstCommitFolder?.ToString("yyyy MMM dd")
-                </td>
-                <td>@item.LastCommitFolder?.ToString("yyyy MMM dd")</td>
-            </tr>
-        }
-    </tbody>
-</table>
+
 
 
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

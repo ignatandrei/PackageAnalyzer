@@ -8,6 +8,10 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<AdditionalFiles Include="Templates\CommitsPerData.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\Commits.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
@@ -69,6 +73,7 @@
 	<ItemGroup>
 	  <None Remove="docusaurus.zip" />
 	  <None Remove="Templates\BuildingBlocks.cshtml" />
+	  <None Remove="Templates\CommitsPerData.cshtml" />
 	  <None Remove="Templates\DeprecatedOutdated.cshtml" />
 	  <None Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
 	  <None Remove="Templates\ProjectPackages.cshtml" />
@@ -80,8 +85,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <RazorBlade Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
-	</ItemGroup>
-	<ItemGroup>
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Include="..\WhatIAmDoingData\Interceptors.cs" Link="Interceptors.cs" />

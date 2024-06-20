@@ -1,0 +1,87 @@
+@inherits RazorBlade.PlainTextTemplate<Tuple<ProjectsDict,Func<NetPackageAnalyzerObjects.ProjectData,NetPackageAnalyzeHistory.History>>>;
+@{
+    var prefix = GlobalsForGenerating.globalPrefix();
+
+}
+
+@{
+    var projects = Model.Item1;
+    var hist = Model.Item2;
+    var data = projects.ProjectByName().ToArray();
+    var ordered = projects.OrderByDescending(x => hist(x.Value).nrCommits).ToArray();
+    var names = ordered.Select(x => x.Value.NameCSproj()).ToArray();
+    var xaxis = string.Join(",", names);
+    var yaxis = string.Join(",", ordered.Select(x => hist(x.Value).nrCommits));
+    var maxCommits = data.Max(x => hist(x).nrCommits);
+    var maxCommitsMonth = projects.Max(x => hist(x.Value).CommitsPerMonth);
+    int height = 100 + data.Count() * 20;
+}
+
+```mermaid
+---
+config:
+    xyChart:
+        width: 900
+        height: @height
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+xychart-beta horizontal
+title "Number commits"
+x-axis [@xaxis]
+y-axis "NumberCommits" 0 --> @maxCommits
+bar [@yaxis]
+line [@yaxis]
+```
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>Project</th>
+            <th>Total Commits</th>
+            <th>Commits per month</th>
+            <th>First Commit</th>
+            <th>Last Commit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var nrProj = 0;
+        }
+        @foreach (var prj in data) 
+        {
+            var item=hist(prj);
+            string name = ""+item.nrCommits;
+            if (item.nrCommits == maxCommits){
+                name = $"<div style={{{{color: 'red'}}}}>{item.nrCommits}</div>";
+            }
+            string nameMonth = "" + item.CommitsPerMonth;
+            if (item.CommitsPerMonth == maxCommitsMonth)
+            {
+                nameMonth = $"<div style={{{{color: 'red'}}}}>{item.CommitsPerMonth}</div>";
+            }
+            nrProj++;
+            
+            <text>
+            <tr>
+                <td>@nrProj</td>
+                <td>@prj.NameCSproj()</td>
+
+                <td>
+                    @name   
+                </td>
+                <td>
+                        @nameMonth
+
+                </td>
+
+                <td>
+                    @item.FirstCommit?.ToString("yyyy MMM dd")
+                </td>
+                <td>@item.LastCommit?.ToString("yyyy MMM dd")</td>
+            </tr>
+            </text>
+        }
+    </tbody>
+</table>

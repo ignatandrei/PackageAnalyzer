@@ -145,12 +145,8 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         {
             FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
             fileHistorySimple.Initialize(true);
-            project.nrCommitsFile = fileHistorySimple.numberCommitsFile??0;
-            project.nrCommitsFolder = fileHistorySimple.numberCommitsFolder.GetValueOrDefault(-1);
-            project.FirstCommitFile = fileHistorySimple.FirstCommitFile;
-            project.FirstCommitFolder = fileHistorySimple.FirstCommitFolder;
-            project.LastCommitFile = fileHistorySimple.LastCommitFile;
-            project.LastCommitFolder = fileHistorySimple.LastCommitFolder;
+            project.AllHistoryFile = fileHistorySimple.AllHistoryFile;
+            project.AllHistoryFolder = fileHistorySimple.AllHistoryFolder;
             //Console.WriteLine("!done with " + project.PathProject + $"{project.LastCommitFolder} {project.LastCommitFile}");
         }
     }
