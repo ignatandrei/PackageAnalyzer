@@ -27,7 +27,7 @@ line [@yaxis]
 ```
 
 @{
-    years = Model.AllHistoryFolder.Select(it => it.Key).OrderByDescending(it => it).ToArray();
+    years = Model.AllHistoryFolder.Select(it => it.Key).OrderBy(it => it).ToArray();
     xaxis = string.Join(", ", years);
     nrCommits = years.Select(it => Model.AllHistoryFolder[it].nrCommits).ToArray();
     yaxis = string.Join(", ", nrCommits);
