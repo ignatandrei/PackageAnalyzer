@@ -1,4 +1,11 @@
 ﻿namespace NetPackageAnalyzerObjects;
+public record InfoSolution(int nrProjects, int nrPackages, int nrOutdated, int nrDeprecated, long totalCommits)
+{
+    public void x()
+    {
+        
+    }
+}
 public abstract class GenerateFiles
 {
     public GenerateFiles(IFileSystem system)
@@ -6,8 +13,8 @@ public abstract class GenerateFiles
         this.system = system;
     }
     protected string NameSolution = "";
-    protected Dictionary<string, PackageData> packagedDict = new();
-    protected ProjectsDict? projectsDict;
+    protected internal Dictionary<string, PackageData> packagedDict = new();
+    protected internal ProjectsDict? projectsDict;
     protected readonly IFileSystem system;
     protected PackageWithVersionDeprecated[] deprecated=[];
     protected PackageWithVersionOutdated[] outdated = [];

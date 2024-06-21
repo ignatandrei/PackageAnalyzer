@@ -113,14 +113,20 @@ public class GenerateFilesDocusaurus:GenerateFiles
         string categoryGenerated = $$"""
 {
   "label": "{{NameSolution}}",
-  "position": 1,
-  "link": {
-    "type": "generated-index"
-  }
+  "position": 1
 }
 """;
         await File.WriteAllTextAsync(file, categoryGenerated);
 
+        file = Path.Combine(folderResults, "index.md");
+
+        var infoSol=new InfoSolution(
+            this.projectsDict!.Count, 
+            packagedDict.Count, this.outdated.Length,this.deprecated.Length,
+            this.projectsDict!.TotalCommits()
+
+            );
+        await File.WriteAllTextAsync(file, await generator.Generate_SolutionIntroduction(infoSol));
 
         file = Path.Combine(folderResults, "BuildingBlocks.md");
         await File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));

@@ -8,6 +8,12 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
+    public long TotalCommits()
+    {
+        return this.Values
+            .SelectMany(it => it.AllHistoryFolder)
+            .Sum(it=> (long)(it.Value?.nrCommits??0));
+    }
     public int MaxYearCommits()
     {
         return this.Values

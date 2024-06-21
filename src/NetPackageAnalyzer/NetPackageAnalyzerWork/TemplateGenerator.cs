@@ -65,7 +65,11 @@ public class TemplateGenerator
         var rz = new TestProjects(model);
         return await rz.RenderAsync();
     }
-
+    internal async Task<string?> Generate_SolutionIntroduction(InfoSolution model)
+    {
+        var rz = new SolutionResume(model);
+        return await rz.RenderAsync();
+    }
     internal async Task<string?> Generate_ProjectRelations(ProjectData projData)
     {
         var rz=new ProjectRelations(projData);
