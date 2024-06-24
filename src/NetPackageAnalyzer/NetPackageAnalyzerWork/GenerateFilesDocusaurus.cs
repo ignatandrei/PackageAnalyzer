@@ -119,10 +119,11 @@ public class GenerateFilesDocusaurus:GenerateFiles
         await File.WriteAllTextAsync(file, categoryGenerated);
 
         file = Path.Combine(folderResults, "index.md");
-
+        var nrOutdated=outdated.GroupBy(it => it.PackageId).Count();
+        var nrDeprecated=deprecated.GroupBy(it => it.PackageId).Count();
         var infoSol=new InfoSolution(
             this.projectsDict!.Count, 
-            packagedDict.Count, this.outdated.Length,this.deprecated.Length,
+            packagedDict.Count, nrOutdated,nrDeprecated,
             this.projectsDict!.TotalCommits()
 
             );

@@ -14,6 +14,26 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .SelectMany(it => it.AllHistoryFolder!)
             .Sum(it=> (long)(it.Value?.nrCommits??0));
     }
+    public Dictionary<int,long> CommitsPerYearFolder()
+    {
+        var data= this.Values
+            .SelectMany(it => it.AllHistoryFolder!)
+            .GroupBy(it => it.Key)
+            .ToDictionary(it => it.Key, it => it.Sum(it => (long)(it.Value?.nrCommits ?? 0)))
+            ;
+        return data;
+
+    }
+    public Dictionary<int, long> CommitsPerYearFile()
+    {
+        var data = this.Values
+            .SelectMany(it => it.AllHistoryFile!)
+            .GroupBy(it => it.Key)
+            .ToDictionary(it => it.Key, it => it.Sum(it => (long)(it.Value?.nrCommits ?? 0)))
+            ;
+        return data;
+
+    }
     public long CommitsPerYearFolder(int year)
     {
 

@@ -10,6 +10,35 @@ sidebar_position: 30
 # Commits Analysis
 
 ## All time 
+### Number commits per year
+@{
+    var yearCommitsFolder = Model.CommitsPerYearFolder();
+    var xaxis= "["+
+    string.Join(',',yearCommitsFolder
+        .Select(it=>it.Key)
+        .OrderBy(x=>x)
+        .ToArray()) +"]";
+    var maxCommit= yearCommitsFolder.Max(x=>x.Value);
+    var commitsFolder="["+string.Join(',',yearCommitsFolder
+        .Select(it=>it)
+        .OrderBy(x=>x.Key)
+        .Select(x=>x.Value)
+        .ToArray()) +"]";
+    var CommitsFile ="["+string.Join(',',Model.CommitsPerYearFile()
+        .Select(it=>it)
+        .OrderBy(x=>x.Key)
+        .Select(x=>x.Value)
+        .ToArray()) +"]";
+}
+
+```mermaid
+xychart-beta
+title "Commits per year"
+x-axis @xaxis
+y-axis "" 0--> @maxCommit
+bar @commitsFolder
+line @CommitsFile
+```
 
 ### Number commits per csproj files
 
