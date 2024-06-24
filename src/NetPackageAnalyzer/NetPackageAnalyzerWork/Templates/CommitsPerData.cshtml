@@ -8,6 +8,7 @@
     var projects = Model.Item1;
 
     var hist = Model.Item2;
+    
     var data = projects.ProjectByName()
     .ToArray();
     var ordered = projects
@@ -22,7 +23,9 @@
     var maxCommits = data.Max(x => hist(x).nrCommits??0);
     var maxCommitsMonth = projects.Max(x => hist(x.Value).CommitsPerMonth??0);
     int height = 100 + data.Count() * 20;
+    var nrCommits = data.Sum(x => hist(x).nrCommits ?? 0);
 }
+### ( @nrCommits Commits )
 
 ```mermaid
 ---
@@ -35,9 +38,9 @@ config:
             titleColor: "#ff0000"
 ---
 xychart-beta horizontal
-title "Number commits"
+title "Number commits @nrCommits"
 x-axis [@xaxis]
-y-axis "NumberCommits" 0 --> @maxCommits
+y-axis "" 0 --> @maxCommits
 bar [@yaxis]
 line [@yaxis]
 ```
