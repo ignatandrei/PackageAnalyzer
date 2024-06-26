@@ -1,7 +1,8 @@
 # PackageAnalyzer
 
-Analyzer for .NET solution / projects . Latest version 8.2024.429.0700
+Analyzer for .NET solution / projects .  It shows relations in projects / packages / commits .
 
+Please read the Wiki at https://github.com/ignatandrei/packageAnalyzer/wiki/ 
 
 ## Install as local tool
 
@@ -40,13 +41,19 @@ It will show
 7. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/category/projects
 8. Each project and relations with another - upstream and downstream - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences
 9. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages
+10. Commits (full time and per year ) - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Commits
+11. Commits per project - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
+
+
+Please read the Wiki at https://github.com/ignatandrei/packageAnalyzer/wiki/ 
 
 
 ## How it looks
 
-This are the files generated :
+Those are the files generated :
 
 https://ignatandrei.github.io/PackageAnalyzer/
+
 
 # Contributors needed!
 
