@@ -2,18 +2,25 @@
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
     var nameSolution = GlobalsForGenerating.NameSolution;    
+    var nrProjectsNoTests = Model.nrProjects - Model.nrTestProjects;
 }
 
 
 # @(nameSolution)
 
 :::info
+
 [Number projects](pathname:///docs/Analysis/@(nameSolution)/ProjectRelation) : @Model.nrProjects
+
+[Number projects ( no tests )](pathname:///docs/Analysis/@(nameSolution)/ProjectRelation) : @nrProjectsNoTests
+
+[Number tests projects](pathname:///docs/Analysis/@(nameSolution)/TestProjects) : @Model.nrTestProjects
 
 [Number packages](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions) : @Model.nrPackages (Outdated: @Model.nrOutdated , Deprecated: @Model.nrDeprecated )
 
-[Total Commits](pathname:///docs/Analysis/@(nameSolution)/Commits): @Model.totalCommits
+[Packages with Major version differs](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions): @Model.nrMajorDiffers
 
+[Total Commits](pathname:///docs/Analysis/@(nameSolution)/Commits): @Model.totalCommits
 
 :::
 

@@ -5,7 +5,7 @@
     var nrRelations = Model.MaxReferences+1;
     var nrUpstream = Model.MaxUpStreamReferences+1;
     var prefix = GlobalsForGenerating.globalPrefix();
-
+    var nrProjects = Model.Values.Count() - Model.TestsProjects.Count();
 }
 ---
 sidebar_position: 10
@@ -13,7 +13,11 @@ sidebar_position: 10
 
 # Solution relations 
 
-## Number projects (without tests): @Model.MaxReferences
+## Number projects : @Model.Values.Count()
+
+## Number projects (without tests ): @nrProjects
+
+## Number tests projects : @Model.TestsProjects.Count()
 
 ## All Projects Graph
 

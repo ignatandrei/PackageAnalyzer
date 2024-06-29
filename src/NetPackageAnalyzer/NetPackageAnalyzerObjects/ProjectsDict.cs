@@ -85,7 +85,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             return this.Values.Select(it => it.ProjectsReferences.Count).Max();
         }
     }
-    public ProjectData[] TestsProjects
+    public ProjectData[] TestsProjects 
     {
         get
         {

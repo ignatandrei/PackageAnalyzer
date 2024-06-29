@@ -124,8 +124,9 @@ public class GenerateFilesDocusaurus:GenerateFiles
         var infoSol=new InfoSolution(
             this.projectsDict!.Count, 
             packagedDict.Count, nrOutdated,nrDeprecated,
-            this.projectsDict!.TotalCommits()
-
+            this.projectsDict!.TotalCommits(),
+            this.projectsDict!.TestsProjects.Count(),
+            model.KeysPackageMultipleMajorDiffers().Length
             );
         await File.WriteAllTextAsync(file, await generator.Generate_SolutionIntroduction(infoSol));
 

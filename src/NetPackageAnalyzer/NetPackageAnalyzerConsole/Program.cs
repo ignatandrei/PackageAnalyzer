@@ -1,13 +1,18 @@
 ﻿try
 {
     if (args.Length == 0)
-    {
-        
-        args = new[] { "generateFiles",
-            "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
-            "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
-            "--verbose","true"
-        };
+    {  
+         
+        //args = new[] { "generateFiles",
+        //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+        //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
+        //    "--verbose","true"
+        //}; 
+        //args = new[] { "generateFiles",
+        //    "--folder", @"D:\gth\CleanArchitecture",
+        //    "--where", @"D:\gth\CleanArchitecture\documentation1\",
+        //    "--verbose","false"
+        //};
         args = new[] { "-h" };
     }
     return await RealMainExecuting.RealMain(args);
