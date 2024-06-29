@@ -8,10 +8,24 @@
     var more1Version = Model.Item3;
     var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
     var nrVersionIterator = 0;
+    var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
+    var yearCommitsFile = projectDicts.CommitsPerYearFile();
+    var maxCommitYear = yearCommitsFolder.Max(x => x.Key);
+    var currentYear= DateTime.Now.Year;
+    var maxCommitString = "";
+    if(maxCommitYear != currentYear)
+    {
+        maxCommitString = $"<Highlight color='red'>{maxCommitYear}</Highlight>";
+    }
+    else
+    {
+        maxCommitString = "this year," + currentYear;
+    }
+
 }
 ---
 sidebar_position: 5000
-slug: blog
+slug: summary
 ---
 
 
@@ -32,17 +46,20 @@ export const Highlight = ({children, color}) => (
 :::summary
 
 [Number projects](pathname:///docs/Analysis/@(nameSolution)/ProjectRelation) : @info.nrProjects
+([tests](pathname:///docs/Analysis/@(nameSolution)/TestProjects) : @info.nrTestProjects,
+[no tests](pathname:///docs/Analysis/@(nameSolution)/ProjectRelation) : @nrProjectsNoTests
+)
 
-[Number projects ( no tests )](pathname:///docs/Analysis/@(nameSolution)/ProjectRelation) : @nrProjectsNoTests
 
-[Number tests projects](pathname:///docs/Analysis/@(nameSolution)/TestProjects) : @info.nrTestProjects
+[Number packages](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions) : @info.nrPackages 
+([Outdated](pathname:///docs/Analysis/@(nameSolution)/DisplayOutdatedDeprecated): @info.nrOutdated,
+[Deprecated](pathname:///docs/Analysis/@(nameSolution)/DisplayOutdatedDeprecated): @info.nrDeprecated,
+[Major version differs](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions) <Highlight color='red'>@info.nrMajorDiffers</Highlight>
+)
 
-[Number packages](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions) : @info.nrPackages (Outdated: @info.nrOutdated , Deprecated: @info.nrDeprecated )
-
-[Packages with Major version differs](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions): @info.nrMajorDiffers
 
 [Total Commits](pathname:///docs/Analysis/@(nameSolution)/Commits): @info.totalCommits
-
+( last commit : @maxCommitString)
 :::
 
 ## @nrProjectsNoTests Projects
@@ -112,6 +129,34 @@ flowchart LR
     </tbody>
 </table>
 
+## @info.totalCommits commits 
+@{
+    var xaxis = "[" +
+    string.Join(',', yearCommitsFolder
+        .Select(it => it.Key)
+        .OrderBy(x => x)
+        .ToArray()) + "]";
+    var maxCommit = yearCommitsFolder.Max(x => x.Value);
+    var commitsFolder = "[" + string.Join(',', yearCommitsFolder
+        .Select(it => it)
+        .OrderBy(x => x.Key)
+        .Select(x => x.Value)
+        .ToArray()) + "]";
+    var CommitsFile = "[" + string.Join(',', yearCommitsFile
+        .Select(it => it)
+        .OrderBy(x => x.Key)
+        .Select(x => x.Value)
+        .ToArray()) + "]";
+}
+
+```mermaid
+xychart-beta
+title "Commits per year (folder and file)"
+x-axis @xaxis
+y-axis "" 0--> @maxCommit
+bar @commitsFolder
+bar @CommitsFile
+```
 
 
 
