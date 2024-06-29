@@ -42,22 +42,22 @@ public class GenerateFilesDocusaurus:GenerateFiles
         WriteLine($"generate documentation in {folderResults}");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);
-        DisplayDataMoreThan1Version model = new(packagedDict, folder);
+        DisplayDataMoreThan1Version modelMore1Version = new(packagedDict, folder);
 
         TemplateGenerator generator = new();
 
         var file = Path.Combine(folderResults, "DisplayAllVersions.html");
-        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersions(model));
+        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersions(modelMore1Version));
 
         file = Path.Combine(folderResults, "DisplayOutdatedDeprecated.md");
 
         await File.WriteAllTextAsync(file, await generator.Generate_OutDeprMarkdown(base.Problems()));
 
         file = Path.Combine(folderResults, "DisplayAllVersions.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsMarkdown(model));
+        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsMarkdown(modelMore1Version));
 
         file = Path.Combine(folderResults, $"MermaidVisualizerMajorDiffer.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_MermaidVisualizerMajorDiffer(model));
+        await File.WriteAllTextAsync(file, await generator.Generate_MermaidVisualizerMajorDiffer(modelMore1Version));
 
         file = Path.Combine(folderResults, "ProjectRelation.md");
         ArgumentNullException.ThrowIfNull(projectsDict);
@@ -126,10 +126,11 @@ public class GenerateFilesDocusaurus:GenerateFiles
             packagedDict.Count, nrOutdated,nrDeprecated,
             this.projectsDict!.TotalCommits(),
             this.projectsDict!.TestsProjects.Count(),
-            model.KeysPackageMultipleMajorDiffers().Length
+            modelMore1Version.KeysPackageMultipleMajorDiffers().Length
             );
         await File.WriteAllTextAsync(file, await generator.Generate_SolutionIntroduction(infoSol));
-
+        file = Path.Combine(folderResults, "BlogPost.md");
+        await File.WriteAllTextAsync(file, await generator.Generate_BlogPost(infoSol, projectsDict, modelMore1Version));
         file = Path.Combine(folderResults, "BuildingBlocks.md");
         await File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));
 

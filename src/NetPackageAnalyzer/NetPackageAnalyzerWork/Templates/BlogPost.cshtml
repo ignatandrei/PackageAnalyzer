@@ -1,0 +1,120 @@
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version>>;
+@{
+    var prefix = GlobalsForGenerating.globalPrefix();
+    var nameSolution = GlobalsForGenerating.NameSolution;    
+    var info = Model.Item1;
+    var projectDicts = Model.Item2;
+    var nrProjectsNoTests = info.nrProjects - info.nrTestProjects;
+    var more1Version = Model.Item3;
+    var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
+    var nrVersionIterator = 0;
+}
+---
+sidebar_position: 5000
+slug: blog
+---
+
+
+# Summary @(nameSolution)
+
+export const Highlight = ({children, color}) => (
+<span style={{
+      backgroundColor: color,
+      borderRadius: '2px' ,
+      color: '#fff' ,
+      padding: '0.2rem' ,
+      }}>
+    {children}
+</span>
+);
+
+
+:::summary
+
+[Number projects](pathname:///docs/Analysis/@(nameSolution)/ProjectRelation) : @info.nrProjects
+
+[Number projects ( no tests )](pathname:///docs/Analysis/@(nameSolution)/ProjectRelation) : @nrProjectsNoTests
+
+[Number tests projects](pathname:///docs/Analysis/@(nameSolution)/TestProjects) : @info.nrTestProjects
+
+[Number packages](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions) : @info.nrPackages (Outdated: @info.nrOutdated , Deprecated: @info.nrDeprecated )
+
+[Packages with Major version differs](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions): @info.nrMajorDiffers
+
+[Total Commits](pathname:///docs/Analysis/@(nameSolution)/Commits): @info.totalCommits
+
+:::
+
+## @nrProjectsNoTests Projects
+
+```mermaid
+flowchart LR 
+
+
+@foreach (var proj in projectDicts.AlphabeticOrderedProjectsNoTests)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var comment = $"%% start project reference {relativePath}";
+    <text>
+
+@comment
+
+@foreach (var rel in proj.AlphabeticalProjectsReferences())
+{
+<text>
+@nameCsproj-->@rel.NameCSproj()
+
+</text>
+
+}
+</text>
+}
+```
+
+## @keysPackageMultiple.Length Packages with major version different
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>ID</th>
+            <th>References</th>
+            <th>Projects</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var key in keysPackageMultiple)
+        {
+            nrVersionIterator++;            
+            var pack = more1Version.IDPackageWithProjects[key]!;
+            var vals = pack.VersionsPerProject;
+            var majorDiff = pack.MajorVersionDiffer();
+            string textReferences = vals.Count > 1 ? $" *(References: {vals.Count})* " : "";
+            string diffMajor = majorDiff ? $"<Highlight color='red'> **Major differs** </Highlight>" : "";
+            string refs = "";
+            @foreach (var vers in vals)
+            {
+
+                refs += " <b>" + vers.Key + "</b> " + string.Join(",", vers.Value.Select(it => it.NameCSproj()).ToArray());
+                @* @(vers.Key) @("&nbsp;") @(string.Join(",",vers.Value.Select(it=>it.NameCSproj()))) *@
+                refs += "<br/>";
+            }
+
+
+            <tr>
+                <td>@nrVersionIterator</td>
+                <td>@key</td>
+                <td>@textReferences @diffMajor</td>
+                <td>@refs</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

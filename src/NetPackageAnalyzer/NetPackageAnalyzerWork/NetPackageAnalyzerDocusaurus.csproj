@@ -28,6 +28,10 @@
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
 		</AdditionalFiles>
+		<AdditionalFiles Include="Templates\BlogPost.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\SolutionResume.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
