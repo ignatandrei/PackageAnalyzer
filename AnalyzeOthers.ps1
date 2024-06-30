@@ -1,12 +1,16 @@
-﻿$url=  "https://github.com/fullstackhero/dotnet-starter-kit"
-$url="https://github.com/ivanpaulovich/clean-architecture-manga"
+﻿#done
+#$url=  "https://github.com/fullstackhero/dotnet-starter-kit"
+#done
+#$url="https://github.com/ivanpaulovich/clean-architecture-manga"
 #many sln
-$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
-$url="https://github.com/jasontaylordev/CleanArchitecture"
+#$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
+#done
+#$url="https://github.com/jasontaylordev/CleanArchitecture"
 $url="https://github.com/jbogard/ContosoUniversityDotNetCore-Pages"
 #3 sln
-$url="https://github.com/dotnet/eShop"
-$url="https://github.com/kgrzybek/modular-monolith-with-ddd"
+#$url="https://github.com/dotnet/eShop"
+#the project do not compile -errors 
+# $url="https://github.com/kgrzybek/modular-monolith-with-ddd"
 
 $name = $url.Split('/')[-1]
 $analyzerPath = Get-Location
@@ -51,7 +55,8 @@ Write-Host "found $($sln.Count) solutions"
 $index=0
 $sln | ForEach-Object {
     $index++
-    Write-host $_.FullName 
+
+    Write-host $index "------>" $_.FullName 
     $solutionPath = Split-Path $_.FullName
     Set-Location $solutionPath
     Write-Host $solutionPath

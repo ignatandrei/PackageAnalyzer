@@ -8,12 +8,12 @@
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
         //    "--verbose","true"
         //};
-        //args = new[] { "generateFiles",
-        //    "--folder", @"D:\gth\CleanArchitecture",
-        //    "--where", @"D:\gth\CleanArchitecture\documentation1\",
-        //    "--verbose","false"
-        //};
-        
+        args = new[] { "generateFiles",
+            "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
+            "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+            "--verbose","false"
+        };
+
     }
     return await RealMainExecuting.RealMain(args);
 }

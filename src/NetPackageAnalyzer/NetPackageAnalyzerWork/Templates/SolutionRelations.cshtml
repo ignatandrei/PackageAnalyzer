@@ -30,6 +30,13 @@ flowchart LR
     var nameCsproj = proj.NameCSproj();
     var relativePath = proj.RelativePath();
     var comment = $"%% start project reference {relativePath}";
+    @if (proj.AlphabeticalProjectsReferences().Length == 0)
+    {
+        <text>
+            @nameCsproj
+        </text>
+    }
+
     <text>
 
 @comment

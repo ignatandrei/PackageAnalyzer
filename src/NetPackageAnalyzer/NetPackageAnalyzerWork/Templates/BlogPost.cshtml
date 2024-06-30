@@ -76,6 +76,12 @@ flowchart LR
     <text>
 
 @comment
+        @if (proj.AlphabeticalProjectsReferences().Length == 0)
+        {
+            <text>
+                @nameCsproj
+            </text>
+        }
 
 @foreach (var rel in proj.AlphabeticalProjectsReferences())
 {
