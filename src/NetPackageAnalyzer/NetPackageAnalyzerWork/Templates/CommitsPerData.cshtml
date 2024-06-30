@@ -24,6 +24,10 @@
     var maxCommitsMonth = projects.Max(x => hist(x.Value).CommitsPerMonth??0);
     int height = 100 + data.Count() * 20;
     var nrCommits = data.Sum(x => hist(x).nrCommits ?? 0);
+    if(nrCommits == 0)
+    {
+        return ;
+    }
 }
 ### ( @nrCommits Commits )
 
