@@ -3,10 +3,11 @@
 #done
 #$url="https://github.com/ivanpaulovich/clean-architecture-manga"
 #many sln
-#$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
+$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
 #done
 #$url="https://github.com/jasontaylordev/CleanArchitecture"
-$url="https://github.com/jbogard/ContosoUniversityDotNetCore-Pages"
+#done
+#$url="https://github.com/jbogard/ContosoUniversityDotNetCore-Pages"
 #3 sln
 #$url="https://github.com/dotnet/eShop"
 #the project do not compile -errors 
@@ -76,6 +77,22 @@ $sln | ForEach-Object {
         New-Item -ItemType Directory -Path $destination    
     }
     Copy-Item -Path * -Destination $destination -Recurse
+    $nameFolder = $solutionPath.Substring($solutionPath.IndexOf($name)+$name.Length+1).Replace('\', '_')
+
+$jsonContent = @"
+{
+    "label": "$nameFolder",
+    "position": 1,
+    "link": {
+        "type": "generated-index"
+    }
+}
+"@
+    
+    $filePath = Join-Path $destination '_category_.json'
+    
+    Set-Content -Path $filePath -Value $jsonContent
+    
     #npm install
     #npm run start
     # $processInfo = Start-Process npm -ArgumentList "run", "start" -PassThru -NoNewWindow

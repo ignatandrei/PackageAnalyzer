@@ -10,7 +10,9 @@ public partial record PackageData(string packageVersionId)
             return true;
         if (packageVersionId.ToLowerInvariant().StartsWith("xunit"))
             return true;
-        
+        if (packageVersionId.ToLowerInvariant().StartsWith("microsoft.net.test"))
+            return true;
+
         return false;
     }
     public Dictionary<string, HashSet<ProjectData>> VersionsPerProject { get; set; } = new();
