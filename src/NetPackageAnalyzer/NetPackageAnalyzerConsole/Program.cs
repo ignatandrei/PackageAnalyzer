@@ -14,6 +14,12 @@
         //    "--verbose","false"
         //};
 
+        args = new[] { "generateMajorDifferences",
+            "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+            "--verbose","true"
+        };
+
+
     }
     return await RealMainExecuting.RealMain(args);
 }

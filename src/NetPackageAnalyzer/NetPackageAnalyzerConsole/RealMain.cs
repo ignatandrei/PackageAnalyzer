@@ -2,22 +2,20 @@
 internal class RealMainExecuting
 {
     static Option<bool> verbose = new("--verbose", "Show verbose output");
-    public static async Task<int> RealMain(string[] args)
-    {
-        GlobalsForGenerating.Version = ThisAssembly.Info.Version.ToString();
-        WriteLine("Version:" + ThisAssembly.Info.Version.ToString());
-        RootCommand rootCommand = new();
-        Command cmdGenerate = new("generateFiles", "Generate files for documentation");
-        cmdGenerate.AddAlias("gf");
-        rootCommand.AddGlobalOption(verbose);
-
-        var folderToHaveSln = new Option<string>
+    static Option<string> folderToHaveSln = new 
             (name: "--folder",
             description: "folder where find the solution .sln",
             getDefaultValue: () => Environment.CurrentDirectory);
-        folderToHaveSln.AddAlias("-f");
 
-        cmdGenerate.AddOption(folderToHaveSln);
+    static RealMainExecuting()
+    {
+        folderToHaveSln.AddAlias("-f");
+        verbose.AddAlias("-v");
+    }
+    private static Command AddGenerateFiles()
+    {
+        Command cmdGenerate = new("generateFiles", "Generate files for documentation");
+        cmdGenerate.AddAlias("gf");
 
         var folderGenerate = new Option<string>
         (name: "--where",
@@ -39,12 +37,58 @@ internal class RealMainExecuting
         var runProduct = new Option<bool>
         (name: "--runProduct",
         description: "run product after",
-        getDefaultValue: () => false); 
+        getDefaultValue: () => false);
 
         runProduct.AddAlias("-rp");
 
 
         cmdGenerate.AddOption(runProduct);
+        cmdGenerate.SetHandler(GenerateHandler,
+            folderToHaveSln,
+            folderGenerate,
+            generateData,
+            verbose,
+            runProduct);
+
+        return cmdGenerate;
+
+    }
+    private static Command AddGenerateMajorDifferences()
+    {
+        Command cmdGenerate = new("generateMajorDifferences", "Generate major differences");
+        cmdGenerate.AddAlias("gmd");
+        cmdGenerate.SetHandler(GenerateHandlerMajorDiff,
+            verbose,
+            folderToHaveSln
+            );
+
+        return cmdGenerate;
+    }
+
+    private static async Task  GenerateHandlerMajorDiff(bool verbose, string folder)
+    {
+        var fs = new FileSystem();
+        GenerateData? g = new(fs);
+        bool b = await g.GenerateDataForSln(folder);
+        if (!b)
+        {
+            Console.WriteLine("not capable to generate data");
+            return ;
+        }
+
+        return ;
+    }
+
+    public static async Task<int> RealMain(string[] args)
+    {
+        GlobalsForGenerating.Version = ThisAssembly.Info.Version.ToString();
+        WriteLine("Version:" + ThisAssembly.Info.Version.ToString());
+        RootCommand rootCommand = new();
+        rootCommand.AddGlobalOption(verbose);
+        rootCommand.AddGlobalOption(folderToHaveSln);
+
+
+
         //cmdGenerate.Handler = CommandHandler.Create<string,string>(async (folder,where) =>
         //{
         //    WriteLine($"analyzing {folder}");
@@ -59,13 +103,6 @@ internal class RealMainExecuting
         //    }
 
         //});
-
-        cmdGenerate.SetHandler(GenerateHandler,
-            folderToHaveSln,
-            folderGenerate,
-            generateData,
-            verbose,
-            runProduct);
 
         //Command cmdAnalyzeBranch = new("analyzeBranch", "Analyze branch");
 
@@ -85,7 +122,8 @@ internal class RealMainExecuting
 
         //}, cmdAnalyzeBranchFolder);
 
-        rootCommand.Add(cmdGenerate);
+        rootCommand.Add(AddGenerateFiles());
+        rootCommand.Add(AddGenerateMajorDifferences());
         //rootCommand.Add(cmdAnalyzeBranch);
         if (args.Length == 0)
         {

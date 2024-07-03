@@ -51,7 +51,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
 
         file = Path.Combine(folderResults, "DisplayOutdatedDeprecated.md");
 
-        await File.WriteAllTextAsync(file, await generator.Generate_OutDeprMarkdown(base.Problems()));
+        await File.WriteAllTextAsync(file, await generator.Generate_OutDeprMarkdown(Problems()));
 
         file = Path.Combine(folderResults, "DisplayAllVersions.md");
         await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsMarkdown(modelMore1Version));
