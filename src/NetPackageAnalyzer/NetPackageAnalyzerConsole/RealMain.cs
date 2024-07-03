@@ -75,7 +75,11 @@ internal class RealMainExecuting
             Console.WriteLine("not capable to generate data");
             return ;
         }
-
+        Console.WriteLine("Major differs:" + g.MajorWithMoreVersions().Length);
+        foreach(var item in g.MajorWithMoreVersions())
+        {
+            Console.WriteLine(item);
+        }
         return ;
     }
 
@@ -176,13 +180,14 @@ internal class RealMainExecuting
             default:
                 throw new NotImplementedException($"what={what}");
         }
-        bool b = await g.GenerateDataForSln(folder);
+        GenerateData tempWIAD = g as GenerateData;
+        bool b = await tempWIAD.GenerateDataForSln(folder);
         if (!b)
         {
             Console.WriteLine("not capable to generate data");
             return;
         }
-        g.AddHistoryCsproj();
+        tempWIAD.AddHistoryCsproj();
         
         var data= await g.GenerateNow(folder, where);
         WriteLine($"now npm i && npm run start in  {where}");

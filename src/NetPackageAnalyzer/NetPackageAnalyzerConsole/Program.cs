@@ -15,7 +15,7 @@
         //};
 
         args = new[] { "generateMajorDifferences",
-            "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+            "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
             "--verbose","true"
         };
 

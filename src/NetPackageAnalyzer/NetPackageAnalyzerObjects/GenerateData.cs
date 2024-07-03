@@ -12,7 +12,12 @@ public class GenerateData
     protected readonly IFileSystem system;
     protected PackageWithVersionDeprecated[] deprecated=[];
     protected PackageWithVersionOutdated[] outdated = [];
+    protected DisplayDataMoreThan1Version? modelMore1Version;
 
+    public string[] MajorWithMoreVersions()
+    {
+        return modelMore1Version!.KeysPackageMultipleMajorDiffers();
+    }
     public PackageWithVersion[] Problems()
     {
         var res= deprecated
@@ -210,6 +215,7 @@ public class GenerateData
                 }
             }
         }
+        this.modelMore1Version= new(packagedDict, folder);
         return true;
     }
 

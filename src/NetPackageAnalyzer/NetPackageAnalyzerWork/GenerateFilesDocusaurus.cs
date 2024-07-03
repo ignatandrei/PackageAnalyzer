@@ -42,8 +42,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         WriteLine($"generate documentation in {folderResults}");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);
-        DisplayDataMoreThan1Version modelMore1Version = new(packagedDict, folder);
-
+        
         TemplateGenerator generator = new();
 
         var file = Path.Combine(folderResults, "DisplayAllVersions.html");
