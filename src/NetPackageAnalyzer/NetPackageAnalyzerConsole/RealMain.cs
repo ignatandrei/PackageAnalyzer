@@ -54,10 +54,16 @@ internal class RealMainExecuting
         return cmdGenerate;
 
     }
-    private static Command AddGenerateMajorDifferences()
+    private static Command AddGenerateConsole()
     {
-        Command cmdGenerate = new("generateMajorDifferences", "Generate major differences");
-        cmdGenerate.AddAlias("gmd");
+
+        Command cmdGenerate = new("showConsole", "Show data in Console");
+        cmdGenerate.AddAlias("sc");
+        var generateData = new Option<EConsoleToGenerate>
+        (name: "--whatGenerate",
+        description: "what to generate",
+        getDefaultValue: () => EConsoleToGenerate.MajorVersionDiffer);
+        cmdGenerate.AddOption(generateData);
         cmdGenerate.SetHandler(GenerateHandlerMajorDiff,
             verbose,
             folderToHaveSln
@@ -130,7 +136,7 @@ internal class RealMainExecuting
         //}, cmdAnalyzeBranchFolder);
 
         rootCommand.Add(AddGenerateFiles());
-        rootCommand.Add(AddGenerateMajorDifferences());
+        rootCommand.Add(AddGenerateConsole());
         //rootCommand.Add(cmdAnalyzeBranch);
         if (args.Length == 0)
         {

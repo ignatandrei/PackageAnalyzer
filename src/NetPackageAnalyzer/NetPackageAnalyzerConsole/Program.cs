@@ -14,7 +14,9 @@
         //    "--verbose","false"
         //};
 
-        //args = new[] { "generateMajorDifferences",
+        //args = new[] { 
+        //    //"[parse]",
+        //    "showConsole",
         //    "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
         //    "--verbose","false"
         //};
