@@ -14,6 +14,12 @@
         //    "--verbose","false"
         //};
 
+        args = new[] { "generateMajorDifferences",
+            "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
+            "--verbose","false"
+        };
+
+
     }
     return await RealMainExecuting.RealMain(args);
 }

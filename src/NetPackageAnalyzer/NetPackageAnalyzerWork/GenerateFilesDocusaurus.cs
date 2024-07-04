@@ -42,8 +42,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         WriteLine($"generate documentation in {folderResults}");
         if (!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);
-        DisplayDataMoreThan1Version modelMore1Version = new(packagedDict, folder);
-
+        
         TemplateGenerator generator = new();
 
         var file = Path.Combine(folderResults, "DisplayAllVersions.html");
@@ -51,7 +50,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
 
         file = Path.Combine(folderResults, "DisplayOutdatedDeprecated.md");
 
-        await File.WriteAllTextAsync(file, await generator.Generate_OutDeprMarkdown(base.Problems()));
+        await File.WriteAllTextAsync(file, await generator.Generate_OutDeprMarkdown(Problems()));
 
         file = Path.Combine(folderResults, "DisplayAllVersions.md");
         await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsMarkdown(modelMore1Version));
