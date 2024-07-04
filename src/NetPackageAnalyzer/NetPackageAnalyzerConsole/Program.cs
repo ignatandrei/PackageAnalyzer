@@ -14,10 +14,10 @@
         //    "--verbose","false"
         //};
 
-        args = new[] { "generateMajorDifferences",
-            "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
-            "--verbose","false"
-        };
+        //args = new[] { "generateMajorDifferences",
+        //    "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
+        //    "--verbose","false"
+        //};
 
 
     }
