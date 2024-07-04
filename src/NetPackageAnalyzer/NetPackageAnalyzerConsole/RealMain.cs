@@ -1,4 +1,5 @@
-﻿namespace NetPackageAnalyzerConsole;
+﻿
+namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting
 {
     static Option<bool> verbose = new("--verbose", "Show verbose output");
@@ -67,6 +68,11 @@ internal class RealMainExecuting
 
     private static async Task  GenerateHandlerMajorDiff(bool verbose, string folder)
     {
+        DisplayData.Verbose = verbose;
+        if (verbose)
+        {
+            Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
+        }
         var fs = new FileSystem();
         GenerateData? g = new(fs);
         bool b = await g.GenerateDataForSln(folder);
@@ -75,11 +81,8 @@ internal class RealMainExecuting
             Console.WriteLine("not capable to generate data");
             return ;
         }
-        Console.WriteLine("Major differs:" + g.MajorWithMoreVersions().Length);
-        foreach(var item in g.MajorWithMoreVersions())
-        {
-            Console.WriteLine(item);
-        }
+        WriteToConsole writeToConsole = new(g);
+        writeToConsole.WriteMajorDiffers();
         return ;
     }
 

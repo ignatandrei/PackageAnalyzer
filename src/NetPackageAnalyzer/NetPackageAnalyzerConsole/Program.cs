@@ -16,7 +16,7 @@
 
         args = new[] { "generateMajorDifferences",
             "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
-            "--verbose","true"
+            "--verbose","false"
         };
 
 

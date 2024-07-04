@@ -18,6 +18,16 @@ public class GenerateData
     {
         return modelMore1Version!.KeysPackageMultipleMajorDiffers();
     }
+    public Dictionary<string,PackageData> MajorWithMoreVersionsPackages()
+    {
+        var res = new Dictionary<string, PackageData>();
+        foreach (var item in MajorWithMoreVersions())
+        {
+            res.Add(item, packagedDict[item]);
+        }
+        return res;
+    }
+
     public PackageWithVersion[] Problems()
     {
         var res= deprecated
