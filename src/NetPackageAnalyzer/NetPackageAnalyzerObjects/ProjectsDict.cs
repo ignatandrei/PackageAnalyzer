@@ -14,7 +14,18 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .SelectMany(it => it.AllHistoryFolder!)
             .Sum(it=> (long)(it.Value?.nrCommits??0));
     }
+    public int MedianCommits(int? year)
+    {
+        var data= this.Values.SelectMany(it => it.CommitsData!)
+            .Where(it => year == null || it.date.Year == year)
+            .SelectMany(it => it.Files)
+            .GroupBy(it => it)
+            .ToDictionary(it => it.Key, it => it.Count())
+            .ToArray();
+        if ((data?.Length??0) == 0) return 0;
+        return Statistical<int>.Median(data.Select(it => it.Value).ToArray());
 
+    }
     public KeyValuePair<string, int>[] FilesWithMaxCommits(int? year)
     {
         int take = 10;

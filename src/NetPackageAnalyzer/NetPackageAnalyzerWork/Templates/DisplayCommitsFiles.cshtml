@@ -1,12 +1,20 @@
-@inherits RazorBlade.PlainTextTemplate<KeyValuePair<string,int>[]>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<KeyValuePair<string,int>[],int>>;
 @{
-    var top10Files = Model;
-
+    var top10Files = Model.Item1;
+    var medianCommits= Model.Item2;
     var nrVersionIterator = 1;
     string yAxisCommit = "[" + string.Join(',', top10Files.Select(x => x.Value).ToArray()) + "]";
-    string xAxisCommit = "[" + string.Join(',', top10Files.Select((x,nr) => "file "+(nr+1) ).ToArray()) + "]";
-    
+    string xAxisCommit = "[" + string.Join(',', top10Files.Select((x,nr) => Path.GetFileName(x.Key) ).ToArray()) + "]";
+    string lineMedian= "[" + string.Join(',',Enumerable.Repeat(medianCommits,top10Files.Length) ) + "]";
 }
+```mermaid
+    xychart-beta horizontal
+    title "Nr Commits per file"
+    x-axis @xAxisCommit
+    bar @yAxisCommit
+    line @lineMedian
+```
+
 <table>
     <thead>
         <tr>
@@ -35,9 +43,3 @@ string fileName = Path.GetFileName(file.Key);
 
 </tbody>
 </table>
-```mermaid
-    xychart-beta
-    title "Nr Commits per file"
-    x-axis @xAxisCommit
-    bar @yAxisCommit
-```

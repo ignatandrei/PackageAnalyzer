@@ -40,7 +40,7 @@ y-axis "" 0--> @maxCommit
 bar @commitsFolder
 line @CommitsFile
 ```
-### Number commits per file
+### Top Number commits per file 
 
 @{
     var top10Files = Model
@@ -48,7 +48,9 @@ line @CommitsFile
     .OrderByDescending(x => x.Value)
     .ToArray()
     ;
-    var renderFiles = new DisplayCommitsFiles(top10Files);
+    var medianCommits = Model.MedianCommits(null);
+    var renderFiles = new DisplayCommitsFiles(Tuple.Create( top10Files,medianCommits));
+
 
 }
 
@@ -104,7 +106,9 @@ line @CommitsFile
     .OrderByDescending(x => x.Value)
     .ToArray()
     ;
-    renderFiles = new DisplayCommitsFiles(top10Files);
+    medianCommits = Model.MedianCommits(year);
+
+    renderFiles = new DisplayCommitsFiles(Tuple.Create( top10Files,medianCommits));
 
 }
 

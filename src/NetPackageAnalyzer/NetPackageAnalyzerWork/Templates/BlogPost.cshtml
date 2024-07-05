@@ -22,11 +22,8 @@
         maxCommitString = "this year," + currentYear;
     }
     var maxCommitFiles = projectDicts.CommitsWithMaxFiles(null, 1).First();
-    var top10Files = projectDicts
-    .FilesWithMaxCommits(null)
-    .OrderByDescending(x => x.Value)
-    .ToArray()
-    ;
+    var top10Files = projectDicts.FilesWithMaxCommits(null);
+    var medianCommits = projectDicts.MedianCommits(null);
     var filewithMaxCommits = top10Files.First();
 
 }
@@ -168,14 +165,14 @@ flowchart LR
 
 ```mermaid
 xychart-beta
-title "Commits per year (folder and file)"
+title "Commits per year (folder and csproj)"
 x-axis @xaxis
 y-axis "" 0--> @maxCommit
 bar @commitsFolder
 bar @CommitsFile
 ```
 @{
-    var renderFiles = new DisplayCommitsFiles(top10Files);
+    var renderFiles = new DisplayCommitsFiles(Tuple.Create(top10Files, medianCommits));
 
 }
 

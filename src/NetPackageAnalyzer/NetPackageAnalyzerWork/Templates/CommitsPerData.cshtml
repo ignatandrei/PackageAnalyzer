@@ -8,7 +8,7 @@
     var projects = Model.Item1;
 
     var hist = Model.Item2;
-    
+
     var data = projects.ProjectByName()
     .ToArray();
     var ordered = projects
@@ -17,10 +17,16 @@
     ordered = ordered
     .Where(kv => hist(kv.Value)?.nrCommits > 0)
     .ToArray();
+
+    var values= ordered.Select(x => hist(x.Value).nrCommits??0).ToArray();
+    var median = Statistical<int>.Median( values.Where(t=>t!=0).Select(it=>it!).ToArray());
+
+
     var names = ordered.Select(x => x.Value.NameCSproj()).ToArray();
     var xaxis = string.Join(",", names);
-    var yaxis = string.Join(",", ordered.Select(x => hist(x.Value).nrCommits??0));
-    var maxCommits = data.Max(x => hist(x).nrCommits??0);
+    var yaxis = string.Join(",", values);
+    var lineAxis = string.Join(",", Enumerable.Repeat(median, names.Length));
+    var maxCommits = values.Max();
     var maxCommitsMonth = projects.Max(x => hist(x.Value).CommitsPerMonth??0);
     int height = 100 + data.Count() * 20;
     var nrCommits = data.Sum(x => hist(x).nrCommits ?? 0);
@@ -46,7 +52,7 @@ title "Number commits @nrCommits"
 x-axis [@xaxis]
 y-axis "" 0 --> @maxCommits
 bar [@yaxis]
-line [@yaxis]
+line [@lineAxis]
 ```
 <table>
     <thead>
