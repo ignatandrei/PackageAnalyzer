@@ -10,6 +10,7 @@ sidebar_position: 30
 # Commits Analysis
 
 ## All time 
+
 ### Number commits per year
 @{
     var yearCommitsFolder = Model.CommitsPerYearFolder();
@@ -39,6 +40,20 @@ y-axis "" 0--> @maxCommit
 bar @commitsFolder
 line @CommitsFile
 ```
+### Number commits per file
+
+@{
+    var top10Files = Model
+    .FilesWithMaxCommits(null)
+    .OrderByDescending(x => x.Value)
+    .ToArray()
+    ;
+    var renderFiles = new DisplayCommitsFiles(top10Files);
+
+}
+
+@renderFiles.Render()
+
 
 ### Number commits per csproj files
 
@@ -80,6 +95,21 @@ line @CommitsFile
 
 ### Number commits per csproj file
 @data
+
+### Number commits per file
+
+@{
+    top10Files = Model
+    .FilesWithMaxCommits(year)
+    .OrderByDescending(x => x.Value)
+    .ToArray()
+    ;
+    renderFiles = new DisplayCommitsFiles(top10Files);
+
+}
+
+@renderFiles.Render()
+
 
 ### Number commits per folder
 

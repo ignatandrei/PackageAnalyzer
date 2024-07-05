@@ -6,6 +6,7 @@ public partial record ProjectData(string PathProject, string folderSolution)
 {
     public HistoryPerYear? AllHistoryFile { get; set; }
     public HistoryPerYear? AllHistoryFolder { get; set; }
+    public CommitsData? CommitsData { get; internal set; }
 
     public History AllHistoryFileYear(int year)
     {
@@ -43,6 +44,7 @@ public partial record ProjectData(string PathProject, string folderSolution)
         }
     }
 
+    
     public bool IsTestProject()
     {
         return Packages.Any(it => it.IsTest());

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<AdditionalFiles Include="Templates\DisplayCommitsFiles.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\CommitsPerData.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>

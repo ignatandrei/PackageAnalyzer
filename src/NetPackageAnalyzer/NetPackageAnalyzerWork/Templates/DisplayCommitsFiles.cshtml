@@ -1,0 +1,43 @@
+@inherits RazorBlade.PlainTextTemplate<KeyValuePair<string,int>[]>;
+@{
+    var top10Files = Model;
+
+    var nrVersionIterator = 1;
+    string yAxisCommit = "[" + string.Join(',', top10Files.Select(x => x.Value).ToArray()) + "]";
+    string xAxisCommit = "[" + string.Join(',', top10Files.Select((x,nr) => "file "+(nr+1) ).ToArray()) + "]";
+    
+}
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>Number commits</th>
+            <th>Name</th>
+            <th>Full Path</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+
+@foreach(var file in top10Files)
+{
+string fileName = Path.GetFileName(file.Key);
+            <tr>
+
+        <td>@(nrVersionIterator++) </td>
+                <td>@file.Value</td>
+                <td>@fileName</td>
+                <td>@file.Key</td>
+    </tr>
+}
+
+
+</tbody>
+</table>
+```mermaid
+    xychart-beta
+    title "Nr Commits per file"
+    x-axis @xAxisCommit
+    bar @yAxisCommit
+```

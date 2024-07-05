@@ -14,6 +14,35 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .SelectMany(it => it.AllHistoryFolder!)
             .Sum(it=> (long)(it.Value?.nrCommits??0));
     }
+
+    public KeyValuePair<string, int>[] FilesWithMaxCommits(int? year)
+    {
+        int take = 10;
+        var data = this.Values.SelectMany(it => it.CommitsData!)
+            .Where(it => year == null || it.date.Year == year)
+            .SelectMany(it => it.Files)
+            .GroupBy(it => it)
+            .OrderByDescending(it => it.Count())
+            .Take(take * 2)
+            .ToDictionary(it => it.Key, it => it.Count())
+            .ToArray();
+        if(data.Length > take)
+        {
+            var nr = data[take].Value;
+            data = data.Where(it => it.Value >= nr).ToArray();
+        }
+
+        return data;
+    }
+    public Commit[] CommitsWithMaxFiles(int? year,int number)
+    {
+        return this.Values
+            .SelectMany(it => it.CommitsData!)
+            .Where(it => year == null || it.date.Year == year.Value)
+            .OrderByDescending(it => it.CountFiles())
+            .Take(number)
+            .ToArray();
+    }
     public Dictionary<int,long> CommitsPerYearFolder()
     {
         var data= this.Values
@@ -197,8 +226,11 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         {
             FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
             fileHistorySimple.Initialize(true);
+            FolderHistoryCommits folderHistoryCommits = new(Path.GetDirectoryName(project.PathProject));
+            folderHistoryCommits.Initialize();
             project.AllHistoryFile = fileHistorySimple.AllHistoryFile;
             project.AllHistoryFolder = fileHistorySimple.AllHistoryFolder;
+            project.CommitsData = folderHistoryCommits.commit;
             //Console.WriteLine("!done with " + project.PathProject + $"{project.LastCommitFolder} {project.LastCommitFile}");
         }
     }

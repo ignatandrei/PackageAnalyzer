@@ -21,6 +21,13 @@
     {
         maxCommitString = "this year," + currentYear;
     }
+    var maxCommitFiles = projectDicts.CommitsWithMaxFiles(null, 1).First();
+    var top10Files = projectDicts
+    .FilesWithMaxCommits(null)
+    .OrderByDescending(x => x.Value)
+    .ToArray()
+    ;
+    var filewithMaxCommits = top10Files.First();
 
 }
 ---
@@ -59,7 +66,12 @@ export const Highlight = ({children, color}) => (
 
 
 [Total Commits](pathname:///docs/Analysis/@(nameSolution)/Commits): @info.totalCommits
-( last commit : @maxCommitString)
+( last commit : @maxCommitString )
+
+The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
+
+The file with most commits ( @filewithMaxCommits.Value ) is @filewithMaxCommits.Key
+
 :::
 
 ## @nrProjectsNoTests Projects
@@ -162,9 +174,12 @@ y-axis "" 0--> @maxCommit
 bar @commitsFolder
 bar @CommitsFile
 ```
+@{
+    var renderFiles = new DisplayCommitsFiles(top10Files);
 
+}
 
-
+@renderFiles.Render()
 
 
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
