@@ -6,6 +6,7 @@ name: .NET
 on:
   push:
     branches: [ "main" ]
+    tags: [ 'v*' ] # Listen for tag pushes that match version tags
   pull_request:
     branches: [ "main" ]
 
@@ -55,6 +56,7 @@ jobs:
         retention-days: 1
   
     - name: push to nuget
+      if: startsWith(github.ref, 'refs/tags/v') # This line ensures the step runs only if a tag version is present
       run: |
         dir src/nugetPackages/*.*
         echo '1'
