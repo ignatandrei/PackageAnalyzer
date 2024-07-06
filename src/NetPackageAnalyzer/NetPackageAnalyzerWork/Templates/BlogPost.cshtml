@@ -11,6 +11,7 @@
     var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
     var yearCommitsFile = projectDicts.CommitsPerYearFile();
     var maxCommitYear = yearCommitsFolder.Max(x => x.Key);
+    var minCommitYear = yearCommitsFolder.Min(x => x.Key);
     var currentYear= DateTime.Now.Year;
     var maxCommitString = "";
     if(maxCommitYear != currentYear)
@@ -21,7 +22,7 @@
     {
         maxCommitString = "this year," + currentYear;
     }
-    var maxCommitFiles = projectDicts.CommitsWithMaxFiles(null, 1).First();
+    var maxCommitFiles = projectDicts.CommitsWithMaxFiles(null);
     var top10Files = projectDicts.FilesWithMaxCommits(null);
     var medianCommits = projectDicts.MedianCommits(null);
     var filewithMaxCommits = top10Files.First();
@@ -143,7 +144,9 @@ flowchart LR
     </tbody>
 </table>
 
-## @info.totalCommits commits 
+## Commits 
+
+### Commits per year 
 @{
     var xaxis = "[" +
     string.Join(',', yearCommitsFolder
@@ -171,12 +174,49 @@ y-axis "" 0--> @maxCommit
 bar @commitsFolder
 bar @CommitsFile
 ```
+
+### Most Commits per file
+
 @{
     var renderFiles = new DisplayCommitsFiles(Tuple.Create(top10Files, medianCommits));
 
 }
 
 @renderFiles.Render()
+
+
+@{
+    var maxCommitFilesPerYear = projectDicts.CommitsWithMaxFilesPerYear();
+    xaxis = "[" +
+     string.Join(',', maxCommitFilesPerYear
+         .Select(it => it.Key)
+         .OrderBy(x => x)
+         .ToArray()) + "]";
+    var maxFiles = maxCommitFilesPerYear.Max(x => x.Value.CountFiles());
+    var commitsFiles= "[" + string.Join(',', maxCommitFilesPerYear
+        .Select(it => it)
+        .OrderBy(x => x.Key)
+        .Select(x => x.Value.CountFiles())
+        .ToArray()) + "]";
+    var median = projectDicts.CommitsMedianFilesPerYear();
+    var commitsMedian = "[" + string.Join(',', median
+        .Select(it => it)
+        .OrderBy(x => x.Key)
+        .Select(x => x.Value)
+        .ToArray()) + "]";
+}
+
+### Commits with most files per year
+
+```mermaid
+xychart-beta
+title "Commits with max files per year (line is median)"
+x-axis @xaxis
+y-axis "" 0--> @(maxFiles+1)
+bar @commitsFiles
+line @commitsMedian
+```
+
 
 
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

@@ -3,13 +3,16 @@
     var top10Files = Model.Item1;
     var medianCommits= Model.Item2;
     var nrVersionIterator = 1;
+    var max=top10Files .Max(x=>x.Value);
     string yAxisCommit = "[" + string.Join(',', top10Files.Select(x => x.Value).ToArray()) + "]";
     string xAxisCommit = "[" + string.Join(',', top10Files.Select((x,nr) => Path.GetFileName(x.Key) ).ToArray()) + "]";
     string lineMedian= "[" + string.Join(',',Enumerable.Repeat(medianCommits,top10Files.Length) ) + "]";
 }
+
+### (Most commits @max , median @medianCommits )
 ```mermaid
     xychart-beta horizontal
-    title "Top Commits per file ( median @medianCommits )"
+    title "Top Commits per file"
     x-axis @xAxisCommit
     bar @yAxisCommit
     line @lineMedian

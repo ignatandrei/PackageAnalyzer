@@ -13,6 +13,10 @@ public static class Statistical<T>
             return T.Zero;
         }
         ArgumentNullException.ThrowIfNull(values);
+        if (size ==1)
+        {
+            return values![0];
+        }
         Array.Sort(values);
         int mid = size / 2;
         T median = values[mid];

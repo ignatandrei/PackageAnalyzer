@@ -23,6 +23,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .ToDictionary(it => it.Key, it => it.Count())
             .ToArray();
         if ((data?.Length??0) == 0) return 0;
+        ArgumentNullException.ThrowIfNull(data);
         return Statistical<int>.Median(data.Select(it => it.Value).ToArray());
 
     }
@@ -45,14 +46,39 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
 
         return data;
     }
-    public Commit[] CommitsWithMaxFiles(int? year,int number)
+    public Dictionary<int, Commit> CommitsWithMaxFilesPerYear()
+    {
+        var data= this.Values
+            .SelectMany(it => it.CommitsData!)
+            .GroupBy(it => it.date.Year)
+            .Select(it => new { year = it.Key, commit = it.ToArray() })
+            .Where(it => it.commit.Length > 0)
+            .ToDictionary(it => it.year, it => it.commit.MaxBy(it => it.CountFiles())!);
+        return data;
+    }
+    public Dictionary<int, int> CommitsMedianFilesPerYear()
+    {
+        var data = this.Values
+            .SelectMany(it => it.CommitsData!)
+            .GroupBy(it => it.date.Year)
+            .Select(it => new { 
+                year = it.Key, 
+                median = 
+            Statistical<int>.Median( it.Select(it=>it.CountFiles()).ToArray())
+            })            
+            .ToDictionary(it => it.year, it => it.median)
+            ;
+        
+        return data;
+    }
+    public Commit CommitsWithMaxFiles(int? year)
     {
         return this.Values
             .SelectMany(it => it.CommitsData!)
             .Where(it => year == null || it.date.Year == year.Value)
             .OrderByDescending(it => it.CountFiles())
-            .Take(number)
-            .ToArray();
+            .Take(1)
+            .First();
     }
     public Dictionary<int,long> CommitsPerYearFolder()
     {
