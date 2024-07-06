@@ -40,6 +40,19 @@ y-axis "" 0--> @maxCommit
 bar @commitsFolder
 line @CommitsFile
 ```
+
+@{
+    CommitsWithMaxFilesPerYear cMaxFiles = new CommitsWithMaxFilesPerYear(Model);
+
+}
+
+### Commits with most files per year
+
+@cMaxFiles.Render()
+
+
+
+
 ### Top Number commits per file 
 
 @{

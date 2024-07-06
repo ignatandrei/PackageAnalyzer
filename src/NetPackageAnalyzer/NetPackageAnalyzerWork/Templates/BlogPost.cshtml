@@ -186,36 +186,13 @@ bar @CommitsFile
 
 
 @{
-    var maxCommitFilesPerYear = projectDicts.CommitsWithMaxFilesPerYear();
-    xaxis = "[" +
-     string.Join(',', maxCommitFilesPerYear
-         .Select(it => it.Key)
-         .OrderBy(x => x)
-         .ToArray()) + "]";
-    var maxFiles = maxCommitFilesPerYear.Max(x => x.Value.CountFiles());
-    var commitsFiles= "[" + string.Join(',', maxCommitFilesPerYear
-        .Select(it => it)
-        .OrderBy(x => x.Key)
-        .Select(x => x.Value.CountFiles())
-        .ToArray()) + "]";
-    var median = projectDicts.CommitsMedianFilesPerYear();
-    var commitsMedian = "[" + string.Join(',', median
-        .Select(it => it)
-        .OrderBy(x => x.Key)
-        .Select(x => x.Value)
-        .ToArray()) + "]";
+    CommitsWithMaxFilesPerYear c=new CommitsWithMaxFilesPerYear(projectDicts);
+
 }
 
 ### Commits with most files per year
 
-```mermaid
-xychart-beta
-title "Commits with max files per year (line is median)"
-x-axis @xaxis
-y-axis "" 0--> @(maxFiles+1)
-bar @commitsFiles
-line @commitsMedian
-```
+@c.Render()
 
 
 
