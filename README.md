@@ -41,9 +41,9 @@ It will show
 7. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/category/projects
 8. Each project and relations with another - upstream and downstream - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences
 9. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages
-10. Commits (full time and per year ) - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Commits
-11. Commits per project - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
-
+10. Commits (full time and per year ) and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Commits
+11. Commits per project and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
+12. Commits per file and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
 
 Please read the Wiki at https://github.com/ignatandrei/packageAnalyzer/wiki/ 
 
