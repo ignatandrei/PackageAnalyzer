@@ -1,3 +1,5 @@
+[![Latest version](https://img.shields.io/nuget/v/netpackageanalyzerconsole.svg)](https://www.nuget.org/packages/netpackageanalyzerconsole)
+
 # PackageAnalyzer
 
 Analyzer for .NET solution / projects .  It shows relations in projects / packages / commits .
@@ -7,16 +9,13 @@ Please read the Wiki at https://github.com/ignatandrei/packageAnalyzer/wiki/
 ## Install as local tool
 
 Go to where your sln is and enter this:
+
 ```
 dotnet new tool-manifest
 dotnet tool update netpackageanalyzerconsole
-```
-
-Then you can run
-
-```
 dotnet PackageAnalyzer generateFiles
 ```
+
 
 and see results at Analysis folder as a Docusaurus site .
 
@@ -44,6 +43,7 @@ It will show
 10. Commits (full time and per year ) and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Commits
 11. Commits per project and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
 12. Commits per file and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
+13. Commits with most files -  https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
 
 Please read the Wiki at https://github.com/ignatandrei/packageAnalyzer/wiki/ 
 
