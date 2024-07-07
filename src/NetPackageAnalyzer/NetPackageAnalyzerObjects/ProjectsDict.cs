@@ -48,13 +48,44 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     }
     public Dictionary<int, Commit> CommitsWithMaxFilesPerYear()
     {
-        var data= this.Values
+        var data = this.Values
             .SelectMany(it => it.CommitsData!)
             .GroupBy(it => it.date.Year)
             .Select(it => new { year = it.Key, commit = it.ToArray() })
             .Where(it => it.commit.Length > 0)
             .ToDictionary(it => it.year, it => it.commit.MaxBy(it => it.CountFiles())!);
         return data;
+    }
+    public int MedianCommitsForFiles(int? year)
+    {
+        var data = this.Values
+            .SelectMany(it => it.CommitsData??CommitsData.EmptySingleton)
+            .Where(it => it != null)
+            .Where(it => year == null || it.date.Year == year)
+            .Select(it => it.CountFiles())
+            .ToArray();
+        var median=Statistical<int>.Median(data);
+        return median;
+    }
+    public Commit[] MaxCommits(int? year)
+    {
+        int take = 10;
+        var data = this.Values
+            .SelectMany(it => it.CommitsData ?? CommitsData.EmptySingleton)
+            .Where(it => it != null)
+            .Where(it => year == null || it.date.Year == year)
+            .OrderByDescending(it => it.CountFiles())
+            .ToArray();
+            ;
+
+        if (data.Length < take+1)
+            return data;
+
+        var nrCommits = data[take].CountFiles();
+
+        return data.Where(it=>it.CountFiles()>=nrCommits).ToArray();
+
+
     }
     public Dictionary<int, int> CommitsMedianFilesPerYear()
     {

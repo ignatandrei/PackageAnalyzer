@@ -26,6 +26,7 @@ public class CommitsData : List<Commit>
     //    return files.GroupBy(it => it).ToDictionary(it => it.Key, it => it.Count());
 
     //}
+    public static CommitsData EmptySingleton = new CommitsData();
     public Dictionary<string,int> FilesWithMaxCommits(int? year, int take)
     {
 

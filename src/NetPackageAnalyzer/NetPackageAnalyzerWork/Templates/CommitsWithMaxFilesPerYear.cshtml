@@ -19,6 +19,8 @@
         .OrderBy(x => x.Key)
         .Select(x => x.Value)
         .ToArray()) + "]";
+
+    var nrVersionIterator = 0;
 }
 
 ```mermaid
@@ -30,3 +32,90 @@ bar @commitsFiles
 line @commitsMedian
 ```
 
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>SHA</th>
+            <th>Date</th>
+            <th>NrFiles</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kvp in maxCommitFilesPerYear)
+        {
+            nrVersionIterator++;
+            var key = kvp.Value;
+
+            <tr>
+                <td>@nrVersionIterator</td>
+                <td>@key.sha</td>
+                <td>@key.date.ToString("yyyy MMM dd")</td>
+                <td>@key.CountFiles()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+### Commits with max files 
+
+@{
+    var maxCommits = Model.MaxCommits(null);
+    nrVersionIterator = 0;
+
+    xaxis = "[" +string.Join(',',maxCommits.Select(it => it.sha).ToArray()) + "]";
+
+    maxFiles = maxCommits.Max(x => x.CountFiles())+1;
+
+    commitsFiles = "[" + string.Join(',', maxCommits
+        .Select(x => x.CountFiles())
+        .ToArray()) + "]";
+    var medianFiles = Model.MedianCommitsForFiles(null);
+    int height = 100 + maxCommits.Length* 20;
+    commitsMedian = "[" + string.Join(',', maxCommits
+        .Select(x => medianFiles)
+        .ToArray()) + "]";
+}
+
+```mermaid
+---
+config:
+    xyChart:
+        width: 900
+        height: @height
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+xychart-beta horizontal
+title "Max Commits for all years( line is median)"
+x-axis @xaxis
+y-axis "" 0--> @(maxFiles + 1)
+bar @commitsFiles
+line @commitsMedian
+
+```
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Nr</th>
+            <th>SHA</th>
+            <th>Date</th>
+            <th>NrFiles</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var key in maxCommits)
+        {
+            nrVersionIterator++;
+
+            <tr>
+                <td>@nrVersionIterator</td>
+                <td>@key.sha</td>
+                <td>@key.date.ToString("yyyy MMM dd")</td>
+                <td>@key.CountFiles()</td>
+            </tr>
+        }
+    </tbody>
+</table>
