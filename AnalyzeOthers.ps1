@@ -3,7 +3,7 @@
 #done
 #$url="https://github.com/ivanpaulovich/clean-architecture-manga"
 #many sln
-$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
+#$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
 #done
 #$url="https://github.com/jasontaylordev/CleanArchitecture"
 #done
@@ -12,7 +12,7 @@ $url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by
 #$url="https://github.com/dotnet/eShop"
 #the project do not compile -errors 
 # $url="https://github.com/kgrzybek/modular-monolith-with-ddd"
-
+$url="https://github.com/nitish-kaushik/aspnetcore-webapi-clean-architecture"
 $name = $url.Split('/')[-1]
 $analyzerPath = Get-Location
 $copyPath = Join-Path  $analyzerPath 'src' 
