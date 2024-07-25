@@ -27,22 +27,16 @@
             <th>Full Path</th>
         </tr>
     </thead>
-    <tbody>
-
-
-
+<tbody>
 @foreach(var file in top10Files)
 {
 string fileName = Path.GetFileName(file.Key);
-            <tr>
-
-        <td>@(nrVersionIterator++) </td>
+<tr>
+    <td>@(nrVersionIterator++) </td>
                 <td>@file.Value</td>
                 <td>@fileName</td>
                 <td>@file.Key</td>
-    </tr>
+</tr>
 }
-
-
 </tbody>
 </table>

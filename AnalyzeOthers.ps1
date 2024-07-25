@@ -12,7 +12,8 @@
 #$url="https://github.com/dotnet/eShop"
 #the project do not compile -errors 
 # $url="https://github.com/kgrzybek/modular-monolith-with-ddd"
-$url="https://github.com/nitish-kaushik/aspnetcore-webapi-clean-architecture"
+# $url="https://github.com/nitish-kaushik/aspnetcore-webapi-clean-architecture"
+$url="https://github.com/nopSolutions/nopCommerce"
 $name = $url.Split('/')[-1]
 $analyzerPath = Get-Location
 $copyPath = Join-Path  $analyzerPath 'src' 
