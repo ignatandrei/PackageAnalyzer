@@ -173,7 +173,9 @@ internal class RealMainExecuting
         }
         catch (Exception ex)
         {
-            WriteLine("Exception!! " + ex.Message);             
+            WriteLine("Exception!! " + ex.Message);
+            WriteLine("Exception!! " + ex.StackTrace);
+
         }
     }
     private static async Task RealGenerateHandler(string folder, string where, WhatToGenerate what)

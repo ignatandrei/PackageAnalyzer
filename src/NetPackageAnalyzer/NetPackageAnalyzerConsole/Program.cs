@@ -11,7 +11,7 @@
         //};
 
         //args = new[] { "generateFiles",
-        //    "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
+        //    "--folder", @"D:\gth\CleanArchitecture",
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "--verbose","false"
         //};

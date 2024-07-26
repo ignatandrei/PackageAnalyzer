@@ -85,7 +85,14 @@ public class FolderHistoryCommits
         Commit? lastCommit = null;
         foreach (var line in lines)
         {
-            var date = line.Substring(0, format.Length).Replace("T", " ");
+            if(line.Length <format.Length)
+            {
+                Console.WriteLine("strange line:" + line);
+                continue;
+            }
+            var date = line
+                .Substring(0, format.Length)
+                .Replace("T", " ");
             if (DateTime.TryParseExact(date, format, null, System.Globalization.DateTimeStyles.None, out var realDate))
             {
                 var commitHash = line.Split(' ')[1];
