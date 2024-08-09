@@ -23,6 +23,10 @@
         //    "--verbose","false"
         //};
 
+        args = new[] { "generateFiles",
+            "--folder", @"D:\gth\eShop",            
+            "--verbose","false"
+        };
 
     }
     return await RealMainExecuting.RealMain(args);

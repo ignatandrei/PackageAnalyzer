@@ -114,6 +114,7 @@
 	  <EmbeddedResource Include="docusaurus.zip" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
 	</ItemGroup>
 
