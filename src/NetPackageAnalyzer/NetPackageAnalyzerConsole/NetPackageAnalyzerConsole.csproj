@@ -20,7 +20,7 @@
 	  <ProjectReference Include="..\WhatIAmDoingData\WhatIAmDoingData.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>8.2024.707.1419</Version>
+		<Version>8.2024.726.2121</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>
@@ -54,6 +54,7 @@
 
 	<ItemGroup>
 	  <None Remove="rscg.ps1" />
+	  <None Remove="WhatIAmDoingData.txt" />
 	</ItemGroup>
 
 

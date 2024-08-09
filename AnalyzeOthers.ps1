@@ -3,7 +3,7 @@
 #done
 #$url="https://github.com/ivanpaulovich/clean-architecture-manga"
 #many sln
-$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
+#$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
 #done
 #$url="https://github.com/jasontaylordev/CleanArchitecture"
 #done
@@ -12,6 +12,18 @@ $url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by
 #$url="https://github.com/dotnet/eShop"
 #the project do not compile -errors 
 # $url="https://github.com/kgrzybek/modular-monolith-with-ddd"
+# $url="https://github.com/nitish-kaushik/aspnetcore-webapi-clean-architecture"
+#$url="https://github.com/nopSolutions/nopCommerce"
+#TBD error : $url="https://github.com/dotnetcore/CAP"
+#TBD error :$url="https://github.com/meysamhadeli/booking-microservices"
+# $url="https://github.com/rafaelfgx/Architecture"
+#TBD error :$url="https://github.com/ardalis/CleanArchitecture"
+
+#TODO: https://github.com/topics/architecture?l=c%23&o=desc&s=stars
+
+#TODO: https://github.com/simplcommerce/SimplCommerce
+#TODO: https://github.com/grandnode/grandnode2
+#TODO: https://github.com/gothinkster/aspnetcore-realworld-example-app
 
 $name = $url.Split('/')[-1]
 $analyzerPath = Get-Location
