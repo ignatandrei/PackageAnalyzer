@@ -6,7 +6,7 @@ function ProcessCsproj {
   )
 
 $version = "2024.810.832"
-$folderOutput= "D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\Analysis\docs\Analysis\NetPackageAnalyzer_Temp"
+$folderOutput= "D:\gth\PackageAnalyzer\src\documentation1\docs\Analysis\NetPackageAnalyzer_Temp"
 $newNode = [xml]@"
 <MainData>
 <ItemGroup>

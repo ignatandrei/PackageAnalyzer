@@ -43,10 +43,15 @@ jobs:
         cd src
         cd NetPackageAnalyzer
         cd NetPackageAnalyzerConsole
-        dotnet run generateFiles --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
+        cd bin
+        cd Debug
+        # copy to another folder to run
+        cp -r ./net8.0 ./test
+        cd test
+        ./NetPackageAnalyzerConsole generateFiles --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
         cd Analysis
-        npm install
-        npm run build
+        # npm install
+        # npm run build
 
     - name: 'Upload nuget'
       uses: actions/upload-artifact@v2
