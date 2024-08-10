@@ -136,8 +136,6 @@ public class GenerateFilesDocusaurus:GenerateFiles
             modelMore1Version.KeysPackageMultipleMajorDiffers().Length
             );
         await File.WriteAllTextAsync(file, await generator.Generate_SolutionIntroduction(infoSol));
-        file = Path.Combine(folderResults, "BlogPost.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_BlogPost(infoSol, projectsDict, modelMore1Version));
         file = Path.Combine(folderResults, "BuildingBlocks.md");
         await File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));
 
@@ -155,9 +153,10 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //ArgumentNullException.ThrowIfNull(projectsDict);
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
         var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+        ClassesRefData? refSummary = null;
         if(tempFolder != null)
         {
-            var refSummary= AnalyzeDiagrams(tempFolder);
+            refSummary= AnalyzeDiagrams(tempFolder);
             file = Path.Combine(folderResults, "ReferencesSummaryProjects.md");
             await File.WriteAllTextAsync(file, await generator.Generate_ReferencesSummaryProjects(refSummary));
             //move .md files to the right place
@@ -170,8 +169,8 @@ public class GenerateFilesDocusaurus:GenerateFiles
                 var fileDest = Path.Combine(folderResults,"Projects",nameCsproj );
                 if(!Directory.Exists(fileDest))
                 {
-                    //TB:2021-09-13 solve wrong the name of the csproj 
-                    Console.WriteLine($"Directory {fileDest} does not exist");
+                    //TB:2025-01-01 solve wrong the name of the csproj 
+                    //Console.WriteLine($"Directory {fileDest} does not exist");
                     File.Delete(fileMd);
                     continue;
                 }
@@ -189,6 +188,9 @@ public class GenerateFilesDocusaurus:GenerateFiles
                 }
             }
         }
+        file = Path.Combine(folderResults, "BlogPost.md");
+        await File.WriteAllTextAsync(file, await generator.Generate_BlogPost(infoSol, projectsDict, modelMore1Version, refSummary));
+
         return 1;
     }
 

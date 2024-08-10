@@ -1,11 +1,15 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData>>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
     var nameSolution = GlobalsForGenerating.NameSolution;    
     var info = Model.Item1;
     var projectDicts = Model.Item2;
+
     var nrProjectsNoTests = info.nrProjects - info.nrTestProjects;
     var more1Version = Model.Item3;
+    var refSummary = Model.Item4;
+    var maxAssemblyRef = refSummary.AssembliesReferences.First();
+
     var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
     var nrVersionIterator = 0;
     var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
@@ -61,7 +65,13 @@ export const Highlight = ({children, color}) => (
 [Deprecated](pathname:///docs/Analysis/@(nameSolution)/DisplayOutdatedDeprecated): @info.nrDeprecated,
 [Major version differs](pathname:///docs/Analysis/@(nameSolution)/DisplayAllVersions) <Highlight color='red'>@info.nrMajorDiffers</Highlight>
 )
-
+@if (maxAssemblyRef != null)
+{
+<text>
+[Assembly with most references](pathname:///docs/Analysis/@(nameSolution)/summaryProjectReferences)
+: @maxAssemblyRef.Name @maxAssemblyRef.Count
+</text>    
+}
 
 [Total Commits](pathname:///docs/Analysis/@(nameSolution)/Commits): @info.totalCommits
 ( last commit : @maxCommitString )
@@ -143,6 +153,27 @@ flowchart LR
         }
     </tbody>
 </table>
+
+## References between projects
+
+### Assemblies with References
+@{
+    Tuple<NamePerCount[], string> tuple = new(refSummary.AssembliesReferences, "References per assembly");
+    NamePerCountDisplay namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+### Classes with References
+
+@{
+    tuple = new(refSummary.classRefs, "References per class");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+
 
 ## Commits 
 
