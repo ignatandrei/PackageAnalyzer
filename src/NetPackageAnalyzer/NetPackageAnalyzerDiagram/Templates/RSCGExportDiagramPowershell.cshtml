@@ -44,16 +44,17 @@ $PropertyGroup = $proj.ImportNode($newNode.DocumentElement.PropertyGroup,$true)
 $proj.Project.PrependChild($PropertyGroup) 
 $proj.DocumentElement.AppendChild($PropertyGroup)
 $proj.Save($project) 
-dotnet build
+#dotnet build
 # pause
-Copy-Item $backFile  $project -Force
-Remove-Item $backFile  -Force
-
+#Copy-Item $backFile  $project -Force
+#Remove-Item $backFile  -Force
+return $proj
 }
 
 $solution  = gci *.sln | %{ $_.FullName}
 $folderSolution = Split-Path $solution
 # Write-Host $folderSolution
+$csprojProcessed=@@()
 Get-Content $solution |
   Select-String 'Project\(' |
     ForEach-Object {
@@ -65,9 +66,22 @@ Get-Content $solution |
       # }
       if ($projectParts[2] -match '.csproj$'){	
         $fileProject =Join-Path  $folderSolution $projectParts[2]
+        $csprojProcessed+= $fileProject
         Write-Host $fileProject
         ProcessCsproj -project $fileProject -folderOutput $folderSolution
       }
     }
 
+$csprojProcessed
 
+
+dotnet build $solution   
+# pause
+# Output the contents of the $csprojProcessed array
+$csprojProcessed | ForEach-Object { 
+  Write-Host $_ 
+  $backFile =$_ + ".bak"
+  Copy-Item $backFile  $_ -Force
+  Remove-Item $backFile  -Force
+
+}

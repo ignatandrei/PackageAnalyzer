@@ -1,7 +1,4 @@
-﻿using NetPackageAnalyzerDiagram;
-using System.Management.Automation;
-
-namespace NetPackageAnalyzerDocusaurus;
+﻿namespace NetPackageAnalyzerDocusaurus;
 
 public class GenerateFilesDocusaurus:GenerateFiles
 {
@@ -13,7 +10,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
     public override async Task<int> GenerateNow(string folder, string where)
     {
 
-        var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Documentation") : where;
+        var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
         if(!Directory.Exists(folderResults))
             Directory.CreateDirectory(folderResults);
         var zip = Path.Combine(folderResults, "docusaurus.zip");
@@ -159,7 +156,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         var fldTemp = folderResults + "_Temp";
         if (!Directory.Exists(fldTemp))
             Directory.CreateDirectory(fldTemp);
-        RscgExportDataDiagram pwsh = new("2024.809.722", fldTemp);
+        RscgExportDataDiagram pwsh = new("2024.810.832", fldTemp);
         var code = pwsh.GenerateCode();
         var file = Path.Combine(folder, "ExportDiagram.ps1");
         File.WriteAllText(file, code);

@@ -7,6 +7,8 @@ global using NetPackageAnalyzerDocusaurus.Templates;
 global using System.IO.Abstractions;
 global using NetPackageAnalyzerObjects;
 global using System.IO.Compression;
+global using NetPackageAnalyzerDiagram;
+
 
 
 
