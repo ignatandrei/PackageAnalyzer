@@ -1,4 +1,4 @@
-﻿namespace RSCG_ExportDiagram;
+﻿namespace RSCG_ExportDiagram_Import;
 public partial class ExportAssembly
 {
     public string AssemblyName { get; set; } = "";
