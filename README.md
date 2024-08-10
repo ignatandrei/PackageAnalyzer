@@ -31,19 +31,22 @@ to see what is generated ( see https://ignatandrei.github.io/PackageAnalyzer/doc
 
 It will show
 
-1. Solution Analyzer - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/ProjectRelation
-2. Project Building Blocks - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/BuildingBlocks
-3. Root Projects - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/RootProjects
-4. Test Projects - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/TestProjects
-5. Packages Versions - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/DisplayAllVersions
-6. Packages that differ in major versions  -  https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/MermaidVisualizerMajorDiffer 
-7. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/category/projects
-8. Each project and relations with another - upstream and downstream - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences
-9. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages
-10. Commits (full time and per year ) and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Commits
-11. Commits per project and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
-12. Commits per file and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
-13. Commits with most files -  https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
+10. Solution Analyzer - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/ProjectRelation
+15. Project references with another projects - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summaryProjectReferences
+20. Project Building Blocks - https://ignatandrei0.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/BuildingBlocks
+30. Root Projects - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/RootProjects
+40. Test Projects - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/TestProjects
+50. Packages Versions - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/DisplayAllVersions
+60. Packages that differ in major versions  -  https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/MermaidVisualizerMajorDiffer 
+70. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/category/projects
+80. Each project and relations with another - upstream and downstream - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/ProjectReferences
+90. Each project with their packages - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerDocusaurus/Packages
+110. Commits (full time and per year ) and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Commits
+120. Commits per project and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
+130. Commits per file and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
+140. Commits with most files -  https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
+
+And a summary https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summary
 
 Please read the Wiki at https://github.com/ignatandrei/packageAnalyzer/wiki/ 
 
