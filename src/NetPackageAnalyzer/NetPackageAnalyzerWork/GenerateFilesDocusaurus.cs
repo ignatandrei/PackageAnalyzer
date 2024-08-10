@@ -16,6 +16,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
     
     public override async Task<int> GenerateNow(string folder, string where)
     {
+        
 
         var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
         if(!Directory.Exists(folderResults))
@@ -159,6 +160,34 @@ public class GenerateFilesDocusaurus:GenerateFiles
             var refSummary= AnalyzeDiagrams(tempFolder);
             file = Path.Combine(folderResults, "ReferencesSummaryProjects.md");
             await File.WriteAllTextAsync(file, await generator.Generate_ReferencesSummaryProjects(refSummary));
+            //move .md files to the right place
+            var files = Directory.GetFiles(tempFolder, "*.md");
+            foreach (var fileMd in files)
+            {
+                string nameCsproj = Path.GetFileNameWithoutExtension(fileMd);
+                nameCsproj = nameCsproj.Replace("_rel_csproj", "");
+
+                var fileDest = Path.Combine(folderResults,"Projects",nameCsproj );
+                if(!Directory.Exists(fileDest))
+                {
+                    //TB:2021-09-13 solve wrong the name of the csproj 
+                    Console.WriteLine($"Directory {fileDest} does not exist");
+                    File.Delete(fileMd);
+                    continue;
+                }
+                fileDest = Path.Combine(fileDest, Path.GetFileName(fileMd));
+                try
+                {
+                    File.Move(fileMd, fileDest,true);
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine($"Exception moving {fileMd} to {fileDest} ");
+                    Console.WriteLine("Exception"+ ex.Message);
+                    Console.WriteLine("Exception!! " + ex.StackTrace);
+                }
+            }
         }
         return 1;
     }
@@ -175,9 +204,22 @@ public class GenerateFilesDocusaurus:GenerateFiles
                 continue;
             expAss.Add(ex);
         }
-        var allExtReferences = expAss
-            .SelectMany(it=>it.ClassesWithExternalReferences)
-            .SelectMany(it=>it.MethodsWithExternalReferences)
+        var classRefs = expAss
+            .SelectMany(it => it.ClassesWithExternalReferences)
+            .Select(it => new NamePerCount(it.ClassName, 
+                it.MethodsWithExternalReferences
+                .SelectMany(m => m.References)
+                .Count()
+                ))
+            .OrderByDescending(it => it.Count)
+            .ToArray()
+            ;
+
+        var methExt = expAss
+            .SelectMany(it => it.ClassesWithExternalReferences)
+            .SelectMany(it => it.MethodsWithExternalReferences)
+            .ToArray();
+        var allExtReferences = methExt
             .SelectMany(it=>it.References)
             .ToArray();
         
@@ -185,19 +227,36 @@ public class GenerateFilesDocusaurus:GenerateFiles
             .GroupBy(it=>it.AssemblyName)
             .Select(it => new NamePerCount (it.Key, it.Count()))
             .OrderByDescending(it => it.Count)
-            .Take(10)
+            .Where(it => it.Count > 0)
             .ToArray();
 
         var maxRefMethods = allExtReferences
             .GroupBy(it => it.FullName)
-            .Select(it => new NamePerCount (it.Key, it.Count() ))
+            .Select(it => new NamePerCount(it.Key, it.Count()))
             .OrderByDescending(it => it.Count)
-            .Take(10)
+            .Where(it => it.Count > 0)
+            .Select(it =>
+            {
+                var dot= it.Name.LastIndexOf('.');
+                if(dot<0)
+                    return it;
+                return new NamePerCount(it.Name.Substring(dot+1), it.Count);
+            })
             .ToArray();
+
+        var methodsWithRefs = methExt
+            .Select(it => new NamePerCount(it.MethodName, it.References.Length))
+            .OrderByDescending(it => it.Count)
+            .Where(it => it.Count > 0)
+            .ToArray()
+            ;
+
 
         ClassesRefData ret = new();
         ret.MethodsReferences = maxRefMethods;
+        ret.classRefs = classRefs;
         ret.AssembliesReferences = maxRefAssembly;
+        ret.MethodWithMostReferences = methodsWithRefs;
         return ret;
     }
 

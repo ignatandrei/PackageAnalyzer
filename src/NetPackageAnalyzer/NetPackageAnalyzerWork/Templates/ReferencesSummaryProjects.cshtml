@@ -1,53 +1,54 @@
 @inherits RazorBlade.PlainTextTemplate<ClassesRefData>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
-    var nameSolution = GlobalsForGenerating.NameSolution;    
+    var nameSolution = GlobalsForGenerating.NameSolution;
+    Tuple<NamePerCount[], string> tuple;
+    NamePerCountDisplay namePerCountDisplay;
 }
 ---
 sidebar_position: 55
 slug: summaryProjectReferences
 ---
 
-# Summary of project references for @nameSolution
+# Summary of project references
 
-## Assemblies with max References
+## Assemblies with References
 
 @{
-    var nameCount = Model.AssembliesReferences;
-    int height = 100+nameCount.Count() * 20;
-    var xaxis = "[" +
-        string.Join(',', nameCount.Select(it => it.Name).ToArray())
-        + "]";
-    var maxCount = nameCount.Max(it => it.Count);
-    var yAxis = "[" + string.Join(',', nameCount.Select(it => it.Count).ToArray()) + "]";
+    tuple = new(Model.AssembliesReferences, "References per project");
+    namePerCountDisplay = new(tuple);
 }
 
-```mermaid
----
-config:
-    xyChart:
-        width: 900
-        height: @height
-    themeVariables:
-        xyChart:
-            titleColor: "#ff0000"
----
+@namePerCountDisplay.Render()
 
-xychart-beta horizontal
-title "Max references per project"
-x-axis @xaxis
-y-axis "" 0--> @maxCount
-bar @yAxis
-```
+## Classes with References
 
-
-## Classes with max References
-
-@foreach (var item in Model.MethodsReferences)
-{
-    <text>
-        @item.Name - @item.Count
-    </text>
+@{
+    tuple = new(Model.classRefs, "References per class");
+    namePerCountDisplay = new(tuple);
 }
+
+@namePerCountDisplay.Render()
+
+## Methods with References
+
+@{
+    tuple = new(Model.MethodWithMostReferences, "References per Methods");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+## Methods referred to
+
+@{
+    tuple = new(Model.MethodsReferences, "Number of Method referred");
+    namePerCountDisplay = new (tuple);
+}
+
+@namePerCountDisplay.Render()
+
+
+
 
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

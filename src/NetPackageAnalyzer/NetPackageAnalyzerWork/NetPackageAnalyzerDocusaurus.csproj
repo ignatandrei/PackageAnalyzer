@@ -64,9 +64,13 @@
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
 		</AdditionalFiles>
-		<AdditionalFiles Include="Templates\BuildingBlocks.cshtml">
+		<AdditionalFiles Include="Templates\NamePerCountDisplay.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
+		<AdditionalFiles Include="Templates\BuildingBlocks.cshtml">
+			<IsRazorBlade>True</IsRazorBlade>
+			<Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
 		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\SimpleDisplayProjectWithReferencesProject.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
@@ -77,6 +81,7 @@
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="RazorBlade" Version="0.5.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+		<PackageReference Include="RSCG_TimeBombComment" Version="2023.12.19.1802" />
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -100,6 +105,7 @@
 	  <None Remove="Templates\CommitsPerData.cshtml" />
 	  <None Remove="Templates\DeprecatedOutdated.cshtml" />
 	  <None Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
+	  <None Remove="Templates\NamePerCountDisplay.cshtml" />
 	  <None Remove="Templates\ProjectCommits.cshtml" />
 	  <None Remove="Templates\ProjectPackages.cshtml" />
 	  <None Remove="Templates\ProjectRelations.cshtml" />

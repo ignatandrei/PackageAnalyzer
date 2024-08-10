@@ -20,8 +20,9 @@ internal class RealMainExecuting
 
         var folderGenerate = new Option<string>
         (name: "--where",
-        description: "where generated files",
-        getDefaultValue: () => Path.Combine(Environment.CurrentDirectory, "Analysis"));
+        description: "where generated files"
+        //getDefaultValue: () => Path.Combine(Environment.CurrentDirectory, "Analysis")
+        );
         folderGenerate.AddAlias("-w");
 
         cmdGenerate.AddOption(folderGenerate);
@@ -181,6 +182,8 @@ internal class RealMainExecuting
     private static async Task RealGenerateHandler(string folder, string where, WhatToGenerate what)
     {
 
+        where = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
+
         WriteLine($"analyzing {folder}");
         GenerateFiles? g = null;
         switch (what)
@@ -198,7 +201,7 @@ internal class RealMainExecuting
             Console.WriteLine("not capable to generate data");
             return;
         }
-        tempWIAD.AddHistoryCsproj();
+        tempWIAD.AddHistoryCsproj(); 
         
         var data= await g.GenerateNow(folder, where);
         WriteLine($"now npm i && npm run start in  {where}");
