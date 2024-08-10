@@ -8,6 +8,10 @@
   </PropertyGroup>
 
 	<ItemGroup>
+		<AdditionalFiles Include="Templates\ReferencesSummaryProjects.cshtml">
+		  <IsRazorBlade>True</IsRazorBlade>
+		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
+		</AdditionalFiles>
 		<AdditionalFiles Include="Templates\CommitsWithMaxFilesPerYear.cshtml">
 		  <IsRazorBlade>True</IsRazorBlade>
 		  <Namespace>$([MSBuild]::ValueOrDefault('$(RootNamespace).%(RelativeDir)', '').Replace('\', '.').Replace('/', '.').Trim('.'))</Namespace>
@@ -100,6 +104,7 @@
 	  <None Remove="Templates\ProjectPackages.cshtml" />
 	  <None Remove="Templates\ProjectRelations.cshtml" />
 	  <None Remove="Templates\ProjectRoot.cshtml" />
+	  <None Remove="Templates\ReferencesSummaryProjects.cshtml" />
 	  <None Remove="Templates\SimpleDisplayProjectWithReferencesProject.cshtml" />
 	  <None Remove="Templates\SolutionRelations.cshtml" />
 	  <None Remove="Templates\TestProjects.cshtml" />

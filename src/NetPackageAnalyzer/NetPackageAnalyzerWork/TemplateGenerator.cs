@@ -80,4 +80,10 @@ public class TemplateGenerator
         var rz=new ProjectRelations(projData);
         return await rz.RenderAsync();
     }
+
+    internal async Task<string?> Generate_ReferencesSummaryProjects(ClassesRefData refSummary)
+    {
+        var rz=new ReferencesSummaryProjects(refSummary);
+        return await rz.RenderAsync();
+    }
 }

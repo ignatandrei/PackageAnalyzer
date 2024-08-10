@@ -1,0 +1,53 @@
+@inherits RazorBlade.PlainTextTemplate<ClassesRefData>;
+@{
+    var prefix = GlobalsForGenerating.globalPrefix();
+    var nameSolution = GlobalsForGenerating.NameSolution;    
+}
+---
+sidebar_position: 55
+slug: summaryProjectReferences
+---
+
+# Summary of project references for @nameSolution
+
+## Assemblies with max References
+
+@{
+    var nameCount = Model.AssembliesReferences;
+    int height = 100+nameCount.Count() * 20;
+    var xaxis = "[" +
+        string.Join(',', nameCount.Select(it => it.Name).ToArray())
+        + "]";
+    var maxCount = nameCount.Max(it => it.Count);
+    var yAxis = "[" + string.Join(',', nameCount.Select(it => it.Count).ToArray()) + "]";
+}
+
+```mermaid
+---
+config:
+    xyChart:
+        width: 900
+        height: @height
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "Max references per project"
+x-axis @xaxis
+y-axis "" 0--> @maxCount
+bar @yAxis
+```
+
+
+## Classes with max References
+
+@foreach (var item in Model.MethodsReferences)
+{
+    <text>
+        @item.Name - @item.Count
+    </text>
+}
+
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>

@@ -1,4 +1,11 @@
 ﻿namespace NetPackageAnalyzerDocusaurus;
+public record NamePerCount(string Name, int Count)
+{
+
+
+}
+
+
 
 public class GenerateFilesDocusaurus:GenerateFiles
 {
@@ -146,50 +153,105 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
         //ArgumentNullException.ThrowIfNull(projectsDict);
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
-        GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+        var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+        if(tempFolder != null)
+        {
+            var refSummary= AnalyzeDiagrams(tempFolder);
+            file = Path.Combine(folderResults, "ReferencesSummaryProjects.md");
+            await File.WriteAllTextAsync(file, await generator.Generate_ReferencesSummaryProjects(refSummary));
+        }
         return 1;
     }
 
-    private void GenerateDocsForClasses(string fullPathToSolution, string folderResults)
+    private ClassesRefData AnalyzeDiagrams(string tempFolder)
     {
-        var folder=Path.GetDirectoryName(fullPathToSolution);
-        var fldTemp = folderResults + "_Temp";
-        if (!Directory.Exists(fldTemp))
-            Directory.CreateDirectory(fldTemp);
-        RscgExportDataDiagram pwsh = new("2024.810.832", fldTemp);
-        var code = pwsh.GenerateCode();
-        var file = Path.Combine(folder, "ExportDiagram.ps1");
-        File.WriteAllText(file, code);
-        Console.WriteLine("generate diagram classes");
-        ProcessStartInfo startInfo = new ProcessStartInfo
+        List<ExportAssembly> expAss = new ();
+        var files = Directory.GetFiles(tempFolder, "*.json");
+        foreach (var fileJson in files)
         {
-            FileName = "powershell.exe",
-            WorkingDirectory = folder, 
-            Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{file}\"",
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
+            var json = File.ReadAllText(fileJson);
+            ExportAssembly? ex = JsonSerializer.Deserialize<ExportAssembly>(json);
+            if (ex == null)
+                continue;
+            expAss.Add(ex);
+        }
+        var allExtReferences = expAss
+            .SelectMany(it=>it.ClassesWithExternalReferences)
+            .SelectMany(it=>it.MethodsWithExternalReferences)
+            .SelectMany(it=>it.References)
+            .ToArray();
+        
+        var maxRefAssembly = allExtReferences
+            .GroupBy(it=>it.AssemblyName)
+            .Select(it => new NamePerCount (it.Key, it.Count()))
+            .OrderByDescending(it => it.Count)
+            .Take(10)
+            .ToArray();
 
-        using (Process process = new Process())
+        var maxRefMethods = allExtReferences
+            .GroupBy(it => it.FullName)
+            .Select(it => new NamePerCount (it.Key, it.Count() ))
+            .OrderByDescending(it => it.Count)
+            .Take(10)
+            .ToArray();
+
+        ClassesRefData ret = new();
+        ret.MethodsReferences = maxRefMethods;
+        ret.AssembliesReferences = maxRefAssembly;
+        return ret;
+    }
+
+    private string? GenerateDocsForClasses(string fullPathToSolution, string folderResults)
+    {
+        try
         {
-            process.StartInfo = startInfo;
-            process.Start();
-
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-
-            process.WaitForExit();
-
-            if (process.ExitCode != 0)
+            var folder = Path.GetDirectoryName(fullPathToSolution);
+            var fldTemp = folderResults + "_Temp";
+            if (!Directory.Exists(fldTemp))
+                Directory.CreateDirectory(fldTemp);
+            RscgExportDataDiagram pwsh = new("2024.810.832", fldTemp);
+            var code = pwsh.GenerateCode();
+            var file = Path.Combine(folder, "ExportDiagram.ps1");
+            File.WriteAllText(file, code);
+            Console.WriteLine("Please wait - generate diagram classes");
+            ProcessStartInfo startInfo = new ProcessStartInfo
             {
-                Console.WriteLine($"PowerShell Error: {error}");
-            }
-            else
+                FileName = "powershell.exe",
+                WorkingDirectory = folder,
+                Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{file}\"",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using (Process process = new Process())
             {
-                Console.WriteLine(output);
+                process.StartInfo = startInfo;
+                process.Start();
+
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+
+                process.WaitForExit();
+
+                if (process.ExitCode != 0)
+                {
+                    Console.WriteLine($"PowerShell Error: {error}");
+                }
+                else
+                {
+                    Console.WriteLine(output);
+                }
+                return fldTemp;
+
             }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception!! " + ex.Message);
+            Console.WriteLine("Exception!! " + ex.StackTrace);
+            return null;
         }
     }
 }
