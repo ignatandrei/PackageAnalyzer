@@ -68,5 +68,7 @@ jobs:
         echo '1'
         dir src/nugetPackages/*.symbols.nupkg  
         echo '2'
-        dotnet nuget push src/nugetPackages/*.symbols.nupkg --api-key  ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
+        cd src
+        cd nugetPackages
+        dotnet nuget push "*.symbols.nupkg" --api-key  ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
     
