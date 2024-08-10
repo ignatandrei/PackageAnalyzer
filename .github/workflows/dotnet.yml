@@ -49,6 +49,7 @@ jobs:
         cp -r ./net8.0 ./test
         cd test
         ./NetPackageAnalyzerConsole generateFiles --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
+        cd ${{ github.workspace }}/src/NetPackageAnalyzer/
         cd Analysis
         # npm install
         # npm run build
