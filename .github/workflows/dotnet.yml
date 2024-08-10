@@ -51,8 +51,8 @@ jobs:
         ./NetPackageAnalyzerConsole generateFiles --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
         cd ${{ github.workspace }}/src/NetPackageAnalyzer/
         cd Analysis
-        # npm install
-        # npm run build
+        npm install
+        npm run build
 
     - name: 'Upload nuget'
       uses: actions/upload-artifact@v2
