@@ -24,7 +24,7 @@
         //};
 
         //args = new[] { "generateFiles",
-        //    "--folder", @"D:\gth\eShop",            
+        //    "--folder", @"D:\gth\eShop",
         //    "--verbose","false"
         //};
 

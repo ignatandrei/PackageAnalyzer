@@ -154,11 +154,16 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
         var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
         ClassesRefData? refSummary = null;
-        if(tempFolder != null)
+        PublicClassRefData? publicClassRefData = null;
+        if (tempFolder != null)
         {
-            refSummary= AnalyzeDiagrams(tempFolder);
+            (refSummary,publicClassRefData)= AnalyzeDiagrams(tempFolder);
             file = Path.Combine(folderResults, "ReferencesSummaryProjects.md");
             await File.WriteAllTextAsync(file, await generator.Generate_ReferencesSummaryProjects(refSummary));
+
+            file = Path.Combine(folderResults, "PublicClassesProject.md");
+            await File.WriteAllTextAsync(file, await generator.Generate_PublicClasses(publicClassRefData));
+            
             //move .md files to the right place
             var files = Directory.GetFiles(tempFolder, "*.md");
             foreach (var fileMd in files)
@@ -189,23 +194,56 @@ public class GenerateFilesDocusaurus:GenerateFiles
             }
         }
         file = Path.Combine(folderResults, "BlogPost.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_BlogPost(infoSol, projectsDict, modelMore1Version, refSummary));
+        await File.WriteAllTextAsync(file, await generator.Generate_BlogPost(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData));
 
         return 1;
     }
 
-    private ClassesRefData AnalyzeDiagrams(string tempFolder)
+    private (ClassesRefData, PublicClassRefData) AnalyzeDiagrams(string tempFolder)
     {
         List<ExportAssembly> expAss = new ();
+        Dictionary<string,ExportPublicClass[]> expPublicClasses = new ();
         var files = Directory.GetFiles(tempFolder, "*.json");
         foreach (var fileJson in files)
         {
+
             var json = File.ReadAllText(fileJson);
-            ExportAssembly? ex = JsonSerializer.Deserialize<ExportAssembly>(json);
-            if (ex == null)
+            if (fileJson.EndsWith("_public_csproj.json"))
+            {
+                string nameCsproj = Path.GetFileNameWithoutExtension(fileJson);
+                nameCsproj = nameCsproj.Replace("_public_csproj", "");
+                ExportPublicClass[]? ex = JsonSerializer.Deserialize<ExportPublicClass[]>(json);
+                if(ex!=null)expPublicClasses.Add(nameCsproj, ex);
                 continue;
-            expAss.Add(ex);
+            }
+            //if (fileJson.Contains("_rel_")) 
+            {
+                ExportAssembly? ex = JsonSerializer.Deserialize<ExportAssembly>(json);
+                if (ex == null)
+                    continue;
+                expAss.Add(ex);
+                continue;
+            }
+
         }
+        PublicClassRefData publicClassRefData = new();
+        publicClassRefData.data = expPublicClasses;
+        publicClassRefData.Assemblies_PublicClasses= expPublicClasses
+                .Select(it => new NamePerCount(it.Key, it.Value.Length))
+                .OrderByDescending(it => it.Count)
+                .ToArray();
+
+        publicClassRefData.Assemblies_PublicMethods = expPublicClasses
+            .Select(it => new NamePerCount(it.Key, it.Value.SelectMany(c => c.Name).Count()))
+            .OrderByDescending(it => it.Count)
+            .ToArray();
+
+        publicClassRefData.Class_PublicMethods = expPublicClasses
+            .SelectMany(it => it.Value)
+            .Select(it => new NamePerCount(it.Name, it.PublicMethods.Length))
+            .OrderByDescending(it => it.Count)
+            .ToArray();
+        ;
         var classRefs = expAss
             .SelectMany(it => it.ClassesWithExternalReferences)
             .Select(it => new NamePerCount(it.ClassName, 
@@ -259,7 +297,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         ret.classRefs = classRefs;
         ret.AssembliesReferences = maxRefAssembly;
         ret.MethodWithMostReferences = methodsWithRefs;
-        return ret;
+        return (ret,publicClassRefData);
     }
 
     private string? GenerateDocsForClasses(string fullPathToSolution, string folderResults)
@@ -270,7 +308,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
             var fldTemp = folderResults + "_Temp";
             if (!Directory.Exists(fldTemp))
                 Directory.CreateDirectory(fldTemp);
-            RscgExportDataDiagram pwsh = new("2024.810.832", fldTemp);
+            RscgExportDataDiagram pwsh = new("2024.823.2200", fldTemp);
             var code = pwsh.GenerateCode();
             var file = Path.Combine(folder, "ExportDiagram.ps1");
             File.WriteAllText(file, code);

@@ -1,4 +1,4 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData>>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
     var nameSolution = GlobalsForGenerating.NameSolution;    
@@ -8,7 +8,11 @@
     var nrProjectsNoTests = info.nrProjects - info.nrTestProjects;
     var more1Version = Model.Item3;
     var refSummary = Model.Item4;
-    var maxAssemblyRef = refSummary.AssembliesReferences.First();
+    var publicClassRefData = Model.Item5;
+    var mostPublicClasses = publicClassRefData
+    .Assemblies_PublicClasses
+    .FirstOrDefault();
+    var maxAssemblyRef = refSummary.AssembliesReferences.FirstOrDefault();
 
     var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
     var nrVersionIterator = 0;
@@ -72,6 +76,14 @@ export const Highlight = ({children, color}) => (
 : @maxAssemblyRef.Name @maxAssemblyRef.Count
 </text>    
 }
+@if (mostPublicClasses != null)
+{
+    <text>
+        [Most public classes](pathname:///docs/Analysis/@(nameSolution)/summaryPublicClasses)
+:@mostPublicClasses.Name @mostPublicClasses.Count
+</text>
+}
+
 
 [Total Commits](pathname:///docs/Analysis/@(nameSolution)/Commits): @info.totalCommits
 ( last commit : @maxCommitString )

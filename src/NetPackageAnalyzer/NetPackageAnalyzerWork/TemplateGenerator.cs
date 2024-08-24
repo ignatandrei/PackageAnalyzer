@@ -68,9 +68,10 @@ public class TemplateGenerator
     internal async Task<string?> Generate_BlogPost(
         InfoSolution model, ProjectsDict projectsDict
         , DisplayDataMoreThan1Version displayDataMoreThan1Version
-        ,ClassesRefData? refSummary)
+        ,ClassesRefData? refSummary,
+        PublicClassRefData? publicClassRefData)
     {
-        var rz = new BlogPost(Tuple.Create(model,projectsDict, displayDataMoreThan1Version, refSummary));
+        var rz = new BlogPost(Tuple.Create(model,projectsDict, displayDataMoreThan1Version, refSummary, publicClassRefData));
         return await rz.RenderAsync();
     }
     internal async Task<string?> Generate_SolutionIntroduction(InfoSolution model)
@@ -87,6 +88,11 @@ public class TemplateGenerator
     internal async Task<string?> Generate_ReferencesSummaryProjects(ClassesRefData refSummary)
     {
         var rz=new ReferencesSummaryProjects(refSummary);
+        return await rz.RenderAsync();
+    }
+    internal async Task<string?> Generate_PublicClasses(PublicClassRefData refPublic)
+    {
+        var rz = new ReferencesPublicClasses(refPublic);
         return await rz.RenderAsync();
     }
 }

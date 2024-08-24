@@ -1,0 +1,44 @@
+@inherits RazorBlade.PlainTextTemplate<PublicClassRefData>;
+@{
+    var prefix = GlobalsForGenerating.globalPrefix();
+    var nameSolution = GlobalsForGenerating.NameSolution;
+    Tuple<NamePerCount[], string> tuple;
+    NamePerCountDisplay namePerCountDisplay;
+}
+---
+sidebar_position: 57
+slug: summaryPublicClasses
+---
+
+# Summary of project public classes
+
+## Assemblies with number of public classes
+
+@{
+    tuple = new(Model.Assemblies_PublicClasses, "Public class per project");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+## Assemblies with Public methods
+
+
+@{
+    tuple = new(Model.Assemblies_PublicMethods, "Public methods per class");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+## Classes with Public methods
+
+
+@{
+    tuple = new(Model.Class_PublicMethods, "Public methods per class");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+<small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
