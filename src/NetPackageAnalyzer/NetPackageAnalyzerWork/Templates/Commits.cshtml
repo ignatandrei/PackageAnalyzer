@@ -101,10 +101,21 @@ line @CommitsFile
 @for(var year = maxYear; year >= minYear; year--)
 {
  
-    newModel =
-    new(Model, x => x.AllHistoryFileYear(year));
-    c = new CommitsPerData(newModel);
-    data = c.Render();
+    var zy = Model
+    .Select(it => it.Value.AllHistoryFileYear(year))
+    .Where(it => it.nrCommits > 0)
+    .Any();
+    if (zy)
+    {
+        newModel =
+        new(Model, x => x.AllHistoryFileYear(year));
+        c = new CommitsPerData(newModel);
+        data = c.Render();
+    }
+    else
+    {
+        data = "no commits on csproj in this year";
+    }
 <text>
 ## YEAR @year
 

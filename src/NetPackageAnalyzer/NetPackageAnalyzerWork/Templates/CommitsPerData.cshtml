@@ -17,7 +17,11 @@
     ordered = ordered
     .Where(kv => hist(kv.Value)?.nrCommits > 0)
     .ToArray();
-
+    if(ordered.Length == 0)
+    {
+        <text>no commits</text>
+        return;
+    };
     var values= ordered.Select(x => hist(x.Value).nrCommits??0).ToArray();
     var median = Statistical<int>.Median( values.Where(t=>t!=0).Select(it=>it!).ToArray());
 
