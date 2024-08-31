@@ -16,7 +16,21 @@ public class GenerateHTML : GenerateFiles
         var html = x.Render();
         var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
         await system.File.WriteAllTextAsync(nameFile, html);
+        WriteMermaidJs(where);
         return 0;
     }
+    void WriteMermaidJs(string where)
+    {
+        var res = MyResource.GetMermaidJs();
+        var nameFileJs = Path.Combine(where, "mermaid.min.js");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+    }
 }
+
+internal partial class MyResource
+{
+    [EmbedResourceCSharp.FileEmbed("mermaid.min.js")]
+    public static partial System.ReadOnlySpan<byte> GetMermaidJs();
+}
+
 
