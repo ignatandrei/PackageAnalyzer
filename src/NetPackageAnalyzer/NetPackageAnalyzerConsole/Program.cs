@@ -10,18 +10,18 @@
         //    "--verbose","true"
         //};
 
-        args = new[] { "generateFiles",
-           "--folder", @"D:\gth\CleanArchitecture",
-           "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-           "--verbose","false"
-        };
-
         // args = new[] { "generateFiles",
-        //     "--folder", @"D:\gth\CleanArchitecture",
-        //     "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-        //     "-wg","HtmlSummary",
-        //     "--verbose","false"
+        //    "--folder", @"D:\gth\CleanArchitecture",
+        //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+        //    "--verbose","false"
         // };
+
+        args = new[] { "generateFiles",
+            "--folder", @"D:\gth\CleanArchitecture",
+            "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+            "-wg","HtmlSummary",
+            "--verbose","false"
+        };
 
         //args = new[] { 
         //    //"[parse]",
