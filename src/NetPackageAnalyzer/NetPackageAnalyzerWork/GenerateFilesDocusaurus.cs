@@ -1,9 +1,4 @@
 ﻿namespace NetPackageAnalyzerDocusaurus;
-public record NamePerCount(string Name, int Count)
-{
-
-
-}
 
 
 

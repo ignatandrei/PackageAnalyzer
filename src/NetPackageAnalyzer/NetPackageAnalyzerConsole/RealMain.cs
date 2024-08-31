@@ -1,4 +1,6 @@
 ﻿
+using NetPackageAnalyzerExportHTML;
+
 namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting
 {
@@ -190,6 +192,9 @@ internal class RealMainExecuting
         {
             case WhatToGenerate.Docusaurus:
                 g = new GenerateFilesDocusaurus(new FileSystem());
+                break;
+            case WhatToGenerate.HtmlSummary:
+                g = new GenerateHTML(new FileSystem());
                 break;
             default:
                 throw new NotImplementedException($"what={what}");

@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzeHistory", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerShowInConsole", "NetPackageAnalyzerShowInConsole\NetPackageAnalyzerShowInConsole.csproj", "{A2CF4FE6-3DB0-49CF-85C0-CC35B7003136}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPackageAnalyzerDiagram", "NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj", "{CEF0FBA9-F929-407A-8CF3-328AC5DBCD6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerDiagram", "NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj", "{CEF0FBA9-F929-407A-8CF3-328AC5DBCD6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPackageAnalyzerExportHTML", "NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj", "{CEFA2AD2-8FA4-4C92-B2C1-C1566D82DAA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{CEF0FBA9-F929-407A-8CF3-328AC5DBCD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEF0FBA9-F929-407A-8CF3-328AC5DBCD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEF0FBA9-F929-407A-8CF3-328AC5DBCD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEFA2AD2-8FA4-4C92-B2C1-C1566D82DAA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEFA2AD2-8FA4-4C92-B2C1-C1566D82DAA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEFA2AD2-8FA4-4C92-B2C1-C1566D82DAA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEFA2AD2-8FA4-4C92-B2C1-C1566D82DAA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

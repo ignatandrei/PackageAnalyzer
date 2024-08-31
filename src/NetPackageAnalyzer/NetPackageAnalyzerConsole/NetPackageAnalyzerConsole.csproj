@@ -15,6 +15,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AnalyzeMerge\AnalyzeMerge.csproj" />
+	  <ProjectReference Include="..\NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerShowInConsole\NetPackageAnalyzerShowInConsole.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj" />
 	  <ProjectReference Include="..\WhatIAmDoingData\WhatIAmDoingData.csproj" />
