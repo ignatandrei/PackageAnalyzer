@@ -1,0 +1,38 @@
+@inherits RazorBlade.PlainTextTemplate<Tuple<NamePerCount[],string>>;
+@{
+    var nameCount = Model.Item1;
+    if(nameCount.Count() == 0)
+    {
+        return;
+    }
+    if(nameCount.Count() > 20)
+    {
+        nameCount = nameCount.Take(15).ToArray();
+    }
+    int height = 100+nameCount.Count() * 20;
+    var xaxis = "[" +
+        string.Join(',', nameCount.Select(it => it.Name).ToArray())
+        + "]";
+    var maxCount = nameCount.Max(it => it.Count);
+    var yAxis = "[" + string.Join(',', nameCount.Select(it => it.Count).ToArray()) + "]";
+}
+
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: @height
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "@Model.Item2"
+x-axis @xaxis
+y-axis "" 0--> @maxCount
+bar @yAxis
+
+</div>
+

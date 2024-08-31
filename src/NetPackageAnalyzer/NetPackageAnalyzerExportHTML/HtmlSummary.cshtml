@@ -149,8 +149,58 @@
         </tbody>
     </table>
 
+    <h2> References between projects</h2>
+
+    <h3> Assemblies with Referencesx</h3>
+    @{
+        Tuple<NamePerCount[], string> tuple = new(refSummary.AssembliesReferences, "References per assembly");
+        NamePerCountDisplay namePerCountDisplay = new(tuple);
+    }
+
+    @namePerCountDisplay.Render()
+    <h3> Classes with References</h3>
+
+    @{
+        tuple = new(refSummary.classRefs, "References per class");
+        namePerCountDisplay = new(tuple);
+    }
+
+    @namePerCountDisplay.Render()
+
+    <h2> Commits</h2>
+
+    <h3> Commits per year</h3>
+    @{
+        var xaxis = "[" +
+        string.Join(',', yearCommitsFolder
+        .Select(it => it.Key)
+        .OrderBy(x => x)
+        .ToArray()) + "]";
+        var maxCommit = yearCommitsFolder.Max(x => x.Value);
+        var commitsFolder = "[" + string.Join(',', yearCommitsFolder
+        .Select(it => it)
+        .OrderBy(x => x.Key)
+        .Select(x => x.Value)
+        .ToArray()) + "]";
+        var CommitsFile = "[" + string.Join(',', yearCommitsFile
+        .Select(it => it)
+        .OrderBy(x => x.Key)
+        .Select(x => x.Value)
+        .ToArray()) + "]";
+    }
+
+    <div class="mermaid">
+    xychart-beta
+    title "Commits per year (folder and csproj)"
+    x-axis @xaxis
+    y-axis "" 0--> @maxCommit
+    bar @commitsFolder
+    bar @CommitsFile
+    </div>
 
     <script src="mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
+
+    <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
 </body>
 </html>
