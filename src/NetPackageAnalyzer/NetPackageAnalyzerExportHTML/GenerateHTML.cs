@@ -1,6 +1,4 @@
-﻿using NetPackageAnalyzerObjects;
-
-namespace NetPackageAnalyzerExportHTML;
+﻿namespace NetPackageAnalyzerExportHTML;
 
 public class GenerateHTML : GenerateFiles
 {
@@ -12,7 +10,7 @@ public class GenerateHTML : GenerateFiles
     {
 
         //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
-        var x = new HtmlSummary(Tuple.Create((InfoSolution)null, projectsDict, modelMore1Version, (ClassesRefData)null,(PublicClassRefData) null));
+        var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, (ClassesRefData)null,(PublicClassRefData) null));
         var html = x.Render();
         var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
         await system.File.WriteAllTextAsync(nameFile, html);
@@ -25,12 +23,6 @@ public class GenerateHTML : GenerateFiles
         var nameFileJs = Path.Combine(where, "mermaid.min.js");
         system.File.WriteAllBytes(nameFileJs, res.ToArray());
     }
-}
-
-internal partial class MyResource
-{
-    [EmbedResourceCSharp.FileEmbed("mermaid.min.js")]
-    public static partial System.ReadOnlySpan<byte> GetMermaidJs();
 }
 
 

@@ -13,7 +13,22 @@ public class GenerateData
     protected PackageWithVersionDeprecated[] deprecated=[];
     protected PackageWithVersionOutdated[] outdated = [];
     protected DisplayDataMoreThan1Version? modelMore1Version;
-
+    public InfoSolution infoSol
+    {
+        get
+        {
+            var nrOutdated = outdated.GroupBy(it => it.PackageId).Count();
+            var nrDeprecated = deprecated.GroupBy(it => it.PackageId).Count();
+            var infoSol = new InfoSolution(
+                this.projectsDict!.Count,
+                packagedDict.Count, nrOutdated, nrDeprecated,
+                this.projectsDict!.TotalCommits(),
+                this.projectsDict!.TestsProjects.Count(),
+                modelMore1Version!.KeysPackageMultipleMajorDiffers().Length
+                );
+            return infoSol;
+        }
+    }
     public string[] MajorWithMoreVersions()
     {
         return modelMore1Version!.KeysPackageMultipleMajorDiffers();

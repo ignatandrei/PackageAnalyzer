@@ -121,15 +121,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         await File.WriteAllTextAsync(file, categoryGenerated);
 
         file = Path.Combine(folderResults, "index.md");
-        var nrOutdated=outdated.GroupBy(it => it.PackageId).Count();
-        var nrDeprecated=deprecated.GroupBy(it => it.PackageId).Count();
-        var infoSol=new InfoSolution(
-            this.projectsDict!.Count, 
-            packagedDict.Count, nrOutdated,nrDeprecated,
-            this.projectsDict!.TotalCommits(),
-            this.projectsDict!.TestsProjects.Count(),
-            modelMore1Version.KeysPackageMultipleMajorDiffers().Length
-            );
+        
         await File.WriteAllTextAsync(file, await generator.Generate_SolutionIntroduction(infoSol));
         file = Path.Combine(folderResults, "BuildingBlocks.md");
         await File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));
