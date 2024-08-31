@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzerExportHTML;
+﻿using NetPackageAnalyzerObjects;
+
+namespace NetPackageAnalyzerExportHTML;
 
 public class GenerateHTML : GenerateFiles
 {
@@ -8,7 +10,7 @@ public class GenerateHTML : GenerateFiles
     }
     public override async Task<int> GenerateNow(string folder, string where)
     {
-
+        //(refSummary, publicClassRefData) = AnalyzeDiagrams(tempFolder);
         //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
         var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, (ClassesRefData)null,(PublicClassRefData) null));
         var html = x.Render();

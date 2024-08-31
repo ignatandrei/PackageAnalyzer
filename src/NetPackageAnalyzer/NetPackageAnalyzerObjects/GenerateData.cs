@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzerObjects;
+﻿
+
+namespace NetPackageAnalyzerObjects;
 
 public class GenerateData
 {
@@ -252,5 +254,106 @@ public class GenerateData
         //{
         //    Console.WriteLine($"History for {item.Value.PathProject} is {item.Value.nrCommits}"); ;
         //}
+    }
+
+    public (ClassesRefData, PublicClassRefData) AnalyzeDiagrams(string tempFolder)
+    {
+        List<ExportAssembly> expAss = new ();
+        Dictionary<string,ExportPublicClass[]> expPublicClasses = new ();
+        var files = Directory.GetFiles(tempFolder, "*.json");
+        foreach (var fileJson in files)
+        {
+
+            var json = File.ReadAllText(fileJson);
+            if (fileJson.EndsWith("_public_csproj.json"))
+            {
+                string nameCsproj = Path.GetFileNameWithoutExtension(fileJson);
+                nameCsproj = nameCsproj.Replace("_public_csproj", "");
+                ExportPublicClass[]? ex = JsonSerializer.Deserialize<ExportPublicClass[]>(json);
+                if(ex!=null)expPublicClasses.Add(nameCsproj, ex);
+                continue;
+            }
+            //if (fileJson.Contains("_rel_")) 
+            {
+                ExportAssembly? ex = JsonSerializer.Deserialize<ExportAssembly>(json);
+                if (ex == null)
+                    continue;
+                expAss.Add(ex);
+                continue;
+            }
+
+        }
+        PublicClassRefData publicClassRefData = new();
+        publicClassRefData.data = expPublicClasses;
+        publicClassRefData.Assemblies_PublicClasses= expPublicClasses
+                .Select(it => new NamePerCount(it.Key, it.Value.Length))
+                .OrderByDescending(it => it.Count)
+                .ToArray();
+
+        publicClassRefData.Assemblies_PublicMethods = expPublicClasses
+            .Select(it => new NamePerCount(it.Key, it.Value.SelectMany(c => c.Name).Count()))
+            .OrderByDescending(it => it.Count)
+            .ToArray();
+
+        publicClassRefData.Class_PublicMethods = expPublicClasses
+            .SelectMany(it => it.Value)
+            .Select(it => new NamePerCount(it.Name, it.PublicMethods.Length))
+            .OrderByDescending(it => it.Count)
+            .ToArray();
+        ;
+        var classRefs = expAss
+            .SelectMany(it => it.ClassesWithExternalReferences)
+            .Select(it => new NamePerCount(it.ClassName, 
+                it.MethodsWithExternalReferences
+                .SelectMany(m => m.References)
+                .Count()
+                ))
+            .OrderByDescending(it => it.Count)
+            .ToArray()
+            ;
+
+        var methExt = expAss
+            .SelectMany(it => it.ClassesWithExternalReferences)
+            .SelectMany(it => it.MethodsWithExternalReferences)
+            .ToArray();
+        var allExtReferences = methExt
+            .SelectMany(it=>it.References)
+            .ToArray();
+        
+        var maxRefAssembly = allExtReferences
+            .GroupBy(it=>it.AssemblyName)
+            .Select(it => new NamePerCount (it.Key, it.Count()))
+            .OrderByDescending(it => it.Count)
+            .Where(it => it.Count > 0)
+            .ToArray();
+
+        var maxRefMethods = allExtReferences
+            .GroupBy(it => it.FullName)
+            .Select(it => new NamePerCount(it.Key, it.Count()))
+            .OrderByDescending(it => it.Count)
+            .Where(it => it.Count > 0)
+            .Select(it =>
+            {
+                var dot= it.Name.LastIndexOf('.');
+                if(dot<0)
+                    return it;
+                return new NamePerCount(it.Name.Substring(dot+1), it.Count);
+            })
+            .ToArray();
+
+        var methodsWithRefs = methExt
+            .Select(it => new NamePerCount(it.MethodName, it.References.Length))
+            .OrderByDescending(it => it.Count)
+            .Where(it => it.Count > 0)
+            .ToArray()
+            ;
+
+
+        ClassesRefData ret = new();
+        ret.MethodsReferences = maxRefMethods;
+        ret.classRefs = classRefs;
+        ret.AssembliesReferences = maxRefAssembly;
+        ret.MethodWithMostReferences = methodsWithRefs;
+        return (ret,publicClassRefData);
     }
 }

@@ -9,6 +9,7 @@ global using System.IO.Abstractions;
 global using System.Linq;
 global using System.Text.Json;
 global using System.Threading.Tasks;
+global using RSCG_ExportDiagram_Import;
 public static class GlobalsForGenerating
 {
     public static string prefixSite = "pathname:///docs/Analysis/";//for markdown
