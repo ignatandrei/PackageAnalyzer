@@ -19,8 +19,8 @@
         args = new[] { "generateFiles",
             "--folder", @"D:\gth\CleanArchitecture",
             "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-            "-wg","HtmlSummary",
-            "--verbose","false"
+            //"-wg","HtmlSummary",
+            "--verbose","false" 
         };
 
         //args = new[] { 

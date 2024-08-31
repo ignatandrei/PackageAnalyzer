@@ -9,7 +9,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         
     }
     
-    public override async Task<int> GenerateNow(string folder, string where)
+    public override async Task<string> GenerateNow(string folder, string where)
     {
         
 
@@ -183,6 +183,6 @@ public class GenerateFilesDocusaurus:GenerateFiles
         file = Path.Combine(folderResults, "BlogPost.md");
         await File.WriteAllTextAsync(file, await generator.Generate_BlogPost(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData));
 
-        return 1;
+        return "";
     }
 }

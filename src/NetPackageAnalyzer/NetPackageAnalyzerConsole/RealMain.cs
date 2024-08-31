@@ -1,11 +1,13 @@
 ﻿
+using Microsoft.Extensions.Logging;
 using NetPackageAnalyzerExportHTML;
+using System.Runtime.InteropServices;
 
 namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting
 {
     static Option<bool> verbose = new("--verbose", "Show verbose output");
-    static Option<string> folderToHaveSln = new 
+    static Option<string> folderToHaveSln = new
             (name: "--folder",
             description: "folder where find the solution .sln",
             getDefaultValue: () => Environment.CurrentDirectory);
@@ -75,7 +77,7 @@ internal class RealMainExecuting
         return cmdGenerate;
     }
 
-    private static async Task  GenerateHandlerMajorDiff(bool verbose, string folder)
+    private static async Task GenerateHandlerMajorDiff(bool verbose, string folder)
     {
         DisplayData.Verbose = verbose;
         if (verbose)
@@ -88,11 +90,11 @@ internal class RealMainExecuting
         if (!b)
         {
             Console.WriteLine("not capable to generate data");
-            return ;
+            return;
         }
         WriteToConsole writeToConsole = new(g);
         writeToConsole.WriteMajorDiffers();
-        return ;
+        return;
     }
 
     public static async Task<int> RealMain(string[] args)
@@ -181,6 +183,32 @@ internal class RealMainExecuting
 
         }
     }
+    private static void LaunchBrowser(string url)
+    {
+        // Windows
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Process.Start("cmd", new[] { "/C", "start", url });
+            return;
+        }
+
+        // Linux
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        {
+            Process.Start("xdg-open", url);
+            return;
+        }
+
+        // OSX
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            Process.Start("open", url);
+            return;
+        }
+
+    }
+
+    
     private static async Task RealGenerateHandler(string folder, string where, WhatToGenerate what)
     {
 
@@ -209,7 +237,18 @@ internal class RealMainExecuting
         tempWIAD.AddHistoryCsproj(); 
         
         var data= await g.GenerateNow(folder, where);
-        WriteLine($"now npm i && npm run start in  {where}");
+        switch (what)
+        {
+            case WhatToGenerate.Docusaurus:
+                WriteLine($"now npm i && npm run start in  {where}");
+                break;
+            case WhatToGenerate.HtmlSummary:
+                WriteLine($"start {data}");
+                LaunchBrowser(data);
+                break;
+            default:
+                throw new NotImplementedException($"what={what}");
+        }
 
 
     }

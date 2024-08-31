@@ -5,6 +5,6 @@ public abstract class GenerateFiles: GenerateData
     {
         
     }
-    public abstract Task<int> GenerateNow(string folder, string where);
+    public abstract Task<string> GenerateNow(string folder, string where);
 
 }

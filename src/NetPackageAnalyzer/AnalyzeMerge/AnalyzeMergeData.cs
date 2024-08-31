@@ -9,7 +9,7 @@ public class AnalyzeMergeData
         folderRoot=folder;
     }
 
-    public async Task<int> GenerateNow()
+    public async Task<string> GenerateNow()
     {
         await Task.Delay(1000);
         
@@ -175,7 +175,7 @@ public class AnalyzeMergeData
 
         }
         //data.Analyze();
-        return 1;
+        return "";
     }
     string? relFolder()
     {

@@ -8,7 +8,7 @@ public class GenerateHTML : GenerateFiles
     {
 
     }
-    public override async Task<int> GenerateNow(string folder, string where)
+    public override async Task<string> GenerateNow(string folder, string where)
     {
         var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
         var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
@@ -19,7 +19,7 @@ public class GenerateHTML : GenerateFiles
         var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
         await system.File.WriteAllTextAsync(nameFile, html);
         WriteMermaidJs(where);
-        return 0;
+        return nameFile;
     }
     void WriteMermaidJs(string where)
     {
