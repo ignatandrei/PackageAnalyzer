@@ -1,6 +1,40 @@
 @inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData>>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
+    var nameSolution = GlobalsForGenerating.NameSolution;
+    var info = Model.Item1;
+    var projectDicts = Model.Item2;
+
+    var nrProjectsNoTests = info.nrProjects - info.nrTestProjects;
+    var more1Version = Model.Item3;
+    var refSummary = Model.Item4;
+    var publicClassRefData = Model.Item5;
+    var mostPublicClasses = publicClassRefData
+    .Assemblies_PublicClasses
+    .FirstOrDefault();
+    var maxAssemblyRef = refSummary.AssembliesReferences.FirstOrDefault();
+
+    var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
+    var nrVersionIterator = 0;
+    var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
+    var yearCommitsFile = projectDicts.CommitsPerYearFile();
+    var maxCommitYear = yearCommitsFolder.Max(x => x.Key);
+    var minCommitYear = yearCommitsFolder.Min(x => x.Key);
+    var currentYear = DateTime.Now.Year;
+    var maxCommitString = "";
+    if (maxCommitYear != currentYear)
+    {
+        maxCommitString = $"<Highlight color='red'>{maxCommitYear}</Highlight>";
+    }
+    else
+    {
+        maxCommitString = "this year," + currentYear;
+    }
+    var maxCommitFiles = projectDicts.CommitsWithMaxFiles(null);
+    var top10Files = projectDicts.FilesWithMaxCommits(null);
+    var medianCommits = projectDicts.MedianCommits(null);
+    var filewithMaxCommits = top10Files.First();
+
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -8,14 +42,112 @@
     <meta charset="utf-8">
 </head>
 <body>
-    This is the
+    <h1>Summary @nameSolution</h1>
 
+    Number projects : @info.nrProjects
+    (tests : @info.nrTestProjects,
+    no tests: @nrProjectsNoTests
+    )
+    <br />
+
+    Number packages : @info.nrPackages
+    <br />
+    Outdated : @info.nrOutdated,
+    <br />Deprecated : @info.nrDeprecated,
+    <br />Major version differs :@info.nrMajorDiffers
+
+    @if (maxAssemblyRef != null)
+    {
+        <text>
+            <br />
+            Assembly with most references: @maxAssemblyRef.Name @maxAssemblyRef.Count
+        </text>
+    }
+    @if (mostPublicClasses != null)
+    {
+        <text>
+            <br />
+            Most public classes :@mostPublicClasses.Name @mostPublicClasses.Count
+        </text>
+    }
+
+    <br />
+    Total Commits : @info.totalCommits    ( last commit : @maxCommitString )
+
+    The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
+
+    The file with most commits ( @filewithMaxCommits.Value ) is @filewithMaxCommits.Key
+
+    <h2> @nrProjectsNoTests Projects</h2>
     <div class="mermaid">
-        graph LR
-        A --- BX
-        BX-->C[fa:fa-ban forbidden]
-        BX-->D(fa:fa-spinner);
-    </div>
+        flowchart LR
+
+
+    @foreach (var proj in projectDicts.AlphabeticOrderedProjectsNoTests)
+    {
+        var nameCsproj = proj.NameCSproj();
+        var relativePath = proj.RelativePath();
+        var comment = $"%% start project reference {relativePath}";
+        <text>
+
+            @comment
+            @if (proj.AlphabeticalProjectsReferences().Length == 0)
+            {
+                <text>
+                    @nameCsproj
+                </text>
+            }
+
+            @foreach (var rel in proj.AlphabeticalProjectsReferences())
+            {
+                <text>
+                    @nameCsproj-->@rel.NameCSproj()
+
+                </text>
+
+            }
+        </text>
+    }
+</div>
+
+    <h2>@keysPackageMultiple.Length Packages with major version different</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>ID</th>
+                <th>References</th>
+                <th>Projects</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var key in keysPackageMultiple)
+            {
+                nrVersionIterator++;
+                var pack = more1Version.IDPackageWithProjects[key]!;
+                var vals = pack.VersionsPerProject;
+                var majorDiff = pack.MajorVersionDiffer();
+                string textReferences = vals.Count > 1 ? $" (References: {vals.Count}) " : "";
+                string diffMajor = majorDiff ? $"<span style='color:red'> <b>Major differs</b> </span>" : "";
+                string refs = "";
+                @foreach (var vers in vals)
+                {
+
+                    refs += " <b>" + vers.Key + "</b> " + string.Join(",", vers.Value.Select(it => it.NameCSproj()).ToArray());
+                    @* @(vers.Key) @("&nbsp;") @(string.Join(",",vers.Value.Select(it=>it.NameCSproj()))) *@
+                    refs += "<br/>";
+                }
+
+
+                <tr>
+                    <td>@nrVersionIterator</td>
+                    <td>@key</td>
+                    <td>@textReferences @diffMajor</td>
+                    <td>@refs</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 
     <script src="mermaid.min.js"></script>

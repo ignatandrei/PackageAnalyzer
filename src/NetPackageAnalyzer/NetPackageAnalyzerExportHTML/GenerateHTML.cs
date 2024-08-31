@@ -10,9 +10,11 @@ public class GenerateHTML : GenerateFiles
     }
     public override async Task<int> GenerateNow(string folder, string where)
     {
-        //(refSummary, publicClassRefData) = AnalyzeDiagrams(tempFolder);
+        var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
+        var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+        var (refSummary, publicClassRefData) = AnalyzeDiagrams(tempFolder);
         //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
-        var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, (ClassesRefData)null,(PublicClassRefData) null));
+        var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary,publicClassRefData));
         var html = x.Render();
         var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
         await system.File.WriteAllTextAsync(nameFile, html);

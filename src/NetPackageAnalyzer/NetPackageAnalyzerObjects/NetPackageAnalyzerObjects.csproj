@@ -39,6 +39,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj" />
+	  <ProjectReference Include="..\NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
 

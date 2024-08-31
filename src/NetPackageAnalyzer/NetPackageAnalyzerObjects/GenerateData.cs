@@ -1,5 +1,8 @@
 ﻿
 
+using NetPackageAnalyzerDiagram;
+using System.Diagnostics;
+
 namespace NetPackageAnalyzerObjects;
 
 public class GenerateData
@@ -355,5 +358,59 @@ public class GenerateData
         ret.AssembliesReferences = maxRefAssembly;
         ret.MethodWithMostReferences = methodsWithRefs;
         return (ret,publicClassRefData);
+    }
+
+    protected string? GenerateDocsForClasses(string fullPathToSolution, string folderResults)
+    {
+        try
+        {
+            var folder = Path.GetDirectoryName(fullPathToSolution);
+            var fldTemp = folderResults + "_Temp";
+            if (!Directory.Exists(fldTemp))
+                Directory.CreateDirectory(fldTemp);
+            RscgExportDataDiagram pwsh = new("2024.823.2200", fldTemp);
+            var code = pwsh.GenerateCode();
+            var file = Path.Combine(folder, "ExportDiagram.ps1");
+            File.WriteAllText(file, code);
+            Console.WriteLine("Please wait - generate diagram classes");
+            ProcessStartInfo startInfo = new ()
+            {
+                FileName = "powershell.exe",
+                WorkingDirectory = folder,
+                Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{file}\"",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using (Process process = new Process())
+            {
+                process.StartInfo = startInfo;
+                process.Start();
+
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+
+                process.WaitForExit();
+
+                if (process.ExitCode != 0)
+                {
+                    Console.WriteLine($"PowerShell Error: {error}");
+                }
+                else
+                {
+                    Console.WriteLine(output);
+                }
+                return fldTemp;
+
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Exception!! " + ex.Message);
+            Console.WriteLine("Exception!! " + ex.StackTrace);
+            return null;
+        }
     }
 }
