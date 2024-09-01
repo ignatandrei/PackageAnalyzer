@@ -2,6 +2,13 @@
 namespace NetPackageAnalyzeHistory;
 public class Commit
 {
+    public static readonly Commit Empty = new Commit();
+    private Commit()
+    {
+        this.date = DateTime.MinValue;
+        this.sha = "";
+        this.Files = [];
+    }
     public Commit(DateTime date,string sha)
     {
         this.date = date;

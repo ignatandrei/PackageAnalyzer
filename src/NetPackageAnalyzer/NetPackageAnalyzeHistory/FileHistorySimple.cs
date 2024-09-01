@@ -35,6 +35,13 @@ public record History(int? nrCommits, DateTime? FirstCommit, DateTime? LastCommi
 
 public class HistoryPerYear : Dictionary<int, History>
 {
+    public static readonly HistoryPerYear Empty = new();
+        
+        
+    private HistoryPerYear():base()
+    {
+        
+    }
     public HistoryPerYear(IDictionary<int, History> data):base(data)
     {
         
@@ -150,6 +157,7 @@ public class FileFolderHistorySimple
     }
     public void Initialize(bool AddHistoryForFolder)
     {
+
         ArgumentNullException.ThrowIfNull(nameFile);
         var folder=Path.GetDirectoryName(nameFile);
         ArgumentNullException.ThrowIfNull(folder);

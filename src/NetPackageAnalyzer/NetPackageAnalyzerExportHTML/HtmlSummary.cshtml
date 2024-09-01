@@ -18,8 +18,8 @@
     var nrVersionIterator = 0;
     var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
     var yearCommitsFile = projectDicts.CommitsPerYearFile();
-    var maxCommitYear = yearCommitsFolder.Max(x => x.Key);
-    var minCommitYear = yearCommitsFolder.Min(x => x.Key);
+    int? maxCommitYear = yearCommitsFolder.Count==0?null: yearCommitsFolder.Max(x => x.Key);
+    int? minCommitYear = yearCommitsFolder.Count == 0 ? null : yearCommitsFolder.Min(x => x.Key);
     var currentYear = DateTime.Now.Year;
     var maxCommitString = "";
     if (maxCommitYear != currentYear)
@@ -33,7 +33,7 @@
     var maxCommitFiles = projectDicts.CommitsWithMaxFiles(null);
     var top10Files = projectDicts.FilesWithMaxCommits(null);
     var medianCommits = projectDicts.MedianCommits(null);
-    var filewithMaxCommits = top10Files.First();
+    KeyValuePair<string,int>? filewithMaxCommits = top10Files?.Length>0? top10Files.First():null;
 
 }
 <!DOCTYPE html>
@@ -76,7 +76,7 @@
 
     The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
 
-    The file with most commits ( @filewithMaxCommits.Value ) is @filewithMaxCommits.Key
+    The file with most commits ( @filewithMaxCommits?.Value ) is @filewithMaxCommits?.Key
 
     <h2> @nrProjectsNoTests Projects</h2>
     <div class="mermaid">
@@ -168,7 +168,6 @@
     @namePerCountDisplay.Render()
 
     <h2> Commits</h2>
-
     <h3> Commits per year</h3>
     @{
         var xaxis = "[" +
@@ -197,6 +196,35 @@
     bar @commitsFolder
     bar @CommitsFile
     </div>
+
+@{
+    var maxCommitFilesPerYear = projectDicts.CommitsWithMaxFilesPerYear();
+}
+    <h3> Commits with most files per year</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>SHA</th>
+                <th>Date</th>
+                <th>NrFiles</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var kvp in maxCommitFilesPerYear)
+            {
+                nrVersionIterator++;
+                var key = kvp.Value;
+
+                <tr>
+                    <td>@nrVersionIterator</td>
+                    <td>@key.sha</td>
+                    <td>@key.date.ToString("yyyy MMM dd")</td>
+                    <td>@key.CountFiles()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
     <script src="mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>

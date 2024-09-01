@@ -11,7 +11,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     public long TotalCommits()
     {
         return this.Values
-            .SelectMany(it => it.AllHistoryFolder!)
+            .SelectMany(it => it.AllHistoryFolder??HistoryPerYear.Empty)
             .Sum(it=> (long)(it.Value?.nrCommits??0));
     }
     public int MedianCommits(int? year)
@@ -105,16 +105,15 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     public Commit CommitsWithMaxFiles(int? year)
     {
         return this.Values
-            .SelectMany(it => it.CommitsData!)
+            .SelectMany(it => it.CommitsData)
             .Where(it => year == null || it.date.Year == year.Value)
             .OrderByDescending(it => it.CountFiles())
-            .Take(1)
-            .First();
+            .FirstOrDefault()??Commit.Empty;
     }
     public Dictionary<int,long> CommitsPerYearFolder()
     {
         var data= this.Values
-            .SelectMany(it => it.AllHistoryFolder!)
+            .SelectMany(it => it.AllHistoryFolder??HistoryPerYear.Empty)
             .GroupBy(it => it.Key)
             .ToDictionary(it => it.Key, it => it.Sum(it => (long)(it.Value?.nrCommits ?? 0)))
             ;
@@ -124,7 +123,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     public Dictionary<int, long> CommitsPerYearFile()
     {
         var data = this.Values
-            .SelectMany(it => it.AllHistoryFile!)
+            .SelectMany(it => it.AllHistoryFile??HistoryPerYear.Empty)
             .GroupBy(it => it.Key)
             .ToDictionary(it => it.Key, it => it.Sum(it => (long)(it.Value?.nrCommits ?? 0)))
             ;
@@ -292,13 +291,21 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
         foreach (var project in this.Values)
         {
-            FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
-            fileHistorySimple.Initialize(true);
-            FolderHistoryCommits folderHistoryCommits = new(Path.GetDirectoryName(project.PathProject));
-            folderHistoryCommits.Initialize();
-            project.AllHistoryFile = fileHistorySimple.AllHistoryFile;
-            project.AllHistoryFolder = fileHistorySimple.AllHistoryFolder;
-            project.CommitsData = folderHistoryCommits.commit;
+            try
+            {
+                FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
+                fileHistorySimple.Initialize(true);
+                FolderHistoryCommits folderHistoryCommits = new(Path.GetDirectoryName(project.PathProject));
+                folderHistoryCommits.Initialize();
+                project.AllHistoryFile = fileHistorySimple.AllHistoryFile;
+                project.AllHistoryFolder = fileHistorySimple.AllHistoryFolder;
+                project.CommitsData = folderHistoryCommits.commit;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Exception!! " + ex.Message);
+                Console.WriteLine("Exception!! " + ex.StackTrace);
+            }
             //Console.WriteLine("!done with " + project.PathProject + $"{project.LastCommitFolder} {project.LastCommitFile}");
         }
     }

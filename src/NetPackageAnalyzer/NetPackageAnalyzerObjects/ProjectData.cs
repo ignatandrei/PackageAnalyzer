@@ -6,7 +6,7 @@ public partial record ProjectData(string PathProject, string folderSolution)
 {
     public HistoryPerYear? AllHistoryFile { get; set; }
     public HistoryPerYear? AllHistoryFolder { get; set; }
-    public CommitsData? CommitsData { get; internal set; }
+    public CommitsData CommitsData { get; internal set; } = CommitsData.EmptySingleton;
 
     public History AllHistoryFileYear(int year)
     {
