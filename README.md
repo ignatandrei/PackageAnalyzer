@@ -47,6 +47,8 @@ It will show
 130. Commits per file and median - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
 140. Commits with most files -  https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
 150. Classes / Projects with most public methods - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summaryPublicClasses
+160. Number of lines per class / project / method - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summaryPublicClasses
+
 
 And a summary https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summary
 
