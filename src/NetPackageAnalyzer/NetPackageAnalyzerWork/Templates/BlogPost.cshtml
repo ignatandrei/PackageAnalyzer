@@ -35,6 +35,8 @@
     var medianCommits = projectDicts.MedianCommits(null);
     var filewithMaxCommits = top10Files.First();
 
+    Tuple<NamePerCount[], string> tuple;
+    NamePerCountDisplay namePerCountDisplay;
 }
 ---
 sidebar_position: 5000
@@ -166,12 +168,50 @@ flowchart LR
     </tbody>
 </table>
 
+## Summary of project public classes
+@if (mostPublicClasses != null)
+{
+    
+<text>
+        ## Assemblies with number of public classes
+
+        @{
+            tuple = new(publicClassRefData.Assemblies_PublicClasses, "Public class per project");
+            namePerCountDisplay = new(tuple);
+        }
+
+        @namePerCountDisplay.Render()
+
+        ## Assemblies with Public methods
+
+
+        @{
+            tuple = new(publicClassRefData.Assemblies_PublicMethods, "Public methods per class");
+            namePerCountDisplay = new(tuple);
+        }
+
+        @namePerCountDisplay.Render()
+
+        ## Classes with Public methods
+
+
+        @{
+            tuple = new(publicClassRefData.Class_PublicMethods, "Public methods per class");
+            namePerCountDisplay = new(tuple);
+        }
+
+        @namePerCountDisplay.Render()
+
+</text>
+}
+
+
 ## References between projects
 
 ### Assemblies with References
 @{
-    Tuple<NamePerCount[], string> tuple = new(refSummary.AssembliesReferences, "References per assembly");
-    NamePerCountDisplay namePerCountDisplay = new(tuple);
+    tuple = new(refSummary.AssembliesReferences, "References per assembly");
+    namePerCountDisplay = new(tuple);
 }
 
 @namePerCountDisplay.Render()
