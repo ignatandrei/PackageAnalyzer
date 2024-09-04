@@ -24,6 +24,7 @@ public class GenerateData
         {
             var nrOutdated = outdated.GroupBy(it => it.PackageId).Count();
             var nrDeprecated = deprecated.GroupBy(it => it.PackageId).Count();
+
             var infoSol = new InfoSolution(
                 this.projectsDict!.Count,
                 packagedDict.Count, nrOutdated, nrDeprecated,
@@ -288,6 +289,26 @@ public class GenerateData
         }
         PublicClassRefData publicClassRefData = new();
         publicClassRefData.data = expPublicClasses;
+
+        publicClassRefData.PublicMethod_MostLinesOfCode = expPublicClasses
+            .SelectMany(it => it.Value)
+            .SelectMany(it => it.PublicMethods)
+            .Select(it => new NamePerCount(it.MethodName, it.LinesOfCode))
+            .OrderByDescending(it => it.Count)
+            .ToArray();
+
+        publicClassRefData.PublicClass_MostLinesOfCode = expPublicClasses
+            .Values
+            .SelectMany(it => it)
+            .Select(it=>new NamePerCount(it.Name,it.LinesOfCode))
+            .OrderByDescending(it => it.Count)
+            .ToArray();
+
+        publicClassRefData.Assemblies_MostLinesInPublicClass = expPublicClasses
+            .Select(it => new NamePerCount(it.Key, it.Value.Sum(c => c.LinesOfCode)))
+            .OrderByDescending(it => it.Count)
+            .ToArray();
+
         publicClassRefData.Assemblies_PublicClasses= expPublicClasses
                 .Select(it => new NamePerCount(it.Key, it.Value.Length))
                 .OrderByDescending(it => it.Count)
@@ -368,7 +389,7 @@ public class GenerateData
             var fldTemp = folderResults + "_Temp";
             if (!Directory.Exists(fldTemp))
                 Directory.CreateDirectory(fldTemp);
-            RscgExportDataDiagram pwsh = new("2024.823.2200", fldTemp);
+            RscgExportDataDiagram pwsh = new("2024.904.427", fldTemp);
             var code = pwsh.GenerateCode();
             var file = Path.Combine(folder, "ExportDiagram.ps1");
             File.WriteAllText(file, code);

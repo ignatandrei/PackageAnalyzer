@@ -15,13 +15,18 @@
         + "]";
     var maxCount = nameCount.Max(it => it.Count);
     var yAxis = "[" + string.Join(',', nameCount.Select(it => it.Count).ToArray()) + "]";
+    int width = 900;
+    if(nameCount.Max(it=>it.Count)> 1000)
+    {
+        width = 1900 ;
+    }
 }
 
 ```mermaid
 ---
 config:
     xyChart:
-        width: 900
+        width: @width
         height: @height
     themeVariables:
         xyChart:

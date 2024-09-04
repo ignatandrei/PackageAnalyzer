@@ -41,4 +41,29 @@ slug: summaryPublicClasses
 
 @namePerCountDisplay.Render()
 
+## Assemblies with most lines in public classses
+@{
+    tuple = new(Model.Assemblies_MostLinesInPublicClass, "Number lines in public class per assembly");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+## Public Classes with most lines
+@{
+    tuple = new(Model.PublicClass_MostLinesOfCode, "Number lines per public class");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+
+## Public Methods with most lines
+@{
+    tuple = new(Model.PublicMethod_MostLinesOfCode, "Number lines per public method");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
 <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
