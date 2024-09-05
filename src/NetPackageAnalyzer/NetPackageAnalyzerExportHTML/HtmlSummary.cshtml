@@ -34,7 +34,8 @@
     var top10Files = projectDicts.FilesWithMaxCommits(null);
     var medianCommits = projectDicts.MedianCommits(null);
     KeyValuePair<string,int>? filewithMaxCommits = top10Files?.Length>0? top10Files.First():null;
-
+    Tuple<NamePerCount[], string> tuple;
+    NamePerCountDisplay namePerCountDisplay;
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -148,13 +149,28 @@
             }
         </tbody>
     </table>
+    <h2>Summary of project public classes</h2>
+    @if (mostPublicClasses != null)
+    {
+<text>
+<h3> Assemblies with number of public classes</h3>
 
+@{
+    tuple = new(publicClassRefData.Assemblies_PublicClasses, "Public class per project");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+</text>
+
+    }
     <h2> References between projects</h2>
 
     <h3> Assemblies with Referencesx</h3>
     @{
-        Tuple<NamePerCount[], string> tuple = new(refSummary.AssembliesReferences, "References per assembly");
-        NamePerCountDisplay namePerCountDisplay = new(tuple);
+        tuple = new(refSummary.AssembliesReferences, "References per assembly");
+        namePerCountDisplay = new(tuple);
     }
 
     @namePerCountDisplay.Render()
@@ -169,7 +185,8 @@
 
     <h2> Commits</h2>
     <h3> Commits per year</h3>
-    @{
+    @if(yearCommitsFolder.Count>0){
+
         var xaxis = "[" +
         string.Join(',', yearCommitsFolder
         .Select(it => it.Key)
@@ -186,16 +203,19 @@
         .OrderBy(x => x.Key)
         .Select(x => x.Value)
         .ToArray()) + "]";
-    }
-
-    <div class="mermaid">
+<text>
+<div class="mermaid">
     xychart-beta
     title "Commits per year (folder and csproj)"
     x-axis @xaxis
     y-axis "" 0--> @maxCommit
     bar @commitsFolder
     bar @CommitsFile
-    </div>
+</div>
+</text>
+
+    }
+
 
 @{
     var maxCommitFilesPerYear = projectDicts.CommitsWithMaxFilesPerYear();
