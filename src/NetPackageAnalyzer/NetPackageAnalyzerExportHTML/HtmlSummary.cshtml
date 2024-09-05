@@ -162,6 +162,55 @@
 
 @namePerCountDisplay.Render()
 
+<h3> Assemblies with Public methods</h3>
+
+@{
+    tuple = new(publicClassRefData.Assemblies_PublicMethods, "Public methods per class");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+
+<h3> Classes with Public methods</h3>
+
+
+@{
+    tuple = new(publicClassRefData.Class_PublicMethods, "Public methods per class");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+<h2> Lines summary</h2>
+
+<h3>Assemblies with most lines in public classses</h3>
+@{
+    tuple = new(publicClassRefData.Assemblies_MostLinesInPublicClass, "Number lines in public class per assembly");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+<h3>Public Classes with most lines</h3>
+@{
+    tuple = new(publicClassRefData.PublicClass_MostLinesOfCode, "Number lines per public class");
+    namePerCountDisplay = new(tuple);
+}
+
+@namePerCountDisplay.Render()
+
+<h3>Public Methods with most lines</h3>
+
+@{
+    tuple = new(publicClassRefData.PublicMethod_MostLinesOfCode, "Number lines per public method");
+    namePerCountDisplay = new(tuple);
+}
+
+
+@namePerCountDisplay.Render()
+
+
 </text>
 
     }
