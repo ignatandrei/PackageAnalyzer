@@ -28,6 +28,7 @@ dotnet tool update netpackageanalyzerconsole
 Write-Host "Current path: $(Get-Location)"
 
 dotnet PackageAnalyzer generateFiles --where $destination
+dotnet PackageAnalyzer generateFiles -wg HtmlSummary --where $destination
 
 Set-Location $destination
 
