@@ -21,6 +21,7 @@
     int? maxCommitYear = yearCommitsFolder.Count==0?null: yearCommitsFolder.Max(x => x.Key);
     int? minCommitYear = yearCommitsFolder.Count == 0 ? null : yearCommitsFolder.Min(x => x.Key);
     var currentYear = DateTime.Now.Year;
+    var yearWithFolders = projectDicts.CommitsYearFolders();
     var maxCommitString = "";
     if (maxCommitYear != currentYear)
     {
@@ -36,8 +37,9 @@
     KeyValuePair<string,int>? filewithMaxCommits = top10Files?.Length>0? top10Files.First():null;
     Tuple<NamePerCount[], string> tuple;
     NamePerCountDisplay namePerCountDisplay;
+    YEARNamePerCountDisplay yearFolders= new(yearWithFolders);
 }
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -261,7 +263,13 @@
     bar @commitsFolder
     bar @CommitsFile
 </div>
+
 </text>
+
+
+
+@yearFolders.Render()
+
 
     }
 

@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
   <ItemGroup>
 		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.0.2" />
 	</ItemGroup>
@@ -20,4 +21,9 @@
 	<ItemGroup>
 		<EmbeddedResource Include="mermaid.min.js" />
 	</ItemGroup>
+
+ <PropertyGroup>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
+    </PropertyGroup>
 </Project>

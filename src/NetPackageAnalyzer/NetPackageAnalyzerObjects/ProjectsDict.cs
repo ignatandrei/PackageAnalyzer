@@ -118,7 +118,37 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .ToDictionary(it => it.Key, it => it.Sum(it => (long)(it.Value?.nrCommits ?? 0)))
             ;
         return data;
-
+    }
+    public Dictionary<int, NamePerCount[]> CommitsYearFolders()
+    {
+        var data = this.Values
+            .Select(it =>
+            new
+            {
+                it.PathProject,
+                hist = (it.AllHistoryFile ?? HistoryPerYear.Empty).Count,
+                year = it.AllHistoryFile?.Select(it => it.Key).ToArray() ?? []
+            })
+            .ToArray();
+            //.ToDictionary(it => it.Key, it => it.Select(it => new NamePerCount(it.PathProject, it.hist)).ToArray())
+            ;
+        var years= data.SelectMany(it => it.year).Distinct().ToArray();
+        Dictionary<int, NamePerCount[]> ret = new();
+        foreach (var year in years)
+        {
+            var dataYear = data
+                .Where(it => it.year.Contains(year))
+                .Select(it =>
+                {
+                    string path = it.PathProject;
+                    FileInfo fInfo = new (it.PathProject);
+                    var folder = fInfo?.Directory?.Name??"";
+                    return new NamePerCount(folder, it.hist);
+                    })
+                .ToArray();
+            ret[year] = dataYear;
+        }
+        return ret;
     }
     public Dictionary<int, long> CommitsPerYearFile()
     {
