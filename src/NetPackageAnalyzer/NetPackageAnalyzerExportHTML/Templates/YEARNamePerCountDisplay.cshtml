@@ -22,72 +22,149 @@
 
 }
 <text>
-    <div id="container" style="height: 100%"></div>
-        <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 
+<script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
 
-        <script type="text/javascript">
-            var dom = document.getElementById('container');
-            var myChart = echarts.init(dom, null, {
-                renderer: 'canvas',
-                useDirtyRect: false
-            });
-            var app = {};
-            var ROOT_PATH = 'https://echarts.apache.org/examples';
-            var option;
+    <div id="containerBar" style="height: 100%"></div>
 
-            const seriesLabel = {
-                show: true
-            };
-            option = {
-                title: { 
-                    text: ''
-                },
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {
-                        type: 'shadow'
-                    }
-                },
-                legend: {
-                    data: [@legendData]
-                },
-                grid: {
-                    left: 100
-                },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        saveAsImage: {}
-                    }
-                },
-                xAxis: {
-                    type: 'value',
-                    name: 'Commits',
-                    axisLabel: {
-                        formatter: '{value}'
-                    }
-                },
-                yAxis: {
-                    type: 'category',
-                    inverse: true,
-                    data: [@yAxisData],
-                    axisLabel: {
-                        formatter: function (value) {
-                            return '{' + value + '| }\n{value|' + value + '}';
+    <script type="text/javascript">
+        var dom = document.getElementById('containerBar');
+        var myChart = echarts.init(dom, null, {
+            renderer: 'canvas',
+            useDirtyRect: false
+        });
+        var app = {};
+
+        var option;
+
+        const posList = [
+            'left',
+            'right',
+            'top',
+            'bottom',
+            'inside',
+            'insideTop',
+            'insideLeft',
+            'insideRight',
+            'insideBottom',
+            'insideTopLeft',
+            'insideTopRight',
+            'insideBottomLeft',
+            'insideBottomRight'
+        ];
+        app.configParameters = {
+            rotate: {
+                min: -90,
+                max: 90
+            },
+            align: {
+                options: {
+                    left: 'left',
+                    center: 'center',
+                    right: 'right'
+                }
+            },
+            verticalAlign: {
+                options: {
+                    top: 'top',
+                    middle: 'middle',
+                    bottom: 'bottom'
+                }
+            },
+            position: {
+                options: posList.reduce(function (map, pos) {
+                    map[pos] = pos;
+                    return map;
+                }, {})
+            },
+            distance: {
+                min: 0,
+                max: 100
+            }
+        };
+        app.config = {
+            rotate: 90,
+            align: 'left',
+            verticalAlign: 'middle',
+            position: 'insideBottom',
+            distance: 15,
+            onChange: function () {
+                const labelOption = {
+                    rotate: app.config.rotate,
+                    align: app.config.align,
+                    verticalAlign: app.config.verticalAlign,
+                    position: app.config.position,
+                    distance: app.config.distance
+                };
+                myChart.setOption({
+                    series: [
+                        {
+                            label: labelOption
                         },
-                        margin: 20,
-                        rich: {
-                            value: {
-                                lineHeight: 30,
-                                align: 'center'
-                            },
+                        {
+                            label: labelOption
+                        },
+                        {
+                            label: labelOption
+                        },
+                        {
+                            label: labelOption
                         }
-                    }
-                },
-                series: [
+                    ]
+                });
+            }
+        };
+        const labelOption = {
+            show: true,
+            position: app.config.position,
+            distance: app.config.distance,
+            align: app.config.align,
+            verticalAlign: app.config.verticalAlign,
+            rotate: app.config.rotate,
+            formatter: '{c}  {name|{a}}',
+            fontSize: 16,
+            rich: {
+                name: {}
+            }
+        };
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                data: [@legendData]
+            },
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center',
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar', 'stack'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisTick: { show: false },
+                    data: [@yAxisData]
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
 @foreach (var folder in names)
-        {
+{
             List<string> dataFolder = [];
             foreach (var year in years) {
                 var data = Model[year]
@@ -96,25 +173,32 @@
                 dataFolder.Add(data);
             }
             
-        <text>
+<text>
 {
 name: '@folder',
 type: 'bar',
-data: [@string.Join(",",dataFolder)],
-label: seriesLabel,
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [@string.Join(",", dataFolder)],
 },
-        
-                </text>
+
+</text>        
 }
-                    
-                ]
-            };
+            ]
+        };
 
-            if (option && typeof option === 'object') {
-                myChart.setOption(option);
-            }
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
 
-            window.addEventListener('resize', myChart.resize);
-        </script>
+        window.addEventListener('resize', myChart.resize);
+    </script>
 
+    
+    
+    
+    
 </text>
