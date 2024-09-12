@@ -126,24 +126,31 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             new
             {
                 it.PathProject,
-                hist = (it.AllHistoryFile ?? HistoryPerYear.Empty).Count,
-                year = it.AllHistoryFile?.Select(it => it.Key).ToArray() ?? []
+                yearValue = it.AllHistoryFolder?.Select(it =>
+                new Tuple<int,int>(it.Key,it.Value?.nrCommits ?? 0)
+                ).ToArray() ?? []
             })
             .ToArray();
             //.ToDictionary(it => it.Key, it => it.Select(it => new NamePerCount(it.PathProject, it.hist)).ToArray())
             ;
-        var years= data.SelectMany(it => it.year).Distinct().ToArray();
+        var years= data.SelectMany(it => it.yearValue)
+            .Select(it=>it.Item1)
+            .Distinct().ToArray();
         Dictionary<int, NamePerCount[]> ret = new();
         foreach (var year in years)
         {
             var dataYear = data
-                .Where(it => it.year.Contains(year))
+                .Where(it =>
+                {
+                    return it.yearValue.Any(it => it.Item1 == year);
+                })
                 .Select(it =>
                 {
                     string path = it.PathProject;
                     FileInfo fInfo = new (it.PathProject);
                     var folder = fInfo?.Directory?.Name??"";
-                    return new NamePerCount(folder, it.hist);
+                    var val = it.yearValue.First(it => it.Item1 == year).Item2;
+                    return new NamePerCount(folder, val);
                     })
                 .ToArray();
             ret[year] = dataYear;
