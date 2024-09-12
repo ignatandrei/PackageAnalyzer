@@ -110,6 +110,21 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .OrderByDescending(it => it.CountFiles())
             .FirstOrDefault()??Commit.Empty;
     }
+    public NamePerCount[] CommitsPerFolder()
+    {
+        var data = this.Values
+            .Select(it => new
+                NamePerCount(
+
+            it.PathProject,
+                (it.AllHistoryFolder ?? HistoryPerYear.Empty)
+                .Select(it => it.Value?.nrCommits ?? 0)
+                .Sum()
+            ))
+                .ToArray();
+            ;
+        return data;
+    }
     public Dictionary<int,long> CommitsPerYearFolder()
     {
         var data= this.Values

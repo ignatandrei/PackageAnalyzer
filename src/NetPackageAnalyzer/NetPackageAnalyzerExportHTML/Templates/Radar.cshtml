@@ -1,0 +1,90 @@
+@inherits RazorBlade.PlainTextTemplate<Tuple<ProjectsDict,PublicClassRefData,string>>;
+@{
+    var projectDicts = Model.Item1;
+    var projS = projectDicts.AlphabeticOrderedProjects 
+        .OrderBy(it=>it.NameCSproj())
+        //.Take(2)
+        .ToArray();
+    var projectNames = projS.Select(x => x.NameCSproj()).ToArray();
+    string legend = string.Join(",", projectNames.Select(x => $"'{x}'"));
+    var cm = projectDicts.CommitsPerFolder();
+    var maxCommit = cm.Max(x => x.Count);
+    var maxPackages =projectDicts.MaxPackages;
+    var maxProjReferences = projectDicts.MaxReferences;
+    var assData = Model.Item2.Assemblies_PublicClasses;
+    var maxPublicClasses=assData.Max(x=>x.Count);
+    var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
+    int maxCommitYear = yearCommitsFolder.Count == 0 ? DateTime.Now.Year : yearCommitsFolder.Max(x => x.Key);
+    var arrCommits = yearCommitsFolder
+        .Where(it => it.Key == maxCommitYear)
+        .ToArray();
+    var maxCommitYearCommits =
+    projS.Max(it => it.AllHistoryFolderYear(maxCommitYear).nrCommits);
+}
+<div id="containerRadar" style="height: 100%"></div>
+
+<script type="text/javascript">
+    var dom = document.getElementById('containerRadar');
+    var myChart = echarts.init(dom, null, {
+        renderer: 'canvas',
+        useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    option = {
+        title: {
+            text: ''
+        },
+        legend: {
+            data: [@legend]
+        },            
+        tooltip: {
+            trigger: 'item'
+        },
+        radar: {
+            // shape: 'circle',
+            indicator: [
+                { name: 'Total Commits', max: @maxCommit },
+                { name: 'Commits @maxCommitYear', max: @maxCommitYearCommits },
+                { name: 'Packages', max: @maxPackages },
+                { name: 'References', max: @maxProjReferences },
+                { name: 'Public Classes', max: @maxPublicClasses },
+            ]
+        },
+        series: [
+            {
+                name: 'Info',
+                type: 'radar',
+                data: [
+    @foreach(var prj in projS)
+    {
+        var nameCsproj = prj.NameCSproj();
+        var commit = cm.FirstOrDefault(it => it.Name == prj.PathProject);
+        var nrCommits =commit?.Count ?? 0;
+        var nrPackages = prj.Packages?.Count ?? 0;
+        var nrProjRefs = prj.ProjectsReferences?.Count ?? 0;
+        var nrPublicClasses = assData.FirstOrDefault(it => it.Name.Contains(nameCsproj))?.Count ?? 0;
+        var commitsYear = prj.AllHistoryFolderYear(maxCommitYear).nrCommits;
+
+        <text>
+    {
+    value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses],
+    name: '@prj.NameCSproj()'
+    },
+</text>
+    }
+
+        
+                ]
+            }
+        ]
+    };
+
+    if (option && typeof option === 'object') {
+        myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+</script>

@@ -38,6 +38,7 @@
     Tuple<NamePerCount[], string> tuple;
     NamePerCountDisplay namePerCountDisplay;
     YEARNamePerCountDisplay yearFolders= new(yearWithFolders);
+    Radar radar = new(Tuple.Create(projectDicts, publicClassRefData,"andrei"));
 }
 
 <html lang="en">
@@ -47,6 +48,8 @@
 </head>
 <body>
     <h1>Summary @nameSolution</h1>
+    
+    @radar.Render()
 
     Number projects : @info.nrProjects
     (tests : @info.nrTestProjects,
