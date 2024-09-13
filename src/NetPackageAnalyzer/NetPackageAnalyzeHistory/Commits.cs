@@ -94,7 +94,11 @@ public class FolderHistoryCommits
         {
             if(line.Length <format.Length)
             {
-                Console.WriteLine("strange line:" + line);
+                if (!string.IsNullOrWhiteSpace(line))
+                {
+                    if(!line.StartsWith("A "))
+                        Console.WriteLine("strange line:" + line);
+                }
                 continue;
             }
             var date = line

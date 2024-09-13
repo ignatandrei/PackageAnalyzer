@@ -33,8 +33,9 @@ internal class RealMainExecuting
 
         var generateData = new Option<WhatToGenerate>
         (name: "--whatGenerate",
-        description: "what to generate - 1= docusaurus",
-        getDefaultValue: () => WhatToGenerate.Docusaurus);
+        description: "what to generate - 1= docusaurus , 2=summary"
+        //,getDefaultValue: () => WhatToGenerate.Docusaurus
+        );
 
 
         generateData.AddAlias("-wg");

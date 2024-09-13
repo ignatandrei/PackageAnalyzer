@@ -39,6 +39,7 @@
     NamePerCountDisplay namePerCountDisplay;
     YEARNamePerCountDisplay yearFolders= new(yearWithFolders);
     Radar radar = new(Tuple.Create(projectDicts, publicClassRefData,"andrei"));
+    var bb0= projectDicts.BuildingBlocks(0);
 }
 
 <html lang="en">
@@ -54,7 +55,8 @@
     no tests: @nrProjectsNoTests
     )
     <br />
-
+    Building Blocks: @bb0.Length
+    <br />
     Number packages : @info.nrPackages
     <br />
     Outdated : @info.nrOutdated,
@@ -84,6 +86,8 @@
     The file with most commits ( @filewithMaxCommits?.Value ) is @filewithMaxCommits?.Key
 
     <br />
+    <h1>Radar @nameSolution</h1>
+
     @radar.Render()
     <br />
 
@@ -118,6 +122,31 @@
         </text>
     }
 </div>
+<h2>Building Blocks : @bb0.Length </h2>
+    @foreach (var bbProj in bb0)
+    {
+        var nameCsproj = bbProj.NameCSproj();
+        var relativePath = bbProj.RelativePath();
+        <text>
+            <h3>Project: @nameCsproj</h3>
+            Full Name : @relativePath
+
+            <div class="mermaid">
+                flowchart LR
+            @nameCsproj
+            @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
+            {
+                <text>
+                    @rel.FullNameMermaid()
+                    @rel.NameCSproj()-->@nameCsproj
+                </text>
+            }
+
+            </div>
+
+        </text>
+    }
+
 
     <h2>@keysPackageMultiple.Length Packages with major version different</h2>
     <table border="1">
