@@ -48,11 +48,12 @@ jobs:
         # copy to another folder to run
         cp -r ./net8.0 ./test
         cd test
-        ./NetPackageAnalyzerConsole generateFiles --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
+        ./NetPackageAnalyzerConsole generateFiles -wg Docusaurus --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
         cd ${{ github.workspace }}/src/NetPackageAnalyzer/
         cd Analysis
         npm install
         npm run build
+        ./NetPackageAnalyzerConsole generateFiles -wg HtmlSummary --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
 
     - name: 'Upload nuget'
       uses: actions/upload-artifact@v4
