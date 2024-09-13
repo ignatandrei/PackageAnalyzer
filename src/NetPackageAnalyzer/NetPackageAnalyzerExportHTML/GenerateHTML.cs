@@ -26,7 +26,7 @@ public class GenerateHTML : GenerateFiles
 
             var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
             await system.File.WriteAllTextAsync(nameFile, html);
-            WriteMermaidJs(where);
+            WriteJs(where);
             return nameFile;
         }
         finally
@@ -45,11 +45,17 @@ public class GenerateHTML : GenerateFiles
             }
         }
     }
-    void WriteMermaidJs(string where)
+    void WriteJs(string where)
     {
         var res = MyResource.GetMermaidJs();
         var nameFileJs = Path.Combine(where, "mermaid.min.js");
         system.File.WriteAllBytes(nameFileJs, res.ToArray());
+        
+        res = MyResource.GetEchartsJs();
+        nameFileJs = Path.Combine(where, "echarts.min.js");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+
+
     }
 }
 
