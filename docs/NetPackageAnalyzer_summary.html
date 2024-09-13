@@ -1,0 +1,761 @@
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+</head>
+<body>
+    <h1>Summary NetPackageAnalyzer</h1>
+    
+    <div id="containerRadar" style="height: 100%"></div>
+
+<script type="text/javascript">
+    var dom = document.getElementById('containerRadar');
+    var myChart = echarts.init(dom, null, {
+        renderer: 'canvas',
+        useDirtyRect: false
+    });
+    var app = {};
+
+    var option;
+
+    option = {
+        title: {
+            text: ''
+        },
+        legend: {
+            data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','WhatIAmDoingData']
+        },            
+        tooltip: {
+            trigger: 'item'
+        },
+        radar: {
+            // shape: 'circle',
+            indicator: [
+                { name: 'Total Commits', max: 55 },
+                { name: 'Commits 2024', max: 45 },
+                { name: 'Packages', max: 37 },
+                { name: 'References', max: 5 },
+                { name: 'Public Classes', max: 33 },
+            ]
+        },
+        series: [
+            {
+                name: 'Info',
+                type: 'radar',
+                data: [
+
+    {
+    value: [8,5, 3, 0, 5],
+    name: 'AnalyzeMerge'
+    },
+
+    {
+    value: [10,10, 0, 0, 6],
+    name: 'NetPackageAnalyzeHistory'
+    },
+
+    {
+    value: [55,45, 29, 5, 0],
+    name: 'NetPackageAnalyzerConsole'
+    },
+
+    {
+    value: [4,4, 1, 0, 1],
+    name: 'NetPackageAnalyzerDiagram'
+    },
+
+    {
+    value: [49,39, 24, 2, 2],
+    name: 'NetPackageAnalyzerDocusaurus'
+    },
+
+    {
+    value: [5,5, 19, 1, 1],
+    name: 'NetPackageAnalyzerExportHTML'
+    },
+
+    {
+    value: [31,31, 20, 2, 33],
+    name: 'NetPackageAnalyzerObjects'
+    },
+
+    {
+    value: [1,1, 18, 1, 1],
+    name: 'NetPackageAnalyzerShowInConsole'
+    },
+
+    {
+    value: [6,6, 37, 1, 1],
+    name: 'NetPackageAnalyzerTests'
+    },
+
+    {
+    value: [3,3, 17, 1, 1],
+    name: 'WhatIAmDoingData'
+    },
+
+        
+                ]
+            }
+        ]
+    };
+
+    if (option && typeof option === 'object') {
+        myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+</script>
+
+    Number projects : 10
+    (tests : 1,
+    no tests: 9
+    )
+    <br />
+
+    Number packages : 49
+    <br />
+    Outdated : 10,
+    <br />Deprecated : 0,
+    <br />Major version differs :0
+
+
+            <br />
+            Assembly with most references: NetPackageAnalyzeHistory 39
+        
+            <br />
+            Most public classes :NetPackageAnalyzerObjects 33
+        
+    <br />
+    Total Commits : 172    ( last commit : this year,2024 )
+    <br />
+    The commit with max files ( 16  ) is sha e87b74d6509e021d898d460831c530405f854c58 on 2023 August 28 )
+    <br />
+    The file with most commits ( 82 ) is D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj
+    <br />
+    <h2> 9 Projects</h2>
+    <div class="mermaid">
+        flowchart LR
+
+
+
+
+            %% start project reference AnalyzeMerge\AnalyzeMerge.csproj
+
+                    AnalyzeMerge
+                
+        
+
+            %% start project reference NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj
+
+                    NetPackageAnalyzeHistory
+                
+        
+
+            %% start project reference NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj
+
+
+                    NetPackageAnalyzerConsole-->AnalyzeMerge
+
+                
+                    NetPackageAnalyzerConsole-->NetPackageAnalyzerDocusaurus
+
+                
+                    NetPackageAnalyzerConsole-->NetPackageAnalyzerExportHTML
+
+                
+                    NetPackageAnalyzerConsole-->NetPackageAnalyzerShowInConsole
+
+                
+                    NetPackageAnalyzerConsole-->WhatIAmDoingData
+
+                        
+
+            %% start project reference NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj
+
+                    NetPackageAnalyzerDiagram
+                
+        
+
+            %% start project reference NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj
+
+
+                    NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerDiagram
+
+                
+                    NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerObjects
+
+                        
+
+            %% start project reference NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj
+
+
+                    NetPackageAnalyzerExportHTML-->NetPackageAnalyzerObjects
+
+                        
+
+            %% start project reference NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj
+
+
+                    NetPackageAnalyzerObjects-->NetPackageAnalyzeHistory
+
+                
+                    NetPackageAnalyzerObjects-->NetPackageAnalyzerDiagram
+
+                        
+
+            %% start project reference NetPackageAnalyzerShowInConsole\NetPackageAnalyzerShowInConsole.csproj
+
+
+                    NetPackageAnalyzerShowInConsole-->NetPackageAnalyzerObjects
+
+                        
+
+            %% start project reference WhatIAmDoingData\WhatIAmDoingData.csproj
+
+
+                    WhatIAmDoingData-->NetPackageAnalyzerObjects
+
+                        </div>
+
+    <h2>0 Packages with major version different</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>ID</th>
+                <th>References</th>
+                <th>Projects</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <h2>Summary of project public classes</h2>
+
+<h3> Assemblies with number of public classes</h3>
+
+
+
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: 280
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "Public class per project"
+x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,AnalyzeMerge,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerDiagram,NetPackageAnalyzerExportHTML,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerTests,WhatIAmDoingData]
+y-axis "" 0--> 33
+bar [33,6,5,2,1,1,1,1,1]
+
+</div>
+
+
+
+<h3> Assemblies with Public methods</h3>
+
+
+
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: 280
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "Public methods per class"
+x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,AnalyzeMerge,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerDiagram,NetPackageAnalyzerTests,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerExportHTML,WhatIAmDoingData]
+y-axis "" 0--> 504
+bar [504,81,75,40,21,18,14,12,11]
+
+</div>
+
+
+
+
+<h3> Classes with Public methods</h3>
+
+
+
+
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: 400
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "Public methods per class"
+x-axis [ProjectsDict,ProjectData,DisplayDataMoreThan1Version,PackageData,FileData,DataToDisplayMerge,RscgExportDataDiagram,InfoSolution,PackageWithVersionOutdated,PackageWithVersionDeprecated,ProjectWithFiles,History,GenerateData,PackageWithVersion,NamePerCount]
+y-axis "" 0--> 20
+bar [20,13,12,11,10,7,7,7,7,7,6,6,6,6,6]
+
+</div>
+
+
+
+<h2> Lines summary</h2>
+
+<h3>Assemblies with most lines in public classses</h3>
+
+
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: 280
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "Number lines in public class per assembly"
+x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,NetPackageAnalyzerDocusaurus,AnalyzeMerge,WhatIAmDoingData,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerExportHTML,NetPackageAnalyzerTests,NetPackageAnalyzerDiagram]
+y-axis "" 0--> 1243
+bar [1243,235,232,220,95,50,26,15,8]
+
+</div>
+
+
+
+<h3>Public Classes with most lines</h3>
+
+
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: 400
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "Number lines per public class"
+x-axis [GenerateData,ProjectsDict,GenerateFilesDocusaurus,ProcessOutput,DisplayData,TemplateGenerator,FileFolderHistorySimple,AnalyzeMergeData,AnalyzeForProject,ProjectData,PackageData,FolderHistoryCommits,WriteToConsole,DataToDisplayMerge,HistoryPerYear]
+y-axis "" 0--> 376
+bar [376,367,145,109,95,87,84,80,75,63,53,52,50,35,35]
+
+</div>
+
+
+
+<h3>Public Methods with most lines</h3>
+
+
+
+
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: 400
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "Number lines per public method"
+x-axis [GenerateDataForSln,GenerateNow,AnalyzeDiagrams,GenerateNow,Analyze,WriteMajorDiffers,Initialize,FindReferences,CommitsYearFolders,OutputDotnetPackage,Analyze,ListSDKS,Build,OutputDotnetReference,Median]
+y-axis "" 0--> 160
+bar [160,138,106,62,48,47,43,40,37,28,26,26,26,26,22]
+
+</div>
+
+
+
+
+    <h2> References between projects</h2>
+
+    <h3> Assemblies with Referencesx</h3>
+
+    
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: 240
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "References per assembly"
+x-axis [NetPackageAnalyzeHistory,NetPackageAnalyzerObjects,WhatIAmDoingData,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerDiagram,NetPackageAnalyzerExportHTML]
+y-axis "" 0--> 39
+bar [39,23,4,2,2,2,1]
+
+</div>
+
+
+    <h3> Classes with References</h3>
+
+
+    
+<div class="mermaid">
+---
+config:
+    xyChart:
+        width: 900
+        height: 260
+    themeVariables:
+        xyChart:
+            titleColor: "#ff0000"
+---
+
+xychart-beta horizontal
+title "References per class"
+x-axis [ProjectsDict,GenerateFilesDocusaurus,GenerateHTML,RealMainExecuting,ProjectData,WriteToConsole,GenerateData,TestSolutionExists]
+y-axis "" 0--> 35
+bar [35,11,9,8,4,3,2,1]
+
+</div>
+
+
+
+    <h2> Commits</h2>
+    <h3> Commits per year</h3>
+
+<div class="mermaid">
+    xychart-beta
+    title "Commits per year (folder and csproj)"
+    x-axis [2023,2024]
+    y-axis "" 0--> 149
+    bar [23,149]
+    bar [13,81]
+</div>
+
+<text>
+
+
+    <div id="containerBar" style="height: 100%"></div>
+
+    <script type="text/javascript">
+        var dom = document.getElementById('containerBar');
+        var myChart = echarts.init(dom, null, {
+            renderer: 'canvas',
+            useDirtyRect: false
+        });
+        var app = {};
+
+        var option;
+
+        const posList = [
+            'left',
+            'right',
+            'top',
+            'bottom',
+            'inside',
+            'insideTop',
+            'insideLeft',
+            'insideRight',
+            'insideBottom',
+            'insideTopLeft',
+            'insideTopRight',
+            'insideBottomLeft',
+            'insideBottomRight'
+        ];
+        app.configParameters = {
+            rotate: {
+                min: -90,
+                max: 90
+            },
+            align: {
+                options: {
+                    left: 'left',
+                    center: 'center',
+                    right: 'right'
+                }
+            },
+            verticalAlign: {
+                options: {
+                    top: 'top',
+                    middle: 'middle',
+                    bottom: 'bottom'
+                }
+            },
+            position: {
+                options: posList.reduce(function (map, pos) {
+                    map[pos] = pos;
+                    return map;
+                }, {})
+            },
+            distance: {
+                min: 0,
+                max: 100
+            }
+        };
+        app.config = {
+            rotate: 90,
+            align: 'left',
+            verticalAlign: 'middle',
+            position: 'insideBottom',
+            distance: 15,
+            onChange: function () {
+                const labelOption = {
+                    rotate: app.config.rotate,
+                    align: app.config.align,
+                    verticalAlign: app.config.verticalAlign,
+                    position: app.config.position,
+                    distance: app.config.distance
+                };
+                myChart.setOption({
+                    series: [
+                        {
+                            label: labelOption
+                        },
+                        {
+                            label: labelOption
+                        },
+                        {
+                            label: labelOption
+                        },
+                        {
+                            label: labelOption
+                        }
+                    ]
+                });
+            }
+        };
+        const labelOption = {
+            show: true,
+            position: app.config.position,
+            distance: app.config.distance,
+            align: app.config.align,
+            verticalAlign: app.config.verticalAlign,
+            rotate: app.config.rotate,
+            formatter: '{c}  {name|{a}}',
+            fontSize: 16,
+            rich: {
+                name: {}
+            }
+        };
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            legend: {
+                data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerExportHTML','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','NetPackageAnalyzerWork','WhatIAmDoingData']
+            },
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center',
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    magicType: { show: true, type: ['line', 'bar', 'stack'] },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisTick: { show: false },
+                    data: ['2023','2024']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+
+{
+name: 'AnalyzeMerge',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [3,5],
+},
+
+
+{
+name: 'NetPackageAnalyzeHistory',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,10],
+},
+
+
+{
+name: 'NetPackageAnalyzerConsole',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [10,45],
+},
+
+
+{
+name: 'NetPackageAnalyzerDiagram',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,4],
+},
+
+
+{
+name: 'NetPackageAnalyzerExportHTML',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,5],
+},
+
+
+{
+name: 'NetPackageAnalyzerObjects',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,31],
+},
+
+
+{
+name: 'NetPackageAnalyzerShowInConsole',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,1],
+},
+
+
+{
+name: 'NetPackageAnalyzerTests',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,6],
+},
+
+
+{
+name: 'NetPackageAnalyzerWork',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [10,39],
+},
+
+
+{
+name: 'WhatIAmDoingData',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,3],
+},
+
+            ]
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+        window.addEventListener('resize', myChart.resize);
+    </script>
+
+    
+    
+    
+    
+</text>
+
+    <h3> Commits with most files per year</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>SHA</th>
+                <th>Date</th>
+                <th>NrFiles</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>7f8efc25662738b403d64fd007425c170748c9d3</td>
+                    <td>2024 Mar 10</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>e87b74d6509e021d898d460831c530405f854c58</td>
+                    <td>2023 Aug 28</td>
+                    <td>16</td>
+                </tr>
+        </tbody>
+    </table>
+
+    <script src="mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+
+    <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
+</body>
+</html>
