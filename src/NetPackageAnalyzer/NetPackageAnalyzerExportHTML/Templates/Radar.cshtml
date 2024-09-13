@@ -1,5 +1,6 @@
 @inherits RazorBlade.PlainTextTemplate<Tuple<ProjectsDict,PublicClassRefData,string>>;
 @{
+    var publicClassRefData = Model.Item2;
     var projectDicts = Model.Item1;
     var projS = projectDicts.AlphabeticOrderedProjects 
         .OrderBy(it=>it.NameCSproj())
@@ -11,8 +12,12 @@
     var maxCommit = cm.Max(x => x.Count);
     var maxPackages =projectDicts.MaxPackages;
     var maxProjReferences = projectDicts.MaxReferences;
-    var assData = Model.Item2.Assemblies_PublicClasses;
+    var assData = publicClassRefData.Assemblies_PublicClasses;
     var maxPublicClasses=assData.Length==0?0: assData.Max(x=>x.Count);
+
+    var assLinesPublic = publicClassRefData.Assemblies_MostLinesInPublicClass;
+    var maxLinesPublic = assLinesPublic.Length == 0 ? 0 : assLinesPublic.Max(x => x.Count);
+
     var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
     int maxCommitYear = yearCommitsFolder.Count == 0 ? DateTime.Now.Year : yearCommitsFolder.Max(x => x.Key);
     var arrCommits = yearCommitsFolder
@@ -51,6 +56,7 @@
                 { name: 'Packages', max: @maxPackages },
                 { name: 'References', max: @maxProjReferences },
                 { name: 'Public Classes', max: @maxPublicClasses },
+                { name: 'Lines in Public Classes', max: @maxLinesPublic }
             ]
         },
         series: [
@@ -65,13 +71,16 @@
         var nrCommits =commit?.Count ?? 0;
         var nrPackages = prj.Packages?.Count ?? 0;
         var nrProjRefs = prj.ProjectsReferences?.Count ?? 0;
-        var nrPublicClasses = assData.FirstOrDefault(it => it.Name.Contains(nameCsproj))?.Count ?? 0;
+        var nrPublicClasses = assData.FirstOrDefault(it => it.Name.EndsWith(nameCsproj))?.Count ?? 0;
+        
         var commitsYear = prj.AllHistoryFolderYear(maxCommitYear).nrCommits;
 
+        var nrLinesPublic =assLinesPublic.FirstOrDefault(it => it.Name.EndsWith(nameCsproj))?.Count ?? 0;
+        
         <text>
     {
-    value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses],
-    name: '@prj.NameCSproj()'
+value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic],
+name: '@prj.NameCSproj()'
     },
 </text>
     }
