@@ -49,8 +49,6 @@
 <body>
     <h1>Summary @nameSolution</h1>
     
-    @radar.Render()
-
     Number projects : @info.nrProjects
     (tests : @info.nrTestProjects,
     no tests: @nrProjectsNoTests
@@ -84,7 +82,11 @@
     The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
     <br />
     The file with most commits ( @filewithMaxCommits?.Value ) is @filewithMaxCommits?.Key
+
     <br />
+    @radar.Render()
+    <br />
+
     <h2> @nrProjectsNoTests Projects</h2>
     <div class="mermaid">
         flowchart LR
