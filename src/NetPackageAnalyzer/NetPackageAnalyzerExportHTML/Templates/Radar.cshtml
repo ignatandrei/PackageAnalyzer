@@ -12,7 +12,7 @@
     var maxPackages =projectDicts.MaxPackages;
     var maxProjReferences = projectDicts.MaxReferences;
     var assData = Model.Item2.Assemblies_PublicClasses;
-    var maxPublicClasses=assData.Max(x=>x.Count);
+    var maxPublicClasses=assData.Length==0?0: assData.Max(x=>x.Count);
     var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
     int maxCommitYear = yearCommitsFolder.Count == 0 ? DateTime.Now.Year : yearCommitsFolder.Max(x => x.Key);
     var arrCommits = yearCommitsFolder

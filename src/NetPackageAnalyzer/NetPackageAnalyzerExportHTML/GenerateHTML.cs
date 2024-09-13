@@ -10,21 +10,40 @@ public class GenerateHTML : GenerateFiles
     }
     public override async Task<string> GenerateNow(string folder, string where)
     {
-        if (!Directory.Exists(where))
-            Directory.CreateDirectory(where);
+        string tempFolder = string.Empty;
+        try
+        {
+            if (!Directory.Exists(where))
+                Directory.CreateDirectory(where);
 
-        var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
-        var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
-        var (refSummary, publicClassRefData) = AnalyzeDiagrams(tempFolder);
-        //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
-        var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary,publicClassRefData));
-        var html = x.Render();
+            var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
+            tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+            var (refSummary, publicClassRefData) = AnalyzeDiagrams(tempFolder);
+            //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
+            var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData));
+            var html = x.Render();
 
 
-        var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
-        await system.File.WriteAllTextAsync(nameFile, html);
-        WriteMermaidJs(where);
-        return nameFile;
+            var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
+            await system.File.WriteAllTextAsync(nameFile, html);
+            WriteMermaidJs(where);
+            return nameFile;
+        }
+        finally
+        {
+            if ((!string.IsNullOrWhiteSpace(tempFolder)) && Directory.Exists(tempFolder))
+            {
+                try
+                {
+                    Console.WriteLine($"Deleting {tempFolder}");
+                    Directory.Delete(tempFolder, true);
+                }
+                catch (Exception)
+                {
+    //TODO : log                    
+                }
+            }
+        }
     }
     void WriteMermaidJs(string where)
     {

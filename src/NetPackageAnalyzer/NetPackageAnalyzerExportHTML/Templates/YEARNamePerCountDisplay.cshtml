@@ -128,9 +128,14 @@
         };
         option = {
             tooltip: {
-                trigger: 'axis',
+                trigger: 'item',
                 axisPointer: {
                     type: 'shadow'
+                },
+                formatter: function (params, ticket, callback) {
+                     return `${params.seriesName}<br />
+              ${params.name}: ${params.value} <br />
+             `;
                 }
             },
             legend: {

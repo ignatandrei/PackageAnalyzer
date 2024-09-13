@@ -383,10 +383,11 @@ public class GenerateData
 
     protected string? GenerateDocsForClasses(string fullPathToSolution, string folderResults)
     {
+        string fldTemp = string.Empty;
         try
         {
             var folder = Path.GetDirectoryName(fullPathToSolution);
-            var fldTemp = folderResults + "_Temp";
+            fldTemp = folderResults + "_Temp";
             if (!Directory.Exists(fldTemp))
                 Directory.CreateDirectory(fldTemp);
             RscgExportDataDiagram pwsh = new("2024.904.427", fldTemp);
@@ -433,5 +434,6 @@ public class GenerateData
             Console.WriteLine("Exception!! " + ex.StackTrace);
             return null;
         }
+        
     }
 }
