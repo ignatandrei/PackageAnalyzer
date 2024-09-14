@@ -13,13 +13,25 @@ Go to where your sln is and enter this:
 ```
 dotnet new tool-manifest
 dotnet tool update netpackageanalyzerconsole
-dotnet PackageAnalyzer generateFiles
 ```
 
+If you want a fast summary of the solution, just run
 
-and see results at Analysis folder as a Docusaurus site .
+```
+dotnet PackageAnalyzer generateFiles -wg HtmlSummary
+```
 
-Just run
+And will generate a html file with all the information.  As an example , see https://ignatandrei.github.io/PackageAnalyzer/NetPackageAnalyzer_summary.html
+
+
+
+If you want a site of all solution, run
+
+```
+dotnet PackageAnalyzer generateFiles -wg Docusaurus
+```
+
+and see results at Analysis folder as a Docusaurus site . You should run
 
 ```
 npm i
@@ -48,18 +60,24 @@ It will show
 140. Commits with most files -  https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/Projects/NetPackageAnalyzerConsole/Commits
 150. Classes / Projects with most public methods - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summaryPublicClasses
 160. Number of lines per class / project / method - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summaryPublicClasses
+170. Radar summary - https://ignatandrei.github.io/PackageAnalyzer/NetPackageAnalyzer_summary.html#radar
+180. Commits per year and folder https://ignatandrei.github.io/PackageAnalyzer/NetPackageAnalyzer_summary.html#Commitsperyearandfolder
 
 
-And a summary https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summary
+And a summary https://ignatandrei.github.io/PackageAnalyzer/NetPackageAnalyzer_summary.html
+
 
 Please read the Wiki at https://github.com/ignatandrei/packageAnalyzer/wiki/ 
 
 
 ## How it looks
 
-Those are the files generated :
+Those are the files generated for summary:
+https://ignatandrei.github.io/PackageAnalyzer/NetPackageAnalyzer_summary.html
 
+Or for site:
 https://ignatandrei.github.io/PackageAnalyzer/
+
 
 
 # Contributors needed!
@@ -76,5 +94,6 @@ dotnet PackageAnalyzer generateFiles --verbose true
 
 and open an issue with the verbose file mentioned in the output at 
 
+```
 Please see verbose file at
-
+```
