@@ -41,7 +41,11 @@ npm run start
 to see what is generated ( see https://ignatandrei.github.io/PackageAnalyzer/docs/category/solutions )
 
 
-It will show
+It will show ( see below for more details ):
+
+![Radar](https://raw.githubusercontent.com/wiki/ignatandrei/PackageAnalyzer/images/radar.png)
+
+
 
 10. Solution Analyzer - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/ProjectRelation
 15. Project references with another projects - https://ignatandrei.github.io/PackageAnalyzer/docs/Analysis/NetPackageAnalyzer/summaryProjectReferences
