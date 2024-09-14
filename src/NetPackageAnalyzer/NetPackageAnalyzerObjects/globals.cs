@@ -21,5 +21,12 @@ public static class GlobalsForGenerating
     {
         return prefixSite + NameSolution;
     }
+    public static string RelativePath(string? pathProject)
+    {
+        if(string.IsNullOrWhiteSpace(pathProject))
+            return pathProject;
+
+        return Path.GetRelativePath(FullPathToSolution, pathProject);
+    }
 }
 

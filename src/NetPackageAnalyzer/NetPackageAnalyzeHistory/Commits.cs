@@ -96,7 +96,7 @@ public class FolderHistoryCommits
             {
                 if (!string.IsNullOrWhiteSpace(line))
                 {
-                    if(!line.StartsWith("A "))
+                    if(!line.StartsWith("A"))
                         Console.WriteLine("strange line:" + line);
                 }
                 continue;

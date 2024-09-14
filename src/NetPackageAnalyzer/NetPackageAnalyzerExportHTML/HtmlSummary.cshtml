@@ -83,7 +83,7 @@
     <br />
     The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
     <br />
-    The file with most commits ( @filewithMaxCommits?.Value ) is @filewithMaxCommits?.Key
+    The file with most commits ( @filewithMaxCommits?.Value ) is @GlobalsForGenerating.RelativePath( filewithMaxCommits?.Key)
 
     <br />
     <h1>Radar @nameSolution</h1>
