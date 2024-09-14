@@ -27,8 +27,9 @@ dotnet tool uninstall netpackageanalyzerconsole
 dotnet tool update netpackageanalyzerconsole
 Write-Host "Current path: $(Get-Location)"
 
-dotnet PackageAnalyzer generateFiles --where $destination
-dotnet PackageAnalyzer generateFiles -wg HtmlSummary --where $destination
+Push-Location .
+
+dotnet PackageAnalyzer generateFiles -wg Docusaurus --where $destination
 
 Set-Location $destination
 
@@ -37,5 +38,11 @@ npm run build
 $destination = Join-Path $destination "build"
 Set-Location $destination
 Copy-Item -Path .\* -Destination $docs -Recurse 
+
+Pop-Location
+
+Write-Host "Current path: $(Get-Location)"
+
+dotnet PackageAnalyzer generateFiles -wg HtmlSummary --where $docs
 
 Pop-Location

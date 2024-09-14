@@ -2,11 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+    <script type="text/javascript" src="echarts.min.js"></script>
 </head>
 <body>
     <h1>Summary NetPackageAnalyzer</h1>
     
+    Number projects : 10
+    (tests : 1,
+    no tests: 9
+    )
+    <br />
+    Building Blocks: 3
+    <br />
+    Number packages : 49
+    <br />
+    Outdated : 10,
+    <br />Deprecated : 0,
+    <br />Major version differs :0
+
+
+            <br />
+            Assembly with most references: NetPackageAnalyzeHistory 39
+        
+            <br />
+            Most public classes :NetPackageAnalyzerObjects 33
+        
+    <br />
+    Total Commits : 176    ( last commit : this year,2024 )
+    <br />
+    The commit with max files ( 16  ) is sha e87b74d6509e021d898d460831c530405f854c58 on 2023 August 28 )
+    <br />
+    The file with most commits ( 83 ) is D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj
+
+    <br />
+    <h1>Radar NetPackageAnalyzer</h1>
+
     <div id="containerRadar" style="height: 100%"></div>
 
 <script type="text/javascript">
@@ -32,11 +62,12 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 55 },
-                { name: 'Commits 2024', max: 45 },
+                { name: 'Total Commits', max: 56 },
+                { name: 'Commits 2024', max: 46 },
                 { name: 'Packages', max: 37 },
                 { name: 'References', max: 5 },
                 { name: 'Public Classes', max: 33 },
+                { name: 'Lines in Public Classes', max: 1245 }
             ]
         },
         series: [
@@ -46,53 +77,53 @@
                 data: [
 
     {
-    value: [8,5, 3, 0, 5],
-    name: 'AnalyzeMerge'
+value: [8,5, 3, 0, 5, 220],
+name: 'AnalyzeMerge'
     },
 
     {
-    value: [10,10, 0, 0, 6],
-    name: 'NetPackageAnalyzeHistory'
+value: [11,11, 0, 0, 6, 239],
+name: 'NetPackageAnalyzeHistory'
     },
 
     {
-    value: [55,45, 29, 5, 0],
-    name: 'NetPackageAnalyzerConsole'
+value: [56,46, 29, 5, 0, 0],
+name: 'NetPackageAnalyzerConsole'
     },
 
     {
-    value: [4,4, 1, 0, 1],
-    name: 'NetPackageAnalyzerDiagram'
+value: [4,4, 1, 0, 1, 8],
+name: 'NetPackageAnalyzerDiagram'
     },
 
     {
-    value: [49,39, 24, 2, 2],
-    name: 'NetPackageAnalyzerDocusaurus'
+value: [49,39, 24, 2, 2, 232],
+name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-    value: [5,5, 19, 1, 1],
-    name: 'NetPackageAnalyzerExportHTML'
+value: [6,6, 19, 1, 1, 48],
+name: 'NetPackageAnalyzerExportHTML'
     },
 
     {
-    value: [31,31, 20, 2, 33],
-    name: 'NetPackageAnalyzerObjects'
+value: [32,32, 20, 2, 33, 1245],
+name: 'NetPackageAnalyzerObjects'
     },
 
     {
-    value: [1,1, 18, 1, 1],
-    name: 'NetPackageAnalyzerShowInConsole'
+value: [1,1, 18, 1, 1, 50],
+name: 'NetPackageAnalyzerShowInConsole'
     },
 
     {
-    value: [6,6, 37, 1, 1],
-    name: 'NetPackageAnalyzerTests'
+value: [6,6, 37, 1, 1, 15],
+name: 'NetPackageAnalyzerTests'
     },
 
     {
-    value: [3,3, 17, 1, 1],
-    name: 'WhatIAmDoingData'
+value: [3,3, 17, 1, 1, 95],
+name: 'WhatIAmDoingData'
     },
 
         
@@ -107,33 +138,8 @@
 
     window.addEventListener('resize', myChart.resize);
 </script>
-
-    Number projects : 10
-    (tests : 1,
-    no tests: 9
-    )
     <br />
 
-    Number packages : 49
-    <br />
-    Outdated : 10,
-    <br />Deprecated : 0,
-    <br />Major version differs :0
-
-
-            <br />
-            Assembly with most references: NetPackageAnalyzeHistory 39
-        
-            <br />
-            Most public classes :NetPackageAnalyzerObjects 33
-        
-    <br />
-    Total Commits : 172    ( last commit : this year,2024 )
-    <br />
-    The commit with max files ( 16  ) is sha e87b74d6509e021d898d460831c530405f854c58 on 2023 August 28 )
-    <br />
-    The file with most commits ( 82 ) is D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj
-    <br />
     <h2> 9 Projects</h2>
     <div class="mermaid">
         flowchart LR
@@ -218,6 +224,50 @@
                     WhatIAmDoingData-->NetPackageAnalyzerObjects
 
                         </div>
+<h2>Building Blocks : 3 </h2>
+
+            <h3>Project: AnalyzeMerge</h3>
+            Full Name : AnalyzeMerge\AnalyzeMerge.csproj
+
+            <div class="mermaid">
+                flowchart LR
+            AnalyzeMerge
+
+                    NetPackageAnalyzerConsole[NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj]
+                    NetPackageAnalyzerConsole-->AnalyzeMerge
+                
+            </div>
+
+        
+            <h3>Project: NetPackageAnalyzeHistory</h3>
+            Full Name : NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj
+
+            <div class="mermaid">
+                flowchart LR
+            NetPackageAnalyzeHistory
+
+                    NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
+                    NetPackageAnalyzerObjects-->NetPackageAnalyzeHistory
+                
+            </div>
+
+        
+            <h3>Project: NetPackageAnalyzerDiagram</h3>
+            Full Name : NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj
+
+            <div class="mermaid">
+                flowchart LR
+            NetPackageAnalyzerDiagram
+
+                    NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj]
+                    NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerDiagram
+                
+                    NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
+                    NetPackageAnalyzerObjects-->NetPackageAnalyzerDiagram
+                
+            </div>
+
+        
 
     <h2>0 Packages with major version different</h2>
     <table border="1">
@@ -330,8 +380,8 @@ config:
 xychart-beta horizontal
 title "Number lines in public class per assembly"
 x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,NetPackageAnalyzerDocusaurus,AnalyzeMerge,WhatIAmDoingData,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerExportHTML,NetPackageAnalyzerTests,NetPackageAnalyzerDiagram]
-y-axis "" 0--> 1243
-bar [1243,235,232,220,95,50,26,15,8]
+y-axis "" 0--> 1245
+bar [1245,239,232,220,95,50,48,15,8]
 
 </div>
 
@@ -353,9 +403,9 @@ config:
 
 xychart-beta horizontal
 title "Number lines per public class"
-x-axis [GenerateData,ProjectsDict,GenerateFilesDocusaurus,ProcessOutput,DisplayData,TemplateGenerator,FileFolderHistorySimple,AnalyzeMergeData,AnalyzeForProject,ProjectData,PackageData,FolderHistoryCommits,WriteToConsole,DataToDisplayMerge,HistoryPerYear]
-y-axis "" 0--> 376
-bar [376,367,145,109,95,87,84,80,75,63,53,52,50,35,35]
+x-axis [GenerateData,ProjectsDict,GenerateFilesDocusaurus,ProcessOutput,DisplayData,TemplateGenerator,FileFolderHistorySimple,AnalyzeMergeData,AnalyzeForProject,ProjectData,FolderHistoryCommits,PackageData,WriteToConsole,GenerateHTML,DataToDisplayMerge]
+y-axis "" 0--> 378
+bar [378,367,145,109,95,87,84,80,75,63,56,53,50,48,35]
 
 </div>
 
@@ -379,9 +429,9 @@ config:
 
 xychart-beta horizontal
 title "Number lines per public method"
-x-axis [GenerateDataForSln,GenerateNow,AnalyzeDiagrams,GenerateNow,Analyze,WriteMajorDiffers,Initialize,FindReferences,CommitsYearFolders,OutputDotnetPackage,Analyze,ListSDKS,Build,OutputDotnetReference,Median]
+x-axis [GenerateDataForSln,GenerateNow,AnalyzeDiagrams,GenerateNow,Analyze,Initialize,WriteMajorDiffers,FindReferences,CommitsYearFolders,GenerateNow,OutputDotnetPackage,Analyze,ListSDKS,Build,OutputDotnetReference]
 y-axis "" 0--> 160
-bar [160,138,106,62,48,47,43,40,37,28,26,26,26,26,22]
+bar [160,138,106,62,48,47,47,40,37,32,28,26,26,26,26]
 
 </div>
 
@@ -445,11 +495,13 @@ bar [35,11,9,8,4,3,2,1]
     xychart-beta
     title "Commits per year (folder and csproj)"
     x-axis [2023,2024]
-    y-axis "" 0--> 149
-    bar [23,149]
-    bar [13,81]
+    y-axis "" 0--> 153
+    bar [23,153]
+    bar [13,82]
 </div>
 
+
+<h3> Commits per year and folder </h3>
 <text>
 
 
@@ -557,9 +609,14 @@ bar [35,11,9,8,4,3,2,1]
         };
         option = {
             tooltip: {
-                trigger: 'axis',
+                trigger: 'item',
                 axisPointer: {
                     type: 'shadow'
+                },
+                formatter: function (params, ticket, callback) {
+                     return `${params.seriesName}<br />
+              ${params.name}: ${params.value} <br />
+             `;
                 }
             },
             legend: {
@@ -612,7 +669,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,10],
+data: [null,11],
 },
 
 
@@ -624,7 +681,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,45],
+data: [10,46],
 },
 
 
@@ -648,7 +705,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,5],
+data: [null,6],
 },
 
 
@@ -660,7 +717,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,31],
+data: [null,32],
 },
 
 
