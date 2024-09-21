@@ -17,9 +17,9 @@
 #TBD error : $url="https://github.com/dotnetcore/CAP"
 #TBD error :$url="https://github.com/meysamhadeli/booking-microservices"
 # $url="https://github.com/rafaelfgx/Architecture"
-#TBD error :$url="https://github.com/ardalis/CleanArchitecture"
+$url="https://github.com/ardalis/CleanArchitecture"
 
-$url = "https://github.com/danpdc/cleanArchitectureTemplate"
+#$url = "https://github.com/danpdc/cleanArchitectureTemplate"
 
 #TODO: https://github.com/topics/architecture?l=c%23&o=desc&s=stars
 
@@ -82,7 +82,7 @@ $sln | ForEach-Object {
     dotnet tool uninstall netpackageanalyzerconsole
     dotnet tool update netpackageanalyzerconsole
     Write-Host "Current path: $(Get-Location)"
-    Push-Location .
+    # Push-Location .
     dotnet PackageAnalyzer generateFiles -wg Docusaurus
     # dotnet PackageAnalyzer generateFiles -wg HtmlSummary
 
@@ -111,6 +111,7 @@ $sln | ForEach-Object {
     
     Set-Content -Path $filePath -Value $jsonContent
     Write-Host "Please see : $destination"
+    
     #npm install
     #npm run start
     # $processInfo = Start-Process npm -ArgumentList "run", "start" -PassThru -NoNewWindow
