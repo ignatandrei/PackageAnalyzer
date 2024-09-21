@@ -19,6 +19,8 @@
 # $url="https://github.com/rafaelfgx/Architecture"
 #TBD error :$url="https://github.com/ardalis/CleanArchitecture"
 
+$url = "https://github.com/danpdc/cleanArchitectureTemplate"
+
 #TODO: https://github.com/topics/architecture?l=c%23&o=desc&s=stars
 
 #TODO: https://github.com/simplcommerce/SimplCommerce
@@ -74,13 +76,16 @@ $sln | ForEach-Object {
     Set-Location $solutionPath
     Write-Host $solutionPath
     gci *.sln
+    dotnet restore
     dotnet build 
     dotnet new tool-manifest
     dotnet tool uninstall netpackageanalyzerconsole
     dotnet tool update netpackageanalyzerconsole
     Write-Host "Current path: $(Get-Location)"
+    Push-Location .
+    dotnet PackageAnalyzer generateFiles -wg Docusaurus
+    # dotnet PackageAnalyzer generateFiles -wg HtmlSummary
 
-    dotnet PackageAnalyzer generateFiles
     cd Analysis
     cd docs
     cd Analysis
@@ -88,10 +93,11 @@ $sln | ForEach-Object {
     if(-not (Test-Path $destination)) {
         New-Item -ItemType Directory -Path $destination    
     }
-    Copy-Item -Path * -Destination $destination -Recurse
-    $nameFolder = $solutionPath.Substring($solutionPath.IndexOf($name)+$name.Length+1).Replace('\', '_')
-
-$jsonContent = @"
+    Copy-Item -Path * -Destination $destination -Recurse -Force
+    Write-Host "Finding name folder : $solutionPath from $name"
+    # $nameFolder = $solutionPath.Substring($solutionPath.IndexOf($name)+$name.Length+1).Replace('\', '_')
+    $nameFolder = $name
+    $jsonContent = @"
 {
     "label": "$nameFolder",
     "position": 1,
@@ -104,7 +110,7 @@ $jsonContent = @"
     $filePath = Join-Path $destination '_category_.json'
     
     Set-Content -Path $filePath -Value $jsonContent
-    
+    Write-Host "Please see : $destination"
     #npm install
     #npm run start
     # $processInfo = Start-Process npm -ArgumentList "run", "start" -PassThru -NoNewWindow
@@ -113,7 +119,6 @@ $jsonContent = @"
     
     # Stop-Process -Id $processInfo.Id
     # Set-Location $currentPath
-
 }
 
 Pop-Location
