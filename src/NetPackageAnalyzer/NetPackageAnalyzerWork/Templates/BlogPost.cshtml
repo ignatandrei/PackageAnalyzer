@@ -96,7 +96,7 @@ The file with most commits ( @filewithMaxCommits.Value ) is @filewithMaxCommits.
 
 :::
 
-## @nrProjectsNoTests Projects
+## @nrProjectsNoTests Projects without tests
 
 ```mermaid
 flowchart LR 
@@ -126,6 +126,39 @@ flowchart LR
 
 }
 </text>
+}
+```
+
+## info.nrProjects Projects with tests
+
+```mermaid
+flowchart LR
+
+
+@foreach (var proj in projectDicts.AlphabeticOrderedProjects)
+{
+    var nameCsproj = proj.NameCSproj();
+    var relativePath = proj.RelativePath();
+    var comment = $"%% start project reference {relativePath}";
+    <text>
+
+        @comment
+        @if (proj.AlphabeticalProjectsReferences().Length == 0)
+        {
+            <text>
+                @nameCsproj
+            </text>
+        }
+
+        @foreach (var rel in proj.AlphabeticalProjectsReferences())
+        {
+            <text>
+                @nameCsproj-->@rel.NameCSproj()
+
+            </text>
+
+        }
+    </text>
 }
 ```
 

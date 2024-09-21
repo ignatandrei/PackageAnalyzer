@@ -91,7 +91,7 @@
     @radar.Render()
     <br />
 
-    <h2> @nrProjectsNoTests Projects</h2>
+    <h2> @nrProjectsNoTests Projects without tests</h2>
     <div class="mermaid">
         flowchart LR
 
@@ -122,6 +122,40 @@
         </text>
     }
 </div>
+
+    <h2> @info.nrProjects Projects with tests</h2>
+    <div class="mermaid">
+        flowchart LR
+
+
+        @foreach (var proj in projectDicts.AlphabeticOrderedProjects)
+        {
+            var nameCsproj = proj.NameCSproj();
+            var relativePath = proj.RelativePath();
+            var comment = $"%% start project reference {relativePath}";
+            <text>
+
+                @comment
+                @if (proj.AlphabeticalProjectsReferences().Length == 0)
+                {
+                    <text>
+                        @nameCsproj
+                    </text>
+                }
+
+                @foreach (var rel in proj.AlphabeticalProjectsReferences())
+                {
+                    <text>
+                        @nameCsproj-->@rel.NameCSproj()
+
+                    </text>
+
+                }
+            </text>
+        }
+    </div>
+
+
 <h2>Building Blocks : @bb0.Length </h2>
     @foreach (var bbProj in bb0)
     {
