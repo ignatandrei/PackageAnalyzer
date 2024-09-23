@@ -1,6 +1,7 @@
 ﻿
 
 using NetPackageAnalyzerDiagram;
+using NetPackageAnalyzerMetricsMSFT;
 using System.Diagnostics;
 
 namespace NetPackageAnalyzerObjects;
@@ -262,6 +263,22 @@ public class GenerateData
 
     public (ClassesRefData, PublicClassRefData) AnalyzeDiagrams(string tempFolder)
     {
+        var xmlFiles = Directory.GetFiles(tempFolder, "*.xml");
+        foreach (var file in xmlFiles)
+        {
+            var data= GenericMetrics.CreateFromXML(file);
+            if (data.Length > 0)
+            {
+                foreach (var item in data)
+                {
+                    if (item is GenericMetricsAssembly)
+                    {
+                    }
+                }
+            }
+        }
+
+
         List<ExportAssembly> expAss = new ();
         Dictionary<string,ExportPublicClass[]> expPublicClasses = new ();
         var files = Directory.GetFiles(tempFolder, "*.json");

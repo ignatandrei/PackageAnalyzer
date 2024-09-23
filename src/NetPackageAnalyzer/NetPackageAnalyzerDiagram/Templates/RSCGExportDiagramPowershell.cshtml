@@ -28,6 +28,7 @@ $newNode = [xml]@@"
 $backFile =$project + ".bak"
 Copy-Item $project $backFile 
 dotnet add $project package RSCG_ExportDiagram -v $version 
+dotnet add $project package Microsoft.CodeAnalysis.Metrics --version 3.3.4
 
 $proj = [xml](Get-Content $project)
 
