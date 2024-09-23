@@ -28,11 +28,11 @@
             Most public classes :NetPackageAnalyzerObjects 33
         
     <br />
-    Total Commits : 176    ( last commit : this year,2024 )
+    Total Commits : 184    ( last commit : this year,2024 )
     <br />
     The commit with max files ( 16  ) is sha e87b74d6509e021d898d460831c530405f854c58 on 2023 August 28 )
     <br />
-    The file with most commits ( 83 ) is D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj
+    The file with most commits ( 84 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj
 
     <br />
     <h1>Radar NetPackageAnalyzer</h1>
@@ -62,12 +62,12 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 56 },
-                { name: 'Commits 2024', max: 46 },
+                { name: 'Total Commits', max: 58 },
+                { name: 'Commits 2024', max: 48 },
                 { name: 'Packages', max: 37 },
                 { name: 'References', max: 5 },
                 { name: 'Public Classes', max: 33 },
-                { name: 'Lines in Public Classes', max: 1245 }
+                { name: 'Lines in Public Classes', max: 1293 }
             ]
         },
         series: [
@@ -82,12 +82,12 @@ name: 'AnalyzeMerge'
     },
 
     {
-value: [11,11, 0, 0, 6, 239],
+value: [12,12, 0, 0, 6, 239],
 name: 'NetPackageAnalyzeHistory'
     },
 
     {
-value: [56,46, 29, 5, 0, 0],
+value: [58,48, 29, 5, 0, 0],
 name: 'NetPackageAnalyzerConsole'
     },
 
@@ -97,17 +97,17 @@ name: 'NetPackageAnalyzerDiagram'
     },
 
     {
-value: [49,39, 24, 2, 2, 232],
+value: [51,41, 24, 2, 2, 232],
 name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-value: [6,6, 19, 1, 1, 48],
+value: [8,8, 19, 1, 1, 48],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
     {
-value: [32,32, 20, 2, 33, 1245],
+value: [33,33, 20, 2, 33, 1293],
 name: 'NetPackageAnalyzerObjects'
     },
 
@@ -140,7 +140,7 @@ name: 'WhatIAmDoingData'
 </script>
     <br />
 
-    <h2> 9 Projects</h2>
+    <h2> 9 Projects without tests</h2>
     <div class="mermaid">
         flowchart LR
 
@@ -224,6 +224,100 @@ name: 'WhatIAmDoingData'
                     WhatIAmDoingData-->NetPackageAnalyzerObjects
 
                         </div>
+
+    <h2> 10 Projects with tests</h2>
+    <div class="mermaid">
+        flowchart LR
+
+
+
+
+                %% start project reference AnalyzeMerge\AnalyzeMerge.csproj
+
+                        AnalyzeMerge
+                    
+            
+
+                %% start project reference NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj
+
+                        NetPackageAnalyzeHistory
+                    
+            
+
+                %% start project reference NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj
+
+
+                        NetPackageAnalyzerConsole-->AnalyzeMerge
+
+                    
+                        NetPackageAnalyzerConsole-->NetPackageAnalyzerDocusaurus
+
+                    
+                        NetPackageAnalyzerConsole-->NetPackageAnalyzerExportHTML
+
+                    
+                        NetPackageAnalyzerConsole-->NetPackageAnalyzerShowInConsole
+
+                    
+                        NetPackageAnalyzerConsole-->WhatIAmDoingData
+
+                                
+
+                %% start project reference NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj
+
+                        NetPackageAnalyzerDiagram
+                    
+            
+
+                %% start project reference NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj
+
+
+                        NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerDiagram
+
+                    
+                        NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerObjects
+
+                                
+
+                %% start project reference NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj
+
+
+                        NetPackageAnalyzerExportHTML-->NetPackageAnalyzerObjects
+
+                                
+
+                %% start project reference NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj
+
+
+                        NetPackageAnalyzerObjects-->NetPackageAnalyzeHistory
+
+                    
+                        NetPackageAnalyzerObjects-->NetPackageAnalyzerDiagram
+
+                                
+
+                %% start project reference NetPackageAnalyzerShowInConsole\NetPackageAnalyzerShowInConsole.csproj
+
+
+                        NetPackageAnalyzerShowInConsole-->NetPackageAnalyzerObjects
+
+                                
+
+                %% start project reference NetPackageAnalyzerTests\NetPackageAnalyzerTests.csproj
+
+
+                        NetPackageAnalyzerTests-->NetPackageAnalyzerDocusaurus
+
+                                
+
+                %% start project reference WhatIAmDoingData\WhatIAmDoingData.csproj
+
+
+                        WhatIAmDoingData-->NetPackageAnalyzerObjects
+
+                                    </div>
+
+
 <h2>Building Blocks : 3 </h2>
 
             <h3>Project: AnalyzeMerge</h3>
@@ -353,7 +447,7 @@ config:
 
 xychart-beta horizontal
 title "Public methods per class"
-x-axis [ProjectsDict,ProjectData,DisplayDataMoreThan1Version,PackageData,FileData,DataToDisplayMerge,RscgExportDataDiagram,InfoSolution,PackageWithVersionOutdated,PackageWithVersionDeprecated,ProjectWithFiles,History,GenerateData,PackageWithVersion,NamePerCount]
+x-axis [ProjectsDict,ProjectData,DisplayDataMoreThan1Version,PackageData,FileData,DataToDisplayMerge,RscgExportDataDiagram,PackageWithVersionOutdated,PackageWithVersionDeprecated,InfoSolution,ProjectWithFiles,History,GenerateData,PackageWithVersion,NamePerCount]
 y-axis "" 0--> 20
 bar [20,13,12,11,10,7,7,7,7,7,6,6,6,6,6]
 
@@ -380,8 +474,8 @@ config:
 xychart-beta horizontal
 title "Number lines in public class per assembly"
 x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,NetPackageAnalyzerDocusaurus,AnalyzeMerge,WhatIAmDoingData,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerExportHTML,NetPackageAnalyzerTests,NetPackageAnalyzerDiagram]
-y-axis "" 0--> 1245
-bar [1245,239,232,220,95,50,48,15,8]
+y-axis "" 0--> 1293
+bar [1293,239,232,220,95,50,48,15,8]
 
 </div>
 
@@ -495,9 +589,9 @@ bar [35,11,9,8,4,3,2,1]
     xychart-beta
     title "Commits per year (folder and csproj)"
     x-axis [2023,2024]
-    y-axis "" 0--> 153
-    bar [23,153]
-    bar [13,82]
+    y-axis "" 0--> 161
+    bar [23,161]
+    bar [13,83]
 </div>
 
 
@@ -669,7 +763,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,11],
+data: [null,12],
 },
 
 
@@ -681,7 +775,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,46],
+data: [10,48],
 },
 
 
@@ -705,7 +799,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,6],
+data: [null,8],
 },
 
 
@@ -717,7 +811,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,32],
+data: [null,33],
 },
 
 
@@ -753,7 +847,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,39],
+data: [10,41],
 },
 
 
