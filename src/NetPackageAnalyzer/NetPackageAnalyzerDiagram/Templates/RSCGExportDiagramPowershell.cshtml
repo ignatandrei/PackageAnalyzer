@@ -2,8 +2,7 @@
 
 function ProcessCsproj {
   param (
-      [string]$project,
-      [string]$folderOutput
+      [string]$project
   )
 
 $version = "@Model.version"
@@ -76,6 +75,17 @@ $csprojProcessed
 
 
 dotnet build $solution   
+
+dotnet build $solution /t:Metrics
+$csprojProcessed | ForEach-Object {
+  #Write-Host "metrics " $_
+  $metricsFullFileName =$_.Replace(".csproj" , ".Metrics.xml")
+  $metricsFileName = Split-Path $metricsFullFileName -leaf
+  #Write-Host $metricsFileName
+  $newMetricsFileName =Join-Path  "@Model.pathToGenerate" $metricsFileName
+  Write-Host "move $metricsFullFileName to  $newMetricsFileName"
+  Move-Item $metricsFullFileName  $newMetricsFileName -Force
+}
 # pause
 # Output the contents of the $csprojProcessed array
 $csprojProcessed | ForEach-Object { 
