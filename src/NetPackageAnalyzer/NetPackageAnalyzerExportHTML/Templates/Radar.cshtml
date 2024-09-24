@@ -33,6 +33,9 @@
     var cycloAss = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.CyclomaticComplexity);
     var maxCycloAss = cycloAss.Length == 0 ? 0 : cycloAss.Max(x => x.Count);
 
+    var maintIndex = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.MaintainabilityIndex);
+    var maxMaintIndex = maintIndex.Length == 0 ? 0 : maintIndex.Max(x => x.Count);
+
 }
 <div id="containerRadar" style="height: 100%"></div>
 
@@ -66,7 +69,8 @@
                 { name: 'Public Classes', max: @maxPublicClasses },
                 { name: 'Lines in Public Classes', max: @maxLinesPublic },
                 { name: 'Total Lines', max: @maxexecAssLines },
-                { name: 'Cyclomatic', max: @maxCycloAss}
+                { name: 'Cyclomatic', max: @maxCycloAss},
+                { name: 'Maintainability Index', max: @maxMaintIndex}
 
             ]
         },
@@ -89,9 +93,10 @@
         var nrLinesPublic =assLinesPublic.FirstOrDefault(it => it.Name.EndsWith(nameCsproj))?.Count ?? 0;
         var nrLines = sourceAssLines.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
         var cyclo = cycloAss.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
+        var maint = maintIndex.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
         <text>
     {
-value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic,@nrLines,@cyclo],
+value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic,@nrLines,@cyclo,@maint],
 name: '@prj.NameCSproj()'
     },
 </text>
