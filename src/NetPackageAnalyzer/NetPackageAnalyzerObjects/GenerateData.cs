@@ -261,23 +261,22 @@ public class GenerateData
         //}
     }
 
-    public (ClassesRefData, PublicClassRefData) AnalyzeDiagrams(string tempFolder)
+    public (ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) AnalyzeDiagrams(string tempFolder)
     {
         var xmlFiles = Directory.GetFiles(tempFolder, "*.xml");
+        List<GenericMetricsAssembly> msftMetrics = new();
         foreach (var file in xmlFiles)
         {
             var data= GenericMetrics.CreateFromXML(file);
             if (data.Length > 0)
             {
-                foreach (var item in data)
+                foreach (var metric in data)
                 {
-                    if (item is GenericMetricsAssembly)
-                    {
-                    }
+                    msftMetrics.Add((GenericMetricsAssembly)metric);
                 }
             }
         }
-
+        AssemblyDataFromMSFT assemblyMSFTData =new ([.. msftMetrics]);
 
         List<ExportAssembly> expAss = new ();
         Dictionary<string,ExportPublicClass[]> expPublicClasses = new ();
@@ -395,7 +394,7 @@ public class GenerateData
         ret.classRefs = classRefs;
         ret.AssembliesReferences = maxRefAssembly;
         ret.MethodWithMostReferences = methodsWithRefs;
-        return (ret,publicClassRefData);
+        return (ret,publicClassRefData,assemblyMSFTData);
     }
 
     protected string? GenerateDocsForClasses(string fullPathToSolution, string folderResults)

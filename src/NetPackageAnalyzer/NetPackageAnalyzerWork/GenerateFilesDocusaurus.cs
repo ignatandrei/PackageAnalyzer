@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzerDocusaurus;
+﻿using NetPackageAnalyzerObjects;
+
+namespace NetPackageAnalyzerDocusaurus;
 
 
 
@@ -142,9 +144,10 @@ public class GenerateFilesDocusaurus:GenerateFiles
         var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
         ClassesRefData? refSummary = null;
         PublicClassRefData? publicClassRefData = null;
+        AssemblyDataFromMSFT? assemblyDataFromMSFT = null;
         if (tempFolder != null)
         {
-            (refSummary,publicClassRefData)= AnalyzeDiagrams(tempFolder);
+            (refSummary,publicClassRefData, assemblyDataFromMSFT) = AnalyzeDiagrams(tempFolder);
             file = Path.Combine(folderResults, "ReferencesSummaryProjects.md");
             await File.WriteAllTextAsync(file, await generator.Generate_ReferencesSummaryProjects(refSummary));
 
