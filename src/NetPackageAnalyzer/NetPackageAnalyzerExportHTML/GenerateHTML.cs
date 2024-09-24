@@ -20,7 +20,7 @@ public class GenerateHTML : GenerateFiles
             tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
             var (refSummary, publicClassRefData, assemblyDataFromMSFT) = AnalyzeDiagrams(tempFolder);
             //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
-            var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData));
+            var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData,assemblyDataFromMSFT));
             var html = x.Render();
 
 

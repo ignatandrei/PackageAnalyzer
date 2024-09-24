@@ -1,7 +1,8 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<ProjectsDict,PublicClassRefData,string>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<ProjectsDict,PublicClassRefData, AssemblyDataFromMSFT,string>>;
 @{
     var publicClassRefData = Model.Item2;
     var projectDicts = Model.Item1;
+    var assemblyDataFromMSFT = Model.Item3;
     var projS = projectDicts.AlphabeticOrderedProjects 
         .OrderBy(it=>it.NameCSproj())
         //.Take(2)
@@ -25,6 +26,13 @@
         .ToArray();
     var maxCommitYearCommits =
     projS.Max(it => it.AllHistoryFolderYear(maxCommitYear).nrCommits);
+
+    var sourceAssLines = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.SourceLines);
+    var maxexecAssLines = sourceAssLines.Length == 0 ? 0 : sourceAssLines.Max(x => x.Count);
+
+    var cycloAss = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.CyclomaticComplexity);
+    var maxCycloAss = cycloAss.Length == 0 ? 0 : cycloAss.Max(x => x.Count);
+
 }
 <div id="containerRadar" style="height: 100%"></div>
 
@@ -56,7 +64,10 @@
                 { name: 'Packages', max: @maxPackages },
                 { name: 'References', max: @maxProjReferences },
                 { name: 'Public Classes', max: @maxPublicClasses },
-                { name: 'Lines in Public Classes', max: @maxLinesPublic }
+                { name: 'Lines in Public Classes', max: @maxLinesPublic },
+                { name: 'Total Lines', max: @maxexecAssLines },
+                { name: 'Cyclomatic', max: @maxCycloAss}
+
             ]
         },
         series: [
@@ -76,10 +87,11 @@
         var commitsYear = prj.AllHistoryFolderYear(maxCommitYear).nrCommits;
 
         var nrLinesPublic =assLinesPublic.FirstOrDefault(it => it.Name.EndsWith(nameCsproj))?.Count ?? 0;
-        
+        var nrLines = sourceAssLines.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
+        var cyclo = cycloAss.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
         <text>
     {
-value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic],
+value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic,@nrLines,@cyclo],
 name: '@prj.NameCSproj()'
     },
 </text>

@@ -1,4 +1,4 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT>>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
     var nameSolution = GlobalsForGenerating.NameSolution;
@@ -9,6 +9,7 @@
     var more1Version = Model.Item3;
     var refSummary = Model.Item4;
     var publicClassRefData = Model.Item5;
+    var assemblyDataFromMSFT = Model.Item6;
     var mostPublicClasses = publicClassRefData
     .Assemblies_PublicClasses
     .FirstOrDefault();
@@ -38,8 +39,11 @@
     Tuple<NamePerCount[], string> tuple;
     NamePerCountDisplay namePerCountDisplay;
     YEARNamePerCountDisplay yearFolders= new(yearWithFolders);
-    Radar radar = new(Tuple.Create(projectDicts, publicClassRefData,"andrei"));
+    Radar radar = new(Tuple.Create(projectDicts, publicClassRefData, assemblyDataFromMSFT,"andrei"));
     var bb0= projectDicts.BuildingBlocks(0);
+
+    var execAssLines = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.ExecutableLines);
+    var maxexecAssLines = execAssLines.Length == 0 ? 0 : execAssLines.Max(x => x.Count);
 }
 
 <html lang="en">
@@ -85,6 +89,8 @@
     <br />
     The file with most commits ( @filewithMaxCommits?.Value ) is @GlobalsForGenerating.RelativePath( filewithMaxCommits?.Key)
 
+    <br />
+    Total Lines: @maxexecAssLines
     <br />
     <h1>Radar @nameSolution</h1>
 

@@ -13,7 +13,7 @@ public class AssemblyDataFromMSFT
     {
         return genericMetricsAssembly
             .Select(it => new
-                    NamePerCount(it.Name, it.metrics[metrics].Value ?? -1))
+                    NamePerCount(it.Name.Replace(".csproj",""), it.metrics[metrics].Value ?? -1))
             .ToArray();      
     }
 }
