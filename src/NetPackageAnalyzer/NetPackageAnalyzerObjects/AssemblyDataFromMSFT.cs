@@ -41,11 +41,12 @@ public class AssemblyDataFromMSFT
         var data= AssemblyMetric(metrics);
         return data.OrderByDescending(it => it.Count).FirstOrDefault();
     }
+
     public NamePerCount? AssemblyMetricMin(eMSFTMetrics metrics)
     {
         var data = AssemblyMetric(metrics);
         return data.OrderBy(it => it.Count).FirstOrDefault();
-    }
+    } 
     public NamePerCount[] ClassesMetrics(eMSFTMetrics metrics)
     {
         var data= genericMetricsAssembly
@@ -62,7 +63,7 @@ public class AssemblyDataFromMSFT
         return data.OrderByDescending(it => it.Count).FirstOrDefault();
     }
     public NamePerCount? ClassesMetricMin(eMSFTMetrics metrics)
-    {
+    { 
         var data = ClassesMetrics(metrics);
         return data.OrderBy(it => it.Count).FirstOrDefault();
     }

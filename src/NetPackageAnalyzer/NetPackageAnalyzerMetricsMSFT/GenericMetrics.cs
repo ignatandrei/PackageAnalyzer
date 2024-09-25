@@ -88,7 +88,8 @@ public class GenericMetrics: IValidatableObject
                     if (methodNode == null) continue;
                     name = methodNode.Attributes!["Name"]!.Value;
                     var methodData = CreateFromXML<GenericMetricsMethod>(name, methodNode.FirstChild!);
-                    methodsMetrics.Add(methodData);
+                    if (!methodData.IsGetSetWith100())
+                        methodsMetrics.Add(methodData);
                 }
                 typeData.Childs = methodsMetrics.ToArray();
             }

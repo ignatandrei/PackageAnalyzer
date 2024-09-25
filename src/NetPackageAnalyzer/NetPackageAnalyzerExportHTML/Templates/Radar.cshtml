@@ -33,8 +33,6 @@
     var cycloAss = assemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics.CyclomaticComplexity);
     var maxCycloAss = cycloAss.Length == 0 ? 0 : cycloAss.Max(x => x.Count);
 
-    var maintIndex = assemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics.MaintainabilityIndex);
-    var maxMaintIndex = maintIndex.Length == 0 ? 0 : maintIndex.Max(x => x.Count);
     
     var nrClassesAss = assemblyDataFromMSFT.AssemblyNumberClasses();
     var maxNrClasses = nrClassesAss.Length == 0 ? 0 : nrClassesAss.Max(x => x.Count);

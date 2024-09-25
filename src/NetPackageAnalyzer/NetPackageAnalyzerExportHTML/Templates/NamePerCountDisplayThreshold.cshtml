@@ -1,0 +1,69 @@
+@inherits RazorBlade.PlainTextTemplate<Tuple<string,NamePerCount[],int,int>>;
+@{
+    string name= Model.Item1;
+    var nameCount = Model.Item2;
+    if(nameCount.Count() == 0)
+    {
+        return;
+    }
+    // if(nameCount.Count() > 20)
+    // {
+    //     nameCount = nameCount.Take(15).ToArray();
+    // }
+    var threshold1 = Model.Item3;
+    var threshold2 = Model.Item4;
+    //threshold1 = 40;
+    //threshold2 = 80;
+    string assNamesMaintIndex = string.Join(",", nameCount.Select(it => "'" + it.Name + "'"));
+    string valuesMaintIndex = string.Join(",\r\n",
+            nameCount.Select(it =>"{value:"+ it.Count +
+            (it.Count < threshold1 ? ",itemStyle:{color:'red'}"
+                :
+            (it.Count < threshold2 ? ",itemStyle:{color:'orange'}" : "")
+            )
+            + "}"
+            )
+            );
+<text>
+        <div id="@name" style="height: 100%"></div>
+        <script type="text/javascript">
+            var dom = document.getElementById('@name');
+            var myChart = echarts.init(dom, null, {
+                renderer: 'canvas',
+                useDirtyRect: false
+            });
+            var app = {};
+
+            var option;
+
+            option = {
+                xAxis: {
+                    type: 'category',
+                    data: [@assNamesMaintIndex]
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                tooltip: {
+                    trigger: 'item',
+
+                },
+                series: [
+                    {
+                        data: [
+            @valuesMaintIndex
+                        ],
+                        type: 'bar'
+                    }
+                ]
+            };
+
+            if (option && typeof option === 'object') {
+                myChart.setOption(option);
+            }
+
+            window.addEventListener('resize', myChart.resize);
+        </script>
+
+    </text>
+}

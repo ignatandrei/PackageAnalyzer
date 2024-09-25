@@ -74,6 +74,29 @@
         .OrderByDescending(it => it.Count)
         .ToArray();
     var maxMethods = nrMethodsPerAssembly.First();
+
+    var maintAssIndex = assemblyDataFromMSFT
+        .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex)
+        .OrderBy(it=>it.Count)
+        .ToArray();
+    var minMaintAssIndex = maintAssIndex.FirstOrDefault();
+    var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("maintAss", maintAssIndex, 10, 20));
+
+
+    var maintClassIndex = assemblyDataFromMSFT
+        .ClassesMetrics(eMSFTMetrics.MaintainabilityIndex)
+        .OrderBy(it => it.Count)
+        .ToArray();
+    var minMaintClassIndex = maintClassIndex.FirstOrDefault();
+    var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("maintClass", maintClassIndex, 10, 20));
+
+    var maintMethodIndex = assemblyDataFromMSFT
+    .MethodsMetrics(eMSFTMetrics.MaintainabilityIndex)
+    .OrderBy(it => it.Count)
+    .ToArray();
+    var minMaintMethodIndex = maintMethodIndex.FirstOrDefault();
+    var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("maintMethod", maintMethodIndex, 10, 20));
+
 }
 
 <html lang="en">
@@ -108,14 +131,20 @@
     {
         <text>
             <br />
-            Most public classes :@mostPublicClasses.Name @mostPublicClasses.Count
+            Assembly with most public classes :@mostPublicClasses.Name @mostPublicClasses.Count
         </text>
     }
     <br />
-    Most classes :@maxClasses.Name @maxClasses.Count
+    Assembly with most classes :@maxClasses.Name @maxClasses.Count
     <br />
-    Most methods :@maxMethods.Name @maxMethods.Count
+    Assembly with most methods :@maxMethods.Name @maxMethods.Count
 
+    <br />
+    Assembly low maintaining score: @minMaintAssIndex.Name @minMaintAssIndex.Count
+    <br />
+    Class low maintaining score: @minMaintClassIndex.Name @minMaintClassIndex.Count
+    <br />
+    Method low maintaining score: @minMaintMethodIndex.Name @minMaintMethodIndex.Count
     <br />
     Total Commits : @info.totalCommits    ( last commit : @maxCommitString )
     <br />
@@ -223,6 +252,15 @@
 
         </text>
     }
+    <h2>Maintainability </h2>
+    <h3>Maintainability per assembly</h3>
+    @maintAssDisplay.Render()
+
+    <h3>Maintainability per class</h3>
+    @maintClassDisplay.Render()
+
+    <h3>Maintainability per method</h3>
+    @maintMethodDisplay.Render()
 
     <h2> Number of classes per assembly</h2>
 

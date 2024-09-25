@@ -6,4 +6,12 @@ public class GenericMetricsMethod : GenericMetrics
     {
 
     }
+    public bool IsGetSetWith100()
+    {
+        if (this.Name.EndsWith(".get") || this.Name.EndsWith(".set"))
+        {
+            return this.metrics[eMSFTMetrics.MaintainabilityIndex].Value == 100;
+        }
+        return false; 
+    }
 }
