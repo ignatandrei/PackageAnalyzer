@@ -97,6 +97,14 @@
     var minMaintMethodIndex = maintMethodIndex.FirstOrDefault();
     var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("maintMethod", maintMethodIndex, 10, 20));
 
+    var CCAssIndex = assemblyDataFromMSFT
+        .AssemblyMetric(eMSFTMetrics.ClassCoupling)
+        .OrderByDescending(it => it.Count)
+        .ToArray();
+    var maxCCAssIndex = CCAssIndex.FirstOrDefault();
+    var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CCAss", CCAssIndex, 10, 0));
+
+
 }
 
 <html lang="en">
@@ -146,8 +154,11 @@
     <br />
     Method low maintaining score: @minMaintMethodIndex.Name @minMaintMethodIndex.Count
     <br />
+    Assembly max coupling: @maxCCAssIndex.Name @maxCCAssIndex.Count
+    <br />
     Total Commits : @info.totalCommits    ( last commit : @maxCommitString )
     <br />
+
     The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
     <br />
     The file with most commits ( @filewithMaxCommits?.Value ) is @GlobalsForGenerating.RelativePath( filewithMaxCommits?.Key)
@@ -261,6 +272,10 @@
 
     <h3>Maintainability per method</h3>
     @maintMethodDisplay.Render()
+
+    <h2>Class Coupling</h2>
+    <h3>Coupling per assembly</h3>
+    @CCAssDisplay.Render()
 
     <h2> Number of classes per assembly</h2>
 
