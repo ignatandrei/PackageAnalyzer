@@ -27,13 +27,13 @@
     var maxCommitYearCommits =
     projS.Max(it => it.AllHistoryFolderYear(maxCommitYear).nrCommits);
 
-    var sourceAssLines = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.SourceLines);
+    var sourceAssLines = assemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics.SourceLines);
     var maxexecAssLines = sourceAssLines.Length == 0 ? 0 : sourceAssLines.Max(x => x.Count);
 
-    var cycloAss = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.CyclomaticComplexity);
+    var cycloAss = assemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics.CyclomaticComplexity);
     var maxCycloAss = cycloAss.Length == 0 ? 0 : cycloAss.Max(x => x.Count);
 
-    var maintIndex = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.MaintainabilityIndex);
+    var maintIndex = assemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics.MaintainabilityIndex);
     var maxMaintIndex = maintIndex.Length == 0 ? 0 : maintIndex.Max(x => x.Count);
 
 }

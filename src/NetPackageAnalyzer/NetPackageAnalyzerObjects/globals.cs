@@ -10,6 +10,8 @@ global using System.Linq;
 global using System.Text.Json;
 global using System.Threading.Tasks;
 global using RSCG_ExportDiagram_Import;
+global using NetPackageAnalyzerMetricsMSFT;
+
 public static class GlobalsForGenerating
 {
     public static string prefixSite = "pathname:///docs/Analysis/";//for markdown

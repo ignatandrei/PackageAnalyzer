@@ -1,8 +1,7 @@
 
 function ProcessCsproj {
   param (
-      [string]$project,
-      [string]$folderOutput
+      [string]$project
   )
 
 $version = "2024.904.427"
@@ -27,9 +26,8 @@ $newNode = [xml]@"
 # Write-Host $newNode.MainData.InnerXml
 $backFile =$project + ".bak"
 Copy-Item $project $backFile 
-dotnet add $project package RSCG_ExportDiagram -v $version
+dotnet add $project package RSCG_ExportDiagram -v $version 
 dotnet add $project package Microsoft.CodeAnalysis.Metrics --version 3.3.4
-
 
 $proj = [xml](Get-Content $project)
 
@@ -75,23 +73,23 @@ Get-Content $solution |
 
 $csprojProcessed
 
-dotnet build $solution
+
+dotnet build $solution   
+
 dotnet build $solution /t:Metrics
-$csprojProcessed | ForEach-Object { 
-  #Write-Host "metrics " $_ 
+$csprojProcessed | ForEach-Object {
+  #Write-Host "metrics " $_
   $metricsFullFileName =$_.Replace(".csproj" , ".Metrics.xml")
   $metricsFileName = Split-Path $metricsFullFileName -leaf
   #Write-Host $metricsFileName
   $newMetricsFileName =Join-Path  "D:\gth\PackageAnalyzer\docs_Temp" $metricsFileName
   Write-Host "move $metricsFullFileName to  $newMetricsFileName"
   Move-Item $metricsFullFileName  $newMetricsFileName -Force
-
 }
-
-pause
+# pause
 # Output the contents of the $csprojProcessed array
 $csprojProcessed | ForEach-Object { 
-  # Write-Host $_ 
+  Write-Host $_ 
   $backFile =$_ + ".bak"
   Copy-Item $backFile  $_ -Force
   Remove-Item $backFile  -Force

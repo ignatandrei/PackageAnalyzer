@@ -7,12 +7,12 @@
 <body>
     <h1>Summary NetPackageAnalyzer</h1>
     
-    Number projects : 10
+    Number projects : 11
     (tests : 1,
-    no tests: 9
+    no tests: 10
     )
     <br />
-    Building Blocks: 3
+    Building Blocks: 4
     <br />
     Number packages : 49
     <br />
@@ -25,15 +25,17 @@
             Assembly with most references: NetPackageAnalyzeHistory 39
         
             <br />
-            Most public classes :NetPackageAnalyzerObjects 33
+            Most public classes :NetPackageAnalyzerObjects 34
         
     <br />
-    Total Commits : 184    ( last commit : this year,2024 )
+    Total Commits : 193    ( last commit : this year,2024 )
     <br />
     The commit with max files ( 16  ) is sha e87b74d6509e021d898d460831c530405f854c58 on 2023 August 28 )
     <br />
-    The file with most commits ( 84 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj
+    The file with most commits ( 85 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj
 
+    <br />
+    Total Lines: 626
     <br />
     <h1>Radar NetPackageAnalyzer</h1>
 
@@ -54,7 +56,7 @@
             text: ''
         },
         legend: {
-            data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','WhatIAmDoingData']
+            data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','WhatIAmDoingData']
         },            
         tooltip: {
             trigger: 'item'
@@ -62,12 +64,16 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 58 },
-                { name: 'Commits 2024', max: 48 },
+                { name: 'Total Commits', max: 60 },
+                { name: 'Commits 2024', max: 50 },
                 { name: 'Packages', max: 37 },
                 { name: 'References', max: 5 },
-                { name: 'Public Classes', max: 33 },
-                { name: 'Lines in Public Classes', max: 1293 }
+                { name: 'Public Classes', max: 34 },
+                { name: 'Lines in Public Classes', max: 1322 },
+                { name: 'Total Lines', max: 1689 },
+                { name: 'Cyclomatic', max: 327},
+                { name: 'Maintainability Index', max: 100}
+
             ]
         },
         series: [
@@ -77,52 +83,57 @@
                 data: [
 
     {
-value: [8,5, 3, 0, 5, 220],
+value: [8,5, 3, 0, 5, 220,464,29,81],
 name: 'AnalyzeMerge'
     },
 
     {
-value: [12,12, 0, 0, 6, 239],
+value: [12,12, 0, 0, 6, 239,292,36,75],
 name: 'NetPackageAnalyzeHistory'
     },
 
     {
-value: [58,48, 29, 5, 0, 0],
+value: [60,50, 29, 5, 0, 0,266,27,88],
 name: 'NetPackageAnalyzerConsole'
     },
 
     {
-value: [4,4, 1, 0, 1, 8],
+value: [5,5, 1, 0, 1, 8,0,0,100],
 name: 'NetPackageAnalyzerDiagram'
     },
 
     {
-value: [51,41, 24, 2, 2, 232],
+value: [52,42, 24, 2, 2, 233,294,29,78],
 name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-value: [8,8, 19, 1, 1, 48],
+value: [9,9, 19, 1, 1, 48,68,9,78],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
     {
-value: [33,33, 20, 2, 33, 1293],
+value: [2,2, 0, 0, 2, 92,131,18,89],
+name: 'NetPackageAnalyzerMetricsMSFT'
+    },
+
+    {
+value: [35,35, 20, 3, 34, 1322,1689,327,86],
 name: 'NetPackageAnalyzerObjects'
     },
 
     {
-value: [1,1, 18, 1, 1, 50],
+value: [1,1, 18, 1, 1, 50,59,1,100],
 name: 'NetPackageAnalyzerShowInConsole'
     },
 
     {
-value: [6,6, 37, 1, 1, 15],
+value: [6,6, 37, 1, 1, 15,37,2,73],
 name: 'NetPackageAnalyzerTests'
     },
 
     {
-value: [3,3, 17, 1, 1, 95],
+value: [3,3, 17, 1, 1, 95,0,19,82],
 name: 'WhatIAmDoingData'
     },
 
@@ -140,7 +151,7 @@ name: 'WhatIAmDoingData'
 </script>
     <br />
 
-    <h2> 9 Projects without tests</h2>
+    <h2> 10 Projects without tests</h2>
     <div class="mermaid">
         flowchart LR
 
@@ -201,6 +212,12 @@ name: 'WhatIAmDoingData'
 
                         
 
+            %% start project reference NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj
+
+                    NetPackageAnalyzerMetricsMSFT
+                
+        
+
             %% start project reference NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj
 
 
@@ -208,6 +225,9 @@ name: 'WhatIAmDoingData'
 
                 
                     NetPackageAnalyzerObjects-->NetPackageAnalyzerDiagram
+
+                
+                    NetPackageAnalyzerObjects-->NetPackageAnalyzerMetricsMSFT
 
                         
 
@@ -225,7 +245,7 @@ name: 'WhatIAmDoingData'
 
                         </div>
 
-    <h2> 10 Projects with tests</h2>
+    <h2> 11 Projects with tests</h2>
     <div class="mermaid">
         flowchart LR
 
@@ -286,6 +306,12 @@ name: 'WhatIAmDoingData'
 
                                 
 
+                %% start project reference NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj
+
+                        NetPackageAnalyzerMetricsMSFT
+                    
+            
+
                 %% start project reference NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj
 
 
@@ -293,6 +319,9 @@ name: 'WhatIAmDoingData'
 
                     
                         NetPackageAnalyzerObjects-->NetPackageAnalyzerDiagram
+
+                    
+                        NetPackageAnalyzerObjects-->NetPackageAnalyzerMetricsMSFT
 
                                 
 
@@ -318,7 +347,7 @@ name: 'WhatIAmDoingData'
                                     </div>
 
 
-<h2>Building Blocks : 3 </h2>
+<h2>Building Blocks : 4 </h2>
 
             <h3>Project: AnalyzeMerge</h3>
             Full Name : AnalyzeMerge\AnalyzeMerge.csproj
@@ -362,6 +391,19 @@ name: 'WhatIAmDoingData'
             </div>
 
         
+            <h3>Project: NetPackageAnalyzerMetricsMSFT</h3>
+            Full Name : NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj
+
+            <div class="mermaid">
+                flowchart LR
+            NetPackageAnalyzerMetricsMSFT
+
+                    NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
+                    NetPackageAnalyzerObjects-->NetPackageAnalyzerMetricsMSFT
+                
+            </div>
+
+        
 
     <h2>0 Packages with major version different</h2>
     <table border="1">
@@ -387,7 +429,7 @@ name: 'WhatIAmDoingData'
 config:
     xyChart:
         width: 900
-        height: 280
+        height: 300
     themeVariables:
         xyChart:
             titleColor: "#ff0000"
@@ -395,9 +437,9 @@ config:
 
 xychart-beta horizontal
 title "Public class per project"
-x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,AnalyzeMerge,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerDiagram,NetPackageAnalyzerExportHTML,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerTests,WhatIAmDoingData]
-y-axis "" 0--> 33
-bar [33,6,5,2,1,1,1,1,1]
+x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,AnalyzeMerge,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerMetricsMSFT,NetPackageAnalyzerDiagram,NetPackageAnalyzerExportHTML,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerTests,WhatIAmDoingData]
+y-axis "" 0--> 34
+bar [34,6,5,2,2,1,1,1,1,1]
 
 </div>
 
@@ -412,7 +454,7 @@ bar [33,6,5,2,1,1,1,1,1]
 config:
     xyChart:
         width: 900
-        height: 280
+        height: 300
     themeVariables:
         xyChart:
             titleColor: "#ff0000"
@@ -420,9 +462,9 @@ config:
 
 xychart-beta horizontal
 title "Public methods per class"
-x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,AnalyzeMerge,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerDiagram,NetPackageAnalyzerTests,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerExportHTML,WhatIAmDoingData]
-y-axis "" 0--> 504
-bar [504,81,75,40,21,18,14,12,11]
+x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,AnalyzeMerge,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerDiagram,NetPackageAnalyzerMetricsMSFT,NetPackageAnalyzerTests,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerExportHTML,WhatIAmDoingData]
+y-axis "" 0--> 524
+bar [524,81,75,40,21,20,18,14,12,11]
 
 </div>
 
@@ -447,9 +489,9 @@ config:
 
 xychart-beta horizontal
 title "Public methods per class"
-x-axis [ProjectsDict,ProjectData,DisplayDataMoreThan1Version,PackageData,FileData,DataToDisplayMerge,RscgExportDataDiagram,PackageWithVersionOutdated,PackageWithVersionDeprecated,InfoSolution,ProjectWithFiles,History,GenerateData,PackageWithVersion,NamePerCount]
+x-axis [ProjectsDict,ProjectData,DisplayDataMoreThan1Version,PackageData,FileData,DataToDisplayMerge,RscgExportDataDiagram,Metric,PackageWithVersionOutdated,PackageWithVersionDeprecated,InfoSolution,ProjectWithFiles,History,GenerateData,PackageWithVersion]
 y-axis "" 0--> 20
-bar [20,13,12,11,10,7,7,7,7,7,6,6,6,6,6]
+bar [20,13,12,11,10,7,7,7,7,7,7,6,6,6,6]
 
 </div>
 
@@ -465,7 +507,7 @@ bar [20,13,12,11,10,7,7,7,7,7,6,6,6,6,6]
 config:
     xyChart:
         width: 900
-        height: 280
+        height: 300
     themeVariables:
         xyChart:
             titleColor: "#ff0000"
@@ -473,9 +515,9 @@ config:
 
 xychart-beta horizontal
 title "Number lines in public class per assembly"
-x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,NetPackageAnalyzerDocusaurus,AnalyzeMerge,WhatIAmDoingData,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerExportHTML,NetPackageAnalyzerTests,NetPackageAnalyzerDiagram]
-y-axis "" 0--> 1293
-bar [1293,239,232,220,95,50,48,15,8]
+x-axis [NetPackageAnalyzerObjects,NetPackageAnalyzeHistory,NetPackageAnalyzerDocusaurus,AnalyzeMerge,WhatIAmDoingData,NetPackageAnalyzerMetricsMSFT,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerExportHTML,NetPackageAnalyzerTests,NetPackageAnalyzerDiagram]
+y-axis "" 0--> 1322
+bar [1322,239,233,220,95,92,50,48,15,8]
 
 </div>
 
@@ -497,9 +539,9 @@ config:
 
 xychart-beta horizontal
 title "Number lines per public class"
-x-axis [GenerateData,ProjectsDict,GenerateFilesDocusaurus,ProcessOutput,DisplayData,TemplateGenerator,FileFolderHistorySimple,AnalyzeMergeData,AnalyzeForProject,ProjectData,FolderHistoryCommits,PackageData,WriteToConsole,GenerateHTML,DataToDisplayMerge]
-y-axis "" 0--> 378
-bar [378,367,145,109,95,87,84,80,75,63,56,53,50,48,35]
+x-axis [GenerateData,ProjectsDict,GenerateFilesDocusaurus,ProcessOutput,DisplayData,TemplateGenerator,FileFolderHistorySimple,GenericMetrics,AnalyzeMergeData,AnalyzeForProject,ProjectData,FolderHistoryCommits,PackageData,WriteToConsole,GenerateHTML]
+y-axis "" 0--> 392
+bar [392,367,146,109,95,87,84,82,80,75,63,56,53,50,48]
 
 </div>
 
@@ -523,9 +565,9 @@ config:
 
 xychart-beta horizontal
 title "Number lines per public method"
-x-axis [GenerateDataForSln,GenerateNow,AnalyzeDiagrams,GenerateNow,Analyze,Initialize,WriteMajorDiffers,FindReferences,CommitsYearFolders,GenerateNow,OutputDotnetPackage,Analyze,ListSDKS,Build,OutputDotnetReference]
+x-axis [GenerateDataForSln,GenerateNow,AnalyzeDiagrams,GenerateNow,Analyze,Initialize,WriteMajorDiffers,FindReferences,CreateFromXML,CommitsYearFolders,GenerateNow,OutputDotnetPackage,Analyze,ListSDKS,Build]
 y-axis "" 0--> 160
-bar [160,138,106,62,48,47,47,40,37,32,28,26,26,26,26]
+bar [160,139,120,62,48,47,47,40,38,37,32,28,26,26,26]
 
 </div>
 
@@ -542,7 +584,7 @@ bar [160,138,106,62,48,47,47,40,37,32,28,26,26,26,26]
 config:
     xyChart:
         width: 900
-        height: 240
+        height: 260
     themeVariables:
         xyChart:
             titleColor: "#ff0000"
@@ -550,9 +592,9 @@ config:
 
 xychart-beta horizontal
 title "References per assembly"
-x-axis [NetPackageAnalyzeHistory,NetPackageAnalyzerObjects,WhatIAmDoingData,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerDiagram,NetPackageAnalyzerExportHTML]
+x-axis [NetPackageAnalyzeHistory,NetPackageAnalyzerObjects,WhatIAmDoingData,NetPackageAnalyzerMetricsMSFT,NetPackageAnalyzerShowInConsole,NetPackageAnalyzerDocusaurus,NetPackageAnalyzerDiagram,NetPackageAnalyzerExportHTML]
 y-axis "" 0--> 39
-bar [39,23,4,2,2,2,1]
+bar [39,23,4,4,2,2,2,1]
 
 </div>
 
@@ -566,7 +608,7 @@ bar [39,23,4,2,2,2,1]
 config:
     xyChart:
         width: 900
-        height: 260
+        height: 280
     themeVariables:
         xyChart:
             titleColor: "#ff0000"
@@ -574,9 +616,9 @@ config:
 
 xychart-beta horizontal
 title "References per class"
-x-axis [ProjectsDict,GenerateFilesDocusaurus,GenerateHTML,RealMainExecuting,ProjectData,WriteToConsole,GenerateData,TestSolutionExists]
+x-axis [ProjectsDict,GenerateFilesDocusaurus,GenerateHTML,RealMainExecuting,ProjectData,AssemblyDataFromMSFT,GenerateData,WriteToConsole,TestSolutionExists]
 y-axis "" 0--> 35
-bar [35,11,9,8,4,3,2,1]
+bar [35,11,9,8,4,3,3,3,1]
 
 </div>
 
@@ -589,9 +631,9 @@ bar [35,11,9,8,4,3,2,1]
     xychart-beta
     title "Commits per year (folder and csproj)"
     x-axis [2023,2024]
-    y-axis "" 0--> 161
-    bar [23,161]
-    bar [13,83]
+    y-axis "" 0--> 170
+    bar [23,170]
+    bar [13,86]
 </div>
 
 
@@ -714,7 +756,7 @@ bar [35,11,9,8,4,3,2,1]
                 }
             },
             legend: {
-                data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerExportHTML','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','NetPackageAnalyzerWork','WhatIAmDoingData']
+                data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','NetPackageAnalyzerWork','WhatIAmDoingData']
             },
             toolbox: {
                 show: true,
@@ -775,7 +817,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,48],
+data: [10,50],
 },
 
 
@@ -787,7 +829,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,4],
+data: [null,5],
 },
 
 
@@ -799,7 +841,19 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,8],
+data: [null,9],
+},
+
+
+{
+name: 'NetPackageAnalyzerMetricsMSFT',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,2],
 },
 
 
@@ -811,7 +865,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,33],
+data: [null,35],
 },
 
 
@@ -847,7 +901,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,41],
+data: [10,42],
 },
 
 

@@ -70,12 +70,12 @@ public class GenericMetrics: IValidatableObject
             metricsParent.Add(data);
             var types = node.SelectNodes("//NamedType");
             if (types == null) continue;
-            List<GenericMetrics> typesMetrics=new();
+            List<GenericMetricsClass> typesMetrics=new();
             foreach (var type in types)
             {
                 var typeNode = type as XmlNode;
                 if (typeNode == null) continue;
-                name = node.Attributes!["Name"]!.Value;
+                name = typeNode.Attributes!["Name"]!.Value;
                 var typeData = CreateFromXML<GenericMetricsClass>(name, typeNode.FirstChild!);
                 typesMetrics.Add(typeData);
             }

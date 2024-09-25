@@ -42,8 +42,21 @@
     Radar radar = new(Tuple.Create(projectDicts, publicClassRefData, assemblyDataFromMSFT,"andrei"));
     var bb0= projectDicts.BuildingBlocks(0);
 
-    var execAssLines = assemblyDataFromMSFT.AssemblyMetric(NetPackageAnalyzerMetricsMSFT.eMSFTMetrics.ExecutableLines);
-    var maxexecAssLines = execAssLines.Length == 0 ? 0 : execAssLines.Max(x => x.Count);
+    var execAssLines = assemblyDataFromMSFT
+        .AssemblyMetric(eMSFTMetrics.ExecutableLines)
+        .OrderByDescending(it=>it.Count)
+        .ToArray()
+        ;
+    var maxexecAssLines = assemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics.ExecutableLines);
+    var execClassLines = assemblyDataFromMSFT
+        .ClassesMetrics(eMSFTMetrics.ExecutableLines)
+        .OrderByDescending(x => x.Count)
+        .ToArray();
+    ;
+    var maxExecClassLines = assemblyDataFromMSFT
+        .ClassesMetricMax(eMSFTMetrics.ExecutableLines)
+        
+        ; 
 }
 
 <html lang="en">
@@ -90,8 +103,11 @@
     The file with most commits ( @filewithMaxCommits?.Value ) is @GlobalsForGenerating.RelativePath( filewithMaxCommits?.Key)
 
     <br />
-    Total Lines: @maxexecAssLines
+    Project with most lines: @maxexecAssLines.Name @maxexecAssLines.Count
     <br />
+    Class with most Lines: @maxExecClassLines.Name @maxExecClassLines.Count
+    <br />
+
     <h1>Radar @nameSolution</h1>
 
     @radar.Render()
@@ -189,6 +205,7 @@
 
 
     <h2>@keysPackageMultiple.Length Packages with major version different</h2>
+    @if(keysPackageMultiple.Length>0){
     <table border="1">
         <thead>
             <tr>
@@ -226,10 +243,30 @@
             }
         </tbody>
     </table>
+    }
+    <h2>Lines of Executable</h2>
+        <h3>Lines of executable per assembly</h3>
+    @{
+        tuple = new(execAssLines, "Number lines per project");
+        namePerCountDisplay = new(tuple);
+    }
+    @namePerCountDisplay.Render()
+
+    <h3>Lines of Executable code per class </h3>
+    @{
+
+        tuple = new(execClassLines, "Number lines per class");
+        namePerCountDisplay = new(tuple);
+    }
+
+    @namePerCountDisplay.Render()
+
     <h2>Summary of project public classes</h2>
     @if (mostPublicClasses != null)
     {
 <text>
+
+
 <h3> Assemblies with number of public classes</h3>
 
 @{

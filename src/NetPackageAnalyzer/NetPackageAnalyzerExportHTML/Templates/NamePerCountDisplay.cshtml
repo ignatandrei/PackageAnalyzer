@@ -11,7 +11,12 @@
     }
     int height = 100+nameCount.Count() * 20;
     var xaxis = "[" +
-        string.Join(',', nameCount.Select(it => it.Name).ToArray())
+        string.Join(',', nameCount
+            .Select(it => it.Name)
+            .Select(it => it.Replace("<", "#60;"))
+            .Select(it => it.Replace(">", "#62;"))
+            .Select(it => "\"" + it + "\"")
+            .ToArray())
         + "]";
     var maxCount = nameCount.Max(it => it.Count);
     var yAxis = "[" + string.Join(',', nameCount.Select(it => it.Count).ToArray()) + "]";
