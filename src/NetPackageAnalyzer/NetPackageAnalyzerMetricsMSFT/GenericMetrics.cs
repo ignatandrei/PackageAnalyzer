@@ -78,6 +78,19 @@ public class GenericMetrics: IValidatableObject
                 name = typeNode.Attributes!["Name"]!.Value;
                 var typeData = CreateFromXML<GenericMetricsClass>(name, typeNode.FirstChild!);
                 typesMetrics.Add(typeData);
+                //add methods
+                var methods = typeNode.SelectNodes("//Method");
+                if (methods == null) continue;
+                List<GenericMetricsMethod> methodsMetrics = new();
+                foreach (var method in methods)
+                {
+                    var methodNode = method as XmlNode;
+                    if (methodNode == null) continue;
+                    name = methodNode.Attributes!["Name"]!.Value;
+                    var methodData = CreateFromXML<GenericMetricsMethod>(name, methodNode.FirstChild!);
+                    methodsMetrics.Add(methodData);
+                }
+                typeData.Childs = methodsMetrics.ToArray();
             }
             data.Childs = typesMetrics.ToArray();
         }

@@ -55,8 +55,20 @@
     ;
     var maxExecClassLines = assemblyDataFromMSFT
         .ClassesMetricMax(eMSFTMetrics.ExecutableLines)
-        
+
         ; 
+
+    var execMethodsLines = assemblyDataFromMSFT
+        .MethodsMetrics(eMSFTMetrics.ExecutableLines)
+        .OrderByDescending(x => x.Count)
+        .ToArray();
+
+    var nrClassesPerAssembly = assemblyDataFromMSFT
+        .AssemblyNumberClasses()
+        .OrderByDescending(it => it.Count)
+        .ToArray();
+    var maxClasses = nrClassesPerAssembly.First();
+
 }
 
 <html lang="en">
@@ -65,7 +77,7 @@
     <script type="text/javascript" src="echarts.min.js"></script>
 </head>
 <body>
-    <h1>Summary @nameSolution</h1>
+    <h1>Summary @nameSolution   </h1>
     
     Number projects : @info.nrProjects
     (tests : @info.nrTestProjects,
@@ -94,6 +106,8 @@
             Most public classes :@mostPublicClasses.Name @mostPublicClasses.Count
         </text>
     }
+    <br />
+    Most classes :@maxClasses.Name @maxClasses.Count
 
     <br />
     Total Commits : @info.totalCommits    ( last commit : @maxCommitString )
@@ -203,6 +217,15 @@
         </text>
     }
 
+    <h2> Number of classes per assembly</h2>
+
+    @{
+        tuple = new(nrClassesPerAssembly, "Number class per project");
+        namePerCountDisplay = new(tuple);
+    }
+
+    @namePerCountDisplay.Render()
+
 
     <h2>@keysPackageMultiple.Length Packages with major version different</h2>
     @if(keysPackageMultiple.Length>0){
@@ -244,15 +267,16 @@
         </tbody>
     </table>
     }
-    <h2>Lines of Executable</h2>
-        <h3>Lines of executable per assembly</h3>
+    <h2>Executable lines</h2>
+    <h3>Per assembly</h3>
     @{
         tuple = new(execAssLines, "Number lines per project");
         namePerCountDisplay = new(tuple);
     }
     @namePerCountDisplay.Render()
 
-    <h3>Lines of Executable code per class </h3>
+    <h3>Per class</h3>
+
     @{
 
         tuple = new(execClassLines, "Number lines per class");

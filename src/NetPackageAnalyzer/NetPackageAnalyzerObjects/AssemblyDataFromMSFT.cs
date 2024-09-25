@@ -5,10 +5,16 @@
 public class AssemblyDataFromMSFT
 {
     private readonly GenericMetricsAssembly[] genericMetricsAssembly;
-
+    
     public AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)
     {
         this.genericMetricsAssembly = genericMetricsAssembly;
+    }
+    public NamePerCount[] AssemblyNumberClasses()
+    {
+        return genericMetricsAssembly
+            .Select(it => new NamePerCount(it.Name.Replace(".csproj", ""), it.Childs.Length))
+            .ToArray();
     }
     public NamePerCount[] AssemblyMetric(eMSFTMetrics metrics)
     {
@@ -47,5 +53,16 @@ public class AssemblyDataFromMSFT
         var data = ClassesMetrics(metrics);
         return data.OrderBy(it => it.Count).FirstOrDefault();
     }
-
+    public NamePerCount[] MethodsMetrics(eMSFTMetrics metrics)
+    {
+        var data = genericMetricsAssembly
+            .SelectMany(it => it.Childs)
+            .SelectMany(it => it.Childs)
+            .Where(it=>it is GenericMetricsMethod)
+            .Select(it => new
+                    NamePerCount(it.Name, it.metrics[metrics].Value ?? -1))
+            .Where(it => it.Count != -1)
+            .ToArray();
+        return data;
+    }
 }
