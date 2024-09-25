@@ -104,6 +104,13 @@
     var maxCCAssIndex = CCAssIndex.FirstOrDefault();
     var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CCAss", CCAssIndex, 10, 0));
 
+    var CycAssIndex = assemblyDataFromMSFT
+    .AssemblyMetric(eMSFTMetrics.CyclomaticComplexity)
+    .OrderByDescending(it => it.Count)
+    .ToArray();
+    var maxCycAssIndex = CCAssIndex.FirstOrDefault();
+    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycAss", CycAssIndex, 10, 25));
+
 
 }
 
@@ -155,6 +162,8 @@
     Method low maintaining score: @minMaintMethodIndex.Name @minMaintMethodIndex.Count
     <br />
     Assembly max coupling: @maxCCAssIndex.Name @maxCCAssIndex.Count
+    <br />
+    Assembly max Cyclomatic Complexity: @maxCycAssIndex.Name @maxCycAssIndex.Count
     <br />
     Total Commits : @info.totalCommits    ( last commit : @maxCommitString )
     <br />
@@ -276,6 +285,10 @@
     <h2>Class Coupling</h2>
     <h3>Coupling per assembly</h3>
     @CCAssDisplay.Render()
+    <h2>Cyclomatic Complexity</h2>
+    <h3>Cyclomatic Complexity per assembly</h3>
+    @CycAssDisplay.Render()
+
 
     <h2> Number of classes per assembly</h2>
 
