@@ -6,4 +6,8 @@ public class GenericMetricsClass : GenericMetrics
     {
 
     }
+    public int NumberOfMethods()
+    {
+        return Childs.Length;
+    }
 }

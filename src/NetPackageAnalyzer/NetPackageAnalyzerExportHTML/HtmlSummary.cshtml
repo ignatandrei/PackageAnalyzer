@@ -69,6 +69,11 @@
         .ToArray();
     var maxClasses = nrClassesPerAssembly.First();
 
+    var nrMethodsPerAssembly = assemblyDataFromMSFT
+        .AssemblyNumberMethods()
+        .OrderByDescending(it => it.Count)
+        .ToArray();
+    var maxMethods = nrMethodsPerAssembly.First();
 }
 
 <html lang="en">
@@ -108,6 +113,8 @@
     }
     <br />
     Most classes :@maxClasses.Name @maxClasses.Count
+    <br />
+    Most methods :@maxMethods.Name @maxMethods.Count
 
     <br />
     Total Commits : @info.totalCommits    ( last commit : @maxCommitString )
@@ -226,6 +233,14 @@
 
     @namePerCountDisplay.Render()
 
+    <h2> Number of methods per assembly</h2>
+
+    @{
+        tuple = new(nrMethodsPerAssembly, "Number methods per project");
+        namePerCountDisplay = new(tuple);
+    }
+
+    @namePerCountDisplay.Render()
 
     <h2>@keysPackageMultiple.Length Packages with major version different</h2>
     @if(keysPackageMultiple.Length>0){

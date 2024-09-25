@@ -15,6 +15,19 @@ public class AssemblyDataFromMSFT
         return genericMetricsAssembly
             .Select(it => new NamePerCount(it.Name.Replace(".csproj", ""), it.Childs.Length))
             .ToArray();
+    } 
+    public NamePerCount[] AssemblyNumberMethods()
+    {
+        return genericMetricsAssembly
+            
+            .Select(it => new NamePerCount(
+            it.Name.Replace(".csproj", "")
+            , it.Childs
+            .Select(c=>c as GenericMetricsClass)
+            .Where(c => c != null)
+            .Sum(c=>c!.NumberOfMethods())
+            ))
+            .ToArray();
     }
     public NamePerCount[] AssemblyMetric(eMSFTMetrics metrics)
     {

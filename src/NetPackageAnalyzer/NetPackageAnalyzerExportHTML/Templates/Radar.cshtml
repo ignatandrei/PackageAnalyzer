@@ -35,7 +35,12 @@
 
     var maintIndex = assemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics.MaintainabilityIndex);
     var maxMaintIndex = maintIndex.Length == 0 ? 0 : maintIndex.Max(x => x.Count);
+    
+    var nrClassesAss = assemblyDataFromMSFT.AssemblyNumberClasses();
+    var maxNrClasses = nrClassesAss.Length == 0 ? 0 : nrClassesAss.Max(x => x.Count);
 
+    var nrMethods = assemblyDataFromMSFT.AssemblyNumberMethods();
+    var maxNrMethods = nrMethods.Length == 0 ? 0 : nrMethods.Max(x => x.Count);
 }
 <div id="containerRadar" style="height: 100%"></div>
 
@@ -66,11 +71,10 @@
                 { name: 'Commits @maxCommitYear', max: @maxCommitYearCommits },
                 { name: 'Packages', max: @maxPackages },
                 { name: 'References', max: @maxProjReferences },
-                { name: 'Public Classes', max: @maxPublicClasses },
+                { name: 'Number Public Classes', max: @maxPublicClasses },
                 { name: 'Lines in Public Classes', max: @maxLinesPublic },
+                { name: 'Number Classes',max:@maxPublicClasses},
                 { name: 'Total Lines', max: @maxexecAssLines },
-                { name: 'Cyclomatic', max: @maxCycloAss},
-                { name: 'Maintainability Index', max: @maxMaintIndex}
 
             ]
         },
@@ -92,11 +96,10 @@
 
         var nrLinesPublic =assLinesPublic.FirstOrDefault(it => it.Name.EndsWith(nameCsproj))?.Count ?? 0;
         var nrLines = sourceAssLines.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
-        var cyclo = cycloAss.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
-        var maint = maintIndex.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
+        var nrClasses = nrClassesAss.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
         <text>
     {
-value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic,@nrLines,@cyclo,@maint],
+value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic,@nrClasses, @nrLines],
 name: '@prj.NameCSproj()'
     },
 </text>
