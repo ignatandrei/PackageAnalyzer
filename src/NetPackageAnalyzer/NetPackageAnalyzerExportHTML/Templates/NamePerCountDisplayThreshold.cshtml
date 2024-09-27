@@ -17,9 +17,9 @@
     string assNamesMaintIndex = string.Join(",", nameCount.Select(it => "'" + it.Name + "'"));
     string valuesMaintIndex = string.Join(",\r\n",
             nameCount.Select(it =>"{value:"+ it.Count +
-            (it.Count < threshold1 ? ",itemStyle:{color:'red'}"
+            (CompareT(it.Count , threshold1) ? ",itemStyle:{color:'red'}"
                 :
-            (it.Count < threshold2 ? ",itemStyle:{color:'orange'}" : "")
+            (CompareT(it.Count , threshold2) ? ",itemStyle:{color:'orange'}" : "")
             )
             + "}"
             )
@@ -66,4 +66,10 @@
         </script>
 
     </text>
+    @functions{
+        public bool CompareT(long nr  , long threshold)
+        {
+            return nr < threshold;
+        }
+    }
 }
