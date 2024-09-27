@@ -39,8 +39,13 @@
 
     var nrMethods = assemblyDataFromMSFT.AssemblyNumberMethods();
     var maxNrMethods = nrMethods.Length == 0 ? 0 : nrMethods.Max(x => x.Count);
+
+    var ccAss = assemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics.ClassCoupling);
+    var maxccAss = ccAss.Length == 0 ? 0 : ccAss.Max(x => x.Count);
+
+
 //todo: add class coupling
-//TODO: add Cyclomatic Complexity
+
 }
 <div id="containerRadar" style="height: 100%"></div>
 
@@ -75,7 +80,8 @@
                 { name: 'Lines in Public Classes', max: @maxLinesPublic },
                 { name: 'Number Classes',max:@maxNrClasses},
                 { name: 'Total Lines', max: @maxexecAssLines },
-
+                { name: "Cyclomatic", max: @maxCycloAss},
+                { name: "CodeCoupling", max: @maxccAss},
             ]
         },
         series: [
@@ -97,9 +103,12 @@
         var nrLinesPublic =assLinesPublic.FirstOrDefault(it => it.Name.EndsWith(nameCsproj))?.Count ?? 0;
         var nrLines = sourceAssLines.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
         var nrClasses = nrClassesAss.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
+        var nrCyc = cycloAss.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
+        var nrCC = ccAss.FirstOrDefault(it => it.Name == (nameCsproj))?.Count ?? 0;
+
         <text>
     {
-value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic,@nrClasses, @nrLines],
+                                value: [@nrCommits,@commitsYear, @nrPackages, @nrProjRefs, @nrPublicClasses, @nrLinesPublic,@nrClasses, @nrLines, @nrCyc,@nrCC],
 name: '@prj.NameCSproj()'
     },
 </text>
