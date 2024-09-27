@@ -15,7 +15,15 @@ public class AssemblyDataFromMSFT
         return genericMetricsAssembly
             .Select(it => new NamePerCount(it.Name.Replace(".csproj", ""), it.Childs.Length))
             .ToArray();
-    } 
+    }
+    public NamePerCount[] ClassNumberMethods()
+    {
+        return genericMetricsAssembly
+            .SelectMany(it => it.Childs)
+            .Select(it => new NamePerCount(it.Name, it.Childs.Length))
+            .ToArray();
+
+    }
     public NamePerCount[] AssemblyNumberMethods()
     {
         return genericMetricsAssembly
@@ -57,6 +65,7 @@ public class AssemblyDataFromMSFT
             .ToArray();
         return data; 
     }
+    
     public NamePerCount? ClassesMetricMax(eMSFTMetrics metrics)
     {
         var data = ClassesMetrics(metrics);

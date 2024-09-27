@@ -48,6 +48,7 @@
         .ToArray()
         ;
     var maxexecAssLines = assemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics.ExecutableLines);
+
     var execClassLines = assemblyDataFromMSFT
         .ClassesMetrics(eMSFTMetrics.ExecutableLines)
         .OrderByDescending(x => x.Count)
@@ -63,6 +64,9 @@
         .OrderByDescending(x => x.Count)
         .ToArray();
 
+    var maxExecMethodsLines = execMethodsLines.FirstOrDefault();
+
+
     var nrClassesPerAssembly = assemblyDataFromMSFT
         .AssemblyNumberClasses()
         .OrderByDescending(it => it.Count)
@@ -73,7 +77,13 @@
         .AssemblyNumberMethods()
         .OrderByDescending(it => it.Count)
         .ToArray();
-    var maxMethods = nrMethodsPerAssembly.First();
+    var maxMethodsAss = nrMethodsPerAssembly.First();
+
+    var nrMethodsPerClass = assemblyDataFromMSFT
+        .ClassNumberMethods()
+        .OrderByDescending(it => it.Count)
+        .ToArray();
+    var maxMethodsClass = nrMethodsPerClass.FirstOrDefault();
 
     var maintAssIndex = assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex)
@@ -119,8 +129,24 @@
     .OrderByDescending(it => it.Count)
     .ToArray();
     var maxCycAssIndex = CCAssIndex.FirstOrDefault();
-    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycAss", CycAssIndex, 10, 25));
+    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycMethod", CycAssIndex, 10, 25));
 
+    var CycClassIndex = assemblyDataFromMSFT
+        .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity)
+        .OrderByDescending(it => it.Count)
+        .ToArray();
+    var maxCycClassIndex = CycClassIndex.FirstOrDefault();
+    var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycClass", CycClassIndex, 10, 25));
+
+
+    var CycMethodIndex = assemblyDataFromMSFT
+    .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity)
+    .OrderByDescending(it => it.Count)
+    .ToArray();
+    var maxCycMethodIndex = CycMethodIndex.FirstOrDefault();
+    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycAss", CycMethodIndex, 10, 25));
+
+    int tableRow = 0;
 
 }
 
@@ -128,56 +154,188 @@
 <head>
     <meta charset="utf-8">
     <script type="text/javascript" src="echarts.min.js"></script>
+    <style>
+        table thead tr {
+            background-color: #ffcccb; /* Light red */
+            color: black;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tbody tr:nth-child(odd) {
+            background-color: #d1e7dd;
+        }
+
+        .containerDisplayInfo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left, .center, .right {
+            width: 30%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Summary @nameSolution   </h1>
-    
+    <h2>General Info</h2>
     Number projects : @info.nrProjects
     (tests : @info.nrTestProjects,
-    no tests: @nrProjectsNoTests
+    total : @info.nrProjects
     )
     <br />
     Building Blocks: @bb0.Length
     <br />
     Number packages : @info.nrPackages
-    <br />
-    Outdated : @info.nrOutdated,
-    <br />Deprecated : @info.nrDeprecated,
-    <br />Major version differs :@info.nrMajorDiffers
+    (Outdated : @info.nrOutdated
+    ,Deprecated : @info.nrDeprecated,
+    ,Major version differs :@info.nrMajorDiffers
+    )
+    <div class="containerDisplayInfo">
+    <div class="left">
+    <h2>Assembly Info</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>What</th>
+                <th>Assembly Name</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @if (maxAssemblyRef != null)
+            {
+<tr>
+<td>@(++tableRow)</td>
+<td>Max nr of references:@maxAssemblyRef.Count</td>
+<td>@maxAssemblyRef.Name</td>
+</tr>
+            }
+            @if (mostPublicClasses != null)
+            {
+                <tr>
+                    <td>@(++tableRow)</td>
+                    <td>Max nr of public Classes:@mostPublicClasses.Count</td>
+                    <td>@mostPublicClasses.Name</td>
+                </tr>
+            }
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With max nr of Classes:@maxClasses.Count</td>
+                <td>@maxClasses.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With max nr of methods:@maxMethodsAss.Count</td>
+                <td>@maxMethodsAss.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With low maintaining score:@minMaintAssIndex.Count</td>
+                <td>@minMaintAssIndex.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With max coupling:@maxCCAssIndex.Count</td>
+                <td>@maxCCAssIndex.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With most Cyclomatic Complexity:@maxCycAssIndex.Count</td>
+                <td>@maxCycAssIndex.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With most lines:@maxexecAssLines.Count</td>
+                <td>@maxexecAssLines.Name</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="center">
+    <h2>Class Info</h2>
+@{
+    tableRow = 0;
+ }<table>
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>What</th>
+                <th>Class name</th>
 
-    @if (maxAssemblyRef != null)
-    {
-        <text>
-            <br />
-            Assembly with most references: @maxAssemblyRef.Name @maxAssemblyRef.Count
-        </text>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With max nr of methods:@maxMethodsClass.Count</td>
+                <td>@maxMethodsClass.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With low maintaining score:@minMaintClassIndex.Count</td>
+                <td>@minMaintClassIndex.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With max coupling:@maxCCClassIndex.Count</td>
+                <td>@maxCCClassIndex.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With most Cyclomatic Complexity:@maxCycClassIndex.Count</td>
+                <td>@maxCycClassIndex.Name</td>
+            </tr>
+            <tr>
+                <td>@(++tableRow)</td>
+                <td>With most lines:@maxExecClassLines.Count</td>
+                <td>@maxExecClassLines.Name</td>
+            </tr>
+
+        </tbody>
+        </table>
+    </div>
+    <div class="right">
+    @{
+        tableRow = 0;
     }
-    @if (mostPublicClasses != null)
-    {
-        <text>
-            <br />
-            Assembly with most public classes :@mostPublicClasses.Name @mostPublicClasses.Count
-        </text>
-    }
-    <br />
-    Assembly with most classes :@maxClasses.Name @maxClasses.Count
-    <br />
-    Assembly with most methods :@maxMethods.Name @maxMethods.Count
+        <h2>Method Info</h2>
+<table>
+                <thead>
+                    <tr>
+                        <th>Nr</th>
+                        <th>What</th>
+                        <th>Method name</th>
 
-    <br />
-    Assembly low maintaining score: @minMaintAssIndex.Name @minMaintAssIndex.Count
-    <br />
-    Class low maintaining score: @minMaintClassIndex.Name @minMaintClassIndex.Count
-    <br />
-    Method low maintaining score: @minMaintMethodIndex.Name @minMaintMethodIndex.Count
-    <br />
-    Assembly max coupling: @maxCCAssIndex.Name @maxCCAssIndex.Count
-    <br />
-    Class max coupling: @maxCCClassIndex.Name @maxCCClassIndex.Count
-    <br />
+                    </tr>
+                </thead>
+                <tr>
+                    <td>@(++tableRow)</td>
+                    <td>With low maintaining score:@minMaintMethodIndex.Count</td>
+                    <td>@minMaintMethodIndex.Name</td>
+                </tr>
 
+                <tr>
+                <td>@(++tableRow)</td>
+                <td>With most Cyclomatic Complexity:@maxCycMethodIndex.Count</td>
+                <td>@maxCycMethodIndex.Name</td>
+            </tr>
+                <tr>
+                    <td>@(++tableRow)</td>
+                    <td>With most lines:@maxExecMethodsLines?.Count</td>
+                    <td>@maxExecMethodsLines?.Name</td>
+                </tr>
 
-    Assembly max Cyclomatic Complexity: @maxCycAssIndex.Name @maxCycAssIndex.Count
+                
+            </table>
+    </div>
+    </div>
+    <h2>Commits</h2>
+
     <br />
     Total Commits : @info.totalCommits    ( last commit : @maxCommitString )
     <br />
@@ -187,9 +345,6 @@
     The file with most commits ( @filewithMaxCommits?.Value ) is @GlobalsForGenerating.RelativePath( filewithMaxCommits?.Key)
 
     <br />
-    Project with most lines: @maxexecAssLines.Name @maxexecAssLines.Count
-    <br />
-    Class with most Lines: @maxExecClassLines.Name @maxExecClassLines.Count
     <br />
 
     <h1>Solution relations</h1>

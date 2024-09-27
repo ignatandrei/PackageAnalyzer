@@ -11,7 +11,7 @@ namespace WhatIAmDoingData;
 
 //[InterceptInstanceClass(typeof(GenerateFiles), ".*")] //regex
 //[InterceptInstanceClass(typeof(ProcessOutput), ".*")] //regex
-[InterceptInstanceClass("NetPackageAnalyzerObjects.*", ".*")]
+//[InterceptInstanceClass("NetPackageAnalyzerObjects.*", ".*")]
 //[InterceptInstanceClass("NetPackageAnalyzerObjects.ProcessOutput", "Build")]
 class InterceptorMethodInstanceClass : InterceptorMethodInstanceClassBase, IInterceptorMethodInstanceClass
 {
