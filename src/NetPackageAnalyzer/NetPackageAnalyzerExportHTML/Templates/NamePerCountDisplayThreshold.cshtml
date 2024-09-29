@@ -1,4 +1,4 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<string,NamePerCount[],int,int>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<string,NamePerCount[],int,int, bool>>;
 @{
     string name= Model.Item1;
     var nameCount = Model.Item2;
@@ -12,14 +12,22 @@
     // }
     var threshold1 = Model.Item3;
     var threshold2 = Model.Item4;
+    var inverseData = Model.Item5;
+    if(inverseData & (threshold1<threshold2))
+    {
+        var temp = threshold1;
+        threshold1 = threshold2;
+        threshold2 = temp;
+    }
+
     //threshold1 = 40;
     //threshold2 = 80;
     string assNamesMaintIndex = string.Join(",", nameCount.Select(it => "'" + it.Name + "'"));
     string valuesMaintIndex = string.Join(",\r\n",
             nameCount.Select(it =>"{value:"+ it.Count +
-            (CompareT(it.Count , threshold1) ? ",itemStyle:{color:'red'}"
+            (CompareT(it.Count, threshold1, inverseData) ? ",itemStyle:{color:'red'}"
                 :
-            (CompareT(it.Count , threshold2) ? ",itemStyle:{color:'orange'}" : "")
+            (CompareT(it.Count, threshold2, inverseData) ? ",itemStyle:{color:'orange'}" : "")
             )
             + "}"
             )
@@ -67,8 +75,12 @@
 
     </text>
     @functions{
-        public bool CompareT(long nr  , long threshold)
+        public bool CompareT(long nr  , long threshold, bool inverse)
         {
+            if(inverse)
+            {
+                return nr > threshold;
+            }
             return nr < threshold;
         }
     }
