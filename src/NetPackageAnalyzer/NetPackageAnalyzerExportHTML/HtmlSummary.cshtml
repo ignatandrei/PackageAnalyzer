@@ -154,6 +154,7 @@
 <head>
     <meta charset="utf-8">
     <script type="text/javascript" src="echarts.min.js"></script>
+    <script type="text/javascript" src="vis-network.min.js"></script>
     <style>
         table thead tr {
             background-color: #ffcccb; /* Light red */
@@ -351,32 +352,11 @@
     <div id="solRel" style="height: 100%"></div>
 
     <script type="text/javascript">
-        var graph = {
-            nodes: [],
-            links:[],
-            categories:[
-                {
-                    name:"TestProject"
-                },
-                {
-                    name:"UsualProject"
-                }
-
-            ],
-
-        };
+        var dot='digraph { node [shape=circle fontsize=16] edge [length=100, color=gray, fontcolor=black]';    
         @foreach(var prj in projectDicts.Values)
         {
             <text>
-            graph.nodes.push(
-                        {
-                        id: "@prj.PathProject",
-                        name: "@prj.NameCSproj()",
-                        symbolSize: @(prj.AlphabeticalProjectsReferences().Length*10+1),
-                        value: "RefProjects : @prj.AlphabeticalProjectsReferences().Length ",
-                        category: @(prj.IsTestProject()?0:1)
-                        }
-            );
+                dot+='"@prj.PathProject" [label="@prj.NameCSproj()"]\r\n';
             </text>
         }
     @foreach (var proj in projectDicts.AlphabeticOrderedProjectsNoTests)
@@ -386,68 +366,15 @@
         {
             
             <text>
-                    graph.links.push({
-                    source: "@proj.PathProject",
-                    target: "@rel.PathProject"
-                    });
-
+            dot+='"@proj.PathProject"  -> "@rel.PathProject"\r\n'
             </text>
 
         }
     }
-
+    dot+="}";
         var dom = document.getElementById('solRel');
-        var myChart = echarts.init(dom, null, {
-            renderer: 'canvas',
-            useDirtyRect: false
-        });
-        var app = {};
-        myChart.showLoading();
-        myChart.hideLoading();
-        option = {
-            tooltip: {},
-            legend: [
-                {
-                    data: graph.categories.map(function (a) {
-                        return a.name;
-                    })
-                }
-            ],
-            series: [
-                {
-                    name: 'Solution Relation',
-                    type: 'graph',
-                    layout: 'circular',
-                    circular: {
-                        rotateLabel: true
-                    },
-
-                    data: graph.nodes,
-                    links: graph.links,
-                    categories: graph.categories,
-                    roam: true,
-                    label: {
-                        show: true,
-                        position: 'right',
-                        formatter: '{b}'
-                    },
-                    labelLayout: {
-                        hideOverlap: true
-                    },
-                    
-                    lineStyle: {
-                        color: 'source',
-                        curveness: 0.3
-                    }
-                }
-            ]
-        };
-        myChart.setOption(option);
-        
-
-        
-        window.addEventListener('resize', myChart.resize);
-
+        var data = vis.parseDOTNetwork(dot);
+        var network = new vis.Network(dom, data);
     </script>
 
 
