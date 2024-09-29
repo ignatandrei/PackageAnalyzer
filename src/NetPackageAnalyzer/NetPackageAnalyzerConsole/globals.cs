@@ -10,3 +10,4 @@ global using NetPackageAnalyzerDocusaurus;
 global using NetPackageAnalyzerObjects;
 global using WhatIAmDoingData;
 global using NetPackageAnalyzerShowInConsole;
+global using RSCG_InterceptMethodCommon;

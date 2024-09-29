@@ -5,12 +5,18 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<InterceptorsPreviewNamespaces>
+			$(InterceptorsPreviewNamespa
+			ces);RSCG_InterceptMethod
+		</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\..\..\README.md" Link="README.md" Pack="true" PackagePath="\" />		
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<None Include="..\..\..\docs\ico.png" Pack="true" PackagePath="\" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="RSCG_InterceptMethod" Version="8.2024.2318.289" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+		<PackageReference Include="RSCG_InterceptMethodCommon" Version="8.2024.2318.289" />
 		<PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
 	</ItemGroup>
 	<ItemGroup>
@@ -21,7 +27,7 @@
 	  <ProjectReference Include="..\WhatIAmDoingData\WhatIAmDoingData.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>8.2024.927.1336</Version>
+		<Version>8.2024.929.1036</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>

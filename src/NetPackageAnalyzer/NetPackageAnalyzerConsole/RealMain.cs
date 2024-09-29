@@ -98,6 +98,7 @@ internal class RealMainExecuting
         return;
     }
 
+    [InterceptMethod(WhatToIntercept.Timing)]
     public static async Task<int> RealMain(string[] args)
     {
         GlobalsForGenerating.Version = ThisAssembly.Info.Version.ToString();
