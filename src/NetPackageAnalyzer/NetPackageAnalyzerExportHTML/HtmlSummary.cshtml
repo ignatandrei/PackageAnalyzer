@@ -187,39 +187,94 @@
     <div class="containerDisplayInfo">
         <div class="left">
     <h2>General Info</h2>
-    Number projects : @info.nrProjects
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nr</th>
+                        <th>What</th>
+                        </tr>
+                        </thead>
+<tbody>
+    <tr>
+        <td>@(++tableRow)</td>
+        <td>
+                        Number projects : @info.nrProjects
     (tests : @info.nrTestProjects,
     total : @info.nrProjects
     )
-    <br />
-    Building Blocks: @bb0.Length
-    <br />
-    Number packages : @info.nrPackages
+                        </td>
+    </tr>
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>
+
+                            Building Blocks: @bb0.Length
+    </td>
+    </tr>
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>
+
+                            Number packages : @info.nrPackages
     (Outdated : @info.nrOutdated
     ,Deprecated : @info.nrDeprecated,
     ,Major version differs :@info.nrMajorDiffers
     )
+    </td>
+    </tr>
+    </table>
     </div>
     <div class="center">
             <h1>Summary @nameSolution   </h1>
         </div>
     <div class="right">
             <h2>Commits</h2>
+            @{
+                tableRow = 0;
+            }
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nr</th>
+                        <th>What</th>
+                        
 
-            <br />
-            Total Commits : @info.totalCommits    ( last commit : @maxCommitString )
-            <br />
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>Total Commits : @info.totalCommits</td>
+                    </tr>
 
-            The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
-            <br />
-            The file with most commits ( @filewithMaxCommits?.Value ) is @GlobalsForGenerating.RelativePath(filewithMaxCommits?.Key)
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>last commit : @maxCommitString </td>
+                    </tr>
 
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>
+                            The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>
+                            The file with most commits ( @filewithMaxCommits?.Value ) is @GlobalsForGenerating.RelativePath(filewithMaxCommits?.Key)
+                        </td>
+                    </tr>
 
+                </tbody>
+                </table>
         </div>
     </div>
     <div class="containerDisplayInfo">
     <div class="left">
     <h2>Assembly Info</h2>
+    @{
+                tableRow = 0;
+    }
     <table>
         <thead>
             <tr>
