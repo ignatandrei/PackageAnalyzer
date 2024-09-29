@@ -146,6 +146,8 @@
     var maxCycMethodIndex = CycMethodIndex.FirstOrDefault();
     var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycAss", CycMethodIndex, 10, 25));
 
+    var packages=projectDicts.Packages();
+    var topPackages = packages.OrderByDescending(it => it.Count).Take(5).ToArray();
     int tableRow = 0;
 
 }
@@ -377,7 +379,53 @@
         var network = new vis.Network(dom, data);
     </script>
 
-    
+    <h1>Packages relations</h1>
+    <div id="solRelPackages" ></div>
+
+    <script type="text/javascript">
+        var dot='digraph { node [shape=circle fontsize=16] edge [length=100, color=gray, fontcolor=black]';    
+        @foreach(var prj in projectDicts.Values)
+        {
+            <text>
+                dot+='"@prj.PathProject" [label="@prj.NameCSproj() : @prj.ProjectsReferences.Count",color="red"]\r\n';
+            </text>
+        }
+        @foreach(var pack in topPackages)
+        {
+            <text>
+                    dot+='"@pack.Name" [label="@pack.Name : @pack.Count"]\r\n';
+            </text>
+        }
+
+    @foreach (var proj in projectDicts.Values)
+    {
+        foreach (var rel in proj.Packages)
+        {
+            if(!topPackages.Any(it=>it.Name==rel.packageVersionId))
+            {
+                continue;
+            }
+            <text>
+            dot+='"@proj.PathProject"  -> "@rel.packageVersionId"\r\n'
+            </text>
+
+        }
+
+        foreach (var rel in proj.ProjectsReferences)
+        {
+            
+            <text>
+            dot+='"@proj.PathProject"  -> "@rel.PathProject"\r\n'
+            </text>
+
+        }
+    }
+    dot+="}";
+        var dom = document.getElementById('solRelPackages');
+        var data = vis.parseDOTNetwork(dot);
+        var network = new vis.Network(dom, data);
+    </script>
+
     <h1>Radar @nameSolution</h1>
 
     @radar.Render()
