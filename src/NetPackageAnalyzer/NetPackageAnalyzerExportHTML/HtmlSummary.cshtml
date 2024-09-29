@@ -14,7 +14,7 @@
     .Assemblies_PublicClasses
     .FirstOrDefault();
     var maxAssemblyRef = refSummary.AssembliesReferences.FirstOrDefault();
-
+    
     var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
     var nrVersionIterator = 0;
     var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
@@ -147,7 +147,7 @@
     var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycAss", CycMethodIndex, 10, 25));
 
     var packages=projectDicts.Packages();
-    var topPackages = packages.OrderByDescending(it => it.Count).Take(5).ToArray();
+    var topPackages = packages.OrderByDescending(it => it.Count).Take(7).ToArray();
     int tableRow = 0;
 
 }
@@ -214,7 +214,7 @@
             {
 <tr>
 <td>@(++tableRow)</td>
-<td>Max nr of references:@maxAssemblyRef.Count</td>
+<td>Max nr of references to other assemblies:@maxAssemblyRef.Count</td>
 <td>@maxAssemblyRef.Name</td>
 </tr>
             }
@@ -354,7 +354,7 @@
     <div id="solRel" ></div>
 
     <script type="text/javascript">
-        var dot='digraph { node [shape=circle fontsize=16] edge [length=100, color=gray, fontcolor=black]';    
+        var dot='digraph {  ';    
         @foreach(var prj in projectDicts.Values)
         {
             <text>
@@ -383,17 +383,17 @@
     <div id="solRelPackages" ></div>
 
     <script type="text/javascript">
-        var dot='digraph { node [shape=circle fontsize=16] edge [length=100, color=gray, fontcolor=black]';    
+        var dot='digraph { rankdir=TB ';    
         @foreach(var prj in projectDicts.Values)
         {
             <text>
-                dot+='"@prj.PathProject" [label="@prj.NameCSproj() : @prj.ProjectsReferences.Count",color="red"]\r\n';
+                    dot+='"@prj.PathProject" [label="@prj.NameCSproj() : @prj.Packages.Count",color="red"]\r\n';
             </text>
         }
         @foreach(var pack in topPackages)
         {
             <text>
-                    dot+='"@pack.Name" [label="@pack.Name : @pack.Count"]\r\n';
+                    dot+='"@pack.Name" [label="@pack.Name : @pack.Count" ,shape="box"]\r\n';
             </text>
         }
 
