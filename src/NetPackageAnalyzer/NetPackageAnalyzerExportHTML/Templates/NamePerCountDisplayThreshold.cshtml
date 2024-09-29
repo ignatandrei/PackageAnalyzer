@@ -6,10 +6,7 @@
     {
         return;
     }
-    // if(nameCount.Count() > 20)
-    // {
-    //     nameCount = nameCount.Take(15).ToArray();
-    // }
+    
     var threshold1 = Model.Item3;
     var threshold2 = Model.Item4;
     var inverseData = Model.Item5;
@@ -19,6 +16,7 @@
         threshold1 = threshold2;
         threshold2 = temp;
     }
+    var display2 = nameCount.Where(it => CompareT(it.Count, threshold1, inverseData)).ToArray();
 
     //threshold1 = 40;
     //threshold2 = 80;
@@ -72,6 +70,63 @@
 
             window.addEventListener('resize', myChart.resize);
         </script>
+
+        @{
+           if (display2.Length > 0)
+            {
+                assNamesMaintIndex = string.Join(",", display2.Select(it => "'" + it.Name + "'"));
+                
+                var displayValues = nameCount
+                    .Select(it => "{value:" + it.Count + ",itemStyle:{color:'red'}}"
+                            )
+                    .ToArray();
+                
+                valuesMaintIndex = string.Join(",\r\n", displayValues);
+
+                <h2>@name bad data : @display2.Length</h2>
+
+                <div id='@(name+"_bad")' style="height: 100%"></div>
+                <script type="text/javascript">
+                    var dom = document.getElementById('@(name + "_bad")');
+                    var myChart = echarts.init(dom, null, {
+                        renderer: 'canvas',
+                        useDirtyRect: false
+                    });
+                    var app = {};
+
+                    var option;
+
+                    option = {
+                        xAxis: {
+                            type: 'category',
+                            data: [@assNamesMaintIndex]
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+
+                        },
+                        series: [
+                            {
+                                data: [
+                    @valuesMaintIndex
+                                            ],
+                                type: 'bar'
+                            }
+                        ]
+                    };
+
+                    if (option && typeof option === 'object') {
+                        myChart.setOption(option);
+                    }
+
+                    window.addEventListener('resize', myChart.resize);
+                </script>
+            }
+        }
+
 
     </text>
     @functions{
