@@ -80,11 +80,11 @@ internal class RealMainExecuting
 
     private static async Task GenerateHandlerMajorDiff(bool verbose, string folder)
     {
-        DisplayData.Verbose = verbose;
-        if (verbose)
-        {
-            Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
-        }
+        //DisplayData.Verbose = verbose;
+        //if (verbose)
+        //{
+        //    Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
+        //}
         var fs = new FileSystem();
         GenerateData? g = new(fs);
         bool b = await g.GenerateDataForSln(folder);
@@ -158,11 +158,11 @@ internal class RealMainExecuting
     {
         try
         {
-            DisplayData.Verbose = verbose;
-            if (verbose)
-            {
-                Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
-            }
+            //DisplayData.Verbose = verbose;
+            //if (verbose)
+            //{
+            //    Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
+            //}
             await RealGenerateHandler(folder, where, what);
             if (runProduct)
             {

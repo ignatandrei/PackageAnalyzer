@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerTests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerObjects", "NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj", "{579A9B8E-FD8D-4E0E-9BF8-C3AF5BE2B682}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatIAmDoingData", "WhatIAmDoingData\WhatIAmDoingData.csproj", "{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzeHistory", "NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj", "{D9AF8F9F-AA4F-487E-B741-81B9C972062C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerShowInConsole", "NetPackageAnalyzerShowInConsole\NetPackageAnalyzerShowInConsole.csproj", "{A2CF4FE6-3DB0-49CF-85C0-CC35B7003136}"
@@ -23,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerDiagram",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerExportHTML", "NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj", "{CEFA2AD2-8FA4-4C92-B2C1-C1566D82DAA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPackageAnalyzerMetricsMSFT", "NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj", "{DEC03402-DE01-4133-B027-120F2007601D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerMetricsMSFT", "NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj", "{DEC03402-DE01-4133-B027-120F2007601D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +49,6 @@ Global
 		{579A9B8E-FD8D-4E0E-9BF8-C3AF5BE2B682}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{579A9B8E-FD8D-4E0E-9BF8-C3AF5BE2B682}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{579A9B8E-FD8D-4E0E-9BF8-C3AF5BE2B682}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AB6C867-AAFC-4A29-9440-504EF79B5DCC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D9AF8F9F-AA4F-487E-B741-81B9C972062C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D9AF8F9F-AA4F-487E-B741-81B9C972062C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9AF8F9F-AA4F-487E-B741-81B9C972062C}.Release|Any CPU.ActiveCfg = Release|Any CPU

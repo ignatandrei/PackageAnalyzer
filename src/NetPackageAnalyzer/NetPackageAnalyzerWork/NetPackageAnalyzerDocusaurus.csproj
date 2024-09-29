@@ -123,9 +123,7 @@
 	<ItemGroup>
 	  <RazorBlade Remove="Templates\DisplayAllVersionsProblemsForMarkdown.cshtml" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Compile Include="..\WhatIAmDoingData\Interceptors.cs" Link="Interceptors.cs" />
-	</ItemGroup>
+	
 	<ItemGroup>
 	  <EmbeddedResource Include="docusaurus.zip" />
 	</ItemGroup>

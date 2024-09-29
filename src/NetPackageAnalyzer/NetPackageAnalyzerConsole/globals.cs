@@ -8,6 +8,6 @@ global using AnalyzeMerge;
 global using System.IO.Abstractions;
 global using NetPackageAnalyzerDocusaurus;
 global using NetPackageAnalyzerObjects;
-global using WhatIAmDoingData;
+//global using WhatIAmDoingData;
 global using NetPackageAnalyzerShowInConsole;
 global using RSCG_InterceptMethodCommon;

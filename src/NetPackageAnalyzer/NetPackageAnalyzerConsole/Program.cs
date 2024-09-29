@@ -61,6 +61,6 @@
 catch (Exception ex) 
 { 
     Console.WriteLine(ex.Message);
-    WhatIAmDoingData.DisplayData.DisplayJustErrors();
+    //WhatIAmDoingData.DisplayData.DisplayJustErrors();
     return 1;
 } 
