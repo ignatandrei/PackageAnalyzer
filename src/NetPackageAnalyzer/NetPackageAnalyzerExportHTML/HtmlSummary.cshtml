@@ -349,20 +349,20 @@
     <br />
 
     <h1>Solution relations</h1>
-    <div id="solRel" style="height: 100%"></div>
+    <div id="solRel" ></div>
 
     <script type="text/javascript">
         var dot='digraph { node [shape=circle fontsize=16] edge [length=100, color=gray, fontcolor=black]';    
         @foreach(var prj in projectDicts.Values)
         {
             <text>
-                dot+='"@prj.PathProject" [label="@prj.NameCSproj()"]\r\n';
+                dot+='"@prj.PathProject" [label="@prj.NameCSproj() : @prj.ProjectsReferences.Count"]\r\n';
             </text>
         }
-    @foreach (var proj in projectDicts.AlphabeticOrderedProjectsNoTests)
+    @foreach (var proj in projectDicts.Values)
     {
 
-        foreach (var rel in proj.AlphabeticalProjectsReferences())
+        foreach (var rel in proj.ProjectsReferences)
         {
             
             <text>
@@ -377,9 +377,7 @@
         var network = new vis.Network(dom, data);
     </script>
 
-
-
-
+    
     <h1>Radar @nameSolution</h1>
 
     @radar.Render()

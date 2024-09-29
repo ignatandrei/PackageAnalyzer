@@ -208,6 +208,15 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .Min();
 
     }
+    public NamePerCount[] Packages()
+    {
+        var data = this.Values
+            .SelectMany(it => it.Packages)
+            .GroupBy(it => it.packageVersionId)
+            .Select(it => new NamePerCount(it.Key, it.Count()))
+            .ToArray();
+        return data;
+    }
     public long MaxPackages
     {
         get
