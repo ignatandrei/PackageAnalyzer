@@ -186,7 +186,7 @@
 
     <div class="containerDisplayInfo">
         <div class="left">
-    <h2>General Info</h2>
+    <h2 id="general-info">General Info</h2>
             <table>
                 <thead>
                     <tr>
@@ -198,17 +198,16 @@
     <tr>
         <td>@(++tableRow)</td>
         <td>
-                        Number projects : @info.nrProjects
-    (tests : @info.nrTestProjects,
-    total : @info.nrProjects
-    )
-                        </td>
+                            <a href="#projects-with-tests">Number projects : @info.nrProjects</a>
+                            (<a href="#play-with-solution-relations"> tests </a>: @info.nrTestProjects,
+                            <a href="#projects-without-tests"> total </a>: @info.nrProjects
+            )
+        </td>
     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
-
-                            Building Blocks: @bb0.Length
+                            <a href="#building-blocks"> Building Blocks </a>: @bb0.Length
     </td>
     </tr>
                     <tr>
@@ -218,7 +217,7 @@
                             Number packages : @info.nrPackages
     (Outdated : @info.nrOutdated
     ,Deprecated : @info.nrDeprecated,
-    ,Major version differs :@info.nrMajorDiffers
+                            ,<a href="#packages-with-major-version-different">Major version differs</a> :@info.nrMajorDiffers
     )
     </td>
     </tr>
@@ -228,7 +227,7 @@
             <h1>Summary @nameSolution   </h1>
         </div>
     <div class="right">
-            <h2>Commits</h2>
+            <h2 >Commits</h2>
             @{
                 tableRow = 0;
             }
@@ -244,12 +243,18 @@
                 <tbody>
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td>Total Commits : @info.totalCommits</td>
+                        <td>
+                            <a href="#commits">
+                            Total Commits : @info.totalCommits</td>
                     </tr>
 
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td>last commit : @maxCommitString </td>
+                        <td>
+                            <a href="Commits-per-year-and-folder">
+                                last commit
+                            </a> : @maxCommitString
+                        </td>
                     </tr>
 
                     <tr>
@@ -297,7 +302,11 @@
             {
                 <tr>
                     <td>@(++tableRow)</td>
-                    <td>Max nr of public Classes:@mostPublicClasses.Count</td>
+                    <td>
+                                <a href="number-of-classes-per-assembly">
+                                    Max nr of public Classes
+                                </a>:@mostPublicClasses.Count
+                            </td>
                     <td>@mostPublicClasses.Name</td>
                 </tr>
             }
@@ -308,27 +317,40 @@
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With max nr of methods:@maxMethodsAss.Count</td>
+                        <td>
+                            <a href="#number-of-methods-per-assembly">
+                                With max nr of methods
+                            </a>:@maxMethodsAss.Count
+                        </td>
                 <td>@maxMethodsAss.Name</td>
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With low maintaining score:@minMaintAssIndex.Count</td>
+                <td>
+                            <a href="#Maintainability-for-Assembly">
+                                With low maintaining score
+                            </a>:@minMaintAssIndex.Count
+                            
+                        </td>
                 <td>@minMaintAssIndex.Name</td>
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With max coupling:@maxCCAssIndex.Count</td>
+                        <td><a href="#Class-Coupling-for-Assembly"> With max coupling</a>:@maxCCAssIndex.Count</td>
                 <td>@maxCCAssIndex.Name</td>
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With most Cyclomatic Complexity:@maxCycAssIndex.Count</td>
+                        <td>
+                            <a href="#Cyclomatic-Complexity-for-Assembly">
+                                With most Cyclomatic Complexity
+                            </a>:@maxCycAssIndex.Count
+                        </td>
                 <td>@maxCycAssIndex.Name</td>
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With most lines:@maxexecAssLines.Count</td>
+                        <td><a href="#assemblies-public-lines">With most lines</a>:@maxexecAssLines.Count</td>
                 <td>@maxexecAssLines.Name</td>
             </tr>
         </tbody>
@@ -350,27 +372,46 @@
         <tbody>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With max nr of methods:@maxMethodsClass.Count</td>
+                        <td>
+                            <a href="#number-of-methods-per-class">
+                                With max nr of methods
+                            </a>:@maxMethodsClass.Count
+                        </td>
                 <td>@maxMethodsClass.Name</td>
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With low maintaining score:@minMaintClassIndex.Count</td>
+                <td><a href="#Maintainability-for-Class">
+                                With low maintaining score
+                            </a>:@minMaintClassIndex.Count
+                        </td>
                 <td>@minMaintClassIndex.Name</td>
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With max coupling:@maxCCClassIndex.Count</td>
+                <td>
+                    <a href="#Class-Coupling-for-Class">
+                                With max coupling
+                            </a>
+                            :@maxCCClassIndex.Count
+                        </td>
                 <td>@maxCCClassIndex.Name</td>
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With most Cyclomatic Complexity:@maxCycClassIndex.Count</td>
+                <td><a href="#Cyclomatic-Complexity-for-Class">
+                    With most Cyclomatic Complexity
+                            </a>:@maxCycClassIndex.Count
+                        </td>
                 <td>@maxCycClassIndex.Name</td>
             </tr>
             <tr>
                 <td>@(++tableRow)</td>
-                <td>With most lines:@maxExecClassLines.Count</td>
+                        <td>
+                            <a href="#class-public-lines">
+                                With most lines:@maxExecClassLines.Count
+                            </a>
+                        </td>
                 <td>@maxExecClassLines.Name</td>
             </tr>
 
@@ -393,18 +434,28 @@
                 </thead>
                 <tr>
                     <td>@(++tableRow)</td>
-                    <td>With low maintaining score:@minMaintMethodIndex.Count</td>
+                    <td>
+                        <a href="#Maintainability-for-Method">
+                            With low maintaining score
+                        </a>:@minMaintMethodIndex.Count
+                    </td>
                     <td>@minMaintMethodIndex.Name</td>
                 </tr>
 
                 <tr>
                 <td>@(++tableRow)</td>
-                <td>With most Cyclomatic Complexity:@maxCycMethodIndex.Count</td>
+                    <td>
+                        <a href="#Cyclomatic-Complexity-for-Method">
+                            With most Cyclomatic Complexity
+                        </a>:@maxCycMethodIndex.Count
+                    </td>
                 <td>@maxCycMethodIndex.Name</td>
             </tr>
                 <tr>
                     <td>@(++tableRow)</td>
-                    <td>With most lines:@maxExecMethodsLines?.Count</td>
+                    <td>
+                        <a href="#methods-public-lines">
+                        With most lines</a>:@maxExecMethodsLines?.Count</td>
                     <td>@maxExecMethodsLines?.Name</td>
                 </tr>
 
@@ -469,7 +520,7 @@
  *@
     <br />
 
-    <h2> @nrProjectsNoTests Projects without tests</h2>
+    <h2 id="projects-without-tests"> @nrProjectsNoTests Projects without tests</h2>
     <div class="mermaid">
         flowchart LR
 
@@ -501,7 +552,7 @@
     }
 </div>
 
-    <h2> @info.nrProjects Projects with tests</h2>
+    <h2 id="projects-with-tests"> @info.nrProjects Projects with tests</h2>
     <div class="mermaid">
         flowchart LR
 
@@ -533,7 +584,7 @@
         }
     </div>
 
-    <h2>Play with solution relations</h2>
+    <h2 id="play-with-solution-relations">Play with solution relations</h2>
     <div id="solRel"></div>
 
     <script type="text/javascript">
@@ -563,7 +614,7 @@
     </script>
 
 
-<h2>Building Blocks : @bb0.Length </h2>
+<h2 id="building-blocks">Building Blocks : @bb0.Length </h2>
     @foreach (var bbProj in bb0)
     {
         var nameCsproj = bbProj.NameCSproj();
@@ -587,7 +638,7 @@
 
         </text>
     }
-    <h2>Maintainability </h2>
+    <h2 id="maintainability">Maintainability</h2>
     <h3>Maintainability per assembly</h3>
     @maintAssDisplay.Render()
 
@@ -597,13 +648,13 @@
     <h3>Maintainability per method</h3>
     @maintMethodDisplay.Render()
 
-    <h2>Coupling</h2>
+    <h2 id="coupling">Coupling</h2>
     <h3>Coupling per assembly</h3>
     @CCAssDisplay.Render()
     <h3>Coupling per Class</h3>
     @CCClassDisplay.Render()
 
-    <h2>Cyclomatic Complexity</h2>
+    <h2 id="Cyclomatic-Complexity">Cyclomatic Complexity</h2>
     <h3>Cyclomatic Complexity per assembly</h3>
     @CycAssDisplay.Render()
 
@@ -613,7 +664,7 @@
     <h3>Cyclomatic Complexity per method</h3>
     @CycMethodDisplay.Render()
 
-    <h2> Number of classes per assembly</h2>
+    <h2 id="number-of-classes-per-assembly"> Number of classes per assembly</h2>
 
     @{
         tuple = new(nrClassesPerAssembly, "Number class per project");
@@ -622,7 +673,7 @@
 
     @namePerCountDisplay.Render()
 
-    <h2> Number of methods per assembly</h2>
+    <h2 id="number-of-methods-per-assembly"> Number of methods per assembly</h2>
 
     @{
         tuple = new(nrMethodsPerAssembly, "Number methods per project");
@@ -630,8 +681,16 @@
     }
 
     @namePerCountDisplay.Render()
+    <h2 id="number-of-methods-per-class"> Number of methods per class</h2>
 
-    <h2>@keysPackageMultiple.Length Packages with major version different</h2>
+    @{
+        tuple = new(nrMethodsPerClass, "Number methods per class");
+        namePerCountDisplay = new(tuple);
+    }
+
+    @namePerCountDisplay.Render()
+
+    <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
     @if(keysPackageMultiple.Length>0){
     <table border="1">
         <thead>
@@ -671,16 +730,16 @@
         </tbody>
     </table>
     }
-    <h2>Executable lines</h2>
-    <h3>Per assembly</h3>
+    <h2 id="executable-lines">Executable lines</h2>
+    <h3 id="executable-lines-per-assembly">Per assembly</h3>
     @{
         tuple = new(execAssLines, "Number lines per project");
         namePerCountDisplay = new(tuple);
     }
     @namePerCountDisplay.Render()
 
-    <h3>Per class</h3>
-
+    <h3 id="executable-lines-per-class">Per class</h3>
+   
     @{
 
         tuple = new(execClassLines, "Number lines per class");
@@ -689,13 +748,13 @@
 
     @namePerCountDisplay.Render()
 
-    <h2>Summary of project public classes</h2>
+    <h2 id="summary-of-project-public-classes">Summary of project public classes</h2>
     @if (mostPublicClasses != null)
     {
 <text>
 
 
-<h3> Assemblies with number of public classes</h3>
+            <h3 id="assemblies-public-classes"> Assemblies with number of public classes</h3>
 
 @{
     tuple = new(publicClassRefData.Assemblies_PublicClasses, "Public class per project");
@@ -704,7 +763,7 @@
 
 @namePerCountDisplay.Render()
 
-<h3> Assemblies with Public methods</h3>
+            <h3 id="assemblies-public-methods"> Assemblies with Public methods</h3>
 
 @{
     tuple = new(publicClassRefData.Assemblies_PublicMethods, "Public methods per class");
@@ -714,7 +773,7 @@
 @namePerCountDisplay.Render()
 
 
-<h3> Classes with Public methods</h3>
+            <h3 id="classes-public-methods"> Classes with Public methods</h3>
 
 
 @{
@@ -724,9 +783,9 @@
 
 @namePerCountDisplay.Render()
 
-<h2> Lines summary</h2>
+<h2 id="lines-summary">Lines summary</h2>
 
-<h3>Assemblies with most lines in public classses</h3>
+            <h3 id="assemblies-public-lines">Assemblies with most lines in public classses</h3>
 @{
     tuple = new(publicClassRefData.Assemblies_MostLinesInPublicClass, "Number lines in public class per assembly");
     namePerCountDisplay = new(tuple);
@@ -734,7 +793,7 @@
 
 @namePerCountDisplay.Render()
 
-<h3>Public Classes with most lines</h3>
+            <h3 id="class-public-lines">Public Classes with most lines</h3>
 @{
     tuple = new(publicClassRefData.PublicClass_MostLinesOfCode, "Number lines per public class");
     namePerCountDisplay = new(tuple);
@@ -742,7 +801,7 @@
 
 @namePerCountDisplay.Render()
 
-<h3>Public Methods with most lines</h3>
+            <h3 id="methods-public-lines">Public Methods with most lines</h3>
 
 @{
     tuple = new(publicClassRefData.PublicMethod_MostLinesOfCode, "Number lines per public method");
@@ -756,16 +815,16 @@
 </text>
 
     }
-    <h2> References between projects</h2>
+    <h2 id="references-between-projects"> References between projects</h2>
 
-    <h3> Assemblies with Referencesx</h3>
+    <h3 id="assemblies-references"> Assemblies with Referencesx</h3>
     @{
         tuple = new(refSummary.AssembliesReferences, "References per assembly");
         namePerCountDisplay = new(tuple);
     }
 
     @namePerCountDisplay.Render()
-    <h3> Classes with References</h3>
+    <h3 id="class-references"> Classes with References</h3>
 
     @{
         tuple = new(refSummary.classRefs, "References per class");
@@ -806,7 +865,7 @@
 
 </text>
 
-<h3> Commits per year and folder </h3>
+<h3 id="Commits-per-year-and-folder"> Commits per year and folder </h3>
 
 @yearFolders.Render() 
 

@@ -2,6 +2,7 @@
 @{
 
     string name= Model.Item1;
+    string nameId= name.Replace(" ","-");
     var nameCount = Model.Item2;
     if(nameCount.Count() == 0)
     {
@@ -32,9 +33,9 @@
             )
             );
 <text>
-        <div id="@name" style="height: 100%"></div>
+        <div id="@nameId" style="height: 100%"></div>
         <script type="text/javascript">
-            var dom = document.getElementById('@name');
+            var dom = document.getElementById('@nameId');
             var myChart = echarts.init(dom, null, {
                 renderer: 'canvas',
                 useDirtyRect: false
