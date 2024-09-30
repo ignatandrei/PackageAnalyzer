@@ -1,12 +1,13 @@
 @inherits RazorBlade.PlainTextTemplate<Tuple<string,NamePerCount[],int,int, bool>>;
 @{
+
     string name= Model.Item1;
     var nameCount = Model.Item2;
     if(nameCount.Count() == 0)
     {
         return;
     }
-    
+    nameCount = nameCount.Distinct().ToArray();
     var threshold1 = Model.Item3;
     var threshold2 = Model.Item4;
     var inverseData = Model.Item5;

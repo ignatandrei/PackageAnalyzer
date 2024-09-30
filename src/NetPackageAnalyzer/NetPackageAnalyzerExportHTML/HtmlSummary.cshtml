@@ -129,7 +129,7 @@
     .OrderByDescending(it => it.Count)
     .ToArray();
     var maxCycAssIndex = CCAssIndex.FirstOrDefault();
-    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycMethod", CycAssIndex, 10, 25, true));
+    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycAssembly", CycAssIndex, 10, 25, true));
 
     var CycClassIndex = assemblyDataFromMSFT
         .ClassesMetrics(eMSFTMetrics.CyclomaticComplexity)
@@ -144,7 +144,7 @@
     .OrderByDescending(it => it.Count)
     .ToArray();
     var maxCycMethodIndex = CycMethodIndex.FirstOrDefault();
-    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycAss", CycMethodIndex, 10, 25, true));
+    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycMethod", CycMethodIndex, 10, 25, true));
 
     var packages=projectDicts.Packages();
     var topPackages = packages.OrderByDescending(it => it.Count).Take(7).ToArray();
