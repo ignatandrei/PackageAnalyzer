@@ -90,7 +90,7 @@
         .OrderBy(it=>it.Count)
         .ToArray();
     var minMaintAssIndex = maintAssIndex.FirstOrDefault();
-    var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("maintAss", maintAssIndex, 10, 20,false));
+    var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Assembly", maintAssIndex, 10, 20,false));
 
 
     var maintClassIndex = assemblyDataFromMSFT
@@ -98,28 +98,28 @@
         .OrderBy(it => it.Count)
         .ToArray();
     var minMaintClassIndex = maintClassIndex.FirstOrDefault();
-    var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("maintClass", maintClassIndex, 10, 20, false));
+    var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Class", maintClassIndex, 10, 20, false));
 
     var maintMethodIndex = assemblyDataFromMSFT
     .MethodsMetrics(eMSFTMetrics.MaintainabilityIndex)
     .OrderBy(it => it.Count)
     .ToArray();
     var minMaintMethodIndex = maintMethodIndex.FirstOrDefault();
-    var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("maintMethod", maintMethodIndex, 10, 20, false));
+    var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Method", maintMethodIndex, 10, 20, false));
 
     var CCAssIndex = assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.ClassCoupling)
         .OrderByDescending(it => it.Count)
         .ToArray();
     var maxCCAssIndex = CCAssIndex.FirstOrDefault();
-    var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CCAss", CCAssIndex, 0, 10, true));
+    var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Assembly", CCAssIndex, 0, 10, true));
 
     var CCClassIndex = assemblyDataFromMSFT
     .ClassesMetrics(eMSFTMetrics.ClassCoupling)
     .OrderByDescending(it => it.Count)
     .ToArray();
     var maxCCClassIndex = CCClassIndex.FirstOrDefault();
-    var CCClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CCClass", CCClassIndex, 0, 10,true));
+    var CCClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Class", CCClassIndex, 0, 10, true));
 
 
 
@@ -129,14 +129,14 @@
     .OrderByDescending(it => it.Count)
     .ToArray();
     var maxCycAssIndex = CCAssIndex.FirstOrDefault();
-    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycAssembly", CycAssIndex, 10, 25, true));
+    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Assembly", CycAssIndex, 10, 25, true));
 
     var CycClassIndex = assemblyDataFromMSFT
         .ClassesMetrics(eMSFTMetrics.CyclomaticComplexity)
         .OrderByDescending(it => it.Count)
         .ToArray();
     var maxCycClassIndex = CycClassIndex.FirstOrDefault();
-    var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycClass", CycClassIndex, 10, 25, true));
+    var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Class", CycClassIndex, 10, 25, true));
 
 
     var CycMethodIndex = assemblyDataFromMSFT
@@ -144,7 +144,7 @@
     .OrderByDescending(it => it.Count)
     .ToArray();
     var maxCycMethodIndex = CycMethodIndex.FirstOrDefault();
-    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("CycMethod", CycMethodIndex, 10, 25, true));
+    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Method", CycMethodIndex, 10, 25, true));
 
     var packages=projectDicts.Packages();
     var topPackages = packages.OrderByDescending(it => it.Count).Take(7).ToArray();
@@ -271,7 +271,7 @@
     </div>
     <div class="containerDisplayInfo">
     <div class="left">
-    <h2>Assembly Info</h2>
+    <h2 id="assembly-info">Assembly Info</h2>
     @{
                 tableRow = 0;
     }
@@ -335,7 +335,7 @@
     </table>
     </div>
     <div class="center">
-    <h2>Class Info</h2>
+    <h2 id="class-info">Class Info</h2>
 @{
     tableRow = 0;
  }<table>
@@ -381,7 +381,7 @@
     @{
         tableRow = 0;
     }
-        <h2>Method Info</h2>
+        <h2 id="method-info">Method Info</h2>
 <table>
                 <thead>
                     <tr>
@@ -414,7 +414,7 @@
     </div>
     <br />
     <br />
-    <h1>Radar @nameSolution</h1>
+    <h1 id="radar-summary">Radar @nameSolution</h1>
 
     @radar.Render()
 
@@ -774,7 +774,7 @@
 
     @namePerCountDisplay.Render()
 
-    <h2> Commits</h2>
+    <h2 id="commits"> Commits</h2>
     <h3> Commits per year</h3>
     @if(yearCommitsFolder.Count>0){
 
