@@ -1,4 +1,5 @@
 ﻿using NetPackageAnalyzeHistory;
+using System.ComponentModel;
 
 namespace NetPackageAnalyzerObjects;
 
@@ -22,7 +23,58 @@ public partial record ProjectData(string PathProject, string folderSolution)
     public List<ProjectData> UpStreamProjectReferences { get; set; } = new();
 
     public List<PackageData> Packages { get; set; }=new();
-    
+
+    public Dictionary<string, NamePerCount[]> LicNames()
+    {
+        Dictionary<string, NamePerCount[]> ret = new();
+        foreach (var item in Packages)
+        {
+            var res = item.Licenses();
+            foreach (var lic in res)
+            {
+                if (ret.ContainsKey(lic.Name))
+                    ret[lic.Name] = ret[lic.Name].Append(lic).ToArray();
+                else
+                    ret[lic.Name] = new NamePerCount[] { lic };
+            }
+        }
+        return ret;
+    }
+    public NamePerCount[] NamePerCountLicences(string nameLicence)
+    {
+        List<NamePerCount>  ret = new();
+        foreach (var item in Packages)
+        {
+            var res = item.Licenses();
+            foreach (var lic in res)
+            {
+                if (lic.Name != nameLicence)
+                    continue;
+                ret.Add(lic);
+            }
+        }
+        return ret.ToArray();
+    }
+    public NamePerCount[] Licenses()
+    {
+        Dictionary<string, long> Licences = new();
+        foreach (var item in Packages)
+        {
+            var res = item.Licenses();
+            foreach (var lic in res)
+            {
+                if(Licences.ContainsKey(lic.Name))
+                    Licences[lic.Name] += lic.Count;
+                else
+                    Licences[lic.Name] = lic.Count;
+
+
+            }
+        }
+        return Licences.Select(it => new NamePerCount(it.Key, it.Value))
+            .OrderBy(it=>it.Name)
+            .ToArray();
+    }
     public ProjectData[] AlphabeticalProjectsReferences()
     { 
         

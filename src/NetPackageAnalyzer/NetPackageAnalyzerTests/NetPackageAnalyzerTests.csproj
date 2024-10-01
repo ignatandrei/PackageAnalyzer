@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj" />
+    <ProjectReference Include="..\NuGetInfo\NuGetInfo.csproj" />
   </ItemGroup>
 
   <ItemGroup>

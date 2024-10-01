@@ -54,4 +54,33 @@ public partial record PackageData(string packageVersionId)
         return VersionsPerProjectWithProblems.Count > 0;
     }
     public Dictionary<string, List<ProjectData>> VersionsPerProjectWithProblems { get; set; } = new();
+    public NamePerCount[] Licenses()
+    {
+        var nugetInfo = new NugetInfoData(packageVersionId);
+        Dictionary<string,int> Licences = new();
+        foreach (var item in VersionsPerProject)
+        {
+            var res = nugetInfo.GetNugetInfoLicence(item.Key);
+            string nameLic = "License not found";
+            if (res.TryGetLicenseFound(out var lic))
+            {
+                nameLic=lic.license;
+            }
+            if (Licences.ContainsKey(nameLic))
+            {
+                Licences[nameLic]++;
+            }
+            else
+            {
+                Licences.Add(nameLic, 1);
+            }
+        }
+        return Licences.Select(it=>
+        {
+            var ret= new NamePerCount(it.Key, it.Value);
+            ret.AdditionalData = packageVersionId;
+            return ret;
+        })
+        .ToArray();
+    }
 }

@@ -15,6 +15,10 @@
 		<PackageReference Include="RSCG_InterceptMethod" Version="8.2024.2318.289" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<PackageReference Include="RSCG_InterceptMethodCommon" Version="8.2024.2318.289" />
 		<PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+		<PackageReference Include="RSCG_NameGenerator" Version="2024.26.8.2002" >
+			<OutputItemType>Analyzer</OutputItemType>
+			<ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AnalyzeMerge\AnalyzeMerge.csproj" />
@@ -23,7 +27,7 @@
 	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>8.2024.930.1330</Version>
+		<Version>8.2024.1001.1900</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>

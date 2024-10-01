@@ -11,6 +11,7 @@ global using System.Text.Json;
 global using System.Threading.Tasks;
 global using RSCG_ExportDiagram_Import;
 global using NetPackageAnalyzerMetricsMSFT;
+global using NuGetInfo;
 
 public static class GlobalsForGenerating
 {

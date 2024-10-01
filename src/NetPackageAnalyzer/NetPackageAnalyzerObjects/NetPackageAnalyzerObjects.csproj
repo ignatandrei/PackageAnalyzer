@@ -38,6 +38,7 @@
 	  <ProjectReference Include="..\NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj" />
+	  <ProjectReference Include="..\NuGetInfo\NuGetInfo.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
 

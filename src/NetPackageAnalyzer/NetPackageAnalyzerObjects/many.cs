@@ -34,6 +34,6 @@ public class PublicClassRefData
 
 public record NamePerCount(string Name, long Count)
 {
-    public string FullName { get; set; } = Name;
+    public string AdditionalData { get; set; } = Name;
 
 }

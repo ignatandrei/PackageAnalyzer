@@ -8,6 +8,24 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
+    
+    public NamePerCount[] Licenses()
+    {
+        Dictionary<string,long> ret = new();
+        foreach (var item in this.Values)
+        {
+            var res = item.Licenses();
+            foreach (var lic in res)
+            {
+
+                if (ret.ContainsKey(lic.Name))
+                    ret[lic.Name] += lic.Count;
+                else
+                    ret[lic.Name] = lic.Count;
+            }
+        }
+        return ret.Select(it=>new NamePerCount(it.Key,it.Value)).ToArray();
+    }
     public long TotalCommits()
     {
         return this.Values

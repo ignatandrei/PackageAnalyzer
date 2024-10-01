@@ -225,6 +225,12 @@
     </div>
     <div class="center">
             <h1>Summary @nameSolution   </h1>
+            <a href="#licences-per-project"> Licenses</a>:
+            @foreach(var item in projectDicts.Licenses())
+            {
+                <span>@item.Name : @item.Count</span><span>;</span>
+                
+            }
         </div>
     <div class="right">
             <h2 >Commits</h2>
@@ -689,6 +695,60 @@
     }
 
     @namePerCountDisplay.Render()
+
+    <h2 id="licences-per-project">Licences per project</h2>
+    <ol>
+        @{
+        
+        foreach(var prj in projectDicts.AlphabeticOrderedProjects)
+        {
+            <li>@prj.NameCSproj() : @(prj.IsTestProject()?"Test Project":"") 
+            <ol>
+            @foreach(var lic in prj.Licenses())
+            {
+                <li>@lic.Name : @lic.Count</li>
+            }
+            </ol>
+                </li>
+        }
+    }
+    </ol>
+    <h2 id="licences-per-project-and-package">Licences per project and package</h2>
+    <ol>
+    @foreach (var lic in projectDicts.Licenses())
+    {
+        <li>
+                @lic.Name : @lic.Count
+        @foreach(var prj in projectDicts.AlphabeticOrderedProjects)
+        {
+                    var licData = prj.NamePerCountLicences(lic.Name);
+                    if(licData.Length==0){continue;}
+
+                    <table>
+                <thead>
+                     <tr>
+                        <th>Project</th>
+                        <th>Package</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var licPrj in licData)
+                    {
+                        <tr>
+                            <td>@prj.NameCSproj()</td>
+                            <td>@licPrj.Name : @licPrj.Count </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        </li>
+        
+        
+
+    }
+    </ol>
 
     <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
     @if(keysPackageMultiple.Length>0){
