@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetPackageAnalyzerMetricsMS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuGetInfo", "NuGetInfo\NuGetInfo.csproj", "{4A4E5CC0-C34D-4BDC-9367-448213B40172}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPA.Resources", "NPA.Resources\NPA.Resources.csproj", "{BA1E9CDB-4241-4910-92F1-4C374D1EE1C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{4A4E5CC0-C34D-4BDC-9367-448213B40172}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A4E5CC0-C34D-4BDC-9367-448213B40172}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A4E5CC0-C34D-4BDC-9367-448213B40172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA1E9CDB-4241-4910-92F1-4C374D1EE1C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1E9CDB-4241-4910-92F1-4C374D1EE1C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1E9CDB-4241-4910-92F1-4C374D1EE1C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1E9CDB-4241-4910-92F1-4C374D1EE1C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

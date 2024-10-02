@@ -157,6 +157,9 @@
     <meta charset="utf-8">
     <script type="text/javascript" src="echarts.min.js"></script>
     <script type="text/javascript" src="vis-network.min.js"></script>
+    <script type="text/javascript" src="tabulator.min.js"></script>
+    <link rel="stylesheet" href="tabulator.min.css" />
+    <link rel="stylesheet" href="tabulator.theme.min.js" />
     <style>
         table thead tr {
             background-color: #ffcccb; /* Light red */
@@ -226,11 +229,27 @@
     <div class="center">
             <h1>Summary @nameSolution   </h1>
             <a href="#licences-per-project"> Licenses</a>:
-            @foreach(var item in projectDicts.Licenses())
-            {
-                <span>@item.Name : @item.Count</span><span>;</span>
-                
-            }
+            <div id="licences-summary-table"></div>
+            <script>
+                var tabledata = [
+                    @foreach (var lic in projectDicts.Licenses())
+                    {
+                        <text>
+                            { "Name": "@lic.Name", "Licenses": "@lic.Count" },
+                        </text>
+                    }
+                ];
+                var table = new Tabulator("#licences-summary-table", {
+                    data: tabledata,
+                    layout: "fitColumns",
+                    rowHeader: { formatter: "rownum", headerSort: false, hozAlign: "center", resizable: false, frozen: true },
+                    columns: [
+                        { title: "Name", field: "Name" },
+                        { title: "Licenses", field: "Licenses" },
+                    ],
+                });
+            </script>
+            
         </div>
     <div class="right">
             <h2 >Commits</h2>

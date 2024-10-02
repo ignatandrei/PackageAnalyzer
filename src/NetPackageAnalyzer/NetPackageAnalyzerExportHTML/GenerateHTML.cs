@@ -59,6 +59,18 @@ public class GenerateHTML : GenerateFiles
         nameFileJs = Path.Combine(where, "vis-network.min.js");
         system.File.WriteAllBytes(nameFileJs, res.ToArray());
 
+        res = MyResource.GetTabulatorCss();
+        nameFileJs = Path.Combine(where, "tabulator.min.css");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+
+        res = MyResource.GetTabulatorJs();
+        nameFileJs = Path.Combine(where, "tabulator.min.js");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+
+        res = MyResource.GetTabulatorTheme();
+        nameFileJs = Path.Combine(where, "tabulator.theme.min.js");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+
     }
 }
 

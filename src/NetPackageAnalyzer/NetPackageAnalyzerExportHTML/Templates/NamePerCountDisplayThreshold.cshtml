@@ -3,15 +3,21 @@
 
     string name= Model.Item1;
     string nameId= name.Replace(" ","-");
-    var nameCount = Model.Item2;
-    if(nameCount.Count() == 0)
+    var nameCountData = Model.Item2;
+    if (nameCountData.Count() == 0)
     {
         return;
     }
-    nameCount = nameCount.Distinct().ToArray();
+    var nameCount = nameCountData.Distinct().ToArray();
+    int maxPage = nameCount.Length <10? 10: nameCount.Length;
+    int nrSplit = maxPage > 100 ? 100 : 10;
+    var chunk = Enumerable.Chunk(Enumerable.Range(1, maxPage), nrSplit);
+    var pages = string.Join(",", chunk.Select(it => it.Last()));
     var threshold1 = Model.Item3;
     var threshold2 = Model.Item4;
     var inverseData = Model.Item5;
+    string jsBool = inverseData ? "true" : "false";
+
     if(inverseData & (threshold1<threshold2))
     {
         var temp = threshold1;
@@ -72,6 +78,52 @@
 
             window.addEventListener('resize', myChart.resize);
         </script>
+        <div id="@(nameId+"-table")"></div>
+        <script>
+            var CompareJS= function (nr, threshold, inverse)
+            {
+                if (inverse) {
+                    return nr > threshold;
+                }
+                return nr < threshold;
+            }
+
+        var formatNumber = function(cell, formatterParams, onRendered) {
+                
+                var values = cell.getValue();
+                if (CompareJS(values, @threshold1, @jsBool ))
+                    return "<span style='color:red'>" + values + "</span>";
+                if (CompareJS(values, @threshold2, @jsBool ))
+                    return "<span style='color:orange'>" + values + "</span>";
+
+                return "<span style='color:blue'>" + values + "</span>";
+            }
+
+            var tabledata = [
+            @foreach (var item in nameCount)
+            {
+                <text>
+                        {"Name": "@item.Name", "Nr": "@item.Count" },
+                </text>
+            }
+                            ];
+            var table = new Tabulator("@("#"+nameId + "-table")", {
+                data: tabledata,
+                layout: "fitColumns",
+                pagination: "local",
+                paginationSize: 10,
+                paginationSizeSelector: [@pages],
+                movableColumns: true,
+                paginationCounter: "rows",
+                columns: [
+                    { formatter: "rownum", hozAlign: "center", width: 40 },
+                    { title: "Name", field: "Name" },
+                    { title: "@name", field: "Nr",  formatter: formatNumber },
+                ],
+            });
+
+        </script>
+
 
         @{
            if (display2.Length > 0)
