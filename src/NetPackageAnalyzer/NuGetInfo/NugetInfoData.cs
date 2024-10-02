@@ -54,6 +54,17 @@ public record NugetInfoData(string PackageId)
         {
             return new NoLicenseFound();
         }
-        return new LicenseFound(license.Value);
+        
+        var value = license.Value;
+        if (value == null)
+        {
+            return new NoLicenseFound();
+        }
+        string fileLicense = Path.Combine(folderPackage, value);
+        if (File.Exists(fileLicense))
+        {
+            value=fileLicense;
+        }
+        return new LicenseFound(value);
     }
 }

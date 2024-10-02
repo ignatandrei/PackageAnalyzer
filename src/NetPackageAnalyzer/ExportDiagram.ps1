@@ -83,6 +83,8 @@ $csprojProcessed | ForEach-Object {
   $metricsFileName = Split-Path $metricsFullFileName -leaf
   #Write-Host $metricsFileName
   $newMetricsFileName =Join-Path  "D:\gth\PackageAnalyzer\docs_Temp" $metricsFileName
+  # $newMetricsFileName= Resolve-Path $newMetricsFileName
+  # $newMetricsFileName = $newMetricsFileName.Path
   Write-Host "move $metricsFullFileName to  $newMetricsFileName"
   Move-Item $metricsFullFileName  $newMetricsFileName -Force
 }
