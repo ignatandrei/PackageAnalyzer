@@ -54,6 +54,7 @@ public partial record PackageData(string packageVersionId)
         return VersionsPerProjectWithProblems.Count > 0;
     }
     public Dictionary<string, List<ProjectData>> VersionsPerProjectWithProblems { get; set; } = new();
+    
     public NamePerCount[] Licenses()
     {
         var nugetInfo = new NugetInfoData(packageVersionId);

@@ -1,7 +1,7 @@
 ﻿try
 {
-    Console.WriteLine($"Name:{TheAssemblyInfo.GeneratedName}");
-    Console.WriteLine($"Nice:{TheAssemblyInfo.GeneratedNameNice}");
+    //Console.WriteLine($"Name:{TheAssemblyInfo.GeneratedName}");
+    Console.WriteLine($"{TheAssemblyInfo.GeneratedNameNice}");
      
     if (args.Length == 0)
     { 

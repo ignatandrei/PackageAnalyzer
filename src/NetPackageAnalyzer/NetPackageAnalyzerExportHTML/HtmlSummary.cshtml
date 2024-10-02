@@ -719,19 +719,19 @@
     {
         <li>
                 @lic.Name : @lic.Count
-        @foreach(var prj in projectDicts.AlphabeticOrderedProjects)
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Package</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var prj in projectDicts.AlphabeticOrderedProjects)
         {
                     var licData = prj.NamePerCountLicences(lic.Name);
                     if(licData.Length==0){continue;}
 
-                    <table>
-                <thead>
-                     <tr>
-                        <th>Project</th>
-                        <th>Package</th>
-                    </tr>
-                </thead>
-                <tbody>
                     @foreach (var licPrj in licData)
                     {
                         <tr>
@@ -740,10 +740,10 @@
                             
                         </tr>
                     }
-                </tbody>
-            </table>
         }
-        </li>
+                    </tbody>
+                </table>
+            </li>
         
         
 

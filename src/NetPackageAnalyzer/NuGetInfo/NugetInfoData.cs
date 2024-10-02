@@ -50,21 +50,33 @@ public record NugetInfoData(string PackageId)
         var nuspec = File.ReadAllText(fileNuspec);
         var doc = XDocument.Parse(nuspec);
         var license = doc.Descendants().FirstOrDefault(x => x.Name.LocalName == "license");
+        if (license != null)
+        {
+
+            var value = license.Value;
+            if (value == null)
+            {
+                return new NoLicenseFound();
+            }
+            string fileLicense = Path.Combine(folderPackage, value);
+            if (File.Exists(fileLicense))
+            {
+                value = fileLicense;
+            }
+            return new LicenseFound(value);
+        }
+        //license is null, find licenseUrl
+        license = doc.Descendants().FirstOrDefault(x => x.Name.LocalName == "licenseUrl");
         if(license == null)
         {
             return new NoLicenseFound();
         }
-        
-        var value = license.Value;
-        if (value == null)
+        var licenseUrl = license.Value;
+        if (licenseUrl == null)
         {
             return new NoLicenseFound();
         }
-        string fileLicense = Path.Combine(folderPackage, value);
-        if (File.Exists(fileLicense))
-        {
-            value=fileLicense;
-        }
-        return new LicenseFound(value);
+        return new LicenseFound(licenseUrl);
+
     }
 }

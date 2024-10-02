@@ -42,7 +42,7 @@ public partial record ProjectData(string PathProject, string folderSolution)
     }
     public NamePerCount[] NamePerCountLicences(string nameLicence)
     {
-        List<NamePerCount>  ret = new();
+        Dictionary<string,long>  ret = new();
         foreach (var item in Packages)
         {
             var res = item.Licenses();
@@ -50,10 +50,13 @@ public partial record ProjectData(string PathProject, string folderSolution)
             {
                 if (lic.Name != nameLicence)
                     continue;
-                ret.Add(lic);
+                if(ret.ContainsKey(lic.AdditionalData))
+                    ret[lic.AdditionalData] += lic.Count;
+                else
+                    ret[lic.AdditionalData] = lic.Count;
             }
         }
-        return ret.ToArray();
+        return ret.Select(it=>new NamePerCount(it.Key,it.Value)).ToArray();
     }
     public NamePerCount[] Licenses()
     {
