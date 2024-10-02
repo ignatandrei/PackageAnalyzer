@@ -717,22 +717,41 @@
 
     <h2 id="licences-per-project">Licences per project</h2>
     
-    <ol>
+
+    <div id="licences-per-project-table"></div>
+
+    <script>
+        var tabledata = [];
         @{
-        
-        foreach(var prj in projectDicts.AlphabeticOrderedProjects)
-        {
-            <li>@prj.NameCSproj() : @(prj.IsTestProject()?"Test Project":"") 
-            <ol>
-            @foreach(var lic in prj.Licenses())
+            foreach(var prj in projectDicts.AlphabeticOrderedProjects)
             {
-                <li>@lic.Name : @lic.Count</li>
+                foreach (var lic in prj.Licenses())
+                {
+
+                <text>
+                      tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name" ,"Nr":@lic.Count  });
+                </text>
+                }
             }
-            </ol>
-                </li>
-        }
-    }
-    </ol>
+        }                            
+        var table = new Tabulator("#licences-per-project-table", {
+            data: tabledata,
+            layout: "fitColumns",
+            pagination: "local",
+            paginationSize: 10,
+            paginationSizeSelector: [10,20,100],
+            movableColumns: true,
+            paginationCounter: "rows",
+            columns: [
+                { formatter: "rownum", hozAlign: "center", width: 40 },
+                { title: "Name", field: "Name" },
+                { title: "License", field: "License" },
+                { title: "Number", field: "Nr" },
+            ],
+        });
+
+    </script>
+
     <h2 id="licences-per-project-and-package">Licences per project and package</h2>
     <ol>
     @foreach (var lic in projectDicts.Licenses())
