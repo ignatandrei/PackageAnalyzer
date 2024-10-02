@@ -9,6 +9,13 @@
     {
         nameCount = nameCount.Take(15).ToArray();
     }
+    string name = Model.Item2;
+    string nameId= name.Replace(" ", "-");
+    int maxPage = nameCount.Length < 10 ? 10 : nameCount.Length;
+    int nrSplit = maxPage > 100 ? 100 : 10;
+    var chunk = Enumerable.Chunk(Enumerable.Range(1, maxPage), nrSplit);
+    var pages = string.Join(",", chunk.Select(it => it.Last()));
+
     int height = 100+nameCount.Count() * 20;
     var xaxis = "[" +
         string.Join(',', nameCount
@@ -34,10 +41,36 @@ config:
 ---
 
 xychart-beta horizontal
-title "@Model.Item2"
+title "@name"
 x-axis @xaxis
 y-axis "" 0--> @maxCount
 bar @yAxis
 
 </div>
+<div id="@(nameId+"-table")"></div>
 
+<script>
+    var tabledata = [
+    @foreach (var item in nameCount)
+    {
+        <text>
+                {"Name": "@item.Name", "Nr": "@item.Count" },
+        </text>
+    }
+                                ];
+    var table = new Tabulator("@("#" + nameId + "-table")", {
+        data: tabledata,
+        layout: "fitColumns",
+        pagination: "local",
+        paginationSize: 10,
+        paginationSizeSelector: [@pages],
+        movableColumns: true,
+        paginationCounter: "rows",
+        columns: [
+            { formatter: "rownum", hozAlign: "center", width: 40 },
+            { title: "Name", field: "Name" },
+            { title: "@name", field: "Nr"},
+        ],
+    });
+
+</script>

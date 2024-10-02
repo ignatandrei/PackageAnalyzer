@@ -58,7 +58,7 @@
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "--verbose","false"
         //};
-    }  
+    } 
     return await RealMainExecuting.RealMain(args);
 }
 catch (Exception ex) 
