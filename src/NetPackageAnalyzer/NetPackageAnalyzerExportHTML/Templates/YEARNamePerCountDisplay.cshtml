@@ -24,10 +24,10 @@
 <text>
 
 
-    <div id="containerBar" style="height: 100%"></div>
+    <div id="containerBarYearNameCount" style="height: 100%"></div>
 
     <script type="text/javascript">
-        var dom = document.getElementById('containerBar');
+        var dom = document.getElementById('containerBarYearNameCount');
         var myChart = echarts.init(dom, null, {
             renderer: 'canvas',
             useDirtyRect: false
@@ -201,7 +201,45 @@ data: [@string.Join(",", dataFolder)],
         window.addEventListener('resize', myChart.resize);
     </script>
 
+    <div id="tabularYearNameCount" ></div>
+    <script>
+        var tabledata = [];
+
+@{
+    foreach (var folder in names){
+    foreach (var year in years) {
+                var data = Model[year]
+                    .FirstOrDefault(x => x.Name == folder)?
+                    .Count;
+            if(data != null)    
+            {
+                    <text>
+tabledata.push({"folder": "@folder", "year":@year,"Nr": "@data" });
+                    </text>
+            }
+    }
     
+}
+        }
+
+                var table = new Tabulator("#tabularYearNameCount", {
+            data: tabledata,
+            layout: "fitColumns",
+            pagination: "local",
+            paginationSize: 10,
+            paginationSizeSelector: [10,50,100],
+            movableColumns: true,
+            paginationCounter: "rows",
+            columns: [
+                { formatter: "rownum", hozAlign: "center", width: 40 },
+                    { title: "Year", field: "year" },
+                    { title: "Folder", field: "folder" },
+                    { title: "Number", field: "Nr" },
+            ],
+        });
+
+    </script>
+
     
     
     
