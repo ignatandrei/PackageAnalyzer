@@ -229,26 +229,6 @@
     <div class="center">
             <h1>Summary @nameSolution   </h1>
             <a href="#licences-per-project"> Licenses</a>:
-            <div id="licences-summary-table"></div>
-            <script>
-                var tabledata = [
-                    @foreach (var lic in projectDicts.Licenses())
-                    {
-                        <text>
-                            { "Name": "@lic.Name", "Licenses": "@lic.Count" },
-                        </text>
-                    }
-                ];
-                var table = new Tabulator("#licences-summary-table", {
-                    data: tabledata,
-                    layout: "fitColumns",
-                    rowHeader: { formatter: "rownum", headerSort: false, hozAlign: "center", resizable: false, frozen: true },
-                    columns: [
-                        { title: "Name", field: "Name" },
-                        { title: "Licenses", field: "Licenses" },
-                    ],
-                });
-            </script>
             
         </div>
     <div class="right">
@@ -319,7 +299,9 @@
             {
 <tr>
 <td>@(++tableRow)</td>
-<td>Max nr of references to other assemblies:@maxAssemblyRef.Count</td>
+<td>
+                                <a href="assemblies-references">Max nr of references to other assemblies</a>:@maxAssemblyRef.Count
+                            </td>
 <td>@maxAssemblyRef.Name</td>
 </tr>
             }
@@ -715,6 +697,29 @@
 
     @namePerCountDisplay.Render()
 
+    <h2 id="licences-summary-table-h2">Summary Licences per project</h2>
+    <div id="licences-summary-table"></div>
+
+    <script>
+        var tabledata = [
+        @foreach (var lic in projectDicts.Licenses())
+        {
+            <text>
+                    {"Name": "@lic.Name", "Licenses": "@lic.Count" },
+            </text>
+        }
+                        ];
+        var table = new Tabulator("#licences-summary-table", {
+            data: tabledata,
+            layout: "fitColumns",
+            rowHeader: { formatter: "rownum", headerSort: false, hozAlign: "center", resizable: false, frozen: true },
+            columns: [
+                { title: "Name", field: "Name" },
+                { title: "Licenses", field: "Licenses" },
+            ],
+        });
+    </script>
+
     <h2 id="licences-per-project">Licences per project</h2>
     
 
@@ -916,7 +921,7 @@
     }
     <h2 id="references-between-projects"> References between projects</h2>
 
-    <h3 id="assemblies-references"> Assemblies with Referencesx</h3>
+    <h3 id="assemblies-references"> Assemblies with References</h3>
     @{
         tuple = new(refSummary.AssembliesReferences, "References per assembly");
         namePerCountDisplay = new(tuple);
