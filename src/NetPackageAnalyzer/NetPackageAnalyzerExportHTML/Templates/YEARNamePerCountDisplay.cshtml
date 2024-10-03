@@ -232,9 +232,9 @@ tabledata.push({"folder": "@folder", "year":@year,"Nr": "@data" });
             paginationCounter: "rows",
             columns: [
                 { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Year", field: "year" },
-                    { title: "Folder", field: "folder" },
-                    { title: "Number", field: "Nr" },
+                    { title: "Year", field: "year", headerFilter: "input" },
+                    { title: "Folder", field: "folder", headerFilter: "input" },
+                    { title: "Number", field: "Nr", headerFilter: "input" },
             ],
         });
 

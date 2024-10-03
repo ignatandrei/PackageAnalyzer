@@ -712,10 +712,10 @@
         var table = new Tabulator("#licences-summary-table", {
             data: tabledata,
             layout: "fitColumns",
-            rowHeader: { formatter: "rownum", headerSort: false, hozAlign: "center", resizable: false, frozen: true },
             columns: [
-                { title: "Name", field: "Name" },
-                { title: "Licenses", field: "Licenses" },
+                { formatter: "rownum", hozAlign: "center", width: 40 },
+                { title: "Name", field: "Name", headerFilter: "input" },
+                { title: "Licenses", field: "Licenses", headerFilter: "input" },
             ],
         });
     </script>
@@ -749,9 +749,9 @@
             paginationCounter: "rows",
             columns: [
                 { formatter: "rownum", hozAlign: "center", width: 40 },
-                { title: "Name", field: "Name" },
-                { title: "License", field: "License" },
-                { title: "Number", field: "Nr" },
+                    { title: "Name", field: "Name",  headerFilter: "input" },
+                    { title: "License", field: "License", headerFilter: "input" },
+                    { title: "Number", field: "Nr", headerFilter: "input" },
             ],
         });
 
