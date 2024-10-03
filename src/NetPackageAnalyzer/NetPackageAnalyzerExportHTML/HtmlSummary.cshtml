@@ -697,7 +697,7 @@
 
     @namePerCountDisplay.Render()
 
-    <h2 id="licences-summary-table-h2">Summary Licences per project</h2>
+    <h2 id="licences-summary-table-h2">Summary Licences</h2>
     <div id="licences-summary-table"></div>
 
     <script>
@@ -733,9 +733,9 @@
                 foreach (var lic in prj.Licenses())
                 {
 
-                <text>
-                      tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name" ,"Nr":@lic.Count  });
-                </text>
+                    <text>
+                          tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name" ,"Nr":@lic.Count  });
+                    </text>
                 }
             }
         }                            
@@ -744,7 +744,7 @@
             layout: "fitColumns",
             pagination: "local",
             paginationSize: 10,
-            paginationSizeSelector: [10,20,100],
+            paginationSizeSelector: [10,20,100,200],
             movableColumns: true,
             paginationCounter: "rows",
             columns: [
@@ -758,41 +758,51 @@
     </script>
 
     <h2 id="licences-per-project-and-package">Licences per project and package</h2>
-    <ol>
-    @foreach (var lic in projectDicts.Licenses())
-    {
-        <li>
-                @lic.Name : @lic.Count
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var prj in projectDicts.AlphabeticOrderedProjects)
-        {
+    <div id="licences-per-project-and-package-table"></div>
+        <script>
+        var tabledata = [];
+        @{
+
+            foreach (var lic in projectDicts.Licenses())
+            {
+                var licName=lic.Name;
+                var licCount=lic.Count;
+                foreach (var prj in projectDicts.AlphabeticOrderedProjects)
+                {
                     var licData = prj.NamePerCountLicences(lic.Name);
-                    if(licData.Length==0){continue;}
-
-                    @foreach (var licPrj in licData)
+                    if (licData.Length == 0) { continue; }
+                    foreach (var licPrj in licData)
                     {
-                        <tr>
-                            <td>@prj.NameCSproj()</td>
-                            <td>@licPrj.Name </td>
-                            
-                        </tr>
+                            <text>
+                tabledata.push({
+                                "LicenseName":"@licName",
+                                "Project":"@prj.NameCSproj()",
+                                "Package":"@licPrj.Name"
+                                });
+                            </text>
                     }
-        }
-                    </tbody>
-                </table>
-            </li>
-        
-        
+                }
+            }
+            <text>
+            var table = new Tabulator("#licences-per-project-and-package-table", {
+            data: tabledata,
+            layout: "fitColumns",
+            pagination: "local",
+            paginationSize: 10,
+            paginationSizeSelector: [10,20,100,200],
+            movableColumns: true,
+            paginationCounter: "rows",
+            columns: [
+            { formatter: "rownum", hozAlign: "center", width: 40 },
+            { title: "Project", field: "Project", headerFilter: "input" },
+            { title: "Package", field: "Package", headerFilter: "input" },
+                    {title: "LicenseName", field: "LicenseName", headerFilter: "input" },
+            ],
+            });
+            </text>
 
-    }
-    </ol>
+        }
+        </script>
 
     <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
     @if(keysPackageMultiple.Length>0){
