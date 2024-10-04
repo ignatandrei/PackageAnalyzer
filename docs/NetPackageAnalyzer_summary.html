@@ -76,52 +76,6 @@
     <div class="center">
             <h1>Summary NetPackageAnalyzer   </h1>
             <a href="#licences-per-project"> Licenses</a>:
-            <div id="licences-summary-table"></div>
-            <script>
-                var tabledata = [
-
-                            { "Name": "D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt", "Licenses": "2" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md", "Licenses": "2" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\rscg_interceptmethod\8.2024.2318.289\LICENSE", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\rscg_interceptmethodcommon\8.2024.2318.289\LICENSE", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE", "Licenses": "6" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE", "Licenses": "6" },
-                        
-                            { "Name": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT", "Licenses": "3" },
-                        
-                            { "Name": "MIT", "Licenses": "136" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\microsoft.codecoverage\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\microsoft.net.test.sdk\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.telemetry\1.1.0\License.txt", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.trxreport.abstractions\1.1.0\License.txt", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.vstestbridge\1.1.0\License.txt", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\microsoft.testing.platform.msbuild\1.1.0\License.txt", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\microsoft.testplatform.objectmodel\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
-                        
-                            { "Name": "D:\MyPackages\.nuget\packages\microsoft.testplatform.testhost\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
-                                        ];
-                var table = new Tabulator("#licences-summary-table", {
-                    data: tabledata,
-                    layout: "fitColumns",
-                    rowHeader: { formatter: "rownum", headerSort: false, hozAlign: "center", resizable: false, frozen: true },
-                    columns: [
-                        { title: "Name", field: "Name" },
-                        { title: "Licenses", field: "Licenses" },
-                    ],
-                });
-            </script>
             
         </div>
     <div class="right">
@@ -140,7 +94,7 @@
                         <td>1</td>
                         <td>
                             <a href="#commits">
-                            Total Commits : 210</td>
+                            Total Commits : 212</td>
                     </tr>
 
                     <tr>
@@ -161,7 +115,7 @@
                     <tr>
                         <td>4</td>
                         <td>
-                            The file with most commits ( 96 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
+                            The file with most commits ( 98 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
                         </td>
                     </tr>
 
@@ -184,7 +138,9 @@
         <tbody>
 <tr>
 <td>1</td>
-<td>Max nr of references to other assemblies:39</td>
+<td>
+                                <a href="assemblies-references">Max nr of references to other assemblies</a>:39
+                            </td>
 <td>NetPackageAnalyzeHistory</td>
 </tr>
                 <tr>
@@ -373,8 +329,8 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 65 },
-                { name: 'Commits 2024', max: 55 },
+                { name: 'Total Commits', max: 66 },
+                { name: 'Commits 2024', max: 56 },
                 { name: 'Packages', max: 38 },
                 { name: 'References', max: 4 },
                 { name: 'Number Public Classes', max: 34 },
@@ -402,7 +358,7 @@ name: 'NetPackageAnalyzeHistory'
     },
 
     {
-                                value: [65,55, 33, 4, 0, 0,4, 267, 25,32],
+                                value: [66,56, 33, 4, 0, 0,4, 267, 25,32],
 name: 'NetPackageAnalyzerConsole'
     },
 
@@ -417,7 +373,7 @@ name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-                                value: [14,14, 19, 2, 1, 60,1, 74, 7,22],
+                                value: [15,15, 19, 2, 1, 60,1, 74, 7,22],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
@@ -943,8 +899,8 @@ name: 'NuGetInfo'
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", field: "Name" },
-                    { title: "Maintainability for Assembly", field: "Nr",  formatter: formatNumber },
+                    { title: "Name", field: "Name", headerFilter: "input" },
+                    { title: "Maintainability for Assembly", field: "Nr", formatter: formatNumber, headerFilter: "input" },
                 ],
             });
 
@@ -1206,8 +1162,8 @@ name: 'NuGetInfo'
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", field: "Name" },
-                    { title: "Maintainability for Class", field: "Nr",  formatter: formatNumber },
+                    { title: "Name", field: "Name", headerFilter: "input" },
+                    { title: "Maintainability for Class", field: "Nr", formatter: formatNumber, headerFilter: "input" },
                 ],
             });
 
@@ -1739,8 +1695,8 @@ name: 'NuGetInfo'
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", field: "Name" },
-                    { title: "Maintainability for Method", field: "Nr",  formatter: formatNumber },
+                    { title: "Name", field: "Name", headerFilter: "input" },
+                    { title: "Maintainability for Method", field: "Nr", formatter: formatNumber, headerFilter: "input" },
                 ],
             });
 
@@ -1862,8 +1818,8 @@ name: 'NuGetInfo'
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", field: "Name" },
-                    { title: "Class Coupling for Assembly", field: "Nr",  formatter: formatNumber },
+                    { title: "Name", field: "Name", headerFilter: "input" },
+                    { title: "Class Coupling for Assembly", field: "Nr", formatter: formatNumber, headerFilter: "input" },
                 ],
             });
 
@@ -2178,8 +2134,8 @@ name: 'NuGetInfo'
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", field: "Name" },
-                    { title: "Class Coupling for Class", field: "Nr",  formatter: formatNumber },
+                    { title: "Name", field: "Name", headerFilter: "input" },
+                    { title: "Class Coupling for Class", field: "Nr", formatter: formatNumber, headerFilter: "input" },
                 ],
             });
 
@@ -2400,8 +2356,8 @@ name: 'NuGetInfo'
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", field: "Name" },
-                    { title: "Cyclomatic Complexity for Assembly", field: "Nr",  formatter: formatNumber },
+                    { title: "Name", field: "Name", headerFilter: "input" },
+                    { title: "Cyclomatic Complexity for Assembly", field: "Nr", formatter: formatNumber, headerFilter: "input" },
                 ],
             });
 
@@ -2717,8 +2673,8 @@ name: 'NuGetInfo'
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", field: "Name" },
-                    { title: "Cyclomatic Complexity for Class", field: "Nr",  formatter: formatNumber },
+                    { title: "Name", field: "Name", headerFilter: "input" },
+                    { title: "Cyclomatic Complexity for Class", field: "Nr", formatter: formatNumber, headerFilter: "input" },
                 ],
             });
 
@@ -3349,8 +3305,8 @@ name: 'NuGetInfo'
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", field: "Name" },
-                    { title: "Cyclomatic Complexity for Method", field: "Nr",  formatter: formatNumber },
+                    { title: "Name", field: "Name", headerFilter: "input" },
+                    { title: "Cyclomatic Complexity for Method", field: "Nr", formatter: formatNumber, headerFilter: "input" },
                 ],
             });
 
@@ -3611,8 +3567,8 @@ bar [33,8,5,5,4,3,3,1,1,1,1,0]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Number class per project", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Number class per project", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -3681,8 +3637,8 @@ bar [2640,88,75,57,45,36,9,6,3,0,0,0]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Number methods per project", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Number methods per project", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -3756,13 +3712,62 @@ bar [80,80,80,80,80,80,80,80,80,80,80,80,80,80,80]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Number methods per class", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Number methods per class", field: "Nr", headerFilter: "input" },
         ],
     });
 
 </script>
 
+
+    <h2 id="licences-summary-table-h2">Summary Licences</h2>
+    <div id="licences-summary-table"></div>
+
+    <script>
+        var tabledata = [
+
+                    {"Name": "D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt", "Licenses": "2" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md", "Licenses": "2" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\rscg_interceptmethod\8.2024.2318.289\LICENSE", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\rscg_interceptmethodcommon\8.2024.2318.289\LICENSE", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE", "Licenses": "6" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE", "Licenses": "6" },
+            
+                    {"Name": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT", "Licenses": "3" },
+            
+                    {"Name": "MIT", "Licenses": "136" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\microsoft.codecoverage\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\microsoft.net.test.sdk\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.telemetry\1.1.0\License.txt", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.trxreport.abstractions\1.1.0\License.txt", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.vstestbridge\1.1.0\License.txt", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\microsoft.testing.platform.msbuild\1.1.0\License.txt", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\microsoft.testplatform.objectmodel\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
+            
+                    {"Name": "D:\MyPackages\.nuget\packages\microsoft.testplatform.testhost\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
+                                    ];
+        var table = new Tabulator("#licences-summary-table", {
+            data: tabledata,
+            layout: "fitColumns",
+            columns: [
+                { formatter: "rownum", hozAlign: "center", width: 40 },
+                { title: "Name", field: "Name", headerFilter: "input" },
+                { title: "Licenses", field: "Licenses", headerFilter: "input" },
+            ],
+        });
+    </script>
 
     <h2 id="licences-per-project">Licences per project</h2>
     
@@ -3772,1117 +3777,1088 @@ bar [80,80,80,80,80,80,80,80,80,80,80,80,80,80,80]
     <script>
         var tabledata = [];
 
-                      tabledata.push({"Name": "AnalyzeMerge", "License": "D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "AnalyzeMerge", "License": "D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "AnalyzeMerge", "License": "MIT" ,"Nr":2  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\rscg_interceptmethod\8.2024.2318.289\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\rscg_interceptmethodcommon\8.2024.2318.289\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "MIT" ,"Nr":26  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerDiagram", "License": "MIT" ,"Nr":2  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "MIT" ,"Nr":23  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "MIT" ,"Nr":18  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "MIT" ,"Nr":18  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "MIT" ,"Nr":17  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.codecoverage\17.9.0\LICENSE_MIT.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.net.test.sdk\17.9.0\LICENSE_MIT.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.telemetry\1.1.0\License.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.trxreport.abstractions\1.1.0\License.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.vstestbridge\1.1.0\License.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testing.platform.msbuild\1.1.0\License.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testplatform.objectmodel\17.9.0\LICENSE_MIT.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testplatform.testhost\17.9.0\LICENSE_MIT.txt" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "MIT" ,"Nr":28  });
-                
-                      tabledata.push({"Name": "NPA.Resources", "License": "MIT" ,"Nr":1  });
-                
-                      tabledata.push({"Name": "NuGetInfo", "License": "MIT" ,"Nr":1  });
-                        var table = new Tabulator("#licences-per-project-table", {
+                          tabledata.push({"Name": "AnalyzeMerge", "License": "D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "AnalyzeMerge", "License": "D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "AnalyzeMerge", "License": "MIT" ,"Nr":2  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\rscg_interceptmethod\8.2024.2318.289\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\rscg_interceptmethodcommon\8.2024.2318.289\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "MIT" ,"Nr":26  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerDiagram", "License": "MIT" ,"Nr":2  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "MIT" ,"Nr":23  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "MIT" ,"Nr":18  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "MIT" ,"Nr":18  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "MIT" ,"Nr":17  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.codecoverage\17.9.0\LICENSE_MIT.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.net.test.sdk\17.9.0\LICENSE_MIT.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.telemetry\1.1.0\License.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.trxreport.abstractions\1.1.0\License.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testing.extensions.vstestbridge\1.1.0\License.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testing.platform.msbuild\1.1.0\License.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testplatform.objectmodel\17.9.0\LICENSE_MIT.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\microsoft.testplatform.testhost\17.9.0\LICENSE_MIT.txt" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "MIT" ,"Nr":28  });
+                    
+                          tabledata.push({"Name": "NPA.Resources", "License": "MIT" ,"Nr":1  });
+                    
+                          tabledata.push({"Name": "NuGetInfo", "License": "MIT" ,"Nr":1  });
+                            var table = new Tabulator("#licences-per-project-table", {
             data: tabledata,
             layout: "fitColumns",
             pagination: "local",
             paginationSize: 10,
-            paginationSizeSelector: [10,20,100],
+            paginationSizeSelector: [10,20,100,200],
             movableColumns: true,
             paginationCounter: "rows",
             columns: [
                 { formatter: "rownum", hozAlign: "center", width: 40 },
-                { title: "Name", field: "Name" },
-                { title: "License", field: "License" },
-                { title: "Number", field: "Nr" },
+                    { title: "Name", field: "Name",  headerFilter: "input" },
+                    { title: "License", field: "License", headerFilter: "input" },
+                    { title: "Number", field: "Nr", headerFilter: "input" },
             ],
         });
 
     </script>
 
     <h2 id="licences-per-project-and-package">Licences per project and package</h2>
-    <ol>
-        <li>
-                D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt : 2
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>AnalyzeMerge</td>
-                            <td>LibGit2Sharp.NativeBinaries </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>LibGit2Sharp.NativeBinaries </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md : 2
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>AnalyzeMerge</td>
-                            <td>LibGit2Sharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>LibGit2Sharp </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\rscg_interceptmethod\8.2024.2318.289\LICENSE : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>RSCG_InterceptMethod </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\rscg_interceptmethodcommon\8.2024.2318.289\LICENSE : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>RSCG_InterceptMethodCommon </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE : 6
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>RSCG_WhatIAmDoing_Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>RSCG_WhatIAmDoing_Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>RSCG_WhatIAmDoing_Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>RSCG_WhatIAmDoing_Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>RSCG_WhatIAmDoing_Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>RSCG_WhatIAmDoing_Common </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE : 6
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>RSCG_WhatIAmDoing </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>RSCG_WhatIAmDoing </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>RSCG_WhatIAmDoing </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>RSCG_WhatIAmDoing </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>RSCG_WhatIAmDoing </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>RSCG_WhatIAmDoing </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                https://github.com/dotnet/corefx/blob/master/LICENSE.TXT : 3
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>System.Threading.Tasks.Extensions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>System.Threading.Tasks.Extensions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>System.Threading.Tasks.Extensions </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                MIT : 136
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>AnalyzeMerge</td>
-                            <td>RazorBlade </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>System.CommandLine </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>ThisAssembly.AssemblyInfo </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Morris.Moxy </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>TestableIO.System.IO.Abstractions.Wrappers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>N.SourceGenerators.UnionTypes </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.SourceLink.GitHub </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Newtonsoft.Json </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>RSCG_NameGenerator </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>RSCG_TimeBombComment </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Spectre.Console </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.Build.Tasks.Git </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.CodeAnalysis.Analyzers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.CodeAnalysis.Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.CodeAnalysis.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.Extensions.Caching.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.Extensions.Caching.Memory </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.Extensions.DependencyInjection.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.Extensions.Logging.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.Extensions.Options </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.Extensions.Primitives </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>Microsoft.SourceLink.Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>System.Collections.Immutable </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>System.Reflection.Metadata </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>System.Runtime.CompilerServices.Unsafe </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerConsole</td>
-                            <td>TestableIO.System.IO.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDiagram</td>
-                            <td>RazorBlade </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>ThisAssembly.AssemblyInfo </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>RazorBlade </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Morris.Moxy </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>TestableIO.System.IO.Abstractions.Wrappers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>N.SourceGenerators.UnionTypes </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Newtonsoft.Json </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>EmbedResourceCSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>RSCG_TimeBombComment </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.CodeAnalysis.Analyzers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.CodeAnalysis.Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.CodeAnalysis.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.Extensions.Caching.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.Extensions.Caching.Memory </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.Extensions.DependencyInjection.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.Extensions.Logging.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.Extensions.Options </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>Microsoft.Extensions.Primitives </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>System.Collections.Immutable </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>System.Reflection.Metadata </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>System.Runtime.CompilerServices.Unsafe </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerDocusaurus</td>
-                            <td>TestableIO.System.IO.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>RazorBlade </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Morris.Moxy </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>TestableIO.System.IO.Abstractions.Wrappers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>N.SourceGenerators.UnionTypes </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.CodeAnalysis.Analyzers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.CodeAnalysis.Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.CodeAnalysis.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.Extensions.Caching.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.Extensions.Caching.Memory </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.Extensions.DependencyInjection.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.Extensions.Logging.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.Extensions.Options </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>Microsoft.Extensions.Primitives </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>System.Collections.Immutable </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>System.Reflection.Metadata </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>System.Runtime.CompilerServices.Unsafe </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerExportHTML</td>
-                            <td>TestableIO.System.IO.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>ThisAssembly.AssemblyInfo </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Morris.Moxy </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>TestableIO.System.IO.Abstractions.Wrappers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>N.SourceGenerators.UnionTypes </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.CodeAnalysis.Analyzers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.CodeAnalysis.Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.CodeAnalysis.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.Extensions.Caching.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.Extensions.Caching.Memory </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.Extensions.DependencyInjection.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.Extensions.Logging.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.Extensions.Options </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>Microsoft.Extensions.Primitives </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>System.Collections.Immutable </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>System.Reflection.Metadata </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>System.Runtime.CompilerServices.Unsafe </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerObjects</td>
-                            <td>TestableIO.System.IO.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Morris.Moxy </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>TestableIO.System.IO.Abstractions.Wrappers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>N.SourceGenerators.UnionTypes </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Spectre.Console </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.CodeAnalysis.Analyzers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.CodeAnalysis.Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.CodeAnalysis.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.Extensions.Caching.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.Extensions.Caching.Memory </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.Extensions.DependencyInjection.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.Extensions.Logging.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.Extensions.Options </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>Microsoft.Extensions.Primitives </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>System.Collections.Immutable </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>System.Reflection.Metadata </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>System.Runtime.CompilerServices.Unsafe </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerShowInConsole</td>
-                            <td>TestableIO.System.IO.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>MSTest </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>MSTest.TestAdapter </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>MSTest.TestFramework </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>System.IO.Abstractions.TestingHelpers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Morris.Moxy </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>TestableIO.System.IO.Abstractions.Wrappers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>N.SourceGenerators.UnionTypes </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Newtonsoft.Json </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>RSCG_TimeBombComment </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>coverlet.collector </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.CodeAnalysis.Analyzers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.CodeAnalysis.Common </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.CodeAnalysis.CSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Extensions.Caching.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Extensions.Caching.Memory </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Extensions.DependencyInjection.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Extensions.Logging.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Extensions.Options </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Extensions.Primitives </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>System.Collections.Immutable </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>System.Reflection.Metadata </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>System.Runtime.CompilerServices.Unsafe </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>TestableIO.System.IO.Abstractions </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.ApplicationInsights </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Testing.Platform </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>MSTest.Analyzers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>System.Diagnostics.DiagnosticSource </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>TestableIO.System.IO.Abstractions.TestingHelpers </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NPA.Resources</td>
-                            <td>EmbedResourceCSharp </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>NuGetInfo</td>
-                            <td>N.SourceGenerators.UnionTypes </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\microsoft.codecoverage\17.9.0\LICENSE_MIT.txt : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.CodeCoverage </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\microsoft.net.test.sdk\17.9.0\LICENSE_MIT.txt : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.NET.Test.Sdk </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\microsoft.testing.extensions.telemetry\1.1.0\License.txt : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Testing.Extensions.Telemetry </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\microsoft.testing.extensions.trxreport.abstractions\1.1.0\License.txt : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Testing.Extensions.TrxReport.Abstractions </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\microsoft.testing.extensions.vstestbridge\1.1.0\License.txt : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Testing.Extensions.VSTestBridge </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\microsoft.testing.platform.msbuild\1.1.0\License.txt : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.Testing.Platform.MSBuild </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\microsoft.testplatform.objectmodel\17.9.0\LICENSE_MIT.txt : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.TestPlatform.ObjectModel </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-        <li>
-                D:\MyPackages\.nuget\packages\microsoft.testplatform.testhost\17.9.0\LICENSE_MIT.txt : 1
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Package</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>NetPackageAnalyzerTests</td>
-                            <td>Microsoft.TestPlatform.TestHost </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </li>
-    </ol>
+    <div id="licences-per-project-and-package-table"></div>
+        <script>
+        var tabledata = [];
+
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt",
+                                "Project":"AnalyzeMerge",
+                                "Package":"LibGit2Sharp.NativeBinaries"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"LibGit2Sharp.NativeBinaries"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md",
+                                "Project":"AnalyzeMerge",
+                                "Package":"LibGit2Sharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"LibGit2Sharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_interceptmethod\8.2024.2318.289\LICENSE",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"RSCG_InterceptMethod"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_interceptmethodcommon\8.2024.2318.289\LICENSE",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"RSCG_InterceptMethodCommon"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"RSCG_WhatIAmDoing_Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"RSCG_WhatIAmDoing_Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"RSCG_WhatIAmDoing_Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"RSCG_WhatIAmDoing_Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"RSCG_WhatIAmDoing_Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"RSCG_WhatIAmDoing_Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"RSCG_WhatIAmDoing"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"RSCG_WhatIAmDoing"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"RSCG_WhatIAmDoing"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"RSCG_WhatIAmDoing"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"RSCG_WhatIAmDoing"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"RSCG_WhatIAmDoing"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"System.Threading.Tasks.Extensions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"System.Threading.Tasks.Extensions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"System.Threading.Tasks.Extensions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"AnalyzeMerge",
+                                "Package":"RazorBlade"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"System.CommandLine"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"ThisAssembly.AssemblyInfo"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Morris.Moxy"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"TestableIO.System.IO.Abstractions.Wrappers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"N.SourceGenerators.UnionTypes"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.SourceLink.GitHub"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Newtonsoft.Json"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"RSCG_NameGenerator"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"RSCG_TimeBombComment"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Spectre.Console"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.Build.Tasks.Git"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.CodeAnalysis.Analyzers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.CodeAnalysis.Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.CodeAnalysis.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.Extensions.Caching.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.Extensions.Caching.Memory"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.Extensions.Logging.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.Extensions.Options"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.Extensions.Primitives"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"Microsoft.SourceLink.Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"System.Collections.Immutable"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"System.Reflection.Metadata"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"System.Runtime.CompilerServices.Unsafe"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerConsole",
+                                "Package":"TestableIO.System.IO.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDiagram",
+                                "Package":"RazorBlade"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"ThisAssembly.AssemblyInfo"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"RazorBlade"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Morris.Moxy"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"TestableIO.System.IO.Abstractions.Wrappers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"N.SourceGenerators.UnionTypes"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Newtonsoft.Json"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"EmbedResourceCSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"RSCG_TimeBombComment"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.CodeAnalysis.Analyzers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.CodeAnalysis.Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.CodeAnalysis.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.Extensions.Caching.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.Extensions.Caching.Memory"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.Extensions.Logging.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.Extensions.Options"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"Microsoft.Extensions.Primitives"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"System.Collections.Immutable"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"System.Reflection.Metadata"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"System.Runtime.CompilerServices.Unsafe"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerDocusaurus",
+                                "Package":"TestableIO.System.IO.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"RazorBlade"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Morris.Moxy"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"TestableIO.System.IO.Abstractions.Wrappers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"N.SourceGenerators.UnionTypes"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.CodeAnalysis.Analyzers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.CodeAnalysis.Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.CodeAnalysis.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.Extensions.Caching.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.Extensions.Caching.Memory"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.Extensions.Logging.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.Extensions.Options"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"Microsoft.Extensions.Primitives"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"System.Collections.Immutable"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"System.Reflection.Metadata"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"System.Runtime.CompilerServices.Unsafe"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerExportHTML",
+                                "Package":"TestableIO.System.IO.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"ThisAssembly.AssemblyInfo"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Morris.Moxy"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"TestableIO.System.IO.Abstractions.Wrappers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"N.SourceGenerators.UnionTypes"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.CodeAnalysis.Analyzers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.CodeAnalysis.Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.CodeAnalysis.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.Extensions.Caching.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.Extensions.Caching.Memory"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.Extensions.Logging.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.Extensions.Options"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"Microsoft.Extensions.Primitives"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"System.Collections.Immutable"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"System.Reflection.Metadata"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"System.Runtime.CompilerServices.Unsafe"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerObjects",
+                                "Package":"TestableIO.System.IO.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Morris.Moxy"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"TestableIO.System.IO.Abstractions.Wrappers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"N.SourceGenerators.UnionTypes"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Spectre.Console"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.CodeAnalysis.Analyzers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.CodeAnalysis.Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.CodeAnalysis.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.Extensions.Caching.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.Extensions.Caching.Memory"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.Extensions.Logging.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.Extensions.Options"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"Microsoft.Extensions.Primitives"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"System.Collections.Immutable"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"System.Reflection.Metadata"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"System.Runtime.CompilerServices.Unsafe"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerShowInConsole",
+                                "Package":"TestableIO.System.IO.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"MSTest"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"MSTest.TestAdapter"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"MSTest.TestFramework"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"System.IO.Abstractions.TestingHelpers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Morris.Moxy"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"TestableIO.System.IO.Abstractions.Wrappers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"N.SourceGenerators.UnionTypes"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Newtonsoft.Json"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"RSCG_TimeBombComment"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"coverlet.collector"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.CodeAnalysis.Analyzers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.CodeAnalysis.Common"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.CodeAnalysis.CSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Extensions.Caching.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Extensions.Caching.Memory"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Extensions.Logging.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Extensions.Options"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Extensions.Primitives"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"System.Collections.Immutable"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"System.Reflection.Metadata"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"System.Runtime.CompilerServices.Unsafe"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"TestableIO.System.IO.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.ApplicationInsights"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Testing.Platform"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"MSTest.Analyzers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"System.Diagnostics.DiagnosticSource"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"TestableIO.System.IO.Abstractions.TestingHelpers"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NPA.Resources",
+                                "Package":"EmbedResourceCSharp"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"MIT",
+                                "Project":"NuGetInfo",
+                                "Package":"N.SourceGenerators.UnionTypes"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\microsoft.codecoverage\17.9.0\LICENSE_MIT.txt",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.CodeCoverage"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\microsoft.net.test.sdk\17.9.0\LICENSE_MIT.txt",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.NET.Test.Sdk"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\microsoft.testing.extensions.telemetry\1.1.0\License.txt",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Testing.Extensions.Telemetry"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\microsoft.testing.extensions.trxreport.abstractions\1.1.0\License.txt",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Testing.Extensions.TrxReport.Abstractions"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\microsoft.testing.extensions.vstestbridge\1.1.0\License.txt",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Testing.Extensions.VSTestBridge"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\microsoft.testing.platform.msbuild\1.1.0\License.txt",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.Testing.Platform.MSBuild"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\microsoft.testplatform.objectmodel\17.9.0\LICENSE_MIT.txt",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.TestPlatform.ObjectModel"
+                                });
+                            
+                tabledata.push({
+                                "LicenseName":"D:\MyPackages\.nuget\packages\microsoft.testplatform.testhost\17.9.0\LICENSE_MIT.txt",
+                                "Project":"NetPackageAnalyzerTests",
+                                "Package":"Microsoft.TestPlatform.TestHost"
+                                });
+                            
+            var table = new Tabulator("#licences-per-project-and-package-table", {
+            data: tabledata,
+            layout: "fitColumns",
+            pagination: "local",
+            paginationSize: 10,
+            paginationSizeSelector: [10,20,100,200],
+            movableColumns: true,
+            paginationCounter: "rows",
+            columns: [
+            { formatter: "rownum", hozAlign: "center", width: 40 },
+            { title: "Project", field: "Project", headerFilter: "input" },
+            { title: "Package", field: "Package", headerFilter: "input" },
+                    {title: "LicenseName", field: "LicenseName", headerFilter: "input" },
+            ],
+            });
+                    </script>
 
     <h2 id="packages-with-major-version-different">0 Packages with major version different</h2>
     <h2 id="executable-lines">Executable lines</h2>
@@ -4946,8 +4922,8 @@ bar [670,163,106,94,81,62,34,15,12,8,0,0]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Number lines per project", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Number lines per project", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5022,8 +4998,8 @@ bar [227,202,129,74,57,49,41,40,38,37,34,32,23,21,14]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Number lines per class", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Number lines per class", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5094,8 +5070,8 @@ bar [34,6,5,5,4,2,2,1,1,1,1]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Public class per project", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Public class per project", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5162,8 +5138,8 @@ bar [524,81,75,65,59,40,31,21,14,12,10]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Public methods per class", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Public methods per class", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5240,8 +5216,8 @@ bar [22,16,12,12,10,10,7,7,7,7,7,7,7,6,6]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Public methods per class", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Public methods per class", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5309,8 +5285,8 @@ bar [1457,239,233,220,129,76,60,50,33,15,8]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Number lines in public class per assembly", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Number lines in public class per assembly", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5384,8 +5360,8 @@ bar [393,392,146,114,109,95,87,85,84,83,80,75,72,60,56]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Number lines per public class", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Number lines per public class", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5461,8 +5437,8 @@ bar [160,139,120,62,51,48,47,47,47,40,37,32,30,28,26]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "Number lines per public method", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Number lines per public method", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5472,7 +5448,7 @@ bar [160,139,120,62,51,48,47,47,47,40,37,32,30,28,26]
 
     <h2 id="references-between-projects"> References between projects</h2>
 
-    <h3 id="assemblies-references"> Assemblies with Referencesx</h3>
+    <h3 id="assemblies-references"> Assemblies with References</h3>
 
     
 <div class="mermaid">
@@ -5527,8 +5503,8 @@ bar [39,23,19,8,6,2,2,2,1]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "References per assembly", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "References per assembly", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5594,8 +5570,8 @@ bar [35,18,15,11,4,4,4,4,3,3,1]
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name" },
-            { title: "References per class", field: "Nr"},
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "References per class", field: "Nr", headerFilter: "input" },
         ],
     });
 
@@ -5609,9 +5585,9 @@ bar [35,18,15,11,4,4,4,4,3,3,1]
     xychart-beta
     title "Commits per year (folder and csproj)"
     x-axis [2023,2024]
-    y-axis "" 0--> 187
-    bar [23,187]
-    bar [13,96]
+    y-axis "" 0--> 189
+    bar [23,189]
+    bar [13,97]
 </div>
 
 
@@ -5795,7 +5771,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,55],
+data: [10,56],
 },
 
 
@@ -5819,7 +5795,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,14],
+data: [null,15],
 },
 
 
@@ -5929,11 +5905,11 @@ tabledata.push({"folder": "NetPackageAnalyzeHistory", "year":2024,"Nr": "12" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2023,"Nr": "10" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "55" });
+tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "56" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2024,"Nr": "6" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "14" });
+tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "15" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerMetricsMSFT", "year":2024,"Nr": "2" });
                     
@@ -5961,9 +5937,9 @@ tabledata.push({"folder": "NuGetInfo", "year":2024,"Nr": "2" });
             paginationCounter: "rows",
             columns: [
                 { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Year", field: "year" },
-                    { title: "Folder", field: "folder" },
-                    { title: "Number", field: "Nr" },
+                    { title: "Year", field: "year", headerFilter: "input" },
+                    { title: "Folder", field: "folder", headerFilter: "input" },
+                    { title: "Number", field: "Nr", headerFilter: "input" },
             ],
         });
 
