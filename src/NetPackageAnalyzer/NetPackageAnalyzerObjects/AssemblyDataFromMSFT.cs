@@ -16,6 +16,10 @@ public class AssemblyDataFromMSFT
             .Select(it => new NamePerCount(it.Name.Replace(".csproj", ""), it.Childs.Length))
             .ToArray();
     }
+    public long NumberOfClasses()
+    {
+        return AssemblyNumberClasses().Sum(it => it.Count);
+    }
     public NamePerCount[] ClassNumberMethods()
     {
         return genericMetricsAssembly
@@ -23,6 +27,10 @@ public class AssemblyDataFromMSFT
             .Select(it => new NamePerCount(it.Name, it.Childs.Length))
             .ToArray();
 
+    }
+    public long NumberOfMethods()
+    {
+        return AssemblyNumberMethods().Sum(it => it.Count);
     }
     public NamePerCount[] AssemblyNumberMethods()
     {

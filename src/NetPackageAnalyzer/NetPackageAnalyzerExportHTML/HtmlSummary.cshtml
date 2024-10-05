@@ -227,12 +227,20 @@
                         </tr>
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td>Number classes</td>
+                        <td>
+                            <a href="#number-of-classes-per-assembly">
+                                Number classes
+                            </a>: @assemblyDataFromMSFT.NumberOfClasses()
+                        </td>
                         
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td>Number methods</td>                        
+                        <td>
+                            <a href="#number-of-methods-per-assembly">
+                                Number methods
+                            </a>: @assemblyDataFromMSFT.NumberOfMethods()
+                        </td>
                     </tr>
             </table>
         </div>

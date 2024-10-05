@@ -402,7 +402,7 @@ public class GenerateData
         string fldTemp = string.Empty;
         try
         {
-            var folder = Path.GetDirectoryName(fullPathToSolution);
+            var folder = Path.GetDirectoryName(fullPathToSolution)??"";
             fldTemp = folderResults + "_Temp";
             if (!Directory.Exists(fldTemp))
                 Directory.CreateDirectory(fldTemp);
