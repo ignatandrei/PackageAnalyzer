@@ -4,7 +4,7 @@
     var relativePath = Model.RelativePath();
     var name = Model.FullNameMermaid();
     var prefix = GlobalsForGenerating.globalPrefix();
-    var years= Model.AllHistoryFile.Select(it => it.Key).OrderBy(it => it).ToArray();
+    var years= Model.AllHistoryFile?.Select(it => it.Key)?.OrderBy(it => it)?.ToArray();
     var xaxis = string.Join(", ", years);
     var nrCommits = years.Select(it => Model.AllHistoryFile[it].nrCommits).ToArray();
     var yaxis = string.Join(", ", nrCommits);

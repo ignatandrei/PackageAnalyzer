@@ -224,8 +224,15 @@
                             ,<a href="#packages-with-major-version-different">Major version differs</a> :@info.nrMajorDiffers
                             )
                         </td>
+                        </tr>
+                    <tr>
+                        <td>@(++tableRow)</td>
                         <td>Number classes</td>
-                        <td>Number methods</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>Number methods</td>                        
                     </tr>
             </table>
         </div>
@@ -233,7 +240,7 @@
             <h1>Summary @nameSolution   </h1>
             <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
             <h2>If you are new to the project</h2>
-            <ol class="left">
+            <ol>
                 <li>Goto <a href="#building-blocks"> Building Blocks </a>  @bb0.Length - you can understand those projects without references
                 </li>
                 <li>Goto
@@ -246,7 +253,7 @@
 
             </ol>
             <h2>If you want to improve the project</h2>
-            <ol class="left">
+            <ol>
                 <li>See <a href="#packages-with-major-version-different">Packages with Major Version different</a>
                 </li>
                 <li>See <a href="#Cyclomatic-Complexity-for-Method">
@@ -880,7 +887,7 @@
                 {
 
                             <text>
-tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name" ,"Nr":@lic.Count  });
+tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\","\\\\")" ,"Nr":@lic.Count  });
                             </text>
                 }
             }
@@ -922,7 +929,7 @@ tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name" ,"Nr":@lic.C
                     {
                                 <text>
                                         tabledata.push({
-                                            "LicenseName":"@licName",
+                                    "LicenseName":"@licName.Replace("\\", "\\\\")",
                                 "Project":"@prjName ",
                                         "Package":"@licPrj.Name"
                                                                 });
@@ -1125,7 +1132,7 @@ columns: [
 
     <h3 id="assemblies-references"> Assemblies with References</h3>
     @{
-        tuple = new(refSummary.AssembliesReferences, "References per assembly");
+        tuple = new(refSummary.AssembliesReferences??[], "References per assembly");
         namePerCountDisplay = new(tuple);
     }
 

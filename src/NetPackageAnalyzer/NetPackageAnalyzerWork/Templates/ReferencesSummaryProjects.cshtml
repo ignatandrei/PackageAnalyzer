@@ -15,7 +15,7 @@ slug: summaryProjectReferences
 ## Assemblies with References
 
 @{
-    tuple = new(Model.AssembliesReferences, "References per assembly");
+    tuple = new(Model.AssembliesReferences??[], "References per assembly");
     namePerCountDisplay = new(tuple);
 }
 
@@ -24,7 +24,7 @@ slug: summaryProjectReferences
 ## Classes with References
 
 @{
-    tuple = new(Model.classRefs, "References per class");
+    tuple = new(Model.classRefs??[], "References per class");
     namePerCountDisplay = new(tuple);
 }
 
@@ -33,7 +33,7 @@ slug: summaryProjectReferences
 ## Methods with References
 
 @{
-    tuple = new(Model.MethodWithMostReferences, "References per Methods");
+    tuple = new(Model.MethodWithMostReferences??[], "References per Methods");
     namePerCountDisplay = new(tuple);
 }
 
@@ -42,7 +42,7 @@ slug: summaryProjectReferences
 ## Methods referred to
 
 @{
-    tuple = new(Model.MethodsReferences, "Number of Method referred");
+    tuple = new(Model.MethodsReferences??[], "Number of Method referred");
     namePerCountDisplay = new (tuple);
 }
 
