@@ -15,7 +15,7 @@ slug: summaryPublicClasses
 ## Assemblies with number of public classes
 
 @{
-    tuple = new(Model.Assemblies_PublicClasses, "Public class per project");
+    tuple = new(Model.Assemblies_PublicClasses??[], "Public class per project");
     namePerCountDisplay = new(tuple);
 }
 
@@ -25,7 +25,7 @@ slug: summaryPublicClasses
 
 
 @{
-    tuple = new(Model.Assemblies_PublicMethods, "Public methods per class");
+    tuple = new(Model.Assemblies_PublicMethods??[], "Public methods per class");
     namePerCountDisplay = new(tuple);
 }
 
@@ -35,7 +35,7 @@ slug: summaryPublicClasses
 
 
 @{
-    tuple = new(Model.Class_PublicMethods, "Public methods per class");
+    tuple = new(Model.Class_PublicMethods??[], "Public methods per class");
     namePerCountDisplay = new(tuple);
 }
 
@@ -43,7 +43,7 @@ slug: summaryPublicClasses
 
 ## Assemblies with most lines in public classses
 @{
-    tuple = new(Model.Assemblies_MostLinesInPublicClass, "Number lines in public class per assembly");
+    tuple = new(Model.Assemblies_MostLinesInPublicClass??[], "Number lines in public class per assembly");
     namePerCountDisplay = new(tuple);
 }
 
@@ -51,7 +51,7 @@ slug: summaryPublicClasses
 
 ## Public Classes with most lines
 @{
-    tuple = new(Model.PublicClass_MostLinesOfCode, "Number lines per public class");
+    tuple = new(Model.PublicClass_MostLinesOfCode??[], "Number lines per public class");
     namePerCountDisplay = new(tuple);
 }
 
@@ -60,7 +60,7 @@ slug: summaryPublicClasses
 
 ## Public Methods with most lines
 @{
-    tuple = new(Model.PublicMethod_MostLinesOfCode, "Number lines per public method");
+    tuple = new(Model.PublicMethod_MostLinesOfCode??[], "Number lines per public method");
     namePerCountDisplay = new(tuple);
 }
 

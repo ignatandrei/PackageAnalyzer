@@ -30,6 +30,11 @@ public class PublicClassRefData
 
     public NamePerCount[]? PublicClass_MostLinesOfCode { get; set; }
 
+    public NamePerCount? PublicMethod_MostLinesOfCode_Most()
+    {
+        return PublicMethod_MostLinesOfCode?.OrderByDescending(x => x.Count).FirstOrDefault();
+    }
+
 }
 
 public record NamePerCount(string Name, long Count)
