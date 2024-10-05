@@ -57,7 +57,7 @@ public class GenericMetrics: IValidatableObject
         if(element == null)return Array.Empty<GenericMetrics>();
         var nodes = element.SelectNodes("//Target");
         if(nodes == null) return Array.Empty<GenericMetrics>();
-        List<GenericMetrics> metricsParent = new();
+        List<GenericMetrics> metricsAssembly = new();
         foreach (var target in nodes)
         {
 
@@ -67,17 +67,16 @@ public class GenericMetrics: IValidatableObject
             var assemblyNode=node.SelectSingleNode("Assembly");
             if (assemblyNode == null) continue;
             var data = CreateFromXML<GenericMetricsAssembly>(name, assemblyNode.FirstChild!);
-            metricsParent.Add(data);
+
             var types = node.SelectNodes("//NamedType");
             if (types == null) continue;
-            List<GenericMetricsClass> typesMetrics=new();
+            List<GenericMetricsClass> typesClass = new();
             foreach (var type in types)
             {
                 var typeNode = type as XmlNode;
                 if (typeNode == null) continue;
                 name = typeNode.Attributes!["Name"]!.Value;
                 var typeData = CreateFromXML<GenericMetricsClass>(name, typeNode.FirstChild!);
-                typesMetrics.Add(typeData);
                 //add methods
                 var methods = typeNode.SelectNodes("//Method");
                 if (methods == null) continue;
@@ -92,10 +91,13 @@ public class GenericMetrics: IValidatableObject
                         methodsMetrics.Add(methodData);
                 }
                 typeData.Childs = methodsMetrics.ToArray();
+                typesClass.Add(typeData);
+
             }
-            data.Childs = typesMetrics.ToArray();
+            data.Childs = typesClass.ToArray();
+            metricsAssembly.Add(data);
         }
-        return metricsParent.Where(it=>
+        return metricsAssembly.Where(it=>
         {
             var vc = new ValidationContext(it);
             return !it.Validate(vc).Any();

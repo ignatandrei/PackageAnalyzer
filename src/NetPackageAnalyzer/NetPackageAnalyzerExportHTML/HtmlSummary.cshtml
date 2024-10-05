@@ -41,7 +41,7 @@
     YEARNamePerCountDisplay yearFolders= new(yearWithFolders);
     Radar radar = new(Tuple.Create(projectDicts, publicClassRefData, assemblyDataFromMSFT,"andrei"));
     var bb0= projectDicts.BuildingBlocks(0);
-
+    var testProjects = projectDicts.TestsProjects;
     var execAssLines = assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.ExecutableLines)
         .OrderByDescending(it=>it.Count)
@@ -232,15 +232,15 @@
             <h1>Summary @nameSolution   </h1>
             <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
             <h2>If you are new to the project</h2>
-            Goto <a href="#building-blocks"> Building Blocks </a> - you can understand those projects without references
-            <br />Goto TestProjects - see what other projects they are testing
+            Goto <a href="#building-blocks"> Building Blocks </a>  @bb0.Length - you can understand those projects without references
+            <br />Goto <a href="#test-projects-table">TestProjects</a> @testProjects.Length - see what other projects they are testing
             <br />See  <a href="#projects-with-tests">relation of the projects</a>
             <h2>If you want to improve the project</h2>
             <br />See <a href="#packages-with-major-version-different">Packages with Major Version different</a>
             <br />See <a href="#Cyclomatic-Complexity-for-Method">
                 methods with most cyclomatic complexity</a>
             <br />See <a href="#methods-public-lines">
-                methods with most lines
+                methods with most public lines
                 </a>
             <br />See <a href="#Maintainability-for-Method">
                 methods low maintaining score
@@ -696,6 +696,69 @@
         });
 
     </script>
+
+
+    <h2 id="test-projects">Test projects: @(testProjects.Length) </h2>
+    @foreach (var bbProj in testProjects)
+    {
+        var nameCsproj = bbProj.NameCSproj();
+        var relativePath = bbProj.RelativePath();
+        <text>
+            <h3>Project: @nameCsproj</h3>
+            Full Name : @relativePath
+
+            <div class="mermaid">
+                flowchart LR
+                @nameCsproj
+                @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
+                {
+                    <text>
+                        @rel.FullNameMermaid()
+                        @rel.NameCSproj()-->@nameCsproj
+                    </text>
+                }
+
+            </div>
+
+        </text>
+    }
+
+    <div id="test-projects-table"></div>
+
+    <script>
+        var tabledata = [
+        @foreach (var bbProj in testProjects)
+        {
+            var nameCsproj = bbProj.NameCSproj();
+            string refTo = "";
+            foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
+            {
+                refTo += rel.NameCSproj() + ";";
+            }
+            <text>
+                    {"Name": "@nameCsproj", "RelProj": "@refTo" },
+            </text>
+        }
+                ];
+        var table = new Tabulator("test-projects-table", {
+            data: tabledata,
+            layout: "fitColumns",
+            pagination: "local",
+            paginationSize: 10,
+            paginationSizeSelector: [10, 20],
+            movableColumns: true,
+            paginationCounter: "rows",
+            columns: [
+                { formatter: "rownum", hozAlign: "center", width: 40 },
+                { title: "Name", field: "Name", headerFilter: "input" },
+                { title: "Related Projects", field: "RelProj", headerFilter: "input" },
+            ],
+        });
+
+    </script>
+
+
+
 
 
 

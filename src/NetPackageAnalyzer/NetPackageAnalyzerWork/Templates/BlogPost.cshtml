@@ -209,7 +209,7 @@ flowchart LR
 ### Assemblies with number of public classes
 
         @{
-            tuple = new(publicClassRefData.Assemblies_PublicClasses, "Public class per project");
+            tuple = new(publicClassRefData.Assemblies_PublicClasses ?? [], "Public class per project");
             namePerCountDisplay = new(tuple);
         }
 
@@ -219,7 +219,7 @@ flowchart LR
 
 
         @{
-            tuple = new(publicClassRefData.Assemblies_PublicMethods, "Public methods per class");
+            tuple = new(publicClassRefData.Assemblies_PublicMethods??[], "Public methods per class");
             namePerCountDisplay = new(tuple);
         }
 
@@ -229,7 +229,7 @@ flowchart LR
 
 
         @{
-            tuple = new(publicClassRefData.Class_PublicMethods, "Public methods per class");
+            tuple = new(publicClassRefData.Class_PublicMethods??[], "Public methods per class");
             namePerCountDisplay = new(tuple);
         }
 
@@ -238,7 +238,7 @@ flowchart LR
 
 ### Assemblies with most lines in public classses
 @{
-    tuple = new(publicClassRefData.Assemblies_MostLinesInPublicClass, "Number lines in public class per assembly");
+    tuple = new(publicClassRefData.Assemblies_MostLinesInPublicClass??[], "Number lines in public class per assembly");
     namePerCountDisplay = new(tuple);
 }
 
@@ -246,7 +246,7 @@ flowchart LR
 
 ### Public Classes with most lines
 @{
-    tuple = new(publicClassRefData.PublicClass_MostLinesOfCode, "Number lines per public class");
+            tuple = new(publicClassRefData.PublicClass_MostLinesOfCode ?? [], "Number lines per public class");
     namePerCountDisplay = new(tuple);
 }
 
@@ -255,7 +255,7 @@ flowchart LR
 
 ### Public Methods with most lines
 @{
-            tuple = new(publicClassRefData.PublicMethod_MostLinesOfCode, "Number lines per public method");
+            tuple = new(publicClassRefData.PublicMethod_MostLinesOfCode ?? [], "Number lines per public method");
     namePerCountDisplay = new(tuple);
 }
 
