@@ -10,7 +10,7 @@
     var refSummary = Model.Item4;
     var publicClassRefData = Model.Item5;
     var mostPublicClasses = publicClassRefData
-    .Assemblies_PublicClasses
+    .Assemblies_PublicClasses?
     .FirstOrDefault();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
 

@@ -11,7 +11,7 @@
     var publicClassRefData = Model.Item5;
     var assemblyDataFromMSFT = Model.Item6;
     var mostPublicClasses = publicClassRefData
-    .Assemblies_PublicClasses
+    .Assemblies_PublicClasses?
     .FirstOrDefault();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
     
@@ -233,7 +233,7 @@
             <h1>Summary @nameSolution   </h1>
             <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
             <h2>If you are new to the project</h2>
-            <ol>
+            <ol class="left">
                 <li>Goto <a href="#building-blocks"> Building Blocks </a>  @bb0.Length - you can understand those projects without references
                 </li>
                 <li>Goto
@@ -246,7 +246,7 @@
 
             </ol>
             <h2>If you want to improve the project</h2>
-            <ol>
+            <ol class="left">
                 <li>See <a href="#packages-with-major-version-different">Packages with Major Version different</a>
                 </li>
                 <li>See <a href="#Cyclomatic-Complexity-for-Method">

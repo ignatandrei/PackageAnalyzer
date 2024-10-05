@@ -5,6 +5,7 @@
     {
         return;
     }
+    nameCount = nameCount.Distinct().ToArray();
     if(nameCount.Count() > 20)
     {
         nameCount = nameCount.Take(15).ToArray();

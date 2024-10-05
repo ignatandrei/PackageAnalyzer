@@ -87,7 +87,7 @@ line @CommitsFile
 
 @{
     newModel =
-    new(Model, x => x.AllHistoryFolder.AllHistory());
+    new(Model, x => x.AllHistoryFolder?.AllHistory()??History.Empty);
     c = new CommitsPerData(newModel);
     data = c.Render();
 }
