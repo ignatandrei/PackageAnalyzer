@@ -15,8 +15,11 @@ public class TemplateGenerator
         return await rz.RenderAsync();
 
     }
-    public async Task<string?> Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version model)
+    public async Task<string?> Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)
     {
+        if(model == null)
+            return string.Empty;
+
         var rz = new DisplayAllVersionsForMarkdown(model);
         return await rz.RenderAsync();
 
@@ -27,8 +30,10 @@ public class TemplateGenerator
     //    return await rz.RenderAsync();
 
     //}
-    public async Task<string> Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version model)
+    public async Task<string> Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)
     {
+        if (model == null)
+            return string.Empty;
         var rz = new MermaidVisualizerMajorDiffer(model);
         return await rz.RenderAsync();
     }
