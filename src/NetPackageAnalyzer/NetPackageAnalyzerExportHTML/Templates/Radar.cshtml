@@ -13,10 +13,10 @@
     var maxCommit = cm.Max(x => x.Count);
     var maxPackages =projectDicts.MaxPackages;
     var maxProjReferences = projectDicts.MaxReferences;
-    var assData = publicClassRefData.Assemblies_PublicClasses;
+    var assData = publicClassRefData.Assemblies_PublicClasses??[];
     var maxPublicClasses=assData.Length==0?0: assData.Max(x=>x.Count);
 
-    var assLinesPublic = publicClassRefData.Assemblies_MostLinesInPublicClass;
+    var assLinesPublic = publicClassRefData.Assemblies_MostLinesInPublicClass??[];
     var maxLinesPublic = assLinesPublic.Length == 0 ? 0 : assLinesPublic.Max(x => x.Count);
 
     var yearCommitsFolder = projectDicts.CommitsPerYearFolder();

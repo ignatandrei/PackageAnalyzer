@@ -270,7 +270,7 @@ flowchart LR
 
 ### Assemblies with References
 @{
-    tuple = new(refSummary.AssembliesReferences, "References per assembly");
+    tuple = new(refSummary?.AssembliesReferences??[], "References per assembly");
     namePerCountDisplay = new(tuple);
 }
 
