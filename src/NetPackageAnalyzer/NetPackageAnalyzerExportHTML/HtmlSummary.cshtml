@@ -223,13 +223,30 @@
                             ,<a href="#packages-with-major-version-different">Major version differs</a> :@info.nrMajorDiffers
     )
     </td>
+    <td>Number classes</td>
+    <td>Number methods</td>
     </tr>
     </table>
     </div>
     <div class="center">
             <h1>Summary @nameSolution   </h1>
-            <a href="#licences-per-project"> Licenses</a>:
-            
+            <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
+            <h2>If you are new to the project</h2>
+            Goto <a href="#building-blocks"> Building Blocks </a> - you can understand those projects without references
+            <br />Goto TestProjects - see what other projects they are testing
+            <br />See  <a href="#projects-with-tests">relation of the projects</a>
+            <h2>If you want to improve the project</h2>
+            <br />See <a href="#packages-with-major-version-different">Packages with Major Version different</a>
+            <br />See <a href="#Cyclomatic-Complexity-for-Method">
+                methods with most cyclomatic complexity</a>
+            <br />See <a href="#methods-public-lines">
+                methods with most lines
+                </a>
+            <br />See <a href="#Maintainability-for-Method">
+                methods low maintaining score
+            </a>
+
+
         </div>
     <div class="right">
             <h2 >Commits</h2>
@@ -645,6 +662,43 @@
 
         </text>
     }
+
+    <div id="bb-table"></div>
+
+    <script>
+        var tabledata = [
+        @foreach (var bbProj in bb0)
+        {
+            var nameCsproj = bbProj.NameCSproj();
+            string refTo = "";
+            foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
+            {
+                refTo += rel.NameCSproj()+";";
+            }
+            <text>
+                    {"Name": "@nameCsproj", "RelProj": "@refTo" },
+            </text>
+        }                            
+        ];
+        var table = new Tabulator("bb-table", {
+            data: tabledata,
+            layout: "fitColumns",
+            pagination: "local",
+            paginationSize: 10,
+            paginationSizeSelector: [10,20],
+            movableColumns: true,
+            paginationCounter: "rows",
+            columns: [
+                { formatter: "rownum", hozAlign: "center", width: 40 },
+                { title: "Name", field: "Name", headerFilter: "input" },
+                { title: "Related Projects", field: "RelProj", headerFilter: "input" },
+            ],
+        });
+
+    </script>
+
+
+
     <h2 id="maintainability">Maintainability</h2>
     <h3>Maintainability per assembly</h3>
     @maintAssDisplay.Render()

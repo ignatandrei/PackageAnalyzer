@@ -1,6 +1,6 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<NamePerCount[],string>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<NamePerCount[]?,string>>;
 @{
-    var nameCount = Model.Item1;
+    var nameCount = Model.Item1??[];
     if(nameCount.Count() == 0)
     {
         return;

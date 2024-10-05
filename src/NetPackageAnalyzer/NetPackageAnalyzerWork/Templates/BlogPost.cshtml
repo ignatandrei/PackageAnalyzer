@@ -279,7 +279,7 @@ flowchart LR
 ### Classes with References
 
 @{
-    tuple = new(refSummary.classRefs, "References per class");
+    tuple = new(refSummary.classRefs??[], "References per class");
     namePerCountDisplay = new(tuple);
 }
 

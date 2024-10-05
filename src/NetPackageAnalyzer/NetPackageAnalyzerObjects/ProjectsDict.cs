@@ -8,7 +8,11 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
-    
+    public int NrLicenses()
+    {
+        return Licenses().Length;
+            
+    }
     public NamePerCount[] Licenses()
     {
         Dictionary<string,long> ret = new();
