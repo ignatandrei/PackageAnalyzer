@@ -233,7 +233,7 @@
             <h1>Summary @nameSolution   </h1>
             <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
             <h2>If you are new to the project</h2>
-            <ul>
+            <ol>
                 <li>Goto <a href="#building-blocks"> Building Blocks </a>  @bb0.Length - you can understand those projects without references
                 </li>
                 <li>Goto
@@ -244,9 +244,9 @@
                     <a href="#projects-with-tests">relation of the projects</a>
                 </li>
 
-            </ul>
+            </ol>
             <h2>If you want to improve the project</h2>
-            <ul>
+            <ol>
                 <li>See <a href="#packages-with-major-version-different">Packages with Major Version different</a>
                 </li>
                 <li>See <a href="#Cyclomatic-Complexity-for-Method">
@@ -254,14 +254,19 @@
                     </a>
                 </li>
                 <li>See <a href="#methods-public-lines">
-                        methods with most public lines 
+                        public methods with most lines
                     </a>
                 </li>
                 <li>See <a href="#Maintainability-for-Method">
                         methods low maintaining score
                     </a>
                 </li>
-            </ul>
+                <li>
+                    See <a href="#executable-lines-per-method">
+                        methods with most lines
+                    </a>
+                </li>
+            </ol>
 
         </div>
         <div class="right">
@@ -334,7 +339,7 @@
                         <tr>
                             <td>@(++tableRow)</td>
                             <td>
-                                <a href="assemblies-references">Max nr of references to other assemblies</a>:@maxAssemblyRef.Count
+                                <a href="#assemblies-references">Max nr of references to other assemblies</a>:@maxAssemblyRef.Count
                             </td>
                             <td>@maxAssemblyRef.Name</td>
                         </tr>
@@ -344,7 +349,7 @@
                         <tr>
                             <td>@(++tableRow)</td>
                             <td>
-                                <a href="number-of-classes-per-assembly">
+                                <a href="#assemblies-public-classes">
                                     Max nr of public Classes
                                 </a>:@mostPublicClasses.Count
                             </td>
@@ -353,7 +358,9 @@
                     }
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td>With max nr of Classes:@maxClasses.Count</td>
+                        <td>
+                            <a href="#number-of-classes-per-assembly">
+                            With max nr of Classes</a>:@maxClasses.Count</td>
                         <td>@maxClasses.Name</td>
                     </tr>
                     <tr>
@@ -370,29 +377,29 @@
                         <td>
                             <a href="#Maintainability-for-Assembly">
                                 With low maintaining score
-                            </a>:@minMaintAssIndex.Count
+                            </a>:@minMaintAssIndex?.Count
 
                         </td>
-                        <td>@minMaintAssIndex.Name</td>
+                        <td>@minMaintAssIndex?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td><a href="#Class-Coupling-for-Assembly"> With max coupling</a>:@maxCCAssIndex.Count</td>
-                        <td>@maxCCAssIndex.Name</td>
+                        <td><a href="#Class-Coupling-for-Assembly"> With max coupling</a>:@maxCCAssIndex?.Count</td>
+                        <td>@maxCCAssIndex?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#Cyclomatic-Complexity-for-Assembly">
                                 With most Cyclomatic Complexity
-                            </a>:@maxCycAssIndex.Count
+                            </a>:@maxCycAssIndex?.Count
                         </td>
-                        <td>@maxCycAssIndex.Name</td>
+                        <td>@maxCycAssIndex?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td><a href="#assemblies-public-lines">With most lines</a>:@maxexecAssLines.Count</td>
-                        <td>@maxexecAssLines.Name</td>
+                        <td><a href="#assemblies-public-lines">With most lines</a>:@maxexecAssLines?.Count</td>
+                        <td>@maxexecAssLines?.Name</td>
                     </tr>
                 </tbody>
             </table>
@@ -416,9 +423,9 @@
                         <td>
                             <a href="#number-of-methods-per-class">
                                 With max nr of methods
-                            </a>:@maxMethodsClass.Count
+                            </a>:@maxMethodsClass?.Count
                         </td>
-                        <td>@maxMethodsClass.Name</td>
+                        <td>@maxMethodsClass?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
@@ -435,9 +442,9 @@
                             <a href="#Class-Coupling-for-Class">
                                 With max coupling
                             </a>
-                            :@maxCCClassIndex.Count
+                            :@maxCCClassIndex?.Count
                         </td>
-                        <td>@maxCCClassIndex.Name</td>
+                        <td>@maxCCClassIndex?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
@@ -501,7 +508,7 @@
                             With most lines
                         </a>:@publicClassRefData.PublicMethod_MostLinesOfCode_Most()?.Count
                     </td>
-                    <td>@maxExecMethodsLines?.Name</td>
+                    <td>@publicClassRefData.PublicMethod_MostLinesOfCode_Most()?.Name</td>
                 </tr>
 
 
@@ -701,7 +708,7 @@
             </text>
         }
                 ];
-        var table = new Tabulator("bb-table", {
+        var table = new Tabulator("#bb-table", {
             data: tabledata,
             layout: "fitColumns",
             pagination: "local",
@@ -761,7 +768,7 @@
             </text>
         }
                         ];
-        var table = new Tabulator("test-projects-table", {
+        var table = new Tabulator("#test-projects-table", {
             data: tabledata,
             layout: "fitColumns",
             pagination: "local",
@@ -808,6 +815,7 @@
 
     <h3>Cyclomatic Complexity per method</h3>
     @CycMethodDisplay.Render()
+
 
     <h2 id="number-of-classes-per-assembly"> Number of classes per assembly</h2>
 
@@ -986,7 +994,7 @@
     <h2 id="executable-lines">Executable lines</h2>
     <h3 id="executable-lines-per-assembly">Per assembly</h3>
     @{
-        tuple = new(execAssLines, "Number lines per project");
+        tuple = new(execAssLines, "Number exec lines per project");
         namePerCountDisplay = new(tuple);
     }
     @namePerCountDisplay.Render()
@@ -995,7 +1003,18 @@
 
     @{
 
-        tuple = new(execClassLines, "Number lines per class");
+        tuple = new(execClassLines, "Number exec lines per class");
+        namePerCountDisplay = new(tuple);
+    }
+
+    @namePerCountDisplay.Render()
+
+
+    <h3 id="executable-lines-per-method">Per method</h3>
+
+    @{
+
+        tuple = new(execMethodsLines, "Number exec lines per method");
         namePerCountDisplay = new(tuple);
     }
 
@@ -1080,7 +1099,7 @@
     <h3 id="class-references"> Classes with References</h3>
 
     @{
-        tuple = new(refSummary.classRefs, "References per class");
+        tuple = new(refSummary?.classRefs??[], "References per class");
         namePerCountDisplay = new(tuple);
     }
 

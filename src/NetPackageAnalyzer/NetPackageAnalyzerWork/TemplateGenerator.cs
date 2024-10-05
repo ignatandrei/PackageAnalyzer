@@ -1,8 +1,11 @@
 ﻿namespace NetPackageAnalyzerDocusaurus;
 public class TemplateGenerator
 {
-    public async Task<string> Generate_DisplayAllVersions(DisplayDataMoreThan1Version model)
+    public async Task<string> Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)
     {
+        if(model == null)
+            return string.Empty;
+
         var rz = new DisplayAllVersions(model);
         return await rz.RenderAsync();
     }

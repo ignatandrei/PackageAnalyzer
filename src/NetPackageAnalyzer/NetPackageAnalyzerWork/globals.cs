@@ -9,6 +9,7 @@ global using NetPackageAnalyzerObjects;
 global using System.IO.Compression;
 global using NetPackageAnalyzerDiagram;
 global using RSCG_ExportDiagram_Import;
+global using NetPackageAnalyzeHistory;
 
 
 

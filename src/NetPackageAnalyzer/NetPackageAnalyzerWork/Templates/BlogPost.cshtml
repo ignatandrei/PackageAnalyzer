@@ -12,7 +12,7 @@
     var mostPublicClasses = publicClassRefData
     .Assemblies_PublicClasses
     .FirstOrDefault();
-    var maxAssemblyRef = refSummary.AssembliesReferences.FirstOrDefault();
+    var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
 
     var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
     var nrVersionIterator = 0;

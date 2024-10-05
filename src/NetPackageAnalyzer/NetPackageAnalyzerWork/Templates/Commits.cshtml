@@ -73,8 +73,8 @@ line @CommitsFile
 ### Number commits per csproj files
 
 @{
-    Tuple<ProjectsDict, Func<ProjectData, NetPackageAnalyzeHistory.History>> newModel=
-    new(Model, x => x.AllHistoryFile.AllHistory());
+    Tuple<ProjectsDict, Func<ProjectData, History>> newModel=
+    new(Model, x => x.AllHistoryFile?.AllHistory()??History.Empty);
     var c = new CommitsPerData(newModel);
     var data = c.Render();
 }
