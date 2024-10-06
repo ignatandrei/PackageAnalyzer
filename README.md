@@ -101,3 +101,5 @@ and open an issue with the verbose file mentioned in the output at
 ```
 Please see verbose file at
 ```
+
+Metrics from https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values?view=vs-2022 
