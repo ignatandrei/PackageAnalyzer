@@ -834,7 +834,7 @@
             <div class="mermaid">
                 flowchart LR
                 @nameCsproj
-                @foreach (var rel in bbProj.AlphabeticalProjectsReferences)
+                @foreach (var rel in bbProj.AlphabeticalProjectsReferences())
                 {
                     <text>
                         @rel.FullNameMermaid()
@@ -855,7 +855,7 @@
         {
             var nameCsproj = bbProj.NameCSproj();
             string refTo = "";
-            foreach (var rel in bbProj.AlphabeticalProjectsReferences)
+            foreach (var rel in bbProj.AlphabeticalProjectsReferences())
             {
                 refTo += rel.NameCSproj() + ";";
             }
