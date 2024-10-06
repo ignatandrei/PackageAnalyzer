@@ -5,6 +5,9 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<NoWarn>CS0436</NoWarn>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);RSCG_InterceptMethod</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
 	<ItemGroup>

@@ -28,7 +28,7 @@ public record History(int? nrCommits, DateTime? FirstCommit, DateTime? LastCommi
             var nrMonths = (int)diff.Value.TotalDays / 30;
             if (nrMonths == 0)
                 nrMonths++;
-            return (int)(nrCommits/ nrMonths);
+            return (int)((nrCommits??0)/ nrMonths);
         }
     }
 }

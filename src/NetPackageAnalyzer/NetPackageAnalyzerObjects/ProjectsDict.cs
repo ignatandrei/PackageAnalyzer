@@ -378,7 +378,8 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             {
                 FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
                 fileHistorySimple.Initialize(true);
-                FolderHistoryCommits folderHistoryCommits = new(Path.GetDirectoryName(project.PathProject));
+                string dirName = Path.GetDirectoryName(project.PathProject)??"";
+                FolderHistoryCommits folderHistoryCommits = new(dirName);
                 folderHistoryCommits.Initialize();
                 project.AllHistoryFile = fileHistorySimple.AllHistoryFile;
                 project.AllHistoryFolder = fileHistorySimple.AllHistoryFolder;

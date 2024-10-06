@@ -20,7 +20,7 @@ public class ClassesRefData
 }
 public class PublicClassRefData
 {
-    public Dictionary<string, ExportPublicClass[]> data;
+    public Dictionary<string, ExportPublicClass[]> data=[];
     public NamePerCount[]? Assemblies_PublicClasses { get; set; }
     public NamePerCount[]? Assemblies_PublicMethods { get; set; }
     public NamePerCount[]? Class_PublicMethods { get; set; }

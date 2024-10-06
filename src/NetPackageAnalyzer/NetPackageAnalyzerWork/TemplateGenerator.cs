@@ -76,10 +76,14 @@ public class TemplateGenerator
     internal async Task<string?> Generate_BlogPost(
         InfoSolution model, ProjectsDict projectsDict
         , DisplayDataMoreThan1Version? displayDataMoreThan1Version
-        ,ClassesRefData? refSummary,
+        , ClassesRefData? refSummary,
         PublicClassRefData? publicClassRefData)
-    {
-        var rz = new BlogPost(Tuple.Create(model,projectsDict, displayDataMoreThan1Version, refSummary, publicClassRefData));
+    { 
+        if(displayDataMoreThan1Version == null || refSummary == null || publicClassRefData == null)
+            return string.Empty;
+
+        var modelData = Tuple.Create(model, projectsDict, displayDataMoreThan1Version, refSummary, publicClassRefData);
+        var rz = new BlogPost(modelData);
         return await rz.RenderAsync();
     }
     internal async Task<string?> Generate_SolutionIntroduction(InfoSolution model)

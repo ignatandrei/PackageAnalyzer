@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
 	<Version>8.2024.429.0700</Version>
 	  <NoWarn>CS0436</NoWarn>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
   </PropertyGroup>
 
 	<ItemGroup>

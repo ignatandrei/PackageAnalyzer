@@ -17,10 +17,16 @@ public class GenerateHTML : GenerateFiles
                 Directory.CreateDirectory(where);
 
             var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
-            tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+            tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution??"", folderResults??"")??"";
             var (refSummary, publicClassRefData, assemblyDataFromMSFT) = AnalyzeDiagrams(tempFolder);
             //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
-            var x = new HtmlSummary(Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData,assemblyDataFromMSFT));
+            if (projectsDict == null || modelMore1Version== null)
+                return string.Empty;
+
+            var modelData = Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData, assemblyDataFromMSFT);
+            if(modelData == null)
+                return string.Empty;
+            var x = new HtmlSummary(modelData);
             var html = x.Render();
 
 

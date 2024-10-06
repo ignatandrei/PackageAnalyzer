@@ -27,7 +27,7 @@ public static class GlobalsForGenerating
     public static string RelativePath(string? pathProject)
     {
         if(string.IsNullOrWhiteSpace(pathProject))
-            return pathProject;
+            return pathProject??"";
 
         return Path.GetRelativePath(FullPathToSolution, pathProject);
     }

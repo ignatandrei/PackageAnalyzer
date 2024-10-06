@@ -6,8 +6,13 @@
     var prefix = GlobalsForGenerating.globalPrefix();
     var years= Model.AllHistoryFile?.Select(it => it.Key)?.OrderBy(it => it)?.ToArray()??[];
     var xaxis = string.Join(", ", years??[]);
-    var nrCommits = years.Select(it => Model.AllHistoryFile[it]?.nrCommits??0)?.ToArray()??[];
-    var yaxis = string.Join(", ", nrCommits??[]);
+    var nrCommits = years?
+        .Where(it=> Model.AllHistoryFile != null)         
+        .Where(it=> Model.AllHistoryFile!.ContainsKey(it))
+        .Select(it => (Model.AllHistoryFile![it]?.nrCommits)??0)?
+        .ToArray()??[];
+    
+   var yaxis = string.Join(", ", nrCommits??[]);
 }
 ---
 sidebar_position: 30
@@ -21,15 +26,18 @@ sidebar_position: 30
 xychart-beta
 title "Nr Commits Csproj"
 x-axis [@xaxis]
-y-axis "NrCommits" 0 --> @nrCommits.Max()
+y-axis "NrCommits" 0 --> @(nrCommits?.Max()??0)
 bar [@yaxis]
 line [@yaxis]
 ```
 
 @{
     years = Model.AllHistoryFolder?.Select(it => it.Key)?.OrderBy(it => it)?.ToArray()??[];
-    xaxis = string.Join(", ", years);
-    nrCommits = years.Select(it => Model.AllHistoryFolder[it]?.nrCommits??0)?.ToArray();
+    xaxis = string.Join(", ", years??[]);
+    nrCommits = years?
+        .Where(it=>Model.AllHistoryFolder !=null)
+        .Where(it=>Model.AllHistoryFolder!.ContainsKey(it))
+        .Select(it => Model.AllHistoryFolder![it]!.nrCommits??0)?.ToArray();
     yaxis = string.Join(", ", nrCommits??[]);
 }
 
@@ -39,7 +47,7 @@ line [@yaxis]
 xychart-beta
 title "Nr Commits folder"
 x-axis [@xaxis]
-y-axis "NrCommits" 0 --> @nrCommits.Max()
+y-axis "NrCommits" 0 --> @(nrCommits?.Max()??0)
 bar [@yaxis]
 line [@yaxis]
 ```
