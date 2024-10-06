@@ -42,6 +42,7 @@
     Radar radar = new(Tuple.Create(projectDicts, publicClassRefData, assemblyDataFromMSFT, "andrei"));
     var bb0 = projectDicts.BuildingBlocks(0);
     var testProjects = projectDicts.TestsProjects;
+    var rootProjects = projectDicts.RootProjects;
     var execAssLines = assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.ExecutableLines)
         .OrderByDescending(it => it.Count)
@@ -217,6 +218,13 @@
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
+                            <a href="#root-projects"> Root Projects </a>: @rootProjects.Length
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>
 
                             <a href="#packages-per-project-table">Number packages</a> : @info.nrPackages
                             (Outdated : @info.nrOutdated
@@ -251,6 +259,7 @@
             <ol>
                 <li>Goto <a href="#building-blocks"> Building Blocks </a>  @bb0.Length - you can understand those projects without references
                 </li>
+                <li>Goto <a href="#root-projects"> Root Projects </a> @rootProjects.Length - see the starting projects 
                 <li>Goto
                     <a href="#test-projects-table">TestProjects</a> @testProjects.Length - see what other projects they are testing
 
@@ -258,6 +267,7 @@
                 <li>See
                     <a href="#projects-with-tests">relation of the projects</a>
                 </li>
+                <li>TODO : projects with least classes </li>
 
             </ol>
             <h2>If you want to improve the project</h2>
@@ -280,6 +290,12 @@
                     See <a href="#executable-lines-per-method">
                         methods with most lines
                     </a>
+                </li>
+                <li>
+                    Todo : Classes  with most public methods 
+                </li>
+                <li>
+                    Todo : Classes  with most methods
                 </li>
             </ol>
 
@@ -724,6 +740,65 @@
         }
                 ];
         var table = new Tabulator("#bb-table", {
+            data: tabledata,
+            layout: "fitColumns",
+            pagination: "local",
+            paginationSize: 10,
+            paginationSizeSelector: [10, 20],
+            movableColumns: true,
+            paginationCounter: "rows",
+            columns: [
+                { formatter: "rownum", hozAlign: "center", width: 40 },
+                { title: "Name", field: "Name", headerFilter: "input" },
+                { title: "Related Projects", field: "RelProj", headerFilter: "input" },
+            ],
+        });
+
+    </script>
+
+    <h2 id="root-projects">Root projects : @rootProjects.Length </h2>
+    @foreach (var bbProj in rootProjects)
+    {
+        var nameCsproj = bbProj.NameCSproj();
+        var relativePath = bbProj.RelativePath();
+        <text>
+            <h3>Project: @nameCsproj</h3>
+            Full Name : @relativePath
+
+            <div class="mermaid">
+                flowchart LR
+                @nameCsproj
+                @foreach (var rel in bbProj.ProjectsReferences)
+                {
+                    <text>
+                        @rel.FullNameMermaid()
+                        @rel.NameCSproj()-->@nameCsproj
+                    </text>
+                }
+
+            </div>
+
+        </text>
+    }
+
+    <div id="root-projects-table"></div>
+
+    <script>
+        var tabledata = [
+        @foreach (var bbProj in rootProjects)
+        {
+            var nameCsproj = bbProj.NameCSproj();
+            string refTo = "";
+            foreach (var rel in bbProj.ProjectsReferences)
+            {
+                refTo += rel.NameCSproj() + ";";
+            }
+            <text>
+                    {"Name": "@nameCsproj", "RelProj": "@refTo" },
+            </text>
+        }
+                        ];
+        var table = new Tabulator("#root-projects-table", {
             data: tabledata,
             layout: "fitColumns",
             pagination: "local",
