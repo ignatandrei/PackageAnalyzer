@@ -75,7 +75,7 @@ public class TemplateGenerator
     }
     internal async Task<string?> Generate_BlogPost(
         InfoSolution model, ProjectsDict projectsDict
-        , DisplayDataMoreThan1Version displayDataMoreThan1Version
+        , DisplayDataMoreThan1Version? displayDataMoreThan1Version
         ,ClassesRefData? refSummary,
         PublicClassRefData? publicClassRefData)
     {
