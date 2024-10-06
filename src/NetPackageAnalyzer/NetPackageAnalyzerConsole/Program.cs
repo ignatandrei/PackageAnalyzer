@@ -26,11 +26,30 @@
         //};
 
         //args = new[] { "generateFiles",
-        //    "--folder", @"D:\gth\booking-microservices",
+        //    "--folder", @"D:\gth\evolutionary-architecture-by-example\Chapter-1-initial-architecture\Src",
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "-wg","HtmlSummary",
         //    "--verbose","false"
         //};
+        //args = new[] { "generateFiles",
+        //        "--folder", @"D:\gth\nopCommerce\src",
+        //        "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+        //        "-wg","HtmlSummary",
+        //        "--verbose","false"
+        //    };
+
+        //args = new[] { "generateFiles",
+            //    "--folder", @"D:\gth\dotnet-starter-kit",
+            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+            //    "-wg","HtmlSummary",
+            //    "--verbose","false"
+            //};
+            //args = new[] { "generateFiles",
+            //    "--folder", @"D:\gth\booking-microservices",
+            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+            //    "-wg","HtmlSummary",
+            //    "--verbose","false"
+            //};
 
         //args = new[] { 
         //    //"[parse]",
@@ -44,8 +63,7 @@
         //    "-wg","HtmlSummary",
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "--verbose","false"
-        //}; 
-         
+        //};
 
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\gth\RSCG_Examples\v2",
