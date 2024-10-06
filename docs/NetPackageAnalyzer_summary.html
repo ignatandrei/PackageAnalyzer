@@ -190,7 +190,7 @@
                     <tr>
                         <td>4</td>
                         <td>
-                            The file with most commits ( 105 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
+                            The file with most commits ( 106 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
                         </td>
                     </tr>
 
@@ -962,6 +962,12 @@ name: 'NuGetInfo'
                 flowchart LR
                 NetPackageAnalyzerTests
 
+                        NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj]
+                        NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerTests
+                    
+                        NuGetInfo[NuGetInfo\NuGetInfo.csproj]
+                        NuGetInfo-->NetPackageAnalyzerTests
+                    
             </div>
 
         
@@ -970,7 +976,7 @@ name: 'NuGetInfo'
     <script>
         var tabledata = [
 
-                    {"Name": "NetPackageAnalyzerTests", "RelProj": "" },
+                    {"Name": "NetPackageAnalyzerTests", "RelProj": "NetPackageAnalyzerDocusaurus;NuGetInfo;" },
                                     ];
         var table = new Tabulator("#test-projects-table", {
             data: tabledata,
@@ -3961,37 +3967,37 @@ bar [84,84,84,84,84,84,84,84,84,84,84,84,84,84,84]
     <script>
         var tabledata = [
 
-                    {"Name": "D:\packages\.nuget\packages\libgit2sharp.nativebinaries\2.0.322\libgit2\libgit2.license.txt", "Licenses": "2" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt", "Licenses": "2" },
             
-                    {"Name": "D:\packages\.nuget\packages\libgit2sharp\0.30.0\App_Readme/LICENSE.md", "Licenses": "2" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md", "Licenses": "2" },
             
-                    {"Name": "D:\packages\.nuget\packages\rscg_interceptmethod\8.2024.2318.289\LICENSE", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\rscg_interceptmethod\\8.2024.2318.289\\LICENSE", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\rscg_interceptmethodcommon\8.2024.2318.289\LICENSE", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\rscg_whatiamdoing_common\8.2024.10405.851\LICENSE", "Licenses": "6" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE", "Licenses": "6" },
             
-                    {"Name": "D:\packages\.nuget\packages\rscg_whatiamdoing\8.2024.10405.851\LICENSE", "Licenses": "6" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE", "Licenses": "6" },
             
                     {"Name": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT", "Licenses": "3" },
             
                     {"Name": "MIT", "Licenses": "136" },
             
-                    {"Name": "D:\packages\.nuget\packages\microsoft.codecoverage\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\microsoft.net.test.sdk\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.net.test.sdk\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\microsoft.testing.extensions.telemetry\1.1.0\License.txt", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.telemetry\\1.1.0\\License.txt", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\microsoft.testing.extensions.trxreport.abstractions\1.1.0\License.txt", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.trxreport.abstractions\\1.1.0\\License.txt", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\microsoft.testing.extensions.vstestbridge\1.1.0\License.txt", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.vstestbridge\\1.1.0\\License.txt", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\microsoft.testing.platform.msbuild\1.1.0\License.txt", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testing.platform.msbuild\\1.1.0\\License.txt", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\microsoft.testplatform.objectmodel\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
             
-                    {"Name": "D:\packages\.nuget\packages\microsoft.testplatform.testhost\17.9.0\LICENSE_MIT.txt", "Licenses": "1" },
+                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testplatform.testhost\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
                                             ];
         var table = new Tabulator("#licences-summary-table", {
             data: tabledata,
