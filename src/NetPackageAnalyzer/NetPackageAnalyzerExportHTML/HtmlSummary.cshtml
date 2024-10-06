@@ -947,7 +947,7 @@
         @foreach (var lic in projectDicts.Licenses())
         {
             <text>
-                    {"Name": "@lic.Name", "Licenses": "@lic.Count" },
+                    {"Name": "@lic.Name.Replace("\\", "\\\\")", "Licenses": "@lic.Count" },
             </text>
         }
                                 ];
