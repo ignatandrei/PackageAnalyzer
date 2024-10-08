@@ -1,32 +1,6 @@
-﻿#done
-#$url=  "https://github.com/fullstackhero/dotnet-starter-kit"
-#done
-#$url="https://github.com/ivanpaulovich/clean-architecture-manga"
-#many sln
-#$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
-#done
-#$url="https://github.com/jasontaylordev/CleanArchitecture"
-#done
-#$url="https://github.com/jbogard/ContosoUniversityDotNetCore-Pages"
-#3 sln
-#$url="https://github.com/dotnet/eShop"
-#the project do not compile -errors 
-# $url="https://github.com/kgrzybek/modular-monolith-with-ddd"
-# $url="https://github.com/nitish-kaushik/aspnetcore-webapi-clean-architecture"
-#$url="https://github.com/nopSolutions/nopCommerce"
-#TBD error : $url="https://github.com/dotnetcore/CAP"
-# $url="https://github.com/dotnetcore/CAP"
-# $url="https://github.com/meysamhadeli/booking-microservices"
-# $url="https://github.com/rafaelfgx/Architecture"
-#$url="https://github.com/ardalis/CleanArchitecture"
+﻿function AnalyzeProject ( $url  ){
 
-#$url = "https://github.com/danpdc/cleanArchitectureTemplate"
-
-#TODO: https://github.com/topics/architecture?l=c%23&o=desc&s=stars
-
-#TODO: https://github.com/simplcommerce/SimplCommerce
-#TODO: https://github.com/grandnode/grandnode2
-#TODO: https://github.com/gothinkster/aspnetcore-realworld-example-app
+Push-Location .
 
 $name = $url.Split('/')[-1]
 $analyzerPath = Get-Location
@@ -58,7 +32,6 @@ Set-Content -Path $filePath -Value $jsonContent
 }
 
 
-Push-Location ..
 
 if(-not (Test-Path $name)) {
     git clone $url
@@ -84,8 +57,8 @@ $sln | ForEach-Object {
     dotnet tool update netpackageanalyzerconsole
     Write-Host "Current path: $(Get-Location)"
     # Push-Location .
-    dotnet PackageAnalyzer generateFiles -wg Docusaurus
-    # dotnet PackageAnalyzer generateFiles -wg HtmlSummary
+    # dotnet PackageAnalyzer generateFiles -wg Docusaurus
+    dotnet PackageAnalyzer generateFiles -wg HtmlSummary
 
     cd Analysis
     cd docs
@@ -124,4 +97,35 @@ $sln | ForEach-Object {
 }
 
 Pop-Location
+cls
+}
 
+
+#done
+AnalyzeProject  "https://github.com/fullstackhero/dotnet-starter-kit"
+#done
+AnalyzeProject "https://github.com/ivanpaulovich/clean-architecture-manga"
+#many sln
+#$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
+#done
+AnalyzeProject "https://github.com/jasontaylordev/CleanArchitecture"
+#done
+AnalyzeProject "https://github.com/jbogard/ContosoUniversityDotNetCore-Pages"
+#3 sln
+AnalyzeProject "https://github.com/dotnet/eShop"
+#the project do not compile -errors 
+# $url="https://github.com/kgrzybek/modular-monolith-with-ddd"
+AnalyzeProject "https://github.com/nitish-kaushik/aspnetcore-webapi-clean-architecture"
+AnalyzeProject "https://github.com/nopSolutions/nopCommerce"
+AnalyzeProject "https://github.com/dotnetcore/CAP"
+AnalyzeProject "https://github.com/meysamhadeli/booking-microservices"
+AnalyzeProject "https://github.com/rafaelfgx/Architecture"
+AnalyzeProject "https://github.com/ardalis/CleanArchitecture"
+
+AnalyzeProject  "https://github.com/danpdc/cleanArchitectureTemplate"
+
+#TODO: https://github.com/topics/architecture?l=c%23&o=desc&s=stars
+
+#TODO: https://github.com/simplcommerce/SimplCommerce
+#TODO: https://github.com/grandnode/grandnode2
+#TODO: https://github.com/gothinkster/aspnetcore-realworld-example-app

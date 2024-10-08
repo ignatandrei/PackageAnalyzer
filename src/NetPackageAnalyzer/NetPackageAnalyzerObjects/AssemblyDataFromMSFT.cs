@@ -24,7 +24,8 @@ public class AssemblyDataFromMSFT
     {
         return genericMetricsAssembly
             .SelectMany(it => it.Childs)
-            .Select(it => new NamePerCount(it.Name, it.Childs.Length))
+            .Distinct()
+            .Select(a => new NamePerCount(a.Name, a.Childs.Length))
             .ToArray();
 
     }

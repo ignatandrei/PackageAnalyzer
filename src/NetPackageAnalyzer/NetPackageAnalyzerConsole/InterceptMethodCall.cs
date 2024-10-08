@@ -5,7 +5,16 @@ internal class InterceptMethodCall
     {
         var duration  = data.EndTime-data.StartTime;
         Console.WriteLine($"{TheAssemblyInfo.GeneratedNameNice}");
-        Console.WriteLine("Generated duration seconds: " + duration.TotalSeconds.ToString("#"));
+        var durat = duration.TotalSeconds; 
+        if(durat< 120)
+        {
+            Console.WriteLine("Generated duration seconds: " + duration.TotalSeconds.ToString("#"));
+        }
+        else
+        {
+            Console.WriteLine("Generated duration minutes: " + duration.TotalMinutes.ToString("#"));
+        }
+
         //Console.WriteLine("method called: " + data.ClassName + "." + data.MethodName);
         //Console.WriteLine("start time: " + data.StartTime);
         //Console.WriteLine("end time: " + data.EndTime);
