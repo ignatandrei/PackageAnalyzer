@@ -102,6 +102,7 @@ internal class RealMainExecuting
     public static async Task<int> RealMain(string[] args)
     {
         GlobalsForGenerating.Version = ThisAssembly.Info.Version.ToString();
+        GlobalsForGenerating.NameVersion = TheAssemblyInfo.GeneratedNameNice;
         WriteLine("Version:" + ThisAssembly.Info.Version.ToString());
         RootCommand rootCommand = new();
         rootCommand.AddGlobalOption(verbose);

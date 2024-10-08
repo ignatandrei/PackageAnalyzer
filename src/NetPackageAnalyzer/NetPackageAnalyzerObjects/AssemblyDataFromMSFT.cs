@@ -22,11 +22,15 @@ public class AssemblyDataFromMSFT
     }
     public NamePerCount[] ClassNumberMethods()
     {
-        return genericMetricsAssembly
+        var dataClasses = genericMetricsAssembly
             .SelectMany(it => it.Childs)
             .Distinct()
+            .ToArray();
+        var data = dataClasses
             .Select(a => new NamePerCount(a.Name, a.Childs.Length))
             .ToArray();
+
+        return data;
 
     }
     public long NumberOfMethods()

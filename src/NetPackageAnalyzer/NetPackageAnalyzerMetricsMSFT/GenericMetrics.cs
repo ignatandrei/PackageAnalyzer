@@ -75,16 +75,23 @@ public class GenericMetrics: IValidatableObject
             {
                 var typeNode = type as XmlNode;
                 if (typeNode == null) continue;
+                if(typeNode.FirstChild == null) continue;
                 name = typeNode.Attributes!["Name"]!.Value;
                 var typeData = CreateFromXML<GenericMetricsClass>(name, typeNode.FirstChild!);
                 //add methods
-                var methods = typeNode.SelectNodes("//Method");
+                var methods = typeNode.FirstChild.SelectNodes("//Method");
                 if (methods == null) continue;
                 List<GenericMetricsMethod> methodsMetrics = new();
                 foreach (var method in methods)
                 {
                     var methodNode = method as XmlNode;
                     if (methodNode == null) continue;
+                    var parent = methodNode.ParentNode;
+                    if(parent == null) continue;
+                    parent = parent.ParentNode;
+                    if(parent == null) continue;
+                    if(parent != typeNode)
+                        continue;
                     name = methodNode.Attributes!["Name"]!.Value;
                     var methodData = CreateFromXML<GenericMetricsMethod>(name, methodNode.FirstChild!);
                     if (!methodData.IsGetSetWith100())

@@ -20,6 +20,7 @@ public static class GlobalsForGenerating
     public static string FullPathToSolution = "";
     public static string NameSolution = "";
     public static string Version { get; set; }=string.Empty;
+    public static string NameVersion { get; set; } = string.Empty;
     public static string globalPrefix() 
     {
         return prefixSite + NameSolution;

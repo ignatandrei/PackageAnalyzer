@@ -39,17 +39,17 @@
         //    };
 
         //args = new[] { "generateFiles",
-            //    "--folder", @"D:\gth\dotnet-starter-kit",
-            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-            //    "-wg","HtmlSummary",
-            //    "--verbose","false"
-            //};
-            //args = new[] { "generateFiles",
-            //    "--folder", @"D:\gth\booking-microservices",
-            //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-            //    "-wg","HtmlSummary",
-            //    "--verbose","false"
-            //};
+        //    "--folder", @"D:\gth\dotnet-starter-kit",
+        //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+        //    "-wg","HtmlSummary",
+        //    "--verbose","false"
+        //};
+        //args = new[] { "generateFiles",
+        //    "--folder", @"D:\gth\booking-microservices",
+        //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+        //    "-wg","HtmlSummary",
+        //    "--verbose","false"
+        //};
 
         //args = new[] { 
         //    //"[parse]",
