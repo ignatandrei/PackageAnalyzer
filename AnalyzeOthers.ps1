@@ -1,6 +1,6 @@
 ﻿function AnalyzeProject ( $url  ){
 
-Push-Location .
+Push-Location ..
 
 $name = $url.Split('/')[-1]
 $analyzerPath = Get-Location
