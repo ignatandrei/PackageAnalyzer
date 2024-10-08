@@ -102,27 +102,27 @@ cls
 
 
 #done
-AnalyzeProject  "https://github.com/fullstackhero/dotnet-starter-kit"
+# AnalyzeProject  "https://github.com/fullstackhero/dotnet-starter-kit"
 #done
-AnalyzeProject "https://github.com/ivanpaulovich/clean-architecture-manga"
+# AnalyzeProject "https://github.com/ivanpaulovich/clean-architecture-manga"
 #many sln
 #$url ="https://github.com/evolutionary-architecture/evolutionary-architecture-by-example"
 #done
-AnalyzeProject "https://github.com/jasontaylordev/CleanArchitecture"
+# AnalyzeProject "https://github.com/jasontaylordev/CleanArchitecture"
 #done
-AnalyzeProject "https://github.com/jbogard/ContosoUniversityDotNetCore-Pages"
+# AnalyzeProject "https://github.com/jbogard/ContosoUniversityDotNetCore-Pages"
 #3 sln
-AnalyzeProject "https://github.com/dotnet/eShop"
+# AnalyzeProject "https://github.com/dotnet/eShop"
 #the project do not compile -errors 
 # $url="https://github.com/kgrzybek/modular-monolith-with-ddd"
-AnalyzeProject "https://github.com/nitish-kaushik/aspnetcore-webapi-clean-architecture"
-AnalyzeProject "https://github.com/nopSolutions/nopCommerce"
-AnalyzeProject "https://github.com/dotnetcore/CAP"
-AnalyzeProject "https://github.com/meysamhadeli/booking-microservices"
-AnalyzeProject "https://github.com/rafaelfgx/Architecture"
-AnalyzeProject "https://github.com/ardalis/CleanArchitecture"
+# AnalyzeProject "https://github.com/nitish-kaushik/aspnetcore-webapi-clean-architecture"
+# AnalyzeProject "https://github.com/nopSolutions/nopCommerce"
+# AnalyzeProject "https://github.com/dotnetcore/CAP"
+# AnalyzeProject "https://github.com/meysamhadeli/booking-microservices"
+# AnalyzeProject "https://github.com/rafaelfgx/Architecture"
+# AnalyzeProject "https://github.com/ardalis/CleanArchitecture"
 
-AnalyzeProject  "https://github.com/danpdc/cleanArchitectureTemplate"
+# AnalyzeProject  "https://github.com/danpdc/cleanArchitectureTemplate"
 
 #TODO: https://github.com/topics/architecture?l=c%23&o=desc&s=stars
 

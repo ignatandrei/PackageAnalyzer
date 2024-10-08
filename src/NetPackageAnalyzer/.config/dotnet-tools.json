@@ -3,9 +3,16 @@
   "isRoot": true,
   "tools": {
     "netpackageanalyzerconsole": {
-      "version": "8.2024.1006.2232",
+      "version": "8.2024.1008.1900",
       "commands": [
         "PackageAnalyzer"
+      ],
+      "rollForward": false
+    },
+    "dotnetsay": {
+      "version": "2.1.7",
+      "commands": [
+        "dotnetsay"
       ],
       "rollForward": false
     }
