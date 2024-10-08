@@ -46,6 +46,7 @@
     var execAssLines = assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.ExecutableLines)
         .OrderByDescending(it => it.Count)
+        .ThenBy(it => it.Name)
         .ToArray()
         ;
     var maxexecAssLines = assemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics.ExecutableLines);
@@ -53,6 +54,7 @@
     var execClassLines = assemblyDataFromMSFT
         .ClassesMetrics(eMSFTMetrics.ExecutableLines)
         .OrderByDescending(x => x.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
     ;
     var maxExecClassLines = assemblyDataFromMSFT
@@ -63,6 +65,7 @@
     var execMethodsLines = assemblyDataFromMSFT
         .MethodsMetrics(eMSFTMetrics.ExecutableLines)
         .OrderByDescending(x => x.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
 
     var maxExecMethodsLines = execMethodsLines.FirstOrDefault();
@@ -71,24 +74,28 @@
     var nrClassesPerAssembly = assemblyDataFromMSFT
         .AssemblyNumberClasses()
         .OrderByDescending(it => it.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
     var maxClasses = nrClassesPerAssembly.First();
 
     var nrMethodsPerAssembly = assemblyDataFromMSFT
         .AssemblyNumberMethods()
         .OrderByDescending(it => it.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
     var maxMethodsAss = nrMethodsPerAssembly.First();
 
     var nrMethodsPerClass = assemblyDataFromMSFT
         .ClassNumberMethods()
         .OrderByDescending(it => it.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
     var maxMethodsClass = nrMethodsPerClass.FirstOrDefault();
 
     var maintAssIndex = assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex)
         .OrderBy(it => it.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
     var minMaintAssIndex = maintAssIndex.FirstOrDefault();
     var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Assembly", maintAssIndex, 10, 20, false));
@@ -97,6 +104,7 @@
     var maintClassIndex = assemblyDataFromMSFT
         .ClassesMetrics(eMSFTMetrics.MaintainabilityIndex)
         .OrderBy(it => it.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
     var minMaintClassIndex = maintClassIndex.FirstOrDefault();
     var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Class", maintClassIndex, 10, 20, false));
@@ -104,6 +112,7 @@
     var maintMethodIndex = assemblyDataFromMSFT
     .MethodsMetrics(eMSFTMetrics.MaintainabilityIndex)
     .OrderBy(it => it.Count)
+    .ThenBy(it => it.Name)
     .ToArray();
     var minMaintMethodIndex = maintMethodIndex.FirstOrDefault();
     var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Method", maintMethodIndex, 10, 20, false));
@@ -111,6 +120,7 @@
     var CCAssIndex = assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.ClassCoupling)
         .OrderByDescending(it => it.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
     var maxCCAssIndex = CCAssIndex.FirstOrDefault();
     var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Assembly", CCAssIndex, 0, 10, true));
@@ -118,6 +128,7 @@
     var CCClassIndex = assemblyDataFromMSFT
     .ClassesMetrics(eMSFTMetrics.ClassCoupling)
     .OrderByDescending(it => it.Count)
+    .ThenBy(it => it.Name)
     .ToArray();
     var maxCCClassIndex = CCClassIndex.FirstOrDefault();
     var CCClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Class", CCClassIndex, 0, 10, true));
@@ -128,6 +139,7 @@
     var CycAssIndex = assemblyDataFromMSFT
     .AssemblyMetric(eMSFTMetrics.CyclomaticComplexity)
     .OrderByDescending(it => it.Count)
+    .ThenBy(it => it.Name)
     .ToArray();
     var maxCycAssIndex = CCAssIndex.FirstOrDefault();
     var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Assembly", CycAssIndex, 10, 25, true));
@@ -135,6 +147,7 @@
     var CycClassIndex = assemblyDataFromMSFT
         .ClassesMetrics(eMSFTMetrics.CyclomaticComplexity)
         .OrderByDescending(it => it.Count)
+        .ThenBy(it => it.Name)
         .ToArray();
     var maxCycClassIndex = CycClassIndex.FirstOrDefault();
     var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Class", CycClassIndex, 10, 25, true));
@@ -143,6 +156,7 @@
     var CycMethodIndex = assemblyDataFromMSFT
     .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity)
     .OrderByDescending(it => it.Count)
+    .ThenBy(it => it.Name)
     .ToArray();
     var maxCycMethodIndex = CycMethodIndex.FirstOrDefault();
     var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Method", CycMethodIndex, 10, 25, true));
