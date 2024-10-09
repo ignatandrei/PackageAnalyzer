@@ -59,7 +59,7 @@ $sln | ForEach-Object {
     # Push-Location .
     # dotnet PackageAnalyzer generateFiles -wg Docusaurus
     dotnet PackageAnalyzer generateFiles -wg HtmlSummary
-
+    
     cd Analysis
     cd docs
     cd Analysis
@@ -97,7 +97,7 @@ $sln | ForEach-Object {
 }
 
 Pop-Location
-cls
+# cls
 }
 
 
@@ -124,8 +124,35 @@ cls
 
 # AnalyzeProject  "https://github.com/danpdc/cleanArchitectureTemplate"
 
+#TODO AnalyzeProject  "https://github.com/thangchung/clean-architecture-dotnet"
+
+#TODO AnalyzeProject "https://github.com/jvandevelde/distributed-playground"
+
+# AnalyzeProject "https://github.com/asc-lab/dotnetcore-microservices-poc"
+
+# AnalyzeProject "https://github.com/Aaronontheweb/InMemoryCQRSReplication"
+
+# AnalyzeProject "https://github.com/horsdal/microservices-in-dotnet-book-second-edition"
+
+# AnalyzeProject "https://github.com/phongnguyend/Practical.CleanArchitecture"
+
+# AnalyzeProject "https://github.com/thangchung/practical-dapr"
+
+# AnalyzeProject "https://github.com/AdaptiveConsulting/ReactiveTraderCloud"
+
+# AnalyzeProject "https://github.com/EduardoPires/EquinoxProject/"
+
+# AnalyzeProject "https://github.com/RickStrahl/AlbumViewerVNext/"
+
+# AnalyzeProject "https://github.com/cecilphillip/aspnet-servicediscovery-patterns"
+
+# AnalyzeProject "https://github.com/kgrzybek/sample-dotnet-core-cqrs-api"
+
+# AnalyzeProject "https://github.com/abpframework/abp"
+
 #TODO: https://github.com/topics/architecture?l=c%23&o=desc&s=stars
 
 #TODO: https://github.com/simplcommerce/SimplCommerce
 #TODO: https://github.com/grandnode/grandnode2
 #TODO: https://github.com/gothinkster/aspnetcore-realworld-example-app
+
