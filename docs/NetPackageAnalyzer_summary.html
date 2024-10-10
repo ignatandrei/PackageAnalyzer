@@ -7,6 +7,8 @@
     <script type="text/javascript" src="tabulator.min.js"></script>
     <link rel="stylesheet" href="tabulator.min.css" />
     <link rel="stylesheet" href="tabulator.theme.min.js" />
+    <script src="driver.js.iife.js"></script>
+    <link rel="stylesheet" href="driver.css" />
     <style>
         table thead tr {
             background-color: #ffcccb; /* Light red */
@@ -93,13 +95,13 @@
                         <td>
                             <a href="#number-of-methods-per-assembly">
                                 Number methods
-                            </a>: 150
+                            </a>: 152
                         </td>
                     </tr>
             </table>
         </div>
         <div class="center">
-            <h1>Summary NetPackageAnalyzer   </h1>
+            <h1 id="summary">Summary NetPackageAnalyzer   </h1>
             <a href="#licences-per-project"> Licenses</a>: 16
             <h2>If you are new to the project</h2>
             <ol>
@@ -168,7 +170,7 @@
                         <td>1</td>
                         <td>
                             <a href="#commits">
-                                Total Commits : 229
+                                Total Commits : 232
                         </td>
                     </tr>
 
@@ -190,7 +192,7 @@
                     <tr>
                         <td>4</td>
                         <td>
-                            The file with most commits ( 107 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
+                            The file with most commits ( 108 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
                         </td>
                     </tr>
 
@@ -248,7 +250,7 @@
                         <td>
                             <a href="#Maintainability-for-Assembly">
                                 With low maintaining score
-                            </a>:59
+                            </a>:57
 
                         </td>
                         <td>NetPackageAnalyzerExportHTML</td>
@@ -355,7 +357,7 @@
                             With low maintaining score
                         </a>:29
                     </td>
-                    <td>Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)</td>
+                    <td>Task<bool> GenerateData.GenerateDataForSln(string folder)</td>
                 </tr>
 
                 <tr>
@@ -410,8 +412,8 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 69 },
-                { name: 'Commits 2024', max: 59 },
+                { name: 'Total Commits', max: 70 },
+                { name: 'Commits 2024', max: 60 },
                 { name: 'Packages', max: 38 },
                 { name: 'References', max: 4 },
                 { name: 'Number Public Classes', max: 35 },
@@ -439,7 +441,7 @@ name: 'NetPackageAnalyzeHistory'
     },
 
     {
-                                value: [69,59, 33, 4, 0, 0,4, 268, 26,32],
+                                value: [70,60, 33, 4, 0, 0,4, 268, 26,32],
 name: 'NetPackageAnalyzerConsole'
     },
 
@@ -454,7 +456,7 @@ name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-                                value: [18,18, 19, 2, 1, 65,1, 80, 13,23],
+                                value: [19,19, 19, 2, 1, 71,1, 88, 13,25],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
@@ -479,7 +481,7 @@ name: 'NetPackageAnalyzerTests'
     },
 
     {
-                                value: [1,1, 1, 0, 1, 15,1, 22, 6,2],
+                                value: [2,2, 1, 0, 1, 19,1, 27, 8,2],
 name: 'NPA.Resources'
     },
 
@@ -1029,7 +1031,7 @@ name: 'NuGetInfo'
                 series: [
                     {
                         data: [
-            {value:59},
+            {value:57},
 {value:70},
 {value:73},
 {value:75},
@@ -1077,7 +1079,7 @@ name: 'NuGetInfo'
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "59" },
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "57" },
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "70" },
                 
@@ -1139,7 +1141,7 @@ name: 'NuGetInfo'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['GenerateFilesDocusaurus','GenerateData','AnalyzeMergeData','Statistical<T>','GenerateHTML','GenericMetrics','ProcessOutput','ProcessOutput','AnalyzeForProject','FolderHistoryCommits','FileFolderHistorySimple','RealMainExecuting','ProjectsDict','InterceptMethodCall','TestingPlatformEntryPoint','CommitsData','TestNugetInfo','AssemblyDataFromMSFT','TestSolutionExists','deprecatedV1_gen_json','TemplateGenerator','includeV1_gen_json','outdatedV1_gen_json','HistoryPerYear','GenericMetricsMethod','TemplateGenerator','Commit','GlobalsForGenerating','Frameworks','Projects','TopLevelPackages','Problems','TransitivePackages','MyResource','ExternalReferenceExport','GitData','EConsoleToGenerate','WhatToGenerate','MyResource','eMSFTMetrics','MyAdditionalFiles','ExportPublicClass','MethodPublic','PackageOptions','TypePackageData','ExportAssembly','ExportClass','MethodswithexternalreferenceExport','AnalyzeCsproj','AnalyzeNode','GenericMetricsClass','FileDataEnum','GenericMetricsAssembly','ClassesRefData','GenerateFiles','IOperations','PublicClassRefData','WriteToConsole','AnswersFindNuget']
+                    data: ['GenerateFilesDocusaurus','GenerateData','AnalyzeMergeData','GenerateHTML','Statistical<T>','GenericMetrics','ProcessOutput','ProcessOutput','AnalyzeForProject','FolderHistoryCommits','FileFolderHistorySimple','RealMainExecuting','ProjectsDict','InterceptMethodCall','TestingPlatformEntryPoint','CommitsData','TestNugetInfo','AssemblyDataFromMSFT','TestSolutionExists','deprecatedV1_gen_json','TemplateGenerator','includeV1_gen_json','outdatedV1_gen_json','GenericMetricsMethod','HistoryPerYear','Commit','Frameworks','GlobalsForGenerating','Problems','Projects','TemplateGenerator','TopLevelPackages','TransitivePackages','MyResource','ExternalReferenceExport','EConsoleToGenerate','eMSFTMetrics','ExportAssembly','ExportClass','ExportPublicClass','GitData','MethodPublic','MethodswithexternalreferenceExport','MyAdditionalFiles','MyResource','PackageOptions','TypePackageData','WhatToGenerate','AnalyzeCsproj','AnalyzeNode','GenericMetricsClass','AnswersFindNuget','ClassesRefData','FileDataEnum','GenerateFiles','GenericMetricsAssembly','IOperations','PublicClassRefData','WriteToConsole']
                 },
                 yAxis: {
                     type: 'value'
@@ -1154,8 +1156,8 @@ name: 'NuGetInfo'
             {value:38},
 {value:52},
 {value:57},
+{value:57},
 {value:58},
-{value:59},
 {value:60},
 {value:60},
 {value:61},
@@ -1252,9 +1254,9 @@ name: 'NuGetInfo'
                 
                         {"Name": "AnalyzeMergeData", "Nr": "57" },
                 
-                        {"Name": "Statistical<T>", "Nr": "58" },
+                        {"Name": "GenerateHTML", "Nr": "57" },
                 
-                        {"Name": "GenerateHTML", "Nr": "59" },
+                        {"Name": "Statistical<T>", "Nr": "58" },
                 
                         {"Name": "GenericMetrics", "Nr": "60" },
                 
@@ -1292,23 +1294,23 @@ name: 'NuGetInfo'
                 
                         {"Name": "outdatedV1_gen_json", "Nr": "84" },
                 
-                        {"Name": "HistoryPerYear", "Nr": "85" },
-                
                         {"Name": "GenericMetricsMethod", "Nr": "85" },
                 
-                        {"Name": "TemplateGenerator", "Nr": "86" },
+                        {"Name": "HistoryPerYear", "Nr": "85" },
                 
                         {"Name": "Commit", "Nr": "86" },
                 
+                        {"Name": "Frameworks", "Nr": "86" },
+                
                         {"Name": "GlobalsForGenerating", "Nr": "86" },
                 
-                        {"Name": "Frameworks", "Nr": "86" },
+                        {"Name": "Problems", "Nr": "86" },
                 
                         {"Name": "Projects", "Nr": "86" },
                 
-                        {"Name": "TopLevelPackages", "Nr": "86" },
+                        {"Name": "TemplateGenerator", "Nr": "86" },
                 
-                        {"Name": "Problems", "Nr": "86" },
+                        {"Name": "TopLevelPackages", "Nr": "86" },
                 
                         {"Name": "TransitivePackages", "Nr": "86" },
                 
@@ -1316,31 +1318,31 @@ name: 'NuGetInfo'
                 
                         {"Name": "ExternalReferenceExport", "Nr": "89" },
                 
-                        {"Name": "GitData", "Nr": "93" },
-                
                         {"Name": "EConsoleToGenerate", "Nr": "93" },
                 
-                        {"Name": "WhatToGenerate", "Nr": "93" },
-                
-                        {"Name": "MyResource", "Nr": "93" },
-                
                         {"Name": "eMSFTMetrics", "Nr": "93" },
-                
-                        {"Name": "MyAdditionalFiles", "Nr": "93" },
-                
-                        {"Name": "ExportPublicClass", "Nr": "93" },
-                
-                        {"Name": "MethodPublic", "Nr": "93" },
-                
-                        {"Name": "PackageOptions", "Nr": "93" },
-                
-                        {"Name": "TypePackageData", "Nr": "93" },
                 
                         {"Name": "ExportAssembly", "Nr": "93" },
                 
                         {"Name": "ExportClass", "Nr": "93" },
                 
+                        {"Name": "ExportPublicClass", "Nr": "93" },
+                
+                        {"Name": "GitData", "Nr": "93" },
+                
+                        {"Name": "MethodPublic", "Nr": "93" },
+                
                         {"Name": "MethodswithexternalreferenceExport", "Nr": "93" },
+                
+                        {"Name": "MyAdditionalFiles", "Nr": "93" },
+                
+                        {"Name": "MyResource", "Nr": "93" },
+                
+                        {"Name": "PackageOptions", "Nr": "93" },
+                
+                        {"Name": "TypePackageData", "Nr": "93" },
+                
+                        {"Name": "WhatToGenerate", "Nr": "93" },
                 
                         {"Name": "AnalyzeCsproj", "Nr": "94" },
                 
@@ -1348,21 +1350,21 @@ name: 'NuGetInfo'
                 
                         {"Name": "GenericMetricsClass", "Nr": "97" },
                 
-                        {"Name": "FileDataEnum", "Nr": "100" },
-                
-                        {"Name": "GenericMetricsAssembly", "Nr": "100" },
+                        {"Name": "AnswersFindNuget", "Nr": "100" },
                 
                         {"Name": "ClassesRefData", "Nr": "100" },
                 
+                        {"Name": "FileDataEnum", "Nr": "100" },
+                
                         {"Name": "GenerateFiles", "Nr": "100" },
+                
+                        {"Name": "GenericMetricsAssembly", "Nr": "100" },
                 
                         {"Name": "IOperations", "Nr": "100" },
                 
                         {"Name": "PublicClassRefData", "Nr": "100" },
                 
                         {"Name": "WriteToConsole", "Nr": "100" },
-                
-                        {"Name": "AnswersFindNuget", "Nr": "100" },
                                             ];
             var table = new Tabulator("#Maintainability-for-Class-table", {
                 data: tabledata,
@@ -1402,7 +1404,7 @@ name: 'NuGetInfo'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','Task<bool> GenerateData.GenerateDataForSln(string folder)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','void AnalyzeForProject.Analyze()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)','void FolderHistoryCommits.Initialize()','void ProjectsDict.FindReferences()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()','void GenerateHTML.WriteJs(string where)','Command RealMainExecuting.AddGenerateFiles()','T Statistical<T>.Median(T[]? values)','Task<int> RealMainExecuting.RealMain(string[] args)','string ProcessOutput.OutputDotnetPackage(string folder, PackageOptions packageOptions)','KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)','Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)','string ProcessOutput.ExecuteGit(string folder, GitData gitData)','T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)','string ProcessOutput.ListSDKS(string folder)','bool ProcessOutput.Build(string folder)','string ProcessOutput.OutputDotnetReference(string pathToCsproj)','void ProjectsDict.FindHistoryProjects()','Commit[] ProjectsDict.MaxCommits(int? year)','int ProjectsDict.MedianCommits(int? year)','string[]? deprecatedV1_gen_json.PackagesID()','Command RealMainExecuting.AddGenerateConsole()','Task RealMainExecuting.GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)','Dictionary<int, Commit> ProjectsDict.CommitsWithMaxFilesPerYear()','Dictionary<string, int> CommitsData.FilesWithMaxCommits(int? year, int take)','void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)','NamePerCount[] AssemblyDataFromMSFT.MethodsMetrics(eMSFTMetrics metrics)','int ProjectsDict.MedianCommitsForFiles(int? year)','Dictionary<int, int> ProjectsDict.CommitsMedianFilesPerYear()','void RealMainExecuting.LaunchBrowser(string url)','NamePerCount[] ProjectsDict.Licenses()','Dictionary<int, long> ProjectsDict.CommitsPerYearFolder()','Dictionary<int, long> ProjectsDict.CommitsPerYearFile()','Task RealMainExecuting.GenerateHandlerMajorDiff(bool verbose, string folder)','Task<int> TestingPlatformEntryPoint.Main(string[] args)','History HistoryPerYear.AllHistory()','PackageWithVersion[] GenerateData.Problems()','AnalyzeForProject.AnalyzeForProject(string rootFolder, FileData[] files, string search)','Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)','IEnumerable<ValidationResult> GenericMetrics.Validate(ValidationContext validationContext)','NamePerCount[] AssemblyDataFromMSFT.ClassesMetrics(eMSFTMetrics metrics)','void FileFolderHistorySimple.Initialize(bool AddHistoryForFolder)','NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberMethods()','void TestNugetInfo.TestFindVersionNuget()','NamePerCount[] AssemblyDataFromMSFT.ClassNumberMethods()','Commit ProjectsDict.CommitsWithMaxFiles(int? year)','bool GenericMetricsMethod.IsGetSetWith100()','NamePerCount[] ProjectsDict.CommitsPerFolder()','NamePerCount[] ProjectsDict.Packages()','Task TestSolutionExists.TestDoesNotWorkWithoutSln()','int AnalyzeForProject.maxDiff(FileData file, string relPath)','string? AnalyzeMergeData.relFolder()','Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()','long ProjectsDict.CommitsPerYearFolder(int year)','ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)','Task<string> TemplateGenerator.Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)','Task<string?> TemplateGenerator.Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)','Task<string> TemplateGenerator.Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)','int ProjectsDict.MaxYearCommits()','int ProjectsDict.MinYearCommits()','Commit.Commit()','Commit.Commit(DateTime date, string sha)','long ProjectsDict.TotalCommits()','NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMin(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.ClassesMetricMax(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.ClassesMetricMin(eMSFTMetrics metrics)','NamePerCount[] AssemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics metrics)','string GlobalsForGenerating.RelativePath(string? pathProject)','deprecatedV1_gen_json? deprecatedV1_gen_json.Deserialize(string? text)','Frameworks? Frameworks.Deserialize(string? text)','Projects? Projects.Deserialize(string? text)','TopLevelPackages? TopLevelPackages.Deserialize(string? text)','includeV1_gen_json? includeV1_gen_json.Deserialize(string? text)','Problems? Problems.Deserialize(string? text)','TransitivePackages? TransitivePackages.Deserialize(string? text)','outdatedV1_gen_json? outdatedV1_gen_json.Deserialize(string? text)','NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberClasses()','AnalyzeMergeData.AnalyzeMergeData(string folder)','RealMainExecuting.RealMainExecuting()','void ProjectsDict.FindUpStreamReferences()','Task<string> TemplateGenerator.Generate_DisplayAllFiles(DataToDisplayMerge model)','Task<string> TemplateGenerator.Generate_DisplayAllFilesMD(DataToDisplayMerge model)','Task<string?> TemplateGenerator.Generate_OutDeprMarkdown(PackageWithVersion[] model)','Task<string> TemplateGenerator.Generate_SolutionRelations(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_ProjectPackages(ProjectData model)','Task<string?> TemplateGenerator.Generate_ProjectCommits(ProjectData model)','Task<string?> TemplateGenerator.Generate_BuildingBlocks(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_Commits(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_RootProjects(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_TestProjects(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_SolutionIntroduction(InfoSolution model)','Task<string?> TemplateGenerator.Generate_ProjectRelations(ProjectData projData)','Task<string?> TemplateGenerator.Generate_ReferencesSummaryProjects(ClassesRefData refSummary)','Task<string?> TemplateGenerator.Generate_PublicClasses(PublicClassRefData refPublic)','NamePerCount? PublicClassRefData.PublicMethod_MostLinesOfCode_Most()','long AssemblyDataFromMSFT.NumberOfClasses()','long AssemblyDataFromMSFT.NumberOfMethods()','GenericMetrics.GenericMetrics()','string ExternalReferenceExport.FullClassName()','History HistoryPerYear.HistoryYear(int year)','int HistoryPerYear.MaxYear()','int HistoryPerYear.MinYear()','ReadOnlySpan<byte> MyResource.GetDocusaurusZip()','string GlobalsForGenerating.globalPrefix()','void GenerateData.AddHistoryCsproj()','IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()','ReadOnlySpan<byte> MyResource.GetMermaidJs()','ReadOnlySpan<byte> MyResource.GetEchartsJs()','ReadOnlySpan<byte> MyResource.GetVisJs()','ReadOnlySpan<byte> MyResource.GetTabulatorJs()','ReadOnlySpan<byte> MyResource.GetTabulatorCss()','ReadOnlySpan<byte> MyResource.GetTabulatorTheme()','AnalyzeCsproj.AnalyzeCsproj(string rootFolder, FileData[] files)','AnalyzeNode.AnalyzeNode(string rootFolder, FileData[] files)','int GenericMetricsClass.NumberOfMethods()','int ProjectsDict.NrLicenses()','FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)','FolderHistoryCommits.FolderHistoryCommits(string nameFolder)','AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)','GenerateData.GenerateData(IFileSystem system)','HistoryPerYear.HistoryPerYear()','HistoryPerYear.HistoryPerYear(IDictionary<int, History> data)','int Commit.CountFiles()','GenerateFilesDocusaurus.GenerateFilesDocusaurus(IFileSystem system)','GenerateHTML.GenerateHTML(IFileSystem system)','GenericMetricsAssembly.GenericMetricsAssembly()','GenericMetricsClass.GenericMetricsClass()','GenericMetricsMethod.GenericMetricsMethod()','string[] GenerateData.MajorWithMoreVersions()','GenerateFiles.GenerateFiles(IFileSystem system)','Task<string> GenerateFiles.GenerateNow(string folder, string where)','void IOperations.ClearWrongData()','string[] IOperations.ProjectsPath()','string[] IOperations.TopLevelPackagesIDs()','Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()','ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)']
+                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','void AnalyzeForProject.Analyze()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)','void FolderHistoryCommits.Initialize()','void ProjectsDict.FindReferences()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','void GenerateHTML.WriteJs(string where)','Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()','Command RealMainExecuting.AddGenerateFiles()','T Statistical<T>.Median(T[]? values)','KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)','string ProcessOutput.OutputDotnetPackage(string folder, PackageOptions packageOptions)','Task<int> RealMainExecuting.RealMain(string[] args)','Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)','bool ProcessOutput.Build(string folder)','string ProcessOutput.ExecuteGit(string folder, GitData gitData)','string ProcessOutput.ListSDKS(string folder)','string ProcessOutput.OutputDotnetReference(string pathToCsproj)','T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)','void ProjectsDict.FindHistoryProjects()','Commit[] ProjectsDict.MaxCommits(int? year)','int ProjectsDict.MedianCommits(int? year)','string[]? deprecatedV1_gen_json.PackagesID()','Command RealMainExecuting.AddGenerateConsole()','Dictionary<int, Commit> ProjectsDict.CommitsWithMaxFilesPerYear()','Task RealMainExecuting.GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)','Dictionary<string, int> CommitsData.FilesWithMaxCommits(int? year, int take)','Dictionary<int, int> ProjectsDict.CommitsMedianFilesPerYear()','int ProjectsDict.MedianCommitsForFiles(int? year)','NamePerCount[] AssemblyDataFromMSFT.MethodsMetrics(eMSFTMetrics metrics)','void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)','Dictionary<int, long> ProjectsDict.CommitsPerYearFile()','Dictionary<int, long> ProjectsDict.CommitsPerYearFolder()','NamePerCount[] ProjectsDict.Licenses()','void RealMainExecuting.LaunchBrowser(string url)','Task RealMainExecuting.GenerateHandlerMajorDiff(bool verbose, string folder)','Task<int> TestingPlatformEntryPoint.Main(string[] args)','History HistoryPerYear.AllHistory()','PackageWithVersion[] GenerateData.Problems()','AnalyzeForProject.AnalyzeForProject(string rootFolder, FileData[] files, string search)','IEnumerable<ValidationResult> GenericMetrics.Validate(ValidationContext validationContext)','NamePerCount[] AssemblyDataFromMSFT.ClassesMetrics(eMSFTMetrics metrics)','Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)','NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberMethods()','void FileFolderHistorySimple.Initialize(bool AddHistoryForFolder)','void TestNugetInfo.TestFindVersionNuget()','Commit ProjectsDict.CommitsWithMaxFiles(int? year)','NamePerCount[] AssemblyDataFromMSFT.ClassNumberMethods()','bool GenericMetricsMethod.IsGetSetWith100()','NamePerCount[] ProjectsDict.CommitsPerFolder()','NamePerCount[] ProjectsDict.Packages()','Task TestSolutionExists.TestDoesNotWorkWithoutSln()','Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()','int AnalyzeForProject.maxDiff(FileData file, string relPath)','long ProjectsDict.CommitsPerYearFolder(int year)','ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)','string? AnalyzeMergeData.relFolder()','int ProjectsDict.MaxYearCommits()','int ProjectsDict.MinYearCommits()','Task<string?> TemplateGenerator.Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)','Task<string> TemplateGenerator.Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)','Task<string> TemplateGenerator.Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)','Commit.Commit()','Commit.Commit(DateTime date, string sha)','long ProjectsDict.TotalCommits()','NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMin(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.ClassesMetricMax(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.ClassesMetricMin(eMSFTMetrics metrics)','NamePerCount[] AssemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics metrics)','deprecatedV1_gen_json? deprecatedV1_gen_json.Deserialize(string? text)','Frameworks? Frameworks.Deserialize(string? text)','includeV1_gen_json? includeV1_gen_json.Deserialize(string? text)','outdatedV1_gen_json? outdatedV1_gen_json.Deserialize(string? text)','Problems? Problems.Deserialize(string? text)','Projects? Projects.Deserialize(string? text)','string GlobalsForGenerating.RelativePath(string? pathProject)','TopLevelPackages? TopLevelPackages.Deserialize(string? text)','TransitivePackages? TransitivePackages.Deserialize(string? text)','NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberClasses()','AnalyzeMergeData.AnalyzeMergeData(string folder)','RealMainExecuting.RealMainExecuting()','void ProjectsDict.FindUpStreamReferences()','NamePerCount? PublicClassRefData.PublicMethod_MostLinesOfCode_Most()','Task<string?> TemplateGenerator.Generate_BuildingBlocks(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_Commits(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_OutDeprMarkdown(PackageWithVersion[] model)','Task<string?> TemplateGenerator.Generate_ProjectCommits(ProjectData model)','Task<string?> TemplateGenerator.Generate_ProjectPackages(ProjectData model)','Task<string?> TemplateGenerator.Generate_ProjectRelations(ProjectData projData)','Task<string?> TemplateGenerator.Generate_PublicClasses(PublicClassRefData refPublic)','Task<string?> TemplateGenerator.Generate_ReferencesSummaryProjects(ClassesRefData refSummary)','Task<string?> TemplateGenerator.Generate_RootProjects(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_SolutionIntroduction(InfoSolution model)','Task<string?> TemplateGenerator.Generate_TestProjects(ProjectsDict model)','Task<string> TemplateGenerator.Generate_DisplayAllFiles(DataToDisplayMerge model)','Task<string> TemplateGenerator.Generate_DisplayAllFilesMD(DataToDisplayMerge model)','Task<string> TemplateGenerator.Generate_SolutionRelations(ProjectsDict model)','long AssemblyDataFromMSFT.NumberOfClasses()','long AssemblyDataFromMSFT.NumberOfMethods()','GenericMetrics.GenericMetrics()','string ExternalReferenceExport.FullClassName()','History HistoryPerYear.HistoryYear(int year)','int HistoryPerYear.MaxYear()','int HistoryPerYear.MinYear()','IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()','ReadOnlySpan<byte> MyResource.GetDocusaurusZip()','ReadOnlySpan<byte> MyResource.GetDriverCss()','ReadOnlySpan<byte> MyResource.GetDriverJS()','ReadOnlySpan<byte> MyResource.GetEchartsJs()','ReadOnlySpan<byte> MyResource.GetMermaidJs()','ReadOnlySpan<byte> MyResource.GetTabulatorCss()','ReadOnlySpan<byte> MyResource.GetTabulatorJs()','ReadOnlySpan<byte> MyResource.GetTabulatorTheme()','ReadOnlySpan<byte> MyResource.GetVisJs()','string GlobalsForGenerating.globalPrefix()','void GenerateData.AddHistoryCsproj()','AnalyzeCsproj.AnalyzeCsproj(string rootFolder, FileData[] files)','AnalyzeNode.AnalyzeNode(string rootFolder, FileData[] files)','int GenericMetricsClass.NumberOfMethods()','int ProjectsDict.NrLicenses()','AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)','FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)','FolderHistoryCommits.FolderHistoryCommits(string nameFolder)','GenerateData.GenerateData(IFileSystem system)','Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()','GenerateFiles.GenerateFiles(IFileSystem system)','GenerateFilesDocusaurus.GenerateFilesDocusaurus(IFileSystem system)','GenerateHTML.GenerateHTML(IFileSystem system)','GenericMetricsAssembly.GenericMetricsAssembly()','GenericMetricsClass.GenericMetricsClass()','GenericMetricsMethod.GenericMetricsMethod()','HistoryPerYear.HistoryPerYear()','HistoryPerYear.HistoryPerYear(IDictionary<int, History> data)','int Commit.CountFiles()','ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)','string[] GenerateData.MajorWithMoreVersions()','string[] IOperations.ProjectsPath()','string[] IOperations.TopLevelPackagesIDs()','Task<string> GenerateFiles.GenerateNow(string folder, string where)','void IOperations.ClearWrongData()']
                 },
                 yAxis: {
                     type: 'value'
@@ -1425,8 +1427,8 @@ name: 'NuGetInfo'
 {value:51},
 {value:51},
 {value:52},
+{value:53},
 {value:54},
-{value:56},
 {value:58},
 {value:58},
 {value:59},
@@ -1534,6 +1536,8 @@ name: 'NuGetInfo'
 {value:93},
 {value:93},
 {value:93},
+{value:93},
+{value:93},
 {value:94},
 {value:94},
 {value:95},
@@ -1594,9 +1598,9 @@ name: 'NuGetInfo'
 
             var tabledata = [
 
-                        {"Name": "Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)", "Nr": "29" },
-                
                         {"Name": "Task<bool> GenerateData.GenerateDataForSln(string folder)", "Nr": "29" },
+                
+                        {"Name": "Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)", "Nr": "29" },
                 
                         {"Name": "(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)", "Nr": "35" },
                 
@@ -1616,31 +1620,31 @@ name: 'NuGetInfo'
                 
                         {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "52" },
                 
-                        {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "54" },
+                        {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "53" },
                 
-                        {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "56" },
+                        {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "54" },
                 
                         {"Name": "Command RealMainExecuting.AddGenerateFiles()", "Nr": "58" },
                 
                         {"Name": "T Statistical<T>.Median(T[]? values)", "Nr": "58" },
                 
-                        {"Name": "Task<int> RealMainExecuting.RealMain(string[] args)", "Nr": "59" },
+                        {"Name": "KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)", "Nr": "59" },
                 
                         {"Name": "string ProcessOutput.OutputDotnetPackage(string folder, PackageOptions packageOptions)", "Nr": "59" },
                 
-                        {"Name": "KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)", "Nr": "59" },
+                        {"Name": "Task<int> RealMainExecuting.RealMain(string[] args)", "Nr": "59" },
                 
                         {"Name": "Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)", "Nr": "60" },
                 
-                        {"Name": "string ProcessOutput.ExecuteGit(string folder, GitData gitData)", "Nr": "61" },
+                        {"Name": "bool ProcessOutput.Build(string folder)", "Nr": "61" },
                 
-                        {"Name": "T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)", "Nr": "61" },
+                        {"Name": "string ProcessOutput.ExecuteGit(string folder, GitData gitData)", "Nr": "61" },
                 
                         {"Name": "string ProcessOutput.ListSDKS(string folder)", "Nr": "61" },
                 
-                        {"Name": "bool ProcessOutput.Build(string folder)", "Nr": "61" },
-                
                         {"Name": "string ProcessOutput.OutputDotnetReference(string pathToCsproj)", "Nr": "61" },
+                
+                        {"Name": "T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)", "Nr": "61" },
                 
                         {"Name": "void ProjectsDict.FindHistoryProjects()", "Nr": "61" },
                 
@@ -1652,27 +1656,27 @@ name: 'NuGetInfo'
                 
                         {"Name": "Command RealMainExecuting.AddGenerateConsole()", "Nr": "66" },
                 
-                        {"Name": "Task RealMainExecuting.GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)", "Nr": "66" },
-                
                         {"Name": "Dictionary<int, Commit> ProjectsDict.CommitsWithMaxFilesPerYear()", "Nr": "66" },
+                
+                        {"Name": "Task RealMainExecuting.GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)", "Nr": "66" },
                 
                         {"Name": "Dictionary<string, int> CommitsData.FilesWithMaxCommits(int? year, int take)", "Nr": "67" },
                 
-                        {"Name": "void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)", "Nr": "68" },
-                
-                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.MethodsMetrics(eMSFTMetrics metrics)", "Nr": "68" },
+                        {"Name": "Dictionary<int, int> ProjectsDict.CommitsMedianFilesPerYear()", "Nr": "68" },
                 
                         {"Name": "int ProjectsDict.MedianCommitsForFiles(int? year)", "Nr": "68" },
                 
-                        {"Name": "Dictionary<int, int> ProjectsDict.CommitsMedianFilesPerYear()", "Nr": "68" },
+                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.MethodsMetrics(eMSFTMetrics metrics)", "Nr": "68" },
                 
-                        {"Name": "void RealMainExecuting.LaunchBrowser(string url)", "Nr": "69" },
+                        {"Name": "void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)", "Nr": "68" },
                 
-                        {"Name": "NamePerCount[] ProjectsDict.Licenses()", "Nr": "69" },
+                        {"Name": "Dictionary<int, long> ProjectsDict.CommitsPerYearFile()", "Nr": "69" },
                 
                         {"Name": "Dictionary<int, long> ProjectsDict.CommitsPerYearFolder()", "Nr": "69" },
                 
-                        {"Name": "Dictionary<int, long> ProjectsDict.CommitsPerYearFile()", "Nr": "69" },
+                        {"Name": "NamePerCount[] ProjectsDict.Licenses()", "Nr": "69" },
+                
+                        {"Name": "void RealMainExecuting.LaunchBrowser(string url)", "Nr": "69" },
                 
                         {"Name": "Task RealMainExecuting.GenerateHandlerMajorDiff(bool verbose, string folder)", "Nr": "70" },
                 
@@ -1684,21 +1688,21 @@ name: 'NuGetInfo'
                 
                         {"Name": "AnalyzeForProject.AnalyzeForProject(string rootFolder, FileData[] files, string search)", "Nr": "72" },
                 
-                        {"Name": "Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)", "Nr": "72" },
-                
                         {"Name": "IEnumerable<ValidationResult> GenericMetrics.Validate(ValidationContext validationContext)", "Nr": "72" },
                 
                         {"Name": "NamePerCount[] AssemblyDataFromMSFT.ClassesMetrics(eMSFTMetrics metrics)", "Nr": "72" },
                 
-                        {"Name": "void FileFolderHistorySimple.Initialize(bool AddHistoryForFolder)", "Nr": "73" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)", "Nr": "72" },
                 
                         {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberMethods()", "Nr": "73" },
                 
+                        {"Name": "void FileFolderHistorySimple.Initialize(bool AddHistoryForFolder)", "Nr": "73" },
+                
                         {"Name": "void TestNugetInfo.TestFindVersionNuget()", "Nr": "74" },
                 
-                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.ClassNumberMethods()", "Nr": "75" },
-                
                         {"Name": "Commit ProjectsDict.CommitsWithMaxFiles(int? year)", "Nr": "75" },
+                
+                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.ClassNumberMethods()", "Nr": "75" },
                 
                         {"Name": "bool GenericMetricsMethod.IsGetSetWith100()", "Nr": "76" },
                 
@@ -1708,25 +1712,25 @@ name: 'NuGetInfo'
                 
                         {"Name": "Task TestSolutionExists.TestDoesNotWorkWithoutSln()", "Nr": "76" },
                 
-                        {"Name": "int AnalyzeForProject.maxDiff(FileData file, string relPath)", "Nr": "77" },
-                
-                        {"Name": "string? AnalyzeMergeData.relFolder()", "Nr": "77" },
-                
                         {"Name": "Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()", "Nr": "77" },
+                
+                        {"Name": "int AnalyzeForProject.maxDiff(FileData file, string relPath)", "Nr": "77" },
                 
                         {"Name": "long ProjectsDict.CommitsPerYearFolder(int year)", "Nr": "77" },
                 
                         {"Name": "ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)", "Nr": "77" },
                 
-                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)", "Nr": "79" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)", "Nr": "79" },
-                
-                        {"Name": "Task<string> TemplateGenerator.Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)", "Nr": "79" },
+                        {"Name": "string? AnalyzeMergeData.relFolder()", "Nr": "77" },
                 
                         {"Name": "int ProjectsDict.MaxYearCommits()", "Nr": "79" },
                 
                         {"Name": "int ProjectsDict.MinYearCommits()", "Nr": "79" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)", "Nr": "79" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)", "Nr": "79" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)", "Nr": "79" },
                 
                         {"Name": "Commit.Commit()", "Nr": "80" },
                 
@@ -1744,23 +1748,23 @@ name: 'NuGetInfo'
                 
                         {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics metrics)", "Nr": "83" },
                 
-                        {"Name": "string GlobalsForGenerating.RelativePath(string? pathProject)", "Nr": "84" },
-                
                         {"Name": "deprecatedV1_gen_json? deprecatedV1_gen_json.Deserialize(string? text)", "Nr": "84" },
                 
                         {"Name": "Frameworks? Frameworks.Deserialize(string? text)", "Nr": "84" },
                 
-                        {"Name": "Projects? Projects.Deserialize(string? text)", "Nr": "84" },
-                
-                        {"Name": "TopLevelPackages? TopLevelPackages.Deserialize(string? text)", "Nr": "84" },
-                
                         {"Name": "includeV1_gen_json? includeV1_gen_json.Deserialize(string? text)", "Nr": "84" },
+                
+                        {"Name": "outdatedV1_gen_json? outdatedV1_gen_json.Deserialize(string? text)", "Nr": "84" },
                 
                         {"Name": "Problems? Problems.Deserialize(string? text)", "Nr": "84" },
                 
-                        {"Name": "TransitivePackages? TransitivePackages.Deserialize(string? text)", "Nr": "84" },
+                        {"Name": "Projects? Projects.Deserialize(string? text)", "Nr": "84" },
                 
-                        {"Name": "outdatedV1_gen_json? outdatedV1_gen_json.Deserialize(string? text)", "Nr": "84" },
+                        {"Name": "string GlobalsForGenerating.RelativePath(string? pathProject)", "Nr": "84" },
+                
+                        {"Name": "TopLevelPackages? TopLevelPackages.Deserialize(string? text)", "Nr": "84" },
+                
+                        {"Name": "TransitivePackages? TransitivePackages.Deserialize(string? text)", "Nr": "84" },
                 
                         {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberClasses()", "Nr": "85" },
                 
@@ -1770,35 +1774,35 @@ name: 'NuGetInfo'
                 
                         {"Name": "void ProjectsDict.FindUpStreamReferences()", "Nr": "86" },
                 
-                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllFiles(DataToDisplayMerge model)", "Nr": "88" },
-                
-                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllFilesMD(DataToDisplayMerge model)", "Nr": "88" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_OutDeprMarkdown(PackageWithVersion[] model)", "Nr": "88" },
-                
-                        {"Name": "Task<string> TemplateGenerator.Generate_SolutionRelations(ProjectsDict model)", "Nr": "88" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectPackages(ProjectData model)", "Nr": "88" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectCommits(ProjectData model)", "Nr": "88" },
+                        {"Name": "NamePerCount? PublicClassRefData.PublicMethod_MostLinesOfCode_Most()", "Nr": "88" },
                 
                         {"Name": "Task<string?> TemplateGenerator.Generate_BuildingBlocks(ProjectsDict model)", "Nr": "88" },
                 
                         {"Name": "Task<string?> TemplateGenerator.Generate_Commits(ProjectsDict model)", "Nr": "88" },
                 
-                        {"Name": "Task<string?> TemplateGenerator.Generate_RootProjects(ProjectsDict model)", "Nr": "88" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_OutDeprMarkdown(PackageWithVersion[] model)", "Nr": "88" },
                 
-                        {"Name": "Task<string?> TemplateGenerator.Generate_TestProjects(ProjectsDict model)", "Nr": "88" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectCommits(ProjectData model)", "Nr": "88" },
                 
-                        {"Name": "Task<string?> TemplateGenerator.Generate_SolutionIntroduction(InfoSolution model)", "Nr": "88" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectPackages(ProjectData model)", "Nr": "88" },
                 
                         {"Name": "Task<string?> TemplateGenerator.Generate_ProjectRelations(ProjectData projData)", "Nr": "88" },
                 
-                        {"Name": "Task<string?> TemplateGenerator.Generate_ReferencesSummaryProjects(ClassesRefData refSummary)", "Nr": "88" },
-                
                         {"Name": "Task<string?> TemplateGenerator.Generate_PublicClasses(PublicClassRefData refPublic)", "Nr": "88" },
                 
-                        {"Name": "NamePerCount? PublicClassRefData.PublicMethod_MostLinesOfCode_Most()", "Nr": "88" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_ReferencesSummaryProjects(ClassesRefData refSummary)", "Nr": "88" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_RootProjects(ProjectsDict model)", "Nr": "88" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_SolutionIntroduction(InfoSolution model)", "Nr": "88" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_TestProjects(ProjectsDict model)", "Nr": "88" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllFiles(DataToDisplayMerge model)", "Nr": "88" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllFilesMD(DataToDisplayMerge model)", "Nr": "88" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_SolutionRelations(ProjectsDict model)", "Nr": "88" },
                 
                         {"Name": "long AssemblyDataFromMSFT.NumberOfClasses()", "Nr": "89" },
                 
@@ -1814,25 +1818,29 @@ name: 'NuGetInfo'
                 
                         {"Name": "int HistoryPerYear.MinYear()", "Nr": "93" },
                 
+                        {"Name": "IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()", "Nr": "93" },
+                
                         {"Name": "ReadOnlySpan<byte> MyResource.GetDocusaurusZip()", "Nr": "93" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetDriverCss()", "Nr": "93" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetDriverJS()", "Nr": "93" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetEchartsJs()", "Nr": "93" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetMermaidJs()", "Nr": "93" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorCss()", "Nr": "93" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorJs()", "Nr": "93" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorTheme()", "Nr": "93" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetVisJs()", "Nr": "93" },
                 
                         {"Name": "string GlobalsForGenerating.globalPrefix()", "Nr": "93" },
                 
                         {"Name": "void GenerateData.AddHistoryCsproj()", "Nr": "93" },
-                
-                        {"Name": "IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()", "Nr": "93" },
-                
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetMermaidJs()", "Nr": "93" },
-                
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetEchartsJs()", "Nr": "93" },
-                
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetVisJs()", "Nr": "93" },
-                
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorJs()", "Nr": "93" },
-                
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorCss()", "Nr": "93" },
-                
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorTheme()", "Nr": "93" },
                 
                         {"Name": "AnalyzeCsproj.AnalyzeCsproj(string rootFolder, FileData[] files)", "Nr": "94" },
                 
@@ -1842,19 +1850,17 @@ name: 'NuGetInfo'
                 
                         {"Name": "int ProjectsDict.NrLicenses()", "Nr": "95" },
                 
+                        {"Name": "AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)", "Nr": "96" },
+                
                         {"Name": "FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)", "Nr": "96" },
                 
                         {"Name": "FolderHistoryCommits.FolderHistoryCommits(string nameFolder)", "Nr": "96" },
                 
-                        {"Name": "AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)", "Nr": "96" },
-                
                         {"Name": "GenerateData.GenerateData(IFileSystem system)", "Nr": "96" },
                 
-                        {"Name": "HistoryPerYear.HistoryPerYear()", "Nr": "100" },
+                        {"Name": "Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()", "Nr": "100" },
                 
-                        {"Name": "HistoryPerYear.HistoryPerYear(IDictionary<int, History> data)", "Nr": "100" },
-                
-                        {"Name": "int Commit.CountFiles()", "Nr": "100" },
+                        {"Name": "GenerateFiles.GenerateFiles(IFileSystem system)", "Nr": "100" },
                 
                         {"Name": "GenerateFilesDocusaurus.GenerateFilesDocusaurus(IFileSystem system)", "Nr": "100" },
                 
@@ -1866,28 +1872,30 @@ name: 'NuGetInfo'
                 
                         {"Name": "GenericMetricsMethod.GenericMetricsMethod()", "Nr": "100" },
                 
+                        {"Name": "HistoryPerYear.HistoryPerYear()", "Nr": "100" },
+                
+                        {"Name": "HistoryPerYear.HistoryPerYear(IDictionary<int, History> data)", "Nr": "100" },
+                
+                        {"Name": "int Commit.CountFiles()", "Nr": "100" },
+                
+                        {"Name": "ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)", "Nr": "100" },
+                
                         {"Name": "string[] GenerateData.MajorWithMoreVersions()", "Nr": "100" },
-                
-                        {"Name": "GenerateFiles.GenerateFiles(IFileSystem system)", "Nr": "100" },
-                
-                        {"Name": "Task<string> GenerateFiles.GenerateNow(string folder, string where)", "Nr": "100" },
-                
-                        {"Name": "void IOperations.ClearWrongData()", "Nr": "100" },
                 
                         {"Name": "string[] IOperations.ProjectsPath()", "Nr": "100" },
                 
                         {"Name": "string[] IOperations.TopLevelPackagesIDs()", "Nr": "100" },
                 
-                        {"Name": "Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()", "Nr": "100" },
+                        {"Name": "Task<string> GenerateFiles.GenerateNow(string folder, string where)", "Nr": "100" },
                 
-                        {"Name": "ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)", "Nr": "100" },
+                        {"Name": "void IOperations.ClearWrongData()", "Nr": "100" },
                                             ];
             var table = new Tabulator("#Maintainability-for-Method-table", {
                 data: tabledata,
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,144],
+                paginationSizeSelector: [100,146],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -1921,7 +1929,7 @@ name: 'NuGetInfo'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','NetPackageAnalyzerExportHTML','NetPackageAnalyzeHistory','NetPackageAnalyzerTests','NPA.Resources','NuGetInfo','NetPackageAnalyzerDiagram','NetPackageAnalyzerShowInConsole']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerExportHTML','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerTests','NPA.Resources','NuGetInfo','NetPackageAnalyzerDiagram','NetPackageAnalyzerShowInConsole']
                 },
                 yAxis: {
                     type: 'value'
@@ -1937,7 +1945,7 @@ name: 'NuGetInfo'
 {value:48,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
-{value:23,itemStyle:{color:'red'}},
+{value:25,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
@@ -1989,9 +1997,9 @@ name: 'NuGetInfo'
                 
                         {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "26" },
                 
-                        {"Name": "AnalyzeMerge", "Nr": "23" },
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "25" },
                 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "23" },
+                        {"Name": "AnalyzeMerge", "Nr": "23" },
                 
                         {"Name": "NetPackageAnalyzeHistory", "Nr": "19" },
                 
@@ -2038,7 +2046,7 @@ name: 'NuGetInfo'
                     option = {
                         xAxis: {
                             type: 'category',
-                            data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','NetPackageAnalyzerExportHTML','NetPackageAnalyzeHistory','NetPackageAnalyzerTests']
+                            data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerExportHTML','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerTests']
                         },
                         yAxis: {
                             type: 'value'
@@ -2054,7 +2062,7 @@ name: 'NuGetInfo'
 {value:48,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
-{value:23,itemStyle:{color:'red'}},
+{value:25,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
@@ -2093,7 +2101,7 @@ name: 'NuGetInfo'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['GenerateData','RealMainExecuting','TemplateGenerator','GenericMetrics','GenerateFilesDocusaurus','GenerateHTML','ProjectsDict','FileFolderHistorySimple','AnalyzeMergeData','FolderHistoryCommits','TestingPlatformEntryPoint','deprecatedV1_gen_json','includeV1_gen_json','TestSolutionExists','AnalyzeForProject','ProcessOutput','outdatedV1_gen_json','ProcessOutput','AssemblyDataFromMSFT','Frameworks','TemplateGenerator','HistoryPerYear','CommitsData','GenericMetricsMethod','PublicClassRefData','Frameworks','Projects','TestNugetInfo','InterceptMethodCall','TopLevelPackages','Commit','GenerateFiles','Statistical<T>','TopLevelPackages','Problems','TransitivePackages','AnalyzeCsproj','AnalyzeNode','MyResource','ExportPublicClass','IOperations','ExportAssembly','ExportClass','MethodswithexternalreferenceExport','AnswersFindNuget','GenericMetricsAssembly','GenericMetricsClass','GlobalsForGenerating','ClassesRefData','FileDataEnum','GitData','EConsoleToGenerate','WhatToGenerate','eMSFTMetrics','MyAdditionalFiles','MethodPublic','PackageOptions','TypePackageData','ExternalReferenceExport','WriteToConsole']
+                    data: ['GenerateData','RealMainExecuting','TemplateGenerator','GenerateHTML','GenericMetrics','GenerateFilesDocusaurus','ProjectsDict','FileFolderHistorySimple','AnalyzeMergeData','FolderHistoryCommits','TestingPlatformEntryPoint','deprecatedV1_gen_json','includeV1_gen_json','TestSolutionExists','AnalyzeForProject','outdatedV1_gen_json','ProcessOutput','AssemblyDataFromMSFT','Frameworks','ProcessOutput','CommitsData','Frameworks','GenericMetricsMethod','HistoryPerYear','Projects','PublicClassRefData','TemplateGenerator','TestNugetInfo','InterceptMethodCall','TopLevelPackages','Commit','GenerateFiles','Problems','Statistical<T>','TopLevelPackages','TransitivePackages','AnalyzeCsproj','AnalyzeNode','AnswersFindNuget','ExportAssembly','ExportClass','ExportPublicClass','IOperations','MethodswithexternalreferenceExport','MyResource','ClassesRefData','GenericMetricsAssembly','GenericMetricsClass','GlobalsForGenerating','EConsoleToGenerate','eMSFTMetrics','ExternalReferenceExport','FileDataEnum','GitData','MethodPublic','MyAdditionalFiles','PackageOptions','TypePackageData','WhatToGenerate','WriteToConsole']
                 },
                 yAxis: {
                     type: 'value'
@@ -2109,8 +2117,8 @@ name: 'NuGetInfo'
 {value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:25,itemStyle:{color:'red'}},
+{value:25,itemStyle:{color:'red'}},
 {value:24,itemStyle:{color:'red'}},
-{value:23,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
@@ -2207,11 +2215,11 @@ name: 'NuGetInfo'
                 
                         {"Name": "TemplateGenerator", "Nr": "26" },
                 
+                        {"Name": "GenerateHTML", "Nr": "25" },
+                
                         {"Name": "GenericMetrics", "Nr": "25" },
                 
                         {"Name": "GenerateFilesDocusaurus", "Nr": "24" },
-                
-                        {"Name": "GenerateHTML", "Nr": "23" },
                 
                         {"Name": "ProjectsDict", "Nr": "23" },
                 
@@ -2231,29 +2239,29 @@ name: 'NuGetInfo'
                 
                         {"Name": "AnalyzeForProject", "Nr": "7" },
                 
-                        {"Name": "ProcessOutput", "Nr": "7" },
-                
                         {"Name": "outdatedV1_gen_json", "Nr": "7" },
                 
-                        {"Name": "ProcessOutput", "Nr": "6" },
+                        {"Name": "ProcessOutput", "Nr": "7" },
                 
                         {"Name": "AssemblyDataFromMSFT", "Nr": "6" },
                 
                         {"Name": "Frameworks", "Nr": "6" },
                 
-                        {"Name": "TemplateGenerator", "Nr": "5" },
-                
-                        {"Name": "HistoryPerYear", "Nr": "5" },
+                        {"Name": "ProcessOutput", "Nr": "6" },
                 
                         {"Name": "CommitsData", "Nr": "5" },
                 
+                        {"Name": "Frameworks", "Nr": "5" },
+                
                         {"Name": "GenericMetricsMethod", "Nr": "5" },
+                
+                        {"Name": "HistoryPerYear", "Nr": "5" },
+                
+                        {"Name": "Projects", "Nr": "5" },
                 
                         {"Name": "PublicClassRefData", "Nr": "5" },
                 
-                        {"Name": "Frameworks", "Nr": "5" },
-                
-                        {"Name": "Projects", "Nr": "5" },
+                        {"Name": "TemplateGenerator", "Nr": "5" },
                 
                         {"Name": "TestNugetInfo", "Nr": "5" },
                 
@@ -2265,11 +2273,11 @@ name: 'NuGetInfo'
                 
                         {"Name": "GenerateFiles", "Nr": "3" },
                 
+                        {"Name": "Problems", "Nr": "3" },
+                
                         {"Name": "Statistical<T>", "Nr": "3" },
                 
                         {"Name": "TopLevelPackages", "Nr": "3" },
-                
-                        {"Name": "Problems", "Nr": "3" },
                 
                         {"Name": "TransitivePackages", "Nr": "3" },
                 
@@ -2277,19 +2285,21 @@ name: 'NuGetInfo'
                 
                         {"Name": "AnalyzeNode", "Nr": "2" },
                 
-                        {"Name": "MyResource", "Nr": "2" },
-                
-                        {"Name": "ExportPublicClass", "Nr": "2" },
-                
-                        {"Name": "IOperations", "Nr": "2" },
+                        {"Name": "AnswersFindNuget", "Nr": "2" },
                 
                         {"Name": "ExportAssembly", "Nr": "2" },
                 
                         {"Name": "ExportClass", "Nr": "2" },
                 
+                        {"Name": "ExportPublicClass", "Nr": "2" },
+                
+                        {"Name": "IOperations", "Nr": "2" },
+                
                         {"Name": "MethodswithexternalreferenceExport", "Nr": "2" },
                 
-                        {"Name": "AnswersFindNuget", "Nr": "2" },
+                        {"Name": "MyResource", "Nr": "2" },
+                
+                        {"Name": "ClassesRefData", "Nr": "1" },
                 
                         {"Name": "GenericMetricsAssembly", "Nr": "1" },
                 
@@ -2297,27 +2307,25 @@ name: 'NuGetInfo'
                 
                         {"Name": "GlobalsForGenerating", "Nr": "1" },
                 
-                        {"Name": "ClassesRefData", "Nr": "1" },
+                        {"Name": "EConsoleToGenerate", "Nr": "0" },
+                
+                        {"Name": "eMSFTMetrics", "Nr": "0" },
+                
+                        {"Name": "ExternalReferenceExport", "Nr": "0" },
                 
                         {"Name": "FileDataEnum", "Nr": "0" },
                 
                         {"Name": "GitData", "Nr": "0" },
                 
-                        {"Name": "EConsoleToGenerate", "Nr": "0" },
-                
-                        {"Name": "WhatToGenerate", "Nr": "0" },
-                
-                        {"Name": "eMSFTMetrics", "Nr": "0" },
+                        {"Name": "MethodPublic", "Nr": "0" },
                 
                         {"Name": "MyAdditionalFiles", "Nr": "0" },
-                
-                        {"Name": "MethodPublic", "Nr": "0" },
                 
                         {"Name": "PackageOptions", "Nr": "0" },
                 
                         {"Name": "TypePackageData", "Nr": "0" },
                 
-                        {"Name": "ExternalReferenceExport", "Nr": "0" },
+                        {"Name": "WhatToGenerate", "Nr": "0" },
                 
                         {"Name": "WriteToConsole", "Nr": "0" },
                                             ];
@@ -2354,7 +2362,7 @@ name: 'NuGetInfo'
                     option = {
                         xAxis: {
                             type: 'category',
-                            data: ['GenerateData','RealMainExecuting','TemplateGenerator','GenericMetrics','GenerateFilesDocusaurus','GenerateHTML','ProjectsDict','FileFolderHistorySimple','AnalyzeMergeData','FolderHistoryCommits']
+                            data: ['GenerateData','RealMainExecuting','TemplateGenerator','GenerateHTML','GenericMetrics','GenerateFilesDocusaurus','ProjectsDict','FileFolderHistorySimple','AnalyzeMergeData','FolderHistoryCommits']
                         },
                         yAxis: {
                             type: 'value'
@@ -2370,8 +2378,8 @@ name: 'NuGetInfo'
 {value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:25,itemStyle:{color:'red'}},
+{value:25,itemStyle:{color:'red'}},
 {value:24,itemStyle:{color:'red'}},
-{value:23,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
@@ -2478,7 +2486,7 @@ name: 'NuGetInfo'
 {value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'orange'}},
-{value:6},
+{value:8},
 {value:4},
 {value:1},
 {value:1},
@@ -2533,7 +2541,7 @@ name: 'NuGetInfo'
                 
                         {"Name": "NetPackageAnalyzerExportHTML", "Nr": "13" },
                 
-                        {"Name": "NPA.Resources", "Nr": "6" },
+                        {"Name": "NPA.Resources", "Nr": "8" },
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "4" },
                 
@@ -2595,7 +2603,7 @@ name: 'NuGetInfo'
 {value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'red'}},
-{value:6,itemStyle:{color:'red'}},
+{value:8,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -2632,7 +2640,7 @@ name: 'NuGetInfo'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['ProjectsDict','GenerateData','GenericMetrics','RealMainExecuting','TemplateGenerator','FileFolderHistorySimple','AssemblyDataFromMSFT','AnalyzeMergeData','PublicClassRefData','deprecatedV1_gen_json','GenerateHTML','GenerateFilesDocusaurus','TopLevelPackages','includeV1_gen_json','outdatedV1_gen_json','ExternalReferenceExport','GlobalsForGenerating','ClassesRefData','ProcessOutput','Frameworks','AnalyzeForProject','HistoryPerYear','FolderHistoryCommits','ExportPublicClass','Statistical<T>','Frameworks','Projects','Problems','TransitivePackages','MyResource','Commit','GenericMetricsMethod','IOperations','MethodPublic','ExportAssembly','ExportClass','MethodswithexternalreferenceExport','ProcessOutput','TemplateGenerator','CommitsData','InterceptMethodCall','GenericMetricsClass','GenerateFiles','TestNugetInfo','AnalyzeCsproj','AnalyzeNode','FileDataEnum','GitData','EConsoleToGenerate','WhatToGenerate','MyResource','eMSFTMetrics','GenericMetricsAssembly','PackageOptions','TypePackageData','WriteToConsole','TestingPlatformEntryPoint','TestSolutionExists','AnswersFindNuget','MyAdditionalFiles']
+                    data: ['ProjectsDict','GenerateData','GenericMetrics','RealMainExecuting','TemplateGenerator','AssemblyDataFromMSFT','FileFolderHistorySimple','AnalyzeMergeData','deprecatedV1_gen_json','PublicClassRefData','GenerateHTML','GenerateFilesDocusaurus','includeV1_gen_json','outdatedV1_gen_json','TopLevelPackages','ExternalReferenceExport','ClassesRefData','Frameworks','GlobalsForGenerating','MyResource','ProcessOutput','AnalyzeForProject','FolderHistoryCommits','HistoryPerYear','ExportPublicClass','Frameworks','Problems','Projects','Statistical<T>','TransitivePackages','Commit','ExportAssembly','ExportClass','GenericMetricsMethod','IOperations','MethodPublic','MethodswithexternalreferenceExport','CommitsData','GenerateFiles','GenericMetricsClass','InterceptMethodCall','ProcessOutput','TemplateGenerator','TestNugetInfo','AnalyzeCsproj','AnalyzeNode','AnswersFindNuget','EConsoleToGenerate','eMSFTMetrics','FileDataEnum','GenericMetricsAssembly','GitData','MyResource','PackageOptions','TestingPlatformEntryPoint','TestSolutionExists','TypePackageData','WhatToGenerate','WriteToConsole','MyAdditionalFiles']
                 },
                 yAxis: {
                     type: 'value'
@@ -2664,10 +2672,10 @@ name: 'NuGetInfo'
 {value:8},
 {value:8},
 {value:8},
+{value:8},
 {value:7},
 {value:7},
 {value:7},
-{value:6},
 {value:6},
 {value:6},
 {value:6},
@@ -2750,57 +2758,61 @@ name: 'NuGetInfo'
                 
                         {"Name": "TemplateGenerator", "Nr": "22" },
                 
-                        {"Name": "FileFolderHistorySimple", "Nr": "16" },
-                
                         {"Name": "AssemblyDataFromMSFT", "Nr": "16" },
+                
+                        {"Name": "FileFolderHistorySimple", "Nr": "16" },
                 
                         {"Name": "AnalyzeMergeData", "Nr": "14" },
                 
-                        {"Name": "PublicClassRefData", "Nr": "14" },
-                
                         {"Name": "deprecatedV1_gen_json", "Nr": "14" },
+                
+                        {"Name": "PublicClassRefData", "Nr": "14" },
                 
                         {"Name": "GenerateHTML", "Nr": "13" },
                 
                         {"Name": "GenerateFilesDocusaurus", "Nr": "11" },
                 
-                        {"Name": "TopLevelPackages", "Nr": "10" },
-                
                         {"Name": "includeV1_gen_json", "Nr": "10" },
                 
                         {"Name": "outdatedV1_gen_json", "Nr": "10" },
                 
-                        {"Name": "ExternalReferenceExport", "Nr": "9" },
+                        {"Name": "TopLevelPackages", "Nr": "10" },
                 
-                        {"Name": "GlobalsForGenerating", "Nr": "8" },
+                        {"Name": "ExternalReferenceExport", "Nr": "9" },
                 
                         {"Name": "ClassesRefData", "Nr": "8" },
                 
-                        {"Name": "ProcessOutput", "Nr": "8" },
-                
                         {"Name": "Frameworks", "Nr": "8" },
+                
+                        {"Name": "GlobalsForGenerating", "Nr": "8" },
+                
+                        {"Name": "MyResource", "Nr": "8" },
+                
+                        {"Name": "ProcessOutput", "Nr": "8" },
                 
                         {"Name": "AnalyzeForProject", "Nr": "7" },
                 
-                        {"Name": "HistoryPerYear", "Nr": "7" },
-                
                         {"Name": "FolderHistoryCommits", "Nr": "7" },
+                
+                        {"Name": "HistoryPerYear", "Nr": "7" },
                 
                         {"Name": "ExportPublicClass", "Nr": "6" },
                 
-                        {"Name": "Statistical<T>", "Nr": "6" },
-                
                         {"Name": "Frameworks", "Nr": "6" },
-                
-                        {"Name": "Projects", "Nr": "6" },
                 
                         {"Name": "Problems", "Nr": "6" },
                 
+                        {"Name": "Projects", "Nr": "6" },
+                
+                        {"Name": "Statistical<T>", "Nr": "6" },
+                
                         {"Name": "TransitivePackages", "Nr": "6" },
                 
-                        {"Name": "MyResource", "Nr": "6" },
-                
                         {"Name": "Commit", "Nr": "4" },
+                
+                        {"Name": "ExportAssembly", "Nr": "4" },
+                
+                        {"Name": "ExportClass", "Nr": "4" },
                 
                         {"Name": "GenericMetricsMethod", "Nr": "4" },
                 
@@ -2808,23 +2820,19 @@ name: 'NuGetInfo'
                 
                         {"Name": "MethodPublic", "Nr": "4" },
                 
-                        {"Name": "ExportAssembly", "Nr": "4" },
-                
-                        {"Name": "ExportClass", "Nr": "4" },
-                
                         {"Name": "MethodswithexternalreferenceExport", "Nr": "4" },
+                
+                        {"Name": "CommitsData", "Nr": "2" },
+                
+                        {"Name": "GenerateFiles", "Nr": "2" },
+                
+                        {"Name": "GenericMetricsClass", "Nr": "2" },
+                
+                        {"Name": "InterceptMethodCall", "Nr": "2" },
                 
                         {"Name": "ProcessOutput", "Nr": "2" },
                 
                         {"Name": "TemplateGenerator", "Nr": "2" },
-                
-                        {"Name": "CommitsData", "Nr": "2" },
-                
-                        {"Name": "InterceptMethodCall", "Nr": "2" },
-                
-                        {"Name": "GenericMetricsClass", "Nr": "2" },
-                
-                        {"Name": "GenerateFiles", "Nr": "2" },
                 
                         {"Name": "TestNugetInfo", "Nr": "2" },
                 
@@ -2832,31 +2840,31 @@ name: 'NuGetInfo'
                 
                         {"Name": "AnalyzeNode", "Nr": "1" },
                 
-                        {"Name": "FileDataEnum", "Nr": "1" },
-                
-                        {"Name": "GitData", "Nr": "1" },
+                        {"Name": "AnswersFindNuget", "Nr": "1" },
                 
                         {"Name": "EConsoleToGenerate", "Nr": "1" },
                 
-                        {"Name": "WhatToGenerate", "Nr": "1" },
-                
-                        {"Name": "MyResource", "Nr": "1" },
-                
                         {"Name": "eMSFTMetrics", "Nr": "1" },
+                
+                        {"Name": "FileDataEnum", "Nr": "1" },
                 
                         {"Name": "GenericMetricsAssembly", "Nr": "1" },
                 
+                        {"Name": "GitData", "Nr": "1" },
+                
+                        {"Name": "MyResource", "Nr": "1" },
+                
                         {"Name": "PackageOptions", "Nr": "1" },
-                
-                        {"Name": "TypePackageData", "Nr": "1" },
-                
-                        {"Name": "WriteToConsole", "Nr": "1" },
                 
                         {"Name": "TestingPlatformEntryPoint", "Nr": "1" },
                 
                         {"Name": "TestSolutionExists", "Nr": "1" },
                 
-                        {"Name": "AnswersFindNuget", "Nr": "1" },
+                        {"Name": "TypePackageData", "Nr": "1" },
+                
+                        {"Name": "WhatToGenerate", "Nr": "1" },
+                
+                        {"Name": "WriteToConsole", "Nr": "1" },
                 
                         {"Name": "MyAdditionalFiles", "Nr": "0" },
                                             ];
@@ -2925,10 +2933,10 @@ name: 'NuGetInfo'
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
+{value:8,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
-{value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
@@ -2997,7 +3005,7 @@ name: 'NuGetInfo'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()','void ProjectsDict.FindReferences()','void FolderHistoryCommits.Initialize()','T Statistical<T>.Median(T[]? values)','int ProjectsDict.MedianCommits(int? year)','void AnalyzeForProject.Analyze()','void RealMainExecuting.LaunchBrowser(string url)','Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)','NamePerCount[] ProjectsDict.Licenses()','long ProjectsDict.TotalCommits()','Commit[] ProjectsDict.MaxCommits(int? year)','NamePerCount[] ProjectsDict.CommitsPerFolder()','Dictionary<int, long> ProjectsDict.CommitsPerYearFolder()','Dictionary<int, long> ProjectsDict.CommitsPerYearFile()','string[]? deprecatedV1_gen_json.PackagesID()','T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)','bool GenericMetricsMethod.IsGetSetWith100()','string GlobalsForGenerating.RelativePath(string? pathProject)','KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)','int ProjectsDict.MedianCommitsForFiles(int? year)','Commit ProjectsDict.CommitsWithMaxFiles(int? year)','long ProjectsDict.CommitsPerYearFolder(int year)','void ProjectsDict.FindUpStreamReferences()','void ProjectsDict.FindHistoryProjects()','int AnalyzeForProject.maxDiff(FileData file, string relPath)','string ProcessOutput.ExecuteGit(string folder, GitData gitData)','void FileFolderHistorySimple.Initialize(bool AddHistoryForFolder)','History HistoryPerYear.HistoryYear(int year)','Dictionary<string, int> CommitsData.FilesWithMaxCommits(int? year, int take)','Task RealMainExecuting.GenerateHandlerMajorDiff(bool verbose, string folder)','Task<int> RealMainExecuting.RealMain(string[] args)','Task RealMainExecuting.GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)','void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)','Task<string> TemplateGenerator.Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)','Task<string?> TemplateGenerator.Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)','Task<string> TemplateGenerator.Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)','IEnumerable<ValidationResult> GenericMetrics.Validate(ValidationContext validationContext)','NamePerCount[] AssemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics metrics)','NamePerCount[] AssemblyDataFromMSFT.ClassesMetrics(eMSFTMetrics metrics)','NamePerCount[] AssemblyDataFromMSFT.MethodsMetrics(eMSFTMetrics metrics)','Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()','PackageWithVersion[] GenerateData.Problems()','string ProcessOutput.ListSDKS(string folder)','bool ProcessOutput.Build(string folder)','string ProcessOutput.OutputDotnetReference(string pathToCsproj)','string ProcessOutput.OutputDotnetPackage(string folder, PackageOptions packageOptions)','NamePerCount? PublicClassRefData.PublicMethod_MostLinesOfCode_Most()','deprecatedV1_gen_json? deprecatedV1_gen_json.Deserialize(string? text)','Frameworks? Frameworks.Deserialize(string? text)','Projects? Projects.Deserialize(string? text)','TopLevelPackages? TopLevelPackages.Deserialize(string? text)','includeV1_gen_json? includeV1_gen_json.Deserialize(string? text)','Problems? Problems.Deserialize(string? text)','TransitivePackages? TransitivePackages.Deserialize(string? text)','outdatedV1_gen_json? outdatedV1_gen_json.Deserialize(string? text)','void TestNugetInfo.TestFindVersionNuget()','AnalyzeCsproj.AnalyzeCsproj(string rootFolder, FileData[] files)','AnalyzeForProject.AnalyzeForProject(string rootFolder, FileData[] files, string search)','AnalyzeMergeData.AnalyzeMergeData(string folder)','string? AnalyzeMergeData.relFolder()','AnalyzeNode.AnalyzeNode(string rootFolder, FileData[] files)','Task<string> TemplateGenerator.Generate_DisplayAllFiles(DataToDisplayMerge model)','Task<string> TemplateGenerator.Generate_DisplayAllFilesMD(DataToDisplayMerge model)','FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)','HistoryPerYear.HistoryPerYear()','HistoryPerYear.HistoryPerYear(IDictionary<int, History> data)','History HistoryPerYear.AllHistory()','int HistoryPerYear.MaxYear()','int HistoryPerYear.MinYear()','Commit.Commit()','Commit.Commit(DateTime date, string sha)','int Commit.CountFiles()','FolderHistoryCommits.FolderHistoryCommits(string nameFolder)','RealMainExecuting.RealMainExecuting()','Command RealMainExecuting.AddGenerateFiles()','Command RealMainExecuting.AddGenerateConsole()','GenerateFilesDocusaurus.GenerateFilesDocusaurus(IFileSystem system)','ReadOnlySpan<byte> MyResource.GetDocusaurusZip()','Task<string?> TemplateGenerator.Generate_OutDeprMarkdown(PackageWithVersion[] model)','Task<string> TemplateGenerator.Generate_SolutionRelations(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_ProjectPackages(ProjectData model)','Task<string?> TemplateGenerator.Generate_ProjectCommits(ProjectData model)','Task<string?> TemplateGenerator.Generate_BuildingBlocks(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_Commits(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_RootProjects(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_TestProjects(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_SolutionIntroduction(InfoSolution model)','Task<string?> TemplateGenerator.Generate_ProjectRelations(ProjectData projData)','Task<string?> TemplateGenerator.Generate_ReferencesSummaryProjects(ClassesRefData refSummary)','Task<string?> TemplateGenerator.Generate_PublicClasses(PublicClassRefData refPublic)','GenerateHTML.GenerateHTML(IFileSystem system)','void GenerateHTML.WriteJs(string where)','GenericMetrics.GenericMetrics()','GenericMetricsAssembly.GenericMetricsAssembly()','GenericMetricsClass.GenericMetricsClass()','int GenericMetricsClass.NumberOfMethods()','GenericMetricsMethod.GenericMetricsMethod()','string GlobalsForGenerating.globalPrefix()','AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)','NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberClasses()','long AssemblyDataFromMSFT.NumberOfClasses()','NamePerCount[] AssemblyDataFromMSFT.ClassNumberMethods()','long AssemblyDataFromMSFT.NumberOfMethods()','NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberMethods()','NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMin(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.ClassesMetricMax(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.ClassesMetricMin(eMSFTMetrics metrics)','GenerateData.GenerateData(IFileSystem system)','string[] GenerateData.MajorWithMoreVersions()','void GenerateData.AddHistoryCsproj()','GenerateFiles.GenerateFiles(IFileSystem system)','Task<string> GenerateFiles.GenerateNow(string folder, string where)','void IOperations.ClearWrongData()','string[] IOperations.ProjectsPath()','string[] IOperations.TopLevelPackagesIDs()','Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()','ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)','int ProjectsDict.NrLicenses()','Dictionary<int, Commit> ProjectsDict.CommitsWithMaxFilesPerYear()','Dictionary<int, int> ProjectsDict.CommitsMedianFilesPerYear()','int ProjectsDict.MaxYearCommits()','int ProjectsDict.MinYearCommits()','NamePerCount[] ProjectsDict.Packages()','IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()','ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)','string ExternalReferenceExport.FullClassName()','Task<int> TestingPlatformEntryPoint.Main(string[] args)','Task TestSolutionExists.TestDoesNotWorkWithoutSln()','ReadOnlySpan<byte> MyResource.GetMermaidJs()','ReadOnlySpan<byte> MyResource.GetEchartsJs()','ReadOnlySpan<byte> MyResource.GetVisJs()','ReadOnlySpan<byte> MyResource.GetTabulatorJs()','ReadOnlySpan<byte> MyResource.GetTabulatorCss()','ReadOnlySpan<byte> MyResource.GetTabulatorTheme()']
+                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)','void ProjectsDict.FindReferences()','T Statistical<T>.Median(T[]? values)','void FolderHistoryCommits.Initialize()','int ProjectsDict.MedianCommits(int? year)','Commit[] ProjectsDict.MaxCommits(int? year)','Dictionary<int, long> ProjectsDict.CommitsPerYearFile()','Dictionary<int, long> ProjectsDict.CommitsPerYearFolder()','long ProjectsDict.TotalCommits()','NamePerCount[] ProjectsDict.CommitsPerFolder()','NamePerCount[] ProjectsDict.Licenses()','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)','string[]? deprecatedV1_gen_json.PackagesID()','Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)','void AnalyzeForProject.Analyze()','void RealMainExecuting.LaunchBrowser(string url)','bool GenericMetricsMethod.IsGetSetWith100()','Commit ProjectsDict.CommitsWithMaxFiles(int? year)','int ProjectsDict.MedianCommitsForFiles(int? year)','KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)','long ProjectsDict.CommitsPerYearFolder(int year)','string GlobalsForGenerating.RelativePath(string? pathProject)','T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)','void ProjectsDict.FindHistoryProjects()','void ProjectsDict.FindUpStreamReferences()','bool ProcessOutput.Build(string folder)','deprecatedV1_gen_json? deprecatedV1_gen_json.Deserialize(string? text)','Dictionary<string, int> CommitsData.FilesWithMaxCommits(int? year, int take)','Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()','Frameworks? Frameworks.Deserialize(string? text)','History HistoryPerYear.HistoryYear(int year)','IEnumerable<ValidationResult> GenericMetrics.Validate(ValidationContext validationContext)','includeV1_gen_json? includeV1_gen_json.Deserialize(string? text)','int AnalyzeForProject.maxDiff(FileData file, string relPath)','NamePerCount? PublicClassRefData.PublicMethod_MostLinesOfCode_Most()','NamePerCount[] AssemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics metrics)','NamePerCount[] AssemblyDataFromMSFT.ClassesMetrics(eMSFTMetrics metrics)','NamePerCount[] AssemblyDataFromMSFT.MethodsMetrics(eMSFTMetrics metrics)','outdatedV1_gen_json? outdatedV1_gen_json.Deserialize(string? text)','PackageWithVersion[] GenerateData.Problems()','Problems? Problems.Deserialize(string? text)','Projects? Projects.Deserialize(string? text)','string ProcessOutput.ExecuteGit(string folder, GitData gitData)','string ProcessOutput.ListSDKS(string folder)','string ProcessOutput.OutputDotnetPackage(string folder, PackageOptions packageOptions)','string ProcessOutput.OutputDotnetReference(string pathToCsproj)','Task RealMainExecuting.GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)','Task RealMainExecuting.GenerateHandlerMajorDiff(bool verbose, string folder)','Task<int> RealMainExecuting.RealMain(string[] args)','Task<string?> TemplateGenerator.Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)','Task<string> TemplateGenerator.Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)','Task<string> TemplateGenerator.Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)','TopLevelPackages? TopLevelPackages.Deserialize(string? text)','TransitivePackages? TransitivePackages.Deserialize(string? text)','void FileFolderHistorySimple.Initialize(bool AddHistoryForFolder)','void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)','void TestNugetInfo.TestFindVersionNuget()','AnalyzeCsproj.AnalyzeCsproj(string rootFolder, FileData[] files)','AnalyzeForProject.AnalyzeForProject(string rootFolder, FileData[] files, string search)','AnalyzeMergeData.AnalyzeMergeData(string folder)','AnalyzeNode.AnalyzeNode(string rootFolder, FileData[] files)','AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)','Command RealMainExecuting.AddGenerateConsole()','Command RealMainExecuting.AddGenerateFiles()','Commit.Commit()','Commit.Commit(DateTime date, string sha)','Dictionary<int, Commit> ProjectsDict.CommitsWithMaxFilesPerYear()','Dictionary<int, int> ProjectsDict.CommitsMedianFilesPerYear()','Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()','FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)','FolderHistoryCommits.FolderHistoryCommits(string nameFolder)','GenerateData.GenerateData(IFileSystem system)','GenerateFiles.GenerateFiles(IFileSystem system)','GenerateFilesDocusaurus.GenerateFilesDocusaurus(IFileSystem system)','GenerateHTML.GenerateHTML(IFileSystem system)','GenericMetrics.GenericMetrics()','GenericMetricsAssembly.GenericMetricsAssembly()','GenericMetricsClass.GenericMetricsClass()','GenericMetricsMethod.GenericMetricsMethod()','History HistoryPerYear.AllHistory()','HistoryPerYear.HistoryPerYear()','HistoryPerYear.HistoryPerYear(IDictionary<int, History> data)','int Commit.CountFiles()','int GenericMetricsClass.NumberOfMethods()','int HistoryPerYear.MaxYear()','int HistoryPerYear.MinYear()','int ProjectsDict.MaxYearCommits()','int ProjectsDict.MinYearCommits()','int ProjectsDict.NrLicenses()','IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()','long AssemblyDataFromMSFT.NumberOfClasses()','long AssemblyDataFromMSFT.NumberOfMethods()','NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMin(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.ClassesMetricMax(eMSFTMetrics metrics)','NamePerCount? AssemblyDataFromMSFT.ClassesMetricMin(eMSFTMetrics metrics)','NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberClasses()','NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberMethods()','NamePerCount[] AssemblyDataFromMSFT.ClassNumberMethods()','NamePerCount[] ProjectsDict.Packages()','ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)','ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)','ReadOnlySpan<byte> MyResource.GetDocusaurusZip()','ReadOnlySpan<byte> MyResource.GetDriverCss()','ReadOnlySpan<byte> MyResource.GetDriverJS()','ReadOnlySpan<byte> MyResource.GetEchartsJs()','ReadOnlySpan<byte> MyResource.GetMermaidJs()','ReadOnlySpan<byte> MyResource.GetTabulatorCss()','ReadOnlySpan<byte> MyResource.GetTabulatorJs()','ReadOnlySpan<byte> MyResource.GetTabulatorTheme()','ReadOnlySpan<byte> MyResource.GetVisJs()','RealMainExecuting.RealMainExecuting()','string ExternalReferenceExport.FullClassName()','string GlobalsForGenerating.globalPrefix()','string? AnalyzeMergeData.relFolder()','string[] GenerateData.MajorWithMoreVersions()','string[] IOperations.ProjectsPath()','string[] IOperations.TopLevelPackagesIDs()','Task TestSolutionExists.TestDoesNotWorkWithoutSln()','Task<int> TestingPlatformEntryPoint.Main(string[] args)','Task<string?> TemplateGenerator.Generate_BuildingBlocks(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_Commits(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_OutDeprMarkdown(PackageWithVersion[] model)','Task<string?> TemplateGenerator.Generate_ProjectCommits(ProjectData model)','Task<string?> TemplateGenerator.Generate_ProjectPackages(ProjectData model)','Task<string?> TemplateGenerator.Generate_ProjectRelations(ProjectData projData)','Task<string?> TemplateGenerator.Generate_PublicClasses(PublicClassRefData refPublic)','Task<string?> TemplateGenerator.Generate_ReferencesSummaryProjects(ClassesRefData refSummary)','Task<string?> TemplateGenerator.Generate_RootProjects(ProjectsDict model)','Task<string?> TemplateGenerator.Generate_SolutionIntroduction(InfoSolution model)','Task<string?> TemplateGenerator.Generate_TestProjects(ProjectsDict model)','Task<string> GenerateFiles.GenerateNow(string folder, string where)','Task<string> TemplateGenerator.Generate_DisplayAllFiles(DataToDisplayMerge model)','Task<string> TemplateGenerator.Generate_DisplayAllFilesMD(DataToDisplayMerge model)','Task<string> TemplateGenerator.Generate_SolutionRelations(ProjectsDict model)','void GenerateData.AddHistoryCsproj()','void GenerateHTML.WriteJs(string where)','void IOperations.ClearWrongData()']
                 },
                 yAxis: {
                     type: 'value'
@@ -3152,6 +3160,8 @@ name: 'NuGetInfo'
 {value:1},
 {value:1},
 {value:1},
+{value:1},
+{value:1},
 {value:1}
                         ],
                         type: 'bar'
@@ -3199,87 +3209,81 @@ name: 'NuGetInfo'
                 
                         {"Name": "Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)", "Nr": "10" },
                 
-                        {"Name": "HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)", "Nr": "9" },
-                
-                        {"Name": "Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)", "Nr": "9" },
-                
                         {"Name": "(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)", "Nr": "9" },
                 
                         {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "9" },
                 
-                        {"Name": "void ProjectsDict.FindReferences()", "Nr": "8" },
+                        {"Name": "HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)", "Nr": "9" },
                 
-                        {"Name": "void FolderHistoryCommits.Initialize()", "Nr": "6" },
+                        {"Name": "Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)", "Nr": "9" },
+                
+                        {"Name": "void ProjectsDict.FindReferences()", "Nr": "8" },
                 
                         {"Name": "T Statistical<T>.Median(T[]? values)", "Nr": "6" },
                 
+                        {"Name": "void FolderHistoryCommits.Initialize()", "Nr": "6" },
+                
                         {"Name": "int ProjectsDict.MedianCommits(int? year)", "Nr": "5" },
+                
+                        {"Name": "Commit[] ProjectsDict.MaxCommits(int? year)", "Nr": "4" },
+                
+                        {"Name": "Dictionary<int, long> ProjectsDict.CommitsPerYearFile()", "Nr": "4" },
+                
+                        {"Name": "Dictionary<int, long> ProjectsDict.CommitsPerYearFolder()", "Nr": "4" },
+                
+                        {"Name": "long ProjectsDict.TotalCommits()", "Nr": "4" },
+                
+                        {"Name": "NamePerCount[] ProjectsDict.CommitsPerFolder()", "Nr": "4" },
+                
+                        {"Name": "NamePerCount[] ProjectsDict.Licenses()", "Nr": "4" },
+                
+                        {"Name": "string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)", "Nr": "4" },
+                
+                        {"Name": "string[]? deprecatedV1_gen_json.PackagesID()", "Nr": "4" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)", "Nr": "4" },
                 
                         {"Name": "void AnalyzeForProject.Analyze()", "Nr": "4" },
                 
                         {"Name": "void RealMainExecuting.LaunchBrowser(string url)", "Nr": "4" },
                 
-                        {"Name": "Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)", "Nr": "4" },
-                
-                        {"Name": "string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)", "Nr": "4" },
-                
-                        {"Name": "NamePerCount[] ProjectsDict.Licenses()", "Nr": "4" },
-                
-                        {"Name": "long ProjectsDict.TotalCommits()", "Nr": "4" },
-                
-                        {"Name": "Commit[] ProjectsDict.MaxCommits(int? year)", "Nr": "4" },
-                
-                        {"Name": "NamePerCount[] ProjectsDict.CommitsPerFolder()", "Nr": "4" },
-                
-                        {"Name": "Dictionary<int, long> ProjectsDict.CommitsPerYearFolder()", "Nr": "4" },
-                
-                        {"Name": "Dictionary<int, long> ProjectsDict.CommitsPerYearFile()", "Nr": "4" },
-                
-                        {"Name": "string[]? deprecatedV1_gen_json.PackagesID()", "Nr": "4" },
-                
-                        {"Name": "T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)", "Nr": "3" },
-                
                         {"Name": "bool GenericMetricsMethod.IsGetSetWith100()", "Nr": "3" },
-                
-                        {"Name": "string GlobalsForGenerating.RelativePath(string? pathProject)", "Nr": "3" },
-                
-                        {"Name": "KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)", "Nr": "3" },
-                
-                        {"Name": "int ProjectsDict.MedianCommitsForFiles(int? year)", "Nr": "3" },
                 
                         {"Name": "Commit ProjectsDict.CommitsWithMaxFiles(int? year)", "Nr": "3" },
                 
+                        {"Name": "int ProjectsDict.MedianCommitsForFiles(int? year)", "Nr": "3" },
+                
+                        {"Name": "KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)", "Nr": "3" },
+                
                         {"Name": "long ProjectsDict.CommitsPerYearFolder(int year)", "Nr": "3" },
                 
-                        {"Name": "void ProjectsDict.FindUpStreamReferences()", "Nr": "3" },
+                        {"Name": "string GlobalsForGenerating.RelativePath(string? pathProject)", "Nr": "3" },
+                
+                        {"Name": "T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)", "Nr": "3" },
                 
                         {"Name": "void ProjectsDict.FindHistoryProjects()", "Nr": "3" },
                 
-                        {"Name": "int AnalyzeForProject.maxDiff(FileData file, string relPath)", "Nr": "2" },
+                        {"Name": "void ProjectsDict.FindUpStreamReferences()", "Nr": "3" },
                 
-                        {"Name": "string ProcessOutput.ExecuteGit(string folder, GitData gitData)", "Nr": "2" },
+                        {"Name": "bool ProcessOutput.Build(string folder)", "Nr": "2" },
                 
-                        {"Name": "void FileFolderHistorySimple.Initialize(bool AddHistoryForFolder)", "Nr": "2" },
-                
-                        {"Name": "History HistoryPerYear.HistoryYear(int year)", "Nr": "2" },
+                        {"Name": "deprecatedV1_gen_json? deprecatedV1_gen_json.Deserialize(string? text)", "Nr": "2" },
                 
                         {"Name": "Dictionary<string, int> CommitsData.FilesWithMaxCommits(int? year, int take)", "Nr": "2" },
                 
-                        {"Name": "Task RealMainExecuting.GenerateHandlerMajorDiff(bool verbose, string folder)", "Nr": "2" },
+                        {"Name": "Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()", "Nr": "2" },
                 
-                        {"Name": "Task<int> RealMainExecuting.RealMain(string[] args)", "Nr": "2" },
+                        {"Name": "Frameworks? Frameworks.Deserialize(string? text)", "Nr": "2" },
                 
-                        {"Name": "Task RealMainExecuting.GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)", "Nr": "2" },
-                
-                        {"Name": "void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)", "Nr": "2" },
-                
-                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)", "Nr": "2" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)", "Nr": "2" },
-                
-                        {"Name": "Task<string> TemplateGenerator.Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)", "Nr": "2" },
+                        {"Name": "History HistoryPerYear.HistoryYear(int year)", "Nr": "2" },
                 
                         {"Name": "IEnumerable<ValidationResult> GenericMetrics.Validate(ValidationContext validationContext)", "Nr": "2" },
+                
+                        {"Name": "includeV1_gen_json? includeV1_gen_json.Deserialize(string? text)", "Nr": "2" },
+                
+                        {"Name": "int AnalyzeForProject.maxDiff(FileData file, string relPath)", "Nr": "2" },
+                
+                        {"Name": "NamePerCount? PublicClassRefData.PublicMethod_MostLinesOfCode_Most()", "Nr": "2" },
                 
                         {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics metrics)", "Nr": "2" },
                 
@@ -3287,35 +3291,41 @@ name: 'NuGetInfo'
                 
                         {"Name": "NamePerCount[] AssemblyDataFromMSFT.MethodsMetrics(eMSFTMetrics metrics)", "Nr": "2" },
                 
-                        {"Name": "Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()", "Nr": "2" },
+                        {"Name": "outdatedV1_gen_json? outdatedV1_gen_json.Deserialize(string? text)", "Nr": "2" },
                 
                         {"Name": "PackageWithVersion[] GenerateData.Problems()", "Nr": "2" },
                 
-                        {"Name": "string ProcessOutput.ListSDKS(string folder)", "Nr": "2" },
-                
-                        {"Name": "bool ProcessOutput.Build(string folder)", "Nr": "2" },
-                
-                        {"Name": "string ProcessOutput.OutputDotnetReference(string pathToCsproj)", "Nr": "2" },
-                
-                        {"Name": "string ProcessOutput.OutputDotnetPackage(string folder, PackageOptions packageOptions)", "Nr": "2" },
-                
-                        {"Name": "NamePerCount? PublicClassRefData.PublicMethod_MostLinesOfCode_Most()", "Nr": "2" },
-                
-                        {"Name": "deprecatedV1_gen_json? deprecatedV1_gen_json.Deserialize(string? text)", "Nr": "2" },
-                
-                        {"Name": "Frameworks? Frameworks.Deserialize(string? text)", "Nr": "2" },
+                        {"Name": "Problems? Problems.Deserialize(string? text)", "Nr": "2" },
                 
                         {"Name": "Projects? Projects.Deserialize(string? text)", "Nr": "2" },
                 
+                        {"Name": "string ProcessOutput.ExecuteGit(string folder, GitData gitData)", "Nr": "2" },
+                
+                        {"Name": "string ProcessOutput.ListSDKS(string folder)", "Nr": "2" },
+                
+                        {"Name": "string ProcessOutput.OutputDotnetPackage(string folder, PackageOptions packageOptions)", "Nr": "2" },
+                
+                        {"Name": "string ProcessOutput.OutputDotnetReference(string pathToCsproj)", "Nr": "2" },
+                
+                        {"Name": "Task RealMainExecuting.GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)", "Nr": "2" },
+                
+                        {"Name": "Task RealMainExecuting.GenerateHandlerMajorDiff(bool verbose, string folder)", "Nr": "2" },
+                
+                        {"Name": "Task<int> RealMainExecuting.RealMain(string[] args)", "Nr": "2" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_DisplayAllVersionsMarkdown(DisplayDataMoreThan1Version? model)", "Nr": "2" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllVersions(DisplayDataMoreThan1Version? model)", "Nr": "2" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_MermaidVisualizerMajorDiffer(DisplayDataMoreThan1Version? model)", "Nr": "2" },
+                
                         {"Name": "TopLevelPackages? TopLevelPackages.Deserialize(string? text)", "Nr": "2" },
-                
-                        {"Name": "includeV1_gen_json? includeV1_gen_json.Deserialize(string? text)", "Nr": "2" },
-                
-                        {"Name": "Problems? Problems.Deserialize(string? text)", "Nr": "2" },
                 
                         {"Name": "TransitivePackages? TransitivePackages.Deserialize(string? text)", "Nr": "2" },
                 
-                        {"Name": "outdatedV1_gen_json? outdatedV1_gen_json.Deserialize(string? text)", "Nr": "2" },
+                        {"Name": "void FileFolderHistorySimple.Initialize(bool AddHistoryForFolder)", "Nr": "2" },
+                
+                        {"Name": "void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)", "Nr": "2" },
                 
                         {"Name": "void TestNugetInfo.TestFindVersionNuget()", "Nr": "2" },
                 
@@ -3325,71 +3335,35 @@ name: 'NuGetInfo'
                 
                         {"Name": "AnalyzeMergeData.AnalyzeMergeData(string folder)", "Nr": "1" },
                 
-                        {"Name": "string? AnalyzeMergeData.relFolder()", "Nr": "1" },
-                
                         {"Name": "AnalyzeNode.AnalyzeNode(string rootFolder, FileData[] files)", "Nr": "1" },
                 
-                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllFiles(DataToDisplayMerge model)", "Nr": "1" },
+                        {"Name": "AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)", "Nr": "1" },
                 
-                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllFilesMD(DataToDisplayMerge model)", "Nr": "1" },
+                        {"Name": "Command RealMainExecuting.AddGenerateConsole()", "Nr": "1" },
                 
-                        {"Name": "FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)", "Nr": "1" },
-                
-                        {"Name": "HistoryPerYear.HistoryPerYear()", "Nr": "1" },
-                
-                        {"Name": "HistoryPerYear.HistoryPerYear(IDictionary<int, History> data)", "Nr": "1" },
-                
-                        {"Name": "History HistoryPerYear.AllHistory()", "Nr": "1" },
-                
-                        {"Name": "int HistoryPerYear.MaxYear()", "Nr": "1" },
-                
-                        {"Name": "int HistoryPerYear.MinYear()", "Nr": "1" },
+                        {"Name": "Command RealMainExecuting.AddGenerateFiles()", "Nr": "1" },
                 
                         {"Name": "Commit.Commit()", "Nr": "1" },
                 
                         {"Name": "Commit.Commit(DateTime date, string sha)", "Nr": "1" },
                 
-                        {"Name": "int Commit.CountFiles()", "Nr": "1" },
+                        {"Name": "Dictionary<int, Commit> ProjectsDict.CommitsWithMaxFilesPerYear()", "Nr": "1" },
+                
+                        {"Name": "Dictionary<int, int> ProjectsDict.CommitsMedianFilesPerYear()", "Nr": "1" },
+                
+                        {"Name": "Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()", "Nr": "1" },
+                
+                        {"Name": "FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)", "Nr": "1" },
                 
                         {"Name": "FolderHistoryCommits.FolderHistoryCommits(string nameFolder)", "Nr": "1" },
                 
-                        {"Name": "RealMainExecuting.RealMainExecuting()", "Nr": "1" },
+                        {"Name": "GenerateData.GenerateData(IFileSystem system)", "Nr": "1" },
                 
-                        {"Name": "Command RealMainExecuting.AddGenerateFiles()", "Nr": "1" },
-                
-                        {"Name": "Command RealMainExecuting.AddGenerateConsole()", "Nr": "1" },
+                        {"Name": "GenerateFiles.GenerateFiles(IFileSystem system)", "Nr": "1" },
                 
                         {"Name": "GenerateFilesDocusaurus.GenerateFilesDocusaurus(IFileSystem system)", "Nr": "1" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetDocusaurusZip()", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_OutDeprMarkdown(PackageWithVersion[] model)", "Nr": "1" },
-                
-                        {"Name": "Task<string> TemplateGenerator.Generate_SolutionRelations(ProjectsDict model)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectPackages(ProjectData model)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectCommits(ProjectData model)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_BuildingBlocks(ProjectsDict model)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_Commits(ProjectsDict model)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_RootProjects(ProjectsDict model)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_TestProjects(ProjectsDict model)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_SolutionIntroduction(InfoSolution model)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectRelations(ProjectData projData)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_ReferencesSummaryProjects(ClassesRefData refSummary)", "Nr": "1" },
-                
-                        {"Name": "Task<string?> TemplateGenerator.Generate_PublicClasses(PublicClassRefData refPublic)", "Nr": "1" },
-                
                         {"Name": "GenerateHTML.GenerateHTML(IFileSystem system)", "Nr": "1" },
-                
-                        {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "1" },
                 
                         {"Name": "GenericMetrics.GenericMetrics()", "Nr": "1" },
                 
@@ -3397,23 +3371,33 @@ name: 'NuGetInfo'
                 
                         {"Name": "GenericMetricsClass.GenericMetricsClass()", "Nr": "1" },
                 
-                        {"Name": "int GenericMetricsClass.NumberOfMethods()", "Nr": "1" },
-                
                         {"Name": "GenericMetricsMethod.GenericMetricsMethod()", "Nr": "1" },
                 
-                        {"Name": "string GlobalsForGenerating.globalPrefix()", "Nr": "1" },
+                        {"Name": "History HistoryPerYear.AllHistory()", "Nr": "1" },
                 
-                        {"Name": "AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)", "Nr": "1" },
+                        {"Name": "HistoryPerYear.HistoryPerYear()", "Nr": "1" },
                 
-                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberClasses()", "Nr": "1" },
+                        {"Name": "HistoryPerYear.HistoryPerYear(IDictionary<int, History> data)", "Nr": "1" },
+                
+                        {"Name": "int Commit.CountFiles()", "Nr": "1" },
+                
+                        {"Name": "int GenericMetricsClass.NumberOfMethods()", "Nr": "1" },
+                
+                        {"Name": "int HistoryPerYear.MaxYear()", "Nr": "1" },
+                
+                        {"Name": "int HistoryPerYear.MinYear()", "Nr": "1" },
+                
+                        {"Name": "int ProjectsDict.MaxYearCommits()", "Nr": "1" },
+                
+                        {"Name": "int ProjectsDict.MinYearCommits()", "Nr": "1" },
+                
+                        {"Name": "int ProjectsDict.NrLicenses()", "Nr": "1" },
+                
+                        {"Name": "IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()", "Nr": "1" },
                 
                         {"Name": "long AssemblyDataFromMSFT.NumberOfClasses()", "Nr": "1" },
                 
-                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.ClassNumberMethods()", "Nr": "1" },
-                
                         {"Name": "long AssemblyDataFromMSFT.NumberOfMethods()", "Nr": "1" },
-                
-                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberMethods()", "Nr": "1" },
                 
                         {"Name": "NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics metrics)", "Nr": "1" },
                 
@@ -3423,66 +3407,96 @@ name: 'NuGetInfo'
                 
                         {"Name": "NamePerCount? AssemblyDataFromMSFT.ClassesMetricMin(eMSFTMetrics metrics)", "Nr": "1" },
                 
-                        {"Name": "GenerateData.GenerateData(IFileSystem system)", "Nr": "1" },
+                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberClasses()", "Nr": "1" },
+                
+                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberMethods()", "Nr": "1" },
+                
+                        {"Name": "NamePerCount[] AssemblyDataFromMSFT.ClassNumberMethods()", "Nr": "1" },
+                
+                        {"Name": "NamePerCount[] ProjectsDict.Packages()", "Nr": "1" },
+                
+                        {"Name": "ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)", "Nr": "1" },
+                
+                        {"Name": "ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetDocusaurusZip()", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetDriverCss()", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetDriverJS()", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetEchartsJs()", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetMermaidJs()", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorCss()", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorJs()", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorTheme()", "Nr": "1" },
+                
+                        {"Name": "ReadOnlySpan<byte> MyResource.GetVisJs()", "Nr": "1" },
+                
+                        {"Name": "RealMainExecuting.RealMainExecuting()", "Nr": "1" },
+                
+                        {"Name": "string ExternalReferenceExport.FullClassName()", "Nr": "1" },
+                
+                        {"Name": "string GlobalsForGenerating.globalPrefix()", "Nr": "1" },
+                
+                        {"Name": "string? AnalyzeMergeData.relFolder()", "Nr": "1" },
                 
                         {"Name": "string[] GenerateData.MajorWithMoreVersions()", "Nr": "1" },
-                
-                        {"Name": "void GenerateData.AddHistoryCsproj()", "Nr": "1" },
-                
-                        {"Name": "GenerateFiles.GenerateFiles(IFileSystem system)", "Nr": "1" },
-                
-                        {"Name": "Task<string> GenerateFiles.GenerateNow(string folder, string where)", "Nr": "1" },
-                
-                        {"Name": "void IOperations.ClearWrongData()", "Nr": "1" },
                 
                         {"Name": "string[] IOperations.ProjectsPath()", "Nr": "1" },
                 
                         {"Name": "string[] IOperations.TopLevelPackagesIDs()", "Nr": "1" },
                 
-                        {"Name": "Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()", "Nr": "1" },
-                
-                        {"Name": "ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)", "Nr": "1" },
-                
-                        {"Name": "int ProjectsDict.NrLicenses()", "Nr": "1" },
-                
-                        {"Name": "Dictionary<int, Commit> ProjectsDict.CommitsWithMaxFilesPerYear()", "Nr": "1" },
-                
-                        {"Name": "Dictionary<int, int> ProjectsDict.CommitsMedianFilesPerYear()", "Nr": "1" },
-                
-                        {"Name": "int ProjectsDict.MaxYearCommits()", "Nr": "1" },
-                
-                        {"Name": "int ProjectsDict.MinYearCommits()", "Nr": "1" },
-                
-                        {"Name": "NamePerCount[] ProjectsDict.Packages()", "Nr": "1" },
-                
-                        {"Name": "IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()", "Nr": "1" },
-                
-                        {"Name": "ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)", "Nr": "1" },
-                
-                        {"Name": "string ExternalReferenceExport.FullClassName()", "Nr": "1" },
+                        {"Name": "Task TestSolutionExists.TestDoesNotWorkWithoutSln()", "Nr": "1" },
                 
                         {"Name": "Task<int> TestingPlatformEntryPoint.Main(string[] args)", "Nr": "1" },
                 
-                        {"Name": "Task TestSolutionExists.TestDoesNotWorkWithoutSln()", "Nr": "1" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_BuildingBlocks(ProjectsDict model)", "Nr": "1" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetMermaidJs()", "Nr": "1" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_Commits(ProjectsDict model)", "Nr": "1" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetEchartsJs()", "Nr": "1" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_OutDeprMarkdown(PackageWithVersion[] model)", "Nr": "1" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetVisJs()", "Nr": "1" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectCommits(ProjectData model)", "Nr": "1" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorJs()", "Nr": "1" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectPackages(ProjectData model)", "Nr": "1" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorCss()", "Nr": "1" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_ProjectRelations(ProjectData projData)", "Nr": "1" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorTheme()", "Nr": "1" },
+                        {"Name": "Task<string?> TemplateGenerator.Generate_PublicClasses(PublicClassRefData refPublic)", "Nr": "1" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_ReferencesSummaryProjects(ClassesRefData refSummary)", "Nr": "1" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_RootProjects(ProjectsDict model)", "Nr": "1" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_SolutionIntroduction(InfoSolution model)", "Nr": "1" },
+                
+                        {"Name": "Task<string?> TemplateGenerator.Generate_TestProjects(ProjectsDict model)", "Nr": "1" },
+                
+                        {"Name": "Task<string> GenerateFiles.GenerateNow(string folder, string where)", "Nr": "1" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllFiles(DataToDisplayMerge model)", "Nr": "1" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_DisplayAllFilesMD(DataToDisplayMerge model)", "Nr": "1" },
+                
+                        {"Name": "Task<string> TemplateGenerator.Generate_SolutionRelations(ProjectsDict model)", "Nr": "1" },
+                
+                        {"Name": "void GenerateData.AddHistoryCsproj()", "Nr": "1" },
+                
+                        {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "1" },
+                
+                        {"Name": "void IOperations.ClearWrongData()", "Nr": "1" },
                                             ];
             var table = new Tabulator("#Cyclomatic-Complexity-for-Method-table", {
                 data: tabledata,
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,144],
+                paginationSizeSelector: [100,146],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -3587,6 +3601,8 @@ name: 'NuGetInfo'
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -3772,7 +3788,7 @@ xychart-beta horizontal
 title "Number methods per project"
 x-axis ["NetPackageAnalyzerObjects","NetPackageAnalyzerDocusaurus","NetPackageAnalyzeHistory","AnalyzeMerge","NetPackageAnalyzerConsole","NetPackageAnalyzerMetricsMSFT","NPA.Resources","NetPackageAnalyzerExportHTML","NetPackageAnalyzerTests","NetPackageAnalyzerDiagram","NetPackageAnalyzerShowInConsole","NuGetInfo"]
 y-axis "" 0--> 75
-bar [75,19,15,11,9,9,6,3,3,0,0,0]
+bar [75,19,15,11,9,9,8,3,3,0,0,0]
 
 </div>
 <br />
@@ -3793,7 +3809,7 @@ bar [75,19,15,11,9,9,6,3,3,0,0,0]
         
                 {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "9" },
         
-                {"Name": "NPA.Resources", "Nr": "6" },
+                {"Name": "NPA.Resources", "Nr": "8" },
         
                 {"Name": "NetPackageAnalyzerExportHTML", "Nr": "3" },
         
@@ -3839,9 +3855,9 @@ config:
 
 xychart-beta horizontal
 title "Number methods per class"
-x-axis ["ProjectsDict","TemplateGenerator","AssemblyDataFromMSFT","RealMainExecuting","GenerateData","HistoryPerYear","MyResource","GenericMetrics","IOperations","ProcessOutput","AnalyzeForProject","AnalyzeMergeData","FileFolderHistorySimple","Commit","GenerateHTML"]
+x-axis ["ProjectsDict","TemplateGenerator","AssemblyDataFromMSFT","GenerateData","MyResource","RealMainExecuting","HistoryPerYear","GenericMetrics","IOperations","ProcessOutput","AnalyzeForProject","AnalyzeMergeData","Commit","FileFolderHistorySimple","GenerateHTML"]
 y-axis "" 0--> 24
-bar [24,16,13,8,8,6,6,4,4,4,3,3,3,3,3]
+bar [24,16,13,8,8,8,6,4,4,4,3,3,3,3,3]
 
 </div>
 <br />
@@ -3856,13 +3872,13 @@ bar [24,16,13,8,8,6,6,4,4,4,3,3,3,3,3]
         
                 {"Name": "AssemblyDataFromMSFT", "Nr": "13" },
         
-                {"Name": "RealMainExecuting", "Nr": "8" },
-        
                 {"Name": "GenerateData", "Nr": "8" },
         
-                {"Name": "HistoryPerYear", "Nr": "6" },
+                {"Name": "MyResource", "Nr": "8" },
         
-                {"Name": "MyResource", "Nr": "6" },
+                {"Name": "RealMainExecuting", "Nr": "8" },
+        
+                {"Name": "HistoryPerYear", "Nr": "6" },
         
                 {"Name": "GenericMetrics", "Nr": "4" },
         
@@ -3874,9 +3890,9 @@ bar [24,16,13,8,8,6,6,4,4,4,3,3,3,3,3]
         
                 {"Name": "AnalyzeMergeData", "Nr": "3" },
         
-                {"Name": "FileFolderHistorySimple", "Nr": "3" },
-        
                 {"Name": "Commit", "Nr": "3" },
+        
+                {"Name": "FileFolderHistorySimple", "Nr": "3" },
         
                 {"Name": "GenerateHTML", "Nr": "3" },
                                         ];
@@ -5881,9 +5897,9 @@ config:
 
 xychart-beta horizontal
 title "Number exec lines per project"
-x-axis ["NetPackageAnalyzerObjects","NetPackageAnalyzerDocusaurus","AnalyzeMerge","NetPackageAnalyzeHistory","NetPackageAnalyzerConsole","NetPackageAnalyzerMetricsMSFT","NetPackageAnalyzerExportHTML","NetPackageAnalyzerTests","NPA.Resources","NuGetInfo","NetPackageAnalyzerDiagram","NetPackageAnalyzerShowInConsole"]
+x-axis ["NetPackageAnalyzerObjects","NetPackageAnalyzerDocusaurus","AnalyzeMerge","NetPackageAnalyzeHistory","NetPackageAnalyzerConsole","NetPackageAnalyzerMetricsMSFT","NetPackageAnalyzerExportHTML","NPA.Resources","NetPackageAnalyzerTests","NuGetInfo","NetPackageAnalyzerDiagram","NetPackageAnalyzerShowInConsole"]
 y-axis "" 0--> 682
-bar [682,168,106,94,85,68,37,15,12,8,0,0]
+bar [682,168,106,94,85,68,43,16,15,8,0,0]
 
 </div>
 <br />
@@ -5904,11 +5920,11 @@ bar [682,168,106,94,85,68,37,15,12,8,0,0]
         
                 {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "68" },
         
-                {"Name": "NetPackageAnalyzerExportHTML", "Nr": "37" },
+                {"Name": "NetPackageAnalyzerExportHTML", "Nr": "43" },
+        
+                {"Name": "NPA.Resources", "Nr": "16" },
         
                 {"Name": "NetPackageAnalyzerTests", "Nr": "15" },
-        
-                {"Name": "NPA.Resources", "Nr": "12" },
         
                 {"Name": "NuGetInfo", "Nr": "8" },
         
@@ -5951,9 +5967,9 @@ config:
 
 xychart-beta horizontal
 title "Number exec lines per class"
-x-axis ["GenerateData","ProjectsDict","GenerateFilesDocusaurus","RealMainExecuting","GenericMetrics","AnalyzeForProject","AssemblyDataFromMSFT","AnalyzeMergeData","FileFolderHistorySimple","ProcessOutput","TemplateGenerator","GenerateHTML","FolderHistoryCommits","deprecatedV1_gen_json","HistoryPerYear"]
+x-axis ["GenerateData","ProjectsDict","GenerateFilesDocusaurus","RealMainExecuting","GenericMetrics","AnalyzeForProject","AssemblyDataFromMSFT","GenerateHTML","AnalyzeMergeData","FileFolderHistorySimple","ProcessOutput","TemplateGenerator","FolderHistoryCommits","deprecatedV1_gen_json","MyResource"]
 y-axis "" 0--> 227
-bar [227,204,129,75,63,49,43,41,40,38,37,37,23,21,14]
+bar [227,204,129,75,63,49,43,43,41,40,38,37,23,21,16]
 
 </div>
 <br />
@@ -5976,6 +5992,8 @@ bar [227,204,129,75,63,49,43,41,40,38,37,37,23,21,14]
         
                 {"Name": "AssemblyDataFromMSFT", "Nr": "43" },
         
+                {"Name": "GenerateHTML", "Nr": "43" },
+        
                 {"Name": "AnalyzeMergeData", "Nr": "41" },
         
                 {"Name": "FileFolderHistorySimple", "Nr": "40" },
@@ -5984,13 +6002,11 @@ bar [227,204,129,75,63,49,43,41,40,38,37,37,23,21,14]
         
                 {"Name": "TemplateGenerator", "Nr": "37" },
         
-                {"Name": "GenerateHTML", "Nr": "37" },
-        
                 {"Name": "FolderHistoryCommits", "Nr": "23" },
         
                 {"Name": "deprecatedV1_gen_json", "Nr": "21" },
         
-                {"Name": "HistoryPerYear", "Nr": "14" },
+                {"Name": "MyResource", "Nr": "16" },
                                         ];
     var table = new Tabulator("#Number-exec-lines-per-class-table", {
         data: tabledata,
@@ -6028,9 +6044,9 @@ config:
 
 xychart-beta horizontal
 title "Number exec lines per method"
-x-axis ["Task#60;string#62; GenerateFilesDocusaurus.GenerateNow(string folder, string where)","Task#60;bool#62; GenerateData.GenerateDataForSln(string folder)","(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)","GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)","void AnalyzeForProject.Analyze()","Task#60;string#62; AnalyzeMergeData.GenerateNow()","HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)","string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)","void ProjectsDict.FindReferences()","void FolderHistoryCommits.Initialize()","Task#60;string#62; GenerateHTML.GenerateNow(string folder, string where)","Dictionary#60;int, NamePerCount[]#62; ProjectsDict.CommitsYearFolders()","void GenerateHTML.WriteJs(string where)","Command RealMainExecuting.AddGenerateFiles()","Task#60;int#62; RealMainExecuting.RealMain(string[] args)"]
+x-axis ["Task#60;string#62; GenerateFilesDocusaurus.GenerateNow(string folder, string where)","Task#60;bool#62; GenerateData.GenerateDataForSln(string folder)","(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)","GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)","void AnalyzeForProject.Analyze()","Task#60;string#62; AnalyzeMergeData.GenerateNow()","HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)","string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)","void GenerateHTML.WriteJs(string where)","void ProjectsDict.FindReferences()","void FolderHistoryCommits.Initialize()","Dictionary#60;int, NamePerCount[]#62; ProjectsDict.CommitsYearFolders()","Task#60;string#62; GenerateHTML.GenerateNow(string folder, string where)","Command RealMainExecuting.AddGenerateFiles()","KeyValuePair#60;string, int#62;[] ProjectsDict.FilesWithMaxCommits(int? year)"]
 y-axis "" 0--> 129
-bar [129,96,83,44,39,36,34,26,23,21,19,19,18,16,14]
+bar [129,96,83,44,39,36,34,26,24,23,21,19,19,16,14]
 
 </div>
 <br />
@@ -6055,19 +6071,19 @@ bar [129,96,83,44,39,36,34,26,23,21,19,19,18,16,14]
         
                 {"Name": "string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)", "Nr": "26" },
         
+                {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "24" },
+        
                 {"Name": "void ProjectsDict.FindReferences()", "Nr": "23" },
         
                 {"Name": "void FolderHistoryCommits.Initialize()", "Nr": "21" },
         
-                {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "19" },
-        
                 {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "19" },
         
-                {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "18" },
+                {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "19" },
         
                 {"Name": "Command RealMainExecuting.AddGenerateFiles()", "Nr": "16" },
         
-                {"Name": "Task<int> RealMainExecuting.RealMain(string[] args)", "Nr": "14" },
+                {"Name": "KeyValuePair<string, int>[] ProjectsDict.FilesWithMaxCommits(int? year)", "Nr": "14" },
                                         ];
     var table = new Tabulator("#Number-exec-lines-per-method-table", {
         data: tabledata,
@@ -6246,9 +6262,9 @@ config:
 
 xychart-beta horizontal
 title "Public methods per class"
-x-axis ["ProjectsDict","ProjectData","AssemblyDataFromMSFT","DisplayDataMoreThan1Version","PackageData","FileData","DataToDisplayMerge","RscgExportDataDiagram","Metric","InfoSolution","PackageWithVersionOutdated","PackageWithVersionDeprecated","NugetInfoData","ProjectWithFiles","History"]
+x-axis ["ProjectsDict","ProjectData","AssemblyDataFromMSFT","DisplayDataMoreThan1Version","PackageData","FileData","MyResource","DataToDisplayMerge","RscgExportDataDiagram","Metric","InfoSolution","PackageWithVersionOutdated","PackageWithVersionDeprecated","NugetInfoData","ProjectWithFiles"]
 y-axis "" 0--> 23
-bar [23,16,12,12,12,10,7,7,7,7,7,7,7,6,6]
+bar [23,16,12,12,12,10,8,7,7,7,7,7,7,7,6]
 
 </div>
 <br />
@@ -6269,6 +6285,8 @@ bar [23,16,12,12,12,10,7,7,7,7,7,7,7,6,6]
         
                 {"Name": "FileData", "Nr": "10" },
         
+                {"Name": "MyResource", "Nr": "8" },
+        
                 {"Name": "DataToDisplayMerge", "Nr": "7" },
         
                 {"Name": "RscgExportDataDiagram", "Nr": "7" },
@@ -6284,8 +6302,6 @@ bar [23,16,12,12,12,10,7,7,7,7,7,7,7,6,6]
                 {"Name": "NugetInfoData", "Nr": "7" },
         
                 {"Name": "ProjectWithFiles", "Nr": "6" },
-        
-                {"Name": "History", "Nr": "6" },
                                         ];
     var table = new Tabulator("#Public-methods-per-class-table", {
         data: tabledata,
@@ -6325,7 +6341,7 @@ xychart-beta horizontal
 title "Number lines in public class per assembly"
 x-axis ["NetPackageAnalyzerObjects","NetPackageAnalyzerDocusaurus","NetPackageAnalyzeHistory","AnalyzeMerge","NetPackageAnalyzerMetricsMSFT","NuGetInfo","NetPackageAnalyzerExportHTML","NetPackageAnalyzerShowInConsole","NetPackageAnalyzerTests","NPA.Resources","NetPackageAnalyzerDiagram"]
 y-axis "" 0--> 1489
-bar [1489,242,239,220,136,76,65,50,33,15,8]
+bar [1489,242,239,220,136,76,71,50,33,19,8]
 
 </div>
 <br />
@@ -6346,13 +6362,13 @@ bar [1489,242,239,220,136,76,65,50,33,15,8]
         
                 {"Name": "NuGetInfo", "Nr": "76" },
         
-                {"Name": "NetPackageAnalyzerExportHTML", "Nr": "65" },
+                {"Name": "NetPackageAnalyzerExportHTML", "Nr": "71" },
         
                 {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "50" },
         
                 {"Name": "NetPackageAnalyzerTests", "Nr": "33" },
         
-                {"Name": "NPA.Resources", "Nr": "15" },
+                {"Name": "NPA.Resources", "Nr": "19" },
         
                 {"Name": "NetPackageAnalyzerDiagram", "Nr": "8" },
                                         ];
@@ -6392,7 +6408,7 @@ xychart-beta horizontal
 title "Number lines per public class"
 x-axis ["ProjectsDict","GenerateData","GenerateFilesDocusaurus","ProjectData","ProcessOutput","GenericMetrics","AssemblyDataFromMSFT","TemplateGenerator","FileFolderHistorySimple","PackageData","AnalyzeMergeData","AnalyzeForProject","NugetInfoData","GenerateHTML","FolderHistoryCommits"]
 y-axis "" 0--> 398
-bar [398,392,146,114,109,102,97,96,84,83,80,75,72,65,56]
+bar [398,392,146,114,109,102,97,96,84,83,80,75,72,71,56]
 
 </div>
 <br />
@@ -6427,7 +6443,7 @@ bar [398,392,146,114,109,102,97,96,84,83,80,75,72,65,56]
         
                 {"Name": "NugetInfoData", "Nr": "72" },
         
-                {"Name": "GenerateHTML", "Nr": "65" },
+                {"Name": "GenerateHTML", "Nr": "71" },
         
                 {"Name": "FolderHistoryCommits", "Nr": "56" },
                                         ];
@@ -6545,9 +6561,9 @@ config:
 
 xychart-beta horizontal
 title "References per assembly"
-x-axis ["NetPackageAnalyzeHistory","NetPackageAnalyzerObjects","NetPackageAnalyzerMetricsMSFT","NuGetInfo","NPA.Resources","NetPackageAnalyzerShowInConsole","NetPackageAnalyzerDocusaurus","NetPackageAnalyzerDiagram","NetPackageAnalyzerExportHTML"]
+x-axis ["NetPackageAnalyzeHistory","NetPackageAnalyzerObjects","NetPackageAnalyzerMetricsMSFT","NPA.Resources","NuGetInfo","NetPackageAnalyzerShowInConsole","NetPackageAnalyzerDocusaurus","NetPackageAnalyzerDiagram","NetPackageAnalyzerExportHTML"]
 y-axis "" 0--> 39
-bar [39,28,19,8,6,2,2,2,1]
+bar [39,28,19,8,8,2,2,2,1]
 
 </div>
 <br />
@@ -6562,9 +6578,9 @@ bar [39,28,19,8,6,2,2,2,1]
         
                 {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "19" },
         
-                {"Name": "NuGetInfo", "Nr": "8" },
+                {"Name": "NPA.Resources", "Nr": "8" },
         
-                {"Name": "NPA.Resources", "Nr": "6" },
+                {"Name": "NuGetInfo", "Nr": "8" },
         
                 {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "2" },
         
@@ -6608,9 +6624,9 @@ config:
 
 xychart-beta horizontal
 title "References per class"
-x-axis ["ProjectsDict","AssemblyDataFromMSFT","GenerateHTML","GenerateFilesDocusaurus","RealMainExecuting","TemplateGenerator","PackageData","ProjectData","TestNugetInfo","GenerateData","WriteToConsole","TestSolutionExists"]
+x-axis ["ProjectsDict","GenerateHTML","AssemblyDataFromMSFT","GenerateFilesDocusaurus","RealMainExecuting","TemplateGenerator","PackageData","ProjectData","TestNugetInfo","GenerateData","WriteToConsole","TestSolutionExists"]
 y-axis "" 0--> 35
-bar [35,18,16,11,4,4,4,4,4,3,3,1]
+bar [35,18,18,11,4,4,4,4,4,3,3,1]
 
 </div>
 <br />
@@ -6621,9 +6637,9 @@ bar [35,18,16,11,4,4,4,4,4,3,3,1]
 
                 {"Name": "ProjectsDict", "Nr": "35" },
         
-                {"Name": "AssemblyDataFromMSFT", "Nr": "18" },
+                {"Name": "GenerateHTML", "Nr": "18" },
         
-                {"Name": "GenerateHTML", "Nr": "16" },
+                {"Name": "AssemblyDataFromMSFT", "Nr": "18" },
         
                 {"Name": "GenerateFilesDocusaurus", "Nr": "11" },
         
@@ -6668,9 +6684,9 @@ bar [35,18,16,11,4,4,4,4,4,3,3,1]
                 xychart-beta
                 title "Commits per year (folder and csproj)"
                 x-axis [2023,2024]
-                y-axis "" 0--> 206
-                bar [23,206]
-                bar [13,109]
+                y-axis "" 0--> 209
+                bar [23,209]
+                bar [13,110]
             </div>
 
         
@@ -6854,7 +6870,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,59],
+data: [10,60],
 },
 
 
@@ -6878,7 +6894,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,18],
+data: [null,19],
 },
 
 
@@ -6950,7 +6966,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,1],
+data: [null,2],
 },
 
 
@@ -6988,11 +7004,11 @@ tabledata.push({"folder": "NetPackageAnalyzeHistory", "year":2024,"Nr": "13" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2023,"Nr": "10" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "59" });
+tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "60" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2024,"Nr": "7" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "18" });
+tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "19" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerMetricsMSFT", "year":2024,"Nr": "5" });
                     
@@ -7006,7 +7022,7 @@ tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2023,"Nr": "10" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2024,"Nr": "45" });
                     
-tabledata.push({"folder": "NPA.Resources", "year":2024,"Nr": "1" });
+tabledata.push({"folder": "NPA.Resources", "year":2024,"Nr": "2" });
                     
 tabledata.push({"folder": "NuGetInfo", "year":2024,"Nr": "2" });
                     
@@ -7063,7 +7079,55 @@ tabledata.push({"folder": "NuGetInfo", "year":2024,"Nr": "2" });
     <script>    mermaid.initialize({ startOnLoad: true });</script>
 
     <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
-    <small>8.2024.1008.2227</small>
-    <small> Patrick Modiano is feeling hanging in Tórshavn </small>
+    <small>8.2024.1010.1840</small>
+    <small> William Butler Yeats is feeling same in Kingston </small>
+<script>
+        
+            const steps = [
+            {
+                element: '#summary',         //this is option if you don't want to add title
+            popover:{title: 'Start tour',     //can be string or html string
+            description:"Please click next to see all that is is generated. Click escape to exit the tour."
+                }
+            },
+            {
+                element: '#projects-with-tests',            //target element (if not defined then the popover will act like a modal at the center of the screen)
+            popover:{title: 'Projects with test',         //this is option if you don't want to add title
+            description: 'Here you can find a diagram of your projects',     //can be string or html string
+                }
+            },
+            {
+                element: '#building-blocks',            //target element (if not defined then the popover will act like a modal at the center of the screen)
+            popover:{title: 'Building blocks',         //this is option if you don't want to add title
+            description: 'You can start understanding the solution with those projects',     //can be string or html string
+                }
+            },
+            {
+                element: '#commits',            //target element (if not defined then the popover will act like a modal at the center of the screen)
+            popover:{title: 'Commits',         //this is option if you don't want to add title
+            description: 'Here are the commits per year',     //can be string or html string
+                }
+            },
+
+            {
+                element: '#summary',            //target element (if not defined then the popover will act like a modal at the center of the screen)
+            popover:{title: 'Close this',         //this is option if you don't want to add title
+            description: 'Start Analysing',     //can be string or html string
+                }
+            }
+
+            ];
+
+            const driver = window.driver.js.driver;
+
+            const driverObj = driver({
+                showProgress: true,
+            steps: steps
+        });
+            driverObj.drive();
+
+            
+</script>
+
 </body>
 </html>
