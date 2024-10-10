@@ -175,6 +175,8 @@
     <script type="text/javascript" src="tabulator.min.js"></script>
     <link rel="stylesheet" href="tabulator.min.css" />
     <link rel="stylesheet" href="tabulator.theme.min.js" />
+    <script src="driver.js.iife.js"></script>
+    <link rel="stylesheet" href="driver.css" />
     <style>
         table thead tr {
             background-color: #ffcccb; /* Light red */
@@ -267,7 +269,7 @@
             </table>
         </div>
         <div class="center">
-            <h1>Summary @nameSolution   </h1>
+            <h1 id="summary">Summary @nameSolution   </h1>
             <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
             <h2>If you are new to the project</h2>
             <ol>
@@ -1325,5 +1327,53 @@ columns: [
     <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
     <small>@GlobalsForGenerating.Version</small>
     <small> @GlobalsForGenerating.NameVersion </small>
+<script>
+        
+            const steps = [
+            {
+                element: '#summary',         //this is option if you don't want to add title
+            popover:{title: 'Start tour',     //can be string or html string
+            description:"Please click next to see all that is is generated. Click escape to exit the tour."
+                }
+            },
+            {
+                element: '#projects-with-tests',            //target element (if not defined then the popover will act like a modal at the center of the screen)
+            popover:{title: 'Projects with test',         //this is option if you don't want to add title
+            description: 'Here you can find a diagram of your projects',     //can be string or html string
+                }
+            },
+            {
+                element: '#building-blocks',            //target element (if not defined then the popover will act like a modal at the center of the screen)
+            popover:{title: 'Building blocks',         //this is option if you don't want to add title
+            description: 'You can start understanding the solution with those projects',     //can be string or html string
+                }
+            },
+            {
+                element: '#commits',            //target element (if not defined then the popover will act like a modal at the center of the screen)
+            popover:{title: 'Commits',         //this is option if you don't want to add title
+            description: 'Here are the commits per year',     //can be string or html string
+                }
+            },
+
+            {
+                element: '#summary',            //target element (if not defined then the popover will act like a modal at the center of the screen)
+            popover:{title: 'Close this',         //this is option if you don't want to add title
+            description: 'Start Analysing',     //can be string or html string
+                }
+            }
+
+            ];
+
+            const driver = window.driver.js.driver;
+
+            const driverObj = driver({
+                showProgress: true,
+            steps: steps
+        });
+            driverObj.drive();
+
+            
+</script>
+
 </body>
 </html>

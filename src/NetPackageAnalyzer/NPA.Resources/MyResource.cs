@@ -18,5 +18,10 @@ public partial class MyResource
 
     [EmbedResourceCSharp.FileEmbed("tabulator_midnight.min.css")]
     public static partial System.ReadOnlySpan<byte> GetTabulatorTheme();
+    [EmbedResourceCSharp.FileEmbed("driver.css")]
+    public static partial System.ReadOnlySpan<byte> GetDriverCss();
+
+    [EmbedResourceCSharp.FileEmbed("driver.js.iife.js")]
+    public static partial System.ReadOnlySpan<byte> GetDriverJS();
 
 }

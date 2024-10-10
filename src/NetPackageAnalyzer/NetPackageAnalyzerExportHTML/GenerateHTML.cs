@@ -77,6 +77,14 @@ public class GenerateHTML : GenerateFiles
         nameFileJs = Path.Combine(where, "tabulator.theme.min.js");
         system.File.WriteAllBytes(nameFileJs, res.ToArray());
 
+        res = MyResource.GetDriverCss();
+        nameFileJs = Path.Combine(where, "driver.css");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+
+        res = MyResource.GetDriverJS();
+        nameFileJs = Path.Combine(where, "driver.js.iife.js");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+
     }
 }
 

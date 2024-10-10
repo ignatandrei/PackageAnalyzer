@@ -65,13 +65,13 @@
         //    "--verbose","false"
         //};
 
-        //args = new[] { "generateFiles",
-        //    "--folder", @"D:\gth\RSCG_Examples\v2",
-        //    "-wg","HtmlSummary",
-        //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-        //    "--verbose","false"
-        //};
-
+        args = new[] { "generateFiles",
+            "--folder", @"D:\gth\RSCG_Examples\v2",
+            "-wg","HtmlSummary",
+            "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+            "--verbose","false"
+        };
+          
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\source\test\NetPackageAnalyzer",
         //    "-wg","HtmlSummary",
