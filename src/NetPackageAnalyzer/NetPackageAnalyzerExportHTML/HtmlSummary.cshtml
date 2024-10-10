@@ -37,6 +37,8 @@
     var medianCommits = projectDicts.MedianCommits(null);
     KeyValuePair<string, int>? filewithMaxCommits = top10Files?.Length > 0 ? top10Files.First() : null;
     Tuple<NamePerCount[], string> tuple;
+    Tuple<string, NamePerCount[], int, int, bool> tupleThreshold;
+    NamePerCountDisplayThreshold namePerCountDisplayThreshold;
     NamePerCountDisplay namePerCountDisplay;
     YEARNamePerCountDisplay yearFolders = new(yearWithFolders);
     Radar radar = new(Tuple.Create(projectDicts, publicClassRefData, assemblyDataFromMSFT, "andrei"));
@@ -294,17 +296,14 @@
                         methods with most cyclomatic complexity
                     </a>
                 </li>
-                <li>See <a href="#methods-public-lines">
-                        public methods with most lines
-                    </a>
-                </li>
+                
                 <li>See <a href="#Maintainability-for-Method">
                         methods low maintaining score
                     </a>
                 </li>
                 <li>
                     See <a href="#executable-lines-per-method">
-                        methods with most lines
+                        methods with most lines 
                     </a>
                 </li>
                <li><a href="#number-of-classes-per-assembly">Projects with most classes</a>  </li>
@@ -451,7 +450,7 @@
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td><a href="#assemblies-public-lines">With most lines</a>:@maxexecAssLines?.Count</td>
+                        <td><a href="#executable-lines-per-assembly">With most lines</a>:@maxexecAssLines?.Count</td>
                         <td>@maxexecAssLines?.Name</td>
                     </tr>
                 </tbody>
@@ -511,7 +510,7 @@
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
-                            <a href="#class-public-lines">
+                            <a href="#executable-lines-per-class">
                                 With most lines:@maxExecClassLines?.Count
                             </a>
                         </td>
@@ -536,6 +535,15 @@
                     </tr>
                 </thead>
                 <tr>
+                    
+                    <td>@(++tableRow)</td>
+                    <td>
+                        <a href="#executable-lines-per-method">
+                            Method with max lines
+                        </a>:@maxExecMethodsLines?.Count
+                    </td>
+                    <td>@maxExecMethodsLines?.Name</td>
+
                     <td>@(++tableRow)</td>
                     <td>
                         <a href="#Maintainability-for-Method">
@@ -554,15 +562,7 @@
                     </td>
                     <td>@maxCycMethodIndex?.Name</td>
                 </tr>
-                <tr>
-                    <td>@(++tableRow)</td>
-                    <td>
-                        <a href="#methods-public-lines">
-                            With most lines
-                        </a>:@publicClassRefData.PublicMethod_MostLinesOfCode_Most()?.Count
-                    </td>
-                    <td>@publicClassRefData.PublicMethod_MostLinesOfCode_Most()?.Name</td>
-                </tr>
+                
 
 
             </table>
@@ -930,30 +930,32 @@
 
 
     <h2 id="number-of-classes-per-assembly"> Number of classes per assembly</h2>
-
     @{
-        tuple = new(nrClassesPerAssembly, "Number class per project");
-        namePerCountDisplay = new(tuple);
+        tupleThreshold = new("Number class per project", nrClassesPerAssembly, 25, 50, true); 
+        
+        namePerCountDisplayThreshold = new(tupleThreshold);
     }
 
-    @namePerCountDisplay.Render()
+    @namePerCountDisplayThreshold.Render()
 
     <h2 id="number-of-methods-per-assembly"> Number of methods per assembly</h2>
 
     @{
-        tuple = new(nrMethodsPerAssembly, "Number methods per project");
-        namePerCountDisplay = new(tuple);
+        tupleThreshold = new("Number methods per project", nrMethodsPerAssembly, 50, 200, true);
+
+        namePerCountDisplayThreshold = new(tupleThreshold);
     }
 
-    @namePerCountDisplay.Render()
+    @namePerCountDisplayThreshold.Render()
     <h2 id="number-of-methods-per-class"> Number of methods per class</h2>
 
     @{
-        tuple = new(nrMethodsPerClass, "Number methods per class");
-        namePerCountDisplay = new(tuple);
+        tupleThreshold = new("Number methods per class", nrMethodsPerClass, 20, 70, true);
+
+        namePerCountDisplayThreshold = new(tupleThreshold);
     }
 
-    @namePerCountDisplay.Render()
+    @namePerCountDisplayThreshold.Render()
 
     <h2 id="licences-summary-table-h2">Summary Licences</h2>
     <div id="licences-summary-table"></div>
@@ -991,9 +993,9 @@
                 foreach (var lic in prj.Licenses())
                 {
 
-                            <text>
-tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\","\\\\")" ,"Nr":@lic.Count  });
-                            </text>
+                                <text>
+    tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\","\\\\")" ,"Nr":@lic.Count  });
+                                </text>
                 }
             }
         }
@@ -1015,7 +1017,7 @@ tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\",
 
     </script>
 
-    <h2 id="licences-per-project-and-package">Licences per project and package</h2>
+    <h2 id="licences-per-project-and-package">Project, package, licenses</h2>
     <div id="licences-per-project-and-package-table"></div>
     <script>
         var tabledata = [];
@@ -1032,13 +1034,13 @@ tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\",
                     if (licData.Length == 0) { continue; }
                     foreach (var licPrj in licData)
                     {
-                                <text>
-                                        tabledata.push({
-                                    "LicenseName":"@licName.Replace("\\", "\\\\")",
-                                "Project":"@prjName ",
-                                        "Package":"@licPrj.Name"
-                                                                });
-                                </text>
+                                    <text>
+                                            tabledata.push({
+                                        "LicenseName":"@licName.Replace("\\", "\\\\")",
+                                    "Project":"@prjName ",
+                                            "Package":"@licPrj.Name"
+                                                                    });
+                                    </text>
                     }
                 }
             }
@@ -1140,31 +1142,33 @@ columns: [
     <h2 id="executable-lines">Executable lines</h2>
     <h3 id="executable-lines-per-assembly">Per assembly</h3>
     @{
-        tuple = new(execAssLines, "Number exec lines per project");
-        namePerCountDisplay = new(tuple);
+        tupleThreshold = new("Number exec lines per project", execAssLines, 1000, 2000, true);
+        namePerCountDisplayThreshold = new(tupleThreshold);
     }
-    @namePerCountDisplay.Render()
+    @namePerCountDisplayThreshold.Render()
 
     <h3 id="executable-lines-per-class">Per class</h3>
 
     @{
+        tupleThreshold = new("Number exec lines per class", execClassLines, 100, 200, true);
 
-        tuple = new(execClassLines, "Number exec lines per class");
-        namePerCountDisplay = new(tuple);
+        namePerCountDisplayThreshold = new(tupleThreshold);
+
     }
 
-    @namePerCountDisplay.Render()
+    @namePerCountDisplayThreshold.Render()
 
 
     <h3 id="executable-lines-per-method">Per method</h3>
 
     @{
+        tupleThreshold = new("Number exec lines per method", execMethodsLines, 50, 100, true);
 
-        tuple = new(execMethodsLines, "Number exec lines per method");
-        namePerCountDisplay = new(tuple);
+        namePerCountDisplayThreshold = new(tupleThreshold);
+
     }
 
-    @namePerCountDisplay.Render()
+    @namePerCountDisplayThreshold.Render()
 
     <h2 id="summary-of-project-public-classes">Summary of project public classes</h2>
     @if (mostPublicClasses != null)
@@ -1184,33 +1188,37 @@ columns: [
             <h3 id="assemblies-public-methods"> Assemblies with Public methods</h3>
 
             @{
-                tuple = new(publicClassRefData.Assemblies_PublicMethods??[], "Public methods per class");
-                namePerCountDisplay = new(tuple);
+                tupleThreshold = new("Public methods per assembly", publicClassRefData.Assemblies_PublicMethods ?? [], 100, 200, true);
+
+                namePerCountDisplayThreshold = new(tupleThreshold);
             }
 
-            @namePerCountDisplay.Render()
+            @namePerCountDisplayThreshold.Render()
 
 
             <h3 id="classes-public-methods"> Classes with Public methods</h3>
 
 
             @{
-                tuple = new(publicClassRefData.Class_PublicMethods??[], "Public methods per class");
-                namePerCountDisplay = new(tuple);
+                tupleThreshold = new("Public methods per class", publicClassRefData.Class_PublicMethods ?? [], 10, 20, true);
+
+                namePerCountDisplayThreshold = new(tupleThreshold);
+
             }
 
-            @namePerCountDisplay.Render()
+            @namePerCountDisplayThreshold.Render()
 
-            <h2 id="lines-summary">Lines summary</h2>
+            @* <h2 id="lines-summary">Lines summary</h2> *@
 
-            <h3 id="assemblies-public-lines">Assemblies with most lines in public classses</h3>
+@*             <h3 id="assemblies-public-lines">Assemblies with most lines in public classses</h3>
             @{
                 tuple = new(publicClassRefData.Assemblies_MostLinesInPublicClass??[], "Number lines in public class per assembly");
                 namePerCountDisplay = new(tuple);
             }
 
-            @namePerCountDisplay.Render()
-
+            @namePerCountDisplay.Render() 
+*@
+@* 
             <h3 id="class-public-lines">Public Classes with most lines</h3>
             @{
                 tuple = new(publicClassRefData.PublicClass_MostLinesOfCode??[], "Number lines per public class");
@@ -1218,17 +1226,8 @@ columns: [
             }
 
             @namePerCountDisplay.Render()
-
-            <h3 id="methods-public-lines">Public Methods with most lines</h3>
-
-            @{
-                tuple = new(publicClassRefData.PublicMethod_MostLinesOfCode??[], "Number lines per public method");
-                namePerCountDisplay = new(tuple);
-            }
-
-
-            @namePerCountDisplay.Render()
-
+ *@
+            
 
         </text>
 
@@ -1331,36 +1330,84 @@ columns: [
         
             const steps = [
             {
-                element: '#summary',         //this is option if you don't want to add title
-            popover:{title: 'Start tour',     //can be string or html string
+                element: '#summary',         
+            popover:{title: 'Start tour',     
             description:"Please click next to see all that is is generated. Click escape to exit the tour."
                 }
             },
             {
-                element: '#projects-with-tests',            //target element (if not defined then the popover will act like a modal at the center of the screen)
-            popover:{title: 'Projects with test',         //this is option if you don't want to add title
-            description: 'Here you can find a diagram of your projects',     //can be string or html string
+                element: '#projects-with-tests',            
+            popover:{title: 'Projects with test',         
+            description: 'Here you can find a diagram of your projects',     
                 }
             },
             {
-                element: '#building-blocks',            //target element (if not defined then the popover will act like a modal at the center of the screen)
-            popover:{title: 'Building blocks',         //this is option if you don't want to add title
-            description: 'You can start understanding the solution with those projects',     //can be string or html string
+                element: '#building-blocks',            
+            popover:{title: 'Building blocks',         
+            description: 'You can start understanding the solution with those projects',     
                 }
             },
             {
-                element: '#commits',            //target element (if not defined then the popover will act like a modal at the center of the screen)
-            popover:{title: 'Commits',         //this is option if you don't want to add title
-            description: 'Here are the commits per year',     //can be string or html string
+                element: '#Commits-per-year-and-folder',
+                popover: {
+                    title: 'Commits',
+                    description: 'Here are the commits per year and project',
+                }
+            }
+            ,
+            {
+                element: '#packages-with-major-version-different',
+                popover: {
+                    title: 'Packages with different major version',
+                    description: 'Packages ! major ',
+                }
+            },
+            {
+                element: '#executable-lines-per-method',
+                popover: {
+                    title: 'Number Lines per methods',
+                    description: 'Metrics - lines count',
+                }
+            },
+            {
+                element: '#Maintainability-for-Method',
+                popover: {
+                    title: 'Maintainability per method',
+                    description: 'Metrics - maintainability',
+                }
+            },
+            {
+                element: '#number-of-methods-per-class',
+                popover: {
+                    title: 'Number methods per class',
+                    description: 'Metrics - methods count',
+                }
+            },
+            
+            {
+                element: '#Cyclomatic-Complexity-for-Method',
+                popover: {
+                    title: 'Cyclomatic complexity per Method',
+                    description: 'Metrics - Cyclomatic Complexity',
+                }
+            }
+            ,
+            {
+                element: '#licences-per-project-and-package',
+                popover: {
+                    title: 'List of all Packages per project',
+                    description: 'Packages list',
+                }
+            }
+            ,
+            
+            {
+                element: '#summary',            
+            popover:{title: 'Click done or press esc to close',         
+            description: 'Start Analysing',     
                 }
             },
 
-            {
-                element: '#summary',            //target element (if not defined then the popover will act like a modal at the center of the screen)
-            popover:{title: 'Close this',         //this is option if you don't want to add title
-            description: 'Start Analysing',     //can be string or html string
-                }
-            }
 
             ];
 
@@ -1370,7 +1417,8 @@ columns: [
                 showProgress: true,
             steps: steps
         });
-            driverObj.drive();
+
+        driverObj.drive();
 
             
 </script>
