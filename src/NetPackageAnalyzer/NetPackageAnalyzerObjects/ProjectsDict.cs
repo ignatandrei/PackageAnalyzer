@@ -112,7 +112,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     public Dictionary<int, int> CommitsMedianFilesPerYear()
     {
         var data = this.Values
-            .SelectMany(it => it.CommitsData!)
+            .SelectMany(it => it.CommitsData ?? CommitsData.EmptySingleton)
             .GroupBy(it => it.date.Year)
             .Select(it => new { 
                 year = it.Key, 
@@ -127,7 +127,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     public Commit CommitsWithMaxFiles(int? year)
     {
         return this.Values
-            .SelectMany(it => it.CommitsData)
+            .SelectMany(it => it.CommitsData ?? CommitsData.EmptySingleton)
             .Where(it => year == null || it.date.Year == year.Value)
             .OrderByDescending(it => it.CountFiles())
             .FirstOrDefault()??Commit.Empty;

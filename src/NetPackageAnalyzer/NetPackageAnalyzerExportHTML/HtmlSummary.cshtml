@@ -78,14 +78,14 @@
         .OrderByDescending(it => it.Count)
         .ThenBy(it => it.Name)
         .ToArray();
-    var maxClasses = nrClassesPerAssembly.First();
+    var maxClasses = nrClassesPerAssembly.FirstOrDefault();
 
     var nrMethodsPerAssembly = assemblyDataFromMSFT
         .AssemblyNumberMethods()
         .OrderByDescending(it => it.Count)
         .ThenBy(it => it.Name)
         .ToArray();
-    var maxMethodsAss = nrMethodsPerAssembly.First();
+    var maxMethodsAss = nrMethodsPerAssembly.FirstOrDefault();
 
     var nrMethodsPerClass = assemblyDataFromMSFT
         .ClassNumberMethods()
@@ -412,17 +412,17 @@
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#number-of-classes-per-assembly">
-                            With max nr of Classes</a>:@maxClasses.Count</td>
-                        <td>@maxClasses.Name</td>
+                            With max nr of Classes</a>:@maxClasses?.Count</td>
+                        <td>@maxClasses?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#number-of-methods-per-assembly">
                                 With max nr of methods
-                            </a>:@maxMethodsAss.Count
+                            </a>:@maxMethodsAss?.Count
                         </td>
-                        <td>@maxMethodsAss.Name</td>
+                        <td>@maxMethodsAss?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
@@ -543,7 +543,8 @@
                         </a>:@maxExecMethodsLines?.Count
                     </td>
                     <td>@maxExecMethodsLines?.Name</td>
-
+                </tr>
+                                <tr>
                     <td>@(++tableRow)</td>
                     <td>
                         <a href="#Maintainability-for-Method">
@@ -1330,27 +1331,28 @@ columns: [
         
             const steps = [
             {
-                element: '#summary',         
-            popover:{title: 'Start tour',
+                element: '#summary',
+                popover: {
+                    title: 'Analysis for @nameSolution',
                     description: "Please click next to see all that is generated for @nameSolution . Click escape to exit the tour."
                 }
             },
             {
                 element: '#projects-with-tests',            
-            popover:{title: 'Projects with test',         
+            popover:{title: 'Projects in @nameSolution : @projectDicts.Count',         
             description: 'Here you can find a diagram of your projects',     
                 }
             },
             {
                 element: '#building-blocks',            
-            popover:{title: 'Building blocks',         
+            popover:{title: 'Building blocks for @nameSolution : @bb0.Length',         
             description: 'You can start understanding the solution with those projects',     
                 }
             },
             {
                 element: '#Commits-per-year-and-folder',
                 popover: {
-                    title: 'Commits',
+                    title: 'Total Commits for @nameSolution : @projectDicts.TotalCommits()',
                     description: 'Here are the commits per year and project',
                 }
             }
@@ -1358,53 +1360,55 @@ columns: [
             {
                 element: '#packages-with-major-version-different',
                 popover: {
-                    title: 'Packages with different major version',
-                    description: 'Packages ! major ',
+                    title: 'Packages ! major for @nameSolution : @more1Version.KeysPackageMultipleMajorDiffers().Length',
+                    description: 'Packages with different major version , could break solution  ',
                 }
             },
             {
                 element: '#executable-lines-per-method',
                 popover: {
-                    title: 'Number Lines per methods',
-                    description: 'Metrics - lines count',
+                    title: 'Metrics: line count for @nameSolution',
+                    description: 'Number Lines per methods for @nameSolution',
                 }
             },
             {
                 element: '#Maintainability-for-Method',
                 popover: {
-                    title: 'Maintainability per method',
-                    description: 'Metrics - maintainability',
+                    title: 'Metrics: Maintainability  for @nameSolution',
+                    description: 'Maintainability per methods for @nameSolution',
                 }
             },
             {
                 element: '#number-of-methods-per-class',
                 popover: {
-                    title: 'Number methods per class',
-                    description: 'Metrics - methods count',
+                    title: 'Metrics: number methods  for @nameSolution',
+                    description: 'Number methods per class for @nameSolution',
                 }
             },
             
             {
                 element: '#Cyclomatic-Complexity-for-Method',
                 popover: {
-                    title: 'Cyclomatic complexity per Method',
-                    description: 'Metrics - Cyclomatic Complexity',
+
+                    title: 'Metrics: Cyclomatic complexity for @nameSolution',
+                    description: 'Cyclomatic complexity  per method for @nameSolution',
                 }
             }
             ,
             {
                 element: '#licences-per-project-and-package',
                 popover: {
-                    title: 'List of all Packages per project',
-                    description: 'Packages list',
+                    title: 'Packages / License per project for @nameSolution',
+                    description: 'List of all packages and licenses per project ',
                 }
             }
             ,
             
             {
                 element: '#summary',            
-            popover:{title: 'Click done or press esc to close',         
-            description: 'Start Analysing',     
+            popover:{
+                title: 'Click done or press esc to close',         
+            description: 'Start improving or understanding @nameSolution',     
                 }
             },
 
