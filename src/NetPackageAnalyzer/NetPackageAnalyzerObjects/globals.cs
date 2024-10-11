@@ -12,6 +12,8 @@ global using System.Threading.Tasks;
 global using RSCG_ExportDiagram_Import;
 global using NetPackageAnalyzerMetricsMSFT;
 global using NuGetInfo;
+global using NetPackageAnalyzeHistory;
+global using Statistical;
 
 public static class GlobalsForGenerating
 {

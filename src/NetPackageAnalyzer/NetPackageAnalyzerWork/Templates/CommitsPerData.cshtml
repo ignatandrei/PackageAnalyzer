@@ -23,7 +23,7 @@
         return;
     };
     var values= ordered.Select(x => hist(x.Value).nrCommits??0).ToArray();
-    var median = Statistical<int>.Median( values.Where(t=>t!=0).Select(it=>it!).ToArray());
+    var median = StatisticalNumbers<int>.Median(values.Where(t => t != 0).Select(it => it!).ToArray());
 
 
     var names = ordered.Select(x => x.Value.NameCSproj()).ToArray();

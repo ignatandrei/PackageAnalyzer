@@ -1,7 +1,4 @@
-﻿using NetPackageAnalyzeHistory;
-using NetPackageAnalyzerObjects;
-
-namespace NetPackageAnalyzerObjects;
+﻿namespace NetPackageAnalyzerObjects;
 public partial class ProjectsDict : Dictionary<string, ProjectData>
 {
     public ProjectsDict(Dictionary<string, ProjectData> data) : base(data)
@@ -46,7 +43,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .ToArray();
         if ((data?.Length??0) == 0) return 0;
         ArgumentNullException.ThrowIfNull(data);
-        return Statistical<int>.Median(data.Select(it => it.Value).ToArray());
+        return StatisticalNumbers<int>.Median(data.Select(it => it.Value).ToArray());
 
     }
     public KeyValuePair<string, int>[] FilesWithMaxCommits(int? year)
@@ -86,7 +83,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .Where(it => year == null || it.date.Year == year)
             .Select(it => it.CountFiles())
             .ToArray();
-        var median=Statistical<int>.Median(data);
+        var median=StatisticalNumbers<int>.Median(data);
         return median;
     }
     public Commit[] MaxCommits(int? year)
@@ -116,8 +113,8 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .GroupBy(it => it.date.Year)
             .Select(it => new { 
                 year = it.Key, 
-                median = 
-            Statistical<int>.Median( it.Select(it=>it.CountFiles()).ToArray())
+                median =
+            StatisticalNumbers<int>.Median( it.Select(it=>it.CountFiles()).ToArray())
             })            
             .ToDictionary(it => it.year, it => it.median)
             ;
