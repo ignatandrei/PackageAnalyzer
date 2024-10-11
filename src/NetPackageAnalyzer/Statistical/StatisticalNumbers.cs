@@ -54,12 +54,12 @@ public static class StatisticalNumbers<T>
         
     }
 
-    public static Tuple<T[], int> Mode(T[]? values)
+    public static ModeResult<T> Mode(T[]? values)
     {
         var size = values?.Length ?? 0;
         if (size == 0)
         {
-            return Tuple.Create(new T[] { T.Zero },0);
+            return ModeResult<T>.Empty;
         }
         ArgumentNullException.ThrowIfNull(values);
 
@@ -73,8 +73,9 @@ public static class StatisticalNumbers<T>
             .Select(it => it.Key.Key)
             .ToArray();
 
-        return Tuple.Create(vals ?? [] , max);
+        return new ModeResult<T>(vals ?? [] , max);
 
     }
+    
 }
 

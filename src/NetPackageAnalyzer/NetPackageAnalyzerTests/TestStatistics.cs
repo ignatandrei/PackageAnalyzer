@@ -27,22 +27,20 @@ public class TestStatistics
         var values = new int[] { 5, 5,100,100,100, 300, 400, 500 };
         var mode = StatisticalNumbers<int>.Mode(values);
         var res= new int[] { 100 };
-        Assert.AreEqual(3, mode.Item2);
-        Assert.AreEqual(res.Length, mode.Item1.Length);
+        Assert.AreEqual(3, mode.Count);
+        Assert.AreEqual(res.Length, mode.Values.Length);
         for (int i = 0; i < res.Length; i++)
         {
-            Assert.AreEqual(res[i], mode.Item1[i]);
+            Assert.AreEqual(res[i], mode.Values[i]);
         }
         values = new int[] { 5, 5, 5, 100, 100, 100, 300, 400, 500 };
         mode = StatisticalNumbers<int>.Mode(values);
         res = new int[] { 5,100 };
-        Assert.AreEqual(3, mode.Item2);
-        Assert.AreEqual(res.Length, mode.Item1.Length);
+        Assert.AreEqual(3, mode.Count);
+        Assert.AreEqual(res.Length, mode.Values.Length);
         for (int i = 0; i < res.Length; i++)
         {
-            Assert.AreEqual(res[i], mode.Item1[i]);
+            Assert.AreEqual(res[i], mode.Values[i]);
         }
     }
-
-
 }
