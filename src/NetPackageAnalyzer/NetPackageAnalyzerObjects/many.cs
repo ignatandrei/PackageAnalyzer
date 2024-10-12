@@ -42,3 +42,52 @@ public record NamePerCount(string Name, long Count)
     public string AdditionalData { get; set; } = Name;
 
 }
+public record NamePerCountArray(NamePerCount[]? NamePerCounts)
+{ 
+    public NamePerCount? Max1()
+    {
+        if ((NamePerCounts?.Length ?? 0) == 0)
+            return null;
+        
+        ArgumentNullException.ThrowIfNull(NamePerCounts);
+
+        return this.NamePerCounts
+            .OrderByDescending(it => it.Count)
+            .FirstOrDefault();
+    }
+    public NamePerCount? Min1()
+    {
+        if ((NamePerCounts?.Length ?? 0) == 0)
+            return null;
+
+        ArgumentNullException.ThrowIfNull(NamePerCounts);
+
+        return this.NamePerCounts
+            .OrderBy(it => it.Count)
+            .FirstOrDefault();
+    }
+    public NamePerCount[] OrderedDesc()
+    {
+        if ((NamePerCounts?.Length ?? 0) == 0)
+            return [];
+
+        ArgumentNullException.ThrowIfNull(NamePerCounts);
+
+        return this.NamePerCounts
+            .OrderByDescending(it => it.Count)
+            .ThenBy(it => it.Name)
+            .ToArray();
+    }
+    public NamePerCount[] OrderedAsc()
+    {
+        if ((NamePerCounts?.Length ?? 0) == 0)
+            return [];
+
+        ArgumentNullException.ThrowIfNull(NamePerCounts);
+
+        return this.NamePerCounts
+            .OrderBy(it => it.Count)
+            .ThenBy(it => it.Name)
+            .ToArray();
+    }
+}

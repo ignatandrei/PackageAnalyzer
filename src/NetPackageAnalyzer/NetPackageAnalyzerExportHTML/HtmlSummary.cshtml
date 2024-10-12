@@ -14,7 +14,7 @@
     .Assemblies_PublicClasses?
     .FirstOrDefault();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
-    
+
     var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
     var nrVersionIterator = 0;
     var yearCommitsFolder = projectDicts.CommitsPerYearFolder();
@@ -45,123 +45,92 @@
     var bb0 = projectDicts.BuildingBlocks(0);
     var testProjects = projectDicts.TestsProjects;
     var rootProjects = projectDicts.RootProjects;
-    var execAssLines = assemblyDataFromMSFT
-        .AssemblyMetric(eMSFTMetrics.ExecutableLines)
-        .OrderByDescending(it => it.Count)
-        .ThenBy(it => it.Name)
-        .ToArray()
-        ;
-    var maxexecAssLines = assemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics.ExecutableLines);
 
-    var execClassLines = assemblyDataFromMSFT
-        .ClassesMetrics(eMSFTMetrics.ExecutableLines)
-        .OrderByDescending(x => x.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
+    var execAssLines = new NamePerCountArray(assemblyDataFromMSFT
+        .AssemblyMetric(eMSFTMetrics.ExecutableLines));
     ;
-    var maxExecClassLines = assemblyDataFromMSFT
-        .ClassesMetricMax(eMSFTMetrics.ExecutableLines)
+    var maxexecAssLines = execAssLines.Max1();
 
-        ;
+    var execClassLines = new NamePerCountArray(assemblyDataFromMSFT
+        .ClassesMetrics(eMSFTMetrics.ExecutableLines));
+    ;
+    var maxExecClassLines = execAssLines.Max1();
+    ;
 
-    var execMethodsLines = assemblyDataFromMSFT
-        .MethodsMetrics(eMSFTMetrics.ExecutableLines)
-        .OrderByDescending(x => x.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
+    var execMethodsLines = new NamePerCountArray(assemblyDataFromMSFT
+        .MethodsMetrics(eMSFTMetrics.ExecutableLines));
 
-    var maxExecMethodsLines = execMethodsLines.FirstOrDefault();
-
-
-    var nrClassesPerAssembly = assemblyDataFromMSFT
-        .AssemblyNumberClasses()
-        .OrderByDescending(it => it.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
-    var maxClasses = nrClassesPerAssembly.FirstOrDefault();
-
-    var nrMethodsPerAssembly = assemblyDataFromMSFT
-        .AssemblyNumberMethods()
-        .OrderByDescending(it => it.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
-    var maxMethodsAss = nrMethodsPerAssembly.FirstOrDefault();
-
-    var nrMethodsPerClass = assemblyDataFromMSFT
-        .ClassNumberMethods()
-        .OrderByDescending(it => it.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
-    var maxMethodsClass = nrMethodsPerClass.FirstOrDefault();
-
-    var maintAssIndex = assemblyDataFromMSFT
-        .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex)
-        .OrderBy(it => it.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
-    var minMaintAssIndex = maintAssIndex.FirstOrDefault();
-    var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Assembly", maintAssIndex, 10, 20, false));
+    var maxExecMethodsLines = execMethodsLines.Max1();
 
 
-    var maintClassIndex = assemblyDataFromMSFT
+    var nrClassesPerAssembly = new NamePerCountArray(assemblyDataFromMSFT
+        .AssemblyNumberClasses());
+
+    var maxClasses = nrClassesPerAssembly.Max1();
+
+    var nrMethodsPerAssembly = new NamePerCountArray(assemblyDataFromMSFT
+        .AssemblyNumberMethods());
+
+    var maxMethodsAss = nrMethodsPerAssembly.Max1();
+
+    var nrMethodsPerClass = new NamePerCountArray(assemblyDataFromMSFT
+        .ClassNumberMethods());
+    var maxMethodsClass = nrMethodsPerClass.Max1();
+
+    var maintAssIndex = new NamePerCountArray(assemblyDataFromMSFT
+        .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex));
+
+
+    var minMaintAssIndex = maintAssIndex.Max1();
+    var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Assembly", maintAssIndex.OrderedAsc(), 10, 20, false));
+
+
+    var maintClassIndex = new NamePerCountArray(assemblyDataFromMSFT
         .ClassesMetrics(eMSFTMetrics.MaintainabilityIndex)
-        .OrderBy(it => it.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
-    var minMaintClassIndex = maintClassIndex.FirstOrDefault();
-    var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Class", maintClassIndex, 10, 20, false));
+    );
+    var minMaintClassIndex = maintClassIndex.Min1();
+    var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Class", maintClassIndex.OrderedAsc(), 10, 20, false));
 
-    var maintMethodIndex = assemblyDataFromMSFT
+    var maintMethodIndex = new NamePerCountArray(assemblyDataFromMSFT
     .MethodsMetrics(eMSFTMetrics.MaintainabilityIndex)
-    .OrderBy(it => it.Count)
-    .ThenBy(it => it.Name)
-    .ToArray();
-    var minMaintMethodIndex = maintMethodIndex.FirstOrDefault();
-    var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Method", maintMethodIndex, 10, 20, false));
+    );
 
-    var CCAssIndex = assemblyDataFromMSFT
+    var minMaintMethodIndex = maintMethodIndex.Min1();
+    var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Method", maintMethodIndex.OrderedAsc(), 10, 20, false));
+
+    var CCAssIndex = new NamePerCountArray( assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.ClassCoupling)
-        .OrderByDescending(it => it.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
-    var maxCCAssIndex = CCAssIndex.FirstOrDefault();
-    var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Assembly", CCAssIndex, 0, 10, true));
+    );
+    var maxCCAssIndex = CCAssIndex.Max1();
+    var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Assembly", CCAssIndex.OrderedDesc(), 0, 10, true));
 
-    var CCClassIndex = assemblyDataFromMSFT
+    var CCClassIndex = new NamePerCountArray(assemblyDataFromMSFT
     .ClassesMetrics(eMSFTMetrics.ClassCoupling)
-    .OrderByDescending(it => it.Count)
-    .ThenBy(it => it.Name)
-    .ToArray();
-    var maxCCClassIndex = CCClassIndex.FirstOrDefault();
-    var CCClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Class", CCClassIndex, 0, 10, true));
+    );
+    var maxCCClassIndex = CCClassIndex.Max1();
+    var CCClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Class", CCClassIndex.OrderedDesc(), 0, 10, true));
 
 
 
 
-    var CycAssIndex = assemblyDataFromMSFT
+    var CycAssIndex = new NamePerCountArray(assemblyDataFromMSFT
     .AssemblyMetric(eMSFTMetrics.CyclomaticComplexity)
-    .OrderByDescending(it => it.Count)
-    .ThenBy(it => it.Name)
-    .ToArray();
-    var maxCycAssIndex = CCAssIndex.FirstOrDefault();
-    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Assembly", CycAssIndex, 10, 25, true));
+    );
+    var maxCycAssIndex = CCAssIndex.Max1();
+    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Assembly", CycAssIndex.OrderedDesc(), 10, 25, true));
 
-    var CycClassIndex = assemblyDataFromMSFT
+    var CycClassIndex = new NamePerCountArray(assemblyDataFromMSFT
         .ClassesMetrics(eMSFTMetrics.CyclomaticComplexity)
-        .OrderByDescending(it => it.Count)
-        .ThenBy(it => it.Name)
-        .ToArray();
-    var maxCycClassIndex = CycClassIndex.FirstOrDefault();
-    var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Class", CycClassIndex, 10, 25, true));
+    );
+
+    var maxCycClassIndex = CycClassIndex.Max1();
+    var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Class", CycClassIndex.OrderedDesc(), 10, 25, true));
 
 
-    var CycMethodIndex = assemblyDataFromMSFT
-    .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity)
-    .OrderByDescending(it => it.Count)
-    .ThenBy(it => it.Name)
-    .ToArray();
-    var maxCycMethodIndex = CycMethodIndex.FirstOrDefault();
-    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Method", CycMethodIndex, 10, 25, true));
+    var CycMethodIndex = new NamePerCountArray(assemblyDataFromMSFT
+    .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity));
+    var maxCycMethodIndex = CycMethodIndex.Max1();
+    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Method", CycMethodIndex.OrderedDesc(), 10, 25, true));
 
     var packages = projectDicts.Packages();
     var topPackages = packages.OrderByDescending(it => it.Count).Take(7).ToArray();
@@ -932,7 +901,7 @@
 
     <h2 id="number-of-classes-per-assembly"> Number of classes per assembly</h2>
     @{
-        tupleThreshold = new("Number class per project", nrClassesPerAssembly, 25, 50, true); 
+        tupleThreshold = new("Number class per project", nrClassesPerAssembly.OrderedDesc(), 25, 50, true); 
         
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
@@ -942,7 +911,7 @@
     <h2 id="number-of-methods-per-assembly"> Number of methods per assembly</h2>
 
     @{
-        tupleThreshold = new("Number methods per project", nrMethodsPerAssembly, 50, 200, true);
+        tupleThreshold = new("Number methods per project", nrMethodsPerAssembly.OrderedDesc(), 50, 200, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
@@ -951,7 +920,7 @@
     <h2 id="number-of-methods-per-class"> Number of methods per class</h2>
 
     @{
-        tupleThreshold = new("Number methods per class", nrMethodsPerClass, 20, 70, true);
+        tupleThreshold = new("Number methods per class", nrMethodsPerClass.OrderedDesc(), 20, 70, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
@@ -1143,7 +1112,7 @@ columns: [
     <h2 id="executable-lines">Executable lines</h2>
     <h3 id="executable-lines-per-assembly">Per assembly</h3>
     @{
-        tupleThreshold = new("Number exec lines per project", execAssLines, 1000, 2000, true);
+        tupleThreshold = new("Number exec lines per project", execAssLines.OrderedDesc(), 1000, 2000, true);
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
     @namePerCountDisplayThreshold.Render()
@@ -1151,7 +1120,7 @@ columns: [
     <h3 id="executable-lines-per-class">Per class</h3>
 
     @{
-        tupleThreshold = new("Number exec lines per class", execClassLines, 100, 200, true);
+        tupleThreshold = new("Number exec lines per class", execClassLines.OrderedDesc(), 100, 200, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
 
@@ -1163,7 +1132,7 @@ columns: [
     <h3 id="executable-lines-per-method">Per method</h3>
 
     @{
-        tupleThreshold = new("Number exec lines per method", execMethodsLines, 50, 100, true);
+        tupleThreshold = new("Number exec lines per method", execMethodsLines.OrderedDesc(), 50, 100, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
 
