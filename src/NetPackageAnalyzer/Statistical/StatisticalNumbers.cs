@@ -111,5 +111,6 @@ public record Statistics<T>(T[] values)
     public T Median => StatisticalNumbers<T>.Median(values);
     public T ArithmeticMean => StatisticalNumbers<T>.ArithmeticMean(values);
     public ModeResult<T>[] Mode => StatisticalNumbers<T>.Mode(values);
+    public T Variance => StatisticalNumbers<T>.Variance(values);
 }
 
