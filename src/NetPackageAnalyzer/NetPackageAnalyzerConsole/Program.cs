@@ -1,5 +1,5 @@
 ﻿try
-{
+{ 
     //Console.WriteLine($"Name:{TheAssemblyInfo.GeneratedName}");
     Console.WriteLine($"{TheAssemblyInfo.GeneratedNameNice}");
      

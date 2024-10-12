@@ -34,7 +34,10 @@
         + "]";
     var maxCount = nameCount.Max(it => it.Count);
     var yAxis = "[" + string.Join(',', nameCount.Select(it => it.Count).ToArray()) + "]";
+    StatisticsDisplay statisticsDisplay = new(arr.Statistics());
+
 }
+@statisticsDisplay.Render()
 
 <div class="mermaid">
 ---

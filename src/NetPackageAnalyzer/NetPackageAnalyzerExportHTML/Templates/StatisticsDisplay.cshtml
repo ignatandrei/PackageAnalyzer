@@ -1,0 +1,22 @@
+@inherits RazorBlade.PlainTextTemplate<Statistics<long>>;
+@{
+    var modes= Model.Mode;
+    var displayMode = true;
+    if(modes.Length==0 || modes.Length>1)
+    {
+        displayMode = false;
+    }
+    var mode= modes.First();
+    var stdDev = Math.Sqrt( Model.Variance);
+}
+<div>
+    ;Math average: @Model.ArithmeticMean 
+    ;Math median: @Model.Median
+    ;Standard Dev: @(stdDev.ToString("0.00"))
+    @if(displayMode){
+        <text>
+        <br />
+        Math mode: The most encountered value (@mode.Count() times) is @mode.Value
+        </text>
+    }
+</div>

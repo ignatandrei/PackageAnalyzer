@@ -52,7 +52,11 @@
             + "}"
             )
             );
+    StatisticsDisplay statisticsDisplay= new (arr.Statistics());
+
 <text>
+        @statisticsDisplay.Render()
+
         <div id="@nameId" style="height: 100%"></div>
         <script type="text/javascript">
             var dom = document.getElementById('@nameId');

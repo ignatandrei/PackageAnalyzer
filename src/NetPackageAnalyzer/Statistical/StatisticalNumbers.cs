@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Drawing;
+using System.Numerics;
 namespace Statistical;
 
 public static class StatisticalNumbers<T>
@@ -54,35 +55,61 @@ public static class StatisticalNumbers<T>
         
     }
 
-    public static ModeResult<T> Mode(T[]? values)
+    public static ModeResult<T>[] Mode(T[]? values)
     {
         var size = values?.Length ?? 0;
         if (size == 0)
         {
-            return ModeResult<T>.Empty;
+            return new[] { ModeResult<T>.Empty };
         }
         ArgumentNullException.ThrowIfNull(values);
 
-        var data = values
-            .GroupBy(v=>v)
-            .ToDictionary(v=>v,v=>v.Count());
-
-        var max = data.Max(it=>it.Value);
-        var vals = data
-            .Where(it => it.Value == max)
-            .Select(it => it.Key.Key)
+        
+        var modeWithCount = values
+            .GroupBy(item => item)
+            .OrderByDescending(group => group.Count())
+            .ToArray();
+        var nr = modeWithCount.First().Count();
+        var modes = modeWithCount
+            .Where(group => group.Count() == nr)
             .ToArray();
 
-        return new ModeResult<T>(vals ?? [] , max);
-
+        return modes.Select(
+            mode =>
+            {
+                var vals = values
+                .Where(it => it == mode.Key)
+                .ToArray();
+                return new ModeResult<T>(vals, mode.Key);
+            }).ToArray();
     }
-    
+    public static T Variance(T[] values)
+    {
+        var size = values.Length;
+        if (values.Length == 0)
+            return T.Zero;
+         
+        if (!T.TryParse(size.ToString(), null, out var mid))
+        {
+            throw new ArgumentException("Cannot parse the size of the array to T");
+        };
+        var avg = ArithmeticMean(values);
+        var variance = T.Zero;
+        foreach (var value in values)
+        {
+            var val = value - avg;
+            val= val * val;
+            variance += val;
+        }
+        return variance / mid; // For sample variance
+    }
+
 }
 public record Statistics<T>(T[] values)
     where T : INumber<T>, IDivisionOperators<T, T, T>
 {
     public T Median => StatisticalNumbers<T>.Median(values);
     public T ArithmeticMean => StatisticalNumbers<T>.ArithmeticMean(values);
-    public ModeResult<T> Mode => StatisticalNumbers<T>.Mode(values);
+    public ModeResult<T>[] Mode => StatisticalNumbers<T>.Mode(values);
 }
 
