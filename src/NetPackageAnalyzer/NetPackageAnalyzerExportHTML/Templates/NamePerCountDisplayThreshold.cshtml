@@ -21,7 +21,7 @@
     {
         nameCountGraphic = nameCount.Take(10).ToArray();
     }
-    
+    var stats = arr.Statistics();
 
     int maxPage = nameCount.Length <10? 10: nameCount.Length;
     int nrSplit = maxPage > 100 ? 100 : 10;
