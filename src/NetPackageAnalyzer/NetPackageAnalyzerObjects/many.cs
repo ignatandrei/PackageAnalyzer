@@ -42,9 +42,27 @@ public record NamePerCount(string Name, long Count)
     public string AdditionalData { get; set; } = Name;
 
 }
-public record NamePerCountArray(NamePerCount[]? NamePerCounts)
+public record NamePerCountArray(NamePerCount[]? NamePerCounts,bool Descending)
 { 
-    public NamePerCount? Max1()
+    public Statistics<long> Data()
+    {
+        return new Statistics<long>(NamePerCounts?.Select(it => it.Count).ToArray() ?? []);
+    }
+    public NamePerCount? First1()
+    {
+        if (Descending)
+            return Max1();
+        else
+            return Min1();
+    }
+    public NamePerCount[] DataOrdered()
+    {
+        if(Descending)
+            return OrderedDesc();
+        else
+            return OrderedAsc();
+    }
+    private NamePerCount? Max1()
     {
         if ((NamePerCounts?.Length ?? 0) == 0)
             return null;
@@ -55,7 +73,7 @@ public record NamePerCountArray(NamePerCount[]? NamePerCounts)
             .OrderByDescending(it => it.Count)
             .FirstOrDefault();
     }
-    public NamePerCount? Min1()
+    private NamePerCount? Min1()
     {
         if ((NamePerCounts?.Length ?? 0) == 0)
             return null;
@@ -66,7 +84,7 @@ public record NamePerCountArray(NamePerCount[]? NamePerCounts)
             .OrderBy(it => it.Count)
             .FirstOrDefault();
     }
-    public NamePerCount[] OrderedDesc()
+    private NamePerCount[] OrderedDesc()
     {
         if ((NamePerCounts?.Length ?? 0) == 0)
             return [];
@@ -78,7 +96,7 @@ public record NamePerCountArray(NamePerCount[]? NamePerCounts)
             .ThenBy(it => it.Name)
             .ToArray();
     }
-    public NamePerCount[] OrderedAsc()
+    private NamePerCount[] OrderedAsc()
     {
         if ((NamePerCounts?.Length ?? 0) == 0)
             return [];

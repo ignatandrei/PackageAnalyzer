@@ -1,14 +1,28 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<string,NamePerCount[],int,int, bool>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<string,NamePerCountArray,int,int, bool>>;
 @{
 
     string name= Model.Item1;
     string nameId= name.Replace(" ","-");
-    var nameCountData = Model.Item2;
-    if (nameCountData.Count() == 0)
+    var arr = Model.Item2;
+    if (arr == null)
+    {
+        return;
+    };
+
+    var nameCountData = arr.DataOrdered()??[];
+    if (nameCountData.Length == 0)
     {
         return;
     }
-    var nameCount = nameCountData.Distinct().ToArray();
+    nameCountData = nameCountData.Distinct().ToArray();
+    var nameCount = nameCountData;
+    var nameCountGraphic = nameCountData;
+    if (nameCount.Length > 10)
+    {
+        nameCountGraphic = nameCount.Take(10).ToArray();
+    }
+    
+
     int maxPage = nameCount.Length <10? 10: nameCount.Length;
     int nrSplit = maxPage > 100 ? 100 : 10;
     var chunk = Enumerable.Chunk(Enumerable.Range(1, maxPage), nrSplit);
@@ -28,9 +42,9 @@
 
     //threshold1 = 40;
     //threshold2 = 80;
-    string assNamesMaintIndex = string.Join(",", nameCount.Select(it => "'" + it.Name + "'"));
+    string assNamesMaintIndex = string.Join(",", nameCountGraphic.Select(it => "'" + it.Name + "'"));
     string valuesMaintIndex = string.Join(",\r\n",
-            nameCount.Select(it =>"{value:"+ it.Count +
+            nameCountGraphic.Select(it => "{value:" + it.Count +
             (CompareT(it.Count, threshold1, inverseData) ? ",itemStyle:{color:'red'}"
                 :
             (CompareT(it.Count, threshold2, inverseData) ? ",itemStyle:{color:'orange'}" : "")

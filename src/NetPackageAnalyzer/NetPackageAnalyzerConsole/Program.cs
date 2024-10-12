@@ -4,7 +4,7 @@
     Console.WriteLine($"{TheAssemblyInfo.GeneratedNameNice}");
      
     if (args.Length == 0)
-    { 
+    {
         args = new[] { "-h" };
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",

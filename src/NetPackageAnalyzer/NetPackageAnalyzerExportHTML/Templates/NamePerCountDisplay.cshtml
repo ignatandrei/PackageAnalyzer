@@ -1,12 +1,18 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<NamePerCount[],string>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<NamePerCountArray,string>>;
 @{
-    var nameCount = Model.Item1??[];
-    if(nameCount.Count() == 0)
+    var arr = Model.Item1;
+    if(arr == null)
+    {
+        return;
+    };
+    var nameCountOriginal = arr.DataOrdered()??[];
+    if (nameCountOriginal.Length == 0)
     {
         return;
     }
-    nameCount = nameCount.Distinct().ToArray();
-    if(nameCount.Count() > 20)
+    nameCountOriginal = nameCountOriginal.Distinct().ToArray();
+    var nameCount = nameCountOriginal;
+    if(nameCount.Length > 20)
     {
         nameCount = nameCount.Take(15).ToArray();
     }
@@ -53,7 +59,7 @@ bar @yAxis
 
 <script>
     var tabledata = [
-    @foreach (var item in nameCount)
+    @foreach (var item in nameCountOriginal)
     {
         <text>
                 {"Name": "@item.Name", "Nr": "@item.Count" },

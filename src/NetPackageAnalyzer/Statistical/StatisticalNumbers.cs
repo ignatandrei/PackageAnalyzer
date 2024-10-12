@@ -78,4 +78,11 @@ public static class StatisticalNumbers<T>
     }
     
 }
+public record Statistics<T>(T[] values)
+    where T : INumber<T>, IDivisionOperators<T, T, T>
+{
+    public T Median => StatisticalNumbers<T>.Median(values);
+    public T ArithmeticMean => StatisticalNumbers<T>.ArithmeticMean(values);
+    public ModeResult<T> Mode => StatisticalNumbers<T>.Mode(values);
+}
 

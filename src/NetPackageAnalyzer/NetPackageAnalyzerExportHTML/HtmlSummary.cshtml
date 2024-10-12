@@ -4,15 +4,13 @@
     var nameSolution = GlobalsForGenerating.NameSolution;
     var info = Model.Item1;
     var projectDicts = Model.Item2;
-
     var nrProjectsNoTests = info.nrProjects - info.nrTestProjects;
     var more1Version = Model.Item3;
     var refSummary = Model.Item4;
     var publicClassRefData = Model.Item5;
     var assemblyDataFromMSFT = Model.Item6;
-    var mostPublicClasses = publicClassRefData
-    .Assemblies_PublicClasses?
-    .FirstOrDefault();
+    var publicClasses=new NamePerCountArray(publicClassRefData.Assemblies_PublicClasses,true);
+    var mostPublicClasses = publicClasses.First1();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
 
     var keysPackageMultiple = more1Version.KeysPackageMultipleMajorDiffers();
@@ -36,8 +34,8 @@
     var top10Files = projectDicts.FilesWithMaxCommits(null);
     var medianCommits = projectDicts.MedianCommits(null);
     KeyValuePair<string, int>? filewithMaxCommits = top10Files?.Length > 0 ? top10Files.First() : null;
-    Tuple<NamePerCount[], string> tuple;
-    Tuple<string, NamePerCount[], int, int, bool> tupleThreshold;
+    Tuple<NamePerCountArray, string> tuple;
+    Tuple<string, NamePerCountArray, int, int, bool> tupleThreshold;
     NamePerCountDisplayThreshold namePerCountDisplayThreshold;
     NamePerCountDisplay namePerCountDisplay;
     YEARNamePerCountDisplay yearFolders = new(yearWithFolders);
@@ -46,94 +44,90 @@
     var testProjects = projectDicts.TestsProjects;
     var rootProjects = projectDicts.RootProjects;
 
-    var execAssLines = new NamePerCountArray(assemblyDataFromMSFT
-        .AssemblyMetric(eMSFTMetrics.ExecutableLines));
+    var execAssLines = new NamePerCountArray(
+        assemblyDataFromMSFT
+        .AssemblyMetric(eMSFTMetrics.ExecutableLines)
+        ,true);
     ;
-    var maxexecAssLines = execAssLines.Max1();
+    
 
     var execClassLines = new NamePerCountArray(assemblyDataFromMSFT
-        .ClassesMetrics(eMSFTMetrics.ExecutableLines));
+        .ClassesMetrics(eMSFTMetrics.ExecutableLines),true);
     ;
-    var maxExecClassLines = execAssLines.Max1();
-    ;
+    
+    
 
     var execMethodsLines = new NamePerCountArray(assemblyDataFromMSFT
-        .MethodsMetrics(eMSFTMetrics.ExecutableLines));
+        .MethodsMetrics(eMSFTMetrics.ExecutableLines),true);
 
-    var maxExecMethodsLines = execMethodsLines.Max1();
+    
 
 
     var nrClassesPerAssembly = new NamePerCountArray(assemblyDataFromMSFT
-        .AssemblyNumberClasses());
-
-    var maxClasses = nrClassesPerAssembly.Max1();
+        .AssemblyNumberClasses(),true);
 
     var nrMethodsPerAssembly = new NamePerCountArray(assemblyDataFromMSFT
-        .AssemblyNumberMethods());
+        .AssemblyNumberMethods(),true);
 
-    var maxMethodsAss = nrMethodsPerAssembly.Max1();
-
+    
     var nrMethodsPerClass = new NamePerCountArray(assemblyDataFromMSFT
-        .ClassNumberMethods());
-    var maxMethodsClass = nrMethodsPerClass.Max1();
-
+        .ClassNumberMethods(),true);
+    
     var maintAssIndex = new NamePerCountArray(assemblyDataFromMSFT
-        .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex));
-
-
-    var minMaintAssIndex = maintAssIndex.Max1();
-    var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Assembly", maintAssIndex.OrderedAsc(), 10, 20, false));
+        .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex),false);
+    
+    var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Assembly", maintAssIndex, 10, 20, false));
 
 
     var maintClassIndex = new NamePerCountArray(assemblyDataFromMSFT
-        .ClassesMetrics(eMSFTMetrics.MaintainabilityIndex)
+        .ClassesMetrics(eMSFTMetrics.MaintainabilityIndex),false
     );
-    var minMaintClassIndex = maintClassIndex.Min1();
-    var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Class", maintClassIndex.OrderedAsc(), 10, 20, false));
+    
+    var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Class", maintClassIndex, 10, 20, false));
 
     var maintMethodIndex = new NamePerCountArray(assemblyDataFromMSFT
-    .MethodsMetrics(eMSFTMetrics.MaintainabilityIndex)
+    .MethodsMetrics(eMSFTMetrics.MaintainabilityIndex),false
     );
 
-    var minMaintMethodIndex = maintMethodIndex.Min1();
-    var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Method", maintMethodIndex.OrderedAsc(), 10, 20, false));
+
+    var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Method", maintMethodIndex, 10, 20, false));
 
     var CCAssIndex = new NamePerCountArray( assemblyDataFromMSFT
-        .AssemblyMetric(eMSFTMetrics.ClassCoupling)
+        .AssemblyMetric(eMSFTMetrics.ClassCoupling),true
     );
-    var maxCCAssIndex = CCAssIndex.Max1();
-    var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Assembly", CCAssIndex.OrderedDesc(), 0, 10, true));
+    
+    var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Assembly", CCAssIndex, 0, 10, true));
 
     var CCClassIndex = new NamePerCountArray(assemblyDataFromMSFT
-    .ClassesMetrics(eMSFTMetrics.ClassCoupling)
+    .ClassesMetrics(eMSFTMetrics.ClassCoupling),true
     );
-    var maxCCClassIndex = CCClassIndex.Max1();
-    var CCClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Class", CCClassIndex.OrderedDesc(), 0, 10, true));
+
+    var CCClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Class", CCClassIndex, 0, 10, true));
 
 
 
 
     var CycAssIndex = new NamePerCountArray(assemblyDataFromMSFT
-    .AssemblyMetric(eMSFTMetrics.CyclomaticComplexity)
+    .AssemblyMetric(eMSFTMetrics.CyclomaticComplexity),true
     );
-    var maxCycAssIndex = CCAssIndex.Max1();
-    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Assembly", CycAssIndex.OrderedDesc(), 10, 25, true));
+    
+    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Assembly", CycAssIndex,10, 25, true));
 
     var CycClassIndex = new NamePerCountArray(assemblyDataFromMSFT
-        .ClassesMetrics(eMSFTMetrics.CyclomaticComplexity)
+        .ClassesMetrics(eMSFTMetrics.CyclomaticComplexity),true
     );
 
-    var maxCycClassIndex = CycClassIndex.Max1();
-    var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Class", CycClassIndex.OrderedDesc(), 10, 25, true));
+    
+    var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Class", CycClassIndex, 10, 25, true));
 
 
     var CycMethodIndex = new NamePerCountArray(assemblyDataFromMSFT
-    .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity));
-    var maxCycMethodIndex = CycMethodIndex.Max1();
-    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Method", CycMethodIndex.OrderedDesc(), 10, 25, true));
+    .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity),true);
+    
+    var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Method", CycMethodIndex, 10, 25, true));
 
-    var packages = projectDicts.Packages();
-    var topPackages = packages.OrderByDescending(it => it.Count).Take(7).ToArray();
+    var packages =new NamePerCountArray( projectDicts.Packages(),true);
+    var topPackages = packages.DataOrdered().Take(7).ToArray();
     int tableRow = 0;
 
 }
@@ -381,46 +375,48 @@
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#number-of-classes-per-assembly">
-                            With max nr of Classes</a>:@maxClasses?.Count</td>
-                        <td>@maxClasses?.Name</td>
+                                With max nr of Classes
+                            </a>:@nrClassesPerAssembly.First1()?.Count
+                        </td>
+                        <td>@nrClassesPerAssembly.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#number-of-methods-per-assembly">
                                 With max nr of methods
-                            </a>:@maxMethodsAss?.Count
+                            </a>:@nrMethodsPerAssembly.First1()?.Count
                         </td>
-                        <td>@maxMethodsAss?.Name</td>
+                        <td>@nrMethodsPerAssembly.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#Maintainability-for-Assembly">
                                 With low maintaining score
-                            </a>:@minMaintAssIndex?.Count
+                            </a>:@maintAssIndex.First1()?.Count
 
                         </td>
-                        <td>@minMaintAssIndex?.Name</td>
+                        <td>@maintAssIndex.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td><a href="#Class-Coupling-for-Assembly"> With max coupling</a>:@maxCCAssIndex?.Count</td>
-                        <td>@maxCCAssIndex?.Name</td>
+                        <td><a href="#Class-Coupling-for-Assembly"> With max coupling</a>:@CCAssIndex.First1()?.Count</td>
+                        <td>@CCAssIndex.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#Cyclomatic-Complexity-for-Assembly">
                                 With most Cyclomatic Complexity
-                            </a>:@maxCycAssIndex?.Count
+                            </a>:@CycAssIndex.First1()?Count
                         </td>
-                        <td>@maxCycAssIndex?.Name</td>
+                        <td>@CycAssIndex.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
-                        <td><a href="#executable-lines-per-assembly">With most lines</a>:@maxexecAssLines?.Count</td>
-                        <td>@maxexecAssLines?.Name</td>
+                        <td><a href="#executable-lines-per-assembly">With most lines</a>:@execAssLines.First1()?.Count</td>
+                        <td>@execAssLines.First1()?.Name</td>
                     </tr>
                 </tbody>
             </table>
@@ -444,18 +440,18 @@
                         <td>
                             <a href="#number-of-methods-per-class">
                                 With max nr of methods
-                            </a>:@maxMethodsClass?.Count
+                            </a>:@nrMethodsPerClass.First1()?.Count
                         </td>
-                        <td>@maxMethodsClass?.Name</td>
+                        <td>@nrMethodsPerClass?.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#Maintainability-for-Class">
                                 With low maintaining score
-                            </a>:@minMaintClassIndex?.Count
+                            </a>:@maintClassIndex.First1()?.Count
                         </td>
-                        <td>@minMaintClassIndex?.Name</td>
+                        <td>@maintClassIndex.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
@@ -463,27 +459,27 @@
                             <a href="#Class-Coupling-for-Class">
                                 With max coupling
                             </a>
-                            :@maxCCClassIndex?.Count
+                            :@CCClassIndex.First1()?.Count
                         </td>
-                        <td>@maxCCClassIndex?.Name</td>
+                        <td>@CCClassIndex.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#Cyclomatic-Complexity-for-Class">
                                 With most Cyclomatic Complexity
-                            </a>:@maxCycClassIndex?.Count
+                            </a>:@CycClassIndex.First1()?.Count
                         </td>
-                        <td>@maxCycClassIndex?.Name</td>
+                        <td>@CycClassIndex.First1()?.Name</td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#executable-lines-per-class">
-                                With most lines:@maxExecClassLines?.Count
+                                With most lines:@execClassLines.First1()??.Count
                             </a>
                         </td>
-                        <td>@maxExecClassLines?.Name</td>
+                        <td>@execClassLines.First1()?.Name</td>
                     </tr>
 
                 </tbody>
@@ -509,18 +505,18 @@
                     <td>
                         <a href="#executable-lines-per-method">
                             Method with max lines
-                        </a>:@maxExecMethodsLines?.Count
+                        </a>:@execMethodsLines.First1()?.Count
                     </td>
-                    <td>@maxExecMethodsLines?.Name</td>
+                    <td>@execMethodsLines.First1()?.Name</td>
                 </tr>
                                 <tr>
                     <td>@(++tableRow)</td>
                     <td>
                         <a href="#Maintainability-for-Method">
                             With low maintaining score
-                        </a>:@minMaintMethodIndex?.Count
+                        </a>:@maintMethodIndex.First1()?.Count
                     </td>
-                    <td>@minMaintMethodIndex?.Name</td>
+                    <td>@maintMethodIndex.First1()?.Name</td>
                 </tr>
 
                 <tr>
@@ -528,9 +524,9 @@
                     <td>
                         <a href="#Cyclomatic-Complexity-for-Method">
                             With most Cyclomatic Complexity
-                        </a>:@maxCycMethodIndex?.Count
+                        </a>:@CycMethodIndex.First1()?.Count
                     </td>
-                    <td>@maxCycMethodIndex?.Name</td>
+                    <td>@CycMethodIndex.First1()?.Name</td>
                 </tr>
                 
 
@@ -901,7 +897,7 @@
 
     <h2 id="number-of-classes-per-assembly"> Number of classes per assembly</h2>
     @{
-        tupleThreshold = new("Number class per project", nrClassesPerAssembly.OrderedDesc(), 25, 50, true); 
+        tupleThreshold = new("Number class per project", nrClassesPerAssembly, 25, 50, true); 
         
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
@@ -911,7 +907,7 @@
     <h2 id="number-of-methods-per-assembly"> Number of methods per assembly</h2>
 
     @{
-        tupleThreshold = new("Number methods per project", nrMethodsPerAssembly.OrderedDesc(), 50, 200, true);
+        tupleThreshold = new("Number methods per project", nrMethodsPerAssembly, 50, 200, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
@@ -920,7 +916,7 @@
     <h2 id="number-of-methods-per-class"> Number of methods per class</h2>
 
     @{
-        tupleThreshold = new("Number methods per class", nrMethodsPerClass.OrderedDesc(), 20, 70, true);
+        tupleThreshold = new("Number methods per class",nrMethodsPerClass!, 20, 70, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
@@ -1112,7 +1108,7 @@ columns: [
     <h2 id="executable-lines">Executable lines</h2>
     <h3 id="executable-lines-per-assembly">Per assembly</h3>
     @{
-        tupleThreshold = new("Number exec lines per project", execAssLines.OrderedDesc(), 1000, 2000, true);
+        tupleThreshold = new("Number exec lines per project", execAssLines, 1000, 2000, true);
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
     @namePerCountDisplayThreshold.Render()
@@ -1120,7 +1116,7 @@ columns: [
     <h3 id="executable-lines-per-class">Per class</h3>
 
     @{
-        tupleThreshold = new("Number exec lines per class", execClassLines.OrderedDesc(), 100, 200, true);
+        tupleThreshold = new("Number exec lines per class", execClassLines,100, 200, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
 
@@ -1132,7 +1128,7 @@ columns: [
     <h3 id="executable-lines-per-method">Per method</h3>
 
     @{
-        tupleThreshold = new("Number exec lines per method", execMethodsLines.OrderedDesc(), 50, 100, true);
+        tupleThreshold = new("Number exec lines per method", execMethodsLines, 50, 100, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
 
@@ -1149,7 +1145,7 @@ columns: [
             <h3 id="assemblies-public-classes"> Assemblies with number of public classes</h3>
 
             @{
-                tuple = new(publicClassRefData.Assemblies_PublicClasses??[], "Public class per project");
+                tuple = new(new (publicClassRefData.Assemblies_PublicClasses ?? [],true), "Public class per project");
                 namePerCountDisplay = new(tuple);
             }
 
@@ -1158,7 +1154,7 @@ columns: [
             <h3 id="assemblies-public-methods"> Assemblies with Public methods</h3>
 
             @{
-                tupleThreshold = new("Public methods per assembly", publicClassRefData.Assemblies_PublicMethods ?? [], 100, 200, true);
+                tupleThreshold = new("Public methods per assembly", new(publicClassRefData.Assemblies_PublicMethods ?? [],true), 100, 200, true);
 
                 namePerCountDisplayThreshold = new(tupleThreshold);
             }
@@ -1170,7 +1166,7 @@ columns: [
 
 
             @{
-                tupleThreshold = new("Public methods per class", publicClassRefData.Class_PublicMethods ?? [], 10, 20, true);
+                tupleThreshold = new("Public methods per class", new(publicClassRefData.Class_PublicMethods ?? [], true), 10, 20, true);
 
                 namePerCountDisplayThreshold = new(tupleThreshold);
 
@@ -1206,7 +1202,7 @@ columns: [
 
     <h3 id="assemblies-references"> Assemblies with References</h3>
     @{
-        tuple = new(refSummary.AssembliesReferences??[], "References per assembly");
+        tuple = new(new( refSummary.AssembliesReferences??[],true), "References per assembly");
         namePerCountDisplay = new(tuple);
     }
 
@@ -1214,7 +1210,7 @@ columns: [
     <h3 id="class-references"> Classes with References</h3>
 
     @{
-        tuple = new(refSummary?.classRefs??[], "References per class");
+        tuple = new(new(refSummary?.classRefs??[],true), "References per class");
         namePerCountDisplay = new(tuple);
     }
 
