@@ -46,7 +46,9 @@ public record NamePerCountArray(NamePerCount[]? NamePerCounts,bool Descending)
 { 
     public Statistics<long> Statistics()
     {
-        return new Statistics<long>(NamePerCounts?.Select(it => it.Count).ToArray() ?? []);
+        return new Statistics<long>(
+            this.DataOrdered().Select(it => it.Count).ToArray() ?? []            
+            );
     }
     public NamePerCount? First1()
     {

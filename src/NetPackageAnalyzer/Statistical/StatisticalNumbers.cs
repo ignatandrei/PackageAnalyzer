@@ -3,8 +3,23 @@ using System.Numerics;
 namespace Statistical;
 
 public static class StatisticalNumbers<T>
-        where T : INumber<T>,IDivisionOperators<T, T, T>
+        where T : INumber<T>, IDivisionOperators<T, T, T>
 {
+    public static T? Max(T[] values) {
+
+        if (values == null || values.Length == 0)
+        {
+            return default(T?);
+        }
+        return values.Max();
+    }
+    public static T? Min(T[] values) {
+        if (values == null || values.Length == 0)
+        {
+            return default(T?);
+        }
+        return values.Min();
+    }
     public static T Median(T[]? values)
     {
         var size = values?.Length ?? 0;
@@ -103,7 +118,22 @@ public static class StatisticalNumbers<T>
         }
         return variance / mid; // For sample variance
     }
-
+    //public static T Percentile(T[] sequence, int percentile, Func<T,double,T> f)
+    //{
+    //    double excelPercentile= ((double)percentile) / 100;
+    //    Array.Sort(sequence);
+    //    int N = sequence.Length;
+    //    double n = (N - 1) * excelPercentile + 1;
+    //    // Another method: double n = (N + 1) * excelPercentile;
+    //    if (n == 1d) return sequence[0];
+    //    else if (n == N) return sequence[N - 1];
+    //    else
+    //    {
+    //        int k = (int)n;
+    //        double d = n - k;
+    //        return sequence[k - 1] +  f(sequence[k] - sequence[k - 1],d);
+    //    }
+    //}
 }
 public record Statistics<T>(T[] values)
     where T : INumber<T>, IDivisionOperators<T, T, T>
@@ -112,5 +142,9 @@ public record Statistics<T>(T[] values)
     public T ArithmeticMean => StatisticalNumbers<T>.ArithmeticMean(values);
     public ModeResult<T>[] Mode => StatisticalNumbers<T>.Mode(values);
     public T Variance => StatisticalNumbers<T>.Variance(values);
-}
+
+    public T? Max => StatisticalNumbers<T>.Max(values);
+    public T? Min => StatisticalNumbers<T>.Min(values);
+    //public T Percentile(int percentile, Func<T,double,T> multiply) => StatisticalNumbers<T>.Percentile(values, percentile, multiply);
+} 
 

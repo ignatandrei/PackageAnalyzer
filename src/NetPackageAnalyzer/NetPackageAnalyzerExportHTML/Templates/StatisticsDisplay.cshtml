@@ -8,11 +8,28 @@
     }
     var mode= modes.First();
     var stdDev = Math.Sqrt( Model.Variance);
+    var min = Model.Min;
+    var max = Model.Max;
+    var mean = Model.ArithmeticMean;
+    double? coefOfVar=null;
+    if(mean != 0)
+    {
+        coefOfVar = stdDev / Model.ArithmeticMean;
+    }
+    
+    //var perc = Model.Percentile(95, (a, b) => ((double)a) * b);
 }
 <div>
+    Min Value: @min
+    ;Max Value: @max
     ;Math average: @Model.ArithmeticMean 
     ;Math median: @Model.Median
     ;Standard Dev: @(stdDev.ToString("0.00"))
+    @if(coefOfVar.HasValue){
+        <text>
+        ;Coefficient of Variation: @(coefOfVar.Value.ToString("0.00"))
+        </text>
+    }
     @if(displayMode){
         <text>
         <br />
