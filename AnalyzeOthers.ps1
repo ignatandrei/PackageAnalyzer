@@ -146,13 +146,17 @@ Pop-Location
 
 # AnalyzeProject "https://github.com/cecilphillip/aspnet-servicediscovery-patterns"
 
-# AnalyzeProject "https://github.com/kgrzybek/sample-dotnet-core-cqrs-api"
+AnalyzeProject "https://github.com/kgrzybek/sample-dotnet-core-cqrs-api"
 
 # AnalyzeProject "https://github.com/abpframework/abp"
 
 #TODO: https://github.com/topics/architecture?l=c%23&o=desc&s=stars
 
-#TODO: https://github.com/simplcommerce/SimplCommerce
-#TODO: https://github.com/grandnode/grandnode2
-#TODO: https://github.com/gothinkster/aspnetcore-realworld-example-app
+#does not generate code metrics, waiting for .net 9
+# AnalyzeProject https://github.com/simplcommerce/SimplCommerce
+
+#does not generate code metrics, waiting for .net 9
+# AnalyzeProject https://github.com/grandnode/grandnode2
+#just 1 project
+#AnalyzeProject https://github.com/gothinkster/aspnetcore-realworld-example-app
 
