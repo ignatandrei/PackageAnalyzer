@@ -57,7 +57,7 @@
 <text>
         @statisticsDisplay.Render()
 
-        <div id="@nameId" style="height: 100%"></div>
+        <div id="@nameId" style="height: 100%" title="@nameId"></div>
         <script type="text/javascript">
             var dom = document.getElementById('@nameId');
             var myChart = echarts.init(dom, null, {

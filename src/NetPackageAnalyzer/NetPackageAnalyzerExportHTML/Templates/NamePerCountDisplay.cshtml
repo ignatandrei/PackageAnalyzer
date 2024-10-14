@@ -39,7 +39,7 @@
 }
 @statisticsDisplay.Render()
 
-<div class="mermaid">
+<div class="mermaid" title="@name">
 ---
 config:
     xyChart:
@@ -58,7 +58,7 @@ bar @yAxis
 
 </div>
 <br />
-<div id="@(nameId+"-table")"></div>
+<div id="@(nameId+"-table")" title="@(nameId+"-table")"></div>
 
 <script>
     var tabledata = [

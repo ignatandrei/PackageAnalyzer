@@ -592,7 +592,7 @@
     <br />
 
     <h2 id="projects-without-tests"> @nrProjectsNoTests Projects without tests</h2>
-    <div class="mermaid">
+    <div class="mermaid" title="projects without tests">
         flowchart LR
 
 
@@ -624,7 +624,7 @@
     </div>
 
     <h2 id="projects-with-tests"> @info.nrProjects Projects with tests</h2>
-    <div class="mermaid">
+    <div class="mermaid" title="projects with tests">
         flowchart LR
 
 
@@ -686,30 +686,32 @@
 
 
     <h2 id="building-blocks">Building Blocks : @bb0.Length </h2>
-    @foreach (var bbProj in bb0)
-    {
-        var nameCsproj = bbProj.NameCSproj();
-        var relativePath = bbProj.RelativePath();
-        <text>
-            <h3>Project: @nameCsproj</h3>
-            Full Name : @relativePath
+    @{
+        int projectNr = 0;
+        foreach (var bbProj in bb0)
+        {
+            var nameCsproj = bbProj.NameCSproj();
+            var relativePath = bbProj.RelativePath();
+            <text>
+                <h3>Project: @nameCsproj</h3>
+                Full Name : @relativePath
 
-            <div class="mermaid">
-                flowchart LR
-                @nameCsproj
-                @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
-                {
-                    <text>
-                        @rel.FullNameMermaid()
-                        @rel.NameCSproj()-->@nameCsproj
-                    </text>
-                }
+                <div class="mermaid" title="project bb0 @(++projectNr)">
+                    flowchart LR
+                    @nameCsproj
+                    @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
+                    {
+                        <text>
+                            @rel.FullNameMermaid()
+                            @rel.NameCSproj()-->@nameCsproj
+                        </text>
+                    }
 
-            </div>
+                </div>
 
-        </text>
+            </text>
+        }
     }
-
     <div id="bb-table"></div>
 
     <script>
@@ -745,30 +747,32 @@
     </script>
 
     <h2 id="root-projects">Root projects : @rootProjects.Length </h2>
-    @foreach (var bbProj in rootProjects)
-    {
-        var nameCsproj = bbProj.NameCSproj();
-        var relativePath = bbProj.RelativePath();
-        <text>
-            <h3>Project: @nameCsproj</h3>
-            Full Name : @relativePath
+    @{
+        int nrRootProjects = 0;
+        foreach (var bbProj in rootProjects)
+        {
+            var nameCsproj = bbProj.NameCSproj();
+            var relativePath = bbProj.RelativePath();
+            <text>
+                <h3>Project: @nameCsproj</h3>
+                Full Name : @relativePath
 
-            <div class="mermaid">
-                flowchart LR
-                @nameCsproj
-                @foreach (var rel in bbProj.ProjectsReferences)
-                {
-                    <text>
-                        @rel.FullNameMermaid()
-                        @rel.NameCSproj()-->@nameCsproj
-                    </text>
-                }
+                <div class="mermaid" title="root project @(++nrRootProjects)">
+                    flowchart LR
+                    @nameCsproj
+                    @foreach (var rel in bbProj.ProjectsReferences)
+                    {
+                        <text>
+                            @rel.FullNameMermaid()
+                            @rel.NameCSproj()-->@nameCsproj
+                        </text>
+                    }
 
-            </div>
+                </div>
 
-        </text>
+            </text>
+        }
     }
-
     <div id="root-projects-table"></div>
 
     <script>
@@ -805,7 +809,9 @@
 
 
     <h2 id="test-projects">Test projects: @(testProjects.Length) </h2>
-    @foreach (var bbProj in testProjects)
+    @{
+        int nrTestProjects = 0;
+        foreach (var bbProj in testProjects)
     {
         var nameCsproj = bbProj.NameCSproj();
         var relativePath = bbProj.RelativePath();
@@ -813,7 +819,7 @@
             <h3>Project: @nameCsproj</h3>
             Full Name : @relativePath
 
-            <div class="mermaid">
+            <div class="mermaid" title="test project @(++nrTestProjects)">
                 flowchart LR
                 @nameCsproj
                 @foreach (var rel in bbProj.AlphabeticalProjectsReferences())
@@ -828,7 +834,7 @@
 
         </text>
     }
-
+    }
     <div id="test-projects-table"></div>
 
     <script>
@@ -1238,7 +1244,7 @@ columns: [
         .Select(x => x.Value)
         .ToArray()) + "]";
         <text>
-            <div class="mermaid">
+            <div class="mermaid" title="Commits per year">
                 xychart-beta
                 title "Commits per year (folder and csproj)"
                 x-axis @xaxis
