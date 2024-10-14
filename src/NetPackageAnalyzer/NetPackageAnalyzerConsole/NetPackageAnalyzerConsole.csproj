@@ -30,7 +30,7 @@
 	  <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>8.2024.1014.1828</Version>
+		<Version>8.2024.1014.2028</Version>
 		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>
