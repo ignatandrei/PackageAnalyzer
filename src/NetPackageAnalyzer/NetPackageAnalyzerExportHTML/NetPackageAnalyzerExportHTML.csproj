@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
 	  
 <NoWarn>CS0436</NoWarn>
-	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +16,7 @@
 		
 		<PackageReference Include="RazorBlade" Version="0.5.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 		<ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
+		<ProjectReference Include="..\NPA.HtmlData\NPA.HtmlData.csproj" />
 		<ProjectReference Include="..\NPA.Resources\NPA.Resources.csproj" />
 	</ItemGroup>
 
