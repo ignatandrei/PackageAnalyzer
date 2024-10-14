@@ -1,4 +1,5 @@
 ﻿using NetPackageAnalyzerObjects;
+using NPA.HtmlData;
 
 namespace NetPackageAnalyzerExportHTML;
 
@@ -33,6 +34,10 @@ public class GenerateHTML : GenerateFiles
             var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
             await system.File.WriteAllTextAsync(nameFile, html);
             WriteJs(where);
+            var ex = new ExtractImages(nameFile);
+            await ex.GetImagesAsync();
+
+
             return nameFile;
         }
         finally

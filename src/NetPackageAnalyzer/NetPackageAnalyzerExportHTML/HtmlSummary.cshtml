@@ -592,7 +592,7 @@
     <br />
 
     <h2 id="projects-without-tests"> @nrProjectsNoTests Projects without tests</h2>
-    <div class="mermaid" title="projects without tests">
+    <div class="mermaid" title="image projects without tests">
         flowchart LR
 
 
@@ -624,7 +624,7 @@
     </div>
 
     <h2 id="projects-with-tests"> @info.nrProjects Projects with tests</h2>
-    <div class="mermaid" title="projects with tests">
+    <div class="mermaid" title="image projects with tests">
         flowchart LR
 
 
@@ -696,7 +696,7 @@
                 <h3>Project: @nameCsproj</h3>
                 Full Name : @relativePath
 
-                <div class="mermaid" title="project bb0 @(++projectNr)">
+                <div class="mermaid" title="image project bb0 @(++projectNr)">
                     flowchart LR
                     @nameCsproj
                     @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
@@ -757,7 +757,7 @@
                 <h3>Project: @nameCsproj</h3>
                 Full Name : @relativePath
 
-                <div class="mermaid" title="root project @(++nrRootProjects)">
+                <div class="mermaid" title="image root project @(++nrRootProjects)">
                     flowchart LR
                     @nameCsproj
                     @foreach (var rel in bbProj.ProjectsReferences)
@@ -819,7 +819,7 @@
             <h3>Project: @nameCsproj</h3>
             Full Name : @relativePath
 
-            <div class="mermaid" title="test project @(++nrTestProjects)">
+                <div class="mermaid" title="image test project @(++nrTestProjects)">
                 flowchart LR
                 @nameCsproj
                 @foreach (var rel in bbProj.AlphabeticalProjectsReferences())
@@ -1244,7 +1244,7 @@ columns: [
         .Select(x => x.Value)
         .ToArray()) + "]";
         <text>
-            <div class="mermaid" title="Commits per year">
+            <div class="mermaid" title="image Commits per year">
                 xychart-beta
                 title "Commits per year (folder and csproj)"
                 x-axis @xaxis

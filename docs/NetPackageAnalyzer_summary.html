@@ -95,7 +95,7 @@
                         <td>
                             <a href="#number-of-methods-per-assembly">
                                 Number methods
-                            </a>: 160
+                            </a>: 161
                         </td>
                     </tr>
             </table>
@@ -167,7 +167,7 @@
                         <td>1</td>
                         <td>
                             <a href="#commits">
-                                Total Commits : 243
+                                Total Commits : 247
                         </td>
                     </tr>
 
@@ -413,8 +413,8 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 72 },
-                { name: 'Commits 2024', max: 62 },
+                { name: 'Total Commits', max: 73 },
+                { name: 'Commits 2024', max: 63 },
                 { name: 'Packages', max: 38 },
                 { name: 'References', max: 5 },
                 { name: 'Number Public Classes', max: 35 },
@@ -442,7 +442,7 @@ name: 'NetPackageAnalyzeHistory'
     },
 
     {
-                                value: [72,62, 33, 4, 0, 0,4, 268, 26,32],
+                                value: [73,63, 33, 4, 0, 0,4, 268, 26,32],
 name: 'NetPackageAnalyzerConsole'
     },
 
@@ -457,7 +457,7 @@ name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-                                value: [21,21, 19, 2, 1, 71,1, 88, 13,25],
+                                value: [22,22, 19, 2, 1, 71,1, 88, 13,25],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
@@ -477,7 +477,7 @@ name: 'NetPackageAnalyzerShowInConsole'
     },
 
     {
-                                value: [9,9, 38, 3, 3, 77,4, 106, 9,20],
+                                value: [10,10, 38, 3, 3, 65,4, 119, 8,20],
 name: 'NetPackageAnalyzerTests'
     },
 
@@ -492,7 +492,7 @@ name: 'NuGetInfo'
     },
 
     {
-                                value: [2,2, 0, 0, 3, 127,1, 155, 27,9],
+                                value: [3,3, 0, 0, 3, 128,1, 156, 27,9],
 name: 'Statistical'
     },
 
@@ -513,7 +513,7 @@ name: 'Statistical'
     <br />
 
     <h2 id="projects-without-tests"> 12 Projects without tests</h2>
-    <div class="mermaid">
+    <div class="mermaid" title="projects without tests">
         flowchart LR
 
 
@@ -624,7 +624,7 @@ name: 'Statistical'
                 </div>
 
     <h2 id="projects-with-tests"> 13 Projects with tests</h2>
-    <div class="mermaid">
+    <div class="mermaid" title="projects with tests">
         flowchart LR
 
 
@@ -821,107 +821,106 @@ name: 'Statistical'
 
     <h2 id="building-blocks">Building Blocks : 7 </h2>
 
-            <h3>Project: AnalyzeMerge</h3>
-            Full Name : AnalyzeMerge\AnalyzeMerge.csproj
+                <h3>Project: AnalyzeMerge</h3>
+                Full Name : AnalyzeMerge\AnalyzeMerge.csproj
 
-            <div class="mermaid">
-                flowchart LR
-                AnalyzeMerge
+                <div class="mermaid" title="project bb0 1">
+                    flowchart LR
+                    AnalyzeMerge
 
-                        NetPackageAnalyzerConsole[NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj]
-                        NetPackageAnalyzerConsole-->AnalyzeMerge
-                    
-            </div>
+                            NetPackageAnalyzerConsole[NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj]
+                            NetPackageAnalyzerConsole-->AnalyzeMerge
+                        
+                </div>
 
-        
-            <h3>Project: NetPackageAnalyzeHistory</h3>
-            Full Name : NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj
+            
+                <h3>Project: NetPackageAnalyzeHistory</h3>
+                Full Name : NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj
 
-            <div class="mermaid">
-                flowchart LR
-                NetPackageAnalyzeHistory
+                <div class="mermaid" title="project bb0 2">
+                    flowchart LR
+                    NetPackageAnalyzeHistory
 
-                        NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
-                        NetPackageAnalyzerObjects-->NetPackageAnalyzeHistory
-                    
-            </div>
+                            NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
+                            NetPackageAnalyzerObjects-->NetPackageAnalyzeHistory
+                        
+                </div>
 
-        
-            <h3>Project: NetPackageAnalyzerDiagram</h3>
-            Full Name : NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj
+            
+                <h3>Project: NetPackageAnalyzerDiagram</h3>
+                Full Name : NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj
 
-            <div class="mermaid">
-                flowchart LR
-                NetPackageAnalyzerDiagram
+                <div class="mermaid" title="project bb0 3">
+                    flowchart LR
+                    NetPackageAnalyzerDiagram
 
-                        NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj]
-                        NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerDiagram
-                    
-                        NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
-                        NetPackageAnalyzerObjects-->NetPackageAnalyzerDiagram
-                    
-            </div>
+                            NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj]
+                            NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerDiagram
+                        
+                            NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
+                            NetPackageAnalyzerObjects-->NetPackageAnalyzerDiagram
+                        
+                </div>
 
-        
-            <h3>Project: NetPackageAnalyzerMetricsMSFT</h3>
-            Full Name : NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj
+            
+                <h3>Project: NetPackageAnalyzerMetricsMSFT</h3>
+                Full Name : NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj
 
-            <div class="mermaid">
-                flowchart LR
-                NetPackageAnalyzerMetricsMSFT
+                <div class="mermaid" title="project bb0 4">
+                    flowchart LR
+                    NetPackageAnalyzerMetricsMSFT
 
-                        NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
-                        NetPackageAnalyzerObjects-->NetPackageAnalyzerMetricsMSFT
-                    
-            </div>
+                            NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
+                            NetPackageAnalyzerObjects-->NetPackageAnalyzerMetricsMSFT
+                        
+                </div>
 
-        
-            <h3>Project: NPA.Resources</h3>
-            Full Name : NPA.Resources\NPA.Resources.csproj
+            
+                <h3>Project: NPA.Resources</h3>
+                Full Name : NPA.Resources\NPA.Resources.csproj
 
-            <div class="mermaid">
-                flowchart LR
-                NPA.Resources
+                <div class="mermaid" title="project bb0 5">
+                    flowchart LR
+                    NPA.Resources
 
-                        NetPackageAnalyzerExportHTML[NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj]
-                        NetPackageAnalyzerExportHTML-->NPA.Resources
-                    
-            </div>
+                            NetPackageAnalyzerExportHTML[NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj]
+                            NetPackageAnalyzerExportHTML-->NPA.Resources
+                        
+                </div>
 
-        
-            <h3>Project: NuGetInfo</h3>
-            Full Name : NuGetInfo\NuGetInfo.csproj
+            
+                <h3>Project: NuGetInfo</h3>
+                Full Name : NuGetInfo\NuGetInfo.csproj
 
-            <div class="mermaid">
-                flowchart LR
-                NuGetInfo
+                <div class="mermaid" title="project bb0 6">
+                    flowchart LR
+                    NuGetInfo
 
-                        NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
-                        NetPackageAnalyzerObjects-->NuGetInfo
-                    
-                        NetPackageAnalyzerTests[NetPackageAnalyzerTests\NetPackageAnalyzerTests.csproj]
-                        NetPackageAnalyzerTests-->NuGetInfo
-                    
-            </div>
+                            NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
+                            NetPackageAnalyzerObjects-->NuGetInfo
+                        
+                            NetPackageAnalyzerTests[NetPackageAnalyzerTests\NetPackageAnalyzerTests.csproj]
+                            NetPackageAnalyzerTests-->NuGetInfo
+                        
+                </div>
 
-        
-            <h3>Project: Statistical</h3>
-            Full Name : Statistical\Statistical.csproj
+            
+                <h3>Project: Statistical</h3>
+                Full Name : Statistical\Statistical.csproj
 
-            <div class="mermaid">
-                flowchart LR
-                Statistical
+                <div class="mermaid" title="project bb0 7">
+                    flowchart LR
+                    Statistical
 
-                        NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
-                        NetPackageAnalyzerObjects-->Statistical
-                    
-                        NetPackageAnalyzerTests[NetPackageAnalyzerTests\NetPackageAnalyzerTests.csproj]
-                        NetPackageAnalyzerTests-->Statistical
-                    
-            </div>
+                            NetPackageAnalyzerObjects[NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj]
+                            NetPackageAnalyzerObjects-->Statistical
+                        
+                            NetPackageAnalyzerTests[NetPackageAnalyzerTests\NetPackageAnalyzerTests.csproj]
+                            NetPackageAnalyzerTests-->Statistical
+                        
+                </div>
 
-        
-    <div id="bb-table"></div>
+                <div id="bb-table"></div>
 
     <script>
         var tabledata = [
@@ -959,29 +958,28 @@ name: 'Statistical'
 
     <h2 id="root-projects">Root projects : 1 </h2>
 
-            <h3>Project: NetPackageAnalyzerConsole</h3>
-            Full Name : NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj
+                <h3>Project: NetPackageAnalyzerConsole</h3>
+                Full Name : NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj
 
-            <div class="mermaid">
-                flowchart LR
-                NetPackageAnalyzerConsole
+                <div class="mermaid" title="root project 1">
+                    flowchart LR
+                    NetPackageAnalyzerConsole
 
-                        AnalyzeMerge[AnalyzeMerge\AnalyzeMerge.csproj]
-                        AnalyzeMerge-->NetPackageAnalyzerConsole
-                    
-                        NetPackageAnalyzerExportHTML[NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj]
-                        NetPackageAnalyzerExportHTML-->NetPackageAnalyzerConsole
-                    
-                        NetPackageAnalyzerShowInConsole[NetPackageAnalyzerShowInConsole\NetPackageAnalyzerShowInConsole.csproj]
-                        NetPackageAnalyzerShowInConsole-->NetPackageAnalyzerConsole
-                    
-                        NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj]
-                        NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerConsole
-                    
-            </div>
+                            AnalyzeMerge[AnalyzeMerge\AnalyzeMerge.csproj]
+                            AnalyzeMerge-->NetPackageAnalyzerConsole
+                        
+                            NetPackageAnalyzerExportHTML[NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj]
+                            NetPackageAnalyzerExportHTML-->NetPackageAnalyzerConsole
+                        
+                            NetPackageAnalyzerShowInConsole[NetPackageAnalyzerShowInConsole\NetPackageAnalyzerShowInConsole.csproj]
+                            NetPackageAnalyzerShowInConsole-->NetPackageAnalyzerConsole
+                        
+                            NetPackageAnalyzerDocusaurus[NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj]
+                            NetPackageAnalyzerDocusaurus-->NetPackageAnalyzerConsole
+                        
+                </div>
 
-        
-    <div id="root-projects-table"></div>
+                <div id="root-projects-table"></div>
 
     <script>
         var tabledata = [
@@ -1011,7 +1009,7 @@ name: 'Statistical'
             <h3>Project: NetPackageAnalyzerTests</h3>
             Full Name : NetPackageAnalyzerTests\NetPackageAnalyzerTests.csproj
 
-            <div class="mermaid">
+            <div class="mermaid" title="test project 1">
                 flowchart LR
                 NetPackageAnalyzerTests
 
@@ -1026,8 +1024,7 @@ name: 'Statistical'
                     
             </div>
 
-        
-    <div id="test-projects-table"></div>
+            <div id="test-projects-table"></div>
 
     <script>
         var tabledata = [
@@ -1064,15 +1061,15 @@ name: 'Statistical'
     ;Max Value: 100
     ;Math average: 81 
     ;Math median: 81
-    ;Standard Dev: 13.56
+    ;Standard Dev: 13.42
 
         ;Coefficient of Variation: 0.17
         
         <br />
-        Math mode: The most encountered value (3 times) is 100
+        Math mode: The most encountered value (1 times) is 100
         </div>
 
-        <div id="Maintainability-for-Assembly" style="height: 100%"></div>
+        <div id="Maintainability-for-Assembly" style="height: 100%" title="Maintainability-for-Assembly"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Maintainability-for-Assembly');
             var myChart = echarts.init(dom, null, {
@@ -1101,7 +1098,7 @@ name: 'Statistical'
             {value:57},
 {value:62},
 {value:70},
-{value:71},
+{value:74},
 {value:75},
 {value:80},
 {value:81},
@@ -1150,7 +1147,7 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "70" },
                 
-                        {"Name": "NetPackageAnalyzerTests", "Nr": "71" },
+                        {"Name": "NetPackageAnalyzerTests", "Nr": "74" },
                 
                         {"Name": "NetPackageAnalyzeHistory", "Nr": "75" },
                 
@@ -1199,15 +1196,15 @@ name: 'Statistical'
     ;Max Value: 100
     ;Math average: 82 
     ;Math median: 86
-    ;Standard Dev: 14.18
+    ;Standard Dev: 14.04
 
         ;Coefficient of Variation: 0.17
         
         <br />
-        Math mode: The most encountered value (14 times) is 86
+        Math mode: The most encountered value (1 times) is 86
         </div>
 
-        <div id="Maintainability-for-Class" style="height: 100%"></div>
+        <div id="Maintainability-for-Class" style="height: 100%" title="Maintainability-for-Class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Maintainability-for-Class');
             var myChart = echarts.init(dom, null, {
@@ -1299,8 +1296,6 @@ name: 'Statistical'
                 
                         {"Name": "FolderHistoryCommits", "Nr": "64" },
                 
-                        {"Name": "TestStatistics", "Nr": "64" },
-                
                         {"Name": "FileFolderHistorySimple", "Nr": "65" },
                 
                         {"Name": "RealMainExecuting", "Nr": "65" },
@@ -1318,6 +1313,8 @@ name: 'Statistical'
                         {"Name": "AssemblyDataFromMSFT", "Nr": "76" },
                 
                         {"Name": "TestSolutionExists", "Nr": "76" },
+                
+                        {"Name": "TestStatistics", "Nr": "76" },
                 
                         {"Name": "deprecatedV1_gen_json", "Nr": "77" },
                 
@@ -1428,15 +1425,15 @@ name: 'Statistical'
     ;Max Value: 100
     ;Math average: 78 
     ;Math median: 81
-    ;Standard Dev: 15.75
+    ;Standard Dev: 15.56
 
         ;Coefficient of Variation: 0.20
         
         <br />
-        Math mode: The most encountered value (16 times) is 100
+        Math mode: The most encountered value (1 times) is 100
         </div>
 
-        <div id="Maintainability-for-Method" style="height: 100%"></div>
+        <div id="Maintainability-for-Method" style="height: 100%" title="Maintainability-for-Method"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Maintainability-for-Method');
             var myChart = echarts.init(dom, null, {
@@ -1533,8 +1530,6 @@ name: 'Statistical'
                         {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "53" },
                 
                         {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "54" },
-                
-                        {"Name": "void TestStatistics.TestMode()", "Nr": "54" },
                 
                         {"Name": "Command RealMainExecuting.AddGenerateFiles()", "Nr": "58" },
                 
@@ -1640,9 +1635,13 @@ name: 'Statistical'
                 
                         {"Name": "string? AnalyzeMergeData.relFolder()", "Nr": "77" },
                 
+                        {"Name": "void TestStatistics.TestMin()", "Nr": "77" },
+                
                         {"Name": "T? StatisticalNumbers<T>.Max(T[] values)", "Nr": "78" },
                 
                         {"Name": "T? StatisticalNumbers<T>.Min(T[] values)", "Nr": "78" },
+                
+                        {"Name": "void TestStatistics.TestMax()", "Nr": "78" },
                 
                         {"Name": "void TestStatistics.TestMean()", "Nr": "78" },
                 
@@ -1821,7 +1820,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,154],
+                paginationSizeSelector: [100,155],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -1851,7 +1850,7 @@ name: 'Statistical'
         ;Coefficient of Variation: 1.00
         </div>
 
-        <div id="Class-Coupling-for-Assembly" style="height: 100%"></div>
+        <div id="Class-Coupling-for-Assembly" style="height: 100%" title="Class-Coupling-for-Assembly"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Class-Coupling-for-Assembly');
             var myChart = echarts.init(dom, null, {
@@ -2034,7 +2033,7 @@ name: 'Statistical'
         ;Coefficient of Variation: 1.33
         </div>
 
-        <div id="Class-Coupling-for-Class" style="height: 100%"></div>
+        <div id="Class-Coupling-for-Class" style="height: 100%" title="Class-Coupling-for-Class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Class-Coupling-for-Class');
             var myChart = echarts.init(dom, null, {
@@ -2358,15 +2357,12 @@ name: 'Statistical'
     ;Max Value: 348
     ;Math average: 43 
     ;Math median: 26
-    ;Standard Dev: 88.88
+    ;Standard Dev: 88.91
 
         ;Coefficient of Variation: 2.07
-        
-        <br />
-        Math mode: The most encountered value (2 times) is 1
         </div>
 
-        <div id="Cyclomatic-Complexity-for-Assembly" style="height: 100%"></div>
+        <div id="Cyclomatic-Complexity-for-Assembly" style="height: 100%" title="Cyclomatic-Complexity-for-Assembly"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Cyclomatic-Complexity-for-Assembly');
             var myChart = echarts.init(dom, null, {
@@ -2400,7 +2396,7 @@ name: 'Statistical'
 {value:27,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'orange'}},
-{value:9},
+{value:8},
 {value:8}
                         ],
                         type: 'bar'
@@ -2454,7 +2450,7 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerExportHTML", "Nr": "13" },
                 
-                        {"Name": "NetPackageAnalyzerTests", "Nr": "9" },
+                        {"Name": "NetPackageAnalyzerTests", "Nr": "8" },
                 
                         {"Name": "NPA.Resources", "Nr": "8" },
                 
@@ -2517,7 +2513,7 @@ name: 'Statistical'
 {value:27,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'red'}},
-{value:9,itemStyle:{color:'red'}},
+{value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -2550,10 +2546,10 @@ name: 'Statistical'
         ;Coefficient of Variation: 1.59
         
         <br />
-        Math mode: The most encountered value (15 times) is 1
+        Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Cyclomatic-Complexity-for-Class" style="height: 100%"></div>
+        <div id="Cyclomatic-Complexity-for-Class" style="height: 100%" title="Cyclomatic-Complexity-for-Class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Cyclomatic-Complexity-for-Class');
             var myChart = echarts.init(dom, null, {
@@ -2685,8 +2681,6 @@ name: 'Statistical'
                 
                         {"Name": "TransitivePackages", "Nr": "6" },
                 
-                        {"Name": "TestStatistics", "Nr": "5" },
-                
                         {"Name": "Commit", "Nr": "4" },
                 
                         {"Name": "ExportAssembly", "Nr": "4" },
@@ -2700,6 +2694,8 @@ name: 'Statistical'
                         {"Name": "MethodPublic", "Nr": "4" },
                 
                         {"Name": "MethodswithexternalreferenceExport", "Nr": "4" },
+                
+                        {"Name": "TestStatistics", "Nr": "4" },
                 
                         {"Name": "CommitsData", "Nr": "2" },
                 
@@ -2822,7 +2818,7 @@ name: 'Statistical'
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
-{value:5,itemStyle:{color:'red'}},
+{value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
@@ -2881,10 +2877,10 @@ name: 'Statistical'
         ;Coefficient of Variation: 1.73
         
         <br />
-        Math mode: The most encountered value (82 times) is 1
+        Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Cyclomatic-Complexity-for-Method" style="height: 100%"></div>
+        <div id="Cyclomatic-Complexity-for-Method" style="height: 100%" title="Cyclomatic-Complexity-for-Method"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Cyclomatic-Complexity-for-Method');
             var myChart = echarts.init(dom, null, {
@@ -3031,8 +3027,6 @@ name: 'Statistical'
                         {"Name": "void ProjectsDict.FindHistoryProjects()", "Nr": "3" },
                 
                         {"Name": "void ProjectsDict.FindUpStreamReferences()", "Nr": "3" },
-                
-                        {"Name": "void TestStatistics.TestMode()", "Nr": "3" },
                 
                         {"Name": "bool ProcessOutput.Build(string folder)", "Nr": "2" },
                 
@@ -3260,16 +3254,20 @@ name: 'Statistical'
                 
                         {"Name": "void IOperations.ClearWrongData()", "Nr": "1" },
                 
+                        {"Name": "void TestStatistics.TestMax()", "Nr": "1" },
+                
                         {"Name": "void TestStatistics.TestMean()", "Nr": "1" },
                 
                         {"Name": "void TestStatistics.TestMedian()", "Nr": "1" },
+                
+                        {"Name": "void TestStatistics.TestMin()", "Nr": "1" },
                                             ];
             var table = new Tabulator("#Cyclomatic-Complexity-for-Method-table", {
                 data: tabledata,
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,154],
+                paginationSizeSelector: [100,155],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -3347,7 +3345,6 @@ name: 'Statistical'
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
-{value:3,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
@@ -3381,6 +3378,8 @@ name: 'Statistical'
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -3493,10 +3492,10 @@ name: 'Statistical'
         ;Coefficient of Variation: 1.61
         
         <br />
-        Math mode: The most encountered value (5 times) is 1
+        Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Number-class-per-project" style="height: 100%"></div>
+        <div id="Number-class-per-project" style="height: 100%" title="Number-class-per-project"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-class-per-project');
             var myChart = echarts.init(dom, null, {
@@ -3630,10 +3629,10 @@ name: 'Statistical'
         ;Coefficient of Variation: 1.55
         
         <br />
-        Math mode: The most encountered value (3 times) is 0
+        Math mode: The most encountered value (1 times) is 0
         </div>
 
-        <div id="Number-methods-per-project" style="height: 100%"></div>
+        <div id="Number-methods-per-project" style="height: 100%" title="Number-methods-per-project"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-methods-per-project');
             var myChart = echarts.init(dom, null, {
@@ -3666,7 +3665,7 @@ name: 'Statistical'
 {value:9},
 {value:9},
 {value:8},
-{value:6},
+{value:7},
 {value:6},
 {value:3}
                         ],
@@ -3719,7 +3718,7 @@ name: 'Statistical'
                 
                         {"Name": "NPA.Resources", "Nr": "8" },
                 
-                        {"Name": "NetPackageAnalyzerTests", "Nr": "6" },
+                        {"Name": "NetPackageAnalyzerTests", "Nr": "7" },
                 
                         {"Name": "Statistical", "Nr": "6" },
                 
@@ -3766,10 +3765,10 @@ name: 'Statistical'
         ;Coefficient of Variation: 1.94
         
         <br />
-        Math mode: The most encountered value (25 times) is 1
+        Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Number-methods-per-class" style="height: 100%"></div>
+        <div id="Number-methods-per-class" style="height: 100%" title="Number-methods-per-class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-methods-per-class');
             var myChart = echarts.init(dom, null, {
@@ -3863,6 +3862,8 @@ name: 'Statistical'
                 
                         {"Name": "ProcessOutput", "Nr": "4" },
                 
+                        {"Name": "TestStatistics", "Nr": "4" },
+                
                         {"Name": "AnalyzeForProject", "Nr": "3" },
                 
                         {"Name": "AnalyzeMergeData", "Nr": "3" },
@@ -3872,8 +3873,6 @@ name: 'Statistical'
                         {"Name": "FileFolderHistorySimple", "Nr": "3" },
                 
                         {"Name": "GenerateHTML", "Nr": "3" },
-                
-                        {"Name": "TestStatistics", "Nr": "3" },
                 
                         {"Name": "deprecatedV1_gen_json", "Nr": "2" },
                 
@@ -3989,37 +3988,37 @@ name: 'Statistical'
     <script>
         var tabledata = [
 
-                    {"Name": "D:\\packages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt", "Licenses": "2" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt", "Licenses": "2" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md", "Licenses": "2" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md", "Licenses": "2" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\rscg_interceptmethod\\8.2024.2318.289\\LICENSE", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\rscg_interceptmethod\\8.2024.2318.289\\LICENSE", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE", "Licenses": "6" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE", "Licenses": "6" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE", "Licenses": "6" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE", "Licenses": "6" },
             
                     {"Name": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT", "Licenses": "3" },
             
                     {"Name": "MIT", "Licenses": "136" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.net.test.sdk\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.net.test.sdk\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.telemetry\\1.1.0\\License.txt", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.telemetry\\1.1.0\\License.txt", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.trxreport.abstractions\\1.1.0\\License.txt", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.trxreport.abstractions\\1.1.0\\License.txt", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.vstestbridge\\1.1.0\\License.txt", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.vstestbridge\\1.1.0\\License.txt", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testing.platform.msbuild\\1.1.0\\License.txt", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.testing.platform.msbuild\\1.1.0\\License.txt", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
             
-                    {"Name": "D:\\packages\\.nuget\\packages\\microsoft.testplatform.testhost\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
+                    {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.testplatform.testhost\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
                                             ];
         var table = new Tabulator("#licences-summary-table", {
             data: tabledata,
@@ -4040,23 +4039,23 @@ name: 'Statistical'
     <script>
         var tabledata = [];
 
-    tabledata.push({"Name": "AnalyzeMerge", "License": "D:\\packages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt" ,"Nr":1  });
+    tabledata.push({"Name": "AnalyzeMerge", "License": "D:\\MyPackages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "AnalyzeMerge", "License": "D:\\packages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md" ,"Nr":1  });
+    tabledata.push({"Name": "AnalyzeMerge", "License": "D:\\MyPackages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md" ,"Nr":1  });
                                 
     tabledata.push({"Name": "AnalyzeMerge", "License": "MIT" ,"Nr":2  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\packages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\packages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\packages\\.nuget\\packages\\rscg_interceptmethod\\8.2024.2318.289\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_interceptmethod\\8.2024.2318.289\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\packages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
                                 
@@ -4064,53 +4063,53 @@ name: 'Statistical'
                                 
     tabledata.push({"Name": "NetPackageAnalyzerDiagram", "License": "MIT" ,"Nr":2  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "MIT" ,"Nr":23  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "MIT" ,"Nr":18  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "MIT" ,"Nr":18  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "MIT" ,"Nr":17  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\microsoft.net.test.sdk\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.net.test.sdk\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.telemetry\\1.1.0\\License.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.telemetry\\1.1.0\\License.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.trxreport.abstractions\\1.1.0\\License.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.trxreport.abstractions\\1.1.0\\License.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.vstestbridge\\1.1.0\\License.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.vstestbridge\\1.1.0\\License.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\microsoft.testing.platform.msbuild\\1.1.0\\License.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.testing.platform.msbuild\\1.1.0\\License.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\microsoft.testplatform.testhost\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.testplatform.testhost\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "MIT" ,"Nr":28  });
                                 
@@ -4141,109 +4140,109 @@ name: 'Statistical'
         var tabledata = [];
 
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt",
                                     "Project":"AnalyzeMerge ",
                                             "Package":"LibGit2Sharp.NativeBinaries"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\libgit2sharp.nativebinaries\\2.0.322\\libgit2\\libgit2.license.txt",
                                     "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"LibGit2Sharp.NativeBinaries"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md",
                                     "Project":"AnalyzeMerge ",
                                             "Package":"LibGit2Sharp"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\libgit2sharp\\0.30.0\\App_Readme/LICENSE.md",
                                     "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"LibGit2Sharp"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_interceptmethod\\8.2024.2318.289\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_interceptmethod\\8.2024.2318.289\\LICENSE",
                                     "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"RSCG_InterceptMethod"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE",
                                     "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"RSCG_InterceptMethodCommon"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"RSCG_WhatIAmDoing_Common"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerDocusaurus ",
                                             "Package":"RSCG_WhatIAmDoing_Common"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerExportHTML ",
                                             "Package":"RSCG_WhatIAmDoing_Common"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerObjects ",
                                             "Package":"RSCG_WhatIAmDoing_Common"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerShowInConsole ",
                                             "Package":"RSCG_WhatIAmDoing_Common"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"RSCG_WhatIAmDoing_Common"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"RSCG_WhatIAmDoing"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerDocusaurus ",
                                             "Package":"RSCG_WhatIAmDoing"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerExportHTML ",
                                             "Package":"RSCG_WhatIAmDoing"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerObjects ",
                                             "Package":"RSCG_WhatIAmDoing"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerShowInConsole ",
                                             "Package":"RSCG_WhatIAmDoing"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"RSCG_WhatIAmDoing"
                                                                     });
@@ -5059,49 +5058,49 @@ name: 'Statistical'
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"Microsoft.CodeCoverage"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\microsoft.net.test.sdk\\17.9.0\\LICENSE_MIT.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\microsoft.net.test.sdk\\17.9.0\\LICENSE_MIT.txt",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"Microsoft.NET.Test.Sdk"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.telemetry\\1.1.0\\License.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.telemetry\\1.1.0\\License.txt",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"Microsoft.Testing.Extensions.Telemetry"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.trxreport.abstractions\\1.1.0\\License.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.trxreport.abstractions\\1.1.0\\License.txt",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"Microsoft.Testing.Extensions.TrxReport.Abstractions"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\microsoft.testing.extensions.vstestbridge\\1.1.0\\License.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\microsoft.testing.extensions.vstestbridge\\1.1.0\\License.txt",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"Microsoft.Testing.Extensions.VSTestBridge"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\microsoft.testing.platform.msbuild\\1.1.0\\License.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\microsoft.testing.platform.msbuild\\1.1.0\\License.txt",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"Microsoft.Testing.Platform.MSBuild"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.9.0\\LICENSE_MIT.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.9.0\\LICENSE_MIT.txt",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"Microsoft.TestPlatform.ObjectModel"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\packages\\.nuget\\packages\\microsoft.testplatform.testhost\\17.9.0\\LICENSE_MIT.txt",
+                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\microsoft.testplatform.testhost\\17.9.0\\LICENSE_MIT.txt",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"Microsoft.TestPlatform.TestHost"
                                                                     });
@@ -5956,17 +5955,17 @@ columns: [
         <div>
     Min Value: 0
     ;Max Value: 669
-    ;Math average: 104 
+    ;Math average: 103 
     ;Math median: 56
-    ;Standard Dev: 169.60
+    ;Standard Dev: 169.98
 
-        ;Coefficient of Variation: 1.63
+        ;Coefficient of Variation: 1.65
         
         <br />
-        Math mode: The most encountered value (2 times) is 0
+        Math mode: The most encountered value (1 times) is 0
         </div>
 
-        <div id="Number-exec-lines-per-project" style="height: 100%"></div>
+        <div id="Number-exec-lines-per-project" style="height: 100%" title="Number-exec-lines-per-project"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-exec-lines-per-project');
             var myChart = echarts.init(dom, null, {
@@ -6000,7 +5999,7 @@ columns: [
 {value:68},
 {value:56},
 {value:43},
-{value:39},
+{value:27},
 {value:16}
                         ],
                         type: 'bar'
@@ -6054,7 +6053,7 @@ columns: [
                 
                         {"Name": "NetPackageAnalyzerExportHTML", "Nr": "43" },
                 
-                        {"Name": "NetPackageAnalyzerTests", "Nr": "39" },
+                        {"Name": "NetPackageAnalyzerTests", "Nr": "27" },
                 
                         {"Name": "NPA.Resources", "Nr": "16" },
                 
@@ -6095,15 +6094,15 @@ columns: [
     ;Max Value: 227
     ;Math average: 20 
     ;Math median: 6
-    ;Standard Dev: 40.91
+    ;Standard Dev: 40.93
 
         ;Coefficient of Variation: 2.05
         
         <br />
-        Math mode: The most encountered value (11 times) is 2
+        Math mode: The most encountered value (1 times) is 2
         </div>
 
-        <div id="Number-exec-lines-per-class" style="height: 100%"></div>
+        <div id="Number-exec-lines-per-class" style="height: 100%" title="Number-exec-lines-per-class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-exec-lines-per-class');
             var myChart = echarts.init(dom, null, {
@@ -6201,8 +6200,6 @@ columns: [
                 
                         {"Name": "TemplateGenerator", "Nr": "37" },
                 
-                        {"Name": "TestStatistics", "Nr": "24" },
-                
                         {"Name": "FolderHistoryCommits", "Nr": "23" },
                 
                         {"Name": "deprecatedV1_gen_json", "Nr": "21" },
@@ -6214,6 +6211,8 @@ columns: [
                         {"Name": "includeV1_gen_json", "Nr": "12" },
                 
                         {"Name": "outdatedV1_gen_json", "Nr": "12" },
+                
+                        {"Name": "TestStatistics", "Nr": "12" },
                 
                         {"Name": "ProcessOutput", "Nr": "10" },
                 
@@ -6355,11 +6354,11 @@ columns: [
 {value:40,itemStyle:{color:'red'}},
 {value:38,itemStyle:{color:'red'}},
 {value:37,itemStyle:{color:'red'}},
-{value:24,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:21,itemStyle:{color:'red'}},
 {value:16,itemStyle:{color:'red'}},
 {value:14,itemStyle:{color:'red'}},
+{value:12,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}},
@@ -6429,15 +6428,15 @@ columns: [
     ;Max Value: 129
     ;Math average: 7 
     ;Math median: 3
-    ;Standard Dev: 15.26
+    ;Standard Dev: 15.20
 
-        ;Coefficient of Variation: 2.18
+        ;Coefficient of Variation: 2.17
         
         <br />
-        Math mode: The most encountered value (50 times) is 2
+        Math mode: The most encountered value (1 times) is 2
         </div>
 
-        <div id="Number-exec-lines-per-method" style="height: 100%"></div>
+        <div id="Number-exec-lines-per-method" style="height: 100%" title="Number-exec-lines-per-method"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-exec-lines-per-method');
             var myChart = echarts.init(dom, null, {
@@ -6534,8 +6533,6 @@ columns: [
                         {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "19" },
                 
                         {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "19" },
-                
-                        {"Name": "void TestStatistics.TestMode()", "Nr": "18" },
                 
                         {"Name": "Command RealMainExecuting.AddGenerateFiles()", "Nr": "16" },
                 
@@ -6671,9 +6668,13 @@ columns: [
                 
                         {"Name": "void ProjectsDict.FindUpStreamReferences()", "Nr": "3" },
                 
+                        {"Name": "void TestStatistics.TestMax()", "Nr": "3" },
+                
                         {"Name": "void TestStatistics.TestMean()", "Nr": "3" },
                 
                         {"Name": "void TestStatistics.TestMedian()", "Nr": "3" },
+                
+                        {"Name": "void TestStatistics.TestMin()", "Nr": "3" },
                 
                         {"Name": "AnalyzeMergeData.AnalyzeMergeData(string folder)", "Nr": "2" },
                 
@@ -6822,7 +6823,7 @@ columns: [
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,154],
+                paginationSizeSelector: [100,155],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -6875,7 +6876,6 @@ columns: [
 {value:21,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
-{value:18,itemStyle:{color:'red'}},
 {value:16,itemStyle:{color:'red'}},
 {value:14,itemStyle:{color:'red'}},
 {value:14,itemStyle:{color:'red'}},
@@ -6927,6 +6927,8 @@ columns: [
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
+{value:3,itemStyle:{color:'red'}},
+{value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
@@ -7049,10 +7051,10 @@ columns: [
         ;Coefficient of Variation: 1.80
         
         <br />
-        Math mode: The most encountered value (4 times) is 1
+        Math mode: The most encountered value (1 times) is 1
         </div>
 
-<div class="mermaid">
+<div class="mermaid" title="Public class per project">
 ---
 config:
     xyChart:
@@ -7071,7 +7073,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
 
 </div>
 <br />
-<div id="Public-class-per-project-table"></div>
+<div id="Public-class-per-project-table" title="Public-class-per-project-table"></div>
 
 <script>
     var tabledata = [
@@ -7132,7 +7134,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
         ;Coefficient of Variation: 1.69
         </div>
 
-        <div id="Public-methods-per-assembly" style="height: 100%"></div>
+        <div id="Public-methods-per-assembly" style="height: 100%" title="Public-methods-per-assembly"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Public-methods-per-assembly');
             var myChart = echarts.init(dom, null, {
@@ -7317,10 +7319,10 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
         ;Coefficient of Variation: 1.03
         
         <br />
-        Math mode: The most encountered value (31 times) is 1
+        Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Public-methods-per-class" style="height: 100%"></div>
+        <div id="Public-methods-per-class" style="height: 100%" title="Public-methods-per-class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Public-methods-per-class');
             var myChart = echarts.init(dom, null, {
@@ -7454,7 +7456,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
                 
                         {"Name": "ProcessOutput", "Nr": "4" },
                 
-                        {"Name": "TestStatistics", "Nr": "3" },
+                        {"Name": "TestStatistics", "Nr": "4" },
                 
                         {"Name": "deprecatedV1_gen_json", "Nr": "2" },
                 
@@ -7584,7 +7586,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
-{value:3,itemStyle:{color:'red'}},
+{value:4,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
@@ -7637,17 +7639,14 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
     <div>
     Min Value: 1
     ;Max Value: 41
-    ;Math average: 12 
+    ;Math average: 11 
     ;Math median: 8
-    ;Standard Dev: 12.65
+    ;Standard Dev: 12.73
 
-        ;Coefficient of Variation: 1.05
-        
-        <br />
-        Math mode: The most encountered value (3 times) is 2
+        ;Coefficient of Variation: 1.16
         </div>
 
-<div class="mermaid">
+<div class="mermaid" title="References per assembly">
 ---
 config:
     xyChart:
@@ -7660,13 +7659,13 @@ config:
 
 xychart-beta horizontal
 title "References per assembly"
-x-axis ["NetPackageAnalyzeHistory","NetPackageAnalyzerObjects","NetPackageAnalyzerMetricsMSFT","Statistical","NPA.Resources","NuGetInfo","NetPackageAnalyzerDiagram","NetPackageAnalyzerDocusaurus","NetPackageAnalyzerShowInConsole","NetPackageAnalyzerExportHTML"]
+x-axis ["NetPackageAnalyzeHistory","NetPackageAnalyzerObjects","NetPackageAnalyzerMetricsMSFT","NPA.Resources","NuGetInfo","Statistical","NetPackageAnalyzerDiagram","NetPackageAnalyzerDocusaurus","NetPackageAnalyzerShowInConsole","NetPackageAnalyzerExportHTML"]
 y-axis "" 0--> 41
-bar [41,28,19,9,8,8,2,2,2,1]
+bar [41,28,19,8,8,8,2,2,2,1]
 
 </div>
 <br />
-<div id="References-per-assembly-table"></div>
+<div id="References-per-assembly-table" title="References-per-assembly-table"></div>
 
 <script>
     var tabledata = [
@@ -7677,11 +7676,11 @@ bar [41,28,19,9,8,8,2,2,2,1]
         
                 {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "19" },
         
-                {"Name": "Statistical", "Nr": "9" },
-        
                 {"Name": "NPA.Resources", "Nr": "8" },
         
                 {"Name": "NuGetInfo", "Nr": "8" },
+        
+                {"Name": "Statistical", "Nr": "8" },
         
                 {"Name": "NetPackageAnalyzerDiagram", "Nr": "2" },
         
@@ -7721,10 +7720,10 @@ bar [41,28,19,9,8,8,2,2,2,1]
         ;Coefficient of Variation: 1.28
         
         <br />
-        Math mode: The most encountered value (5 times) is 4
+        Math mode: The most encountered value (1 times) is 4
         </div>
 
-<div class="mermaid">
+<div class="mermaid" title="References per class">
 ---
 config:
     xyChart:
@@ -7737,13 +7736,13 @@ config:
 
 xychart-beta horizontal
 title "References per class"
-x-axis ["ProjectsDict","AssemblyDataFromMSFT","GenerateHTML","GenerateFilesDocusaurus","TestStatistics","PackageData","ProjectData","RealMainExecuting","TemplateGenerator","TestNugetInfo","GenerateData","WriteToConsole","NamePerCountArray","TestSolutionExists"]
+x-axis ["ProjectsDict","AssemblyDataFromMSFT","GenerateHTML","GenerateFilesDocusaurus","PackageData","ProjectData","RealMainExecuting","TemplateGenerator","TestNugetInfo","TestStatistics","GenerateData","WriteToConsole","NamePerCountArray","TestSolutionExists"]
 y-axis "" 0--> 40
-bar [40,18,18,11,5,4,4,4,4,4,3,3,1,1]
+bar [40,18,18,11,4,4,4,4,4,4,3,3,1,1]
 
 </div>
 <br />
-<div id="References-per-class-table"></div>
+<div id="References-per-class-table" title="References-per-class-table"></div>
 
 <script>
     var tabledata = [
@@ -7756,8 +7755,6 @@ bar [40,18,18,11,5,4,4,4,4,4,3,3,1,1]
         
                 {"Name": "GenerateFilesDocusaurus", "Nr": "11" },
         
-                {"Name": "TestStatistics", "Nr": "5" },
-        
                 {"Name": "PackageData", "Nr": "4" },
         
                 {"Name": "ProjectData", "Nr": "4" },
@@ -7767,6 +7764,8 @@ bar [40,18,18,11,5,4,4,4,4,4,3,3,1,1]
                 {"Name": "TemplateGenerator", "Nr": "4" },
         
                 {"Name": "TestNugetInfo", "Nr": "4" },
+        
+                {"Name": "TestStatistics", "Nr": "4" },
         
                 {"Name": "GenerateData", "Nr": "3" },
         
@@ -7797,13 +7796,13 @@ bar [40,18,18,11,5,4,4,4,4,4,3,3,1,1]
     <h2 id="commits"> Commits</h2>
     <h3> Commits per year</h3>
 
-            <div class="mermaid">
+            <div class="mermaid" title="Commits per year">
                 xychart-beta
                 title "Commits per year (folder and csproj)"
                 x-axis [2023,2024]
-                y-axis "" 0--> 220
-                bar [23,220]
-                bar [13,115]
+                y-axis "" 0--> 224
+                bar [23,224]
+                bar [13,116]
             </div>
 
         
@@ -7987,7 +7986,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,62],
+data: [10,63],
 },
 
 
@@ -8011,7 +8010,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,21],
+data: [null,22],
 },
 
 
@@ -8059,7 +8058,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,9],
+data: [null,10],
 },
 
 
@@ -8107,7 +8106,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,2],
+data: [null,3],
 },
 
             ]
@@ -8133,11 +8132,11 @@ tabledata.push({"folder": "NetPackageAnalyzeHistory", "year":2024,"Nr": "13" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2023,"Nr": "10" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "62" });
+tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "63" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2024,"Nr": "7" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "21" });
+tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "22" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerMetricsMSFT", "year":2024,"Nr": "5" });
                     
@@ -8145,7 +8144,7 @@ tabledata.push({"folder": "NetPackageAnalyzerObjects", "year":2024,"Nr": "44" })
                     
 tabledata.push({"folder": "NetPackageAnalyzerShowInConsole", "year":2024,"Nr": "1" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerTests", "year":2024,"Nr": "9" });
+tabledata.push({"folder": "NetPackageAnalyzerTests", "year":2024,"Nr": "10" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2023,"Nr": "10" });
                     
@@ -8155,7 +8154,7 @@ tabledata.push({"folder": "NPA.Resources", "year":2024,"Nr": "2" });
                     
 tabledata.push({"folder": "NuGetInfo", "year":2024,"Nr": "2" });
                     
-tabledata.push({"folder": "Statistical", "year":2024,"Nr": "2" });
+tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
                     
                 var table = new Tabulator("#tabularYearNameCount", {
             data: tabledata,
@@ -8210,8 +8209,8 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "2" });
     <script>    mermaid.initialize({ startOnLoad: true });</script>
 
     <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
-    <small>8.2024.1012.1012</small>
-    <small> Peter Handke is feeling self-confident in Mbabane </small>
+    <small>8.2024.1014.1828</small>
+    <small> Tomas Tranströmer is feeling careful in Ashgabat </small>
 <script>
         
             const steps = [
@@ -8237,7 +8236,7 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "2" });
             {
                 element: '#Commits-per-year-and-folder',
                 popover: {
-                    title: 'Total Commits for NetPackageAnalyzer : 243',
+                    title: 'Total Commits for NetPackageAnalyzer : 247',
                     description: 'Here are the commits per year and project',
                 }
             }

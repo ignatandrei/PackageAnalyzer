@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPA.Resources", "NPA.Resour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Statistical", "Statistical\Statistical.csproj", "{32CE4D49-5C69-441D-A002-1CFC182B1B69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPA.HtmlData", "NPA.HtmlData\NPA.HtmlData.csproj", "{28D3271F-7D41-4FDA-A524-A1C0F3E37169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{32CE4D49-5C69-441D-A002-1CFC182B1B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32CE4D49-5C69-441D-A002-1CFC182B1B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32CE4D49-5C69-441D-A002-1CFC182B1B69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D3271F-7D41-4FDA-A524-A1C0F3E37169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D3271F-7D41-4FDA-A524-A1C0F3E37169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D3271F-7D41-4FDA-A524-A1C0F3E37169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D3271F-7D41-4FDA-A524-A1C0F3E37169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
