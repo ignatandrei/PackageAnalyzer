@@ -94,6 +94,7 @@ public static class StatisticalNumbers<T>
             {
                 var vals = values
                 .Where(it => it == mode.Key)
+                .Distinct()
                 .ToArray();
                 return new ModeResult<T>(vals, mode.Key);
             }).ToArray();
