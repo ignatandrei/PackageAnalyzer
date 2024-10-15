@@ -9,17 +9,17 @@
       ],
       "rollForward": false
     },
-    "netpackageanalyzerconsole": {
-      "version": "8.2024.1014.1828",
-      "commands": [
-        "PackageAnalyzer"
-      ],
-      "rollForward": false
-    },
     "dotnet-depends": {
       "version": "0.8.0",
       "commands": [
         "dotnet-depends"
+      ],
+      "rollForward": false
+    },
+    "netpackageanalyzerconsole": {
+      "version": "8.2024.1015.1904",
+      "commands": [
+        "PackageAnalyzer"
       ],
       "rollForward": false
     }

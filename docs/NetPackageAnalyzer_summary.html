@@ -51,16 +51,16 @@
                     <tr>
                         <td>1</td>
                         <td>
-                            <a href="#projects-with-tests">Number projects : 13</a>
+                            <a href="#projects-with-tests">Number projects : 14</a>
                             (<a href="#play-with-solution-relations"> tests </a>: 1,
-                            <a href="#projects-without-tests"> total </a>: 13
+                            <a href="#projects-without-tests"> total </a>: 14
                             )
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>
-                            <a href="#building-blocks"> Building Blocks </a>: 7
+                            <a href="#building-blocks"> Building Blocks </a>: 8
                         </td>
                     </tr>
                     <tr>
@@ -74,10 +74,10 @@
                         <td>4</td>
                         <td>
 
-                            <a href="#packages-per-project-table">Number packages</a> : 53
+                            <a href="#packages-per-project-table">Number packages</a> : 49
                             (Outdated : 11
                             ,Deprecated : 0,
-                            ,<a href="#packages-with-major-version-different">Major version differs</a> :0
+                            ,<a href="#packages-with-major-version-different">Major version differs</a> :1
                             )
                         </td>
                         </tr>
@@ -86,7 +86,7 @@
                         <td>
                             <a href="#number-of-classes-per-assembly">
                                 Number classes
-                            </a>: 66
+                            </a>: 68
                         </td>
                         
                     </tr>
@@ -95,17 +95,17 @@
                         <td>
                             <a href="#number-of-methods-per-assembly">
                                 Number methods
-                            </a>: 161
+                            </a>: 164
                         </td>
                     </tr>
             </table>
         </div>
         <div class="center">
             <h1 id="summary">Summary NetPackageAnalyzer   </h1>
-            <a href="#licences-per-project"> Licenses</a>: 16
+            <a href="#licences-per-project"> Licenses</a>: 14
             <h2>If you are new to the project</h2>
             <ol>
-                <li>Goto <a href="#building-blocks"> Building Blocks </a>  7 - you can understand those projects without references
+                <li>Goto <a href="#building-blocks"> Building Blocks </a>  8 - you can understand those projects without references
                 </li>
                 <li>Goto <a href="#root-projects"> Root Projects </a> 1 - see the starting projects 
                 <li>Goto
@@ -167,7 +167,7 @@
                         <td>1</td>
                         <td>
                             <a href="#commits">
-                                Total Commits : 247
+                                Total Commits : 257
                         </td>
                     </tr>
 
@@ -189,7 +189,7 @@
                     <tr>
                         <td>4</td>
                         <td>
-                            The file with most commits ( 113 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
+                            The file with most commits ( 115 ) is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
                         </td>
                     </tr>
 
@@ -249,10 +249,10 @@
                         <td>
                             <a href="#Maintainability-for-Assembly">
                                 With low maintaining score
-                            </a>:57
+                            </a>:62
 
                         </td>
-                        <td>NetPackageAnalyzerExportHTML</td>
+                        <td>Statistical</td>
                     </tr>
                     <tr>
                         <td>6</td>
@@ -264,7 +264,7 @@
                         <td>
                             <a href="#Cyclomatic-Complexity-for-Assembly">
                                 With most Cyclomatic Complexity
-                            </a>:NamePerCount { Name = NetPackageAnalyzerObjects, Count = 348, AdditionalData = NetPackageAnalyzerObjects }?Count
+                            </a>:348
                         </td>
                         <td>NetPackageAnalyzerObjects</td>
                     </tr>
@@ -329,7 +329,7 @@
                         <td>5</td>
                         <td>
                             <a href="#executable-lines-per-class">
-                                With most lines:NamePerCount { Name = GenerateData, Count = 227, AdditionalData = GenerateData }??.Count
+                                With most lines:227
                             </a>
                         </td>
                         <td>GenerateData</td>
@@ -405,7 +405,7 @@
             text: ''
         },
         legend: {
-            data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','NPA.Resources','NuGetInfo','Statistical']
+            data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','NPA.HtmlData','NPA.Resources','NuGetInfo','Statistical']
         },            
         tooltip: {
             trigger: 'item'
@@ -413,12 +413,12 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 73 },
-                { name: 'Commits 2024', max: 63 },
-                { name: 'Packages', max: 38 },
+                { name: 'Total Commits', max: 74 },
+                { name: 'Commits 2024', max: 64 },
+                { name: 'Packages', max: 29 },
                 { name: 'References', max: 5 },
                 { name: 'Number Public Classes', max: 35 },
-                { name: 'Lines in Public Classes', max: 1525 },
+                { name: 'Lines in Public Classes', max: 1570 },
                 { name: 'Number Classes',max:32},
                 { name: 'Total Lines', max: 1854 },
                 { name: "Cyclomatic", max: 348},
@@ -432,53 +432,58 @@
                 data: [
 
     {
-                                value: [9,6, 3, 0, 5, 220,8, 464, 29,23],
+                                value: [10,7, 3, 0, 5, 220,8, 464, 29,23],
 name: 'AnalyzeMerge'
     },
 
     {
-                                value: [13,13, 0, 0, 6, 239,5, 292, 36,19],
+                                value: [14,14, 0, 0, 6, 239,5, 292, 36,19],
 name: 'NetPackageAnalyzeHistory'
     },
 
     {
-                                value: [73,63, 33, 4, 0, 0,4, 268, 26,32],
+                                value: [74,64, 29, 4, 0, 0,4, 268, 26,32],
 name: 'NetPackageAnalyzerConsole'
     },
 
     {
-                                value: [7,7, 1, 0, 1, 8,0, 0, 0,0],
+                                value: [8,8, 1, 0, 1, 8,0, 0, 0,0],
 name: 'NetPackageAnalyzerDiagram'
     },
 
     {
-                                value: [56,46, 25, 2, 2, 242,3, 306, 34,48],
+                                value: [57,47, 11, 2, 2, 242,3, 306, 34,48],
 name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-                                value: [22,22, 19, 2, 1, 71,1, 88, 13,25],
+                                value: [23,23, 9, 3, 1, 80,2, 104, 17,32],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
     {
-                                value: [5,5, 0, 0, 4, 136,5, 174, 31,26],
+                                value: [6,6, 0, 0, 4, 136,5, 174, 31,26],
 name: 'NetPackageAnalyzerMetricsMSFT'
     },
 
     {
-                                value: [44,44, 21, 5, 35, 1525,32, 1854, 348,77],
+                                value: [45,45, 7, 5, 35, 1570,32, 1854, 348,77],
 name: 'NetPackageAnalyzerObjects'
     },
 
     {
-                                value: [1,1, 19, 1, 1, 50,1, 59, 1,0],
+                                value: [1,1, 5, 1, 1, 50,1, 59, 1,0],
 name: 'NetPackageAnalyzerShowInConsole'
     },
 
     {
-                                value: [10,10, 38, 3, 3, 65,4, 119, 8,20],
+                                value: [10,10, 25, 3, 3, 65,4, 119, 8,20],
 name: 'NetPackageAnalyzerTests'
+    },
+
+    {
+                                value: [2,2, 4, 0, 1, 61,1, 74, 10,18],
+name: 'NPA.HtmlData'
     },
 
     {
@@ -512,8 +517,8 @@ name: 'Statistical'
 
     <br />
 
-    <h2 id="projects-without-tests"> 12 Projects without tests</h2>
-    <div class="mermaid" title="projects without tests">
+    <h2 id="projects-without-tests"> 13 Projects without tests</h2>
+    <div class="mermaid" title="image projects without tests">
         flowchart LR
 
 
@@ -567,6 +572,9 @@ name: 'Statistical'
 
 
                         NetPackageAnalyzerExportHTML-->NetPackageAnalyzerObjects
+
+                    
+                        NetPackageAnalyzerExportHTML-->NPA.HtmlData
 
                     
                         NetPackageAnalyzerExportHTML-->NPA.Resources
@@ -605,6 +613,12 @@ name: 'Statistical'
 
                                 
 
+                %% start project reference NPA.HtmlData\NPA.HtmlData.csproj
+
+                        NPA.HtmlData
+                    
+            
+
                 %% start project reference NPA.Resources\NPA.Resources.csproj
 
                         NPA.Resources
@@ -623,8 +637,8 @@ name: 'Statistical'
                     
                 </div>
 
-    <h2 id="projects-with-tests"> 13 Projects with tests</h2>
-    <div class="mermaid" title="projects with tests">
+    <h2 id="projects-with-tests"> 14 Projects with tests</h2>
+    <div class="mermaid" title="image projects with tests">
         flowchart LR
 
 
@@ -678,6 +692,9 @@ name: 'Statistical'
 
 
                         NetPackageAnalyzerExportHTML-->NetPackageAnalyzerObjects
+
+                    
+                        NetPackageAnalyzerExportHTML-->NPA.HtmlData
 
                     
                         NetPackageAnalyzerExportHTML-->NPA.Resources
@@ -729,6 +746,12 @@ name: 'Statistical'
 
                                 
 
+                %% start project reference NPA.HtmlData\NPA.HtmlData.csproj
+
+                        NPA.HtmlData
+                    
+            
+
                 %% start project reference NPA.Resources\NPA.Resources.csproj
 
                         NPA.Resources
@@ -757,15 +780,15 @@ name: 'Statistical'
             
                     dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj" [label="NetPackageAnalyzerDocusaurus : 2"]\r\n';
             
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/AnalyzeMerge/AnalyzeMerge.csproj" [label="AnalyzeMerge : 0"]\r\n';
-            
                     dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj" [label="NetPackageAnalyzerTests : 3"]\r\n';
             
                     dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj" [label="NetPackageAnalyzerObjects : 5"]\r\n';
             
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj" [label="NetPackageAnalyzerExportHTML : 2"]\r\n';
+                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj" [label="NetPackageAnalyzerExportHTML : 3"]\r\n';
             
                     dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NuGetInfo/NuGetInfo.csproj" [label="NuGetInfo : 0"]\r\n';
+            
+                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/AnalyzeMerge/AnalyzeMerge.csproj" [label="AnalyzeMerge : 0"]\r\n';
             
                     dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzeHistory/NetPackageAnalyzeHistory.csproj" [label="NetPackageAnalyzeHistory : 0"]\r\n';
             
@@ -778,6 +801,8 @@ name: 'Statistical'
                     dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NPA.Resources/NPA.Resources.csproj" [label="NPA.Resources : 0"]\r\n';
             
                     dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/Statistical/Statistical.csproj" [label="Statistical : 0"]\r\n';
+            
+                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NPA.HtmlData/NPA.HtmlData.csproj" [label="NPA.HtmlData : 0"]\r\n';
             
                                             dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/AnalyzeMerge/AnalyzeMerge.csproj"\r\n'
                 
@@ -809,6 +834,8 @@ name: 'Statistical'
                 
                                             dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"\r\n'
                 
+                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NPA.HtmlData/NPA.HtmlData.csproj"\r\n'
+                
                                             dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NPA.Resources/NPA.Resources.csproj"\r\n'
                 
                                             dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerShowInConsole/NetPackageAnalyzerShowInConsole.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"\r\n'
@@ -819,12 +846,12 @@ name: 'Statistical'
     </script>
 
 
-    <h2 id="building-blocks">Building Blocks : 7 </h2>
+    <h2 id="building-blocks">Building Blocks : 8 </h2>
 
                 <h3>Project: AnalyzeMerge</h3>
                 Full Name : AnalyzeMerge\AnalyzeMerge.csproj
 
-                <div class="mermaid" title="project bb0 1">
+                <div class="mermaid" title="image project bb0 1">
                     flowchart LR
                     AnalyzeMerge
 
@@ -837,7 +864,7 @@ name: 'Statistical'
                 <h3>Project: NetPackageAnalyzeHistory</h3>
                 Full Name : NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj
 
-                <div class="mermaid" title="project bb0 2">
+                <div class="mermaid" title="image project bb0 2">
                     flowchart LR
                     NetPackageAnalyzeHistory
 
@@ -850,7 +877,7 @@ name: 'Statistical'
                 <h3>Project: NetPackageAnalyzerDiagram</h3>
                 Full Name : NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj
 
-                <div class="mermaid" title="project bb0 3">
+                <div class="mermaid" title="image project bb0 3">
                     flowchart LR
                     NetPackageAnalyzerDiagram
 
@@ -866,7 +893,7 @@ name: 'Statistical'
                 <h3>Project: NetPackageAnalyzerMetricsMSFT</h3>
                 Full Name : NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj
 
-                <div class="mermaid" title="project bb0 4">
+                <div class="mermaid" title="image project bb0 4">
                     flowchart LR
                     NetPackageAnalyzerMetricsMSFT
 
@@ -876,10 +903,23 @@ name: 'Statistical'
                 </div>
 
             
+                <h3>Project: NPA.HtmlData</h3>
+                Full Name : NPA.HtmlData\NPA.HtmlData.csproj
+
+                <div class="mermaid" title="image project bb0 5">
+                    flowchart LR
+                    NPA.HtmlData
+
+                            NetPackageAnalyzerExportHTML[NetPackageAnalyzerExportHTML\NetPackageAnalyzerExportHTML.csproj]
+                            NetPackageAnalyzerExportHTML-->NPA.HtmlData
+                        
+                </div>
+
+            
                 <h3>Project: NPA.Resources</h3>
                 Full Name : NPA.Resources\NPA.Resources.csproj
 
-                <div class="mermaid" title="project bb0 5">
+                <div class="mermaid" title="image project bb0 6">
                     flowchart LR
                     NPA.Resources
 
@@ -892,7 +932,7 @@ name: 'Statistical'
                 <h3>Project: NuGetInfo</h3>
                 Full Name : NuGetInfo\NuGetInfo.csproj
 
-                <div class="mermaid" title="project bb0 6">
+                <div class="mermaid" title="image project bb0 7">
                     flowchart LR
                     NuGetInfo
 
@@ -908,7 +948,7 @@ name: 'Statistical'
                 <h3>Project: Statistical</h3>
                 Full Name : Statistical\Statistical.csproj
 
-                <div class="mermaid" title="project bb0 7">
+                <div class="mermaid" title="image project bb0 8">
                     flowchart LR
                     Statistical
 
@@ -932,6 +972,8 @@ name: 'Statistical'
                     {"Name": "NetPackageAnalyzerDiagram", "RelProj": "NetPackageAnalyzerDocusaurus;NetPackageAnalyzerObjects;" },
             
                     {"Name": "NetPackageAnalyzerMetricsMSFT", "RelProj": "NetPackageAnalyzerObjects;" },
+            
+                    {"Name": "NPA.HtmlData", "RelProj": "NetPackageAnalyzerExportHTML;" },
             
                     {"Name": "NPA.Resources", "RelProj": "NetPackageAnalyzerExportHTML;" },
             
@@ -961,7 +1003,7 @@ name: 'Statistical'
                 <h3>Project: NetPackageAnalyzerConsole</h3>
                 Full Name : NetPackageAnalyzerConsole\NetPackageAnalyzerConsole.csproj
 
-                <div class="mermaid" title="root project 1">
+                <div class="mermaid" title="image root project 1">
                     flowchart LR
                     NetPackageAnalyzerConsole
 
@@ -1009,7 +1051,7 @@ name: 'Statistical'
             <h3>Project: NetPackageAnalyzerTests</h3>
             Full Name : NetPackageAnalyzerTests\NetPackageAnalyzerTests.csproj
 
-            <div class="mermaid" title="test project 1">
+                <div class="mermaid" title="image test project 1">
                 flowchart LR
                 NetPackageAnalyzerTests
 
@@ -1057,19 +1099,19 @@ name: 'Statistical'
     <h3>Maintainability per assembly</h3>
     
         <div>
-    Min Value: 57
+    Min Value: 62
     ;Max Value: 100
     ;Math average: 81 
-    ;Math median: 81
-    ;Standard Dev: 13.42
+    ;Math median: 80
+    ;Standard Dev: 12.08
 
-        ;Coefficient of Variation: 0.17
+        ;Coefficient of Variation: 0.15
         
         <br />
         Math mode: The most encountered value (1 times) is 100
         </div>
 
-        <div id="Maintainability-for-Assembly" style="height: 100%" title="Maintainability-for-Assembly"></div>
+        <div id="Maintainability-for-Assembly" style="height: 100%" title="image Maintainability-for-Assembly"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Maintainability-for-Assembly');
             var myChart = echarts.init(dom, null, {
@@ -1083,7 +1125,7 @@ name: 'Statistical'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerExportHTML','Statistical','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','AnalyzeMerge','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects','NPA.Resources']
+                    data: ['Statistical','NPA.HtmlData','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NetPackageAnalyzerExportHTML','NetPackageAnalyzerConsole','AnalyzeMerge','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects']
                 },
                 yAxis: {
                     type: 'value'
@@ -1095,16 +1137,16 @@ name: 'Statistical'
                 series: [
                     {
                         data: [
-            {value:57},
-{value:62},
+            {value:62},
+{value:65},
 {value:70},
 {value:74},
 {value:75},
+{value:77},
 {value:80},
 {value:81},
 {value:87},
-{value:87},
-{value:88}
+{value:87}
                         ],
                         type: 'bar'
                     }
@@ -1141,15 +1183,17 @@ name: 'Statistical'
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "57" },
-                
                         {"Name": "Statistical", "Nr": "62" },
+                
+                        {"Name": "NPA.HtmlData", "Nr": "65" },
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "70" },
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "74" },
                 
                         {"Name": "NetPackageAnalyzeHistory", "Nr": "75" },
+                
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "77" },
                 
                         {"Name": "NetPackageAnalyzerConsole", "Nr": "80" },
                 
@@ -1172,7 +1216,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,13],
+                paginationSizeSelector: [10,14],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -1196,7 +1240,7 @@ name: 'Statistical'
     ;Max Value: 100
     ;Math average: 82 
     ;Math median: 86
-    ;Standard Dev: 14.04
+    ;Standard Dev: 14.25
 
         ;Coefficient of Variation: 0.17
         
@@ -1204,7 +1248,7 @@ name: 'Statistical'
         Math mode: The most encountered value (1 times) is 86
         </div>
 
-        <div id="Maintainability-for-Class" style="height: 100%" title="Maintainability-for-Class"></div>
+        <div id="Maintainability-for-Class" style="height: 100%" title="image Maintainability-for-Class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Maintainability-for-Class');
             var myChart = echarts.init(dom, null, {
@@ -1218,7 +1262,7 @@ name: 'Statistical'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['GenerateFilesDocusaurus','GenerateData','AnalyzeMergeData','GenerateHTML','GenericMetrics','ProcessOutput','ProcessOutput','AnalyzeForProject','StatisticalNumbers<T>','FolderHistoryCommits']
+                    data: ['GenerateFilesDocusaurus','GenerateData','GenerateHTML','AnalyzeMergeData','GenericMetrics','ProcessOutput','ProcessOutput','AnalyzeForProject','StatisticalNumbers<T>','FolderHistoryCommits']
                 },
                 yAxis: {
                     type: 'value'
@@ -1232,7 +1276,7 @@ name: 'Statistical'
                         data: [
             {value:38},
 {value:52},
-{value:57},
+{value:54},
 {value:57},
 {value:60},
 {value:60},
@@ -1280,9 +1324,9 @@ name: 'Statistical'
                 
                         {"Name": "GenerateData", "Nr": "52" },
                 
-                        {"Name": "AnalyzeMergeData", "Nr": "57" },
+                        {"Name": "GenerateHTML", "Nr": "54" },
                 
-                        {"Name": "GenerateHTML", "Nr": "57" },
+                        {"Name": "AnalyzeMergeData", "Nr": "57" },
                 
                         {"Name": "GenericMetrics", "Nr": "60" },
                 
@@ -1295,6 +1339,8 @@ name: 'Statistical'
                         {"Name": "StatisticalNumbers<T>", "Nr": "62" },
                 
                         {"Name": "FolderHistoryCommits", "Nr": "64" },
+                
+                        {"Name": "ExtractImages", "Nr": "65" },
                 
                         {"Name": "FileFolderHistorySimple", "Nr": "65" },
                 
@@ -1392,6 +1438,8 @@ name: 'Statistical'
                 
                         {"Name": "IOperations", "Nr": "100" },
                 
+                        {"Name": "MDSummaryData", "Nr": "100" },
+                
                         {"Name": "PublicClassRefData", "Nr": "100" },
                 
                         {"Name": "WriteToConsole", "Nr": "100" },
@@ -1401,7 +1449,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60],
+                paginationSizeSelector: [10,20,30,40,50,60,62],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -1425,7 +1473,7 @@ name: 'Statistical'
     ;Max Value: 100
     ;Math average: 78 
     ;Math median: 81
-    ;Standard Dev: 15.56
+    ;Standard Dev: 15.72
 
         ;Coefficient of Variation: 0.20
         
@@ -1433,7 +1481,7 @@ name: 'Statistical'
         Math mode: The most encountered value (1 times) is 100
         </div>
 
-        <div id="Maintainability-for-Method" style="height: 100%" title="Maintainability-for-Method"></div>
+        <div id="Maintainability-for-Method" style="height: 100%" title="image Maintainability-for-Method"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Maintainability-for-Method');
             var myChart = echarts.init(dom, null, {
@@ -1447,7 +1495,7 @@ name: 'Statistical'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','void AnalyzeForProject.Analyze()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)','void FolderHistoryCommits.Initialize()','void ProjectsDict.FindReferences()']
+                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','void AnalyzeForProject.Analyze()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task<string> GenerateHTML.GenerateNow(string folder, string where)','Task<bool> ExtractImages.GetImagesAsync()','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)']
                 },
                 yAxis: {
                     type: 'value'
@@ -1466,9 +1514,9 @@ name: 'Statistical'
 {value:44},
 {value:45},
 {value:46},
-{value:50},
-{value:51},
-{value:51}
+{value:47},
+{value:49},
+{value:50}
                         ],
                         type: 'bar'
                     }
@@ -1519,13 +1567,15 @@ name: 'Statistical'
                 
                         {"Name": "HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)", "Nr": "46" },
                 
+                        {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "47" },
+                
+                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "49" },
+                
                         {"Name": "string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)", "Nr": "50" },
                 
                         {"Name": "void FolderHistoryCommits.Initialize()", "Nr": "51" },
                 
                         {"Name": "void ProjectsDict.FindReferences()", "Nr": "51" },
-                
-                        {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "52" },
                 
                         {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "53" },
                 
@@ -1646,6 +1696,8 @@ name: 'Statistical'
                         {"Name": "void TestStatistics.TestMean()", "Nr": "78" },
                 
                         {"Name": "void TestStatistics.TestMedian()", "Nr": "78" },
+                
+                        {"Name": "ExtractImages.ExtractImages()", "Nr": "79" },
                 
                         {"Name": "int ProjectsDict.MaxYearCommits()", "Nr": "79" },
                 
@@ -1777,6 +1829,8 @@ name: 'Statistical'
                 
                         {"Name": "AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)", "Nr": "96" },
                 
+                        {"Name": "ExtractImages.ExtractImages(string htmlPath)", "Nr": "96" },
+                
                         {"Name": "FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)", "Nr": "96" },
                 
                         {"Name": "FolderHistoryCommits.FolderHistoryCommits(string nameFolder)", "Nr": "96" },
@@ -1820,7 +1874,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,155],
+                paginationSizeSelector: [100,158],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -1843,14 +1897,14 @@ name: 'Statistical'
         <div>
     Min Value: 0
     ;Max Value: 77
-    ;Math average: 21 
-    ;Math median: 20
-    ;Standard Dev: 21.07
+    ;Math average: 22 
+    ;Math median: 19
+    ;Standard Dev: 20.49
 
-        ;Coefficient of Variation: 1.00
+        ;Coefficient of Variation: 0.93
         </div>
 
-        <div id="Class-Coupling-for-Assembly" style="height: 100%" title="Class-Coupling-for-Assembly"></div>
+        <div id="Class-Coupling-for-Assembly" style="height: 100%" title="image Class-Coupling-for-Assembly"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Class-Coupling-for-Assembly');
             var myChart = echarts.init(dom, null, {
@@ -1864,7 +1918,7 @@ name: 'Statistical'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerExportHTML','AnalyzeMerge','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','Statistical','NPA.Resources']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NPA.HtmlData','Statistical']
                 },
                 yAxis: {
                     type: 'value'
@@ -1879,13 +1933,13 @@ name: 'Statistical'
             {value:77,itemStyle:{color:'red'}},
 {value:48,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
+{value:32,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
-{value:25,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:20,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
-{value:9,itemStyle:{color:'orange'}},
-{value:2,itemStyle:{color:'orange'}}
+{value:18,itemStyle:{color:'red'}},
+{value:9,itemStyle:{color:'orange'}}
                         ],
                         type: 'bar'
                     }
@@ -1928,15 +1982,17 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerConsole", "Nr": "32" },
                 
-                        {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "26" },
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "32" },
                 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "25" },
+                        {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "26" },
                 
                         {"Name": "AnalyzeMerge", "Nr": "23" },
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "20" },
                 
                         {"Name": "NetPackageAnalyzeHistory", "Nr": "19" },
+                
+                        {"Name": "NPA.HtmlData", "Nr": "18" },
                 
                         {"Name": "Statistical", "Nr": "9" },
                 
@@ -1953,7 +2009,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,13],
+                paginationSizeSelector: [10,14],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -1966,7 +2022,7 @@ name: 'Statistical'
         </script>
 
 
-                <h2>Class Coupling for Assembly bad data : 8</h2>
+                <h2>Class Coupling for Assembly bad data : 9</h2>
                 <div id='Class Coupling for Assembly_bad' style="height: 100%"></div>
                 <script type="text/javascript">
                     var dom = document.getElementById('Class Coupling for Assembly_bad');
@@ -1981,7 +2037,7 @@ name: 'Statistical'
                     option = {
                         xAxis: {
                             type: 'category',
-                            data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerExportHTML','AnalyzeMerge','NetPackageAnalyzerTests','NetPackageAnalyzeHistory']
+                            data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NPA.HtmlData']
                         },
                         yAxis: {
                             type: 'value'
@@ -1996,11 +2052,12 @@ name: 'Statistical'
                     {value:77,itemStyle:{color:'red'}},
 {value:48,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
+{value:32,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
-{value:25,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:20,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
+{value:18,itemStyle:{color:'red'}},
 {value:9,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
@@ -2028,12 +2085,15 @@ name: 'Statistical'
     ;Max Value: 40
     ;Math average: 6 
     ;Math median: 4
-    ;Standard Dev: 8.00
+    ;Standard Dev: 8.31
 
-        ;Coefficient of Variation: 1.33
+        ;Coefficient of Variation: 1.38
+        
+        <br />
+        Math mode: The most encountered value (1 times) is 0
         </div>
 
-        <div id="Class-Coupling-for-Class" style="height: 100%" title="Class-Coupling-for-Class"></div>
+        <div id="Class-Coupling-for-Class" style="height: 100%" title="image Class-Coupling-for-Class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Class-Coupling-for-Class');
             var myChart = echarts.init(dom, null, {
@@ -2047,7 +2107,7 @@ name: 'Statistical'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['GenerateData','RealMainExecuting','TemplateGenerator','GenerateHTML','GenericMetrics','GenerateFilesDocusaurus','ProjectsDict','FileFolderHistorySimple','AnalyzeMergeData','FolderHistoryCommits']
+                    data: ['GenerateData','GenerateHTML','RealMainExecuting','TemplateGenerator','GenericMetrics','GenerateFilesDocusaurus','ProjectsDict','ExtractImages','FileFolderHistorySimple','AnalyzeMergeData']
                 },
                 yAxis: {
                     type: 'value'
@@ -2060,15 +2120,15 @@ name: 'Statistical'
                     {
                         data: [
             {value:40,itemStyle:{color:'red'}},
+{value:32,itemStyle:{color:'red'}},
 {value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:25,itemStyle:{color:'red'}},
-{value:25,itemStyle:{color:'red'}},
 {value:24,itemStyle:{color:'red'}},
 {value:22,itemStyle:{color:'red'}},
+{value:18,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'red'}},
-{value:12,itemStyle:{color:'red'}},
-{value:11,itemStyle:{color:'red'}}
+{value:12,itemStyle:{color:'red'}}
                         ],
                         type: 'bar'
                     }
@@ -2107,17 +2167,19 @@ name: 'Statistical'
 
                         {"Name": "GenerateData", "Nr": "40" },
                 
+                        {"Name": "GenerateHTML", "Nr": "32" },
+                
                         {"Name": "RealMainExecuting", "Nr": "29" },
                 
                         {"Name": "TemplateGenerator", "Nr": "26" },
-                
-                        {"Name": "GenerateHTML", "Nr": "25" },
                 
                         {"Name": "GenericMetrics", "Nr": "25" },
                 
                         {"Name": "GenerateFilesDocusaurus", "Nr": "24" },
                 
                         {"Name": "ProjectsDict", "Nr": "22" },
+                
+                        {"Name": "ExtractImages", "Nr": "18" },
                 
                         {"Name": "FileFolderHistorySimple", "Nr": "13" },
                 
@@ -2215,6 +2277,8 @@ name: 'Statistical'
                 
                         {"Name": "GitData", "Nr": "0" },
                 
+                        {"Name": "MDSummaryData", "Nr": "0" },
+                
                         {"Name": "MethodPublic", "Nr": "0" },
                 
                         {"Name": "MyAdditionalFiles", "Nr": "0" },
@@ -2232,7 +2296,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60,61],
+                paginationSizeSelector: [10,20,30,40,50,60,63],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -2245,7 +2309,7 @@ name: 'Statistical'
         </script>
 
 
-                <h2>Class Coupling for Class bad data : 10</h2>
+                <h2>Class Coupling for Class bad data : 11</h2>
                 <div id='Class Coupling for Class_bad' style="height: 100%"></div>
                 <script type="text/javascript">
                     var dom = document.getElementById('Class Coupling for Class_bad');
@@ -2260,7 +2324,7 @@ name: 'Statistical'
                     option = {
                         xAxis: {
                             type: 'category',
-                            data: ['GenerateData','RealMainExecuting','TemplateGenerator','GenerateHTML','GenericMetrics','GenerateFilesDocusaurus','ProjectsDict','FileFolderHistorySimple','AnalyzeMergeData','FolderHistoryCommits']
+                            data: ['GenerateData','GenerateHTML','RealMainExecuting','TemplateGenerator','GenericMetrics','GenerateFilesDocusaurus','ProjectsDict','ExtractImages','FileFolderHistorySimple','AnalyzeMergeData','FolderHistoryCommits']
                         },
                         yAxis: {
                             type: 'value'
@@ -2273,12 +2337,13 @@ name: 'Statistical'
                             {
                                 data: [
                     {value:40,itemStyle:{color:'red'}},
+{value:32,itemStyle:{color:'red'}},
 {value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:25,itemStyle:{color:'red'}},
-{value:25,itemStyle:{color:'red'}},
 {value:24,itemStyle:{color:'red'}},
 {value:22,itemStyle:{color:'red'}},
+{value:18,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
 {value:11,itemStyle:{color:'red'}},
@@ -2332,6 +2397,7 @@ name: 'Statistical'
 {value:0,itemStyle:{color:'red'}},
 {value:0,itemStyle:{color:'red'}},
 {value:0,itemStyle:{color:'red'}},
+{value:0,itemStyle:{color:'red'}},
 {value:0,itemStyle:{color:'red'}}
                                             ],
                                 type: 'bar'
@@ -2355,14 +2421,14 @@ name: 'Statistical'
         <div>
     Min Value: 0
     ;Max Value: 348
-    ;Math average: 43 
-    ;Math median: 26
-    ;Standard Dev: 88.91
+    ;Math average: 41 
+    ;Math median: 21
+    ;Standard Dev: 86.01
 
-        ;Coefficient of Variation: 2.07
+        ;Coefficient of Variation: 2.10
         </div>
 
-        <div id="Cyclomatic-Complexity-for-Assembly" style="height: 100%" title="Cyclomatic-Complexity-for-Assembly"></div>
+        <div id="Cyclomatic-Complexity-for-Assembly" style="height: 100%" title="image Cyclomatic-Complexity-for-Assembly"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Cyclomatic-Complexity-for-Assembly');
             var myChart = echarts.init(dom, null, {
@@ -2376,7 +2442,7 @@ name: 'Statistical'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzeHistory','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','Statistical','NetPackageAnalyzerConsole','NetPackageAnalyzerExportHTML','NetPackageAnalyzerTests','NPA.Resources']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzeHistory','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','Statistical','NetPackageAnalyzerConsole','NetPackageAnalyzerExportHTML','NPA.HtmlData','NetPackageAnalyzerTests']
                 },
                 yAxis: {
                     type: 'value'
@@ -2395,8 +2461,8 @@ name: 'Statistical'
 {value:29,itemStyle:{color:'red'}},
 {value:27,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
-{value:13,itemStyle:{color:'orange'}},
-{value:8},
+{value:17,itemStyle:{color:'orange'}},
+{value:10},
 {value:8}
                         ],
                         type: 'bar'
@@ -2448,7 +2514,9 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerConsole", "Nr": "26" },
                 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "13" },
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "17" },
+                
+                        {"Name": "NPA.HtmlData", "Nr": "10" },
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "8" },
                 
@@ -2465,7 +2533,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,13],
+                paginationSizeSelector: [10,14],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -2512,7 +2580,8 @@ name: 'Statistical'
 {value:29,itemStyle:{color:'red'}},
 {value:27,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
-{value:13,itemStyle:{color:'red'}},
+{value:17,itemStyle:{color:'red'}},
+{value:10,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -2541,15 +2610,15 @@ name: 'Statistical'
     ;Max Value: 85
     ;Math average: 8 
     ;Math median: 6
-    ;Standard Dev: 12.73
+    ;Standard Dev: 12.53
 
-        ;Coefficient of Variation: 1.59
+        ;Coefficient of Variation: 1.57
         
         <br />
         Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Cyclomatic-Complexity-for-Class" style="height: 100%" title="Cyclomatic-Complexity-for-Class"></div>
+        <div id="Cyclomatic-Complexity-for-Class" style="height: 100%" title="image Cyclomatic-Complexity-for-Class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Cyclomatic-Complexity-for-Class');
             var myChart = echarts.init(dom, null, {
@@ -2647,6 +2716,8 @@ name: 'Statistical'
                 
                         {"Name": "GenerateFilesDocusaurus", "Nr": "11" },
                 
+                        {"Name": "ExtractImages", "Nr": "10" },
+                
                         {"Name": "includeV1_gen_json", "Nr": "10" },
                 
                         {"Name": "outdatedV1_gen_json", "Nr": "10" },
@@ -2690,6 +2761,8 @@ name: 'Statistical'
                         {"Name": "GenericMetricsMethod", "Nr": "4" },
                 
                         {"Name": "IOperations", "Nr": "4" },
+                
+                        {"Name": "MDSummaryData", "Nr": "4" },
                 
                         {"Name": "MethodPublic", "Nr": "4" },
                 
@@ -2748,7 +2821,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60,61],
+                paginationSizeSelector: [10,20,30,40,50,60,63],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -2804,6 +2877,7 @@ name: 'Statistical'
 {value:10,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}},
+{value:10,itemStyle:{color:'red'}},
 {value:9,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
@@ -2818,6 +2892,7 @@ name: 'Statistical'
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
+{value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
@@ -2880,7 +2955,7 @@ name: 'Statistical'
         Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Cyclomatic-Complexity-for-Method" style="height: 100%" title="Cyclomatic-Complexity-for-Method"></div>
+        <div id="Cyclomatic-Complexity-for-Method" style="height: 100%" title="image Cyclomatic-Complexity-for-Method"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Cyclomatic-Complexity-for-Method');
             var myChart = echarts.init(dom, null, {
@@ -2980,6 +3055,8 @@ name: 'Statistical'
                 
                         {"Name": "int ProjectsDict.MedianCommits(int? year)", "Nr": "5" },
                 
+                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "5" },
+                
                         {"Name": "Commit ProjectsDict.CommitsWithMaxFiles(int? year)", "Nr": "4" },
                 
                         {"Name": "Commit[] ProjectsDict.MaxCommits(int? year)", "Nr": "4" },
@@ -3037,6 +3114,8 @@ name: 'Statistical'
                         {"Name": "Dictionary<string, int> CommitsData.FilesWithMaxCommits(int? year, int take)", "Nr": "2" },
                 
                         {"Name": "Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()", "Nr": "2" },
+                
+                        {"Name": "ExtractImages.ExtractImages()", "Nr": "2" },
                 
                         {"Name": "Frameworks? Frameworks.Deserialize(string? text)", "Nr": "2" },
                 
@@ -3115,6 +3194,8 @@ name: 'Statistical'
                         {"Name": "Dictionary<int, Commit> ProjectsDict.CommitsWithMaxFilesPerYear()", "Nr": "1" },
                 
                         {"Name": "Dictionary<string, PackageWithVersion[]> IOperations.PerProjectPathWithVersion()", "Nr": "1" },
+                
+                        {"Name": "ExtractImages.ExtractImages(string htmlPath)", "Nr": "1" },
                 
                         {"Name": "FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)", "Nr": "1" },
                 
@@ -3267,7 +3348,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,155],
+                paginationSizeSelector: [100,158],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -3320,6 +3401,7 @@ name: 'Statistical'
 {value:7,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
+{value:5,itemStyle:{color:'red'}},
 {value:5,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
@@ -3378,6 +3460,8 @@ name: 'Statistical'
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
+{value:2,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -3485,17 +3569,17 @@ name: 'Statistical'
         <div>
     Min Value: 0
     ;Max Value: 32
-    ;Math average: 5 
-    ;Math median: 3
-    ;Standard Dev: 8.06
+    ;Math average: 4 
+    ;Math median: 2
+    ;Standard Dev: 7.87
 
-        ;Coefficient of Variation: 1.61
+        ;Coefficient of Variation: 1.97
         
         <br />
         Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Number-class-per-project" style="height: 100%" title="Number-class-per-project"></div>
+        <div id="Number-class-per-project" style="height: 100%" title="image Number-class-per-project"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-class-per-project');
             var myChart = echarts.init(dom, null, {
@@ -3509,7 +3593,7 @@ name: 'Statistical'
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerConsole','NetPackageAnalyzerTests','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerShowInConsole','NPA.Resources']
+                    data: ['NetPackageAnalyzerObjects','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerConsole','NetPackageAnalyzerTests','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerShowInConsole','NPA.HtmlData']
                 },
                 yAxis: {
                     type: 'value'
@@ -3528,7 +3612,7 @@ name: 'Statistical'
 {value:4},
 {value:4},
 {value:3},
-{value:1},
+{value:2},
 {value:1},
 {value:1}
                         ],
@@ -3581,9 +3665,11 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "3" },
                 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "1" },
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "2" },
                 
                         {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "1" },
+                
+                        {"Name": "NPA.HtmlData", "Nr": "1" },
                 
                         {"Name": "NPA.Resources", "Nr": "1" },
                 
@@ -3598,7 +3684,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,13],
+                paginationSizeSelector: [10,14],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -3622,17 +3708,17 @@ name: 'Statistical'
         <div>
     Min Value: 0
     ;Max Value: 74
-    ;Math average: 12 
-    ;Math median: 8
-    ;Standard Dev: 18.63
+    ;Math average: 11 
+    ;Math median: 7
+    ;Standard Dev: 18.11
 
-        ;Coefficient of Variation: 1.55
+        ;Coefficient of Variation: 1.65
         
         <br />
         Math mode: The most encountered value (1 times) is 0
         </div>
 
-        <div id="Number-methods-per-project" style="height: 100%" title="Number-methods-per-project"></div>
+        <div id="Number-methods-per-project" style="height: 100%" title="image Number-methods-per-project"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-methods-per-project');
             var myChart = echarts.init(dom, null, {
@@ -3724,6 +3810,8 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerExportHTML", "Nr": "3" },
                 
+                        {"Name": "NPA.HtmlData", "Nr": "3" },
+                
                         {"Name": "NetPackageAnalyzerDiagram", "Nr": "0" },
                 
                         {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "0" },
@@ -3735,7 +3823,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,13],
+                paginationSizeSelector: [10,14],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -3768,7 +3856,7 @@ name: 'Statistical'
         Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Number-methods-per-class" style="height: 100%" title="Number-methods-per-class"></div>
+        <div id="Number-methods-per-class" style="height: 100%" title="image Number-methods-per-class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-methods-per-class');
             var myChart = echarts.init(dom, null, {
@@ -3870,6 +3958,8 @@ name: 'Statistical'
                 
                         {"Name": "Commit", "Nr": "3" },
                 
+                        {"Name": "ExtractImages", "Nr": "3" },
+                
                         {"Name": "FileFolderHistorySimple", "Nr": "3" },
                 
                         {"Name": "GenerateHTML", "Nr": "3" },
@@ -3946,6 +4036,8 @@ name: 'Statistical'
                 
                         {"Name": "GitData", "Nr": "0" },
                 
+                        {"Name": "MDSummaryData", "Nr": "0" },
+                
                         {"Name": "MethodPublic", "Nr": "0" },
                 
                         {"Name": "MethodswithexternalreferenceExport", "Nr": "0" },
@@ -3965,7 +4057,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60],
+                paginationSizeSelector: [10,20,30,40,50,60,62],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -3996,13 +4088,9 @@ name: 'Statistical'
             
                     {"Name": "D:\\MyPackages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE", "Licenses": "1" },
             
-                    {"Name": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE", "Licenses": "6" },
+                    {"Name": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT", "Licenses": "5" },
             
-                    {"Name": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE", "Licenses": "6" },
-            
-                    {"Name": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT", "Licenses": "3" },
-            
-                    {"Name": "MIT", "Licenses": "136" },
+                    {"Name": "MIT", "Licenses": "83" },
             
                     {"Name": "D:\\MyPackages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt", "Licenses": "1" },
             
@@ -4053,43 +4141,23 @@ name: 'Statistical'
                                 
     tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_interceptmethodcommon\\8.2024.2318.289\\LICENSE" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":2  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "MIT" ,"Nr":26  });
+    tabledata.push({"Name": "NetPackageAnalyzerConsole", "License": "MIT" ,"Nr":24  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerDiagram", "License": "MIT" ,"Nr":2  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
-                                
     tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "MIT" ,"Nr":23  });
+    tabledata.push({"Name": "NetPackageAnalyzerDocusaurus", "License": "MIT" ,"Nr":11  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "MIT" ,"Nr":18  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerExportHTML", "License": "MIT" ,"Nr":10  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "MIT" ,"Nr":18  });
+    tabledata.push({"Name": "NetPackageAnalyzerObjects", "License": "MIT" ,"Nr":6  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
-                                
-    tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "MIT" ,"Nr":17  });
+    tabledata.push({"Name": "NetPackageAnalyzerShowInConsole", "License": "MIT" ,"Nr":5  });
                                 
     tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.codecoverage\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
                                 
@@ -4107,11 +4175,11 @@ name: 'Statistical'
                                 
     tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\microsoft.testplatform.testhost\\17.9.0\\LICENSE_MIT.txt" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "https://github.com/dotnet/corefx/blob/master/LICENSE.TXT" ,"Nr":1  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE" ,"Nr":1  });
+    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "MIT" ,"Nr":17  });
                                 
-    tabledata.push({"Name": "NetPackageAnalyzerTests", "License": "MIT" ,"Nr":28  });
+    tabledata.push({"Name": "NPA.HtmlData", "License": "MIT" ,"Nr":4  });
                                 
     tabledata.push({"Name": "NPA.Resources", "License": "MIT" ,"Nr":1  });
                                 
@@ -4176,93 +4244,33 @@ name: 'Statistical'
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
                                     "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"RSCG_WhatIAmDoing_Common"
+                                            "Package":"System.Reflection.Metadata"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
+                                    "Project":"NetPackageAnalyzerConsole ",
+                                            "Package":"System.Threading.Tasks.Extensions"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
                                     "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"RSCG_WhatIAmDoing_Common"
+                                            "Package":"System.Threading.Tasks.Extensions"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"RSCG_WhatIAmDoing_Common"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
                                     "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"RSCG_WhatIAmDoing_Common"
+                                            "Package":"System.Threading.Tasks.Extensions"
                                                                     });
                                     
                                             tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"RSCG_WhatIAmDoing_Common"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing_common\\8.2024.10405.851\\LICENSE",
+                                        "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
                                     "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"RSCG_WhatIAmDoing_Common"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
-                                    "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"RSCG_WhatIAmDoing"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"RSCG_WhatIAmDoing"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"RSCG_WhatIAmDoing"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"RSCG_WhatIAmDoing"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"RSCG_WhatIAmDoing"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"D:\\MyPackages\\.nuget\\packages\\rscg_whatiamdoing\\8.2024.10405.851\\LICENSE",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"RSCG_WhatIAmDoing"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
-                                    "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"System.Threading.Tasks.Extensions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"System.Threading.Tasks.Extensions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"https://github.com/dotnet/corefx/blob/master/LICENSE.TXT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"System.Threading.Tasks.Extensions"
+                                            "Package":"System.Reflection.Metadata"
                                                                     });
                                     
                                             tabledata.push({
@@ -4334,6 +4342,24 @@ name: 'Statistical'
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerConsole ",
+                                            "Package":"Microsoft.Playwright"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"MIT",
+                                    "Project":"NetPackageAnalyzerConsole ",
+                                            "Package":"System.Text.Json"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"MIT",
+                                    "Project":"NetPackageAnalyzerConsole ",
+                                            "Package":"Microsoft.Bcl.AsyncInterfaces"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"MIT",
+                                    "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"Microsoft.Build.Tasks.Git"
                                                                     });
                                     
@@ -4364,42 +4390,6 @@ name: 'Statistical'
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"Microsoft.Extensions.Caching.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"Microsoft.Extensions.Caching.Memory"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"Microsoft.Extensions.Logging.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"Microsoft.Extensions.Options"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerConsole ",
-                                            "Package":"Microsoft.Extensions.Primitives"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"Microsoft.SourceLink.Common"
                                                                     });
                                     
@@ -4407,6 +4397,12 @@ name: 'Statistical'
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerConsole ",
                                             "Package":"System.Collections.Immutable"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"MIT",
+                                    "Project":"NetPackageAnalyzerConsole ",
+                                            "Package":"System.ComponentModel.Annotations"
                                                                     });
                                     
                                             tabledata.push({
@@ -4484,79 +4480,7 @@ name: 'Statistical'
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.CodeAnalysis.Analyzers"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.CodeAnalysis.Common"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.CodeAnalysis.CSharp"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
                                             "Package":"Microsoft.CSharp"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.Extensions.Caching.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.Extensions.Caching.Memory"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.Extensions.Logging.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.Extensions.Options"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"Microsoft.Extensions.Primitives"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"System.Collections.Immutable"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"System.Reflection.Metadata"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerDocusaurus ",
-                                            "Package":"System.Runtime.CompilerServices.Unsafe"
                                                                     });
                                     
                                             tabledata.push({
@@ -4592,73 +4516,25 @@ name: 'Statistical'
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.CodeAnalysis.Analyzers"
+                                            "Package":"Microsoft.Playwright"
                                                                     });
                                     
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.CodeAnalysis.Common"
+                                            "Package":"System.Text.Json"
                                                                     });
                                     
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.CodeAnalysis.CSharp"
+                                            "Package":"Microsoft.Bcl.AsyncInterfaces"
                                                                     });
                                     
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.Extensions.Caching.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.Extensions.Caching.Memory"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.Extensions.Logging.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.Extensions.Options"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"Microsoft.Extensions.Primitives"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"System.Collections.Immutable"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"System.Reflection.Metadata"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerExportHTML ",
-                                            "Package":"System.Runtime.CompilerServices.Unsafe"
+                                            "Package":"System.ComponentModel.Annotations"
                                                                     });
                                     
                                             tabledata.push({
@@ -4694,79 +4570,7 @@ name: 'Statistical'
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.CodeAnalysis.Analyzers"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.CodeAnalysis.Common"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.CodeAnalysis.CSharp"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
                                             "Package":"Microsoft.CSharp"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.Extensions.Caching.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.Extensions.Caching.Memory"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.Extensions.Logging.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.Extensions.Options"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"Microsoft.Extensions.Primitives"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"System.Collections.Immutable"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"System.Reflection.Metadata"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerObjects ",
-                                            "Package":"System.Runtime.CompilerServices.Unsafe"
                                                                     });
                                     
                                             tabledata.push({
@@ -4797,78 +4601,6 @@ name: 'Statistical'
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerShowInConsole ",
                                             "Package":"Spectre.Console"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.CodeAnalysis.Analyzers"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.CodeAnalysis.Common"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.CodeAnalysis.CSharp"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.Extensions.Caching.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.Extensions.Caching.Memory"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.Extensions.Logging.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.Extensions.Options"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"Microsoft.Extensions.Primitives"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"System.Collections.Immutable"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"System.Reflection.Metadata"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerShowInConsole ",
-                                            "Package":"System.Runtime.CompilerServices.Unsafe"
                                                                     });
                                     
                                             tabledata.push({
@@ -4940,73 +4672,7 @@ name: 'Statistical'
                                             tabledata.push({
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.CodeAnalysis.Analyzers"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.CodeAnalysis.Common"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.CodeAnalysis.CSharp"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.Extensions.Caching.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.Extensions.Caching.Memory"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.Extensions.DependencyInjection.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.Extensions.Logging.Abstractions"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.Extensions.Options"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"Microsoft.Extensions.Primitives"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"System.Collections.Immutable"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
                                             "Package":"System.Reflection.Metadata"
-                                                                    });
-                                    
-                                            tabledata.push({
-                                        "LicenseName":"MIT",
-                                    "Project":"NetPackageAnalyzerTests ",
-                                            "Package":"System.Runtime.CompilerServices.Unsafe"
                                                                     });
                                     
                                             tabledata.push({
@@ -5043,6 +4709,30 @@ name: 'Statistical'
                                         "LicenseName":"MIT",
                                     "Project":"NetPackageAnalyzerTests ",
                                             "Package":"TestableIO.System.IO.Abstractions.TestingHelpers"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"MIT",
+                                    "Project":"NPA.HtmlData ",
+                                            "Package":"Microsoft.Playwright"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"MIT",
+                                    "Project":"NPA.HtmlData ",
+                                            "Package":"System.Text.Json"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"MIT",
+                                    "Project":"NPA.HtmlData ",
+                                            "Package":"Microsoft.Bcl.AsyncInterfaces"
+                                                                    });
+                                    
+                                            tabledata.push({
+                                        "LicenseName":"MIT",
+                                    "Project":"NPA.HtmlData ",
+                                            "Package":"System.ComponentModel.Annotations"
                                                                     });
                                     
                                             tabledata.push({
@@ -5122,7 +4812,7 @@ columns: [
 
         
     </script>
-    <h2 id="packages-per-project">Packages : 53 </h2>
+    <h2 id="packages-per-project">Packages : 49 </h2>
     <div id="packages-per-project-table"></div>
     <script>
         var tabledata = [];
@@ -5194,16 +4884,6 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerConsole",
-                "Package": "RSCG_WhatIAmDoing",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerConsole",
-                "Package": "RSCG_WhatIAmDoing_Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerConsole",
                 "Package": "RSCG_TimeBombComment",
             });
                 
@@ -5219,7 +4899,22 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerConsole",
+                "Package": "Microsoft.Playwright",
+            });
+                
+            tabledata.push({
+                "Project": "NetPackageAnalyzerConsole",
+                "Package": "System.Text.Json",
+            });
+                
+            tabledata.push({
+                "Project": "NetPackageAnalyzerConsole",
                 "Package": "LibGit2Sharp.NativeBinaries",
+            });
+                
+            tabledata.push({
+                "Project": "NetPackageAnalyzerConsole",
+                "Package": "Microsoft.Bcl.AsyncInterfaces",
             });
                 
             tabledata.push({
@@ -5249,42 +4944,17 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerConsole",
-                "Package": "Microsoft.Extensions.Caching.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerConsole",
-                "Package": "Microsoft.Extensions.Caching.Memory",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerConsole",
-                "Package": "Microsoft.Extensions.DependencyInjection.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerConsole",
-                "Package": "Microsoft.Extensions.Logging.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerConsole",
-                "Package": "Microsoft.Extensions.Options",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerConsole",
-                "Package": "Microsoft.Extensions.Primitives",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerConsole",
                 "Package": "Microsoft.SourceLink.Common",
             });
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerConsole",
                 "Package": "System.Collections.Immutable",
+            });
+                
+            tabledata.push({
+                "Project": "NetPackageAnalyzerConsole",
+                "Package": "System.ComponentModel.Annotations",
             });
                 
             tabledata.push({
@@ -5344,16 +5014,6 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "RSCG_WhatIAmDoing",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "RSCG_WhatIAmDoing_Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
                 "Package": "EmbedResourceCSharp",
             });
                 
@@ -5364,67 +5024,7 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.CodeAnalysis.Analyzers",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.CodeAnalysis.Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.CodeAnalysis.CSharp",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
                 "Package": "Microsoft.CSharp",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.Extensions.Caching.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.Extensions.Caching.Memory",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.Extensions.DependencyInjection.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.Extensions.Logging.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.Extensions.Options",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "Microsoft.Extensions.Primitives",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "System.Collections.Immutable",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "System.Reflection.Metadata",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerDocusaurus",
-                "Package": "System.Runtime.CompilerServices.Unsafe",
             });
                 
             tabledata.push({
@@ -5459,72 +5059,22 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "RSCG_WhatIAmDoing",
+                "Package": "Microsoft.Playwright",
             });
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "RSCG_WhatIAmDoing_Common",
+                "Package": "System.Text.Json",
             });
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.CodeAnalysis.Analyzers",
+                "Package": "Microsoft.Bcl.AsyncInterfaces",
             });
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.CodeAnalysis.Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.CodeAnalysis.CSharp",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.Extensions.Caching.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.Extensions.Caching.Memory",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.Extensions.DependencyInjection.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.Extensions.Logging.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.Extensions.Options",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "Microsoft.Extensions.Primitives",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "System.Collections.Immutable",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "System.Reflection.Metadata",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerExportHTML",
-                "Package": "System.Runtime.CompilerServices.Unsafe",
+                "Package": "System.ComponentModel.Annotations",
             });
                 
             tabledata.push({
@@ -5554,77 +5104,7 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerObjects",
-                "Package": "RSCG_WhatIAmDoing",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "RSCG_WhatIAmDoing_Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.CodeAnalysis.Analyzers",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.CodeAnalysis.Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.CodeAnalysis.CSharp",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
                 "Package": "Microsoft.CSharp",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.Extensions.Caching.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.Extensions.Caching.Memory",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.Extensions.DependencyInjection.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.Extensions.Logging.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.Extensions.Options",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "Microsoft.Extensions.Primitives",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "System.Collections.Immutable",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "System.Reflection.Metadata",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerObjects",
-                "Package": "System.Runtime.CompilerServices.Unsafe",
             });
                 
             tabledata.push({
@@ -5654,77 +5134,7 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "RSCG_WhatIAmDoing",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "RSCG_WhatIAmDoing_Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
                 "Package": "Spectre.Console",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.CodeAnalysis.Analyzers",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.CodeAnalysis.Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.CodeAnalysis.CSharp",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.Extensions.Caching.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.Extensions.Caching.Memory",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.Extensions.DependencyInjection.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.Extensions.Logging.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.Extensions.Options",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "Microsoft.Extensions.Primitives",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "System.Collections.Immutable",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "System.Reflection.Metadata",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerShowInConsole",
-                "Package": "System.Runtime.CompilerServices.Unsafe",
             });
                 
             tabledata.push({
@@ -5779,16 +5189,6 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerTests",
-                "Package": "RSCG_WhatIAmDoing",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "RSCG_WhatIAmDoing_Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
                 "Package": "RSCG_TimeBombComment",
             });
                 
@@ -5799,62 +5199,7 @@ columns: [
                 
             tabledata.push({
                 "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.CodeAnalysis.Analyzers",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.CodeAnalysis.Common",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.CodeAnalysis.CSharp",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.Extensions.Caching.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.Extensions.Caching.Memory",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.Extensions.DependencyInjection.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.Extensions.Logging.Abstractions",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.Extensions.Options",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "Microsoft.Extensions.Primitives",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "System.Collections.Immutable",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
                 "Package": "System.Reflection.Metadata",
-            });
-                
-            tabledata.push({
-                "Project": "NetPackageAnalyzerTests",
-                "Package": "System.Runtime.CompilerServices.Unsafe",
             });
                 
             tabledata.push({
@@ -5923,6 +5268,26 @@ columns: [
             });
                 
             tabledata.push({
+                "Project": "NPA.HtmlData",
+                "Package": "Microsoft.Playwright",
+            });
+                
+            tabledata.push({
+                "Project": "NPA.HtmlData",
+                "Package": "System.Text.Json",
+            });
+                
+            tabledata.push({
+                "Project": "NPA.HtmlData",
+                "Package": "Microsoft.Bcl.AsyncInterfaces",
+            });
+                
+            tabledata.push({
+                "Project": "NPA.HtmlData",
+                "Package": "System.ComponentModel.Annotations",
+            });
+                
+            tabledata.push({
                 "Project": "NPA.Resources",
                 "Package": "EmbedResourceCSharp",
             });
@@ -5948,24 +5313,42 @@ columns: [
             });
         </script>
         
-    <h2 id="packages-with-major-version-different">0 Packages with major version different</h2>
+    <h2 id="packages-with-major-version-different">1 Packages with major version different</h2>
+        <table border="1" title="image packages with major different">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>ID</th>
+                    <th>References</th>
+                    <th>Projects</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>System.Reflection.Metadata</td>
+                        <td> (References: 2)  <span style='color:red'> <b>Major differs</b> </span></td>
+                        <td> <b>8.0.0</b> NetPackageAnalyzerConsole<br/> <b>1.6.0</b> NetPackageAnalyzerTests<br/></td>
+                    </tr>
+            </tbody>
+        </table>
     <h2 id="executable-lines">Executable lines</h2>
     <h3 id="executable-lines-per-assembly">Per assembly</h3>
     
         <div>
     Min Value: 0
     ;Max Value: 669
-    ;Math average: 103 
-    ;Math median: 56
-    ;Standard Dev: 169.98
+    ;Math average: 98 
+    ;Math median: 54
+    ;Standard Dev: 164.63
 
-        ;Coefficient of Variation: 1.65
+        ;Coefficient of Variation: 1.68
         
         <br />
         Math mode: The most encountered value (1 times) is 0
         </div>
 
-        <div id="Number-exec-lines-per-project" style="height: 100%" title="Number-exec-lines-per-project"></div>
+        <div id="Number-exec-lines-per-project" style="height: 100%" title="image Number-exec-lines-per-project"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-exec-lines-per-project');
             var myChart = echarts.init(dom, null, {
@@ -5979,7 +5362,7 @@ columns: [
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','Statistical','NetPackageAnalyzerExportHTML','NetPackageAnalyzerTests','NPA.Resources']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','Statistical','NetPackageAnalyzerExportHTML','NPA.HtmlData','NetPackageAnalyzerTests']
                 },
                 yAxis: {
                     type: 'value'
@@ -5998,9 +5381,9 @@ columns: [
 {value:85},
 {value:68},
 {value:56},
-{value:43},
-{value:27},
-{value:16}
+{value:53},
+{value:31},
+{value:27}
                         ],
                         type: 'bar'
                     }
@@ -6051,7 +5434,9 @@ columns: [
                 
                         {"Name": "Statistical", "Nr": "56" },
                 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "43" },
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "53" },
+                
+                        {"Name": "NPA.HtmlData", "Nr": "31" },
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "27" },
                 
@@ -6068,7 +5453,7 @@ columns: [
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,13],
+                paginationSizeSelector: [10,14],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -6094,15 +5479,15 @@ columns: [
     ;Max Value: 227
     ;Math average: 20 
     ;Math median: 6
-    ;Standard Dev: 40.93
+    ;Standard Dev: 40.50
 
-        ;Coefficient of Variation: 2.05
+        ;Coefficient of Variation: 2.02
         
         <br />
         Math mode: The most encountered value (1 times) is 2
         </div>
 
-        <div id="Number-exec-lines-per-class" style="height: 100%" title="Number-exec-lines-per-class"></div>
+        <div id="Number-exec-lines-per-class" style="height: 100%" title="image Number-exec-lines-per-class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-exec-lines-per-class');
             var myChart = echarts.init(dom, null, {
@@ -6116,7 +5501,7 @@ columns: [
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['GenerateData','ProjectsDict','GenerateFilesDocusaurus','RealMainExecuting','GenericMetrics','StatisticalNumbers<T>','AnalyzeForProject','AssemblyDataFromMSFT','GenerateHTML','AnalyzeMergeData']
+                    data: ['GenerateData','ProjectsDict','GenerateFilesDocusaurus','RealMainExecuting','GenericMetrics','StatisticalNumbers<T>','GenerateHTML','AnalyzeForProject','AssemblyDataFromMSFT','AnalyzeMergeData']
                 },
                 yAxis: {
                     type: 'value'
@@ -6134,8 +5519,8 @@ columns: [
 {value:75},
 {value:63},
 {value:56},
+{value:52},
 {value:49},
-{value:43},
 {value:43},
 {value:41}
                         ],
@@ -6186,11 +5571,11 @@ columns: [
                 
                         {"Name": "StatisticalNumbers<T>", "Nr": "56" },
                 
+                        {"Name": "GenerateHTML", "Nr": "52" },
+                
                         {"Name": "AnalyzeForProject", "Nr": "49" },
                 
                         {"Name": "AssemblyDataFromMSFT", "Nr": "43" },
-                
-                        {"Name": "GenerateHTML", "Nr": "43" },
                 
                         {"Name": "AnalyzeMergeData", "Nr": "41" },
                 
@@ -6199,6 +5584,8 @@ columns: [
                         {"Name": "ProcessOutput", "Nr": "38" },
                 
                         {"Name": "TemplateGenerator", "Nr": "37" },
+                
+                        {"Name": "ExtractImages", "Nr": "31" },
                 
                         {"Name": "FolderHistoryCommits", "Nr": "23" },
                 
@@ -6280,6 +5667,8 @@ columns: [
                 
                         {"Name": "GenericMetricsClass", "Nr": "1" },
                 
+                        {"Name": "MDSummaryData", "Nr": "1" },
+                
                         {"Name": "AnalyzeCsproj", "Nr": "0" },
                 
                         {"Name": "AnalyzeNode", "Nr": "0" },
@@ -6301,7 +5690,7 @@ columns: [
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60,61],
+                paginationSizeSelector: [10,20,30,40,50,60,63],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -6347,13 +5736,14 @@ columns: [
 {value:75,itemStyle:{color:'red'}},
 {value:63,itemStyle:{color:'red'}},
 {value:56,itemStyle:{color:'red'}},
+{value:52,itemStyle:{color:'red'}},
 {value:49,itemStyle:{color:'red'}},
-{value:43,itemStyle:{color:'red'}},
 {value:43,itemStyle:{color:'red'}},
 {value:41,itemStyle:{color:'red'}},
 {value:40,itemStyle:{color:'red'}},
 {value:38,itemStyle:{color:'red'}},
 {value:37,itemStyle:{color:'red'}},
+{value:31,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:21,itemStyle:{color:'red'}},
 {value:16,itemStyle:{color:'red'}},
@@ -6392,6 +5782,7 @@ columns: [
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:0,itemStyle:{color:'red'}},
@@ -6436,7 +5827,7 @@ columns: [
         Math mode: The most encountered value (1 times) is 2
         </div>
 
-        <div id="Number-exec-lines-per-method" style="height: 100%" title="Number-exec-lines-per-method"></div>
+        <div id="Number-exec-lines-per-method" style="height: 100%" title="image Number-exec-lines-per-method"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Number-exec-lines-per-method');
             var myChart = echarts.init(dom, null, {
@@ -6450,7 +5841,7 @@ columns: [
             option = {
                 xAxis: {
                     type: 'category',
-                    data: ['Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','Task<bool> GenerateData.GenerateDataForSln(string folder)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','void AnalyzeForProject.Analyze()','Task<string> AnalyzeMergeData.GenerateNow()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)','void GenerateHTML.WriteJs(string where)','void ProjectsDict.FindReferences()']
+                    data: ['Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','Task<bool> GenerateData.GenerateDataForSln(string folder)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','void AnalyzeForProject.Analyze()','Task<string> AnalyzeMergeData.GenerateNow()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task<string> GenerateHTML.GenerateNow(string folder, string where)','Task<bool> ExtractImages.GetImagesAsync()','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)']
                 },
                 yAxis: {
                     type: 'value'
@@ -6469,9 +5860,9 @@ columns: [
 {value:39},
 {value:36},
 {value:34},
-{value:26},
-{value:24},
-{value:23}
+{value:28},
+{value:27},
+{value:26}
                         ],
                         type: 'bar'
                     }
@@ -6522,6 +5913,10 @@ columns: [
                 
                         {"Name": "HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)", "Nr": "34" },
                 
+                        {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "28" },
+                
+                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "27" },
+                
                         {"Name": "string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)", "Nr": "26" },
                 
                         {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "24" },
@@ -6531,8 +5926,6 @@ columns: [
                         {"Name": "void FolderHistoryCommits.Initialize()", "Nr": "21" },
                 
                         {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "19" },
-                
-                        {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "19" },
                 
                         {"Name": "Command RealMainExecuting.AddGenerateFiles()", "Nr": "16" },
                 
@@ -6641,6 +6034,8 @@ columns: [
                         {"Name": "Commit.Commit()", "Nr": "3" },
                 
                         {"Name": "Commit.Commit(DateTime date, string sha)", "Nr": "3" },
+                
+                        {"Name": "ExtractImages.ExtractImages()", "Nr": "3" },
                 
                         {"Name": "int AnalyzeForProject.maxDiff(FileData file, string relPath)", "Nr": "3" },
                 
@@ -6766,6 +6161,8 @@ columns: [
                 
                         {"Name": "AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)", "Nr": "1" },
                 
+                        {"Name": "ExtractImages.ExtractImages(string htmlPath)", "Nr": "1" },
+                
                         {"Name": "FileFolderHistorySimple.FileFolderHistorySimple(string nameFile)", "Nr": "1" },
                 
                         {"Name": "FolderHistoryCommits.FolderHistoryCommits(string nameFolder)", "Nr": "1" },
@@ -6823,7 +6220,7 @@ columns: [
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,155],
+                paginationSizeSelector: [100,158],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -6870,11 +6267,12 @@ columns: [
 {value:39,itemStyle:{color:'red'}},
 {value:36,itemStyle:{color:'red'}},
 {value:34,itemStyle:{color:'red'}},
+{value:28,itemStyle:{color:'red'}},
+{value:27,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:24,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:21,itemStyle:{color:'red'}},
-{value:19,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
 {value:16,itemStyle:{color:'red'}},
 {value:14,itemStyle:{color:'red'}},
@@ -6947,6 +6345,7 @@ columns: [
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
+{value:3,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
@@ -6991,6 +6390,7 @@ columns: [
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -7046,34 +6446,67 @@ columns: [
     ;Max Value: 35
     ;Math average: 5 
     ;Math median: 3
-    ;Standard Dev: 9.00
+    ;Standard Dev: 8.72
 
-        ;Coefficient of Variation: 1.80
+        ;Coefficient of Variation: 1.74
         
         <br />
         Math mode: The most encountered value (1 times) is 1
         </div>
 
-<div class="mermaid" title="Public class per project">
----
-config:
-    xyChart:
-        width: 900
-        height: 340
-    themeVariables:
-        xyChart:
-            titleColor: "#ff0000"
----
 
-xychart-beta horizontal
-title "Public class per project"
-x-axis ["NetPackageAnalyzerObjects","NetPackageAnalyzeHistory","AnalyzeMerge","NuGetInfo","NetPackageAnalyzerMetricsMSFT","NetPackageAnalyzerTests","Statistical","NetPackageAnalyzerDocusaurus","NetPackageAnalyzerDiagram","NetPackageAnalyzerExportHTML","NetPackageAnalyzerShowInConsole","NPA.Resources"]
-y-axis "" 0--> 35
-bar [35,6,5,5,4,3,3,2,1,1,1,1]
+<div id="Public-class-per-project" style="height: 100%" title="image Public class per project"></div>
+<script type="text/javascript">
+    var dom = document.getElementById('Public-class-per-project');
+        var myChart = echarts.init(dom, null, {
+            renderer: 'canvas',
+        useDirtyRect: false
+        });
+    var app = {};
 
-</div>
-<br />
-<div id="Public-class-per-project-table" title="Public-class-per-project-table"></div>
+        var option;
+
+    option = {
+        xAxis: {
+            type: 'category',
+            data: ['NetPackageAnalyzerObjects','NetPackageAnalyzeHistory','AnalyzeMerge','NuGetInfo','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerTests','Statistical','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerDiagram','NetPackageAnalyzerExportHTML']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        tooltip: {
+            trigger: 'item',
+
+        },
+        series: [
+                {
+                    data: [
+    {value:35},
+{value:6},
+{value:5},
+{value:5},
+{value:4},
+{value:3},
+{value:3},
+{value:2},
+{value:1},
+{value:1}
+                    ],
+                    type: 'bar'
+                }
+            ]
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+        window.addEventListener('resize', myChart.resize);
+</script>
+
+
+ <br />
+<div id="Public-class-per-project-table" title="image Public-class-per-project-table"></div>
 
 <script>
     var tabledata = [
@@ -7100,6 +6533,8 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
         
                 {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "1" },
         
+                {"Name": "NPA.HtmlData", "Nr": "1" },
+        
                 {"Name": "NPA.Resources", "Nr": "1" },
                                         ];
     var table = new Tabulator("#Public-class-per-project-table", {
@@ -7107,7 +6542,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
         layout: "fitColumns",
         pagination: "local",
         paginationSize: 10,
-        paginationSizeSelector: [10,12],
+        paginationSizeSelector: [10,13],
         movableColumns: true,
         paginationCounter: "rows",
         columns: [
@@ -7127,14 +6562,14 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
         <div>
     Min Value: 10
     ;Max Value: 548
-    ;Math average: 84 
-    ;Math median: 42
-    ;Standard Dev: 141.85
+    ;Math average: 78 
+    ;Math median: 40
+    ;Standard Dev: 137.60
 
-        ;Coefficient of Variation: 1.69
+        ;Coefficient of Variation: 1.76
         </div>
 
-        <div id="Public-methods-per-assembly" style="height: 100%" title="Public-methods-per-assembly"></div>
+        <div id="Public-methods-per-assembly" style="height: 100%" title="image Public-methods-per-assembly"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Public-methods-per-assembly');
             var myChart = echarts.init(dom, null, {
@@ -7226,6 +6661,8 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
                 
                         {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "14" },
                 
+                        {"Name": "NPA.HtmlData", "Nr": "13" },
+                
                         {"Name": "NetPackageAnalyzerExportHTML", "Nr": "12" },
                 
                         {"Name": "NPA.Resources", "Nr": "10" },
@@ -7235,7 +6672,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,12],
+                paginationSizeSelector: [10,13],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -7285,6 +6722,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
 {value:38,itemStyle:{color:'red'}},
 {value:21,itemStyle:{color:'red'}},
 {value:14,itemStyle:{color:'red'}},
+{value:13,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}}
                                             ],
@@ -7322,7 +6760,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
         Math mode: The most encountered value (1 times) is 1
         </div>
 
-        <div id="Public-methods-per-class" style="height: 100%" title="Public-methods-per-class"></div>
+        <div id="Public-methods-per-class" style="height: 100%" title="image Public-methods-per-class"></div>
         <script type="text/javascript">
             var dom = document.getElementById('Public-methods-per-class');
             var myChart = echarts.init(dom, null, {
@@ -7474,6 +6912,8 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
                 
                         {"Name": "ExternalReferenceExport", "Nr": "1" },
                 
+                        {"Name": "ExtractImages", "Nr": "1" },
+                
                         {"Name": "FileFolderHistorySimple", "Nr": "1" },
                 
                         {"Name": "FolderHistoryCommits", "Nr": "1" },
@@ -7515,7 +6955,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,58],
+                paginationSizeSelector: [10,20,30,40,50,59],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -7612,6 +7052,7 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}}
                                             ],
                                 type: 'bar'
@@ -7641,38 +7082,74 @@ bar [35,6,5,5,4,3,3,2,1,1,1,1]
     ;Max Value: 41
     ;Math average: 11 
     ;Math median: 8
-    ;Standard Dev: 12.73
+    ;Standard Dev: 12.69
 
-        ;Coefficient of Variation: 1.16
+        ;Coefficient of Variation: 1.15
+        
+        <br />
+        Math mode: The most encountered value (1 times) is 2
         </div>
 
-<div class="mermaid" title="References per assembly">
----
-config:
-    xyChart:
-        width: 900
-        height: 300
-    themeVariables:
-        xyChart:
-            titleColor: "#ff0000"
----
 
-xychart-beta horizontal
-title "References per assembly"
-x-axis ["NetPackageAnalyzeHistory","NetPackageAnalyzerObjects","NetPackageAnalyzerMetricsMSFT","NPA.Resources","NuGetInfo","Statistical","NetPackageAnalyzerDiagram","NetPackageAnalyzerDocusaurus","NetPackageAnalyzerShowInConsole","NetPackageAnalyzerExportHTML"]
-y-axis "" 0--> 41
-bar [41,28,19,8,8,8,2,2,2,1]
+<div id="References-per-assembly" style="height: 100%" title="image References per assembly"></div>
+<script type="text/javascript">
+    var dom = document.getElementById('References-per-assembly');
+        var myChart = echarts.init(dom, null, {
+            renderer: 'canvas',
+        useDirtyRect: false
+        });
+    var app = {};
 
-</div>
-<br />
-<div id="References-per-assembly-table" title="References-per-assembly-table"></div>
+        var option;
+
+    option = {
+        xAxis: {
+            type: 'category',
+            data: ['NetPackageAnalyzeHistory','NetPackageAnalyzerObjects','NetPackageAnalyzerMetricsMSFT','NPA.Resources','NuGetInfo','Statistical','NetPackageAnalyzerDiagram','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerShowInConsole','NPA.HtmlData']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        tooltip: {
+            trigger: 'item',
+
+        },
+        series: [
+                {
+                    data: [
+    {value:41},
+{value:30},
+{value:19},
+{value:8},
+{value:8},
+{value:8},
+{value:2},
+{value:2},
+{value:2},
+{value:2}
+                    ],
+                    type: 'bar'
+                }
+            ]
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+        window.addEventListener('resize', myChart.resize);
+</script>
+
+
+ <br />
+<div id="References-per-assembly-table" title="image References-per-assembly-table"></div>
 
 <script>
     var tabledata = [
 
                 {"Name": "NetPackageAnalyzeHistory", "Nr": "41" },
         
-                {"Name": "NetPackageAnalyzerObjects", "Nr": "28" },
+                {"Name": "NetPackageAnalyzerObjects", "Nr": "30" },
         
                 {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "19" },
         
@@ -7688,6 +7165,8 @@ bar [41,28,19,8,8,8,2,2,2,1]
         
                 {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "2" },
         
+                {"Name": "NPA.HtmlData", "Nr": "2" },
+        
                 {"Name": "NetPackageAnalyzerExportHTML", "Nr": "1" },
                                         ];
     var table = new Tabulator("#References-per-assembly-table", {
@@ -7695,7 +7174,7 @@ bar [41,28,19,8,8,8,2,2,2,1]
         layout: "fitColumns",
         pagination: "local",
         paginationSize: 10,
-        paginationSizeSelector: [10],
+        paginationSizeSelector: [10,11],
         movableColumns: true,
         paginationCounter: "rows",
         columns: [
@@ -7715,43 +7194,76 @@ bar [41,28,19,8,8,8,2,2,2,1]
     ;Max Value: 40
     ;Math average: 8 
     ;Math median: 4
-    ;Standard Dev: 10.25
+    ;Standard Dev: 10.58
 
-        ;Coefficient of Variation: 1.28
+        ;Coefficient of Variation: 1.32
         
         <br />
         Math mode: The most encountered value (1 times) is 4
         </div>
 
-<div class="mermaid" title="References per class">
----
-config:
-    xyChart:
-        width: 900
-        height: 380
-    themeVariables:
-        xyChart:
-            titleColor: "#ff0000"
----
 
-xychart-beta horizontal
-title "References per class"
-x-axis ["ProjectsDict","AssemblyDataFromMSFT","GenerateHTML","GenerateFilesDocusaurus","PackageData","ProjectData","RealMainExecuting","TemplateGenerator","TestNugetInfo","TestStatistics","GenerateData","WriteToConsole","NamePerCountArray","TestSolutionExists"]
-y-axis "" 0--> 40
-bar [40,18,18,11,4,4,4,4,4,4,3,3,1,1]
+<div id="References-per-class" style="height: 100%" title="image References per class"></div>
+<script type="text/javascript">
+    var dom = document.getElementById('References-per-class');
+        var myChart = echarts.init(dom, null, {
+            renderer: 'canvas',
+        useDirtyRect: false
+        });
+    var app = {};
 
-</div>
-<br />
-<div id="References-per-class-table" title="References-per-class-table"></div>
+        var option;
+
+    option = {
+        xAxis: {
+            type: 'category',
+            data: ['ProjectsDict','GenerateHTML','AssemblyDataFromMSFT','GenerateFilesDocusaurus','PackageData','ProjectData','RealMainExecuting','TemplateGenerator','TestNugetInfo','TestStatistics']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        tooltip: {
+            trigger: 'item',
+
+        },
+        series: [
+                {
+                    data: [
+    {value:40},
+{value:22},
+{value:18},
+{value:11},
+{value:4},
+{value:4},
+{value:4},
+{value:4},
+{value:4},
+{value:4}
+                    ],
+                    type: 'bar'
+                }
+            ]
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+
+        window.addEventListener('resize', myChart.resize);
+</script>
+
+
+ <br />
+<div id="References-per-class-table" title="image References-per-class-table"></div>
 
 <script>
     var tabledata = [
 
                 {"Name": "ProjectsDict", "Nr": "40" },
         
-                {"Name": "AssemblyDataFromMSFT", "Nr": "18" },
+                {"Name": "GenerateHTML", "Nr": "22" },
         
-                {"Name": "GenerateHTML", "Nr": "18" },
+                {"Name": "AssemblyDataFromMSFT", "Nr": "18" },
         
                 {"Name": "GenerateFilesDocusaurus", "Nr": "11" },
         
@@ -7796,13 +7308,13 @@ bar [40,18,18,11,4,4,4,4,4,4,3,3,1,1]
     <h2 id="commits"> Commits</h2>
     <h3> Commits per year</h3>
 
-            <div class="mermaid" title="Commits per year">
+            <div class="mermaid" title="image Commits per year">
                 xychart-beta
                 title "Commits per year (folder and csproj)"
                 x-axis [2023,2024]
-                y-axis "" 0--> 224
-                bar [23,224]
-                bar [13,116]
+                y-axis "" 0--> 234
+                bar [23,234]
+                bar [13,127]
             </div>
 
         
@@ -7810,7 +7322,7 @@ bar [40,18,18,11,4,4,4,4,4,4,3,3,1,1]
 <text>
 
 
-    <div id="containerBarYearNameCount" style="height: 100%"></div>
+    <div id="containerBarYearNameCount" title="image commits year project" style="height: 100%"></div>
 
     <script type="text/javascript">
         var dom = document.getElementById('containerBarYearNameCount');
@@ -7925,7 +7437,7 @@ bar [40,18,18,11,4,4,4,4,4,4,3,3,1,1]
                 }
             },
             legend: {
-                data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','NetPackageAnalyzerWork','NPA.Resources','NuGetInfo','Statistical']
+                data: ['AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerDiagram','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects','NetPackageAnalyzerShowInConsole','NetPackageAnalyzerTests','NetPackageAnalyzerWork','NPA.HtmlData','NPA.Resources','NuGetInfo','Statistical']
             },
             toolbox: {
                 show: true,
@@ -7962,7 +7474,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [3,6],
+data: [3,7],
 },
 
 
@@ -7974,7 +7486,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,13],
+data: [null,14],
 },
 
 
@@ -7986,7 +7498,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,63],
+data: [10,64],
 },
 
 
@@ -7998,7 +7510,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,7],
+data: [null,8],
 },
 
 
@@ -8010,7 +7522,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,22],
+data: [null,23],
 },
 
 
@@ -8022,7 +7534,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,5],
+data: [null,6],
 },
 
 
@@ -8034,7 +7546,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,44],
+data: [null,45],
 },
 
 
@@ -8070,7 +7582,19 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,46],
+data: [10,47],
+},
+
+
+{
+name: 'NPA.HtmlData',
+type: 'bar',
+barGap: 0,
+label: labelOption,
+emphasis: {
+    focus: 'series'
+        },
+data: [null,2],
 },
 
 
@@ -8126,21 +7650,21 @@ data: [null,3],
 
 tabledata.push({"folder": "AnalyzeMerge", "year":2023,"Nr": "3" });
                     
-tabledata.push({"folder": "AnalyzeMerge", "year":2024,"Nr": "6" });
+tabledata.push({"folder": "AnalyzeMerge", "year":2024,"Nr": "7" });
                     
-tabledata.push({"folder": "NetPackageAnalyzeHistory", "year":2024,"Nr": "13" });
+tabledata.push({"folder": "NetPackageAnalyzeHistory", "year":2024,"Nr": "14" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2023,"Nr": "10" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "63" });
+tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "64" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2024,"Nr": "7" });
+tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2024,"Nr": "8" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "22" });
+tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "23" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerMetricsMSFT", "year":2024,"Nr": "5" });
+tabledata.push({"folder": "NetPackageAnalyzerMetricsMSFT", "year":2024,"Nr": "6" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerObjects", "year":2024,"Nr": "44" });
+tabledata.push({"folder": "NetPackageAnalyzerObjects", "year":2024,"Nr": "45" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerShowInConsole", "year":2024,"Nr": "1" });
                     
@@ -8148,7 +7672,9 @@ tabledata.push({"folder": "NetPackageAnalyzerTests", "year":2024,"Nr": "10" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2023,"Nr": "10" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2024,"Nr": "46" });
+tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2024,"Nr": "47" });
+                    
+tabledata.push({"folder": "NPA.HtmlData", "year":2024,"Nr": "2" });
                     
 tabledata.push({"folder": "NPA.Resources", "year":2024,"Nr": "2" });
                     
@@ -8191,13 +7717,13 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
         </thead>
         <tbody>
                 <tr>
-                    <td>1</td>
+                    <td>2</td>
                     <td>7f8efc25662738b403d64fd007425c170748c9d3</td>
                     <td>2024 Mar 10</td>
                     <td>14</td>
                 </tr>
                 <tr>
-                    <td>2</td>
+                    <td>3</td>
                     <td>e87b74d6509e021d898d460831c530405f854c58</td>
                     <td>2023 Aug 28</td>
                     <td>16</td>
@@ -8209,7 +7735,7 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
     <script>    mermaid.initialize({ startOnLoad: true });</script>
 
     <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
-    <small>8.2024.1014.1828</small>
+    <small>8.2024.1015.1904</small>
     <small> Tomas Tranströmer is feeling careful in Ashgabat </small>
 <script>
         
@@ -8223,20 +7749,20 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
             },
             {
                 element: '#projects-with-tests',            
-            popover:{title: 'Projects in NetPackageAnalyzer : 13',         
+            popover:{title: 'Projects in NetPackageAnalyzer : 14',         
             description: 'Here you can find a diagram of your projects',     
                 }
             },
             {
                 element: '#building-blocks',            
-            popover:{title: 'Building blocks for NetPackageAnalyzer : 7',         
+            popover:{title: 'Building blocks for NetPackageAnalyzer : 8',         
             description: 'You can start understanding the solution with those projects',     
                 }
             },
             {
                 element: '#Commits-per-year-and-folder',
                 popover: {
-                    title: 'Total Commits for NetPackageAnalyzer : 247',
+                    title: 'Total Commits for NetPackageAnalyzer : 257',
                     description: 'Here are the commits per year and project',
                 }
             }
@@ -8244,7 +7770,7 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
             {
                 element: '#packages-with-major-version-different',
                 popover: {
-                    title: 'Packages ! major for NetPackageAnalyzer : 0',
+                    title: 'Packages ! major for NetPackageAnalyzer : 1',
                     description: 'Packages with different major version , could break solution  ',
                 }
             },
