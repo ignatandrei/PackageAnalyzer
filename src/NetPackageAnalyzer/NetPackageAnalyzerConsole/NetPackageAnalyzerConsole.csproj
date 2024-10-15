@@ -31,7 +31,6 @@
 	</ItemGroup>
 	<PropertyGroup>
 		<Version>8.2024.1014.2028</Version>
-		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>
 		<Authors>Andrei Ignat</Authors>
@@ -75,11 +74,11 @@
 		</PackageReference>
 
 	</ItemGroup>
-	<ItemGroup>
+	<!--<ItemGroup>
 		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10405.851" />
 		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10405.851" />
 
-	</ItemGroup>
+	</ItemGroup>-->
 	<PropertyGroup>
 
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
@@ -87,12 +86,5 @@
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);RSCG_InterceptorTemplate</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
-	</PropertyGroup>
 
 </Project>

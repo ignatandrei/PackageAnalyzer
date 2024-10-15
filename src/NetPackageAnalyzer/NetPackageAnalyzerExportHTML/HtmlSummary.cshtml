@@ -409,7 +409,7 @@
                         <td>
                             <a href="#Cyclomatic-Complexity-for-Assembly">
                                 With most Cyclomatic Complexity
-                            </a>:@CycAssIndex.First1()?Count
+                            </a>:@CycAssIndex.First1()?.Count
                         </td>
                         <td>@CycAssIndex.First1()?.Name</td>
                     </tr>
@@ -476,7 +476,7 @@
                         <td>@(++tableRow)</td>
                         <td>
                             <a href="#executable-lines-per-class">
-                                With most lines:@execClassLines.First1()??.Count
+                                With most lines:@execClassLines.First1()?.Count
                             </a>
                         </td>
                         <td>@execClassLines.First1()?.Name</td>
@@ -1073,7 +1073,7 @@ columns: [
     <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
     @if (keysPackageMultiple.Length > 0)
     {
-        <table border="1">
+        <table border="1" title="image packages with major different">
             <thead>
                 <tr>
                     <th>Nr</th>

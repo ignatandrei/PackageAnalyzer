@@ -33,11 +33,16 @@ public class GenerateHTML : GenerateFiles
 
             var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
             await system.File.WriteAllTextAsync(nameFile, html);
-            WriteJs(where);
+            WriteJs(where); 
             var ex = new ExtractImages(nameFile);
             await ex.GetImagesAsync();
-
-
+            MDSummaryData md = new ();
+            md.nameSolution = GlobalsForGenerating.NameSolution;
+            md.ExistsMajorDiffers= (modelMore1Version.KeysPackageMultipleMajorDiffers().Length > 0);
+            var mdSummary = new MDSummary(md);
+            var mdHtml = mdSummary.Render();
+            var nameFileMD = Path.Combine(where, $"{NameSolution}_summary.md");
+            await system.File.WriteAllTextAsync(nameFileMD, mdHtml);
             return nameFile;
         }
         finally

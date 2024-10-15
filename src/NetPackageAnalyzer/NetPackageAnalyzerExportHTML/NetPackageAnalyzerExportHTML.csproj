@@ -6,9 +6,9 @@
     <Nullable>enable</Nullable>
 	  
 <NoWarn>CS0436</NoWarn>
-	  <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-
+  
   <ItemGroup>
 		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.0.2" />
 	</ItemGroup>

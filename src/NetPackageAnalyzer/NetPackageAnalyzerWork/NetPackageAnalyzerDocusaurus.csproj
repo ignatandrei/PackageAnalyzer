@@ -135,11 +135,11 @@
 	  <ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 		<PackageReference Include="RSCG_WhatIAmDoing" Version="8.2024.10405.851" />
 		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10405.851" />
 
-	</ItemGroup>
+	</ItemGroup>-->
 	<PropertyGroup>
 
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>

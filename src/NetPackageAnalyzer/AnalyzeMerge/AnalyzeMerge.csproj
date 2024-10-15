@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <PackageReference Include="LibGit2Sharp" Version="0.30.0" />
-	<PackageReference Include="RazorBlade" Version="0.5.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+	<PackageReference Include="RazorBlade" Version="0.6.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 
   </ItemGroup>
 

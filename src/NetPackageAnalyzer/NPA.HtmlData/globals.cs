@@ -5,6 +5,3 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NPA.HtmlData;
-internal class globals
-{
-}

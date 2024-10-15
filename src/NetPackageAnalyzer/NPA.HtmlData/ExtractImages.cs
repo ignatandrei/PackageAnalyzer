@@ -25,6 +25,17 @@ public class ExtractImages
     {
        
         var dir = Path.GetDirectoryName(HtmlPath)!;
+        var nameFile= Path.GetFileNameWithoutExtension(HtmlPath);
+        var imagesDir = Path.Combine(dir, "images");
+        if (!Directory.Exists(imagesDir))
+        {
+            Directory.CreateDirectory(imagesDir);
+        }
+        imagesDir = Path.Combine(imagesDir, nameFile);
+        if (!Directory.Exists(imagesDir))
+        {
+            Directory.CreateDirectory(imagesDir);
+        }
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions()
         {
@@ -37,23 +48,26 @@ public class ExtractImages
 
         var page = await context.NewPageAsync();
         //await page.SetContentAsync(File.ReadAllText(HtmlPath));
-        await page.GotoAsync(new Uri(HtmlPath).AbsoluteUri);
+        var resp= await page.GotoAsync(new Uri(HtmlPath).AbsoluteUri);
         await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
-
+        await page.EvaluateAsync("driverObj.destroy()");
         var titles = await page.Locator("//div[starts-with(@title,'image')]").AllAsync();
         var nr = titles.Count();
-        Console.WriteLine($"Found {nr} images");
+        //Console.WriteLine($"Found {nr} images");
         for (var i = 0; i < nr; i++)
         {
             var title = titles[i];
             var name=await title.GetAttributeAsync("title");
-            name=name.Replace("image", "").Trim();
-
+            if(string.IsNullOrWhiteSpace(name))
+                continue;
+            name =name.Replace("image", "").Trim();
+            name = name.Replace(" ", "-");
             var buffer = await title.ScreenshotAsync();
-            await File.WriteAllBytesAsync(Path.Combine(dir, $"{name}.png"), buffer);
+            
+            await File.WriteAllBytesAsync(Path.Combine(imagesDir, $"{name}.png"), buffer);
         }
         await browser.CloseAsync();
-        Console.WriteLine("Done in "+dir); 
+        //Console.WriteLine("Done in "+dir); 
         return true;
     }
 }
