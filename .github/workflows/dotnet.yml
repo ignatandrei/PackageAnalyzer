@@ -27,6 +27,7 @@ jobs:
     #     node-version: '20.9.0'
     - name: Restore dependencies
       run: |
+        dotnet tool install --global PowerShell
         cd src
         cd NetPackageAnalyzer
         dotnet restore
@@ -34,12 +35,14 @@ jobs:
         # dotnet build --no-restore
     - name: Build
       run: |
+        dotnet tool install --global PowerShell
         cd src
         cd NetPackageAnalyzer        
         cd NetPackageAnalyzerConsole
         dotnet pack -o ../../nugetPackages       
     - name: Build site
       run: |
+        dotnet tool install --global PowerShell
         cd src
         cd NetPackageAnalyzer
         cd NetPackageAnalyzerConsole
