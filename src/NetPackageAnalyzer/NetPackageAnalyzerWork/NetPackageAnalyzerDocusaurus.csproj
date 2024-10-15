@@ -5,7 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<Version>8.2024.429.0700</Version>
-	  <NoWarn>CS0436</NoWarn>
+	  <NoWarn>CS0436,NU5111</NoWarn>
+
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
   </PropertyGroup>
