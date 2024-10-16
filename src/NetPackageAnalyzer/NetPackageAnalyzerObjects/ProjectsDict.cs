@@ -46,6 +46,13 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         return StatisticalNumbers<int>.Median(data.Select(it => it.Value).ToArray());
 
     }
+    public NamePerCountArray FilesWithMaxCommitsAdv(int? year)
+    {
+        var data=  FilesWithMaxCommits(year)
+            .Select(it => new NamePerCount(it.Key, it.Value))
+            .ToArray();
+        return new NamePerCountArray(data,true);
+    }
     public KeyValuePair<string, int>[] FilesWithMaxCommits(int? year)
     {
         int take = 10;

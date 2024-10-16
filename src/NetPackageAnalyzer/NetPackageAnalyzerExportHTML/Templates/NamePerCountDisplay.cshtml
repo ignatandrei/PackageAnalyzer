@@ -40,7 +40,7 @@
     {
         nameCountGraphic = nameCount.Take(10).ToArray();
     }
-    string assNamesMaintIndex = string.Join(",", nameCountGraphic.Select(it => "'" + it.Name + "'"));
+    string assNamesMaintIndex = string.Join(",", nameCountGraphic.Select(it => "'" + it.Name.Replace("\\", "\\\\") + "'"));
     string valuesMaintIndex = string.Join(",\r\n",
             nameCountGraphic.Select(it => "{value:" + it.Count +"}")
             );
@@ -63,11 +63,11 @@
         var option;
 
     option = {
-        xAxis: {
+        yAxis: {
             type: 'category',
             data: [@assNamesMaintIndex]
         },
-        yAxis: {
+        xAxis: {
             type: 'value'
         },
         tooltip: {
@@ -80,6 +80,10 @@
     @valuesMaintIndex
                     ],
                     type: 'bar'
+                , label: {
+                    show: true,
+                    formatter: '{c}'
+                }
                 }
             ]
         };
@@ -120,7 +124,7 @@ bar @yAxis
     @foreach (var item in nameCountOriginal)
     {
         <text>
-                {"Name": "@item.Name", "Nr": "@item.Count" },
+                {"Name": "@item.Name.Replace("\\", "\\\\")", "Nr": "@item.Count" },
         </text>
     }
                                 ];

@@ -44,6 +44,7 @@ public record NamePerCount(string Name, long Count)
 }
 public record NamePerCountArray(NamePerCount[]? NamePerCounts,bool Descending)
 { 
+    public static NamePerCountArray Empty = new NamePerCountArray([], false);
     public Statistics<long> Statistics()
     {
         return new Statistics<long>(

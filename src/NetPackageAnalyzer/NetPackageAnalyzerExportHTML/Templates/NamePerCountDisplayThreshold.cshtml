@@ -69,11 +69,11 @@
             var option;
 
             option = {
-                xAxis: {
+                yAxis: {
                     type: 'category',
                     data: [@assNamesMaintIndex]
                 },
-                yAxis: {
+                xAxis: {
                     type: 'value'
                 },
                 tooltip: {
@@ -86,6 +86,10 @@
             @valuesMaintIndex
                         ],
                         type: 'bar'
+                        , label: {
+                            show: true,
+                            formatter: '{c}'
+                        }
                     }
                 ]
             };

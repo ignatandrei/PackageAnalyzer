@@ -31,9 +31,9 @@
         maxCommitString = "this year," + currentYear;
     }
     var maxCommitFiles = projectDicts.CommitsWithMaxFiles(null);
-    var top10Files = projectDicts.FilesWithMaxCommits(null);
+    NamePerCountArray topFiles = projectDicts.FilesWithMaxCommitsAdv(null)??NamePerCountArray.Empty;
     var medianCommits = projectDicts.MedianCommits(null);
-    KeyValuePair<string, int>? filewithMaxCommits = top10Files?.Length > 0 ? top10Files.First() : null;
+    var filewithMaxCommits = topFiles?.First1();
     Tuple<NamePerCountArray, string> tuple;
     Tuple<string, NamePerCountArray, int, int, bool> tupleThreshold;
     NamePerCountDisplayThreshold namePerCountDisplayThreshold;
@@ -310,7 +310,7 @@
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
-                            <a href="Commits-per-year-and-folder">
+                            <a href="#Commits-per-year-and-folder">
                                 last commit
                             </a> : @maxCommitString
                         </td>
@@ -319,13 +319,18 @@
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
-                            The commit with max files ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
+                            <a href="#maxCommitFilesPerYear">
+                                The commit with max files
+                            </a>
+                            ( @maxCommitFiles.CountFiles()  ) is sha @(maxCommitFiles.sha) on @maxCommitFiles.date.ToString("yyyy MMMM dd") )
                         </td>
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
-                            The file with most commits ( @filewithMaxCommits?.Value ) is @GlobalsForGenerating.RelativePath(filewithMaxCommits?.Key)
+                            <a href="#file-with-commits">
+                                The file with most commits
+                            </a>( @filewithMaxCommits?.Count )  is @GlobalsForGenerating.RelativePath(filewithMaxCommits?.Name)
                         </td>
                     </tr>
 
@@ -1259,6 +1264,16 @@ columns: [
 
         @yearFolders.Render()
 
+        <h3 id="file-with-commits">Commits per file</h3>
+        <text>
+        @{
+            tuple = new(topFiles!, "Files with commits");
+            namePerCountDisplay = new(tuple);
+            
+        }
+            @namePerCountDisplay.Render();
+        </text>
+        
 
     }
 
@@ -1266,7 +1281,7 @@ columns: [
     @{
         var maxCommitFilesPerYear = projectDicts.CommitsWithMaxFilesPerYear();
     }
-    <h3> Commits with most files per year</h3>
+    <h3 id="maxCommitFilesPerYear"> Commits with most files per year</h3>
     <table border="1">
         <thead>
             <tr>
