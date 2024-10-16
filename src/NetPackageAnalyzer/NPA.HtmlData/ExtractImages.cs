@@ -49,7 +49,15 @@ public class ExtractImages
         var page = await context.NewPageAsync();
         //await page.SetContentAsync(File.ReadAllText(HtmlPath));
         var resp= await page.GotoAsync(new Uri(HtmlPath).AbsoluteUri);
-        await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+        await Task.Delay(5000);
+        try
+        {
+            await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("error in wait for load state network idle "+ex.Message);
+        }
         await page.EvaluateAsync("driverObj.destroy()");
         var titles = await page.Locator("//div[starts-with(@title,'image')]").AllAsync();
         var nr = titles.Count();
@@ -57,14 +65,21 @@ public class ExtractImages
         for (var i = 0; i < nr; i++)
         {
             var title = titles[i];
-            var name=await title.GetAttributeAsync("title");
-            if(string.IsNullOrWhiteSpace(name))
+            var name = await title.GetAttributeAsync("title");
+            if (string.IsNullOrWhiteSpace(name))
                 continue;
-            name =name.Replace("image", "").Trim();
-            name = name.Replace(" ", "-");
-            var buffer = await title.ScreenshotAsync();
-            
-            await File.WriteAllBytesAsync(Path.Combine(imagesDir, $"{name}.png"), buffer);
+            var newName = name.Replace("image", "").Trim();
+            newName = newName.Replace(" ", "-");
+            try
+            {
+                var buffer = await title.ScreenshotAsync();
+
+                await File.WriteAllBytesAsync(Path.Combine(imagesDir, $"{newName}.png"), buffer);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Error in screenshot {name} " + ex.Message);
+            }
         }
         await browser.CloseAsync();
         //Console.WriteLine("Done in "+dir); 
