@@ -46,4 +46,11 @@
 
 
 ## Commits
-![Number-exec-lines-per-method](./images/NetPackageAnalyzer_summary/commits-year-project.png)
+
+### File with most commits
+
+![Files-with-commits](./images/NetPackageAnalyzer_summary/Files-with-commits.png)
+
+### Commits per year and project
+
+![Commits per year and project](./images/NetPackageAnalyzer_summary/commits-year-project.png)
