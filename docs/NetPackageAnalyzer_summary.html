@@ -167,7 +167,7 @@
                         <td>1</td>
                         <td>
                             <a href="#commits">
-                                Total Commits : 261
+                                Total Commits : 265
                         </td>
                     </tr>
 
@@ -275,7 +275,7 @@
                     </tr>
                     <tr>
                         <td>8</td>
-                        <td><a href="#executable-lines-per-assembly">With most lines</a>:672</td>
+                        <td><a href="#executable-lines-per-assembly">With most lines</a>:673</td>
                         <td>NetPackageAnalyzerObjects</td>
                     </tr>
                 </tbody>
@@ -418,14 +418,14 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 75 },
-                { name: 'Commits 2024', max: 65 },
+                { name: 'Total Commits', max: 76 },
+                { name: 'Commits 2024', max: 66 },
                 { name: 'Packages', max: 29 },
                 { name: 'References', max: 5 },
                 { name: 'Number Public Classes', max: 35 },
-                { name: 'Lines in Public Classes', max: 1533 },
+                { name: 'Lines in Public Classes', max: 1534 },
                 { name: 'Number Classes',max:32},
-                { name: 'Total Lines', max: 1861 },
+                { name: 'Total Lines', max: 1862 },
                 { name: "Cyclomatic", max: 349},
                 { name: "CodeCoupling", max: 78},
             ]
@@ -447,7 +447,7 @@ name: 'NetPackageAnalyzeHistory'
     },
 
     {
-                                value: [75,65, 29, 4, 0, 0,4, 268, 26,32],
+                                value: [76,66, 29, 4, 0, 0,4, 268, 26,32],
 name: 'NetPackageAnalyzerConsole'
     },
 
@@ -462,7 +462,7 @@ name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-                                value: [24,24, 9, 3, 1, 80,2, 104, 17,32],
+                                value: [25,25, 9, 3, 1, 80,2, 104, 17,32],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
@@ -472,7 +472,7 @@ name: 'NetPackageAnalyzerMetricsMSFT'
     },
 
     {
-                                value: [46,46, 7, 5, 35, 1533,32, 1861, 349,78],
+                                value: [47,47, 7, 5, 35, 1534,32, 1862, 349,78],
 name: 'NetPackageAnalyzerObjects'
     },
 
@@ -487,7 +487,7 @@ name: 'NetPackageAnalyzerTests'
     },
 
     {
-                                value: [3,3, 4, 0, 1, 75,1, 89, 10,18],
+                                value: [4,4, 4, 0, 1, 71,1, 85, 9,18],
 name: 'NPA.HtmlData'
     },
 
@@ -775,81 +775,6 @@ name: 'Statistical'
                     
                 </div>
 
-    <h2 id="play-with-solution-relations">Play with solution relations</h2>
-    <div id="solRel"></div>
-
-    <script type="text/javascript">
-        var dot = 'digraph {  ';
-
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj" [label="NetPackageAnalyzerConsole : 4"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj" [label="NetPackageAnalyzerDocusaurus : 2"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj" [label="NetPackageAnalyzerTests : 3"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj" [label="NetPackageAnalyzerObjects : 5"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj" [label="NetPackageAnalyzerExportHTML : 3"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NuGetInfo/NuGetInfo.csproj" [label="NuGetInfo : 0"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/AnalyzeMerge/AnalyzeMerge.csproj" [label="AnalyzeMerge : 0"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzeHistory/NetPackageAnalyzeHistory.csproj" [label="NetPackageAnalyzeHistory : 0"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerShowInConsole/NetPackageAnalyzerShowInConsole.csproj" [label="NetPackageAnalyzerShowInConsole : 1"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerDiagram/NetPackageAnalyzerDiagram.csproj" [label="NetPackageAnalyzerDiagram : 0"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerMetricsMSFT/NetPackageAnalyzerMetricsMSFT.csproj" [label="NetPackageAnalyzerMetricsMSFT : 0"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NPA.Resources/NPA.Resources.csproj" [label="NPA.Resources : 0"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/Statistical/Statistical.csproj" [label="Statistical : 0"]\r\n';
-            
-                    dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NPA.HtmlData/NPA.HtmlData.csproj" [label="NPA.HtmlData : 0"]\r\n';
-            
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/AnalyzeMerge/AnalyzeMerge.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerShowInConsole/NetPackageAnalyzerShowInConsole.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerDiagram/NetPackageAnalyzerDiagram.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NuGetInfo/NuGetInfo.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/Statistical/Statistical.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzeHistory/NetPackageAnalyzeHistory.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerDiagram/NetPackageAnalyzerDiagram.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerMetricsMSFT/NetPackageAnalyzerMetricsMSFT.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NuGetInfo/NuGetInfo.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/Statistical/Statistical.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NPA.HtmlData/NPA.HtmlData.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NPA.Resources/NPA.Resources.csproj"\r\n'
-                
-                                            dot+='"D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerShowInConsole/NetPackageAnalyzerShowInConsole.csproj"  -> "D:/gth/PackageAnalyzer/src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj"\r\n'
-                            dot+="}";
-        var dom = document.getElementById('solRel');
-        var data = vis.parseDOTNetwork(dot);
-        var network = new vis.Network(dom, data);
-    </script>
-
 
     <h2 id="building-blocks">Building Blocks : 8 </h2>
 
@@ -1108,7 +1033,7 @@ name: 'Statistical'
     ;Max Value: 100
     ;Math average: 81 
     ;Math median: 80
-    ;Standard Dev: 12.25
+    ;Standard Dev: 12.17
 
         ;Coefficient of Variation: 0.15
         
@@ -1130,7 +1055,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['Statistical','NPA.HtmlData','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NetPackageAnalyzerExportHTML','NetPackageAnalyzerConsole','AnalyzeMerge','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects']
+                    data: ['Statistical','NPA.HtmlData','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NetPackageAnalyzerExportHTML','NetPackageAnalyzerConsole','AnalyzeMerge','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -1143,7 +1070,7 @@ name: 'Statistical'
                     {
                         data: [
             {value:62},
-{value:63},
+{value:64},
 {value:70},
 {value:74},
 {value:75},
@@ -1156,7 +1083,7 @@ name: 'Statistical'
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -1194,7 +1121,7 @@ name: 'Statistical'
 
                         {"Name": "Statistical", "Nr": "62" },
                 
-                        {"Name": "NPA.HtmlData", "Nr": "63" },
+                        {"Name": "NPA.HtmlData", "Nr": "64" },
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "70" },
                 
@@ -1271,7 +1198,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['GenerateFilesDocusaurus','GenerateData','GenerateHTML','AnalyzeMergeData','GenericMetrics','ProcessOutput','ProcessOutput','AnalyzeForProject','StatisticalNumbers<T>','ExtractImages']
+                    data: ['GenerateFilesDocusaurus','GenerateData','GenerateHTML','AnalyzeMergeData','GenericMetrics','ProcessOutput','ProcessOutput','AnalyzeForProject','StatisticalNumbers<T>','ExtractImages'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -1292,12 +1221,12 @@ name: 'Statistical'
 {value:61},
 {value:62},
 {value:62},
-{value:63}
+{value:64}
                         ],
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -1351,7 +1280,7 @@ name: 'Statistical'
                 
                         {"Name": "StatisticalNumbers<T>", "Nr": "62" },
                 
-                        {"Name": "ExtractImages", "Nr": "63" },
+                        {"Name": "ExtractImages", "Nr": "64" },
                 
                         {"Name": "FolderHistoryCommits", "Nr": "64" },
                 
@@ -1508,7 +1437,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','void AnalyzeForProject.Analyze()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task<bool> ExtractImages.GetImagesAsync()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)']
+                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','void AnalyzeForProject.Analyze()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task<string> GenerateHTML.GenerateNow(string folder, string where)','Task<bool> ExtractImages.GetImagesAsync()','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -1528,13 +1459,13 @@ name: 'Statistical'
 {value:45},
 {value:46},
 {value:47},
-{value:47},
+{value:48},
 {value:50}
                         ],
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -1584,9 +1515,9 @@ name: 'Statistical'
                 
                         {"Name": "HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)", "Nr": "46" },
                 
-                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "47" },
-                
                         {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "47" },
+                
+                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "48" },
                 
                         {"Name": "string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)", "Nr": "50" },
                 
@@ -1690,6 +1621,8 @@ name: 'Statistical'
                 
                         {"Name": "NamePerCount[] ProjectsDict.Packages()", "Nr": "76" },
                 
+                        {"Name": "NamePerCountArray ProjectsDict.FilesWithMaxCommitsAdv(int? year)", "Nr": "76" },
+                
                         {"Name": "Task TestSolutionExists.TestDoesNotWorkWithoutSln()", "Nr": "76" },
                 
                         {"Name": "Dictionary<string, PackageData> GenerateData.MajorWithMoreVersionsPackages()", "Nr": "77" },
@@ -1731,8 +1664,6 @@ name: 'Statistical'
                         {"Name": "Commit.Commit(DateTime date, string sha)", "Nr": "80" },
                 
                         {"Name": "long ProjectsDict.TotalCommits()", "Nr": "80" },
-                
-                        {"Name": "NamePerCountArray ProjectsDict.FilesWithMaxCommitsAdv(int? year)", "Nr": "80" },
                 
                         {"Name": "NamePerCount? AssemblyDataFromMSFT.AssemblyMetricMax(eMSFTMetrics metrics)", "Nr": "81" },
                 
@@ -1937,7 +1868,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NPA.HtmlData','Statistical']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerConsole','NetPackageAnalyzerExportHTML','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NPA.HtmlData','Statistical'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -1963,7 +1896,7 @@ name: 'Statistical'
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -2130,7 +2063,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['GenerateData','GenerateHTML','RealMainExecuting','TemplateGenerator','GenericMetrics','GenerateFilesDocusaurus','ProjectsDict','ExtractImages','FileFolderHistorySimple','AnalyzeMergeData']
+                    data: ['GenerateData','GenerateHTML','RealMainExecuting','TemplateGenerator','GenericMetrics','GenerateFilesDocusaurus','ProjectsDict','ExtractImages','FileFolderHistorySimple','AnalyzeMergeData'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -2156,7 +2091,7 @@ name: 'Statistical'
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -2450,7 +2385,7 @@ name: 'Statistical'
     ;Max Value: 349
     ;Math average: 41 
     ;Math median: 21
-    ;Standard Dev: 86.27
+    ;Standard Dev: 86.30
 
         ;Coefficient of Variation: 2.10
         </div>
@@ -2469,7 +2404,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzeHistory','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','Statistical','NetPackageAnalyzerConsole','NetPackageAnalyzerExportHTML','NPA.HtmlData','NetPackageAnalyzerTests']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzeHistory','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerMetricsMSFT','AnalyzeMerge','Statistical','NetPackageAnalyzerConsole','NetPackageAnalyzerExportHTML','NPA.HtmlData','NetPackageAnalyzerTests'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -2489,13 +2426,13 @@ name: 'Statistical'
 {value:27,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:17,itemStyle:{color:'orange'}},
-{value:10},
+{value:9},
 {value:8}
                         ],
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -2547,7 +2484,7 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerExportHTML", "Nr": "17" },
                 
-                        {"Name": "NPA.HtmlData", "Nr": "10" },
+                        {"Name": "NPA.HtmlData", "Nr": "9" },
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "8" },
                 
@@ -2612,7 +2549,7 @@ name: 'Statistical'
 {value:27,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:17,itemStyle:{color:'red'}},
-{value:10,itemStyle:{color:'red'}},
+{value:9,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -2663,7 +2600,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['ProjectsDict','GenerateData','StatisticalNumbers<T>','GenericMetrics','RealMainExecuting','TemplateGenerator','AssemblyDataFromMSFT','FileFolderHistorySimple','AnalyzeMergeData','deprecatedV1_gen_json']
+                    data: ['ProjectsDict','GenerateData','StatisticalNumbers<T>','GenericMetrics','RealMainExecuting','TemplateGenerator','AssemblyDataFromMSFT','FileFolderHistorySimple','AnalyzeMergeData','deprecatedV1_gen_json'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -2689,7 +2628,7 @@ name: 'Statistical'
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -2751,8 +2690,6 @@ name: 'Statistical'
                 
                         {"Name": "GenerateFilesDocusaurus", "Nr": "11" },
                 
-                        {"Name": "ExtractImages", "Nr": "10" },
-                
                         {"Name": "includeV1_gen_json", "Nr": "10" },
                 
                         {"Name": "outdatedV1_gen_json", "Nr": "10" },
@@ -2760,6 +2697,8 @@ name: 'Statistical'
                         {"Name": "TopLevelPackages", "Nr": "10" },
                 
                         {"Name": "ExternalReferenceExport", "Nr": "9" },
+                
+                        {"Name": "ExtractImages", "Nr": "9" },
                 
                         {"Name": "ClassesRefData", "Nr": "8" },
                 
@@ -2912,7 +2851,7 @@ name: 'Statistical'
 {value:10,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}},
-{value:10,itemStyle:{color:'red'}},
+{value:9,itemStyle:{color:'red'}},
 {value:9,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
@@ -3004,7 +2943,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)','void ProjectsDict.FindReferences()']
+                    data: ['Task<bool> GenerateData.GenerateDataForSln(string folder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','Task<string> AnalyzeMergeData.GenerateNow()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task RealMainExecuting.RealGenerateHandler(string folder, string where, WhatToGenerate what)','void ProjectsDict.FindReferences()'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -3030,7 +2971,7 @@ name: 'Statistical'
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -3094,8 +3035,6 @@ name: 'Statistical'
                 
                         {"Name": "int ProjectsDict.MedianCommits(int? year)", "Nr": "5" },
                 
-                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "5" },
-                
                         {"Name": "Commit ProjectsDict.CommitsWithMaxFiles(int? year)", "Nr": "4" },
                 
                         {"Name": "Commit[] ProjectsDict.MaxCommits(int? year)", "Nr": "4" },
@@ -3117,6 +3056,8 @@ name: 'Statistical'
                         {"Name": "string[]? deprecatedV1_gen_json.PackagesID()", "Nr": "4" },
                 
                         {"Name": "T StatisticalNumbers<T>.Variance(T[] values)", "Nr": "4" },
+                
+                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "4" },
                 
                         {"Name": "Task<string?> TemplateGenerator.Generate_BlogPost(InfoSolution model, ProjectsDict projectsDict, DisplayDataMoreThan1Version? displayDataMoreThan1Version, ClassesRefData? refSummary, PublicClassRefData? publicClassRefData)", "Nr": "4" },
                 
@@ -3443,7 +3384,7 @@ name: 'Statistical'
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:5,itemStyle:{color:'red'}},
-{value:5,itemStyle:{color:'red'}},
+{value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
@@ -3635,7 +3576,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerConsole','NetPackageAnalyzerTests','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerShowInConsole','NPA.HtmlData']
+                    data: ['NetPackageAnalyzerObjects','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerConsole','NetPackageAnalyzerTests','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerExportHTML','NetPackageAnalyzerShowInConsole','NPA.HtmlData'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -3661,7 +3604,7 @@ name: 'Statistical'
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -3778,7 +3721,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzeHistory','AnalyzeMerge','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','NPA.Resources','NetPackageAnalyzerTests','Statistical','NetPackageAnalyzerExportHTML']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzeHistory','AnalyzeMerge','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','NPA.Resources','NetPackageAnalyzerTests','Statistical','NetPackageAnalyzerExportHTML'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -3804,7 +3749,7 @@ name: 'Statistical'
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -3920,7 +3865,9 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['ProjectsDict','TemplateGenerator','AssemblyDataFromMSFT','GenerateData','MyResource','RealMainExecuting','HistoryPerYear','StatisticalNumbers<T>','GenericMetrics','IOperations']
+                    data: ['ProjectsDict','TemplateGenerator','AssemblyDataFromMSFT','GenerateData','MyResource','RealMainExecuting','HistoryPerYear','StatisticalNumbers<T>','GenericMetrics','IOperations'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -3946,7 +3893,7 @@ name: 'Statistical'
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -5391,10 +5338,10 @@ columns: [
     
         <div>
     Min Value: 0
-    ;Max Value: 672
+    ;Max Value: 673
     ;Math average: 99 
     ;Math median: 54
-    ;Standard Dev: 165.23
+    ;Standard Dev: 165.56
 
         ;Coefficient of Variation: 1.67
         
@@ -5416,7 +5363,9 @@ columns: [
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','Statistical','NetPackageAnalyzerExportHTML','NPA.HtmlData','NetPackageAnalyzerTests']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','AnalyzeMerge','NetPackageAnalyzeHistory','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','Statistical','NetPackageAnalyzerExportHTML','NPA.HtmlData','NetPackageAnalyzerTests'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -5428,7 +5377,7 @@ columns: [
                 series: [
                     {
                         data: [
-            {value:672},
+            {value:673},
 {value:168},
 {value:106},
 {value:94},
@@ -5436,13 +5385,13 @@ columns: [
 {value:68},
 {value:56},
 {value:53},
-{value:36},
+{value:33},
 {value:27}
                         ],
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -5478,7 +5427,7 @@ columns: [
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerObjects", "Nr": "672" },
+                        {"Name": "NetPackageAnalyzerObjects", "Nr": "673" },
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "168" },
                 
@@ -5494,7 +5443,7 @@ columns: [
                 
                         {"Name": "NetPackageAnalyzerExportHTML", "Nr": "53" },
                 
-                        {"Name": "NPA.HtmlData", "Nr": "36" },
+                        {"Name": "NPA.HtmlData", "Nr": "33" },
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "27" },
                 
@@ -5537,7 +5486,7 @@ columns: [
     ;Max Value: 227
     ;Math average: 20 
     ;Math median: 6
-    ;Standard Dev: 40.72
+    ;Standard Dev: 40.77
 
         ;Coefficient of Variation: 2.04
         
@@ -5559,7 +5508,9 @@ columns: [
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['GenerateData','ProjectsDict','GenerateFilesDocusaurus','RealMainExecuting','GenericMetrics','StatisticalNumbers<T>','GenerateHTML','AnalyzeForProject','AssemblyDataFromMSFT','AnalyzeMergeData']
+                    data: ['GenerateData','ProjectsDict','GenerateFilesDocusaurus','RealMainExecuting','GenericMetrics','StatisticalNumbers<T>','GenerateHTML','AnalyzeForProject','AssemblyDataFromMSFT','AnalyzeMergeData'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -5572,7 +5523,7 @@ columns: [
                     {
                         data: [
             {value:227,itemStyle:{color:'red'}},
-{value:207,itemStyle:{color:'red'}},
+{value:208,itemStyle:{color:'red'}},
 {value:129,itemStyle:{color:'orange'}},
 {value:75},
 {value:63},
@@ -5585,7 +5536,7 @@ columns: [
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -5623,7 +5574,7 @@ columns: [
 
                         {"Name": "GenerateData", "Nr": "227" },
                 
-                        {"Name": "ProjectsDict", "Nr": "207" },
+                        {"Name": "ProjectsDict", "Nr": "208" },
                 
                         {"Name": "GenerateFilesDocusaurus", "Nr": "129" },
                 
@@ -5647,7 +5598,7 @@ columns: [
                 
                         {"Name": "TemplateGenerator", "Nr": "37" },
                 
-                        {"Name": "ExtractImages", "Nr": "36" },
+                        {"Name": "ExtractImages", "Nr": "33" },
                 
                         {"Name": "FolderHistoryCommits", "Nr": "23" },
                 
@@ -5793,7 +5744,7 @@ columns: [
                             {
                                 data: [
                     {value:227,itemStyle:{color:'red'}},
-{value:207,itemStyle:{color:'red'}},
+{value:208,itemStyle:{color:'red'}},
 {value:129,itemStyle:{color:'red'}},
 {value:75,itemStyle:{color:'red'}},
 {value:63,itemStyle:{color:'red'}},
@@ -5805,7 +5756,7 @@ columns: [
 {value:40,itemStyle:{color:'red'}},
 {value:38,itemStyle:{color:'red'}},
 {value:37,itemStyle:{color:'red'}},
-{value:36,itemStyle:{color:'red'}},
+{value:33,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:21,itemStyle:{color:'red'}},
 {value:16,itemStyle:{color:'red'}},
@@ -5881,7 +5832,7 @@ columns: [
     ;Max Value: 129
     ;Math average: 7 
     ;Math median: 3
-    ;Standard Dev: 15.20
+    ;Standard Dev: 15.17
 
         ;Coefficient of Variation: 2.17
         
@@ -5903,7 +5854,9 @@ columns: [
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','Task<bool> GenerateData.GenerateDataForSln(string folder)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','void AnalyzeForProject.Analyze()','Task<string> AnalyzeMergeData.GenerateNow()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task<bool> ExtractImages.GetImagesAsync()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)']
+                    data: ['Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','Task<bool> GenerateData.GenerateDataForSln(string folder)','(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)','GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)','void AnalyzeForProject.Analyze()','Task<string> AnalyzeMergeData.GenerateNow()','HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)','Task<bool> ExtractImages.GetImagesAsync()','Task<string> GenerateHTML.GenerateNow(string folder, string where)','string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -5922,14 +5875,14 @@ columns: [
 {value:39},
 {value:36},
 {value:34},
-{value:32},
+{value:29},
 {value:28},
 {value:26}
                         ],
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -5979,7 +5932,7 @@ columns: [
                 
                         {"Name": "HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)", "Nr": "34" },
                 
-                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "32" },
+                        {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "29" },
                 
                         {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "28" },
                 
@@ -6089,6 +6042,8 @@ columns: [
                 
                         {"Name": "NamePerCount[] ProjectsDict.CommitsPerFolder()", "Nr": "4" },
                 
+                        {"Name": "NamePerCountArray ProjectsDict.FilesWithMaxCommitsAdv(int? year)", "Nr": "4" },
+                
                         {"Name": "ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)", "Nr": "4" },
                 
                         {"Name": "Task TestSolutionExists.TestDoesNotWorkWithoutSln()", "Nr": "4" },
@@ -6114,8 +6069,6 @@ columns: [
                         {"Name": "NamePerCount? AssemblyDataFromMSFT.ClassesMetricMax(eMSFTMetrics metrics)", "Nr": "3" },
                 
                         {"Name": "NamePerCount? AssemblyDataFromMSFT.ClassesMetricMin(eMSFTMetrics metrics)", "Nr": "3" },
-                
-                        {"Name": "NamePerCountArray ProjectsDict.FilesWithMaxCommitsAdv(int? year)", "Nr": "3" },
                 
                         {"Name": "string? AnalyzeMergeData.relFolder()", "Nr": "3" },
                 
@@ -6335,7 +6288,7 @@ columns: [
 {value:39,itemStyle:{color:'red'}},
 {value:36,itemStyle:{color:'red'}},
 {value:34,itemStyle:{color:'red'}},
-{value:32,itemStyle:{color:'red'}},
+{value:29,itemStyle:{color:'red'}},
 {value:28,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
 {value:24,itemStyle:{color:'red'}},
@@ -6393,7 +6346,7 @@ columns: [
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
-{value:3,itemStyle:{color:'red'}},
+{value:4,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
@@ -6538,6 +6491,7 @@ columns: [
     option = {
         yAxis: {
             type: 'category',
+            show: false,
             data: ['NetPackageAnalyzerObjects','NetPackageAnalyzeHistory','AnalyzeMerge','NuGetInfo','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerTests','Statistical','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerDiagram','NetPackageAnalyzerExportHTML']
         },
         xAxis: {
@@ -6564,7 +6518,7 @@ columns: [
                     type: 'bar'
                 , label: {
                     show: true,
-                    formatter: '{c}'
+                    formatter: '{b} {c}'
                 }
                 }
             ]
@@ -6656,7 +6610,9 @@ columns: [
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzeHistory','AnalyzeMerge','NuGetInfo','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerTests','NetPackageAnalyzerDocusaurus','Statistical','NetPackageAnalyzerDiagram','NetPackageAnalyzerShowInConsole']
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzeHistory','AnalyzeMerge','NuGetInfo','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerTests','NetPackageAnalyzerDocusaurus','Statistical','NetPackageAnalyzerDiagram','NetPackageAnalyzerShowInConsole'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -6682,7 +6638,7 @@ columns: [
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -6851,7 +6807,9 @@ columns: [
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['ProjectsDict','ProjectData','AssemblyDataFromMSFT','DisplayDataMoreThan1Version','PackageData','FileData','NamePerCountArray','MyResource','DataToDisplayMerge','InfoSolution']
+                    data: ['ProjectsDict','ProjectData','AssemblyDataFromMSFT','DisplayDataMoreThan1Version','PackageData','FileData','NamePerCountArray','MyResource','DataToDisplayMerge','InfoSolution'],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -6877,7 +6835,7 @@ columns: [
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]
@@ -7186,6 +7144,7 @@ columns: [
     option = {
         yAxis: {
             type: 'category',
+            show: false,
             data: ['NetPackageAnalyzeHistory','NetPackageAnalyzerObjects','NetPackageAnalyzerMetricsMSFT','NPA.Resources','NuGetInfo','Statistical','NetPackageAnalyzerDiagram','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerShowInConsole','NPA.HtmlData']
         },
         xAxis: {
@@ -7212,7 +7171,7 @@ columns: [
                     type: 'bar'
                 , label: {
                     show: true,
-                    formatter: '{c}'
+                    formatter: '{b} {c}'
                 }
                 }
             ]
@@ -7302,6 +7261,7 @@ columns: [
     option = {
         yAxis: {
             type: 'category',
+            show: false,
             data: ['ProjectsDict','GenerateHTML','AssemblyDataFromMSFT','GenerateFilesDocusaurus','PackageData','ProjectData','RealMainExecuting','TemplateGenerator','TestNugetInfo','TestStatistics']
         },
         xAxis: {
@@ -7328,7 +7288,7 @@ columns: [
                     type: 'bar'
                 , label: {
                     show: true,
-                    formatter: '{c}'
+                    formatter: '{b} {c}'
                 }
                 }
             ]
@@ -7401,9 +7361,9 @@ columns: [
                 xychart-beta
                 title "Commits per year (folder and csproj)"
                 x-axis [2023,2024]
-                y-axis "" 0--> 238
-                bar [23,238]
-                bar [13,128]
+                y-axis "" 0--> 242
+                bar [23,242]
+                bar [13,129]
             </div>
 
         
@@ -7587,7 +7547,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,65],
+data: [10,66],
 },
 
 
@@ -7611,7 +7571,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,24],
+data: [null,25],
 },
 
 
@@ -7635,7 +7595,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,46],
+data: [null,47],
 },
 
 
@@ -7683,7 +7643,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,3],
+data: [null,4],
 },
 
 
@@ -7745,15 +7705,15 @@ tabledata.push({"folder": "NetPackageAnalyzeHistory", "year":2024,"Nr": "14" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2023,"Nr": "10" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "65" });
+tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "66" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2024,"Nr": "8" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "24" });
+tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "25" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerMetricsMSFT", "year":2024,"Nr": "6" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerObjects", "year":2024,"Nr": "46" });
+tabledata.push({"folder": "NetPackageAnalyzerObjects", "year":2024,"Nr": "47" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerShowInConsole", "year":2024,"Nr": "1" });
                     
@@ -7763,7 +7723,7 @@ tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2023,"Nr": "10" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2024,"Nr": "47" });
                     
-tabledata.push({"folder": "NPA.HtmlData", "year":2024,"Nr": "3" });
+tabledata.push({"folder": "NPA.HtmlData", "year":2024,"Nr": "4" });
                     
 tabledata.push({"folder": "NPA.Resources", "year":2024,"Nr": "2" });
                     
@@ -7798,10 +7758,13 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
     Min Value: 20
     ;Max Value: 115
     ;Math average: 47 
-    ;Math median: 32
-    ;Standard Dev: 33.88
+    ;Math median: 33
+    ;Standard Dev: 34.09
 
-        ;Coefficient of Variation: 0.72
+        ;Coefficient of Variation: 0.73
+        
+        <br />
+        Math mode: The most encountered value (1 times) is 33
         </div>
 
 
@@ -7819,7 +7782,8 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
     option = {
         yAxis: {
             type: 'category',
-            data: ['D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/Program.cs','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/HtmlSummary.cshtml','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\src/NetPackageAnalyzer/NetPackageAnalyzerObjects/ProjectsDict.cs','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/GenerateFilesDocusaurus.cs','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/RealMain.cs','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj','D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/Templates/BlogPost.cshtml']
+            show: false,
+            data: ['..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\Program.cs','..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\NetPackageAnalyzerConsole.csproj','..\\NetPackageAnalyzerExportHTML\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\HtmlSummary.cshtml','..\\NetPackageAnalyzerObjects\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\ProjectsDict.cs','..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\NetPackageAnalyzerDocusaurus.csproj','..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\NetPackageAnalyzerWork.csproj','..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\GenerateFilesDocusaurus.cs','..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\RealMain.cs','..\\NetPackageAnalyzerObjects\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\NetPackageAnalyzerObjects.csproj','..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\Templates\\BlogPost.cshtml']
         },
         xAxis: {
             type: 'value'
@@ -7832,11 +7796,11 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
                 {
                     data: [
     {value:115},
-{value:112},
-{value:71},
+{value:113},
+{value:72},
 {value:33},
 {value:33},
-{value:32},
+{value:33},
 {value:32},
 {value:25},
 {value:24},
@@ -7845,7 +7809,7 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
                     type: 'bar'
                 , label: {
                     show: true,
-                    formatter: '{c}'
+                    formatter: '{b} {c}'
                 }
                 }
             ]
@@ -7865,27 +7829,27 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
 <script>
     var tabledata = [
 
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/Program.cs", "Nr": "115" },
+                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\Program.cs", "Nr": "115" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj", "Nr": "112" },
+                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\NetPackageAnalyzerConsole.csproj", "Nr": "113" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\src/NetPackageAnalyzer/NetPackageAnalyzerExportHTML/HtmlSummary.cshtml", "Nr": "71" },
+                {"Name": "..\\NetPackageAnalyzerExportHTML\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\HtmlSummary.cshtml", "Nr": "72" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj", "Nr": "33" },
+                {"Name": "..\\NetPackageAnalyzerObjects\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\ProjectsDict.cs", "Nr": "33" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/NetPackageAnalyzerWork.csproj", "Nr": "33" },
+                {"Name": "..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\NetPackageAnalyzerDocusaurus.csproj", "Nr": "33" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\src/NetPackageAnalyzer/NetPackageAnalyzerObjects/ProjectsDict.cs", "Nr": "32" },
+                {"Name": "..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\NetPackageAnalyzerWork.csproj", "Nr": "33" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/GenerateFilesDocusaurus.cs", "Nr": "32" },
+                {"Name": "..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\GenerateFilesDocusaurus.cs", "Nr": "32" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\src/NetPackageAnalyzer/NetPackageAnalyzerConsole/RealMain.cs", "Nr": "25" },
+                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\RealMain.cs", "Nr": "25" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\src/NetPackageAnalyzer/NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj", "Nr": "24" },
+                {"Name": "..\\NetPackageAnalyzerObjects\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\NetPackageAnalyzerObjects.csproj", "Nr": "24" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/Templates/BlogPost.cshtml", "Nr": "22" },
+                {"Name": "..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\Templates\\BlogPost.cshtml", "Nr": "22" },
         
-                {"Name": "D:\\gth\\PackageAnalyzer\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\src/NetPackageAnalyzer/NetPackageAnalyzerWork/TemplateGenerator.cs", "Nr": "20" },
+                {"Name": "..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\TemplateGenerator.cs", "Nr": "20" },
                                         ];
     var table = new Tabulator("#Files-with-commits-table", {
         data: tabledata,
@@ -7936,8 +7900,8 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
     <script>    mermaid.initialize({ startOnLoad: true });</script>
 
     <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
-    <small>8.2024.1016.1936</small>
-    <small> Harold Pinter is feeling powerful in Lima </small>
+    <small>8.2024.1017.1936</small>
+    <small> Nadine Gordimer is feeling rational in Seoul </small>
 <script>
         
             const steps = [
@@ -7963,7 +7927,7 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
             {
                 element: '#Commits-per-year-and-folder',
                 popover: {
-                    title: 'Total Commits for NetPackageAnalyzer : 261',
+                    title: 'Total Commits for NetPackageAnalyzer : 265',
                     description: 'Here are the commits per year and project',
                 }
             }
