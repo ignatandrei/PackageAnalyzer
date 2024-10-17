@@ -50,6 +50,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
         var data=  FilesWithMaxCommits(year)
             .Select(it => new NamePerCount(it.Key, it.Value))
+            .Select(it => new NamePerCount(GlobalsForGenerating.RelativePath(it.Name), it.Count))
             .ToArray();
         return new NamePerCountArray(data,true);
     }

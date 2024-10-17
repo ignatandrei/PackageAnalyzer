@@ -330,7 +330,7 @@
                         <td>
                             <a href="#file-with-commits">
                                 The file with most commits
-                            </a>( @filewithMaxCommits?.Count )  is @GlobalsForGenerating.RelativePath(filewithMaxCommits?.Name)
+                            </a>( @filewithMaxCommits?.Count )  is @(filewithMaxCommits?.Name)
                         </td>
                     </tr>
 
@@ -660,7 +660,7 @@
         }
     </div>
 
-    <h2 id="play-with-solution-relations">Play with solution relations</h2>
+   @*  <h2 id="play-with-solution-relations">Play with solution relations</h2>
     <div id="solRel"></div>
 
     <script type="text/javascript">
@@ -688,7 +688,7 @@
         var data = vis.parseDOTNetwork(dot);
         var network = new vis.Network(dom, data);
     </script>
-
+ *@
 
     <h2 id="building-blocks">Building Blocks : @bb0.Length </h2>
     @{

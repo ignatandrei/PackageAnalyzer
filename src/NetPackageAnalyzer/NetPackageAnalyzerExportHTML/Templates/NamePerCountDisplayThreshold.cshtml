@@ -71,7 +71,9 @@
             option = {
                 yAxis: {
                     type: 'category',
-                    data: [@assNamesMaintIndex]
+                    data: [@assNamesMaintIndex],
+                    show: false
+
                 },
                 xAxis: {
                     type: 'value'
@@ -88,7 +90,7 @@
                         type: 'bar'
                         , label: {
                             show: true,
-                            formatter: '{c}'
+                            formatter: '{b} {c}'
                         }
                     }
                 ]

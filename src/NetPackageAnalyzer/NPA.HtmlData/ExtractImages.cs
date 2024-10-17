@@ -26,16 +26,12 @@ public class ExtractImages
        
         var dir = Path.GetDirectoryName(HtmlPath)!;
         var nameFile= Path.GetFileNameWithoutExtension(HtmlPath);
-        var imagesDir = Path.Combine(dir, "images");
+        var imagesDir = Path.Combine(dir, "images_"+ nameFile);
         if (!Directory.Exists(imagesDir))
         {
             Directory.CreateDirectory(imagesDir);
         }
-        imagesDir = Path.Combine(imagesDir, nameFile);
-        if (!Directory.Exists(imagesDir))
-        {
-            Directory.CreateDirectory(imagesDir);
-        }
+        
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions()
         {
