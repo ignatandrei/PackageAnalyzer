@@ -10,3 +10,8 @@ public record PackageWithVersionDeprecated(string packageId, string version)
 {
     
 }
+public record PackageWithVersionVulnerable(string packageId, string version)
+    : PackageWithVersion(packageId, version, PackageOptions.Vulnerable)
+{
+
+}

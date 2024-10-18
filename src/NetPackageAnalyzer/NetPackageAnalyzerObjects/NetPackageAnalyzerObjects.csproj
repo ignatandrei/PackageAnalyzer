@@ -10,14 +10,15 @@
 
   </PropertyGroup>
 
+
   
   <ItemGroup>
     <AdditionalFiles Include="generatedJson/deprecatedV1.gen.json" />
     <AdditionalFiles Include="generatedJson/includeV1.gen.json" />
     <AdditionalFiles Include="generatedJson/outdatedV1.gen.json" />
+    <AdditionalFiles Include="generatedJson/vulnerablev1.gen.json" />	  
     <AdditionalFiles Include="mixin/Packages.mixin" />
   </ItemGroup>
-
   
 	<ItemGroup>
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
@@ -35,9 +36,6 @@
 		<PackageReference Include="RSCG_WhatIAmDoing_Common" Version="8.2024.10405.851" />
 
 	</ItemGroup>-->
-	<ItemGroup>
-	  <Folder Include="rscgutilsGenerated\" />
-	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj" />

@@ -18,6 +18,7 @@ public class GenerateData
     protected readonly IFileSystem system;
     protected PackageWithVersionDeprecated[] deprecated=[];
     protected PackageWithVersionOutdated[] outdated = [];
+    protected PackageWithVersionVulnerable[] vulnerable = [];
     protected DisplayDataMoreThan1Version? modelMore1Version;
     public InfoSolution infoSol
     {
@@ -25,10 +26,10 @@ public class GenerateData
         {
             var nrOutdated = outdated.GroupBy(it => it.PackageId).Count();
             var nrDeprecated = deprecated.GroupBy(it => it.PackageId).Count();
-
+            var nrVulnerable = vulnerable.GroupBy(it => it.PackageId).Count();
             var infoSol = new InfoSolution(
                 this.projectsDict!.Count,
-                packagedDict.Count, nrOutdated, nrDeprecated,
+                packagedDict.Count, nrOutdated, nrDeprecated,nrVulnerable,
                 this.projectsDict!.TotalCommits(),
                 this.projectsDict!.TestsProjects.Count(),
                 modelMore1Version!.KeysPackageMultipleMajorDiffers().Length
@@ -58,10 +59,16 @@ public class GenerateData
             outdated
             .Select(it => (PackageWithVersion)it)
 
-            ).ToArray();
+            )
+            .Union(
+            vulnerable
+            .Select(it => (PackageWithVersion)it)
+
+            )
+            .ToArray();
         foreach (var item in res)
         {
-            item.Projects = packagedDict[item.PackageId].VersionsPerProjectWithProblems[item.RequestedVersion].ToArray();
+            item.Projects = packagedDict[item.PackageId].VersionsPerProjectWithProblems[item.RequestedVersion].ToArray();            
         }
         return res;
     }
@@ -94,6 +101,7 @@ public class GenerateData
         string text;
         OutDated.outdatedV1_gen_json? outdatedPackages = null;
         Deprecated.deprecatedV1_gen_json? deprecatedPackages = null;
+        Vulnerable.vulnerablev1_gen_json? vulnerablePackages= null;
         All.includeV1_gen_json? allPackages = null;
         try
         {
@@ -108,6 +116,9 @@ public class GenerateData
 
             text = p.OutputDotnetPackage(folder, PackageOptions.Include_Transitive);
             allPackages = JsonSerializer.Deserialize<All.includeV1_gen_json>(text);
+
+            text = p.OutputDotnetPackage(folder, PackageOptions.Vulnerable);
+            vulnerablePackages = JsonSerializer.Deserialize<NS_GeneratedJson_vulnerablev1_gen_json.vulnerablev1_gen_json>(text);
         }
         catch(Exception ex)
         {
@@ -136,11 +147,25 @@ public class GenerateData
                 .Select(it => new PackageWithVersionDeprecated(it.Id??"", it.RequestedVersion ?? ""))
                 .ToArray();
         }
-        
-        IOperations[] operations = new IOperations?[3]
+
+        if (vulnerablePackages?.TopLevelPackagesIDs()?.Length > 0)
+        {
+            vulnerable = vulnerablePackages
+                .TopLevelPackages()
+                .Where(it => it != null)
+                .Select(it => it!)
+                .Where(it => it.Id != null && it.RequestedVersion != null)
+                .Select(it => new PackageWithVersionVulnerable(it.Id ?? "", it.RequestedVersion ?? ""))
+                .ToArray();
+        }
+
+
+
+        IOperations[] operations = new IOperations?[4]
         {
     outdatedPackages,
     deprecatedPackages,
+    vulnerablePackages,
     allPackages
         }
         .Where(it => it != null)
@@ -215,6 +240,7 @@ public class GenerateData
         var problems =
             outdatedPackages!.PerProjectPathWithVersion()
             .Union(deprecatedPackages!.PerProjectPathWithVersion())
+            .Union(vulnerablePackages!.PerProjectPathWithVersion())
             .ToArray();
 
         foreach (var pathPackage in problems)

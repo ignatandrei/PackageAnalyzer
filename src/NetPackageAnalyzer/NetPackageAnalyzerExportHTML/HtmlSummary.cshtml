@@ -1,4 +1,4 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageWithVersionVulnerable[]>>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
     var nameSolution = GlobalsForGenerating.NameSolution;
@@ -9,6 +9,7 @@
     var refSummary = Model.Item4;
     var publicClassRefData = Model.Item5;
     var assemblyDataFromMSFT = Model.Item6;
+    var vulnerablePackages = Model.Item7;
     var publicClasses=new NamePerCountArray(publicClassRefData.Assemblies_PublicClasses,true);
     var mostPublicClasses = publicClasses.First1();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
@@ -211,6 +212,9 @@
                             (Outdated : @info.nrOutdated
                             ,Deprecated : @info.nrDeprecated,
                             ,<a href="#packages-with-major-version-different">Major version differs</a> :@info.nrMajorDiffers
+                            ,<a href="#packages-with-vulnerable">
+                                Vulnerable
+                            </a> : @info.nrVulnerable
                             )
                         </td>
                         </tr>
@@ -1074,10 +1078,35 @@ columns: [
             ],
             });
         </script>
-        
+    <h2 id="packages-with-vulnerable">@vulnerablePackages.Length Packages with vulnerable</h2>
+    @if (info.nrVulnerable > 0)
+    {
+        nrVersionIterator = 0;
+        <table border="1" title="image packages with major different">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>ID</th>                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var vul in vulnerablePackages)
+                {
+                    <tr>
+                        <td>@(++nrVersionIterator)</td>
+                        <td>@vul.PackageId</td>                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
     <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
     @if (keysPackageMultiple.Length > 0)
     {
+        nrVersionIterator =0;
+
         <table border="1" title="image packages with major different">
             <thead>
                 <tr>

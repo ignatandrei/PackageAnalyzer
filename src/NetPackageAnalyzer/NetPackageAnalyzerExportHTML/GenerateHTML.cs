@@ -23,8 +23,8 @@ public class GenerateHTML : GenerateFiles
             //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
             if (projectsDict == null || modelMore1Version== null)
                 return string.Empty;
-
-            var modelData = Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData, assemblyDataFromMSFT);
+            var vulnerable = base.vulnerable ?? [];            
+            var modelData = Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData, assemblyDataFromMSFT,vulnerable);
             if(modelData == null)
                 return string.Empty;
             var x = new HtmlSummary(modelData);

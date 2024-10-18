@@ -6,6 +6,7 @@ public record DisplayDataMoreThan1Version(Dictionary<string, PackageData> IDPack
     {
         return IDPackageWithProjects.OrderBy(it=>it.Key).ToArray();
     }
+    
     public string[] KeysWithProblems()
     {
         return IDPackageWithProjects
@@ -30,6 +31,7 @@ public record DisplayDataMoreThan1Version(Dictionary<string, PackageData> IDPack
             .OrderBy(it => it)
             .ToArray();
     }
+    
     public int MajorVersionDiffers()
     {
         return IDPackageWithProjects.Count(it => it.Value.MajorVersionDiffer());

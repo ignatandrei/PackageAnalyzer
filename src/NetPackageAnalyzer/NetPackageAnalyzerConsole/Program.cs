@@ -64,7 +64,12 @@
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "--verbose","false"
         //};
-
+        args = new[] { "generateFiles",
+            "--folder", @"D:\gth\TILT\src\backend\Net6\NetTilt",
+            "-wg","HtmlSummary",
+            "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+            "--verbose","false"
+        };
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\gth\RSCG_Examples\v2",
         //    "-wg","HtmlSummary",
@@ -81,7 +86,7 @@
     return await RealMainExecuting.RealMain(args);
 }
 catch (Exception ex) 
-{ 
+{
     Console.WriteLine(ex.Message);
     //WhatIAmDoingData.DisplayData.DisplayJustErrors();
     return 1;
