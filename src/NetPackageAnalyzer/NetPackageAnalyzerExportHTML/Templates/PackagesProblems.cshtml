@@ -1,0 +1,37 @@
+@inherits RazorBlade.PlainTextTemplate<Tuple<string,PackageWithVersion[]>>;
+@{
+    var name= Model.Item1;
+    var packages = Model.Item2;
+    string nameId= name.Replace(" ", "-");
+    if(packages.Length==0)
+    {
+        return;
+    }
+}
+<div id="@(nameId+"-table")" title="image @(nameId+"-table")"></div>
+
+<script>
+    var tabledata = [
+    @foreach (var item in packages)
+    {
+        <text>
+                {"Name": "@item.PackageId.Replace("\\", "\\\\")", "Why": "alabala" },
+        </text>
+    }
+    ];
+    var table = new Tabulator("@("#" + nameId + "-table")", {
+        data: tabledata,
+        layout: "fitColumns",
+        pagination: "local",
+        paginationSize: 10,
+        paginationSizeSelector: [10,20,50,100],
+        movableColumns: true,
+        paginationCounter: "rows",
+        columns: [
+            { formatter: "rownum", hozAlign: "center", width: 40 },
+            { title: "Name", field: "Name", headerFilter: "input" },
+            { title: "Why", field: "Why", headerFilter: "input" },
+        ],
+    });
+
+</script>

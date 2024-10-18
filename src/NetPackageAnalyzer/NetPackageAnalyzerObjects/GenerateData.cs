@@ -5,13 +5,6 @@ using NetPackageAnalyzerMetricsMSFT;
 using System.Diagnostics;
 
 namespace NetPackageAnalyzerObjects;
-public class PackageProblemsDTO
-{
-    public PackageWithVersionDeprecated[] deprecated = [];
-    public PackageWithVersionOutdated[] outdated = [];
-    public PackageWithVersionVulnerable[] vulnerable = [];
-
-}
 public class GenerateData
 {
     public GenerateData(IFileSystem system)

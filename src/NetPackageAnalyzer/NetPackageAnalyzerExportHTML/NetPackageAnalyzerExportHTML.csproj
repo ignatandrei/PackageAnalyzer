@@ -9,6 +9,8 @@
 
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+
+  
   
   <ItemGroup>
 		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.0.2" />

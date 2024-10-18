@@ -133,6 +133,42 @@ public class ProcessOutput
         }
         return output;
     }
+    public string OutputWhy(string pathToSln, string packageId)
+    {
+        string folder = Path.GetDirectoryName(pathToSln)??"";
+        string nameSln = Path.GetFileName(pathToSln);
+        string arg = $"nuget why {nameSln} {packageId}";
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = "dotnet.exe",
+            WorkingDirectory = folder,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            Arguments = arg
+        };
+        Console.WriteLine("analyzing output of dotnet " + startInfo.Arguments);
+        // Create and start the process
+        Process process = new Process
+        {
+            StartInfo = startInfo
+        };
+        process.Start();
+
+        // Read the output
+        string output = process.StandardOutput.ReadToEnd();
+        string errorOutput = process.StandardError.ReadToEnd();
+
+        // Wait for the process to exit
+        process.WaitForExit();
+        if (errorOutput.Length > 0)
+        {
+            throw new Exception(errorOutput);
+        }
+        return output;
+    }
+
 }
 
 

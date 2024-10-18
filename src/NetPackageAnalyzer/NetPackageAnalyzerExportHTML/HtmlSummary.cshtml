@@ -39,6 +39,7 @@
     Tuple<string, NamePerCountArray, int, int, bool> tupleThreshold;
     NamePerCountDisplayThreshold namePerCountDisplayThreshold;
     NamePerCountDisplay namePerCountDisplay;
+    
     YEARNamePerCountDisplay yearFolders = new(yearWithFolders);
     Radar radar = new(Tuple.Create(projectDicts, publicClassRefData, assemblyDataFromMSFT, "andrei"));
     var bb0 = projectDicts.BuildingBlocks(0);
@@ -1078,29 +1079,31 @@ columns: [
             ],
             });
         </script>
+    
     <h2 id="packages-with-vulnerable">@info.nrVulnerable Packages vulnerable</h2>
-    @if (info.nrVulnerable > 0)
-    {
-        nrVersionIterator = 0;
-        <table border="1" title="image packages with major different">
-            <thead>
-                <tr>
-                    <th>Nr</th>
-                    <th>ID</th>                    
-                    
-                </tr>
-            </thead>
-            <tbody>
-                @foreach(var vul in dtoPackages.vulnerable)
-                {
-                    <tr>
-                        <td>@(++nrVersionIterator)</td>
-                        <td>@vul.PackageId</td>                        
-                    </tr>
-                }
-            </tbody>
-        </table>
+    @{
+
+        var tt1 = Tuple.Create("Vulnerable Packages", dtoPackages.Vuln());
+        var pp1 = new PackagesProblems(tt1);
     }
+    @pp1.Render()
+    
+    <h2 id="packages-with-outdated">@info.nrOutdated Packages outdated</h2>
+    @{
+
+        var tt2 = Tuple.Create("Outdated Packages", dtoPackages.Out());
+        var pp2 = new PackagesProblems(tt2);
+    }
+    @pp2.Render()
+
+    <h2 id="packages-with-outdated">@info.nrDeprecated Packages deprecated</h2>
+    @{
+
+        var tt3 = Tuple.Create("Deprecated Packages", dtoPackages.Depr());
+        var pp3 = new PackagesProblems(tt3);
+    }
+    @pp3.Render()
+
 
     <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
     @if (keysPackageMultiple.Length > 0)
@@ -1437,7 +1440,7 @@ columns: [
             steps: steps
         });
 
-        driverObj.drive();
+        //driverObj.drive();
 
             
 </script>
