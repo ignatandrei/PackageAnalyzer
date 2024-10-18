@@ -1,4 +1,4 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageWithVersionVulnerable[]>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageProblemsDTO>>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
     var nameSolution = GlobalsForGenerating.NameSolution;
@@ -9,7 +9,7 @@
     var refSummary = Model.Item4;
     var publicClassRefData = Model.Item5;
     var assemblyDataFromMSFT = Model.Item6;
-    var vulnerablePackages = Model.Item7;
+    var dtoPackages = Model.Item7;
     var publicClasses=new NamePerCountArray(publicClassRefData.Assemblies_PublicClasses,true);
     var mostPublicClasses = publicClasses.First1();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
@@ -1078,7 +1078,7 @@ columns: [
             ],
             });
         </script>
-    <h2 id="packages-with-vulnerable">@vulnerablePackages.Length Packages with vulnerable</h2>
+    <h2 id="packages-with-vulnerable">@info.nrVulnerable Packages vulnerable</h2>
     @if (info.nrVulnerable > 0)
     {
         nrVersionIterator = 0;
@@ -1091,7 +1091,7 @@ columns: [
                 </tr>
             </thead>
             <tbody>
-                @foreach(var vul in vulnerablePackages)
+                @foreach(var vul in dtoPackages.vulnerable)
                 {
                     <tr>
                         <td>@(++nrVersionIterator)</td>

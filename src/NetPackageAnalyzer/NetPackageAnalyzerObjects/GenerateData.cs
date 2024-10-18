@@ -5,7 +5,13 @@ using NetPackageAnalyzerMetricsMSFT;
 using System.Diagnostics;
 
 namespace NetPackageAnalyzerObjects;
+public class PackageProblemsDTO
+{
+    public PackageWithVersionDeprecated[] deprecated = [];
+    public PackageWithVersionOutdated[] outdated = [];
+    public PackageWithVersionVulnerable[] vulnerable = [];
 
+}
 public class GenerateData
 {
     public GenerateData(IFileSystem system)
@@ -16,17 +22,15 @@ public class GenerateData
     protected internal Dictionary<string, PackageData> packagedDict = new();
     protected internal ProjectsDict? projectsDict;
     protected readonly IFileSystem system;
-    protected PackageWithVersionDeprecated[] deprecated=[];
-    protected PackageWithVersionOutdated[] outdated = [];
-    protected PackageWithVersionVulnerable[] vulnerable = [];
     protected DisplayDataMoreThan1Version? modelMore1Version;
+    protected PackageProblemsDTO packDTO = new();
     public InfoSolution infoSol
     {
         get
         {
-            var nrOutdated = outdated.GroupBy(it => it.PackageId).Count();
-            var nrDeprecated = deprecated.GroupBy(it => it.PackageId).Count();
-            var nrVulnerable = vulnerable.GroupBy(it => it.PackageId).Count();
+            var nrOutdated = packDTO.outdated.GroupBy(it => it.PackageId).Count();
+            var nrDeprecated = packDTO.deprecated.GroupBy(it => it.PackageId).Count();
+            var nrVulnerable = packDTO.vulnerable.GroupBy(it => it.PackageId).Count();
             var infoSol = new InfoSolution(
                 this.projectsDict!.Count,
                 packagedDict.Count, nrOutdated, nrDeprecated,nrVulnerable,
@@ -53,15 +57,15 @@ public class GenerateData
 
     public PackageWithVersion[] Problems()
     {
-        var res= deprecated
+        var res= packDTO.deprecated
             .Select(it => (PackageWithVersion)it)
             .Union(
-            outdated
+            packDTO.outdated
             .Select(it => (PackageWithVersion)it)
 
             )
             .Union(
-            vulnerable
+            packDTO.vulnerable
             .Select(it => (PackageWithVersion)it)
 
             )
@@ -129,7 +133,7 @@ public class GenerateData
         }
         if (outdatedPackages?.TopLevelPackagesIDs()?.Length > 0)
         {
-            outdated = outdatedPackages
+            packDTO.outdated = outdatedPackages
                 .TopLevelPackages()
                 .Where(it => it != null)
                 .Select(it => it!)
@@ -139,7 +143,7 @@ public class GenerateData
         }
         if(deprecatedPackages?.TopLevelPackagesIDs()?.Length > 0)
         {
-            deprecated = deprecatedPackages
+            packDTO.deprecated = deprecatedPackages
                 .TopLevelPackages()
                 .Where(it=>it!=null)
                 .Select(it=>it!)
@@ -150,7 +154,7 @@ public class GenerateData
 
         if (vulnerablePackages?.TopLevelPackagesIDs()?.Length > 0)
         {
-            vulnerable = vulnerablePackages
+            packDTO.vulnerable = vulnerablePackages
                 .TopLevelPackages()
                 .Where(it => it != null)
                 .Select(it => it!)
