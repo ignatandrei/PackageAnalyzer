@@ -71,9 +71,9 @@ public class GenerateHTML : GenerateFiles
         nameFileJs = Path.Combine(where, "echarts.min.js");
         system.File.WriteAllBytes(nameFileJs, res.ToArray());
 
-        res = MyResource.GetVisJs();
-        nameFileJs = Path.Combine(where, "vis-network.min.js");
-        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+        //res = MyResource.GetVisJs();
+        //nameFileJs = Path.Combine(where, "vis-network.min.js");
+        //system.File.WriteAllBytes(nameFileJs, res.ToArray());
 
         res = MyResource.GetTabulatorCss();
         nameFileJs = Path.Combine(where, "tabulator.min.css");

@@ -7,8 +7,8 @@ public partial class MyResource
     [EmbedResourceCSharp.FileEmbed("echarts.min.js")]
     public static partial System.ReadOnlySpan<byte> GetEchartsJs();
 
-    [EmbedResourceCSharp.FileEmbed("vis-network.min.js")]
-    public static partial System.ReadOnlySpan<byte> GetVisJs();
+    //[EmbedResourceCSharp.FileEmbed("vis-network.min.js")]
+    //public static partial System.ReadOnlySpan<byte> GetVisJs();
 
     [EmbedResourceCSharp.FileEmbed("tabulator.min.js")]
     public static partial System.ReadOnlySpan<byte> GetTabulatorJs();
