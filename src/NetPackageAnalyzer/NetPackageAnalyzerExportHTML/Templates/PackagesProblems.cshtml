@@ -14,17 +14,23 @@
     var tabledata = [
     @foreach (var item in packages)
     {
+        var childrenArr = item.Why.Select(x => $"{{ Name = '{x.ProjectName} , Why =`<pre>{x.WhyText}<pre>`}}");
+        var children = string.Join(",", childrenArr);
+
         <text>
                 {
                     "Name": "@item.PackageId.Replace("\\", "\\\\")", 
-                    "Why": "Click Me"
-                     
+                    "Why": "Click Me",
+                    "_children":[@children]
+
                 },
         </text>
     }
     ];
     var table = new Tabulator("@("#" + nameId + "-table")", {
         data: tabledata,
+        dataTree: true,
+        dataTreeStartExpanded: true,
         layout: "fitColumns",
         pagination: "local",
         paginationSize: 10,
@@ -37,9 +43,10 @@
             {
                 title: "Show Projects", 
                 field: "Why", 
+                formatter:"html",
                 headerFilter: "input", 
                 cellClick: function(e, cell) {
-                    why(cell.getData().Name)
+                    window.alert('expand me');
                 },
             },
         ],
