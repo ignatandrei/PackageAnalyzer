@@ -1442,7 +1442,29 @@ columns: [
 
         //driverObj.drive();
 
+       function why(packageId){
+        //window.alert(packageId);
+
+        switch(packageId){
+            @foreach (var item in dtoPackages.All())
+            {
+                <text>
+                case "@item.PackageId":
+                    window.alert(`
+                        @item.Why
+                        `
+                    );
+                    break;
+                </text>
+            }
             
+            default:
+            window.alert("ups!\r\n" + packageId);
+            
+        }
+        
+
+       }     
 </script>
 
 </body>

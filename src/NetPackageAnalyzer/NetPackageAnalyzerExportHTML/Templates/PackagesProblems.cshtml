@@ -15,7 +15,11 @@
     @foreach (var item in packages)
     {
         <text>
-                {"Name": "@item.PackageId.Replace("\\", "\\\\")", "Why": "alabala" },
+                {
+                    "Name": "@item.PackageId.Replace("\\", "\\\\")", 
+                    "Why": "Click Me"
+                     
+                },
         </text>
     }
     ];
@@ -30,7 +34,14 @@
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
             { title: "Name", field: "Name", headerFilter: "input" },
-            { title: "Why", field: "Why", headerFilter: "input" },
+            {
+                title: "Show Projects", 
+                field: "Why", 
+                headerFilter: "input", 
+                cellClick: function(e, cell) {
+                    why(cell.getData().Name)
+                },
+            },
         ],
     });
 

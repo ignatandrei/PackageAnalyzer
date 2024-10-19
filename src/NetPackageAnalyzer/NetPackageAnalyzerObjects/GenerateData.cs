@@ -44,25 +44,15 @@ public class GenerateData
         foreach (var item in MajorWithMoreVersions())
         {
             res.Add(item, packagedDict[item]);
+
         }
         return res;
     }
 
     public PackageWithVersion[] Problems()
     {
-        var res= packDTO.deprecated
-            .Select(it => (PackageWithVersion)it)
-            .Union(
-            packDTO.outdated
-            .Select(it => (PackageWithVersion)it)
-
-            )
-            .Union(
-            packDTO.vulnerable
-            .Select(it => (PackageWithVersion)it)
-
-            )
-            .ToArray();
+        var res= packDTO.All();
+            
         foreach (var item in res)
         {
             item.Projects = packagedDict[item.PackageId].VersionsPerProjectWithProblems[item.RequestedVersion].ToArray();            
@@ -156,7 +146,7 @@ public class GenerateData
                 .ToArray();
         }
 
-
+        packDTO.VerifyWhy();
 
         IOperations[] operations = new IOperations?[4]
         {

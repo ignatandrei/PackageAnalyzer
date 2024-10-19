@@ -6,6 +6,15 @@ public class PackageProblemsDTO
     public PackageWithVersionOutdated[] outdated = [];
     public PackageWithVersionVulnerable[] vulnerable = [];
     
+    public PackageWithVersion[] All()
+    {
+
+        return Vuln().Concat(Out())
+            .Concat(Depr())
+            .Distinct()
+            .ToArray();
+
+    }
     public PackageWithVersion[] Vuln()
     {
         return vulnerable.Distinct().ToArray();
@@ -20,15 +29,7 @@ public class PackageProblemsDTO
     }
     public void VerifyWhy()
     {
-        foreach (var item in deprecated)
-        {
-            item.VerifyWhy();
-        }
-        foreach (var item in outdated)
-        {
-            item.VerifyWhy();
-        }
-        foreach (var item in vulnerable)
+        foreach (var item in All())
         {
             item.VerifyWhy();
         }
