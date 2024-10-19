@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <script type="text/javascript" src="echarts.min.js"></script>
-    <script type="text/javascript" src="vis-network.min.js"></script>
     <script type="text/javascript" src="tabulator.min.js"></script>
     <link rel="stylesheet" href="tabulator.min.css" />
     <link rel="stylesheet" href="tabulator.theme.min.js" />
@@ -78,6 +77,9 @@
                             (Outdated : 11
                             ,Deprecated : 0,
                             ,<a href="#packages-with-major-version-different">Major version differs</a> :1
+                            ,<a href="#packages-with-vulnerable">
+                                Vulnerable
+                            </a> : 0
                             )
                         </td>
                         </tr>
@@ -86,7 +88,7 @@
                         <td>
                             <a href="#number-of-classes-per-assembly">
                                 Number classes
-                            </a>: 68
+                            </a>: 75
                         </td>
                         
                     </tr>
@@ -95,7 +97,7 @@
                         <td>
                             <a href="#number-of-methods-per-assembly">
                                 Number methods
-                            </a>: 165
+                            </a>: 177
                         </td>
                     </tr>
             </table>
@@ -167,7 +169,7 @@
                         <td>1</td>
                         <td>
                             <a href="#commits">
-                                Total Commits : 265
+                                Total Commits : 272
                         </td>
                     </tr>
 
@@ -194,7 +196,7 @@
                         <td>
                             <a href="#file-with-commits">
                                 The file with most commits
-                            </a>( 115 )  is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
+                            </a>( 121 )  is ..\NetPackageAnalyzerConsole\src\NetPackageAnalyzer\NetPackageAnalyzerConsole\Program.cs
                         </td>
                     </tr>
 
@@ -227,7 +229,7 @@
                             <td>
                                 <a href="#assemblies-public-classes">
                                     Max nr of public Classes
-                                </a>:35
+                                </a>:44
                             </td>
                             <td>NetPackageAnalyzerObjects</td>
                         </tr>
@@ -236,7 +238,7 @@
                         <td>
                             <a href="#number-of-classes-per-assembly">
                                 With max nr of Classes
-                            </a>:32
+                            </a>:39
                         </td>
                         <td>NetPackageAnalyzerObjects</td>
                     </tr>
@@ -245,7 +247,7 @@
                         <td>
                             <a href="#number-of-methods-per-assembly">
                                 With max nr of methods
-                            </a>:75
+                            </a>:88
                         </td>
                         <td>NetPackageAnalyzerObjects</td>
                     </tr>
@@ -261,7 +263,7 @@
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td><a href="#Class-Coupling-for-Assembly"> With max coupling</a>:78</td>
+                        <td><a href="#Class-Coupling-for-Assembly"> With max coupling</a>:85</td>
                         <td>NetPackageAnalyzerObjects</td>
                     </tr>
                     <tr>
@@ -269,13 +271,13 @@
                         <td>
                             <a href="#Cyclomatic-Complexity-for-Assembly">
                                 With most Cyclomatic Complexity
-                            </a>:349
+                            </a>:410
                         </td>
                         <td>NetPackageAnalyzerObjects</td>
                     </tr>
                     <tr>
                         <td>8</td>
-                        <td><a href="#executable-lines-per-assembly">With most lines</a>:673</td>
+                        <td><a href="#executable-lines-per-assembly">With most lines</a>:763</td>
                         <td>NetPackageAnalyzerObjects</td>
                     </tr>
                 </tbody>
@@ -317,7 +319,7 @@
                             <a href="#Class-Coupling-for-Class">
                                 With max coupling
                             </a>
-                            :40
+                            :43
                         </td>
                         <td>GenerateData</td>
                     </tr>
@@ -334,7 +336,7 @@
                         <td>5</td>
                         <td>
                             <a href="#executable-lines-per-class">
-                                With most lines:227
+                                With most lines:237
                             </a>
                         </td>
                         <td>GenerateData</td>
@@ -369,9 +371,9 @@
                     <td>
                         <a href="#Maintainability-for-Method">
                             With low maintaining score
-                        </a>:29
+                        </a>:27
                     </td>
-                    <td>Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)</td>
+                    <td>Task<bool> GenerateData.GenerateDataForSln(string folder)</td>
                 </tr>
 
                 <tr>
@@ -379,7 +381,7 @@
                     <td>
                         <a href="#Cyclomatic-Complexity-for-Method">
                             With most Cyclomatic Complexity
-                        </a>:35
+                        </a>:41
                     </td>
                     <td>Task<bool> GenerateData.GenerateDataForSln(string folder)</td>
                 </tr>
@@ -418,16 +420,16 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 76 },
-                { name: 'Commits 2024', max: 66 },
+                { name: 'Total Commits', max: 78 },
+                { name: 'Commits 2024', max: 68 },
                 { name: 'Packages', max: 29 },
                 { name: 'References', max: 5 },
-                { name: 'Number Public Classes', max: 35 },
-                { name: 'Lines in Public Classes', max: 1534 },
-                { name: 'Number Classes',max:32},
-                { name: 'Total Lines', max: 1862 },
-                { name: "Cyclomatic", max: 349},
-                { name: "CodeCoupling", max: 78},
+                { name: 'Number Public Classes', max: 44 },
+                { name: 'Lines in Public Classes', max: 1803 },
+                { name: 'Number Classes',max:39},
+                { name: 'Total Lines', max: 2159 },
+                { name: "Cyclomatic", max: 410},
+                { name: "CodeCoupling", max: 85},
             ]
         },
         series: [
@@ -447,7 +449,7 @@ name: 'NetPackageAnalyzeHistory'
     },
 
     {
-                                value: [76,66, 29, 4, 0, 0,4, 268, 26,32],
+                                value: [78,68, 29, 4, 0, 0,4, 268, 26,32],
 name: 'NetPackageAnalyzerConsole'
     },
 
@@ -462,7 +464,7 @@ name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-                                value: [25,25, 9, 3, 1, 80,2, 104, 17,32],
+                                value: [27,27, 9, 3, 1, 78,2, 104, 17,32],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
@@ -472,7 +474,7 @@ name: 'NetPackageAnalyzerMetricsMSFT'
     },
 
     {
-                                value: [47,47, 7, 5, 35, 1534,32, 1862, 349,78],
+                                value: [49,49, 7, 5, 44, 1803,39, 2159, 410,85],
 name: 'NetPackageAnalyzerObjects'
     },
 
@@ -492,7 +494,7 @@ name: 'NPA.HtmlData'
     },
 
     {
-                                value: [2,2, 1, 0, 1, 19,1, 27, 8,2],
+                                value: [3,3, 1, 0, 1, 17,1, 27, 7,2],
 name: 'NPA.Resources'
     },
 
@@ -1033,7 +1035,7 @@ name: 'Statistical'
     ;Max Value: 100
     ;Math average: 81 
     ;Math median: 80
-    ;Standard Dev: 12.17
+    ;Standard Dev: 12.12
 
         ;Coefficient of Variation: 0.15
         
@@ -1055,7 +1057,7 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['Statistical','NPA.HtmlData','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NetPackageAnalyzerExportHTML','NetPackageAnalyzerConsole','AnalyzeMerge','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerObjects'],
+                    data: ['Statistical','NPA.HtmlData','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerTests','NetPackageAnalyzeHistory','NetPackageAnalyzerExportHTML','NetPackageAnalyzerConsole','AnalyzeMerge','NetPackageAnalyzerObjects','NetPackageAnalyzerMetricsMSFT'],
                     show: false
 
                 },
@@ -1074,10 +1076,10 @@ name: 'Statistical'
 {value:70},
 {value:74},
 {value:75},
-{value:77},
+{value:78},
 {value:80},
 {value:81},
-{value:87},
+{value:86},
 {value:87}
                         ],
                         type: 'bar'
@@ -1129,15 +1131,15 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzeHistory", "Nr": "75" },
                 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "77" },
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "78" },
                 
                         {"Name": "NetPackageAnalyzerConsole", "Nr": "80" },
                 
                         {"Name": "AnalyzeMerge", "Nr": "81" },
                 
-                        {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "87" },
+                        {"Name": "NetPackageAnalyzerObjects", "Nr": "86" },
                 
-                        {"Name": "NetPackageAnalyzerObjects", "Nr": "87" },
+                        {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "87" },
                 
                         {"Name": "NPA.Resources", "Nr": "88" },
                 
@@ -1176,7 +1178,7 @@ name: 'Statistical'
     ;Max Value: 100
     ;Math average: 82 
     ;Math median: 86
-    ;Standard Dev: 14.25
+    ;Standard Dev: 13.64
 
         ;Coefficient of Variation: 0.17
         
@@ -1198,7 +1200,7 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['GenerateFilesDocusaurus','GenerateData','GenerateHTML','AnalyzeMergeData','GenericMetrics','ProcessOutput','ProcessOutput','AnalyzeForProject','StatisticalNumbers<T>','ExtractImages'],
+                    data: ['GenerateFilesDocusaurus','GenerateData','GenerateHTML','AnalyzeMergeData','ProcessOutput','GenericMetrics','ProcessOutput','AnalyzeForProject','StatisticalNumbers<T>','ExtractImages'],
                     show: false
 
                 },
@@ -1213,10 +1215,10 @@ name: 'Statistical'
                     {
                         data: [
             {value:38},
-{value:52},
-{value:54},
+{value:51},
+{value:55},
 {value:57},
-{value:60},
+{value:59},
 {value:60},
 {value:61},
 {value:62},
@@ -1264,15 +1266,15 @@ name: 'Statistical'
 
                         {"Name": "GenerateFilesDocusaurus", "Nr": "38" },
                 
-                        {"Name": "GenerateData", "Nr": "52" },
+                        {"Name": "GenerateData", "Nr": "51" },
                 
-                        {"Name": "GenerateHTML", "Nr": "54" },
+                        {"Name": "GenerateHTML", "Nr": "55" },
                 
                         {"Name": "AnalyzeMergeData", "Nr": "57" },
                 
-                        {"Name": "GenericMetrics", "Nr": "60" },
+                        {"Name": "ProcessOutput", "Nr": "59" },
                 
-                        {"Name": "ProcessOutput", "Nr": "60" },
+                        {"Name": "GenericMetrics", "Nr": "60" },
                 
                         {"Name": "ProcessOutput", "Nr": "61" },
                 
@@ -1306,11 +1308,17 @@ name: 'Statistical'
                 
                         {"Name": "deprecatedV1_gen_json", "Nr": "77" },
                 
+                        {"Name": "WhyData", "Nr": "77" },
+                
+                        {"Name": "PackageProblemsDTO", "Nr": "80" },
+                
                         {"Name": "TemplateGenerator", "Nr": "80" },
                 
                         {"Name": "includeV1_gen_json", "Nr": "84" },
                 
                         {"Name": "outdatedV1_gen_json", "Nr": "84" },
+                
+                        {"Name": "vulnerablev1_gen_json", "Nr": "84" },
                 
                         {"Name": "GenericMetricsMethod", "Nr": "85" },
                 
@@ -1331,6 +1339,8 @@ name: 'Statistical'
                         {"Name": "TopLevelPackages", "Nr": "86" },
                 
                         {"Name": "TransitivePackages", "Nr": "86" },
+                
+                        {"Name": "Vulnerabilities", "Nr": "86" },
                 
                         {"Name": "MyResource", "Nr": "88" },
                 
@@ -1391,7 +1401,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60,62],
+                paginationSizeSelector: [10,20,30,40,50,60,66],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -1411,16 +1421,13 @@ name: 'Statistical'
     <h3>Maintainability per method</h3>
     
         <div>
-    Min Value: 29
+    Min Value: 27
     ;Max Value: 100
     ;Math average: 78 
     ;Math median: 81
-    ;Standard Dev: 15.68
+    ;Standard Dev: 15.72
 
         ;Coefficient of Variation: 0.20
-        
-        <br />
-        Math mode: The most encountered value (1 times) is 100
         </div>
 
         <div id="Maintainability-for-Method" style="height: 100%" title="image Maintainability-for-Method"></div>
@@ -1451,14 +1458,14 @@ name: 'Statistical'
                 series: [
                     {
                         data: [
-            {value:29},
+            {value:27},
 {value:29},
 {value:35},
 {value:41},
 {value:44},
 {value:45},
 {value:46},
-{value:47},
+{value:46},
 {value:48},
 {value:50}
                         ],
@@ -1501,7 +1508,7 @@ name: 'Statistical'
 
             var tabledata = [
 
-                        {"Name": "Task<bool> GenerateData.GenerateDataForSln(string folder)", "Nr": "29" },
+                        {"Name": "Task<bool> GenerateData.GenerateDataForSln(string folder)", "Nr": "27" },
                 
                         {"Name": "Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)", "Nr": "29" },
                 
@@ -1515,7 +1522,7 @@ name: 'Statistical'
                 
                         {"Name": "HistoryPerYear FileFolderHistorySimple.NrCommits(string folder, string what)", "Nr": "46" },
                 
-                        {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "47" },
+                        {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "46" },
                 
                         {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "48" },
                 
@@ -1525,9 +1532,11 @@ name: 'Statistical'
                 
                         {"Name": "void ProjectsDict.FindReferences()", "Nr": "51" },
                 
-                        {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "53" },
-                
                         {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "54" },
+                
+                        {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "54" },
+                
+                        {"Name": "string ProcessOutput.OutputWhy(string pathToSln, string packageId)", "Nr": "57" },
                 
                         {"Name": "Command RealMainExecuting.AddGenerateFiles()", "Nr": "58" },
                 
@@ -1557,6 +1566,8 @@ name: 'Statistical'
                 
                         {"Name": "T StatisticalNumbers<T>.Variance(T[] values)", "Nr": "61" },
                 
+                        {"Name": "void PackageProblemsDTO.VerifyWhy()", "Nr": "61" },
+                
                         {"Name": "Commit[] ProjectsDict.MaxCommits(int? year)", "Nr": "62" },
                 
                         {"Name": "void ProjectsDict.FindHistoryProjects()", "Nr": "62" },
@@ -1579,6 +1590,8 @@ name: 'Statistical'
                 
                         {"Name": "NamePerCount[] AssemblyDataFromMSFT.MethodsMetrics(eMSFTMetrics metrics)", "Nr": "68" },
                 
+                        {"Name": "string WhyData.ProjectName()", "Nr": "68" },
+                
                         {"Name": "void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)", "Nr": "68" },
                 
                         {"Name": "Dictionary<int, long> ProjectsDict.CommitsPerYearFile()", "Nr": "69" },
@@ -1594,8 +1607,6 @@ name: 'Statistical'
                         {"Name": "Task<int> TestingPlatformEntryPoint.Main(string[] args)", "Nr": "70" },
                 
                         {"Name": "History HistoryPerYear.AllHistory()", "Nr": "71" },
-                
-                        {"Name": "PackageWithVersion[] GenerateData.Problems()", "Nr": "71" },
                 
                         {"Name": "AnalyzeForProject.AnalyzeForProject(string rootFolder, FileData[] files, string search)", "Nr": "72" },
                 
@@ -1622,6 +1633,8 @@ name: 'Statistical'
                         {"Name": "NamePerCount[] ProjectsDict.Packages()", "Nr": "76" },
                 
                         {"Name": "NamePerCountArray ProjectsDict.FilesWithMaxCommitsAdv(int? year)", "Nr": "76" },
+                
+                        {"Name": "PackageWithVersion[] GenerateData.Problems()", "Nr": "76" },
                 
                         {"Name": "Task TestSolutionExists.TestDoesNotWorkWithoutSln()", "Nr": "76" },
                 
@@ -1693,6 +1706,10 @@ name: 'Statistical'
                 
                         {"Name": "TransitivePackages? TransitivePackages.Deserialize(string? text)", "Nr": "84" },
                 
+                        {"Name": "Vulnerabilities? Vulnerabilities.Deserialize(string? text)", "Nr": "84" },
+                
+                        {"Name": "vulnerablev1_gen_json? vulnerablev1_gen_json.Deserialize(string? text)", "Nr": "84" },
+                
                         {"Name": "NamePerCount[] AssemblyDataFromMSFT.AssemblyNumberClasses()", "Nr": "85" },
                 
                         {"Name": "AnalyzeMergeData.AnalyzeMergeData(string folder)", "Nr": "86" },
@@ -1747,6 +1764,8 @@ name: 'Statistical'
                 
                         {"Name": "IOrderedEnumerable<ProjectData> ProjectsDict.ProjectByName()", "Nr": "93" },
                 
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.AllNotDistinct()", "Nr": "93" },
+                
                         {"Name": "ReadOnlySpan<byte> MyResource.GetDocusaurusZip()", "Nr": "93" },
                 
                         {"Name": "ReadOnlySpan<byte> MyResource.GetDriverCss()", "Nr": "93" },
@@ -1762,8 +1781,6 @@ name: 'Statistical'
                         {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorJs()", "Nr": "93" },
                 
                         {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorTheme()", "Nr": "93" },
-                
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetVisJs()", "Nr": "93" },
                 
                         {"Name": "string GlobalsForGenerating.globalPrefix()", "Nr": "93" },
                 
@@ -1807,6 +1824,14 @@ name: 'Statistical'
                 
                         {"Name": "int Commit.CountFiles()", "Nr": "100" },
                 
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.All()", "Nr": "100" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Depr()", "Nr": "100" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Out()", "Nr": "100" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Vuln()", "Nr": "100" },
+                
                         {"Name": "ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)", "Nr": "100" },
                 
                         {"Name": "string[] GenerateData.MajorWithMoreVersions()", "Nr": "100" },
@@ -1824,7 +1849,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,159],
+                paginationSizeSelector: [100,168],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -1846,12 +1871,12 @@ name: 'Statistical'
     
         <div>
     Min Value: 0
-    ;Max Value: 78
+    ;Max Value: 85
     ;Math average: 22 
     ;Math median: 19
-    ;Standard Dev: 20.69
+    ;Standard Dev: 22.07
 
-        ;Coefficient of Variation: 0.94
+        ;Coefficient of Variation: 1.00
         </div>
 
         <div id="Class-Coupling-for-Assembly" style="height: 100%" title="image Class-Coupling-for-Assembly"></div>
@@ -1882,7 +1907,7 @@ name: 'Statistical'
                 series: [
                     {
                         data: [
-            {value:78,itemStyle:{color:'red'}},
+            {value:85,itemStyle:{color:'red'}},
 {value:48,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
@@ -1932,7 +1957,7 @@ name: 'Statistical'
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerObjects", "Nr": "78" },
+                        {"Name": "NetPackageAnalyzerObjects", "Nr": "85" },
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "48" },
                 
@@ -2005,7 +2030,7 @@ name: 'Statistical'
                         series: [
                             {
                                 data: [
-                    {value:78,itemStyle:{color:'red'}},
+                    {value:85,itemStyle:{color:'red'}},
 {value:48,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
@@ -2038,15 +2063,15 @@ name: 'Statistical'
     
         <div>
     Min Value: 0
-    ;Max Value: 40
+    ;Max Value: 43
     ;Math average: 6 
-    ;Math median: 4
-    ;Standard Dev: 8.37
+    ;Math median: 5
+    ;Standard Dev: 8.19
 
-        ;Coefficient of Variation: 1.39
+        ;Coefficient of Variation: 1.36
         
         <br />
-        Math mode: The most encountered value (1 times) is 0
+        Math mode: The most encountered value (1 times) is 5
         </div>
 
         <div id="Class-Coupling-for-Class" style="height: 100%" title="image Class-Coupling-for-Class"></div>
@@ -2077,7 +2102,7 @@ name: 'Statistical'
                 series: [
                     {
                         data: [
-            {value:40,itemStyle:{color:'red'}},
+            {value:43,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
 {value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
@@ -2127,7 +2152,7 @@ name: 'Statistical'
 
             var tabledata = [
 
-                        {"Name": "GenerateData", "Nr": "40" },
+                        {"Name": "GenerateData", "Nr": "43" },
                 
                         {"Name": "GenerateHTML", "Nr": "32" },
                 
@@ -2165,9 +2190,13 @@ name: 'Statistical'
                 
                         {"Name": "ProcessOutput", "Nr": "7" },
                 
+                        {"Name": "vulnerablev1_gen_json", "Nr": "7" },
+                
                         {"Name": "AssemblyDataFromMSFT", "Nr": "6" },
                 
                         {"Name": "Frameworks", "Nr": "6" },
+                
+                        {"Name": "PackageProblemsDTO", "Nr": "6" },
                 
                         {"Name": "ProcessOutput", "Nr": "6" },
                 
@@ -2187,6 +2216,8 @@ name: 'Statistical'
                 
                         {"Name": "TestNugetInfo", "Nr": "5" },
                 
+                        {"Name": "TopLevelPackages", "Nr": "5" },
+                
                         {"Name": "InterceptMethodCall", "Nr": "4" },
                 
                         {"Name": "TestStatistics", "Nr": "4" },
@@ -2202,6 +2233,8 @@ name: 'Statistical'
                         {"Name": "TopLevelPackages", "Nr": "3" },
                 
                         {"Name": "TransitivePackages", "Nr": "3" },
+                
+                        {"Name": "Vulnerabilities", "Nr": "3" },
                 
                         {"Name": "AnalyzeCsproj", "Nr": "2" },
                 
@@ -2251,6 +2284,8 @@ name: 'Statistical'
                 
                         {"Name": "WhatToGenerate", "Nr": "0" },
                 
+                        {"Name": "WhyData", "Nr": "0" },
+                
                         {"Name": "WriteToConsole", "Nr": "0" },
                                             ];
             var table = new Tabulator("#Class-Coupling-for-Class-table", {
@@ -2258,7 +2293,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60,63],
+                paginationSizeSelector: [10,20,30,40,50,60,68],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -2298,7 +2333,7 @@ name: 'Statistical'
                         series: [
                             {
                                 data: [
-                    {value:40,itemStyle:{color:'red'}},
+                    {value:43,itemStyle:{color:'red'}},
 {value:32,itemStyle:{color:'red'}},
 {value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
@@ -2317,9 +2352,12 @@ name: 'Statistical'
 {value:7,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
+{value:7,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
+{value:6,itemStyle:{color:'red'}},
+{value:5,itemStyle:{color:'red'}},
 {value:5,itemStyle:{color:'red'}},
 {value:5,itemStyle:{color:'red'}},
 {value:5,itemStyle:{color:'red'}},
@@ -2336,6 +2374,7 @@ name: 'Statistical'
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
+{value:3,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
@@ -2349,6 +2388,7 @@ name: 'Statistical'
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
+{value:0,itemStyle:{color:'red'}},
 {value:0,itemStyle:{color:'red'}},
 {value:0,itemStyle:{color:'red'}},
 {value:0,itemStyle:{color:'red'}},
@@ -2382,12 +2422,15 @@ name: 'Statistical'
     
         <div>
     Min Value: 0
-    ;Max Value: 349
-    ;Math average: 41 
+    ;Max Value: 410
+    ;Math average: 45 
     ;Math median: 21
-    ;Standard Dev: 86.30
+    ;Standard Dev: 101.89
 
-        ;Coefficient of Variation: 2.10
+        ;Coefficient of Variation: 2.26
+        
+        <br />
+        Math mode: The most encountered value (1 times) is 1
         </div>
 
         <div id="Cyclomatic-Complexity-for-Assembly" style="height: 100%" title="image Cyclomatic-Complexity-for-Assembly"></div>
@@ -2418,7 +2461,7 @@ name: 'Statistical'
                 series: [
                     {
                         data: [
-            {value:349,itemStyle:{color:'red'}},
+            {value:410,itemStyle:{color:'red'}},
 {value:36,itemStyle:{color:'red'}},
 {value:34,itemStyle:{color:'red'}},
 {value:31,itemStyle:{color:'red'}},
@@ -2468,7 +2511,7 @@ name: 'Statistical'
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerObjects", "Nr": "349" },
+                        {"Name": "NetPackageAnalyzerObjects", "Nr": "410" },
                 
                         {"Name": "NetPackageAnalyzeHistory", "Nr": "36" },
                 
@@ -2488,7 +2531,7 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "8" },
                 
-                        {"Name": "NPA.Resources", "Nr": "8" },
+                        {"Name": "NPA.Resources", "Nr": "7" },
                 
                         {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "1" },
                 
@@ -2541,7 +2584,7 @@ name: 'Statistical'
                         series: [
                             {
                                 data: [
-                    {value:349,itemStyle:{color:'red'}},
+                    {value:410,itemStyle:{color:'red'}},
 {value:36,itemStyle:{color:'red'}},
 {value:34,itemStyle:{color:'red'}},
 {value:31,itemStyle:{color:'red'}},
@@ -2551,7 +2594,7 @@ name: 'Statistical'
 {value:17,itemStyle:{color:'red'}},
 {value:9,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
-{value:8,itemStyle:{color:'red'}},
+{value:7,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:0,itemStyle:{color:'red'}}
@@ -2578,9 +2621,9 @@ name: 'Statistical'
     ;Max Value: 86
     ;Math average: 8 
     ;Math median: 6
-    ;Standard Dev: 12.65
+    ;Standard Dev: 12.37
 
-        ;Coefficient of Variation: 1.58
+        ;Coefficient of Variation: 1.55
         
         <br />
         Math mode: The most encountered value (1 times) is 1
@@ -2615,7 +2658,7 @@ name: 'Statistical'
                     {
                         data: [
             {value:86,itemStyle:{color:'red'}},
-{value:56,itemStyle:{color:'red'}},
+{value:62,itemStyle:{color:'red'}},
 {value:27,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'orange'}},
 {value:22,itemStyle:{color:'orange'}},
@@ -2666,7 +2709,7 @@ name: 'Statistical'
 
                         {"Name": "ProjectsDict", "Nr": "86" },
                 
-                        {"Name": "GenerateData", "Nr": "56" },
+                        {"Name": "GenerateData", "Nr": "62" },
                 
                         {"Name": "StatisticalNumbers<T>", "Nr": "27" },
                 
@@ -2690,15 +2733,21 @@ name: 'Statistical'
                 
                         {"Name": "GenerateFilesDocusaurus", "Nr": "11" },
                 
+                        {"Name": "ProcessOutput", "Nr": "11" },
+                
                         {"Name": "includeV1_gen_json", "Nr": "10" },
                 
                         {"Name": "outdatedV1_gen_json", "Nr": "10" },
                 
                         {"Name": "TopLevelPackages", "Nr": "10" },
                 
+                        {"Name": "vulnerablev1_gen_json", "Nr": "10" },
+                
                         {"Name": "ExternalReferenceExport", "Nr": "9" },
                 
                         {"Name": "ExtractImages", "Nr": "9" },
+                
+                        {"Name": "PackageProblemsDTO", "Nr": "9" },
                 
                         {"Name": "ClassesRefData", "Nr": "8" },
                 
@@ -2706,15 +2755,13 @@ name: 'Statistical'
                 
                         {"Name": "GlobalsForGenerating", "Nr": "8" },
                 
-                        {"Name": "MyResource", "Nr": "8" },
-                
-                        {"Name": "ProcessOutput", "Nr": "8" },
-                
                         {"Name": "AnalyzeForProject", "Nr": "7" },
                 
                         {"Name": "FolderHistoryCommits", "Nr": "7" },
                 
                         {"Name": "HistoryPerYear", "Nr": "7" },
+                
+                        {"Name": "MyResource", "Nr": "7" },
                 
                         {"Name": "ExportPublicClass", "Nr": "6" },
                 
@@ -2725,6 +2772,10 @@ name: 'Statistical'
                         {"Name": "Projects", "Nr": "6" },
                 
                         {"Name": "TransitivePackages", "Nr": "6" },
+                
+                        {"Name": "Vulnerabilities", "Nr": "6" },
+                
+                        {"Name": "WhyData", "Nr": "5" },
                 
                         {"Name": "Commit", "Nr": "4" },
                 
@@ -2795,7 +2846,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60,63],
+                paginationSizeSelector: [10,20,30,40,50,60,67],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -2836,7 +2887,7 @@ name: 'Statistical'
                             {
                                 data: [
                     {value:86,itemStyle:{color:'red'}},
-{value:56,itemStyle:{color:'red'}},
+{value:62,itemStyle:{color:'red'}},
 {value:27,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:22,itemStyle:{color:'red'}},
@@ -2848,24 +2899,28 @@ name: 'Statistical'
 {value:14,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'red'}},
 {value:11,itemStyle:{color:'red'}},
+{value:11,itemStyle:{color:'red'}},
+{value:10,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}},
 {value:10,itemStyle:{color:'red'}},
 {value:9,itemStyle:{color:'red'}},
 {value:9,itemStyle:{color:'red'}},
-{value:8,itemStyle:{color:'red'}},
-{value:8,itemStyle:{color:'red'}},
+{value:9,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
+{value:7,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
+{value:6,itemStyle:{color:'red'}},
+{value:5,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
@@ -2918,12 +2973,12 @@ name: 'Statistical'
     
         <div>
     Min Value: 1
-    ;Max Value: 35
+    ;Max Value: 41
     ;Math average: 2 
     ;Math median: 1
-    ;Standard Dev: 3.46
+    ;Standard Dev: 3.61
 
-        ;Coefficient of Variation: 1.73
+        ;Coefficient of Variation: 1.80
         
         <br />
         Math mode: The most encountered value (1 times) is 1
@@ -2957,7 +3012,7 @@ name: 'Statistical'
                 series: [
                     {
                         data: [
-            {value:35,itemStyle:{color:'red'}},
+            {value:41,itemStyle:{color:'red'}},
 {value:17,itemStyle:{color:'orange'}},
 {value:12,itemStyle:{color:'orange'}},
 {value:11,itemStyle:{color:'orange'}},
@@ -3007,7 +3062,7 @@ name: 'Statistical'
 
             var tabledata = [
 
-                        {"Name": "Task<bool> GenerateData.GenerateDataForSln(string folder)", "Nr": "35" },
+                        {"Name": "Task<bool> GenerateData.GenerateDataForSln(string folder)", "Nr": "41" },
                 
                         {"Name": "GenericMetrics[] GenericMetrics.CreateFromXML(string fileName)", "Nr": "17" },
                 
@@ -3063,6 +3118,8 @@ name: 'Statistical'
                 
                         {"Name": "void AnalyzeForProject.Analyze()", "Nr": "4" },
                 
+                        {"Name": "void PackageProblemsDTO.VerifyWhy()", "Nr": "4" },
+                
                         {"Name": "void RealMainExecuting.LaunchBrowser(string url)", "Nr": "4" },
                 
                         {"Name": "bool GenericMetricsMethod.IsGetSetWith100()", "Nr": "3" },
@@ -3074,6 +3131,8 @@ name: 'Statistical'
                         {"Name": "long ProjectsDict.CommitsPerYearFolder(int year)", "Nr": "3" },
                 
                         {"Name": "string GlobalsForGenerating.RelativePath(string? pathProject)", "Nr": "3" },
+                
+                        {"Name": "string ProcessOutput.OutputWhy(string pathToSln, string packageId)", "Nr": "3" },
                 
                         {"Name": "T GenericMetrics.CreateFromXML<T>(string name, XmlNode xmlNode)", "Nr": "3" },
                 
@@ -3152,6 +3211,10 @@ name: 'Statistical'
                         {"Name": "void InterceptMethodCall.InterceptMethod(DataFromInterceptTiming data)", "Nr": "2" },
                 
                         {"Name": "void TestNugetInfo.TestFindVersionNuget()", "Nr": "2" },
+                
+                        {"Name": "Vulnerabilities? Vulnerabilities.Deserialize(string? text)", "Nr": "2" },
+                
+                        {"Name": "vulnerablev1_gen_json? vulnerablev1_gen_json.Deserialize(string? text)", "Nr": "2" },
                 
                         {"Name": "AnalyzeCsproj.AnalyzeCsproj(string rootFolder, FileData[] files)", "Nr": "1" },
                 
@@ -3241,6 +3304,16 @@ name: 'Statistical'
                 
                         {"Name": "NamePerCountArray ProjectsDict.FilesWithMaxCommitsAdv(int? year)", "Nr": "1" },
                 
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.All()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.AllNotDistinct()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Depr()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Out()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Vuln()", "Nr": "1" },
+                
                         {"Name": "ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)", "Nr": "1" },
                 
                         {"Name": "ProjectsDict.ProjectsDict(Dictionary<string, ProjectData> data)", "Nr": "1" },
@@ -3261,13 +3334,13 @@ name: 'Statistical'
                 
                         {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorTheme()", "Nr": "1" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetVisJs()", "Nr": "1" },
-                
                         {"Name": "RealMainExecuting.RealMainExecuting()", "Nr": "1" },
                 
                         {"Name": "string ExternalReferenceExport.FullClassName()", "Nr": "1" },
                 
                         {"Name": "string GlobalsForGenerating.globalPrefix()", "Nr": "1" },
+                
+                        {"Name": "string WhyData.ProjectName()", "Nr": "1" },
                 
                         {"Name": "string? AnalyzeMergeData.relFolder()", "Nr": "1" },
                 
@@ -3330,7 +3403,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,159],
+                paginationSizeSelector: [100,168],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -3370,7 +3443,7 @@ name: 'Statistical'
                         series: [
                             {
                                 data: [
-                    {value:35,itemStyle:{color:'red'}},
+                    {value:41,itemStyle:{color:'red'}},
 {value:17,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
 {value:11,itemStyle:{color:'red'}},
@@ -3399,6 +3472,7 @@ name: 'Statistical'
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
+{value:4,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
@@ -3409,6 +3483,7 @@ name: 'Statistical'
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
+{value:3,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
@@ -3443,6 +3518,13 @@ name: 'Statistical'
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
+{value:2,itemStyle:{color:'red'}},
+{value:2,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -3551,12 +3633,12 @@ name: 'Statistical'
     
         <div>
     Min Value: 0
-    ;Max Value: 32
-    ;Math average: 4 
+    ;Max Value: 39
+    ;Math average: 5 
     ;Math median: 2
-    ;Standard Dev: 7.87
+    ;Standard Dev: 9.54
 
-        ;Coefficient of Variation: 1.97
+        ;Coefficient of Variation: 1.91
         
         <br />
         Math mode: The most encountered value (1 times) is 1
@@ -3590,7 +3672,7 @@ name: 'Statistical'
                 series: [
                     {
                         data: [
-            {value:32,itemStyle:{color:'orange'}},
+            {value:39,itemStyle:{color:'orange'}},
 {value:8},
 {value:5},
 {value:5},
@@ -3640,7 +3722,7 @@ name: 'Statistical'
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerObjects", "Nr": "32" },
+                        {"Name": "NetPackageAnalyzerObjects", "Nr": "39" },
                 
                         {"Name": "AnalyzeMerge", "Nr": "8" },
                 
@@ -3696,12 +3778,12 @@ name: 'Statistical'
     
         <div>
     Min Value: 0
-    ;Max Value: 75
-    ;Math average: 11 
+    ;Max Value: 88
+    ;Math average: 12 
     ;Math median: 7
-    ;Standard Dev: 18.36
+    ;Standard Dev: 21.59
 
-        ;Coefficient of Variation: 1.67
+        ;Coefficient of Variation: 1.80
         
         <br />
         Math mode: The most encountered value (1 times) is 0
@@ -3721,7 +3803,7 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzeHistory','AnalyzeMerge','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','NPA.Resources','NetPackageAnalyzerTests','Statistical','NetPackageAnalyzerExportHTML'],
+                    data: ['NetPackageAnalyzerObjects','NetPackageAnalyzerDocusaurus','NetPackageAnalyzeHistory','AnalyzeMerge','NetPackageAnalyzerConsole','NetPackageAnalyzerMetricsMSFT','NetPackageAnalyzerTests','NPA.Resources','Statistical','NetPackageAnalyzerExportHTML'],
                     show: false
 
                 },
@@ -3735,13 +3817,13 @@ name: 'Statistical'
                 series: [
                     {
                         data: [
-            {value:75,itemStyle:{color:'orange'}},
+            {value:88,itemStyle:{color:'orange'}},
 {value:19},
 {value:15},
 {value:11},
 {value:9},
 {value:9},
-{value:8},
+{value:7},
 {value:7},
 {value:6},
 {value:3}
@@ -3785,7 +3867,7 @@ name: 'Statistical'
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerObjects", "Nr": "75" },
+                        {"Name": "NetPackageAnalyzerObjects", "Nr": "88" },
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "19" },
                 
@@ -3797,9 +3879,9 @@ name: 'Statistical'
                 
                         {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "9" },
                 
-                        {"Name": "NPA.Resources", "Nr": "8" },
-                
                         {"Name": "NetPackageAnalyzerTests", "Nr": "7" },
+                
+                        {"Name": "NPA.Resources", "Nr": "7" },
                 
                         {"Name": "Statistical", "Nr": "6" },
                 
@@ -3843,9 +3925,9 @@ name: 'Statistical'
     ;Max Value: 25
     ;Math average: 2 
     ;Math median: 1
-    ;Standard Dev: 4.00
+    ;Standard Dev: 3.74
 
-        ;Coefficient of Variation: 2.00
+        ;Coefficient of Variation: 1.87
         
         <br />
         Math mode: The most encountered value (1 times) is 1
@@ -3865,7 +3947,7 @@ name: 'Statistical'
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['ProjectsDict','TemplateGenerator','AssemblyDataFromMSFT','GenerateData','MyResource','RealMainExecuting','HistoryPerYear','StatisticalNumbers<T>','GenericMetrics','IOperations'],
+                    data: ['ProjectsDict','TemplateGenerator','AssemblyDataFromMSFT','GenerateData','RealMainExecuting','MyResource','HistoryPerYear','PackageProblemsDTO','StatisticalNumbers<T>','ProcessOutput'],
                     show: false
 
                 },
@@ -3884,11 +3966,11 @@ name: 'Statistical'
 {value:13},
 {value:8},
 {value:8},
-{value:8},
+{value:7},
 {value:6},
 {value:6},
-{value:4},
-{value:4}
+{value:6},
+{value:5}
                         ],
                         type: 'bar'
                         , label: {
@@ -3937,19 +4019,21 @@ name: 'Statistical'
                 
                         {"Name": "GenerateData", "Nr": "8" },
                 
-                        {"Name": "MyResource", "Nr": "8" },
-                
                         {"Name": "RealMainExecuting", "Nr": "8" },
+                
+                        {"Name": "MyResource", "Nr": "7" },
                 
                         {"Name": "HistoryPerYear", "Nr": "6" },
                 
+                        {"Name": "PackageProblemsDTO", "Nr": "6" },
+                
                         {"Name": "StatisticalNumbers<T>", "Nr": "6" },
+                
+                        {"Name": "ProcessOutput", "Nr": "5" },
                 
                         {"Name": "GenericMetrics", "Nr": "4" },
                 
                         {"Name": "IOperations", "Nr": "4" },
-                
-                        {"Name": "ProcessOutput", "Nr": "4" },
                 
                         {"Name": "TestStatistics", "Nr": "4" },
                 
@@ -4019,6 +4103,12 @@ name: 'Statistical'
                 
                         {"Name": "TransitivePackages", "Nr": "1" },
                 
+                        {"Name": "Vulnerabilities", "Nr": "1" },
+                
+                        {"Name": "vulnerablev1_gen_json", "Nr": "1" },
+                
+                        {"Name": "WhyData", "Nr": "1" },
+                
                         {"Name": "AnswersFindNuget", "Nr": "0" },
                 
                         {"Name": "ClassesRefData", "Nr": "0" },
@@ -4058,7 +4148,7 @@ name: 'Statistical'
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60,62],
+                paginationSizeSelector: [10,20,30,40,50,60,66],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -5313,7 +5403,379 @@ columns: [
             ],
             });
         </script>
+    
+    <h2 id="packages-with-vulnerable">0 Packages vulnerable</h2>
+    
+    
+    <h2 id="packages-with-outdated">11 Packages outdated</h2>
+    <div id="Outdated-Packages-table" title="image Outdated-Packages-table"></div>
+
+<script>
+    var tabledata = [
+
+                {
+                    "Name": "System.CommandLine", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerConsole'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ System.CommandLine (v2.0.0-beta4.22272.1)<pre>`}]
+
+                },
         
+                {
+                    "Name": "ThisAssembly.AssemblyInfo", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerConsole'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ ThisAssembly.AssemblyInfo (v1.4.3)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerDocusaurus'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ ThisAssembly.AssemblyInfo (v1.4.3)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerObjects'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ ThisAssembly.AssemblyInfo (v1.4.3)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "RazorBlade", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerDocusaurus'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ RazorBlade (v0.5.0)<pre>`},{ 
+ Name : 'Project AnalyzeMerge'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ RazorBlade (v0.6.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerDiagram'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ RazorBlade (v0.6.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerExportHTML'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ RazorBlade (v0.5.0)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "Microsoft.NET.Test.Sdk", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerTests'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ Microsoft.NET.Test.Sdk (v17.9.0)
+   └─ MSTest (v3.3.1)
+      └─ Microsoft.NET.Test.Sdk (v17.9.0)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "MSTest", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerTests'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ MSTest (v3.3.1)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "MSTest.TestAdapter", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerTests'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ MSTest (v3.3.1)
+   │  └─ MSTest.TestAdapter (v3.3.1)
+   └─ MSTest.TestAdapter (v3.3.1)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "MSTest.TestFramework", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerTests'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ MSTest (v3.3.1)
+   │  └─ MSTest.TestFramework (v3.3.1)
+   └─ MSTest.TestFramework (v3.3.1)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "System.IO.Abstractions.TestingHelpers", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerTests'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ System.IO.Abstractions.TestingHelpers (v21.0.2)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "Morris.Moxy", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerConsole'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ NetPackageAnalyzerDocusaurus (v8.2024.429.700)
+   │  └─ NetPackageAnalyzerObjects (v1.0.0)
+   │     └─ Morris.Moxy (v1.8.0)
+   ├─ NetPackageAnalyzerExportHTML (v1.0.0)
+   │  └─ NetPackageAnalyzerObjects (v1.0.0)
+   │     └─ Morris.Moxy (v1.8.0)
+   └─ NetPackageAnalyzerShowInConsole (v1.0.0)
+      └─ NetPackageAnalyzerObjects (v1.0.0)
+         └─ Morris.Moxy (v1.8.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerDocusaurus'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerObjects (v1.0.0)
+      └─ Morris.Moxy (v1.8.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerTests'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerDocusaurus (v8.2024.429.700)
+      └─ NetPackageAnalyzerObjects (v1.0.0)
+         └─ Morris.Moxy (v1.8.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerObjects'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ Morris.Moxy (v1.8.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerShowInConsole'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerObjects (v1.0.0)
+      └─ Morris.Moxy (v1.8.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerExportHTML'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerObjects (v1.0.0)
+      └─ Morris.Moxy (v1.8.0)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "TestableIO.System.IO.Abstractions.Wrappers", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerConsole'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ NetPackageAnalyzerDocusaurus (v8.2024.429.700)
+   │  └─ NetPackageAnalyzerObjects (v1.0.0)
+   │     └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)
+   ├─ NetPackageAnalyzerExportHTML (v1.0.0)
+   │  ├─ NetPackageAnalyzerObjects (v1.0.0)
+   │  │  └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)
+   │  └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)
+   └─ NetPackageAnalyzerShowInConsole (v1.0.0)
+      └─ NetPackageAnalyzerObjects (v1.0.0)
+         └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerDocusaurus'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerObjects (v1.0.0)
+      └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerTests'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ NetPackageAnalyzerDocusaurus (v8.2024.429.700)
+   │  └─ NetPackageAnalyzerObjects (v1.0.0)
+   │     └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)
+   └─ System.IO.Abstractions.TestingHelpers (v21.0.2)
+      └─ TestableIO.System.IO.Abstractions.TestingHelpers (v21.0.2)
+         └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerObjects'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerShowInConsole'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerObjects (v1.0.0)
+      └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerExportHTML'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ NetPackageAnalyzerObjects (v1.0.0)
+   │  └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)
+   └─ TestableIO.System.IO.Abstractions.Wrappers (v21.0.2)<pre>`}]
+
+                },
+        
+                {
+                    "Name": "N.SourceGenerators.UnionTypes", 
+                    "Why": "Click Me to expand/collapse",
+                    "_children":[{ 
+ Name : 'Project NetPackageAnalyzerConsole'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ NetPackageAnalyzerDocusaurus (v8.2024.429.700)
+   │  └─ NetPackageAnalyzerObjects (v1.0.0)
+   │     └─ NuGetInfo (v1.0.0)
+   │        └─ N.SourceGenerators.UnionTypes (v0.26.0)
+   ├─ NetPackageAnalyzerExportHTML (v1.0.0)
+   │  └─ NetPackageAnalyzerObjects (v1.0.0)
+   │     └─ NuGetInfo (v1.0.0)
+   │        └─ N.SourceGenerators.UnionTypes (v0.26.0)
+   └─ NetPackageAnalyzerShowInConsole (v1.0.0)
+      └─ NetPackageAnalyzerObjects (v1.0.0)
+         └─ NuGetInfo (v1.0.0)
+            └─ N.SourceGenerators.UnionTypes (v0.26.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerDocusaurus'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerObjects (v1.0.0)
+      └─ NuGetInfo (v1.0.0)
+         └─ N.SourceGenerators.UnionTypes (v0.26.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerTests'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   ├─ NetPackageAnalyzerDocusaurus (v8.2024.429.700)
+   │  └─ NetPackageAnalyzerObjects (v1.0.0)
+   │     └─ NuGetInfo (v1.0.0)
+   │        └─ N.SourceGenerators.UnionTypes (v0.26.0)
+   └─ NuGetInfo (v1.0.0)
+      └─ N.SourceGenerators.UnionTypes (v0.26.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerObjects'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NuGetInfo (v1.0.0)
+      └─ N.SourceGenerators.UnionTypes (v0.26.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerShowInConsole'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerObjects (v1.0.0)
+      └─ NuGetInfo (v1.0.0)
+         └─ N.SourceGenerators.UnionTypes (v0.26.0)<pre>`},{ 
+ Name : 'Project NetPackageAnalyzerExportHTML'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ NetPackageAnalyzerObjects (v1.0.0)
+      └─ NuGetInfo (v1.0.0)
+         └─ N.SourceGenerators.UnionTypes (v0.26.0)<pre>`},{ 
+ Name : 'Project NuGetInfo'  , 
+  Why :`
+ <pre>
+  [net8.0]
+   │  
+   └─ N.SourceGenerators.UnionTypes (v0.26.0)<pre>`}]
+
+                },
+            ];
+    var table = new Tabulator("#Outdated-Packages-table", {
+        data: tabledata,
+        dataTree: true,
+        dataTreeStartExpanded: false,
+        layout: "fitColumns",
+        pagination: "local",
+        paginationSize: 10,
+        paginationSizeSelector: [10,20,50,100],
+        movableColumns: true,
+        paginationCounter: "rows",
+        columns: [
+            { formatter: "rownum", hozAlign: "center", width: 40 },
+            { title: "Name", field: "Name", headerFilter: "input" },
+            {
+                title: "Show Projects", 
+                field: "Why", 
+                formatter:"html",
+                headerFilter: "input", 
+                cellClick: function(e, cell) {
+                    //window.alert('expand me');
+                    cell.getRow().treeToggle();
+
+                },
+            },
+        ],
+    });
+
+</script>
+
+
+    <h2 id="packages-with-outdated">0 Packages deprecated</h2>
+    
+
+
     <h2 id="packages-with-major-version-different">1 Packages with major version different</h2>
         <table border="1" title="image packages with major different">
             <thead>
@@ -5338,12 +5800,12 @@ columns: [
     
         <div>
     Min Value: 0
-    ;Max Value: 673
-    ;Math average: 99 
-    ;Math median: 54
-    ;Standard Dev: 165.56
+    ;Max Value: 763
+    ;Math average: 105 
+    ;Math median: 53
+    ;Standard Dev: 188.06
 
-        ;Coefficient of Variation: 1.67
+        ;Coefficient of Variation: 1.79
         
         <br />
         Math mode: The most encountered value (1 times) is 0
@@ -5377,14 +5839,14 @@ columns: [
                 series: [
                     {
                         data: [
-            {value:673},
+            {value:763},
 {value:168},
 {value:106},
 {value:94},
 {value:85},
 {value:68},
 {value:56},
-{value:53},
+{value:51},
 {value:33},
 {value:27}
                         ],
@@ -5427,7 +5889,7 @@ columns: [
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerObjects", "Nr": "673" },
+                        {"Name": "NetPackageAnalyzerObjects", "Nr": "763" },
                 
                         {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "168" },
                 
@@ -5441,13 +5903,13 @@ columns: [
                 
                         {"Name": "Statistical", "Nr": "56" },
                 
-                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "53" },
+                        {"Name": "NetPackageAnalyzerExportHTML", "Nr": "51" },
                 
                         {"Name": "NPA.HtmlData", "Nr": "33" },
                 
                         {"Name": "NetPackageAnalyzerTests", "Nr": "27" },
                 
-                        {"Name": "NPA.Resources", "Nr": "16" },
+                        {"Name": "NPA.Resources", "Nr": "14" },
                 
                         {"Name": "NuGetInfo", "Nr": "8" },
                 
@@ -5483,15 +5945,15 @@ columns: [
     
         <div>
     Min Value: 0
-    ;Max Value: 227
-    ;Math average: 20 
+    ;Max Value: 237
+    ;Math average: 19 
     ;Math median: 6
-    ;Standard Dev: 40.77
+    ;Standard Dev: 39.79
 
-        ;Coefficient of Variation: 2.04
+        ;Coefficient of Variation: 2.09
         
         <br />
-        Math mode: The most encountered value (1 times) is 2
+        Math mode: The most encountered value (1 times) is 6
         </div>
 
         <div id="Number-exec-lines-per-class" style="height: 100%" title="image Number-exec-lines-per-class"></div>
@@ -5508,7 +5970,7 @@ columns: [
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['GenerateData','ProjectsDict','GenerateFilesDocusaurus','RealMainExecuting','GenericMetrics','StatisticalNumbers<T>','GenerateHTML','AnalyzeForProject','AssemblyDataFromMSFT','AnalyzeMergeData'],
+                    data: ['GenerateData','ProjectsDict','GenerateFilesDocusaurus','RealMainExecuting','GenericMetrics','StatisticalNumbers<T>','ProcessOutput','GenerateHTML','AnalyzeForProject','AssemblyDataFromMSFT'],
                     show: false
 
                 },
@@ -5522,16 +5984,16 @@ columns: [
                 series: [
                     {
                         data: [
-            {value:227,itemStyle:{color:'red'}},
+            {value:237,itemStyle:{color:'red'}},
 {value:208,itemStyle:{color:'red'}},
 {value:129,itemStyle:{color:'orange'}},
 {value:75},
 {value:63},
 {value:56},
-{value:52},
+{value:51},
+{value:50},
 {value:49},
-{value:43},
-{value:41}
+{value:43}
                         ],
                         type: 'bar'
                         , label: {
@@ -5572,7 +6034,7 @@ columns: [
 
             var tabledata = [
 
-                        {"Name": "GenerateData", "Nr": "227" },
+                        {"Name": "GenerateData", "Nr": "237" },
                 
                         {"Name": "ProjectsDict", "Nr": "208" },
                 
@@ -5584,7 +6046,9 @@ columns: [
                 
                         {"Name": "StatisticalNumbers<T>", "Nr": "56" },
                 
-                        {"Name": "GenerateHTML", "Nr": "52" },
+                        {"Name": "ProcessOutput", "Nr": "51" },
+                
+                        {"Name": "GenerateHTML", "Nr": "50" },
                 
                         {"Name": "AnalyzeForProject", "Nr": "49" },
                 
@@ -5594,8 +6058,6 @@ columns: [
                 
                         {"Name": "FileFolderHistorySimple", "Nr": "40" },
                 
-                        {"Name": "ProcessOutput", "Nr": "38" },
-                
                         {"Name": "TemplateGenerator", "Nr": "37" },
                 
                         {"Name": "ExtractImages", "Nr": "33" },
@@ -5604,15 +6066,19 @@ columns: [
                 
                         {"Name": "deprecatedV1_gen_json", "Nr": "21" },
                 
-                        {"Name": "MyResource", "Nr": "16" },
+                        {"Name": "PackageProblemsDTO", "Nr": "19" },
                 
                         {"Name": "HistoryPerYear", "Nr": "14" },
+                
+                        {"Name": "MyResource", "Nr": "14" },
                 
                         {"Name": "includeV1_gen_json", "Nr": "12" },
                 
                         {"Name": "outdatedV1_gen_json", "Nr": "12" },
                 
                         {"Name": "TestStatistics", "Nr": "12" },
+                
+                        {"Name": "vulnerablev1_gen_json", "Nr": "12" },
                 
                         {"Name": "ProcessOutput", "Nr": "10" },
                 
@@ -5625,6 +6091,8 @@ columns: [
                         {"Name": "Commit", "Nr": "8" },
                 
                         {"Name": "Frameworks", "Nr": "8" },
+                
+                        {"Name": "WhyData", "Nr": "8" },
                 
                         {"Name": "GlobalsForGenerating", "Nr": "7" },
                 
@@ -5639,6 +6107,8 @@ columns: [
                         {"Name": "TestingPlatformEntryPoint", "Nr": "6" },
                 
                         {"Name": "TransitivePackages", "Nr": "6" },
+                
+                        {"Name": "Vulnerabilities", "Nr": "6" },
                 
                         {"Name": "ExternalReferenceExport", "Nr": "5" },
                 
@@ -5703,7 +6173,7 @@ columns: [
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,60,63],
+                paginationSizeSelector: [10,20,30,40,50,60,67],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -5743,24 +6213,26 @@ columns: [
                         series: [
                             {
                                 data: [
-                    {value:227,itemStyle:{color:'red'}},
+                    {value:237,itemStyle:{color:'red'}},
 {value:208,itemStyle:{color:'red'}},
 {value:129,itemStyle:{color:'red'}},
 {value:75,itemStyle:{color:'red'}},
 {value:63,itemStyle:{color:'red'}},
 {value:56,itemStyle:{color:'red'}},
-{value:52,itemStyle:{color:'red'}},
+{value:51,itemStyle:{color:'red'}},
+{value:50,itemStyle:{color:'red'}},
 {value:49,itemStyle:{color:'red'}},
 {value:43,itemStyle:{color:'red'}},
 {value:41,itemStyle:{color:'red'}},
 {value:40,itemStyle:{color:'red'}},
-{value:38,itemStyle:{color:'red'}},
 {value:37,itemStyle:{color:'red'}},
 {value:33,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
 {value:21,itemStyle:{color:'red'}},
-{value:16,itemStyle:{color:'red'}},
+{value:19,itemStyle:{color:'red'}},
 {value:14,itemStyle:{color:'red'}},
+{value:14,itemStyle:{color:'red'}},
+{value:12,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
@@ -5770,7 +6242,9 @@ columns: [
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
 {value:8,itemStyle:{color:'red'}},
+{value:8,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
+{value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
@@ -5832,9 +6306,9 @@ columns: [
     ;Max Value: 129
     ;Math average: 7 
     ;Math median: 3
-    ;Standard Dev: 15.17
+    ;Standard Dev: 15.07
 
-        ;Coefficient of Variation: 2.17
+        ;Coefficient of Variation: 2.15
         
         <br />
         Math mode: The most encountered value (1 times) is 2
@@ -5869,14 +6343,14 @@ columns: [
                     {
                         data: [
             {value:129,itemStyle:{color:'red'}},
-{value:96,itemStyle:{color:'orange'}},
+{value:106,itemStyle:{color:'red'}},
 {value:83,itemStyle:{color:'orange'}},
 {value:44},
 {value:39},
 {value:36},
 {value:34},
 {value:29},
-{value:28},
+{value:29},
 {value:26}
                         ],
                         type: 'bar'
@@ -5920,7 +6394,7 @@ columns: [
 
                         {"Name": "Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)", "Nr": "129" },
                 
-                        {"Name": "Task<bool> GenerateData.GenerateDataForSln(string folder)", "Nr": "96" },
+                        {"Name": "Task<bool> GenerateData.GenerateDataForSln(string folder)", "Nr": "106" },
                 
                         {"Name": "(ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) GenerateData.AnalyzeDiagrams(string tempFolder)", "Nr": "83" },
                 
@@ -5934,15 +6408,15 @@ columns: [
                 
                         {"Name": "Task<bool> ExtractImages.GetImagesAsync()", "Nr": "29" },
                 
-                        {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "28" },
+                        {"Name": "Task<string> GenerateHTML.GenerateNow(string folder, string where)", "Nr": "29" },
                 
                         {"Name": "string? GenerateData.GenerateDocsForClasses(string fullPathToSolution, string folderResults)", "Nr": "26" },
-                
-                        {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "24" },
                 
                         {"Name": "void ProjectsDict.FindReferences()", "Nr": "23" },
                 
                         {"Name": "void FolderHistoryCommits.Initialize()", "Nr": "21" },
+                
+                        {"Name": "void GenerateHTML.WriteJs(string where)", "Nr": "21" },
                 
                         {"Name": "Dictionary<int, NamePerCount[]> ProjectsDict.CommitsYearFolders()", "Nr": "19" },
                 
@@ -5954,9 +6428,13 @@ columns: [
                 
                         {"Name": "Task<int> RealMainExecuting.RealMain(string[] args)", "Nr": "14" },
                 
+                        {"Name": "string ProcessOutput.OutputWhy(string pathToSln, string packageId)", "Nr": "13" },
+                
                         {"Name": "T StatisticalNumbers<T>.Median(T[]? values)", "Nr": "13" },
                 
                         {"Name": "T StatisticalNumbers<T>.ArithmeticMean(T[]? values)", "Nr": "12" },
+                
+                        {"Name": "void PackageProblemsDTO.VerifyWhy()", "Nr": "12" },
                 
                         {"Name": "void ProjectsDict.FindHistoryProjects()", "Nr": "12" },
                 
@@ -6008,7 +6486,7 @@ columns: [
                 
                         {"Name": "IEnumerable<ValidationResult> GenericMetrics.Validate(ValidationContext validationContext)", "Nr": "6" },
                 
-                        {"Name": "PackageWithVersion[] GenerateData.Problems()", "Nr": "6" },
+                        {"Name": "string WhyData.ProjectName()", "Nr": "6" },
                 
                         {"Name": "Task<int> TestingPlatformEntryPoint.Main(string[] args)", "Nr": "6" },
                 
@@ -6043,6 +6521,8 @@ columns: [
                         {"Name": "NamePerCount[] ProjectsDict.CommitsPerFolder()", "Nr": "4" },
                 
                         {"Name": "NamePerCountArray ProjectsDict.FilesWithMaxCommitsAdv(int? year)", "Nr": "4" },
+                
+                        {"Name": "PackageWithVersion[] GenerateData.Problems()", "Nr": "4" },
                 
                         {"Name": "ProjectData[] ProjectsDict.BuildingBlocks(int nrReferences)", "Nr": "4" },
                 
@@ -6140,8 +6620,6 @@ columns: [
                 
                         {"Name": "ReadOnlySpan<byte> MyResource.GetTabulatorTheme()", "Nr": "2" },
                 
-                        {"Name": "ReadOnlySpan<byte> MyResource.GetVisJs()", "Nr": "2" },
-                
                         {"Name": "RealMainExecuting.RealMainExecuting()", "Nr": "2" },
                 
                         {"Name": "string GlobalsForGenerating.RelativePath(string? pathProject)", "Nr": "2" },
@@ -6180,6 +6658,10 @@ columns: [
                 
                         {"Name": "void GenerateData.AddHistoryCsproj()", "Nr": "2" },
                 
+                        {"Name": "Vulnerabilities? Vulnerabilities.Deserialize(string? text)", "Nr": "2" },
+                
+                        {"Name": "vulnerablev1_gen_json? vulnerablev1_gen_json.Deserialize(string? text)", "Nr": "2" },
+                
                         {"Name": "AssemblyDataFromMSFT.AssemblyDataFromMSFT(GenericMetricsAssembly[] genericMetricsAssembly)", "Nr": "1" },
                 
                         {"Name": "ExtractImages.ExtractImages(string htmlPath)", "Nr": "1" },
@@ -6197,6 +6679,16 @@ columns: [
                         {"Name": "int GenericMetricsClass.NumberOfMethods()", "Nr": "1" },
                 
                         {"Name": "int ProjectsDict.NrLicenses()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.All()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.AllNotDistinct()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Depr()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Out()", "Nr": "1" },
+                
+                        {"Name": "PackageWithVersion[] PackageProblemsDTO.Vuln()", "Nr": "1" },
                 
                         {"Name": "string ExternalReferenceExport.FullClassName()", "Nr": "1" },
                 
@@ -6241,7 +6733,7 @@ columns: [
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [100,159],
+                paginationSizeSelector: [100,168],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -6254,7 +6746,7 @@ columns: [
         </script>
 
 
-                <h2>Number exec lines per method bad data : 1</h2>
+                <h2>Number exec lines per method bad data : 2</h2>
                 <div id='Number exec lines per method_bad' style="height: 100%"></div>
                 <script type="text/javascript">
                     var dom = document.getElementById('Number exec lines per method_bad');
@@ -6269,7 +6761,7 @@ columns: [
                     option = {
                         xAxis: {
                             type: 'category',
-                            data: ['Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)']
+                            data: ['Task<string> GenerateFilesDocusaurus.GenerateNow(string folder, string where)','Task<bool> GenerateData.GenerateDataForSln(string folder)']
                         },
                         yAxis: {
                             type: 'value'
@@ -6282,17 +6774,17 @@ columns: [
                             {
                                 data: [
                     {value:129,itemStyle:{color:'red'}},
-{value:96,itemStyle:{color:'red'}},
+{value:106,itemStyle:{color:'red'}},
 {value:83,itemStyle:{color:'red'}},
 {value:44,itemStyle:{color:'red'}},
 {value:39,itemStyle:{color:'red'}},
 {value:36,itemStyle:{color:'red'}},
 {value:34,itemStyle:{color:'red'}},
 {value:29,itemStyle:{color:'red'}},
-{value:28,itemStyle:{color:'red'}},
+{value:29,itemStyle:{color:'red'}},
 {value:26,itemStyle:{color:'red'}},
-{value:24,itemStyle:{color:'red'}},
 {value:23,itemStyle:{color:'red'}},
+{value:21,itemStyle:{color:'red'}},
 {value:21,itemStyle:{color:'red'}},
 {value:19,itemStyle:{color:'red'}},
 {value:16,itemStyle:{color:'red'}},
@@ -6300,8 +6792,10 @@ columns: [
 {value:14,itemStyle:{color:'red'}},
 {value:14,itemStyle:{color:'red'}},
 {value:13,itemStyle:{color:'red'}},
+{value:13,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
 {value:12,itemStyle:{color:'red'}},
+{value:12,itemStyle:{color:'red'}},
 {value:11,itemStyle:{color:'red'}},
 {value:11,itemStyle:{color:'red'}},
 {value:11,itemStyle:{color:'red'}},
@@ -6347,6 +6841,7 @@ columns: [
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
+{value:4,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
 {value:3,itemStyle:{color:'red'}},
@@ -6412,6 +6907,12 @@ columns: [
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
+{value:2,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -6465,12 +6966,12 @@ columns: [
 
             <div>
     Min Value: 1
-    ;Max Value: 35
+    ;Max Value: 44
     ;Math average: 5 
     ;Math median: 3
-    ;Standard Dev: 8.72
+    ;Standard Dev: 11.14
 
-        ;Coefficient of Variation: 1.74
+        ;Coefficient of Variation: 2.23
         
         <br />
         Math mode: The most encountered value (1 times) is 1
@@ -6504,7 +7005,7 @@ columns: [
         series: [
                 {
                     data: [
-    {value:35},
+    {value:44},
 {value:6},
 {value:5},
 {value:5},
@@ -6538,7 +7039,7 @@ columns: [
 <script>
     var tabledata = [
 
-                {"Name": "NetPackageAnalyzerObjects", "Nr": "35" },
+                {"Name": "NetPackageAnalyzerObjects", "Nr": "44" },
         
                 {"Name": "NetPackageAnalyzeHistory", "Nr": "6" },
         
@@ -6588,12 +7089,12 @@ columns: [
             
         <div>
     Min Value: 10
-    ;Max Value: 548
-    ;Math average: 78 
+    ;Max Value: 692
+    ;Math average: 89 
     ;Math median: 40
-    ;Standard Dev: 137.60
+    ;Standard Dev: 175.52
 
-        ;Coefficient of Variation: 1.76
+        ;Coefficient of Variation: 1.97
         </div>
 
         <div id="Public-methods-per-assembly" style="height: 100%" title="image Public-methods-per-assembly"></div>
@@ -6624,7 +7125,7 @@ columns: [
                 series: [
                     {
                         data: [
-            {value:548,itemStyle:{color:'red'}},
+            {value:692,itemStyle:{color:'red'}},
 {value:81},
 {value:75},
 {value:65},
@@ -6674,7 +7175,7 @@ columns: [
 
             var tabledata = [
 
-                        {"Name": "NetPackageAnalyzerObjects", "Nr": "548" },
+                        {"Name": "NetPackageAnalyzerObjects", "Nr": "692" },
                 
                         {"Name": "NetPackageAnalyzeHistory", "Nr": "81" },
                 
@@ -6745,7 +7246,7 @@ columns: [
                         series: [
                             {
                                 data: [
-                    {value:548,itemStyle:{color:'red'}},
+                    {value:692,itemStyle:{color:'red'}},
 {value:81,itemStyle:{color:'red'}},
 {value:75,itemStyle:{color:'red'}},
 {value:65,itemStyle:{color:'red'}},
@@ -6783,11 +7284,11 @@ columns: [
         <div>
     Min Value: 1
     ;Max Value: 24
-    ;Math average: 4 
-    ;Math median: 2
+    ;Math average: 3 
+    ;Math median: 1
     ;Standard Dev: 4.24
 
-        ;Coefficient of Variation: 1.06
+        ;Coefficient of Variation: 1.41
         
         <br />
         Math mode: The most encountered value (1 times) is 1
@@ -6807,7 +7308,7 @@ columns: [
             option = {
                 yAxis: {
                     type: 'category',
-                    data: ['ProjectsDict','ProjectData','AssemblyDataFromMSFT','DisplayDataMoreThan1Version','PackageData','FileData','NamePerCountArray','MyResource','DataToDisplayMerge','InfoSolution'],
+                    data: ['ProjectsDict','ProjectData','AssemblyDataFromMSFT','DisplayDataMoreThan1Version','PackageData','FileData','NamePerCountArray','PackageWithVersion','DataToDisplayMerge','InfoSolution'],
                     show: false
 
                 },
@@ -6885,7 +7386,7 @@ columns: [
                 
                         {"Name": "NamePerCountArray", "Nr": "9" },
                 
-                        {"Name": "MyResource", "Nr": "8" },
+                        {"Name": "PackageWithVersion", "Nr": "8" },
                 
                         {"Name": "DataToDisplayMerge", "Nr": "7" },
                 
@@ -6895,11 +7396,15 @@ columns: [
                 
                         {"Name": "ModeResult", "Nr": "7" },
                 
+                        {"Name": "MyResource", "Nr": "7" },
+                
                         {"Name": "NugetInfoData", "Nr": "7" },
                 
                         {"Name": "PackageWithVersionDeprecated", "Nr": "7" },
                 
                         {"Name": "PackageWithVersionOutdated", "Nr": "7" },
+                
+                        {"Name": "PackageWithVersionVulnerable", "Nr": "7" },
                 
                         {"Name": "RscgExportDataDiagram", "Nr": "7" },
                 
@@ -6915,7 +7420,7 @@ columns: [
                 
                         {"Name": "NamePerCount", "Nr": "6" },
                 
-                        {"Name": "PackageWithVersion", "Nr": "6" },
+                        {"Name": "PackageProblemsDTO", "Nr": "6" },
                 
                         {"Name": "ProjectWithFiles", "Nr": "6" },
                 
@@ -6925,13 +7430,13 @@ columns: [
                 
                         {"Name": "NoLicenseFound", "Nr": "5" },
                 
+                        {"Name": "ProcessOutput", "Nr": "5" },
+                
                         {"Name": "TemplateGenerator", "Nr": "5" },
                 
                         {"Name": "HistoryPerYear", "Nr": "4" },
                 
                         {"Name": "IOperations", "Nr": "4" },
-                
-                        {"Name": "ProcessOutput", "Nr": "4" },
                 
                         {"Name": "TestStatistics", "Nr": "4" },
                 
@@ -6987,6 +7492,12 @@ columns: [
                 
                         {"Name": "TransitivePackages", "Nr": "1" },
                 
+                        {"Name": "Vulnerabilities", "Nr": "1" },
+                
+                        {"Name": "vulnerablev1_gen_json", "Nr": "1" },
+                
+                        {"Name": "WhyData", "Nr": "1" },
+                
                         {"Name": "WriteToConsole", "Nr": "1" },
                                             ];
             var table = new Tabulator("#Public-methods-per-class-table", {
@@ -6994,7 +7505,7 @@ columns: [
                 layout: "fitColumns",
                 pagination: "local",
                 paginationSize: 10,
-                paginationSizeSelector: [10,20,30,40,50,59],
+                paginationSizeSelector: [10,20,30,40,50,60,64],
                 movableColumns: true,
                 paginationCounter: "rows",
                 columns: [
@@ -7050,6 +7561,8 @@ columns: [
 {value:7,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
 {value:7,itemStyle:{color:'red'}},
+{value:7,itemStyle:{color:'red'}},
+{value:7,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
 {value:6,itemStyle:{color:'red'}},
@@ -7062,13 +7575,16 @@ columns: [
 {value:6,itemStyle:{color:'red'}},
 {value:5,itemStyle:{color:'red'}},
 {value:5,itemStyle:{color:'red'}},
-{value:4,itemStyle:{color:'red'}},
+{value:5,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:4,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
 {value:2,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
+{value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
 {value:1,itemStyle:{color:'red'}},
@@ -7119,14 +7635,11 @@ columns: [
     <div>
     Min Value: 1
     ;Max Value: 41
-    ;Math average: 11 
+    ;Math average: 13 
     ;Math median: 8
-    ;Standard Dev: 12.69
+    ;Standard Dev: 13.38
 
-        ;Coefficient of Variation: 1.15
-        
-        <br />
-        Math mode: The most encountered value (1 times) is 2
+        ;Coefficient of Variation: 1.03
         </div>
 
 
@@ -7145,7 +7658,7 @@ columns: [
         yAxis: {
             type: 'category',
             show: false,
-            data: ['NetPackageAnalyzeHistory','NetPackageAnalyzerObjects','NetPackageAnalyzerMetricsMSFT','NPA.Resources','NuGetInfo','Statistical','NetPackageAnalyzerDiagram','NetPackageAnalyzerDocusaurus','NetPackageAnalyzerShowInConsole','NPA.HtmlData']
+            data: ['NetPackageAnalyzeHistory','NetPackageAnalyzerObjects','NetPackageAnalyzerMetricsMSFT','NuGetInfo','Statistical','NPA.Resources','NetPackageAnalyzerDiagram','NPA.HtmlData','NetPackageAnalyzerDocusaurus']
         },
         xAxis: {
             type: 'value'
@@ -7158,15 +7671,14 @@ columns: [
                 {
                     data: [
     {value:41},
-{value:30},
+{value:31},
 {value:19},
 {value:8},
 {value:8},
-{value:8},
+{value:7},
 {value:2},
 {value:2},
-{value:2},
-{value:2}
+{value:1}
                     ],
                     type: 'bar'
                 , label: {
@@ -7193,32 +7705,28 @@ columns: [
 
                 {"Name": "NetPackageAnalyzeHistory", "Nr": "41" },
         
-                {"Name": "NetPackageAnalyzerObjects", "Nr": "30" },
+                {"Name": "NetPackageAnalyzerObjects", "Nr": "31" },
         
                 {"Name": "NetPackageAnalyzerMetricsMSFT", "Nr": "19" },
-        
-                {"Name": "NPA.Resources", "Nr": "8" },
         
                 {"Name": "NuGetInfo", "Nr": "8" },
         
                 {"Name": "Statistical", "Nr": "8" },
         
+                {"Name": "NPA.Resources", "Nr": "7" },
+        
                 {"Name": "NetPackageAnalyzerDiagram", "Nr": "2" },
-        
-                {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "2" },
-        
-                {"Name": "NetPackageAnalyzerShowInConsole", "Nr": "2" },
         
                 {"Name": "NPA.HtmlData", "Nr": "2" },
         
-                {"Name": "NetPackageAnalyzerExportHTML", "Nr": "1" },
+                {"Name": "NetPackageAnalyzerDocusaurus", "Nr": "1" },
                                         ];
     var table = new Tabulator("#References-per-assembly-table", {
         data: tabledata,
         layout: "fitColumns",
         pagination: "local",
         paginationSize: 10,
-        paginationSizeSelector: [10,11],
+        paginationSizeSelector: [10],
         movableColumns: true,
         paginationCounter: "rows",
         columns: [
@@ -7236,11 +7744,11 @@ columns: [
     <div>
     Min Value: 1
     ;Max Value: 40
-    ;Math average: 8 
+    ;Math average: 9 
     ;Math median: 4
-    ;Standard Dev: 10.58
+    ;Standard Dev: 10.86
 
-        ;Coefficient of Variation: 1.32
+        ;Coefficient of Variation: 1.21
         
         <br />
         Math mode: The most encountered value (1 times) is 4
@@ -7262,7 +7770,7 @@ columns: [
         yAxis: {
             type: 'category',
             show: false,
-            data: ['ProjectsDict','GenerateHTML','AssemblyDataFromMSFT','GenerateFilesDocusaurus','PackageData','ProjectData','RealMainExecuting','TemplateGenerator','TestNugetInfo','TestStatistics']
+            data: ['ProjectsDict','GenerateHTML','AssemblyDataFromMSFT','GenerateFilesDocusaurus','PackageData','ProjectData','TemplateGenerator','TestNugetInfo','TestStatistics','GenerateData']
         },
         xAxis: {
             type: 'value'
@@ -7283,7 +7791,7 @@ columns: [
 {value:4},
 {value:4},
 {value:4},
-{value:4}
+{value:3}
                     ],
                     type: 'bar'
                 , label: {
@@ -7320,8 +7828,6 @@ columns: [
         
                 {"Name": "ProjectData", "Nr": "4" },
         
-                {"Name": "RealMainExecuting", "Nr": "4" },
-        
                 {"Name": "TemplateGenerator", "Nr": "4" },
         
                 {"Name": "TestNugetInfo", "Nr": "4" },
@@ -7341,7 +7847,7 @@ columns: [
         layout: "fitColumns",
         pagination: "local",
         paginationSize: 10,
-        paginationSizeSelector: [10,14],
+        paginationSizeSelector: [10,13],
         movableColumns: true,
         paginationCounter: "rows",
         columns: [
@@ -7361,9 +7867,9 @@ columns: [
                 xychart-beta
                 title "Commits per year (folder and csproj)"
                 x-axis [2023,2024]
-                y-axis "" 0--> 242
-                bar [23,242]
-                bar [13,129]
+                y-axis "" 0--> 249
+                bar [23,249]
+                bar [13,132]
             </div>
 
         
@@ -7547,7 +8053,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,66],
+data: [10,68],
 },
 
 
@@ -7571,7 +8077,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,25],
+data: [null,27],
 },
 
 
@@ -7595,7 +8101,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,47],
+data: [null,49],
 },
 
 
@@ -7655,7 +8161,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,2],
+data: [null,3],
 },
 
 
@@ -7705,15 +8211,15 @@ tabledata.push({"folder": "NetPackageAnalyzeHistory", "year":2024,"Nr": "14" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2023,"Nr": "10" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "66" });
+tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "68" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2024,"Nr": "8" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "25" });
+tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "27" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerMetricsMSFT", "year":2024,"Nr": "6" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerObjects", "year":2024,"Nr": "47" });
+tabledata.push({"folder": "NetPackageAnalyzerObjects", "year":2024,"Nr": "49" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerShowInConsole", "year":2024,"Nr": "1" });
                     
@@ -7725,7 +8231,7 @@ tabledata.push({"folder": "NetPackageAnalyzerWork", "year":2024,"Nr": "47" });
                     
 tabledata.push({"folder": "NPA.HtmlData", "year":2024,"Nr": "4" });
                     
-tabledata.push({"folder": "NPA.Resources", "year":2024,"Nr": "2" });
+tabledata.push({"folder": "NPA.Resources", "year":2024,"Nr": "3" });
                     
 tabledata.push({"folder": "NuGetInfo", "year":2024,"Nr": "2" });
                     
@@ -7755,13 +8261,13 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
 </text>        <h3 id="file-with-commits">Commits per file</h3>
 
             <div>
-    Min Value: 20
-    ;Max Value: 115
-    ;Math average: 47 
+    Min Value: 21
+    ;Max Value: 121
+    ;Math average: 48 
     ;Math median: 33
-    ;Standard Dev: 34.09
+    ;Standard Dev: 35.64
 
-        ;Coefficient of Variation: 0.73
+        ;Coefficient of Variation: 0.74
         
         <br />
         Math mode: The most encountered value (1 times) is 33
@@ -7795,15 +8301,15 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
         series: [
                 {
                     data: [
-    {value:115},
-{value:113},
-{value:72},
+    {value:121},
+{value:114},
+{value:78},
 {value:33},
 {value:33},
 {value:33},
 {value:32},
 {value:25},
-{value:24},
+{value:25},
 {value:22}
                     ],
                     type: 'bar'
@@ -7829,11 +8335,11 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
 <script>
     var tabledata = [
 
-                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\Program.cs", "Nr": "115" },
+                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\Program.cs", "Nr": "121" },
         
-                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\NetPackageAnalyzerConsole.csproj", "Nr": "113" },
+                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\NetPackageAnalyzerConsole.csproj", "Nr": "114" },
         
-                {"Name": "..\\NetPackageAnalyzerExportHTML\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\HtmlSummary.cshtml", "Nr": "72" },
+                {"Name": "..\\NetPackageAnalyzerExportHTML\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\HtmlSummary.cshtml", "Nr": "78" },
         
                 {"Name": "..\\NetPackageAnalyzerObjects\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\ProjectsDict.cs", "Nr": "33" },
         
@@ -7845,11 +8351,11 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
         
                 {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\RealMain.cs", "Nr": "25" },
         
-                {"Name": "..\\NetPackageAnalyzerObjects\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\NetPackageAnalyzerObjects.csproj", "Nr": "24" },
+                {"Name": "..\\NetPackageAnalyzerObjects\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\NetPackageAnalyzerObjects.csproj", "Nr": "25" },
         
                 {"Name": "..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\Templates\\BlogPost.cshtml", "Nr": "22" },
         
-                {"Name": "..\\NetPackageAnalyzerWork\\src\\NetPackageAnalyzer\\NetPackageAnalyzerWork\\TemplateGenerator.cs", "Nr": "20" },
+                {"Name": "..\\NetPackageAnalyzerExportHTML\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\GenerateHTML.cs", "Nr": "21" },
                                         ];
     var table = new Tabulator("#Files-with-commits-table", {
         data: tabledata,
@@ -7900,8 +8406,8 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
     <script>    mermaid.initialize({ startOnLoad: true });</script>
 
     <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
-    <small>8.2024.1017.1936</small>
-    <small> Nadine Gordimer is feeling rational in Seoul </small>
+    <small>8.2024.1019.1936</small>
+    <small> Patrick Modiano is feeling hanging in Tórshavn </small>
 <script>
         
             const steps = [
@@ -7927,7 +8433,7 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
             {
                 element: '#Commits-per-year-and-folder',
                 popover: {
-                    title: 'Total Commits for NetPackageAnalyzer : 265',
+                    title: 'Total Commits for NetPackageAnalyzer : 272',
                     description: 'Here are the commits per year and project',
                 }
             }
@@ -7997,9 +8503,8 @@ tabledata.push({"folder": "Statistical", "year":2024,"Nr": "3" });
             steps: steps
         });
 
-        driverObj.drive();
+        //driverObj.drive();
 
-            
 </script>
 
 </body>
