@@ -14,10 +14,8 @@ public class WhyData
     public string ProjectName()
     {
         var last = "has the following";
-        var first = "Project";
         var start = ProjectText.IndexOf(last);
-        var text = ProjectText.Substring(ProjectText.IndexOf(last));
-        text=text.Replace(first, string.Empty);
+        var text = ProjectText.Substring(0,ProjectText.IndexOf(last));
         text=text.Replace("'", string.Empty);
         text=text.Trim();
         return text;
@@ -26,6 +24,10 @@ public class WhyData
 }
 public record PackageWithVersion(string PackageId,string RequestedVersion, PackageOptions PackageOptions = PackageOptions.None)
 {
+    public void CopyWhyFrom(PackageWithVersion from)
+    {
+        this.Why = from.Why;
+    }
     public ProjectData[] Projects { get; set; } = Array.Empty<ProjectData>();
     public void VerifyWhy()
     {
@@ -40,6 +42,10 @@ public record PackageWithVersion(string PackageId,string RequestedVersion, Packa
             WhyData? whyData = null;
             foreach (var item in arrStr)
             {
+                if(string.IsNullOrWhiteSpace(item?.Trim()))
+                {
+                    continue;
+                }
                 if (item.Contains("does not have a dependency on"))
                     continue;
                 if(string.IsNullOrWhiteSpace(item?.Trim()))
@@ -56,7 +62,11 @@ public record PackageWithVersion(string PackageId,string RequestedVersion, Packa
                     whyData.ProjectText = item;
                     continue;
                 }
-                whyData!.WhyText += item;
+                whyData!.WhyText += Environment.NewLine+ item ;
+            }
+            if (whyData != null)
+            {
+                whyDatas.Add(whyData);
             }
         }
         catch (Exception ex)

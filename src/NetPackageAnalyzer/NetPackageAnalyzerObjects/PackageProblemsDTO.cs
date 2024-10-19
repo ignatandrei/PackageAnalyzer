@@ -9,29 +9,50 @@ public class PackageProblemsDTO
     public PackageWithVersion[] All()
     {
 
-        return Vuln().Concat(Out())
-            .Concat(Depr())
+        return AllNotDistinct()
             .Distinct()
+            .ToArray();
+
+    }
+    public PackageWithVersion[] AllNotDistinct()
+    {
+
+        return Vuln().Concat(Out())
+            .Concat(Depr())            
             .ToArray();
 
     }
     public PackageWithVersion[] Vuln()
     {
-        return vulnerable.Distinct().ToArray();
+        return vulnerable.ToArray();
     }
     public PackageWithVersion[] Out()
     {
-        return outdated.Distinct().ToArray();
+        return outdated.ToArray();
     }
     public PackageWithVersion[] Depr()
     {
-        return deprecated.Distinct().ToArray();
+        return deprecated.ToArray();
     }
     public void VerifyWhy()
     {
+        deprecated = deprecated.Distinct().ToArray();
+        outdated = outdated.Distinct().ToArray();
+        vulnerable = vulnerable.Distinct().ToArray();
+
+        var notDistinct = AllNotDistinct();
         foreach (var item in All())
         {
             item.VerifyWhy();
+            var more= notDistinct
+                .Where(x => x.PackageId == item.PackageId)
+                .Where(x => x!=item)
+                .ToArray();
+            if (more.Length == 0) continue;
+            foreach (var itemMore in more)
+            {
+                itemMore.CopyWhyFrom(item);
+            }
         }
     }
 }

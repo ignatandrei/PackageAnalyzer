@@ -3,6 +3,7 @@
     var name= Model.Item1;
     var packages = Model.Item2;
     string nameId= name.Replace(" ", "-");
+    var nl=Environment.NewLine;
     if(packages.Length==0)
     {
         return;
@@ -14,13 +15,13 @@
     var tabledata = [
     @foreach (var item in packages)
     {
-        var childrenArr = item.Why.Select(x => $"{{ Name = '{x.ProjectName} , Why =`<pre>{x.WhyText}<pre>`}}");
+        var childrenArr = item.Why.Select(x => $"{{ {nl} Name : '{x.ProjectName()}'  , {nl}  Why :`{nl} <pre>{x.WhyText}<pre>`}}");
         var children = string.Join(",", childrenArr);
 
         <text>
                 {
                     "Name": "@item.PackageId.Replace("\\", "\\\\")", 
-                    "Why": "Click Me",
+                    "Why": "Click Me to expand/collapse",
                     "_children":[@children]
 
                 },
@@ -30,7 +31,7 @@
     var table = new Tabulator("@("#" + nameId + "-table")", {
         data: tabledata,
         dataTree: true,
-        dataTreeStartExpanded: true,
+        dataTreeStartExpanded: false,
         layout: "fitColumns",
         pagination: "local",
         paginationSize: 10,
@@ -46,7 +47,9 @@
                 formatter:"html",
                 headerFilter: "input", 
                 cellClick: function(e, cell) {
-                    window.alert('expand me');
+                    //window.alert('expand me');
+                    cell.getRow().treeToggle();
+
                 },
             },
         ],
