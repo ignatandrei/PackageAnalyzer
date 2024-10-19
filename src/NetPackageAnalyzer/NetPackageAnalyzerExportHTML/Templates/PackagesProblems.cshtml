@@ -40,7 +40,13 @@
         paginationCounter: "rows",
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Name", field: "Name", headerFilter: "input" },
+            {
+                title: "Name", field: "Name", headerFilter: "input", cellClick: function(e, cell) {
+                    //window.alert('expand me');
+                    cell.getRow().treeToggle();
+
+                },
+            },
             {
                 title: "Show Projects", 
                 field: "Why", 

@@ -702,24 +702,24 @@
         {
             var nameCsproj = bbProj.NameCSproj();
             var relativePath = bbProj.RelativePath();
-            <text>
-                <h3>Project: @nameCsproj</h3>
-                Full Name : @relativePath
+                <text>
+                    <h3>Project: @nameCsproj</h3>
+                    Full Name : @relativePath
 
-                <div class="mermaid" title="image project bb0 @(++projectNr)">
-                    flowchart LR
-                    @nameCsproj
-                    @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
+                    <div class="mermaid" title="image project bb0 @(++projectNr)">
+                        flowchart LR
+                        @nameCsproj
+                        @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
                     {
-                        <text>
-                            @rel.FullNameMermaid()
-                            @rel.NameCSproj()-->@nameCsproj
-                        </text>
+                            <text>
+                                @rel.FullNameMermaid()
+                                @rel.NameCSproj()-->@nameCsproj
+                            </text>
                     }
 
-                </div>
+                    </div>
 
-            </text>
+                </text>
         }
     }
     <div id="bb-table"></div>
@@ -763,24 +763,24 @@
         {
             var nameCsproj = bbProj.NameCSproj();
             var relativePath = bbProj.RelativePath();
-            <text>
-                <h3>Project: @nameCsproj</h3>
-                Full Name : @relativePath
+                <text>
+                    <h3>Project: @nameCsproj</h3>
+                    Full Name : @relativePath
 
-                <div class="mermaid" title="image root project @(++nrRootProjects)">
-                    flowchart LR
-                    @nameCsproj
-                    @foreach (var rel in bbProj.ProjectsReferences)
+                    <div class="mermaid" title="image root project @(++nrRootProjects)">
+                        flowchart LR
+                        @nameCsproj
+                        @foreach (var rel in bbProj.ProjectsReferences)
                     {
-                        <text>
-                            @rel.FullNameMermaid()
-                            @rel.NameCSproj()-->@nameCsproj
-                        </text>
+                            <text>
+                                @rel.FullNameMermaid()
+                                @rel.NameCSproj()-->@nameCsproj
+                            </text>
                     }
 
-                </div>
+                    </div>
 
-            </text>
+                </text>
         }
     }
     <div id="root-projects-table"></div>
@@ -825,24 +825,24 @@
     {
         var nameCsproj = bbProj.NameCSproj();
         var relativePath = bbProj.RelativePath();
-        <text>
-            <h3>Project: @nameCsproj</h3>
-            Full Name : @relativePath
+            <text>
+                <h3>Project: @nameCsproj</h3>
+                Full Name : @relativePath
 
-                <div class="mermaid" title="image test project @(++nrTestProjects)">
-                flowchart LR
-                @nameCsproj
-                @foreach (var rel in bbProj.AlphabeticalProjectsReferences())
+                    <div class="mermaid" title="image test project @(++nrTestProjects)">
+                    flowchart LR
+                    @nameCsproj
+                    @foreach (var rel in bbProj.AlphabeticalProjectsReferences())
                 {
-                    <text>
-                        @rel.FullNameMermaid()
-                        @rel.NameCSproj()-->@nameCsproj
-                    </text>
+                        <text>
+                            @rel.FullNameMermaid()
+                            @rel.NameCSproj()-->@nameCsproj
+                        </text>
                 }
 
-            </div>
+                </div>
 
-        </text>
+            </text>
     }
     }
     <div id="test-projects-table"></div>
@@ -975,9 +975,9 @@
                 foreach (var lic in prj.Licenses())
                 {
 
-                                <text>
-    tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\","\\\\")" ,"Nr":@lic.Count  });
-                                </text>
+                                    <text>
+        tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\","\\\\")" ,"Nr":@lic.Count  });
+                                    </text>
                 }
             }
         }
@@ -1016,13 +1016,13 @@
                     if (licData.Length == 0) { continue; }
                     foreach (var licPrj in licData)
                     {
-                                    <text>
-                                            tabledata.push({
-                                        "LicenseName":"@licName.Replace("\\", "\\\\")",
-                                    "Project":"@prjName ",
-                                            "Package":"@licPrj.Name"
-                                                                    });
-                                    </text>
+                                        <text>
+                                                tabledata.push({
+                                            "LicenseName":"@licName.Replace("\\", "\\\\")",
+                                        "Project":"@prjName ",
+                                                "Package":"@licPrj.Name"
+                                                                        });
+                                        </text>
                     }
                 }
             }
@@ -1108,29 +1108,25 @@ columns: [
     <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
     @if (keysPackageMultiple.Length > 0)
     {
+        var nl= Environment.NewLine;
         nrVersionIterator =0;
+        <div id="major-differs-table" title="image major-differs-table")"></div>
+        <script>
+            var tabledata = [];
 
-        <table border="1" title="image packages with major different">
-            <thead>
-                <tr>
-                    <th>Nr</th>
-                    <th>ID</th>
-                    <th>References</th>
-                    <th>Projects</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var key in keysPackageMultiple)
-                {
+            @foreach (var key in keysPackageMultiple){
                     nrVersionIterator++;
                     var pack = more1Version.IDPackageWithProjects[key]!;
+                    pack.VerifyWhy();
+                    var childrenArr = pack.Why.Select(x => $"{{ {nl} Name : '{x.ProjectName()}'  , {nl}  Why :`{nl} <pre>{x.WhyText}<pre>`}}");
+                    var children = string.Join(",", childrenArr);
+
                     var vals = pack.VersionsPerProject;
                     var majorDiff = pack.MajorVersionDiffer();
                     string textReferences = vals.Count > 1 ? $" (References: {vals.Count}) " : "";
                     string diffMajor = majorDiff ? $"<span style='color:red'> <b>Major differs</b> </span>" : "";
                     string refs = "";
-                    @foreach (var vers in vals)
-                    {
+                    @foreach (var vers in vals){
 
                         refs += " <b>" + vers.Key + "</b> " + string.Join(",", vers.Value.Select(it => it.NameCSproj()).ToArray());
                         @* @(vers.Key) @("&nbsp;") @(string.Join(",",vers.Value.Select(it=>it.NameCSproj()))) *@
@@ -1138,15 +1134,47 @@ columns: [
                     }
 
 
-                    <tr>
-                        <td>@nrVersionIterator</td>
-                        <td>@key</td>
-                        <td>@textReferences @diffMajor</td>
-                        <td>@refs</td>
-                    </tr>
+                    <text>
+                        tabledata.push({
+                        "Name": "@key <br /> @textReferences @diffMajor",                        
+                        "Why": "@refs",
+                        "_children":[@children]
+                    });
+                    </text>
                 }
-            </tbody>
-        </table>
+            var table = new Tabulator("#major-differs-table", {
+                data: tabledata,
+                dataTree: true,
+                dataTreeStartExpanded: false,
+                layout: "fitColumns",
+                pagination: "local",
+                paginationSize: 10,
+                paginationSizeSelector: [10, 20, 50, 100],
+                movableColumns: true,
+                paginationCounter: "rows",
+                columns: [
+                    { formatter: "rownum", hozAlign: "center", width: 40 },
+                    { title: "Name", formatter: "html",field: "Name", 
+                            headerFilter: "input",
+                            cellClick: function(e, cell) {
+                            //window.alert('expand me');
+                            cell.getRow().treeToggle();
+                        }
+
+                    },
+                    {
+                        title: "Projects",
+                        field: "Why",
+                        formatter: "html",
+                        headerFilter: "input",
+                        cellClick: function(e, cell) {
+                            cell.getRow().treeToggle();
+                        }
+                    }
+                ]
+            });
+        </script>
+
     }
     <h2 id="executable-lines">Executable lines</h2>
     <h3 id="executable-lines-per-assembly">Per assembly</h3>

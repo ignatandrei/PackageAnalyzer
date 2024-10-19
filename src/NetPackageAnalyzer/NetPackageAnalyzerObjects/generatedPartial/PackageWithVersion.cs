@@ -7,6 +7,7 @@ public record PackageGatherInfo(string PackageId)
     }
     public void VerifyWhy()
     {
+        if (PackageId == "Microsoft.NETCore.Platforms") return;
         if (Why.Length > 0) return;
         List<WhyData> whyDatas = new();
         ProcessOutput processOutput = new();
