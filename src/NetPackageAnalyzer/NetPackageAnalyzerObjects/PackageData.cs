@@ -1,5 +1,5 @@
 ﻿namespace NetPackageAnalyzerObjects;
-public partial record PackageData(string packageVersionId)
+public partial record PackageData(string packageVersionId): PackageGatherInfo(packageVersionId)
 {
     public bool IsTest()
     {
