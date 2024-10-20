@@ -1,8 +1,13 @@
 ﻿function AnalyzeProject ( $url  ){
-
+Write-Host "Analyzing " $url
 Push-Location ..
 
 $name = $url.Split('/')[-1]
+if($name -eq "") {
+    $name = $url.Split('/')[-2]
+}
+
+Write-Host "Analyzing " $name
 $analyzerPath = Get-Location
 $copyPath = Join-Path  $analyzerPath 'src' 
 $copyPath = Join-Path $copyPath 'documentation1'
@@ -32,7 +37,7 @@ Set-Content -Path $filePath -Value $jsonContent
 }
 
 
-
+Write-Host "Analyzing " $name
 if(-not (Test-Path $name)) {
     git clone $url
 }
@@ -134,12 +139,12 @@ Pop-Location
 #too old
 # AnalyzeProject "https://github.com/horsdal/microservices-in-dotnet-book-second-edition"
 #not done
-AnalyzeProject "https://github.com/phongnguyend/Practical.CleanArchitecture"
+# AnalyzeProject "https://github.com/phongnguyend/Practical.CleanArchitecture"
 
+#too old
 # AnalyzeProject "https://github.com/thangchung/practical-dapr"
 
-# AnalyzeProject "https://github.com/AdaptiveConsulting/ReactiveTraderCloud"
-
+#done
 # AnalyzeProject "https://github.com/EduardoPires/EquinoxProject/"
 
 # AnalyzeProject "https://github.com/RickStrahl/AlbumViewerVNext/"
