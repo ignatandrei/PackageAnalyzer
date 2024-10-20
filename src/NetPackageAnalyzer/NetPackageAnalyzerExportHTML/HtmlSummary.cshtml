@@ -210,8 +210,10 @@
                         <td>
 
                             <a href="#packages-per-project-table">Number packages</a> : @info.nrPackages
-                            (Outdated : @info.nrOutdated
-                            ,Deprecated : @info.nrDeprecated,
+                            (<a href="#packages-with-outdated">
+                                Outdated </a> @info.nrOutdated
+                            ,<a href="#packages-with-deprecated">
+                                Deprecated </a>: @info.nrDeprecated,
                             ,<a href="#packages-with-major-version-different">Major version differs</a> :@info.nrMajorDiffers
                             ,<a href="#packages-with-vulnerable">
                                 Vulnerable
@@ -1096,7 +1098,7 @@ columns: [
     }
     @pp2.Render()
 
-    <h2 id="packages-with-outdated">@info.nrDeprecated Packages deprecated</h2>
+    <h2 id="packages-with-deprecated">@info.nrDeprecated Packages deprecated</h2>
     @{
 
         var tt3 = Tuple.Create("Deprecated Packages", dtoPackages.Depr());
