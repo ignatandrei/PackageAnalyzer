@@ -62,4 +62,8 @@ public record PackageGatherInfo(string PackageId)
     }
     public WhyData[] Why = [];
 
+    public string[] ProjectIDsFromWhy() { 
+        return Why.Select(x => x.ProjectName()).ToArray();
+    }
+
 }

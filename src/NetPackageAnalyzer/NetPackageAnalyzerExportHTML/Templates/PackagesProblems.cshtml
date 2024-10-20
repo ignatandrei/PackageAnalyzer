@@ -17,11 +17,12 @@
     {
         var childrenArr = item.Why.Select(x => $"{{ {nl} Name : '{x.ProjectName()}'  , {nl}  Why :`{nl} <pre>{x.WhyText}<pre>`}}");
         var children = string.Join(",", childrenArr);
+        var projects = string.Join(",", item.ProjectIDsFromWhy());
 
         <text>
                 {
                     "Name": "@item.PackageId.Replace("\\", "\\\\")", 
-                    "Why": "Click Me to expand/collapse",
+                    "Why": "@projects",
                     "_children":[@children]
 
                 },
@@ -48,7 +49,7 @@
                 },
             },
             {
-                title: "Show Projects", 
+                title: "Expand/Collapse Projects",
                 field: "Why", 
                 formatter:"html",
                 headerFilter: "input", 
