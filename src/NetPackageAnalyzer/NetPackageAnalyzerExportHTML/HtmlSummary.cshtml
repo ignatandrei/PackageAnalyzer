@@ -1,6 +1,7 @@
 @inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageProblemsDTO>>;
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
+    var gitInfo = GlobalsForGenerating.gitInfo;
     var nameSolution = GlobalsForGenerating.NameSolution;
     var info = Model.Item1;
     var projectDicts = Model.Item2;
@@ -10,7 +11,7 @@
     var publicClassRefData = Model.Item5;
     var assemblyDataFromMSFT = Model.Item6;
     var dtoPackages = Model.Item7;
-    var publicClasses=new NamePerCountArray(publicClassRefData.Assemblies_PublicClasses,true);
+    var publicClasses = new NamePerCountArray(publicClassRefData.Assemblies_PublicClasses, true);
     var mostPublicClasses = publicClasses.First1();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
 
@@ -32,14 +33,14 @@
         maxCommitString = "this year," + currentYear;
     }
     var maxCommitFiles = projectDicts.CommitsWithMaxFiles(null);
-    NamePerCountArray topFiles = projectDicts.FilesWithMaxCommitsAdv(null)??NamePerCountArray.Empty;
+    NamePerCountArray topFiles = projectDicts.FilesWithMaxCommitsAdv(null) ?? NamePerCountArray.Empty;
     var medianCommits = projectDicts.MedianCommits(null);
     var filewithMaxCommits = topFiles?.First1();
     Tuple<NamePerCountArray, string> tuple;
     Tuple<string, NamePerCountArray, int, int, bool> tupleThreshold;
     NamePerCountDisplayThreshold namePerCountDisplayThreshold;
     NamePerCountDisplay namePerCountDisplay;
-    
+
     YEARNamePerCountDisplay yearFolders = new(yearWithFolders);
     Radar radar = new(Tuple.Create(projectDicts, publicClassRefData, assemblyDataFromMSFT, "andrei"));
     var bb0 = projectDicts.BuildingBlocks(0);
@@ -49,59 +50,59 @@
     var execAssLines = new NamePerCountArray(
         assemblyDataFromMSFT
         .AssemblyMetric(eMSFTMetrics.ExecutableLines)
-        ,true);
+        , true);
     ;
-    
+
 
     var execClassLines = new NamePerCountArray(assemblyDataFromMSFT
-        .ClassesMetrics(eMSFTMetrics.ExecutableLines),true);
+        .ClassesMetrics(eMSFTMetrics.ExecutableLines), true);
     ;
-    
-    
+
+
 
     var execMethodsLines = new NamePerCountArray(assemblyDataFromMSFT
-        .MethodsMetrics(eMSFTMetrics.ExecutableLines),true);
+        .MethodsMetrics(eMSFTMetrics.ExecutableLines), true);
 
-    
+
 
 
     var nrClassesPerAssembly = new NamePerCountArray(assemblyDataFromMSFT
-        .AssemblyNumberClasses(),true);
+        .AssemblyNumberClasses(), true);
 
     var nrMethodsPerAssembly = new NamePerCountArray(assemblyDataFromMSFT
-        .AssemblyNumberMethods(),true);
+        .AssemblyNumberMethods(), true);
 
-    
+
     var nrMethodsPerClass = new NamePerCountArray(assemblyDataFromMSFT
-        .ClassNumberMethods(),true);
-    
+        .ClassNumberMethods(), true);
+
     var maintAssIndex = new NamePerCountArray(assemblyDataFromMSFT
-        .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex),false);
-    
+        .AssemblyMetric(eMSFTMetrics.MaintainabilityIndex), false);
+
     var maintAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Assembly", maintAssIndex, 10, 20, false));
 
 
     var maintClassIndex = new NamePerCountArray(assemblyDataFromMSFT
-        .ClassesMetrics(eMSFTMetrics.MaintainabilityIndex),false
+        .ClassesMetrics(eMSFTMetrics.MaintainabilityIndex), false
     );
-    
+
     var maintClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Class", maintClassIndex, 10, 20, false));
 
     var maintMethodIndex = new NamePerCountArray(assemblyDataFromMSFT
-    .MethodsMetrics(eMSFTMetrics.MaintainabilityIndex),false
+    .MethodsMetrics(eMSFTMetrics.MaintainabilityIndex), false
     );
 
 
     var maintMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Maintainability for Method", maintMethodIndex, 10, 20, false));
 
-    var CCAssIndex = new NamePerCountArray( assemblyDataFromMSFT
-        .AssemblyMetric(eMSFTMetrics.ClassCoupling),true
+    var CCAssIndex = new NamePerCountArray(assemblyDataFromMSFT
+        .AssemblyMetric(eMSFTMetrics.ClassCoupling), true
     );
-    
+
     var CCAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Assembly", CCAssIndex, 0, 10, true));
 
     var CCClassIndex = new NamePerCountArray(assemblyDataFromMSFT
-    .ClassesMetrics(eMSFTMetrics.ClassCoupling),true
+    .ClassesMetrics(eMSFTMetrics.ClassCoupling), true
     );
 
     var CCClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Class Coupling for Class", CCClassIndex, 0, 10, true));
@@ -110,25 +111,25 @@
 
 
     var CycAssIndex = new NamePerCountArray(assemblyDataFromMSFT
-    .AssemblyMetric(eMSFTMetrics.CyclomaticComplexity),true
+    .AssemblyMetric(eMSFTMetrics.CyclomaticComplexity), true
     );
-    
-    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Assembly", CycAssIndex,10, 25, true));
+
+    var CycAssDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Assembly", CycAssIndex, 10, 25, true));
 
     var CycClassIndex = new NamePerCountArray(assemblyDataFromMSFT
-        .ClassesMetrics(eMSFTMetrics.CyclomaticComplexity),true
+        .ClassesMetrics(eMSFTMetrics.CyclomaticComplexity), true
     );
 
-    
+
     var CycClassDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Class", CycClassIndex, 10, 25, true));
 
 
     var CycMethodIndex = new NamePerCountArray(assemblyDataFromMSFT
-    .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity),true);
-    
+    .MethodsMetrics(eMSFTMetrics.CyclomaticComplexity), true);
+
     var CycMethodDisplay = new NamePerCountDisplayThreshold(Tuple.Create("Cyclomatic Complexity for Method", CycMethodIndex, 10, 25, true));
 
-    var packages =new NamePerCountArray( projectDicts.Packages(),true);
+    var packages = new NamePerCountArray(projectDicts.Packages(), true);
     var topPackages = packages.DataOrdered().Take(7).ToArray();
     int tableRow = 0;
 
@@ -204,23 +205,25 @@
                             <a href="#root-projects"> Root Projects </a>: @rootProjects.Length
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
 
                             <a href="#packages-per-project-table">Number packages</a> : @info.nrPackages
                             (<a href="#packages-with-outdated">
-                                Outdated </a> @info.nrOutdated
+                                Outdated
+                            </a> @info.nrOutdated
                             ,<a href="#packages-with-deprecated">
-                                Deprecated </a>: @info.nrDeprecated,
+                                Deprecated
+                            </a>: @info.nrDeprecated,
                             ,<a href="#packages-with-major-version-different">Major version differs</a> :@info.nrMajorDiffers
                             ,<a href="#packages-with-vulnerable">
                                 Vulnerable
                             </a> : @info.nrVulnerable
                             )
                         </td>
-                        </tr>
+                    </tr>
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>
@@ -228,7 +231,7 @@
                                 Number classes
                             </a>: @assemblyDataFromMSFT.NumberOfClasses()
                         </td>
-                        
+
                     </tr>
                     <tr>
                         <td>@(++tableRow)</td>
@@ -241,18 +244,33 @@
             </table>
         </div>
         <div class="center">
-            <h1 id="summary">Summary @nameSolution   </h1>
+            <h1 id="summary">
+                <a href="https://www.nuget.org/packages/NetPackageAnalyzerConsole" target="_blank">
+                    Summary
+                </a>
+                @nameSolution
+            </h1>
+            @if(gitInfo !=null)
+            {
+            <text>
+                @gitInfo?.Repository <br />
+                branch @gitInfo?.Branch , commit @gitInfo?.Commit <br />
+            </text>
+            }
             <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
             <h2>If you are new to the project</h2>
             <ol>
-                <li>Goto <a href="#building-blocks"> Building Blocks </a>  @bb0.Length - you can understand those projects without references
+                <li>
+                    Goto <a href="#building-blocks"> Building Blocks </a>  @bb0.Length - you can understand those projects without references
                 </li>
-                <li>Goto <a href="#root-projects"> Root Projects </a> @rootProjects.Length - see the starting projects 
-                <li>Goto
+                <li>Goto <a href="#root-projects"> Root Projects </a> @rootProjects.Length - see the starting projects
+                <li>
+                    Goto
                     <a href="#test-projects-table">TestProjects</a> @testProjects.Length - see what other projects they are testing
 
                 </li>
-                <li>See
+                <li>
+                    See
                     <a href="#projects-with-tests">relation of the projects</a>
                 </li>
                 <li><a href="#number-of-classes-per-assembly">Projects with least classes</a>  </li>
@@ -260,23 +278,26 @@
             </ol>
             <h2>If you want to improve the project</h2>
             <ol>
-                <li>See <a href="#packages-with-major-version-different">Packages with Major Version different</a>
+                <li>
+                    See <a href="#packages-with-major-version-different">Packages with Major Version different</a>
                 </li>
-                <li>See <a href="#Cyclomatic-Complexity-for-Method">
+                <li>
+                    See <a href="#Cyclomatic-Complexity-for-Method">
                         methods with most cyclomatic complexity
                     </a>
                 </li>
-                
-                <li>See <a href="#Maintainability-for-Method">
+
+                <li>
+                    See <a href="#Maintainability-for-Method">
                         methods low maintaining score
                     </a>
                 </li>
                 <li>
                     See <a href="#executable-lines-per-method">
-                        methods with most lines 
+                        methods with most lines
                     </a>
                 </li>
-               <li><a href="#number-of-classes-per-assembly">Projects with most classes</a>  </li>
+                <li><a href="#number-of-classes-per-assembly">Projects with most classes</a>  </li>
 
                 <li>
                     <a href="#Public-methods-per-class-table">
@@ -512,7 +533,7 @@
                     </tr>
                 </thead>
                 <tr>
-                    
+
                     <td>@(++tableRow)</td>
                     <td>
                         <a href="#executable-lines-per-method">
@@ -521,7 +542,7 @@
                     </td>
                     <td>@execMethodsLines.First1()?.Name</td>
                 </tr>
-                                <tr>
+                <tr>
                     <td>@(++tableRow)</td>
                     <td>
                         <a href="#Maintainability-for-Method">
@@ -540,7 +561,7 @@
                     </td>
                     <td>@CycMethodIndex.First1()?.Name</td>
                 </tr>
-                
+
 
 
             </table>
@@ -667,35 +688,35 @@
         }
     </div>
 
-   @*  <h2 id="play-with-solution-relations">Play with solution relations</h2>
+    @*  <h2 id="play-with-solution-relations">Play with solution relations</h2>
     <div id="solRel"></div>
 
     <script type="text/javascript">
-        var dot = 'digraph {  ';
-        @foreach (var prj in projectDicts.Values)
-        {
-            <text>
-                    dot+='"@prj.PathProject" [label="@prj.NameCSproj() : @prj.ProjectsReferences.Count"]\r\n';
-            </text>
-        }
-        @foreach (var proj in projectDicts.Values)
-        {
+    var dot = 'digraph {  ';
+    @foreach (var prj in projectDicts.Values)
+    {
+    <text>
+    dot+='"@prj.PathProject" [label="@prj.NameCSproj() : @prj.ProjectsReferences.Count"]\r\n';
+    </text>
+    }
+    @foreach (var proj in projectDicts.Values)
+    {
 
-            foreach (var rel in proj.ProjectsReferences)
-            {
+    foreach (var rel in proj.ProjectsReferences)
+    {
 
-                <text>
-                                            dot+='"@proj.PathProject"  -> "@rel.PathProject"\r\n'
-                </text>
+    <text>
+    dot+='"@proj.PathProject"  -> "@rel.PathProject"\r\n'
+    </text>
 
-            }
-        }
-            dot+="}";
-        var dom = document.getElementById('solRel');
-        var data = vis.parseDOTNetwork(dot);
-        var network = new vis.Network(dom, data);
+    }
+    }
+    dot+="}";
+    var dom = document.getElementById('solRel');
+    var data = vis.parseDOTNetwork(dot);
+    var network = new vis.Network(dom, data);
     </script>
- *@
+    *@
 
     <h2 id="building-blocks">Building Blocks : @bb0.Length </h2>
     @{
@@ -704,24 +725,24 @@
         {
             var nameCsproj = bbProj.NameCSproj();
             var relativePath = bbProj.RelativePath();
-                <text>
-                    <h3>Project: @nameCsproj</h3>
-                    Full Name : @relativePath
+            <text>
+                <h3>Project: @nameCsproj</h3>
+                Full Name : @relativePath
 
-                    <div class="mermaid" title="image project bb0 @(++projectNr)">
-                        flowchart LR
-                        @nameCsproj
-                        @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
+                <div class="mermaid" title="image project bb0 @(++projectNr)">
+                    flowchart LR
+                    @nameCsproj
+                    @foreach (var rel in bbProj.AlphabeticalUpStreamProjectReferences)
                     {
-                            <text>
-                                @rel.FullNameMermaid()
-                                @rel.NameCSproj()-->@nameCsproj
-                            </text>
+                        <text>
+                            @rel.FullNameMermaid()
+                            @rel.NameCSproj()-->@nameCsproj
+                        </text>
                     }
 
-                    </div>
+                </div>
 
-                </text>
+            </text>
         }
     }
     <div id="bb-table"></div>
@@ -740,7 +761,7 @@
                     {"Name": "@nameCsproj", "RelProj": "@refTo" },
             </text>
         }
-                ];
+                        ];
         var table = new Tabulator("#bb-table", {
             data: tabledata,
             layout: "fitColumns",
@@ -765,24 +786,24 @@
         {
             var nameCsproj = bbProj.NameCSproj();
             var relativePath = bbProj.RelativePath();
-                <text>
-                    <h3>Project: @nameCsproj</h3>
-                    Full Name : @relativePath
+            <text>
+                <h3>Project: @nameCsproj</h3>
+                Full Name : @relativePath
 
-                    <div class="mermaid" title="image root project @(++nrRootProjects)">
-                        flowchart LR
-                        @nameCsproj
-                        @foreach (var rel in bbProj.ProjectsReferences)
+                <div class="mermaid" title="image root project @(++nrRootProjects)">
+                    flowchart LR
+                    @nameCsproj
+                    @foreach (var rel in bbProj.ProjectsReferences)
                     {
-                            <text>
-                                @rel.FullNameMermaid()
-                                @rel.NameCSproj()-->@nameCsproj
-                            </text>
+                        <text>
+                            @rel.FullNameMermaid()
+                            @rel.NameCSproj()-->@nameCsproj
+                        </text>
                     }
 
-                    </div>
+                </div>
 
-                </text>
+            </text>
         }
     }
     <div id="root-projects-table"></div>
@@ -801,7 +822,7 @@
                     {"Name": "@nameCsproj", "RelProj": "@refTo" },
             </text>
         }
-                        ];
+                                ];
         var table = new Tabulator("#root-projects-table", {
             data: tabledata,
             layout: "fitColumns",
@@ -824,28 +845,28 @@
     @{
         int nrTestProjects = 0;
         foreach (var bbProj in testProjects)
-    {
-        var nameCsproj = bbProj.NameCSproj();
-        var relativePath = bbProj.RelativePath();
+        {
+            var nameCsproj = bbProj.NameCSproj();
+            var relativePath = bbProj.RelativePath();
             <text>
                 <h3>Project: @nameCsproj</h3>
                 Full Name : @relativePath
 
-                    <div class="mermaid" title="image test project @(++nrTestProjects)">
+                <div class="mermaid" title="image test project @(++nrTestProjects)">
                     flowchart LR
                     @nameCsproj
                     @foreach (var rel in bbProj.AlphabeticalProjectsReferences())
-                {
+                    {
                         <text>
                             @rel.FullNameMermaid()
                             @rel.NameCSproj()-->@nameCsproj
                         </text>
-                }
+                    }
 
                 </div>
 
             </text>
-    }
+        }
     }
     <div id="test-projects-table"></div>
 
@@ -863,7 +884,7 @@
                     {"Name": "@nameCsproj", "RelProj": "@refTo" },
             </text>
         }
-                        ];
+                                ];
         var table = new Tabulator("#test-projects-table", {
             data: tabledata,
             layout: "fitColumns",
@@ -915,8 +936,8 @@
 
     <h2 id="number-of-classes-per-assembly"> Number of classes per assembly</h2>
     @{
-        tupleThreshold = new("Number class per project", nrClassesPerAssembly, 25, 50, true); 
-        
+        tupleThreshold = new("Number class per project", nrClassesPerAssembly, 25, 50, true);
+
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
 
@@ -934,7 +955,7 @@
     <h2 id="number-of-methods-per-class"> Number of methods per class</h2>
 
     @{
-        tupleThreshold = new("Number methods per class",nrMethodsPerClass!, 20, 70, true);
+        tupleThreshold = new("Number methods per class", nrMethodsPerClass!, 20, 70, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
@@ -952,7 +973,7 @@
                     {"Name": "@lic.Name.Replace("\\", "\\\\")", "Licenses": "@lic.Count" },
             </text>
         }
-                                ];
+                                        ];
         var table = new Tabulator("#licences-summary-table", {
             data: tabledata,
             layout: "fitColumns",
@@ -977,13 +998,13 @@
                 foreach (var lic in prj.Licenses())
                 {
 
-                                    <text>
-        tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\","\\\\")" ,"Nr":@lic.Count  });
-                                    </text>
+                    <text>
+                            tabledata.push({"Name": "@prj.NameCSproj()", "License": "@lic.Name.Replace("\\", "\\\\")" ,"Nr":@lic.Count  });
+                    </text>
                 }
             }
         }
-                var table = new Tabulator("#licences-per-project-table", {
+                        var table = new Tabulator("#licences-per-project-table", {
                 data: tabledata,
                 layout: "fitColumns",
                 pagination: "local",
@@ -1018,34 +1039,34 @@
                     if (licData.Length == 0) { continue; }
                     foreach (var licPrj in licData)
                     {
-                                        <text>
-                                                tabledata.push({
-                                            "LicenseName":"@licName.Replace("\\", "\\\\")",
-                                        "Project":"@prjName ",
-                                                "Package":"@licPrj.Name"
-                                                                        });
-                                        </text>
+                        <text>
+                                tabledata.push({
+                                    "LicenseName":"@licName.Replace("\\", "\\\\")",
+                                "Project":"@prjName ",
+                                "Package":"@licPrj.Name"
+                                                                                                });
+                        </text>
                     }
                 }
             }
         }
-var table = new Tabulator("#licences-per-project-and-package-table", {
-    data: tabledata,
-layout: "fitColumns",
-pagination: "local",
-paginationSize: 10,
-paginationSizeSelector: [10,20,100,200],
-movableColumns: true,
-paginationCounter: "rows",
-columns: [
-{formatter: "rownum", hozAlign: "center", width: 40 },
-{title: "Project", field: "Project", headerFilter: "input" },
-{title: "Package", field: "Package", headerFilter: "input" },
-{title: "LicenseName", field: "LicenseName", headerFilter: "input" },
-],
-    });
+        var table = new Tabulator("#licences-per-project-and-package-table", {
+                data: tabledata,
+                layout: "fitColumns",
+                pagination: "local",
+                paginationSize: 10,
+                paginationSizeSelector: [10, 20, 100, 200],
+                movableColumns: true,
+                paginationCounter: "rows",
+                columns: [
+                    { formatter: "rownum", hozAlign: "center", width: 40 },
+                    { title: "Project", field: "Project", headerFilter: "input" },
+                    { title: "Package", field: "Package", headerFilter: "input" },
+                    { title: "LicenseName", field: "LicenseName", headerFilter: "input" },
+                ],
+            });
 
-        
+
     </script>
     <h2 id="packages-per-project">Packages : @projectDicts.Packages()?.Length </h2>
     <div id="packages-per-project-table"></div>
@@ -1058,30 +1079,30 @@ columns: [
             foreach (var pack in packs)
             {
                 <text>
-            tabledata.push({
-                "Project": "@nameCsproj",
-                "Package": "@pack.packageVersionId",
-            });
-                </text>                
+                        tabledata.push({
+                            "Project": "@nameCsproj",
+                        "Package": "@pack.packageVersionId",
+                            });
+                </text>
             }
         }
-        
-        var table = new Tabulator("#packages-per-project-table", {
-            data: tabledata,
-            layout: "fitColumns",
-            pagination: "local",
-            paginationSize: 10,
-            paginationSizeSelector: [10, 20, 100, 200,500],
-            movableColumns: true,
-            paginationCounter: "rows",
-            columns: [
-            { formatter: "rownum", hozAlign: "center", width: 40 },
-            { title: "Project", field: "Project", headerFilter: "input" },
-            { title: "Package", field: "Package", headerFilter: "input" },
-            ],
+
+                var table = new Tabulator("#packages-per-project-table", {
+                data: tabledata,
+                layout: "fitColumns",
+                pagination: "local",
+                paginationSize: 10,
+                paginationSizeSelector: [10, 20, 100, 200, 500],
+                movableColumns: true,
+                paginationCounter: "rows",
+                columns: [
+                    { formatter: "rownum", hozAlign: "center", width: 40 },
+                    { title: "Project", field: "Project", headerFilter: "input" },
+                    { title: "Package", field: "Package", headerFilter: "input" },
+                ],
             });
-        </script>
-    
+    </script>
+
     <h2 id="packages-with-vulnerable">@info.nrVulnerable Packages vulnerable</h2>
     @{
 
@@ -1089,7 +1110,7 @@ columns: [
         var pp1 = new PackagesProblems(tt1);
     }
     @pp1.Render()
-    
+
     <h2 id="packages-with-outdated">@info.nrOutdated Packages outdated</h2>
     @{
 
@@ -1110,41 +1131,43 @@ columns: [
     <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
     @if (keysPackageMultiple.Length > 0)
     {
-        var nl= Environment.NewLine;
-        nrVersionIterator =0;
-        <div id="major-differs-table" title="image major-differs-table")"></div>
+        var nl = Environment.NewLine;
+        nrVersionIterator = 0;
+        <div id="major-differs-table" title="image major-differs-table" )"></div>
         <script>
             var tabledata = [];
 
-            @foreach (var key in keysPackageMultiple){
-                    nrVersionIterator++;
-                    var pack = more1Version.IDPackageWithProjects[key]!;
-                    pack.VerifyWhy();
-                    var childrenArr = pack.Why.Select(x => $"{{ {nl} Name : '{x.ProjectName()}'  , {nl}  Why :`{nl} <pre>{x.WhyText}<pre>`}}");
-                    var children = string.Join(",", childrenArr);
+            @foreach (var key in keysPackageMultiple)
+            {
+                nrVersionIterator++;
+                var pack = more1Version.IDPackageWithProjects[key]!;
+                pack.VerifyWhy();
+                var childrenArr = pack.Why.Select(x => $"{{ {nl} Name : '{x.ProjectName()}'  , {nl}  Why :`{nl} <pre>{x.WhyText}<pre>`}}");
+                var children = string.Join(",", childrenArr);
 
-                    var vals = pack.VersionsPerProject;
-                    var majorDiff = pack.MajorVersionDiffer();
-                    string textReferences = vals.Count > 1 ? $" (References: {vals.Count}) " : "";
-                    string diffMajor = majorDiff ? $"<span style='color:red'> <b>Major differs</b> </span>" : "";
-                    string refs = "";
-                    @foreach (var vers in vals){
+                var vals = pack.VersionsPerProject;
+                var majorDiff = pack.MajorVersionDiffer();
+                string textReferences = vals.Count > 1 ? $" (References: {vals.Count}) " : "";
+                string diffMajor = majorDiff ? $"<span style='color:red'> <b>Major differs</b> </span>" : "";
+                string refs = "";
+                @foreach (var vers in vals)
+                {
 
-                        refs += " <b>" + vers.Key + "</b> " + string.Join(",", vers.Value.Select(it => it.NameCSproj()).ToArray());
-                        @* @(vers.Key) @("&nbsp;") @(string.Join(",",vers.Value.Select(it=>it.NameCSproj()))) *@
-                        refs += "<br/>";
-                    }
+                    refs += " <b>" + vers.Key + "</b> " + string.Join(",", vers.Value.Select(it => it.NameCSproj()).ToArray());
+                    @* @(vers.Key) @("&nbsp;") @(string.Join(",",vers.Value.Select(it=>it.NameCSproj()))) *@
+                    refs += "<br/>";
+                }
 
 
-                    <text>
+                <text>
                         tabledata.push({
-                        "Name": "@key <br /> @textReferences @diffMajor",                        
+                            "Name": "@key <br /> @textReferences @diffMajor",
                         "Why": "@refs",
                         "_children":[@children]
-                    });
-                    </text>
-                }
-            var table = new Tabulator("#major-differs-table", {
+                                    });
+                </text>
+            }
+                        var table = new Tabulator("#major-differs-table", {
                 data: tabledata,
                 dataTree: true,
                 dataTreeStartExpanded: false,
@@ -1156,8 +1179,9 @@ columns: [
                 paginationCounter: "rows",
                 columns: [
                     { formatter: "rownum", hozAlign: "center", width: 40 },
-                    { title: "Name", formatter: "html",field: "Name", 
-                            cellClick: function(e, cell) {
+                    {
+                        title: "Name", formatter: "html", field: "Name",
+                        cellClick: function(e, cell) {
                             //window.alert('expand me');
                             cell.getRow().treeToggle();
                         }
@@ -1187,7 +1211,7 @@ columns: [
     <h3 id="executable-lines-per-class">Per class</h3>
 
     @{
-        tupleThreshold = new("Number exec lines per class", execClassLines,100, 200, true);
+        tupleThreshold = new("Number exec lines per class", execClassLines, 100, 200, true);
 
         namePerCountDisplayThreshold = new(tupleThreshold);
 
@@ -1216,7 +1240,7 @@ columns: [
             <h3 id="assemblies-public-classes"> Assemblies with number of public classes</h3>
 
             @{
-                tuple = new(new (publicClassRefData.Assemblies_PublicClasses ?? [],true), "Public class per project");
+                tuple = new(new(publicClassRefData.Assemblies_PublicClasses ?? [], true), "Public class per project");
                 namePerCountDisplay = new(tuple);
             }
 
@@ -1225,7 +1249,7 @@ columns: [
             <h3 id="assemblies-public-methods"> Assemblies with Public methods</h3>
 
             @{
-                tupleThreshold = new("Public methods per assembly", new(publicClassRefData.Assemblies_PublicMethods ?? [],true), 100, 200, true);
+                tupleThreshold = new("Public methods per assembly", new(publicClassRefData.Assemblies_PublicMethods ?? [], true), 100, 200, true);
 
                 namePerCountDisplayThreshold = new(tupleThreshold);
             }
@@ -1247,24 +1271,24 @@ columns: [
 
             @* <h2 id="lines-summary">Lines summary</h2> *@
 
-@*             <h3 id="assemblies-public-lines">Assemblies with most lines in public classses</h3>
-            @{
-                tuple = new(publicClassRefData.Assemblies_MostLinesInPublicClass??[], "Number lines in public class per assembly");
-                namePerCountDisplay = new(tuple);
-            }
+            @*             <h3 id="assemblies-public-lines">Assemblies with most lines in public classses</h3>
+        @{
+        tuple = new(publicClassRefData.Assemblies_MostLinesInPublicClass??[], "Number lines in public class per assembly");
+        namePerCountDisplay = new(tuple);
+        }
 
-            @namePerCountDisplay.Render() 
-*@
-@* 
-            <h3 id="class-public-lines">Public Classes with most lines</h3>
-            @{
-                tuple = new(publicClassRefData.PublicClass_MostLinesOfCode??[], "Number lines per public class");
-                namePerCountDisplay = new(tuple);
-            }
+        @namePerCountDisplay.Render()
+        *@
+            @*
+        <h3 id="class-public-lines">Public Classes with most lines</h3>
+        @{
+        tuple = new(publicClassRefData.PublicClass_MostLinesOfCode??[], "Number lines per public class");
+        namePerCountDisplay = new(tuple);
+        }
 
-            @namePerCountDisplay.Render()
- *@
-            
+        @namePerCountDisplay.Render()
+        *@
+
 
         </text>
 
@@ -1273,7 +1297,7 @@ columns: [
 
     <h3 id="assemblies-references"> Assemblies with References</h3>
     @{
-        tuple = new(new( refSummary.AssembliesReferences??[],true), "References per assembly");
+        tuple = new(new(refSummary.AssembliesReferences ?? [], true), "References per assembly");
         namePerCountDisplay = new(tuple);
     }
 
@@ -1281,7 +1305,7 @@ columns: [
     <h3 id="class-references"> Classes with References</h3>
 
     @{
-        tuple = new(new(refSummary?.classRefs??[],true), "References per class");
+        tuple = new(new(refSummary?.classRefs ?? [], true), "References per class");
         namePerCountDisplay = new(tuple);
     }
 
@@ -1326,14 +1350,14 @@ columns: [
 
         <h3 id="file-with-commits">Commits per file</h3>
         <text>
-        @{
-            tuple = new(topFiles!, "Files with commits");
-            namePerCountDisplay = new(tuple);
-            
-        }
+            @{
+                tuple = new(topFiles!, "Files with commits");
+                namePerCountDisplay = new(tuple);
+
+            }
             @namePerCountDisplay.Render();
         </text>
-        
+
 
     }
 
@@ -1368,14 +1392,20 @@ columns: [
     </table>
 
     <script src="mermaid.min.js"></script>
-    <script>    mermaid.initialize({ startOnLoad: true });</script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
 
-    <small>Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole </small>
+    <small>
+        Generated  by
+        <a href="https://www.nuget.org/packages/NetPackageAnalyzerConsole" target="_blank">
+            https://www.nuget.org/packages/NetPackageAnalyzerConsole
+        </a>
+    </small>
     <small>@GlobalsForGenerating.Version</small>
     <small> @GlobalsForGenerating.NameVersion </small>
-<script>
-        
-            const steps = [
+    <small> Generated on @DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss") </small>
+    <script>
+
+        const steps = [
             {
                 element: '#summary',
                 popover: {
@@ -1384,15 +1414,17 @@ columns: [
                 }
             },
             {
-                element: '#projects-with-tests',            
-            popover:{title: 'Projects in @nameSolution : @projectDicts.Count',         
-            description: 'Here you can find a diagram of your projects',     
+                element: '#projects-with-tests',
+                popover: {
+                    title: 'Projects in @nameSolution : @projectDicts.Count',
+                    description: 'Here you can find a diagram of your projects',
                 }
             },
             {
-                element: '#building-blocks',            
-            popover:{title: 'Building blocks for @nameSolution : @bb0.Length',         
-            description: 'You can start understanding the solution with those projects',     
+                element: '#building-blocks',
+                popover: {
+                    title: 'Building blocks for @nameSolution : @bb0.Length',
+                    description: 'You can start understanding the solution with those projects',
                 }
             },
             {
@@ -1431,7 +1463,7 @@ columns: [
                     description: 'Number methods per class for @nameSolution',
                 }
             },
-            
+
             {
                 element: '#Cyclomatic-Complexity-for-Method',
                 popover: {
@@ -1449,28 +1481,28 @@ columns: [
                 }
             }
             ,
-            
+
             {
-                element: '#summary',            
-            popover:{
-                title: 'Click done or press esc to close',         
-            description: 'Start improving or understanding @nameSolution',     
+                element: '#summary',
+                popover: {
+                    title: 'Click done or press esc to close',
+                    description: 'Start improving or understanding @nameSolution',
                 }
             },
 
 
-            ];
+        ];
 
-            const driver = window.driver.js.driver;
+        const driver = window.driver.js.driver;
 
-            const driverObj = driver({
-                showProgress: true,
+        const driverObj = driver({
+            showProgress: true,
             steps: steps
         });
 
         driverObj.drive();
 
-</script>
+    </script>
 
 </body>
 </html>

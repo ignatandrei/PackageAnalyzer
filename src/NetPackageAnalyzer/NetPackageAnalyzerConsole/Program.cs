@@ -5,8 +5,8 @@ try
 { 
     //Console.WriteLine($"Name:{TheAssemblyInfo.GeneratedName}");
     Console.WriteLine($"{TheAssemblyInfo.GeneratedNameNice}");
-    if (args.Length == 0) 
-    { 
+    if (args.Length == 0)
+    {
         args = new[] { "-h" };
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
@@ -72,12 +72,12 @@ try
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "--verbose","false"
         //};
-        args = new[] { "generateFiles",
-            "--folder", @"D:\gth\RSCG_Examples\v2",
-            "-wg","HtmlSummary",
-            "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-            "--verbose","false"
-        };
+        //args = new[] { "generateFiles",
+        //    "--folder", @"D:\gth\RSCG_Examples\v2",
+        //    "-wg","HtmlSummary",
+        //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+        //    "--verbose","false"
+        //};
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\source\test\NetPackageAnalyzer",
         //    "-wg","HtmlSummary",
