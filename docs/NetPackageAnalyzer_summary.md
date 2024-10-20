@@ -54,3 +54,14 @@
 ### Commits per year and project
 
 ![Commits per year and project](./images_NetPackageAnalyzer_summary/commits-year-project.png)
+
+## Packages
+
+### Major version differs
+
+![Major version differs](./images_NetPackageAnalyzer_summary/major-differs-table.png)
+
+### Vulnerable packages
+
+![Vulnerable](./images_NetPackageAnalyzer_summary/Vulnerable-Packages-table.png)
+
