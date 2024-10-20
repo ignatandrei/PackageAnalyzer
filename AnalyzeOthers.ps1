@@ -123,18 +123,18 @@ Pop-Location
 # AnalyzeProject "https://github.com/ardalis/CleanArchitecture"
 
 # AnalyzeProject  "https://github.com/danpdc/cleanArchitectureTemplate"
-
+#too old
 #TODO AnalyzeProject  "https://github.com/thangchung/clean-architecture-dotnet"
-
+#too old
 #TODO AnalyzeProject "https://github.com/jvandevelde/distributed-playground"
-
+#done
 # AnalyzeProject "https://github.com/asc-lab/dotnetcore-microservices-poc"
-
+#done
 # AnalyzeProject "https://github.com/Aaronontheweb/InMemoryCQRSReplication"
-
+#too old
 # AnalyzeProject "https://github.com/horsdal/microservices-in-dotnet-book-second-edition"
-
-# AnalyzeProject "https://github.com/phongnguyend/Practical.CleanArchitecture"
+#not done
+AnalyzeProject "https://github.com/phongnguyend/Practical.CleanArchitecture"
 
 # AnalyzeProject "https://github.com/thangchung/practical-dapr"
 
@@ -146,7 +146,7 @@ Pop-Location
 
 # AnalyzeProject "https://github.com/cecilphillip/aspnet-servicediscovery-patterns"
 
-AnalyzeProject "https://github.com/kgrzybek/sample-dotnet-core-cqrs-api"
+#AnalyzeProject "https://github.com/kgrzybek/sample-dotnet-core-cqrs-api"
 
 # AnalyzeProject "https://github.com/abpframework/abp"
 
