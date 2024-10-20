@@ -145,7 +145,7 @@ public class GenerateData
                 .Select(it => new PackageWithVersionVulnerable(it.Id ?? "", it.RequestedVersion ?? ""))
                 .ToArray();
         }
-
+        build = p.Build(folder);
         packDTO.VerifyWhy();
 
         IOperations[] operations = new IOperations?[4]

@@ -62,6 +62,11 @@ public class ProcessOutput
 
         // Wait for the process to exit
         process.WaitForExit();
+        Console.WriteLine("output of build: ---" );
+        Console.WriteLine(output);
+        Console.WriteLine("errorOutput of build: ---");
+        Console.WriteLine(errorOutput);
+        Console.WriteLine("-----");    
         if (errorOutput.Length > 0)
         {
             return false;
