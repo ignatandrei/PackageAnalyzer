@@ -2,6 +2,7 @@
 @{
     var prefix = GlobalsForGenerating.globalPrefix();
     var gitInfo = GlobalsForGenerating.gitInfo;
+    string repUrl = gitInfo?.Repository??"";
     var nameSolution = GlobalsForGenerating.NameSolution;
     var info = Model.Item1;
     var projectDicts = Model.Item2;
@@ -165,6 +166,10 @@
             align-items: center;
         }
 
+        .justTextLeft {
+            text-align: left;
+        }
+
         .left, .center, .right {
             width: 30%;
             text-align: center;
@@ -175,7 +180,7 @@
 
     <div class="containerDisplayInfo">
         <div class="left">
-            <h2 id="general-info">General Info</h2>
+            <h2 id="general-info">Solution Info</h2>
             <table>
                 <thead>
                     <tr>
@@ -241,6 +246,13 @@
                             </a>: @assemblyDataFromMSFT.NumberOfMethods()
                         </td>
                     </tr>
+                    <tr>
+                        <td>@(++tableRow)</td>
+                        <td>
+                            <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
+                        </td>
+                    </tr>
+
             </table>
         </div>
         <div class="center">
@@ -248,16 +260,11 @@
                 <a href="https://www.nuget.org/packages/NetPackageAnalyzerConsole" target="_blank">
                     Summary
                 </a>
-                @nameSolution
+                <a href="@repUrl" target="_blank">@nameSolution</a>
+                
             </h1>
-            @if(gitInfo !=null)
-            {
-            <text>
-                @gitInfo?.Repository <br />
-                branch @gitInfo?.Branch , commit @gitInfo?.Commit <br />
-            </text>
-            }
-            <a href="#licences-per-project"> Licenses</a>: @projectDicts.NrLicenses()
+            <div class="justTextLeft">
+
             <h2>If you are new to the project</h2>
             <ol>
                 <li>
@@ -310,10 +317,10 @@
                     </a>
                 </li>
             </ol>
-
+                </div>
         </div>
         <div class="right">
-            <h2>Commits</h2>
+            <h2>Info Repo & Commits</h2>
             @{
                 tableRow = 0;
             }
@@ -327,6 +334,24 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if (gitInfo != null)
+                    {
+                        <tr>
+                            <td>@(++tableRow)</td>
+                            <td>
+                                Repo   <a href="@gitInfo!.Repository" target="_blank">@gitInfo!.Repository</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@(++tableRow)</td>
+                            <td>
+                                branch <i>@gitInfo?.Branch</i> , commit <i>@gitInfo?.Commit</i>
+                            </td>
+                        </tr>
+
+
+                    }
+
                     <tr>
                         <td>@(++tableRow)</td>
                         <td>

@@ -113,7 +113,7 @@ public class ProcessOutput
             CreateNoWindow = true,
             Arguments = $"list package --{arg} --format json"
         };
-        Console.WriteLine("analyzing output of dotnet " + startInfo.Arguments);
+        Console.WriteLine("analyzing output of dotnet " + startInfo.Arguments +" in folder " + folder);
         // Create and start the process
         Process process = new Process
         {
@@ -148,7 +148,7 @@ public class ProcessOutput
             CreateNoWindow = true,
             Arguments = arg
         };
-        Console.WriteLine("analyzing output of dotnet " + startInfo.Arguments);
+        Console.WriteLine("analyzing output of dotnet " + startInfo.Arguments + " in folder " + folder);
         // Create and start the process
         Process process = new Process
         {
