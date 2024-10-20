@@ -6,6 +6,15 @@ public class PackageProblemsDTO
     public PackageWithVersionOutdated[] outdated = [];
     public PackageWithVersionVulnerable[] vulnerable = [];
     
+    public NamePerCount[] NamePerCounts()
+    {
+        return new NamePerCount[]
+        {
+            new NamePerCount("Vulnerable",vulnerable.Length),
+            new NamePerCount("Outdated",outdated.Length),
+            new NamePerCount("Deprecated",deprecated.Length)
+        };
+    }
     public PackageWithVersion[] All()
     {
 

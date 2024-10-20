@@ -107,7 +107,16 @@ internal class RealMainExecuting
         RootCommand rootCommand = new();
         rootCommand.AddGlobalOption(verbose);
         rootCommand.AddGlobalOption(folderToHaveSln);
+        rootCommand.Description= @$"
+Generate documetation for a solution
+Please use the following commands in the folder with the sln file
 
+    dotnet PackageAnalyzer generateFiles -wg HtmlSummary
+
+See documentation at https://github.com/ignatandrei/PackageAnalyzer
+
+";
+        
 
 
         //cmdGenerate.Handler = CommandHandler.Create<string,string>(async (folder,where) =>

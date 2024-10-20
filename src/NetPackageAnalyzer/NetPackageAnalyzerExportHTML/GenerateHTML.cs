@@ -39,6 +39,8 @@ public class GenerateHTML : GenerateFiles
             MDSummaryData md = new ();
             md.nameSolution = GlobalsForGenerating.NameSolution;
             md.ExistsMajorDiffers= (modelMore1Version.KeysPackageMultipleMajorDiffers().Length > 0);
+            md.ExistsVulnerable = infoSol.nrVulnerable>0;
+
             var mdSummary = new MDSummary(md);
             var mdHtml = mdSummary.Render();
             var nameFileMD = Path.Combine(where, $"{NameSolution}_summary.md");
