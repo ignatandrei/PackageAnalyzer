@@ -1,5 +1,6 @@
 ﻿
 using NetPackageAnalyzerExportHTML;
+using NPA.GitInfo;
 using System.Runtime.InteropServices;
 
 namespace NetPackageAnalyzerConsole;
@@ -215,7 +216,19 @@ internal class RealMainExecuting
     {
 
         where = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
+        try
+        {
+            var s = GitInfo.Construct(folder);
 
+            Console.WriteLine($"Repository:{s.Repository}");
+            Console.WriteLine($"Branch:{s.Branch}");
+            Console.WriteLine($"Commit:{s.Commit}");
+            GlobalsForGenerating.gitInfo = s;
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine("Exception finding git " + ex.Message);
+        }
         WriteLine($"analyzing {folder}");
         GenerateFiles? g = null;
         switch (what)

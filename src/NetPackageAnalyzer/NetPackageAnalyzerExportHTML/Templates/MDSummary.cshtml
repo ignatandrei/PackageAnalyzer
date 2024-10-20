@@ -2,9 +2,23 @@
 @{
     var name = Model.nameSolution;
     var nameFolder = name + "_summary";
+    var gitInfo = GlobalsForGenerating.gitInfo;
+
 }
 
 # Summary for @name
+
+@if (gitInfo != null)
+{
+    <text>
+    Repo : @gitInfo?.Repository
+    
+    Branch : @gitInfo?.Branch 
+    
+    Commit : @gitInfo?.Commit
+    </text>
+}
+
 
 ## Project relations
 
@@ -70,3 +84,12 @@
 
 ![Vulnerable](./images_@(nameFolder)/Vulnerable-Packages-table.png)
 
+### Generation data
+
+Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole</a>
+    
+@GlobalsForGenerating.Version
+
+@GlobalsForGenerating.NameVersion 
+
+Generated on @DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss") 

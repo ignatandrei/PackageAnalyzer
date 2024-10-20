@@ -5,13 +5,8 @@ try
 { 
     //Console.WriteLine($"Name:{TheAssemblyInfo.GeneratedName}");
     Console.WriteLine($"{TheAssemblyInfo.GeneratedNameNice}");
-     var s= GitInfo.Construct(Directory.GetCurrentDirectory());
-    Console.WriteLine($"Repository:{s.Repository}");
-    Console.WriteLine($"Branch:{s.Branch}");
-    Console.WriteLine($"Commit:{s.Commit}");
-
-    if (args.Length == 0 && s==null)
-    {
+    if (args.Length == 0) 
+    { 
         args = new[] { "-h" };
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
@@ -77,12 +72,12 @@ try
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "--verbose","false"
         //};
-        //args = new[] { "generateFiles",
-        //    "--folder", @"D:\gth\RSCG_Examples\v2",
-        //    "-wg","HtmlSummary",
-        //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-        //    "--verbose","false"
-        //}; 
+        args = new[] { "generateFiles",
+            "--folder", @"D:\gth\RSCG_Examples\v2",
+            "-wg","HtmlSummary",
+            "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+            "--verbose","false"
+        };
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\source\test\NetPackageAnalyzer",
         //    "-wg","HtmlSummary",
