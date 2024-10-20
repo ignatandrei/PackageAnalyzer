@@ -1,9 +1,16 @@
-﻿try
+﻿using NPA.GitInfo;
+using System.Runtime;
+
+try
 { 
     //Console.WriteLine($"Name:{TheAssemblyInfo.GeneratedName}");
     Console.WriteLine($"{TheAssemblyInfo.GeneratedNameNice}");
-     
-    if (args.Length == 0)
+     var s= GitInfo.Construct(Directory.GetCurrentDirectory());
+    Console.WriteLine($"Repository:{s.Repository}");
+    Console.WriteLine($"Branch:{s.Branch}");
+    Console.WriteLine($"Commit:{s.Commit}");
+
+    if (args.Length == 0 && s==null)
     {
         args = new[] { "-h" };
         //args = new[] { "generateFiles",
@@ -82,7 +89,7 @@
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "--verbose","false"
         //};
-    }
+    }   
     return await RealMainExecuting.RealMain(args);
 } 
 catch (Exception ex)
