@@ -42,7 +42,7 @@
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
             {
-                title: "Name", field: "Name", headerFilter: "input", cellClick: function(e, cell) {
+                title: "Name", field: "Name", cellClick: function(e, cell) {
                     //window.alert('expand me');
                     cell.getRow().treeToggle();
 
@@ -51,8 +51,7 @@
             {
                 title: "Expand/Collapse Projects",
                 field: "Why", 
-                formatter:"html",
-                headerFilter: "input", 
+                formatter:"html",                
                 cellClick: function(e, cell) {
                     //window.alert('expand me');
                     cell.getRow().treeToggle();
