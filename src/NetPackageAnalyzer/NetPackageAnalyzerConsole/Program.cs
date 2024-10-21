@@ -1,7 +1,4 @@
-﻿using NPA.GitInfo;
-using System.Runtime;
-
-try
+﻿try
 { 
     //Console.WriteLine($"Name:{TheAssemblyInfo.GeneratedName}");
     Console.WriteLine($"{TheAssemblyInfo.GeneratedNameNice}");

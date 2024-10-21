@@ -1,7 +1,4 @@
-﻿using NetPackageAnalyzeHistory;
-using System.ComponentModel;
-
-namespace NetPackageAnalyzerObjects;
+﻿namespace NetPackageAnalyzerObjects;
 
 public partial record ProjectData(string PathProject, string folderSolution)
 {

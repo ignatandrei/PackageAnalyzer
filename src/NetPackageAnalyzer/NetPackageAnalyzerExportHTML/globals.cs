@@ -4,3 +4,4 @@ global using NetPackageAnalyzerExportHTML.Templates;
 global using NetPackageAnalyzerMetricsMSFT;
 global using NPA.Resources;
 global using Statistical;
+global using NPA.HtmlData;

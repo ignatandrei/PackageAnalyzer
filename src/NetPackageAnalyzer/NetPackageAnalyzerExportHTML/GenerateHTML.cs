@@ -1,7 +1,4 @@
-﻿using NetPackageAnalyzerObjects;
-using NPA.HtmlData;
-
-namespace NetPackageAnalyzerExportHTML;
+﻿namespace NetPackageAnalyzerExportHTML;
 
 public class GenerateHTML : GenerateFiles
 {

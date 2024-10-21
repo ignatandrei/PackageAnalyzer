@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-
+﻿
 namespace NetPackageAnalyzerObjects;
 public class ProcessOutput
 {

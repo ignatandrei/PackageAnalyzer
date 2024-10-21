@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Xml;
-//https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-cyclomatic-complexity?view=vs-2022
+﻿//https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-cyclomatic-complexity?view=vs-2022
 
 namespace NetPackageAnalyzerMetricsMSFT;
 public enum eMSFTMetrics

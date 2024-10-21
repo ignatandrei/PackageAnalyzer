@@ -1,6 +1,4 @@
-﻿using Microsoft.Playwright;
-
-namespace NPA.HtmlData;
+﻿namespace NPA.HtmlData;
 
 public class ExtractImages
 {

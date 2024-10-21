@@ -1,10 +1,4 @@
-﻿
-
-using NetPackageAnalyzerDiagram;
-using NetPackageAnalyzerMetricsMSFT;
-using System.Diagnostics;
-
-namespace NetPackageAnalyzerObjects;
+﻿namespace NetPackageAnalyzerObjects;
 public class GenerateData
 {
     public GenerateData(IFileSystem system)

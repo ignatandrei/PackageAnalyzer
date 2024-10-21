@@ -15,7 +15,10 @@ global using NetPackageAnalyzerMetricsMSFT;
 global using NuGetInfo;
 global using NetPackageAnalyzeHistory;
 global using Statistical;
-using NPA.GitInfo;
+global using NPA.GitInfo;
+global using NetPackageAnalyzerDiagram;
+global using System.Diagnostics;
+global using System.ComponentModel;
 
 public static class GlobalsForGenerating
 {

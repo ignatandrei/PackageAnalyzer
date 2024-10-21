@@ -1,6 +1,4 @@
-﻿using NetPackageAnalyzerObjects;
-
-namespace NetPackageAnalyzerDocusaurus;
+﻿namespace NetPackageAnalyzerDocusaurus;
 
 
 

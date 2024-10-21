@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace NetPackageAnalyzerMetricsMSFT;
+﻿namespace NetPackageAnalyzerMetricsMSFT;
 
 public record Metric(eMSFTMetrics Name): IValidatableObject
 {

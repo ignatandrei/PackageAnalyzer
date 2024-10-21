@@ -1,7 +1,4 @@
 ﻿
-using NetPackageAnalyzerExportHTML;
-using NPA.GitInfo;
-using System.Runtime.InteropServices;
 
 namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting

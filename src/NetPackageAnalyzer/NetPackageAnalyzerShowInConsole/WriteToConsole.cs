@@ -1,7 +1,4 @@
-﻿using Spectre.Console;
-using Spectre.Console.Rendering;
-
-namespace NetPackageAnalyzerShowInConsole;
+﻿namespace NetPackageAnalyzerShowInConsole;
 
 public class WriteToConsole(GenerateData generatorData)
 {
