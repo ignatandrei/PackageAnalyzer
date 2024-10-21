@@ -26,10 +26,9 @@
     int height = 100+nameCount.Count() * 20;
     var xaxis = "[" +
         string.Join(',', nameCount
-            .Select(it => it.Name)
+            .Select(it => it.NameInJS())
             .Select(it => it.Replace("<", "#60;"))
             .Select(it => it.Replace(">", "#62;"))
-            .Select(it => "\"" + it + "\"")
             .ToArray())
         + "]";
     var maxCount = nameCount.Max(it => it.Count);
@@ -40,7 +39,7 @@
     {
         nameCountGraphic = nameCount.Take(10).ToArray();
     }
-    string assNamesMaintIndex = string.Join(",", nameCountGraphic.Select(it => "'" + it.Name.Replace("\\", "\\\\") + "'"));
+    string assNamesMaintIndex = string.Join(",", nameCountGraphic.Select(it => "'" + it.NameInJS() + "'"));
     string valuesMaintIndex = string.Join(",\r\n",
             nameCountGraphic.Select(it => "{value:" + it.Count +"}")
             );
@@ -125,7 +124,7 @@ bar @yAxis
     @foreach (var item in nameCountOriginal)
     {
         <text>
-                {"Name": "@item.Name.Replace("\\", "\\\\")", "Nr": "@item.Count" },
+                {"Name": "@item.NameInJS()", "Nr": "@item.Count" },
         </text>
     }
                                 ];

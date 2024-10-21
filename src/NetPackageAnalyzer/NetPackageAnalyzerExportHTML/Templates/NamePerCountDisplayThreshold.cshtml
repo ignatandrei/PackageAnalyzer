@@ -42,7 +42,7 @@
 
     //threshold1 = 40;
     //threshold2 = 80;
-    string assNamesMaintIndex = string.Join(",", nameCountGraphic.Select(it => "'" + it.Name + "'"));
+    string assNamesMaintIndex = string.Join(",", nameCountGraphic.Select(it => "'" + it.NameInJS() + "'"));
     string valuesMaintIndex = string.Join(",\r\n",
             nameCountGraphic.Select(it => "{value:" + it.Count +
             (CompareT(it.Count, threshold1, inverseData) ? ",itemStyle:{color:'red'}"
@@ -128,7 +128,7 @@
             @foreach (var item in nameCount)
             {
                 <text>
-                        {"Name": "@item.Name", "Nr": "@item.Count" },
+                        {"Name": "@item.NameInJS()", "Nr": "@item.Count" },
                 </text>
             }
                             ];
@@ -153,7 +153,7 @@
         @{
            if (display2.Length > 0)
             {
-                assNamesMaintIndex = string.Join(",", display2.Select(it => "'" + it.Name + "'"));
+                assNamesMaintIndex = string.Join(",", display2.Select(it => "'" + it.NameInJS() + "'"));
                 
                 var displayValues = nameCount
                     .Select(it => "{value:" + it.Count + ",itemStyle:{color:'red'}}"

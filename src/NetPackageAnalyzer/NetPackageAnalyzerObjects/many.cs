@@ -39,6 +39,13 @@ public class PublicClassRefData
 
 public record NamePerCount(string Name, long Count)
 {
+    
+    public string NameInJS()
+    {
+        return Name
+            .Replace("\\", "\\\\")
+            .Replace("\"", "\\\"");
+    }
     public string AdditionalData { get; set; } = Name;
 
 }
