@@ -9,7 +9,7 @@ public record PackageGatherInfo(string PackageId)
     }
     public void VerifyWhy()
     {
-        if (PackageId == "Microsoft.NETCore.Platforms") return;
+        //if (PackageId == "Microsoft.NETCore.Platforms") return;
         if (Why.Length > 0) return;
         if(_allPackages.ContainsKey(PackageId))
         {
@@ -23,6 +23,8 @@ public record PackageGatherInfo(string PackageId)
 
             var str = processOutput.OutputWhy(GlobalsForGenerating.FullPathToSolution, PackageId);
             var arrStr = str.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries); ;
+            int tooManyLines = 5000;
+            bool StopTooManyLines = (arrStr.Length > tooManyLines);
             WhyData? whyData = null;
             foreach (var item in arrStr)
             {
@@ -44,12 +46,17 @@ public record PackageGatherInfo(string PackageId)
                     }
                     whyData = new();
                     whyData.ProjectText = item;
+                    if (StopTooManyLines) break;
                     continue;
                 }
                 whyData!.WhyText += Environment.NewLine + item;
             }
             if (whyData != null)
             {
+                if (StopTooManyLines)
+                {
+                    whyData.ProjectText = $"Too many lines {arrStr.Length} to show full dependency";
+                }
                 whyDatas.Add(whyData);
             }
         }

@@ -10,9 +10,9 @@ public class PackageProblemsDTO
     {
         return new NamePerCount[]
         {
-            new NamePerCount("Vulnerable",vulnerable.Length),
-            new NamePerCount("Outdated",outdated.Length),
-            new NamePerCount("Deprecated",deprecated.Length)
+            new NamePerCount("Vulnerable",Vuln().Length),
+            new NamePerCount("Outdated",Out().Length),
+            new NamePerCount("Deprecated",Depr().Length)
         };
     }
     public PackageWithVersion[] All()
@@ -33,15 +33,15 @@ public class PackageProblemsDTO
     }
     public PackageWithVersion[] Vuln()
     {
-        return vulnerable.ToArray();
+        return vulnerable.Distinct().ToArray();
     }
     public PackageWithVersion[] Out()
     {
-        return outdated.ToArray();
+        return outdated.Distinct().ToArray();
     }
     public PackageWithVersion[] Depr()
     {
-        return deprecated.ToArray();
+        return deprecated.Distinct().ToArray();
     }
     public void VerifyWhy()
     {
