@@ -127,7 +127,7 @@ Pop-Location
 # AnalyzeProject "https://github.com/rafaelfgx/Architecture"
 # AnalyzeProject "https://github.com/ardalis/CleanArchitecture"
 
-# AnalyzeProject  "https://github.com/danpdc/cleanArchitectureTemplate"
+AnalyzeProject  "https://github.com/danpdc/cleanArchitectureTemplate"
 #too old
 #TODO AnalyzeProject  "https://github.com/thangchung/clean-architecture-dotnet"
 #too old
