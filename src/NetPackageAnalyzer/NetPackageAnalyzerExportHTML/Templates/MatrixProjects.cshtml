@@ -1,22 +1,45 @@
 @inherits RazorBlade.PlainTextTemplate<ProjectsDict>
 @{
     var projects = Model.AlphabeticOrderedProjects;
+    ProjectData[] projects2 = new List<ProjectData>(projects).ToArray();
 }
 @{
     <table border="1">
         <tr>
-        <td>Prj</td>
-    @foreach (var prj in projects)
-    {
-        <td>@prj.NameCSproj()</td>
-            
-    })
-    </tr>
+            <td>Prj</td>
+            @foreach (var prj in projects)
+            {
+                <td>@prj.NameCSproj()</td>
+
+            }
+        </tr>
         @foreach (var prj in projects)
         {
             <tr>
                 <td>@prj.NameCSproj()</td>
-                
+                @foreach (var prj2 in projects2)
+                {
+                    if (prj2 == prj)
+                    {
+                        <td style='text-align:center;'>X</td>
+                    }
+                    else
+                    {
+                        string style = "style='text-align:center;'";
+                        int found = 0;
+                        foreach (var dep in prj2.UpStreamProjectReferences)
+                        {
+                            if (dep == prj)
+                            {
+                                style = "style='text-align:center;background-color: yellow;color: red;'";
+                                found = 1;
+                                break;
+                            }
+                        }
+                        
+                        <td @style>@found</td>
+                    }
+                }
             </tr>
         }
     </table>

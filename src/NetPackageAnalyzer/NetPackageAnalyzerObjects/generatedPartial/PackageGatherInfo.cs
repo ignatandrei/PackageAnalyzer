@@ -70,7 +70,10 @@ public record PackageGatherInfo(string PackageId)
     public WhyData[] Why = [];
 
     public string[] ProjectIDsFromWhy() { 
-        return Why.Select(x => x.ProjectName()).ToArray();
+        return Why
+            .Select(x => x.ProjectName())
+            .Where(it=>it.Length > 0)
+            .ToArray();
     }
 
 }
