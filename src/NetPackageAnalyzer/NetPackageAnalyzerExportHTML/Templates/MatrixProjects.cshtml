@@ -1,0 +1,24 @@
+@inherits RazorBlade.PlainTextTemplate<ProjectsDict>
+@{
+    var projects = Model.AlphabeticOrderedProjects;
+}
+@{
+    <table border="1">
+        <tr>
+        <td>Prj</td>
+    @foreach (var prj in projects)
+    {
+        <td>@prj.NameCSproj()</td>
+            
+    })
+    </tr>
+        @foreach (var prj in projects)
+        {
+            <tr>
+                <td>@prj.NameCSproj()</td>
+                
+            </tr>
+        }
+    </table>
+
+}

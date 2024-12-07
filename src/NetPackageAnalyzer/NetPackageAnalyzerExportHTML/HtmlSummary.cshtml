@@ -16,7 +16,7 @@
     var publicClasses = new NamePerCountArray(publicClassRefData.Assemblies_PublicClasses, true);
     var mostPublicClasses = publicClasses.First1();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
-
+    
     var keysPackageMultiple = more1Version?.KeysPackageMultipleMajorDiffers()??[];
     namePerCountPackages= namePerCountPackages
         .Append(new NamePerCount("MultipleVersions", keysPackageMultiple.Length))
@@ -48,7 +48,7 @@
     Tuple<string, NamePerCountArray, int, int, bool> tupleThreshold;
     NamePerCountDisplayThreshold namePerCountDisplayThreshold;
     NamePerCountDisplay namePerCountDisplay;
-
+    MatrixProjects matrixProjects = new(projectDicts);
     YEARNamePerCountDisplay yearFolders = new(yearWithFolders);
     Radar radar = new(Tuple.Create(projectDicts, publicClassRefData, assemblyDataFromMSFT, "andrei"));
     var bb0 = projectDicts.BuildingBlocks(0);
@@ -655,8 +655,10 @@
     </script>
     *@
     <br />
+    <h2 id="matrix-projects">Matrix Projects</h2>
+    @matrixProjects.Render()
 
-    <h2 id="projects-without-tests"> @nrProjectsNoTests Projects without tests</h2>
+    <h2 id="projects-without-tests"> @nrProjectsNoTests Projects (not counting tests projects!)</h2>
     <div class="mermaid" title="image projects without tests">
         flowchart LR
 

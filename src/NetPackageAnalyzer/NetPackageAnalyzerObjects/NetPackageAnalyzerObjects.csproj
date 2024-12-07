@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <NoWarn>CS0436,NU5111</NoWarn>
@@ -21,12 +21,12 @@
   </ItemGroup>
   
 	<ItemGroup>
-		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="1.4.3">
+		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="2.0.10">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.0.2" />
-		<PackageReference Include="Morris.Moxy" Version="1.8.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.1.7" />
+		<PackageReference Include="Morris.Moxy" Version="1.10.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<!--<PackageReference Include="rscgutils" Version="2024.1859.1955" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
 		<!--<PackageReference Include="rscgutils" Version="2024.2000.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
 
