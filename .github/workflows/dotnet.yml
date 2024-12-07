@@ -20,7 +20,9 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: |
+          8.0.x
+          9.0.x
     # - name: setup node
     #   uses: actions/setup-node@v4
     #   with:
@@ -49,7 +51,7 @@ jobs:
         cd bin
         cd Debug
         # copy to another folder to run
-        cp -r ./net8.0 ./test
+        cp -r ./net9.0 ./test
         cd test
         ./NetPackageAnalyzerConsole generateFiles -wg Docusaurus --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
         cd ${{ github.workspace }}/src/NetPackageAnalyzer/
