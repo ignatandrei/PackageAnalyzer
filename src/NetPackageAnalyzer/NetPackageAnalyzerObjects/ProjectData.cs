@@ -23,6 +23,19 @@ public partial record ProjectData(string PathProject, string folderSolution)
     {
         return FindRefRecursive(ProjectsReferences.ToArray(), project, 1);
     }
+    public int TotalReferences()
+    {
+        return TotalReferences(ProjectsReferences.ToArray());
+    }
+    public int TotalReferences(ProjectData[] projects)
+    {
+        int total = 0;
+        foreach (var item in projects)
+        {
+            total += TotalReferences(item.ProjectsReferences.ToArray());
+        }
+        return total;
+    }
     private int FindRefRecursive(ProjectData[] upRefs,ProjectData child,int nr)
     {
         foreach (var item in upRefs)

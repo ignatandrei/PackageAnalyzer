@@ -1,6 +1,14 @@
 
 # Summary for NetPackageAnalyzer
 
+
+    Repo : https://github.com/ignatandrei/PackageAnalyzer
+    
+    Branch : main 
+    
+    Commit : 1653e4d88bdea8a45c058955082be26ea7dc34c1
+    
+
 ## Project relations
 
 ![Project relations](./images_NetPackageAnalyzer_summary/projects-without-tests.png)
@@ -9,9 +17,9 @@
 
 ## Project Data
 
-### Public Classes per project
+### All Classes per project
 
-![Class per project](./images_NetPackageAnalyzer_summary/Public-class-per-project.png)
+![Class per project](./images_NetPackageAnalyzer_summary/Number-class-per-project.png)
 
 ### Number lines per project
 
@@ -19,10 +27,6 @@
 
 
 ## Class data
-
-### Public methods per class
-
-![Public methods](./images_NetPackageAnalyzer_summary/Public-methods-per-class.png)
 
 ### Number methods per class
 
@@ -57,11 +61,16 @@
 
 ## Packages
 
-### Major version differs
+### Packages
 
-![Major version differs](./images_NetPackageAnalyzer_summary/major-differs-table.png)
+![Packages](./images_NetPackageAnalyzer_summary/Problems-Package.png)
 
-### Vulnerable packages
+![Packages](./images_NetPackageAnalyzer_summary/Problems-Package-table.png)
 
-![Vulnerable](./images_NetPackageAnalyzer_summary/Vulnerable-Packages-table.png)
+### Generation data
 
+Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole</a>
+    
+version 9.2024.1208.1731 with José Echegaray y Eizaguirre is feeling long in Tunis 
+
+Generated on 2024-12-08 17:44:39 

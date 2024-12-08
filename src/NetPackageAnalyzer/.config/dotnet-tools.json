@@ -17,7 +17,7 @@
       "rollForward": false
     },
     "netpackageanalyzerconsole": {
-      "version": "8.2024.1020.458",
+      "version": "9.2024.1208.1731",
       "commands": [
         "PackageAnalyzer"
       ],

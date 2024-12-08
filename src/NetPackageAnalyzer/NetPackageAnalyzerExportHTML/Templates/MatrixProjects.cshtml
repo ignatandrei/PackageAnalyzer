@@ -6,17 +6,26 @@
 @{
     <table border="1">
         <tr>
-            <td>Prj</td>
+            <td>Projects</td>
             @foreach (var prj in projects)
             {
                 <td>@prj.NameCSproj()</td>
 
             }
         </tr>
+        @{
+            int i = 1;
+        }
         @foreach (var prj in projects)
         {
             <tr>
-                <td>@prj.NameCSproj()</td>
+                <td>@i++  @prj.NameCSproj() 
+                    <br />
+                    Direct : @prj.ProjectsReferences().Length 
+                    <br />
+                    Total : @prj.TotalReferences) 
+                </td>
+                
                 @foreach (var prj2 in projects2)
                 {
                     if (prj2 == prj)
@@ -33,6 +42,9 @@
                         <td @style>@(found==0?"&nbsp;":found)</td>
                     }
                 }
+
+                
+
             </tr>
         }
     </table>

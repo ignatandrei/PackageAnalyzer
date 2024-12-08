@@ -77,6 +77,7 @@ $csprojProcessed
 dotnet build $solution   
 
 dotnet build $solution /t:Metrics
+
 $csprojProcessed | ForEach-Object {
   #Write-Host "metrics " $_
   $metricsFullFileName =$_.Replace(".csproj" , ".Metrics.xml")
@@ -97,3 +98,6 @@ $csprojProcessed | ForEach-Object {
   Remove-Item $backFile  -Force
 
 }
+
+dotnet build $solution   
+
