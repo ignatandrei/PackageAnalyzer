@@ -57,19 +57,19 @@
         //    "--folder", @"D:\gth\ContosoUniversityDotNetCore-Pages",
         //    "--verbose","false"
         //}; 
-
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\gth\eShop",
         //    "-wg","HtmlSummary",
         //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
         //    "--verbose","false"
         //};
-        //args = new[] { "generateFiles",
-        //    "--folder", @"D:\gth\TILT\src\backend\Net6\NetTilt",
-        //    "-wg","HtmlSummary",
-        //    "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
-        //    "--verbose","false"
-        //};
+
+        args = new[] { "generateFiles",
+            "--folder", @"D:\gth\TILT\src\backend\Net6\NetTilt",
+            "-wg","HtmlSummary",
+            "--where", @"D:\gth\PackageAnalyzer\src\documentation1",
+            "--verbose","false"
+        };
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\gth\RSCG_Examples\v2",
         //    "-wg","HtmlSummary",

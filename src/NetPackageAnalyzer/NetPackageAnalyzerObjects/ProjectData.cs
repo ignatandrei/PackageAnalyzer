@@ -32,6 +32,7 @@ public partial record ProjectData(string PathProject, string folderSolution)
         int total = 0;
         foreach (var item in projects)
         {
+            total++;
             total += TotalReferences(item.ProjectsReferences.ToArray());
         }
         return total;
