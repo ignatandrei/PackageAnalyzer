@@ -19,11 +19,11 @@
         @foreach (var prj in projects)
         {
             <tr>
-                <td>@(i++)  @prj.NameCSproj() 
+                <td>@(i++) ) @prj.NameCSproj() 
                     <br />
-                    Direct : @prj.ProjectsReferences.Count 
+                    Direct ref: @prj.ProjectsReferences.Count 
                     <br />
-                    Total : @prj.TotalReferences() 
+                    Total ref: @prj.TotalReferences() 
                 </td>
                 
                 @foreach (var prj2 in projects2)
