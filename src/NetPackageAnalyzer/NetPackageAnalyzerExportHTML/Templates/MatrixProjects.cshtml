@@ -26,18 +26,11 @@
                     else
                     {
                         string style = "style='text-align:center;'";
-                        int found = 0;
-                        foreach (var dep in prj2.UpStreamProjectReferences)
-                        {
-                            if (dep == prj)
-                            {
-                                style = "style='text-align:center;background-color: yellow;color: red;'";
-                                found = 1;
-                                break;
-                            }
-                        }
-                        
-                        <td @style>@found</td>
+                        int found = prj.FindReferenceRec(prj2);
+                        if (found==1){
+                                style = "style='text-align:center;background-color: yellow;color: red;'";                                                                
+                        }                      
+                        <td @style>@(found==0?"&nbsp;":found)</td>
                     }
                 }
             </tr>

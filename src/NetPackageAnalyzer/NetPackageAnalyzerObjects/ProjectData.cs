@@ -19,6 +19,29 @@ public partial record ProjectData(string PathProject, string folderSolution)
 
     public List<ProjectData> UpStreamProjectReferences { get; set; } = new();
 
+    public int FindReferenceRec(ProjectData project)
+    {
+        return FindRefRecursive(ProjectsReferences.ToArray(), project, 1);
+    }
+    private int FindRefRecursive(ProjectData[] upRefs,ProjectData child,int nr)
+    {
+        foreach (var item in upRefs)
+        {
+            if (item == child)
+                return nr;
+       }
+        List<int> lst= [0];
+        foreach (var item in upRefs)
+        {
+            var res = FindRefRecursive(item.ProjectsReferences.ToArray(), child, nr + 1);
+            lst.Add(res);
+        }
+        //just the first one
+        if (lst.Count ==1) return 0;
+        lst.Remove(0);
+        return lst.Order().First();
+    }
+
     public List<PackageData> Packages { get; set; }=new();
 
     public Dictionary<string, NamePerCount[]> LicNames()
