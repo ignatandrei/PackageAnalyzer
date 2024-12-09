@@ -42,23 +42,23 @@ jobs:
         cd NetPackageAnalyzer        
         cd NetPackageAnalyzerConsole
         dotnet pack -o ../../nugetPackages       
-    - name: Build site
-      run: |
-        dotnet tool install --global PowerShell
-        cd src
-        cd NetPackageAnalyzer
-        cd NetPackageAnalyzerConsole
-        cd bin
-        cd Debug
-        # copy to another folder to run
-        cp -r ./net9.0 ./test
-        cd test
-        ./NetPackageAnalyzerConsole generateFiles -wg Docusaurus --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
-        cd ${{ github.workspace }}/src/NetPackageAnalyzer/
-        cd Analysis
-        npm install
-        npm run build
-        # ./NetPackageAnalyzerConsole generateFiles -wg HtmlSummary --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
+    # - name: Build site
+    #   run: |
+    #     dotnet tool install --global PowerShell
+    #     cd src
+    #     cd NetPackageAnalyzer
+    #     cd NetPackageAnalyzerConsole
+    #     cd bin
+    #     cd Debug
+    #     # copy to another folder to run
+    #     cp -r ./net9.0 ./test
+    #     cd test
+    #     ./NetPackageAnalyzerConsole generateFiles -wg Docusaurus --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
+    #     cd ${{ github.workspace }}/src/NetPackageAnalyzer/
+    #     cd Analysis
+    #     npm install
+    #     npm run build
+    #     # ./NetPackageAnalyzerConsole generateFiles -wg HtmlSummary --folder ${{ github.workspace }}/src/NetPackageAnalyzer/ 
 
     - name: 'Upload nuget'
       uses: actions/upload-artifact@v4
