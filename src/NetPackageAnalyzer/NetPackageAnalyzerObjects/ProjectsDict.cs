@@ -5,6 +5,22 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     {
 
     }
+    public int MaxMatrixRef()
+    {
+        var ret = 0;
+        var projects = AlphabeticOrderedProjects;
+        ProjectData[] projects2 = new List<ProjectData>(projects).ToArray();
+        foreach (var prj in projects)
+        {
+            foreach (var prj2 in projects2)
+            {
+                if (prj2 == prj) continue;
+                int found = prj.FindReferenceRec(prj2);
+                if (ret < found) ret = found;
+            }
+        }
+        return ret;
+    }
     public int NrLicenses()
     {
         return Licenses().Length;

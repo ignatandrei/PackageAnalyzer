@@ -2,6 +2,7 @@
 @{
     var projects = Model.AlphabeticOrderedProjects;
     ProjectData[] projects2 = new List<ProjectData>(projects).ToArray();
+    var maxRef = Model.MaxMatrixRef();
 }
 @{
     <table border="1" title="image matrix projects">
@@ -38,7 +39,15 @@
                         int found = prj.FindReferenceRec(prj2);
                         if (found==1){
                                 style = "style='text-align:center;background-color: yellow;color: red;'";                                                                
-                        }                      
+                        }
+                        if (found == maxRef)
+                        {
+                            style = "style='text-align:center;background-color: red;color: blue;'";
+                        }
+                        if (found == maxRef-1)
+                        {
+                            style = "style='text-align:center;background-color: tomato;color: blue;'";
+                        }
                         <td @style>@(found==0?"&nbsp;":found)</td>
                     }
                 }
