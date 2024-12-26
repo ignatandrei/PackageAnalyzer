@@ -1113,10 +1113,12 @@
             var packs = prj.Packages;
             foreach (var pack in packs)
             {
+                var vers =string.Join(",", pack.VersionsForProject(prj));
+
                 <text>
                         tabledata.push({
                             "Project": "@nameCsproj",
-                        "Package": "@pack.packageVersionId",
+                            "Package": "@pack.packageVersionId version(s) : @vers",
                             });
                 </text>
             }
