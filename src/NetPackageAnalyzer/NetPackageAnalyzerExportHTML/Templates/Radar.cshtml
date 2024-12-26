@@ -25,7 +25,7 @@
         .Where(it => it.Key == maxCommitYear)
         .ToArray();
     var maxCommitYearCommits =
-    projS.Max(it => it.AllHistoryFolderYear(maxCommitYear).nrCommits);
+    projS.Max(it => it.AllHistoryFolderYear(maxCommitYear).nrCommits)??0;
 
     var sourceAssLines = assemblyDataFromMSFT.AssemblyMetric(eMSFTMetrics.SourceLines);
     var maxexecAssLines = sourceAssLines.Length == 0 ? 0 : sourceAssLines.Max(x => x.Count);
