@@ -322,7 +322,9 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         get
         {
             List<ProjectData> result = new();
+            //find all references without the reference of tests projects
             var allRefs = this
+                .Where(it=>!it.Value.IsTestProject())
                 .SelectMany(it => it.Value.ProjectsReferences)
                 .Select(it => it.RelativePath())
                 .Distinct()
