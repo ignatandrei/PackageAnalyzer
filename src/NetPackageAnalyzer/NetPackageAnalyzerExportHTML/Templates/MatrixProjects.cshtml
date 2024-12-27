@@ -5,57 +5,61 @@
     var maxRef = Model.MaxMatrixRef();
 }
 @{
-    <table border="1" title="image matrix projects">
-        <tr>
-            <td>Projects</td>
+    <div title="image matrix projects">
+        <table border="1">
+            <tr>
+                <td>Projects</td>
+                @foreach (var prj in projects)
+                {
+                    <td>@prj.NameCSproj()</td>
+
+                }
+            </tr>
+            @{
+                int i = 1;
+            }
             @foreach (var prj in projects)
             {
-                <td>@prj.NameCSproj()</td>
+                <tr>
+                    <td>
+                        @(i++) ) @prj.NameCSproj()
+                        <br />
+                        Direct ref: @prj.ProjectsReferences.Count
+                        <br />
+                        Total ref: @prj.TotalReferences()
+                    </td>
 
+                    @foreach (var prj2 in projects2)
+                    {
+                        if (prj2 == prj)
+                        {
+                            <td style='text-align:center;'>X</td>
+                        }
+                        else
+                        {
+                            string style = "style='text-align:center;'";
+                            int found = prj.FindReferenceRec(prj2);
+                            if (found == 1)
+                            {
+                                style = "style='text-align:center;background-color: yellow;color: red;'";
+                            }
+                            if (found == maxRef)
+                            {
+                                style = "style='text-align:center;background-color: red;color: blue;'";
+                            }
+                            if (found == maxRef - 1)
+                            {
+                                style = "style='text-align:center;background-color: tomato;color: blue;'";
+                            }
+                            <td @style>@(found == 0 ? "&nbsp;" : found)</td>
+                        }
+                    }
+
+
+
+                </tr>
             }
-        </tr>
-        @{
-            int i = 1;
-        }
-        @foreach (var prj in projects)
-        {
-            <tr>
-                <td>@(i++) ) @prj.NameCSproj() 
-                    <br />
-                    Direct ref: @prj.ProjectsReferences.Count 
-                    <br />
-                    Total ref: @prj.TotalReferences() 
-                </td>
-                
-                @foreach (var prj2 in projects2)
-                {
-                    if (prj2 == prj)
-                    {
-                        <td style='text-align:center;'>X</td>
-                    }
-                    else
-                    {
-                        string style = "style='text-align:center;'";
-                        int found = prj.FindReferenceRec(prj2);
-                        if (found==1){
-                                style = "style='text-align:center;background-color: yellow;color: red;'";                                                                
-                        }
-                        if (found == maxRef)
-                        {
-                            style = "style='text-align:center;background-color: red;color: blue;'";
-                        }
-                        if (found == maxRef-1)
-                        {
-                            style = "style='text-align:center;background-color: tomato;color: blue;'";
-                        }
-                        <td @style>@(found==0?"&nbsp;":found)</td>
-                    }
-                }
-
-                
-
-            </tr>
-        }
-    </table>
+        </table>
+    </div>
 
 }
