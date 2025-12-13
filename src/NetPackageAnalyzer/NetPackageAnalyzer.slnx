@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Solution Items/" />
+  <Project Path="NetPackageAnalyzeHistory/NetPackageAnalyzeHistory.csproj" />
+  <Project Path="NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj" />
+  <Project Path="NetPackageAnalyzerDiagram/NetPackageAnalyzerDiagram.csproj" />
+  <Project Path="NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj" />
+  <Project Path="NetPackageAnalyzerMetricsMSFT/NetPackageAnalyzerMetricsMSFT.csproj" />
+  <Project Path="NetPackageAnalyzerObjects/NetPackageAnalyzerObjects.csproj" />
+  <Project Path="NetPackageAnalyzerShowInConsole/NetPackageAnalyzerShowInConsole.csproj" />
+  <Project Path="NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj" />
+  <Project Path="NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj" />
+  <Project Path="NPA.GitInfo/NPA.GitInfo.csproj" />
+  <Project Path="NPA.HtmlData/NPA.HtmlData.csproj" />
+  <Project Path="NPA.Resources/NPA.Resources.csproj" />
+  <Project Path="NuGetInfo/NuGetInfo.csproj" />
+  <Project Path="Statistical/Statistical.csproj" />
+</Solution>
