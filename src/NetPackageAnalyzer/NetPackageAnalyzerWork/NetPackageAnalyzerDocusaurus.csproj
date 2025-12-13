@@ -88,7 +88,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="RazorBlade" Version="0.11.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+		<PackageReference Include="RazorBlade" Version="0.6.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 		<PackageReference Include="RSCG_TimeBombComment" Version="2023.12.19.1802" />
 		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="2.1.2">
 		  <PrivateAssets>all</PrivateAssets>

@@ -14,7 +14,7 @@
   
   
   <ItemGroup>
-		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.1.7" />
+		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.1.0" />
 	</ItemGroup>
 	<ItemGroup>
 		
