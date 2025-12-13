@@ -55,7 +55,7 @@ public class GenerateData
     }
     public async Task<bool> GenerateDataForSln(string folder)
     {
-        var sln = system.Directory.GetFiles(folder, "*.sln");
+        var sln = system.Directory.GetFiles(folder, "*.sln*");
         if (sln.Length != 1)
         {
             WriteLine($"Must be 1 sln in the {folder}");

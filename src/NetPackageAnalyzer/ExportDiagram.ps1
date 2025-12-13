@@ -5,7 +5,7 @@ function ProcessCsproj {
   )
 
 $version = "2024.904.427"
-$folderOutput= "D:\gth\PackageAnalyzer\docs_Temp"
+$folderOutput= "D:\eu\GitHub\PackageAnalyzer\src\documentation1\_Temp"
 $newNode = [xml]@"
 <MainData>
 <ItemGroup>
@@ -83,7 +83,7 @@ $csprojProcessed | ForEach-Object {
   $metricsFullFileName =$_.Replace(".csproj" , ".Metrics.xml")
   $metricsFileName = Split-Path $metricsFullFileName -leaf
   #Write-Host $metricsFileName
-  $newMetricsFileName =Join-Path  "D:\gth\PackageAnalyzer\docs_Temp" $metricsFileName
+  $newMetricsFileName =Join-Path  "D:\eu\GitHub\PackageAnalyzer\src\documentation1\_Temp" $metricsFileName
   # $newMetricsFileName= Resolve-Path $newMetricsFileName
   # $newMetricsFileName = $newMetricsFileName.Path
   Write-Host "move $metricsFullFileName to  $newMetricsFileName"

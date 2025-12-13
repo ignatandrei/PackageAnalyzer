@@ -6,9 +6,9 @@
     {
         args = new[] { "-h" };
         args = new[] { "generateFiles",
-            "--folder", @"D:\gth\PackageAnalyzer\src\NetPackageAnalyzer\",
+            "--folder", @"D:\eu\GitHub\PackageAnalyzer\src\NetPackageAnalyzer\",
             "-wg","HtmlSummary",
-            "--where", @"D:\gth\PackageAnalyzer\src\documentation1\",
+            "--where", @"D:\eu\GitHub\PackageAnalyzer\src\documentation1\",
             "--verbose","true"
         };
 

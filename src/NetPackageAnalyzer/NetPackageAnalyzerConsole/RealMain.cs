@@ -19,6 +19,9 @@ internal class RealMainExecuting
         Command cmdGenerate = new("generateFiles", "gf");
         cmdGenerate.Description= "Generate files for solution";
 
+        cmdGenerate.Options.Add(folderToHaveSln);
+        cmdGenerate.Options.Add(verbose);
+
         var folderGenerate = new Option<string>
         (name: "--where", "-w"
         
