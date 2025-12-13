@@ -24,12 +24,17 @@ public class GenerateHTML : GenerateFiles
             var modelData = Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData, assemblyDataFromMSFT,packDTO);
             if(modelData == null)
                 return string.Empty;
+            var r = new matzehuels_stacktower(modelData);
+            var jsonStackTower = await r.RenderAsync();
+
             var x = new HtmlSummary(modelData);
-            var html = x.Render();
+            var html = await x.RenderAsync();
 
 
             var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
             await system.File.WriteAllTextAsync(nameFile, html);
+            var tower= Path.Combine(where, $"{NameSolution}_tower.json");
+            await system.File.WriteAllTextAsync(tower, jsonStackTower);
             WriteJs(where); 
             var ex = new ExtractImages(nameFile);
             await ex.GetImagesAsync();

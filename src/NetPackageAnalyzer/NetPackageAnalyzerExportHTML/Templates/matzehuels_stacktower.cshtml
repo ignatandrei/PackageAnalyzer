@@ -1,0 +1,52 @@
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageProblemsDTO>>;
+@{
+    var projectDicts = Model.Item2;
+    var nameSolution = "Sol_"+GlobalsForGenerating.NameSolution;
+    var allProjects = projectDicts.ProjectByName().ToArray();
+    int i = 0;
+}
+
+{
+  "nodes": [
+
+@foreach (var proj in allProjects)
+{
+    i++;
+    var nameCsproj = proj.NameCSproj();
+    string id =(i==1)? "":",";
+    id+="{ \"id\": \"" + nameCsproj +"\"}\r\n" ;
+
+    @id
+}
+
+
+],
+"edges": [
+@{
+    i = 0;
+}
+@foreach (var proj in allProjects)
+{
+  
+   
+    var nameCsproj = proj.NameCSproj();
+    @foreach (var rel in proj.AlphabeticalProjectsReferences())
+    {
+        i++;
+        string idEdge = (i == 1) ? "" : ",";
+
+        @idEdge        
+        <text>
+            { "from": "@nameCsproj", "to": "@rel.NameCSproj()" }
+        </text>
+    }
+}
+
+
+
+
+
+
+
+]
+}
