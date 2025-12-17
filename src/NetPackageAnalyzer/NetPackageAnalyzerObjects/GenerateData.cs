@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzerObjects;
+﻿using NPA.BigResources;
+
+namespace NetPackageAnalyzerObjects;
 public class GenerateData
 {
     public GenerateData(IFileSystem system)
@@ -101,7 +103,11 @@ public class GenerateData
             text = p.OutputDotnetPackage(folder, PackageOptions.Vulnerable);
             vulnerablePackages = JsonSerializer.Deserialize<NS_GeneratedJson_vulnerablev1_gen_json.vulnerablev1_gen_json>(text);
         }
-        catch(Exception ex)
+        catch (ExceptionReadingPackages ex)
+        {
+            WriteLine($"Error reading packages! {ex.Message}");
+        }
+        catch (Exception ex)
         {
             WriteLine($"Error! {ex.Message}");
             WriteLine("please run the latest dotnet command");
@@ -163,12 +169,19 @@ public class GenerateData
             arrDataProjectsPath.AddRange(operation.ProjectsPath());
             arrData.AddRange(operation.TopLevelPackagesIDs());
         }
-
         if (arrDataProjectsPath.Count == 0)
         {
+            arrDataProjectsPath = p.ListOfProjects(GlobalsForGenerating.FullPathToSolution).ToList();
+        }
+            if (arrDataProjectsPath.Count == 0)
+        {
+            //obtain list of projects
+            
             WriteLine($"No projects in folder {folder}");
             return false;
         }
+
+
         projectsDict = new ProjectsDict(
             arrDataProjectsPath
             .Distinct()
@@ -219,9 +232,9 @@ public class GenerateData
         }
 
         var problems =
-            outdatedPackages!.PerProjectPathWithVersion()
-            .Union(deprecatedPackages!.PerProjectPathWithVersion())
-            .Union(vulnerablePackages!.PerProjectPathWithVersion())
+            (outdatedPackages?.PerProjectPathWithVersion() ?? [])
+            .Union((deprecatedPackages?.PerProjectPathWithVersion() ?? []))
+            .Union((vulnerablePackages?.PerProjectPathWithVersion() ?? []))
             .ToArray();
 
         foreach (var pathPackage in problems)
@@ -404,59 +417,107 @@ public class GenerateData
         return (ret,publicClassRefData,assemblyMSFTData);
     }
 
-    protected string? GenerateDocsForClasses(string fullPathToSolution, string folderResults)
+    protected async Task<string?> GenerateDocsForClasses(string?[] projects, string folderResults)
     {
-        string fldTemp = string.Empty;
-        try
+
+        var fldTemp = folderResults + "_Temp";
+        if (!Directory.Exists(fldTemp))
+            Directory.CreateDirectory(fldTemp);
+        var temp = Path.GetTempPath();
+        var pathZip = Path.Combine(temp, "metrics" + DateTime.Now.ToString("yyyyMMdd"));
+        await ZipBigFiles.SaveToFile(pathZip,EmbeddedResource.metrics_exe_zip);
+        foreach (var proj in projects)
         {
-            var folder = Path.GetDirectoryName(fullPathToSolution)??"";
-            fldTemp = folderResults + "_Temp";
-            if (!Directory.Exists(fldTemp))
-                Directory.CreateDirectory(fldTemp);
-            RscgExportDataDiagram pwsh = new("2024.904.427", fldTemp);
-            var code = pwsh.GenerateCode();
-            var file = Path.Combine(folder, "ExportDiagram.ps1");
-            File.WriteAllText(file, code);
-            Console.WriteLine("Please wait - generate diagram classes");
-            ProcessStartInfo startInfo = new ()
+            if (string.IsNullOrWhiteSpace(proj))
+                continue;
+            Console.WriteLine($"Calculating code metrics for {proj}");
+            string nameProj = Path.GetFileNameWithoutExtension(proj);
+            string outputFile = Path.Combine(fldTemp, nameProj + ".xml");
+            ProcessStartInfo startInfo = new()
             {
-                FileName = "powershell.exe",
-                WorkingDirectory = folder,
-                Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{file}\"",
+                FileName =Path.Combine(pathZip, "Metrics.exe"),
+                WorkingDirectory = pathZip,
+                Arguments = $"/p:{proj} /out:{outputFile}",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
-
+            Console.WriteLine($"executing in folder {startInfo.WorkingDirectory} : {startInfo.FileName} with args {startInfo.Arguments}");
             using (Process process = new Process())
             {
-                process.StartInfo = startInfo;
-                process.Start();
-
-                string output = process.StandardOutput.ReadToEnd();
-                string error = process.StandardError.ReadToEnd();
-
-                process.WaitForExit();
-
-                if (process.ExitCode != 0)
+                try
                 {
-                    Console.WriteLine($"PowerShell Error: {error}");
+                    process.StartInfo = startInfo;
+                    process.Start();
+                    await process.WaitForExitAsync();
+
+                    string output = process.StandardOutput.ReadToEnd();
+                    string error = process.StandardError.ReadToEnd();
+                    if (!string.IsNullOrWhiteSpace(error))
+                        throw new ArgumentException($"error for {proj} metrics {error}");
                 }
-                else
+                catch(Exception ex)
                 {
-                    Console.WriteLine(output);
+                    Console.WriteLine(ex.Message);
+                    throw;
                 }
-                return fldTemp;
 
             }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Exception!! " + ex.Message);
-            Console.WriteLine("Exception!! " + ex.StackTrace);
-            return null;
-        }
+        return fldTemp;
+            //TODO: relation metrics,  metrics.exe
+            //string fldTemp = string.Empty;
+            //try
+            //{
+            //    var folder = Path.GetDirectoryName(fullPathToSolution)??"";
+            //    fldTemp = folderResults + "_Temp";
+            //    if (!Directory.Exists(fldTemp))
+            //        Directory.CreateDirectory(fldTemp);
+            //    RscgExportDataDiagram pwsh = new("2024.904.427", fldTemp);
+            //    var code = pwsh.GenerateCode();
+            //    var file = Path.Combine(folder, "ExportDiagram.ps1");
+            //    File.WriteAllText(file, code);
+            //    Console.WriteLine("Please wait - generate diagram classes");
+            //    ProcessStartInfo startInfo = new ()
+            //    {
+            //        FileName = "powershell.exe",
+            //        WorkingDirectory = folder,
+            //        Arguments = $"-NoProfile -ExecutionPolicy Bypass -File \"{file}\"",
+            //        RedirectStandardOutput = true,
+            //        RedirectStandardError = true,
+            //        UseShellExecute = false,
+            //        CreateNoWindow = true
+            //    };
+
+            //    using (Process process = new Process())
+            //    {
+            //        process.StartInfo = startInfo;
+            //        process.Start();
+
+            //        string output = process.StandardOutput.ReadToEnd();
+            //        string error = process.StandardError.ReadToEnd();
+
+            //        process.WaitForExit();
+
+            //        if (process.ExitCode != 0)
+            //        {
+            //            Console.WriteLine($"PowerShell Error: {error}");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine(output);
+            //        }
+            //        return fldTemp;
+
+//        }
+//}
+        //catch (Exception ex)
+        //{
+        //    Console.WriteLine("Exception!! " + ex.Message);
+        //    Console.WriteLine("Exception!! " + ex.StackTrace);
+        //    return null;
+        //}
         
     }
 }

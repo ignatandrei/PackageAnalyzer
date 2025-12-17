@@ -139,7 +139,10 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
         //ArgumentNullException.ThrowIfNull(projectsDict);
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
-        var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+        //var tempFolder = await GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+        var projectFiles = (projectsDict!.Select(it => it.Value?.PathProject).ToArray()) ?? [];
+        var tempFolder = await GenerateDocsForClasses(projectFiles, folderResults);
+         
         ClassesRefData? refSummary = null;
         PublicClassRefData? publicClassRefData = null;
         AssemblyDataFromMSFT? assemblyDataFromMSFT = null;

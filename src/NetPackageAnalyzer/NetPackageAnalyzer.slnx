@@ -9,6 +9,7 @@
   <Project Path="NetPackageAnalyzerShowInConsole/NetPackageAnalyzerShowInConsole.csproj" />
   <Project Path="NetPackageAnalyzerTests/NetPackageAnalyzerTests.csproj" />
   <Project Path="NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj" />
+  <Project Path="NPA.BigResources/NPA.BigResources.csproj" Id="1fe28c4e-a48e-4eb0-8d23-2babac199dcf" />
   <Project Path="NPA.GitInfo/NPA.GitInfo.csproj" />
   <Project Path="NPA.HtmlData/NPA.HtmlData.csproj" />
   <Project Path="NPA.Resources/NPA.Resources.csproj" />

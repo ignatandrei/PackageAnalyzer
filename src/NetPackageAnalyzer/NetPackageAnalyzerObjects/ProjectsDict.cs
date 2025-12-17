@@ -421,40 +421,47 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         ProcessOutput po = new();
         foreach (var project in this.Values)
         {
-            var data = po.OutputDotnetReference(project.PathProject);
-            data = data.Replace("\r\n", "\n");
-            var lines = data.Split("\n");
-            bool separator = false;
-            var startFolder = Path.GetDirectoryName(project.PathProject)!;
-            for (int i = 0; i < lines.Length; i++)
+            try
             {
-                if (lines[i].Contains("--"))
+                var data = po.OutputDotnetReference(project.PathProject);
+                data = data.Replace("\r\n", "\n");
+                var lines = data.Split("\n");
+                bool separator = false;
+                var startFolder = Path.GetDirectoryName(project.PathProject)!;
+                for (int i = 0; i < lines.Length; i++)
                 {
-                    separator = true;
-                    continue;
-                }
-                if (!separator) continue;
-                //from now start project references
-                var csproj = lines[i].Trim();
-                if (csproj.Length == 0) continue;
-                var realCsproj = Path.Combine(startFolder, csproj);
-                var nameCsproj = Path.GetFileNameWithoutExtension(csproj);
-                var arr = this
-                    .Where(it => string.Equals( it.Value.NameCSproj() , nameCsproj,StringComparison.InvariantCultureIgnoreCase))
-                    .ToArray();
-                if (arr.Length == 0)
-                {
-                    throw new Exception("no csproj for " + csproj);
-                }
-                else if (arr.Length == 1)
-                {
-                    project.ProjectsReferences.Add(arr[0].Value);
-                }
-                else
-                {
-                    throw new Exception("multiple projects with same name, different folders");
-                }
+                    if (lines[i].Contains("--"))
+                    {
+                        separator = true;
+                        continue;
+                    }
+                    if (!separator) continue;
+                    //from now start project references
+                    var csproj = lines[i].Trim();
+                    if (csproj.Length == 0) continue;
+                    var realCsproj = Path.Combine(startFolder, csproj);
+                    var nameCsproj = Path.GetFileNameWithoutExtension(csproj);
+                    var arr = this
+                        .Where(it => string.Equals(it.Value.NameCSproj(), nameCsproj, StringComparison.InvariantCultureIgnoreCase))
+                        .ToArray();
+                    if (arr.Length == 0)
+                    {
+                        throw new Exception("no csproj for " + csproj);
+                    }
+                    else if (arr.Length == 1)
+                    {
+                        project.ProjectsReferences.Add(arr[0].Value);
+                    }
+                    else
+                    {
+                        throw new Exception("multiple projects with same name, different folders");
+                    }
 
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error "+ e.Message);
             }
         }
     }

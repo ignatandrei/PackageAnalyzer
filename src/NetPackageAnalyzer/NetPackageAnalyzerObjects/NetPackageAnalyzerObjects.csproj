@@ -4,7 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <NoWarn>CS0436,NU5111</NoWarn>
+	  <NoWarn>CS0436,NU5111,NU1900</NoWarn>
 
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
@@ -40,6 +40,7 @@
 	  <ProjectReference Include="..\NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj" />
+	  <ProjectReference Include="..\NPA.BigResources\NPA.BigResources.csproj" />
 	  <ProjectReference Include="..\NPA.GitInfo\NPA.GitInfo.csproj" />
 	  <ProjectReference Include="..\NuGetInfo\NuGetInfo.csproj" />
 	  <ProjectReference Include="..\Statistical\Statistical.csproj" />

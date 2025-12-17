@@ -1,4 +1,8 @@
-﻿namespace NetPackageAnalyzerExportHTML;
+﻿using NPA.BigResources;
+using System.Diagnostics;
+using System.IO.Compression;
+
+namespace NetPackageAnalyzerExportHTML;
 
 public class GenerateHTML : GenerateFiles
 {
@@ -13,17 +17,18 @@ public class GenerateHTML : GenerateFiles
         {
             if (!Directory.Exists(where))
                 Directory.CreateDirectory(where);
-
             var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
-            tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution??"", folderResults??"")??"";
+            var projectFiles = (projectsDict!.Select(it => it.Value?.PathProject).ToArray())??[];
+            tempFolder = await GenerateDocsForClasses(projectFiles, folderResults ?? "") ?? "";
             var (refSummary, publicClassRefData, assemblyDataFromMSFT) = AnalyzeDiagrams(tempFolder);
             //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
-            if (projectsDict == null || modelMore1Version== null)
+            if (projectsDict == null || modelMore1Version == null)
                 return string.Empty;
-            var packDTO = base.packDTO ;            
-            var modelData = Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData, assemblyDataFromMSFT,packDTO);
-            if(modelData == null)
+            var packDTO = base.packDTO;
+            var modelData = Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData, assemblyDataFromMSFT, packDTO);
+            if (modelData == null)
                 return string.Empty;
+            
             var r = new matzehuels_stacktower(modelData);
             var jsonStackTower = await r.RenderAsync();
 
@@ -33,18 +38,17 @@ public class GenerateHTML : GenerateFiles
 
             var nameFile = Path.Combine(where, $"{NameSolution}_summary.html");
             await system.File.WriteAllTextAsync(nameFile, html);
-            var tower= Path.Combine(where, $"{NameSolution}_tower.json");
-            await system.File.WriteAllTextAsync(tower, jsonStackTower);
-            WriteJs(where); 
+            var okTower = await GenerateStackTower(where, jsonStackTower);
+            WriteJs(where);
             var ex = new ExtractImages(nameFile);
             await ex.GetImagesAsync();
-            MDSummaryData md = new ();
+            MDSummaryData md = new();
             md.nameSolution = GlobalsForGenerating.NameSolution;
-            md.ExistsMajorDiffers= (modelMore1Version.KeysPackageMultipleMajorDiffers().Length > 0);
-            md.ExistsVulnerable = infoSol.nrVulnerable>0;
+            md.ExistsMajorDiffers = (modelMore1Version.KeysPackageMultipleMajorDiffers().Length > 0);
+            md.ExistsVulnerable = infoSol.nrVulnerable > 0;
 
             var mdSummary = new MDSummary(md);
-            var mdHtml = mdSummary.Render();
+            var mdHtml = await mdSummary.RenderAsync();
             var nameFileMD = Path.Combine(where, $"{NameSolution}_summary.md");
             await system.File.WriteAllTextAsync(nameFileMD, mdHtml);
             return nameFile;
@@ -65,6 +69,43 @@ public class GenerateHTML : GenerateFiles
             }
         }
     }
+
+    private async Task<bool> GenerateStackTower(string where, string jsonStackTower)
+    {
+        var temp = Path.GetTempPath();
+        var pathZip = Path.Combine(temp, "stacktower" + DateTime.Now.ToString("yyyyMMdd"));
+        await ZipBigFiles.SaveToFile(pathZip, EmbeddedResource.stacktower_exe_zip);
+
+        var tower = Path.Combine(where, $"{NameSolution}_tower.json");
+        await system.File.WriteAllTextAsync(tower, jsonStackTower);
+        var outputSvgFile = $"{tower}.svg";
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName =Path.Combine(pathZip, "stacktower.exe"),
+            Arguments = $"render {tower} -t tower --style handdrawn --popups -o {outputSvgFile}",
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            CreateNoWindow = true,
+            WorkingDirectory = pathZip
+        };
+        try
+        {
+            // Create and start the process
+            Process process = new Process { StartInfo = startInfo };
+            process.Start();
+            // Wait for the process to finish
+            await process.WaitForExitAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("error for generating stacks"+ex.Message);
+            throw;
+        }
+            //TODO : log the result
+        return File.Exists(outputSvgFile);
+
+    }
+
     void WriteJs(string where)
     {
         var res = MyResource.GetMermaidJs();

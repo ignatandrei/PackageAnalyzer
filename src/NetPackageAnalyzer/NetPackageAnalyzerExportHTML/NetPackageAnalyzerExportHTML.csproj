@@ -5,10 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-	  <NoWarn>CS0436,NU5111</NoWarn>
+	  <NoWarn>CS0436,NU5111,NU1900</NoWarn>
 
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	  <WarningsNotAsErrors>RB0003</WarningsNotAsErrors>
+	  <WarningsNotAsErrors>RB0003,NU1900</WarningsNotAsErrors>
   </PropertyGroup>
 
   
@@ -20,6 +20,7 @@
 		
 		<PackageReference Include="RazorBlade" Version="0.6.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 		<ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
+		<ProjectReference Include="..\NPA.BigResources\NPA.BigResources.csproj" />
 		<ProjectReference Include="..\NPA.HtmlData\NPA.HtmlData.csproj" />
 		<ProjectReference Include="..\NPA.Resources\NPA.Resources.csproj" />
 	</ItemGroup>

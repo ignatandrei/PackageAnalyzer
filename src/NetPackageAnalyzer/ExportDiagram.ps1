@@ -77,7 +77,7 @@ $csprojProcessed
 dotnet build $solution   
 
 dotnet build $solution /t:Metrics
-
+pause
 $csprojProcessed | ForEach-Object {
   #Write-Host "metrics " $_
   $metricsFullFileName =$_.Replace(".csproj" , ".Metrics.xml")
