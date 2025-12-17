@@ -139,7 +139,10 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
         //ArgumentNullException.ThrowIfNull(projectsDict);
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
-        var tempFolder = GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+        //var tempFolder = await GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
+        var projectFiles = (projectsDict!.Select(it => it.Value?.PathProject).ToArray()) ?? [];
+        var tempFolder = await GenerateDocsForClasses(projectFiles, folderResults);
+         
         ClassesRefData? refSummary = null;
         PublicClassRefData? publicClassRefData = null;
         AssemblyDataFromMSFT? assemblyDataFromMSFT = null;
@@ -162,7 +165,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
                 var fileDest = Path.Combine(folderResults,"Projects",nameCsproj );
                 if(!Directory.Exists(fileDest))
                 {
-                    //TB:2025-01-01 solve wrong the name of the csproj 
+                    //TB:2026-01-01 solve wrong the name of the csproj 
                     //Console.WriteLine($"Directory {fileDest} does not exist");
                     File.Delete(fileMd);
                     continue;

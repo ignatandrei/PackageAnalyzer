@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <NoWarn>CS0436,NU5111</NoWarn>
+	  <NoWarn>CS0436,NU5111,NU1900</NoWarn>
 
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
@@ -21,11 +21,11 @@
   </ItemGroup>
   
 	<ItemGroup>
-		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="2.0.10">
+		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="2.1.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.1.7" />
+		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.1.0" />
 		<PackageReference Include="Morris.Moxy" Version="1.10.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 		<!--<PackageReference Include="rscgutils" Version="2024.1859.1955" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
 		<!--<PackageReference Include="rscgutils" Version="2024.2000.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
@@ -40,6 +40,7 @@
 	  <ProjectReference Include="..\NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj" />
+	  <ProjectReference Include="..\NPA.BigResources\NPA.BigResources.csproj" />
 	  <ProjectReference Include="..\NPA.GitInfo\NPA.GitInfo.csproj" />
 	  <ProjectReference Include="..\NuGetInfo\NuGetInfo.csproj" />
 	  <ProjectReference Include="..\Statistical\Statistical.csproj" />

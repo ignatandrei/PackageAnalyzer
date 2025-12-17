@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<Version>8.2024.429.0700</Version>
-	  <NoWarn>CS0436,NU5111</NoWarn>
+	  <NoWarn>CS0436,NU5111,NU1900</NoWarn>
 
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-
+	  <WarningsNotAsErrors>RB0003</WarningsNotAsErrors>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -87,10 +87,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="RazorBlade" Version="0.6.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 		<PackageReference Include="RSCG_TimeBombComment" Version="2023.12.19.1802" />
-		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="2.0.10">
+		<PackageReference Include="ThisAssembly.AssemblyInfo" Version="2.1.2">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

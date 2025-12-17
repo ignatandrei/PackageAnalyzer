@@ -3,57 +3,63 @@
 namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting
 {
-    static Option<bool> verbose = new("--verbose", "Show verbose output");
+    static Option<bool> verbose = new("--verbose", "-v");
     static Option<string> folderToHaveSln = new
-            (name: "--folder",
-            description: "folder where find the solution .sln",
-            getDefaultValue: () => Environment.CurrentDirectory);
+            (name: "--folder","-f"            
+            );
 
     static RealMainExecuting()
     {
-        folderToHaveSln.AddAlias("-f");
-        verbose.AddAlias("-v");
+        folderToHaveSln.Description = "folder to have sln file";
+        folderToHaveSln.DefaultValueFactory = (_) => Environment.CurrentDirectory;
+        verbose.Description= "verbose output";
     }
     private static Command AddGenerateFiles()
     {
-        Command cmdGenerate = new("generateFiles", "Generate files for documentation");
-        cmdGenerate.AddAlias("gf");
+        Command cmdGenerate = new("generateFiles", "gf");
+        cmdGenerate.Description= "Generate files for solution";
+
+        cmdGenerate.Options.Add(folderToHaveSln);
+        cmdGenerate.Options.Add(verbose);
 
         var folderGenerate = new Option<string>
-        (name: "--where",
-        description: "where generated files"
+        (name: "--where", "-w"
+        
         //getDefaultValue: () => Path.Combine(Environment.CurrentDirectory, "Analysis")
         );
-        folderGenerate.AddAlias("-w");
+        folderGenerate.Description = "where generated files";
 
-        cmdGenerate.AddOption(folderGenerate);
+        cmdGenerate.Options.Add(folderGenerate);
 
         var generateData = new Option<WhatToGenerate>
-        (name: "--whatGenerate",
-        description: "what to generate - 1= docusaurus , 2=summary"
-        //,getDefaultValue: () => WhatToGenerate.Docusaurus
+        (name: "--whatGenerate", "-wg"
+       
         );
 
 
-        generateData.AddAlias("-wg");
-        cmdGenerate.AddOption(generateData);
+        generateData.Description = "what to generate - 1= docusaurus , 2=summary";
+        generateData.DefaultValueFactory = (_) => WhatToGenerate.Docusaurus;
+        cmdGenerate.Options.Add(generateData);
 
         var runProduct = new Option<bool>
-        (name: "--runProduct",
-        description: "run product after",
-        getDefaultValue: () => false);
+        (name: "--runProduct", "-rp");
+        runProduct.Description= "run product after";
+        
 
-        runProduct.AddAlias("-rp");
+        runProduct.DefaultValueFactory=(_)=>false;
 
 
-        cmdGenerate.AddOption(runProduct);
-        cmdGenerate.SetHandler(GenerateHandler,
-            folderToHaveSln,
-            folderGenerate,
-            generateData,
-            verbose,
-            runProduct);
-
+        cmdGenerate.Options.Add(runProduct);
+        cmdGenerate.SetAction(pr =>
+        {
+            var folder = pr.GetValue(folderToHaveSln)!;
+            var where = pr.GetValue(folderGenerate)!;
+            var what = pr.GetValue(generateData);
+            var verb = pr.GetValue(verbose);
+            var runProd = pr.GetValue(runProduct);
+            return GenerateHandler(folder, where, what, verb, runProd);
+        });
+        
         return cmdGenerate;
 
     }
@@ -61,16 +67,22 @@ internal class RealMainExecuting
     {
 
         Command cmdGenerate = new("showConsole", "Show data in Console");
-        cmdGenerate.AddAlias("sc");
+        cmdGenerate.Aliases.Add("sc");
         var generateData = new Option<EConsoleToGenerate>
-        (name: "--whatGenerate",
-        description: "what to generate",
-        getDefaultValue: () => EConsoleToGenerate.MajorVersionDiffer);
-        cmdGenerate.AddOption(generateData);
-        cmdGenerate.SetHandler(GenerateHandlerMajorDiff,
-            verbose,
-            folderToHaveSln
-            );
+        (name: "--whatGenerate", "-wg");
+        generateData.Description = "what to generate";
+        generateData.DefaultValueFactory= (_) => EConsoleToGenerate.MajorVersionDiffer;
+        cmdGenerate.Options.Add(generateData);
+        cmdGenerate.SetAction(pr =>
+        {
+            var v = pr.GetValue(verbose);
+            var f = pr.GetValue(folderToHaveSln)!;
+            return GenerateHandlerMajorDiff(v,f);
+        });
+        //cmdGenerate.SetHandler(GenerateHandlerMajorDiff,
+        //    verbose,
+        //    folderToHaveSln
+        //    );
 
         return cmdGenerate;
     }
@@ -102,8 +114,8 @@ internal class RealMainExecuting
         GlobalsForGenerating.NameVersion = TheAssemblyInfo.GeneratedNameNice;
         WriteLine("Version:" + ThisAssembly.Info.Version.ToString());
         RootCommand rootCommand = new();
-        rootCommand.AddGlobalOption(verbose);
-        rootCommand.AddGlobalOption(folderToHaveSln);
+        rootCommand.Options.Add(verbose);
+        rootCommand.Options.Add(folderToHaveSln);
         rootCommand.Description= @$"
 Generate documetation for a solution
 Please use the following commands in the folder with the sln file
@@ -158,7 +170,8 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
 
         }
         WriteLine("args:" + string.Join(" ", args));
-        await rootCommand.InvokeAsync(args);
+        ParseResult parseResult = rootCommand.Parse(args);
+        await parseResult.InvokeAsync();
         return 0;
     }
     private static async Task GenerateHandler(string folder, string where, WhatToGenerate what, bool verbose, bool runProduct)

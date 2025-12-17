@@ -1,24 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-	  <NoWarn>CS0436,NU5111</NoWarn>
+	  <NoWarn>CS0436,NU5111,NU1900</NoWarn>
 
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <WarningsNotAsErrors>RB0003,NU1900</WarningsNotAsErrors>
   </PropertyGroup>
 
   
   
   <ItemGroup>
-		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="21.1.7" />
+		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.1.0" />
 	</ItemGroup>
 	<ItemGroup>
 		
 		<PackageReference Include="RazorBlade" Version="0.6.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 		<ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
+		<ProjectReference Include="..\NPA.BigResources\NPA.BigResources.csproj" />
 		<ProjectReference Include="..\NPA.HtmlData\NPA.HtmlData.csproj" />
 		<ProjectReference Include="..\NPA.Resources\NPA.Resources.csproj" />
 	</ItemGroup>

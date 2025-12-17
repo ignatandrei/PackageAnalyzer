@@ -28,7 +28,7 @@ $newNode = [xml]@@"
 $backFile =$project + ".bak"
 Copy-Item $project $backFile 
 dotnet add $project package RSCG_ExportDiagram -v $version 
-dotnet add $project package Microsoft.CodeAnalysis.Metrics --version 3.3.4
+dotnet add $project package Microsoft.CodeAnalysis.Metrics --version 4.14.0
 
 $proj = [xml](Get-Content $project)
 
@@ -51,7 +51,7 @@ $proj.Save($project)
 return $proj
 }
 
-$solution  = gci *.sln | %{ $_.FullName}
+$solution  = gci *.sln* | %{ $_.FullName}
 $folderSolution = Split-Path $solution
 # Write-Host $folderSolution
 $csprojProcessed=@@()
