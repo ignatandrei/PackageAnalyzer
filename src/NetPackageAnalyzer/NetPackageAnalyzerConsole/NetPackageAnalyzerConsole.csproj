@@ -5,7 +5,7 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<NoWarn>CS0436,NU5111,,NU1900</NoWarn>
+		<NoWarn>CS0436,NU5111,NU1900</NoWarn>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);RSCG_InterceptMethod</InterceptorsPreviewNamespaces>
@@ -30,7 +30,7 @@
 	  <ProjectReference Include="..\NPA.GitInfo\NPA.GitInfo.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>9.2025.1217.1822</Version>
+		<Version>10.2025.1217.1822</Version>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>
 		<Authors>Andrei Ignat</Authors>
