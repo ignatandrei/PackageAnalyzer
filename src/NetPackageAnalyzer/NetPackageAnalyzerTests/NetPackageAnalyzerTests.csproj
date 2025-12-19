@@ -22,7 +22,18 @@
     <PackageReference Include="MSTest.TestFramework" Version="4.0.2" />
     <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="22.1.0" />
   </ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="Podimo.ConstEmbed" Version="1.0.2" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+	</ItemGroup>
+	<PropertyGroup>
+		<!-- The namespace under which we generate the constants. -->
+		<ConstEmbedNamespace>GeneratedRSCG</ConstEmbedNamespace>
+		<!-- The visibility of the classes in which the constants are declared. -->
+		<ConstEmbedVisibility>public</ConstEmbedVisibility>
+	</PropertyGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="why/*.txt" ConstEmbed="WHY" />
+	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NetPackageAnalyzerWork\NetPackageAnalyzerDocusaurus.csproj" />
     <ProjectReference Include="..\NuGetInfo\NuGetInfo.csproj" />
@@ -32,5 +43,8 @@
   <ItemGroup>
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
-
+	<PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
+	</PropertyGroup>
 </Project>
