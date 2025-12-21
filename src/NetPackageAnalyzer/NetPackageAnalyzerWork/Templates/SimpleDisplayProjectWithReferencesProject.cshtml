@@ -21,7 +21,7 @@ foreach (var item in Model.Item2.AlphabeticalProjectsReferences())
 {
     var recModel = new Tuple<string, ProjectData>(nameCsproj, item);
     SimpleDisplayProjectWithReferencesProject rec = new SimpleDisplayProjectWithReferencesProject(recModel);
-    var data=rec.Render();
+    var data=await rec.RenderAsync();
 @data
 }
 }
