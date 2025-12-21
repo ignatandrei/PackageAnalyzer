@@ -1,9 +1,9 @@
 ﻿namespace NetPackageAnalyzerDiagram;
 public record RscgExportDataDiagram(string version, string pathToGenerate)
 {
-    public string GenerateCode()
+    public  async Task< string> GenerateCode()
     {        
        var data = new Templates.RSCGExportDiagramPowershell(this);
-       return data.Render();
+       return await data.RenderAsync();
     }
 }

@@ -136,6 +136,8 @@ public partial record ProjectData(string PathProject, string folderSolution)
     
     public bool IsTestProject()
     {
+        //TODO: <Project Sdk="MSTest.Sdk">
+        //see https://github.com/dotnet/eShop
         return Packages.Any(it => it.IsTest());
     }
     public string NameCSproj()

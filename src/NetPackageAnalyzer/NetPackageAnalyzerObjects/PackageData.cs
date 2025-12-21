@@ -5,6 +5,8 @@ public partial record PackageData(string packageVersionId): PackageGatherInfo(pa
     {
         if (packageVersionId.ToLowerInvariant().StartsWith("microsoft.test"))
             return true;
+        if (packageVersionId.ToLowerInvariant().StartsWith("tunit"))
+            return true;
 
         if (packageVersionId.ToLowerInvariant().StartsWith("nunit"))
             return true;

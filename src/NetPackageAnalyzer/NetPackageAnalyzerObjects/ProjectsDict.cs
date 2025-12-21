@@ -290,7 +290,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         get
         {
             return this.Values
-                .Where(it => it.Packages.Any(it=>it.IsTest()))
+                .Where(it => it.IsTestProject())
                 .ToArray();
                 ;
         }

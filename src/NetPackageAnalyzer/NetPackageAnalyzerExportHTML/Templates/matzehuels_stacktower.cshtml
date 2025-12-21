@@ -14,14 +14,14 @@
     i++;
     var nameCsproj = proj.NameCSproj();
     string id =(i==1)? "":",";
-    id += "{ \"id\": \"" + nameCsproj;
+    id += "{ \"id\": \"" + nameCsproj +"\"";
     id += ",\"meta\": {";
     id += "\"description\": \"" + nameCsproj+ "\"";
     //TODO :        
     //"repo_last_commit": "2025-12-02",
     //"repo_last_release": "2025-11-29"
     id += "}";
-    id += "\"}\r\n" ;
+    id += "}\r\n" ;
 
     @id
 }

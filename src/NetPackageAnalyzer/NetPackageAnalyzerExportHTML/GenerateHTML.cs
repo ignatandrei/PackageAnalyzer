@@ -78,11 +78,22 @@ public class GenerateHTML : GenerateFiles
 
         var tower = Path.Combine(where, $"{NameSolution}_tower.json");
         await system.File.WriteAllTextAsync(tower, jsonStackTower);
-        var outputSvgFile = $"{tower}.svg";
+        string outputSvgFile = await ExecuteStackTower(pathZip, tower, "barycenter");
+        outputSvgFile = await ExecuteStackTower(pathZip, tower, "optimal");
+        //TODO : log the result
+        return File.Exists(outputSvgFile);
+
+    }
+
+    private static async Task<string> ExecuteStackTower(string pathZip, string tower ,string ordering)
+    {
+        //TODO: move to images_eShop_summary
+        var outputSvgFile = $"{tower}_{ordering}.svg";
+        
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
-            FileName =Path.Combine(pathZip, "stacktower.exe"),
-            Arguments = $"render {tower} -t tower --style handdrawn --popups -o {outputSvgFile}",
+            FileName = Path.Combine(pathZip, "stacktower.exe"),
+            Arguments = $"render {tower} -t tower --style handdrawn --popups --ordering {ordering} -o {outputSvgFile}",
             UseShellExecute = false,
             RedirectStandardOutput = true,
             CreateNoWindow = true,
@@ -98,12 +109,11 @@ public class GenerateHTML : GenerateFiles
         }
         catch (Exception ex)
         {
-            Console.WriteLine("error for generating stacks"+ex.Message);
+            Console.WriteLine("error for generating stacks" + ex.Message);
             throw;
         }
-            //TODO : log the result
-        return File.Exists(outputSvgFile);
 
+        return outputSvgFile;
     }
 
     void WriteJs(string where)
