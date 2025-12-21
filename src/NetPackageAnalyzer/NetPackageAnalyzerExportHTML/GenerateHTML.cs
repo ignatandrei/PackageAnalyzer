@@ -88,7 +88,7 @@ public class GenerateHTML : GenerateFiles
     private static async Task<string> ExecuteStackTower(string pathZip, string tower ,string ordering)
     {
         //TODO: move to images_eShop_summary
-        var outputSvgFile = $"{tower}_{ordering}.svg";
+        var outputSvgFile = $"{tower}_1_{ordering}.svg";
         
         ProcessStartInfo startInfo = new ProcessStartInfo
         {

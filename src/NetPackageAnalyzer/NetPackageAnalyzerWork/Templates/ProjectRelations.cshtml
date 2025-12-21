@@ -103,7 +103,7 @@ flowchart LR
 {
     var recModel = new Tuple<string, ProjectData>(nameCsproj, rel);
     var rec = new SimpleDisplayProjectWithReferencesProject(recModel);
-    var data = rec.Render();
+    var data = await rec.RenderAsync();
     @data
 
 }

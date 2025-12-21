@@ -659,7 +659,7 @@
     *@
     <br />
     <h2 id="matrix-projects">Matrix Projects</h2>
-    @matrixProjects.Render()
+    @(await matrixProjects.RenderAsync())
 
     <h2 id="projects-without-tests"> @nrProjectsNoTests Projects (not counting tests projects!)</h2>
     <div class="mermaid" title="image projects without tests">
@@ -946,29 +946,29 @@
 
     <h2 id="maintainability">Maintainability</h2>
     <h3>Maintainability per assembly</h3>
-    @maintAssDisplay.Render()
+    @(await maintAssDisplay.RenderAsync())
 
     <h3>Maintainability per class</h3>
-    @maintClassDisplay.Render()
+    @(await maintClassDisplay.RenderAsync())
 
     <h3>Maintainability per method</h3>
-    @maintMethodDisplay.Render()
+    @(await maintMethodDisplay.RenderAsync())
 
     <h2 id="coupling">Coupling</h2>
     <h3>Coupling per assembly</h3>
-    @CCAssDisplay.Render()
+    @(await CCAssDisplay.RenderAsync())
     <h3>Coupling per Class</h3>
-    @CCClassDisplay.Render()
+    @(await CCClassDisplay.RenderAsync())
 
     <h2 id="Cyclomatic-Complexity">Cyclomatic Complexity</h2>
     <h3>Cyclomatic Complexity per assembly</h3>
-    @CycAssDisplay.Render()
+    @(await CycAssDisplay.RenderAsync())
 
     <h3>Cyclomatic Complexity per class</h3>
-    @CycClassDisplay.Render()
+    @(await CycClassDisplay.RenderAsync())
 
     <h3>Cyclomatic Complexity per method</h3>
-    @CycMethodDisplay.Render()
+    @(await CycMethodDisplay.RenderAsync())
 
 
     <h2 id="number-of-classes-per-assembly"> Number of classes per assembly</h2>
@@ -978,7 +978,7 @@
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
 
-    @namePerCountDisplayThreshold.Render()
+    @(await namePerCountDisplayThreshold.RenderAsync())
 
     <h2 id="number-of-methods-per-assembly"> Number of methods per assembly</h2>
 
@@ -988,7 +988,7 @@
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
 
-    @namePerCountDisplayThreshold.Render()
+    @(await namePerCountDisplayThreshold.RenderAsync())
     <h2 id="number-of-methods-per-class"> Number of methods per class</h2>
 
     @{
@@ -997,7 +997,7 @@
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
 
-    @namePerCountDisplayThreshold.Render()
+    @(await namePerCountDisplayThreshold.RenderAsync())
 
     <h2 id="licences-summary-table-h2">Summary Licences</h2>
     <div id="licences-summary-table"></div>
@@ -1141,7 +1141,7 @@
                 ],
             });
     </script>
-    @namePerCountPackagesDisplay.Render()
+    @(await namePerCountPackagesDisplay.RenderAsync())
 
     <h2 id="packages-with-vulnerable">@info.nrVulnerable Packages vulnerable</h2>
     @{
@@ -1149,7 +1149,7 @@
         var tt1 = Tuple.Create("Vulnerable Packages", dtoPackages.Vuln());
         var pp1 = new PackagesProblems(tt1);
     }
-    @pp1.Render()
+    @(await pp1.RenderAsync())
 
     <h2 id="packages-with-outdated">@info.nrOutdated Packages outdated</h2>
     @{
@@ -1157,7 +1157,7 @@
         var tt2 = Tuple.Create("Outdated Packages", dtoPackages.Out());
         var pp2 = new PackagesProblems(tt2);
     }
-    @pp2.Render()
+    @(await pp2.RenderAsync())
 
     <h2 id="packages-with-deprecated">@info.nrDeprecated Packages deprecated</h2>
     @{
@@ -1165,7 +1165,7 @@
         var tt3 = Tuple.Create("Deprecated Packages", dtoPackages.Depr());
         var pp3 = new PackagesProblems(tt3);
     }
-    @pp3.Render()
+    @(await pp3.RenderAsync())
 
 
     <h2 id="packages-with-major-version-different">@keysPackageMultiple.Length Packages with major version different</h2>
@@ -1246,7 +1246,7 @@
         tupleThreshold = new("Number exec lines per project", execAssLines, 1000, 2000, true);
         namePerCountDisplayThreshold = new(tupleThreshold);
     }
-    @namePerCountDisplayThreshold.Render()
+    @(await namePerCountDisplayThreshold.RenderAsync())
 
     <h3 id="executable-lines-per-class">Per class</h3>
 
@@ -1257,7 +1257,7 @@
 
     }
 
-    @namePerCountDisplayThreshold.Render()
+    @(await namePerCountDisplayThreshold.RenderAsync())
 
 
     <h3 id="executable-lines-per-method">Per method</h3>
@@ -1269,7 +1269,7 @@
 
     }
 
-    @namePerCountDisplayThreshold.Render()
+    @(await namePerCountDisplayThreshold.RenderAsync())
 
     <h2 id="summary-of-project-public-classes">Summary of project public classes</h2>
     @if (mostPublicClasses != null)
@@ -1284,7 +1284,7 @@
                 namePerCountDisplay = new(tuple);
             }
 
-            @namePerCountDisplay.Render()
+            @(await namePerCountDisplay.RenderAsync())
 
             <h3 id="assemblies-public-methods"> Assemblies with Public methods</h3>
 
@@ -1294,7 +1294,7 @@
                 namePerCountDisplayThreshold = new(tupleThreshold);
             }
 
-            @namePerCountDisplayThreshold.Render()
+            @(await namePerCountDisplayThreshold.RenderAsync())
 
 
             <h3 id="classes-public-methods"> Classes with Public methods</h3>
@@ -1307,7 +1307,7 @@
 
             }
 
-            @namePerCountDisplayThreshold.Render()
+            @(await namePerCountDisplayThreshold.RenderAsync())
 
             @* <h2 id="lines-summary">Lines summary</h2> *@
 
@@ -1341,7 +1341,7 @@
         namePerCountDisplay = new(tuple);
     }
 
-    @namePerCountDisplay.Render()
+    @(await namePerCountDisplay.RenderAsync())
     <h3 id="class-references"> Classes with References</h3>
 
     @{
@@ -1349,7 +1349,7 @@
         namePerCountDisplay = new(tuple);
     }
 
-    @namePerCountDisplay.Render()
+    @(await namePerCountDisplay.RenderAsync())
 
     <h2 id="commits"> Commits</h2>
     <h3> Commits per year</h3>
@@ -1386,7 +1386,7 @@
 
         <h3 id="Commits-per-year-and-folder"> Commits per year and folder </h3>
 
-        @yearFolders.Render()
+        @(await yearFolders.RenderAsync())
 
         <h3 id="file-with-commits">Commits per file</h3>
         <text>
@@ -1395,7 +1395,7 @@
                 namePerCountDisplay = new(tuple);
 
             }
-            @namePerCountDisplay.Render();
+            @(await namePerCountDisplay.RenderAsync())
         </text>
 
 

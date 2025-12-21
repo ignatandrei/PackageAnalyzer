@@ -213,7 +213,7 @@ flowchart LR
             namePerCountDisplay = new(tuple);
         }
 
-        @namePerCountDisplay.Render()
+        @(await namePerCountDisplay.RenderAsync())
 
 ### Assemblies with Public methods
 
@@ -223,7 +223,7 @@ flowchart LR
             namePerCountDisplay = new(tuple);
         }
 
-        @namePerCountDisplay.Render()
+        @(await namePerCountDisplay.RenderAsync())
 
 ### Classes with Public methods
 
@@ -233,7 +233,7 @@ flowchart LR
             namePerCountDisplay = new(tuple);
         }
 
-        @namePerCountDisplay.Render()
+        @(await namePerCountDisplay.RenderAsync())
 ## Lines summary
 
 ### Assemblies with most lines in public classses
@@ -242,7 +242,7 @@ flowchart LR
     namePerCountDisplay = new(tuple);
 }
 
-@namePerCountDisplay.Render()
+@(await namePerCountDisplay.RenderAsync())
 
 ### Public Classes with most lines
 @{
@@ -250,7 +250,7 @@ flowchart LR
     namePerCountDisplay = new(tuple);
 }
 
-@namePerCountDisplay.Render()
+@(await namePerCountDisplay.RenderAsync())
 
 
 ### Public Methods with most lines
@@ -260,7 +260,7 @@ flowchart LR
 }
 
 
-@namePerCountDisplay.Render()
+@(await namePerCountDisplay.RenderAsync())
 
 </text>
 }
@@ -274,7 +274,7 @@ flowchart LR
     namePerCountDisplay = new(tuple);
 }
 
-@namePerCountDisplay.Render()
+@(await namePerCountDisplay.RenderAsync())
 
 ### Classes with References
 
@@ -283,7 +283,7 @@ flowchart LR
     namePerCountDisplay = new(tuple);
 }
 
-@namePerCountDisplay.Render()
+@(await namePerCountDisplay.RenderAsync())
 
 
 
@@ -325,7 +325,7 @@ bar @CommitsFile
 
 }
 
-@renderFiles.Render()
+@(await renderFiles.RenderAsync())
 
 
 @{
@@ -335,7 +335,7 @@ bar @CommitsFile
 
 ### Commits with most files per year
 
-@c.Render()
+@(await c.RenderAsync())
 
 
 

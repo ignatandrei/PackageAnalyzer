@@ -55,7 +55,7 @@
     StatisticsDisplay statisticsDisplay= new (arr.Statistics());
 
 <text>
-        @statisticsDisplay.Render()
+        @(await statisticsDisplay.RenderAsync())
 
         <div id="@nameId" style="height: 100%" title="image @nameId"></div>
         <script type="text/javascript">

@@ -48,7 +48,7 @@ line @CommitsFile
 
 ### Commits with most files per year
 
-@cMaxFiles.Render()
+@(await cMaxFiles.RenderAsync())
 
 
 
@@ -67,7 +67,7 @@ line @CommitsFile
 
 }
 
-@renderFiles.Render()
+@(await renderFiles.RenderAsync())
 
 
 ### Number commits per csproj files
@@ -76,7 +76,7 @@ line @CommitsFile
     Tuple<ProjectsDict, Func<ProjectData, History>> newModel=
     new(Model, x => x.AllHistoryFile?.AllHistory()??History.Empty);
     var c = new CommitsPerData(newModel);
-    var data = c.Render();
+    var data = await c.RenderAsync();
 }
 
 @data
@@ -89,7 +89,7 @@ line @CommitsFile
     newModel =
     new(Model, x => x.AllHistoryFolder?.AllHistory()??History.Empty);
     c = new CommitsPerData(newModel);
-    data = c.Render();
+    data = await c.RenderAsync();
 }
 
 @data
@@ -110,7 +110,7 @@ line @CommitsFile
         newModel =
         new(Model, x => x.AllHistoryFileYear(year));
         c = new CommitsPerData(newModel);
-        data = c.Render();
+        data = await c.RenderAsync();
     }
     else
     {
@@ -136,7 +136,7 @@ line @CommitsFile
 
 }
 
-@renderFiles.Render()
+@(await renderFiles.RenderAsync())
 
 
 ### Number commits per folder
@@ -145,7 +145,7 @@ line @CommitsFile
     newModel =
     new(Model, x => x.AllHistoryFolderYear(year));
     c = new CommitsPerData(newModel);
-    data = c.Render();
+    data = await c.RenderAsync();
 }
 
 @data
