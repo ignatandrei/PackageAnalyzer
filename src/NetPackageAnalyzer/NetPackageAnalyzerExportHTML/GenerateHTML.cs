@@ -78,7 +78,7 @@ public class GenerateHTML : GenerateFiles
 
         var tower = Path.Combine(where, $"{NameSolution}_tower.json");
         await system.File.WriteAllTextAsync(tower, jsonStackTower);
-        string outputSvgFile = await ExecuteStackTower(pathZip, tower, "barycenter");
+        string outputSvgFile = await ExecuteStackTower(pathZip, tower, "barycentric");
         outputSvgFile = await ExecuteStackTower(pathZip, tower, "optimal");
         //TODO : log the result
         return File.Exists(outputSvgFile);
@@ -88,8 +88,10 @@ public class GenerateHTML : GenerateFiles
     private static async Task<string> ExecuteStackTower(string pathZip, string tower ,string ordering)
     {
         //TODO: move to images_eShop_summary
-        var outputSvgFile = $"{tower}_1_{ordering}.svg";
-        
+        string nameSolution = GlobalsForGenerating.NameSolution;
+        var pathTower = Path.GetDirectoryName(tower);
+        var outputSvgFile = Path.Combine(pathTower!, $"images_{nameSolution}_summary", $"{tower}_{ordering}.svg");
+        Console.WriteLine("Writing output to " + outputSvgFile);
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = Path.Combine(pathZip, "stacktower.exe"),
