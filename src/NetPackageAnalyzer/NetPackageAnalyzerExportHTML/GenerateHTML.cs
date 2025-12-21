@@ -90,8 +90,13 @@ public class GenerateHTML : GenerateFiles
         //TODO: move to images_eShop_summary
         string nameSolution = GlobalsForGenerating.NameSolution;
         var pathTower = Path.GetDirectoryName(tower);
-        var outputSvgFile = Path.Combine(pathTower!, $"images_{nameSolution}_summary", $"{tower}_{ordering}.svg");
-        Console.WriteLine("Writing output to " + outputSvgFile);
+        var outputSvgFile = Path.Combine(pathTower!, $"images_{nameSolution}_summary");
+        if(!Directory.Exists(outputSvgFile))
+        {
+            Directory.CreateDirectory(outputSvgFile);
+        }
+        outputSvgFile  = Path.Combine(outputSvgFile, $"{tower}_{ordering}.svg");
+        Console.WriteLine("!Writing output to " + outputSvgFile);
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = Path.Combine(pathZip, "stacktower.exe"),
@@ -112,7 +117,7 @@ public class GenerateHTML : GenerateFiles
         catch (Exception ex)
         {
             Console.WriteLine("error for generating stacks" + ex.Message);
-            throw;
+            //throw;
         }
 
         return outputSvgFile;

@@ -4,6 +4,8 @@
     var gitInfo = GlobalsForGenerating.gitInfo;
     string repUrl = gitInfo?.Repository??"";
     var nameSolution = GlobalsForGenerating.NameSolution;
+    var nameFolder = nameSolution + "_summary";
+
     var info = Model.Item1;
     var projectDicts = Model.Item2;
     var nrProjectsNoTests = info.nrProjects - info.nrTestProjects;
@@ -601,8 +603,10 @@
         </div>
     </div>
     <br />
-    <img src="@(nameSolution +"_tower.json.svg")" />
-    
+    <img src="images_@(nameFolder + "/" + nameSolution + "_barycentric.json.svg")" />
+    <br />
+    <img src="images_@(nameFolder + "/" + nameSolution + "_optimal.json.svg")" />
+
     <br />
     <h1 id="radar-summary">Radar @nameSolution</h1>
 
