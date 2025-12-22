@@ -100,7 +100,7 @@ public class GenerateHTML : GenerateFiles
         ProcessStartInfo startInfo = new ProcessStartInfo
         {
             FileName = Path.Combine(pathZip, "stacktower.exe"),
-            Arguments = $"render {tower} -t tower --style handdrawn --popups --ordering {ordering} -o {outputSvgFile}",
+            Arguments = $"render {tower} -t tower  --randomize=false --style handdrawn --popups --ordering {ordering} -o {outputSvgFile}",
             UseShellExecute = false,
             RedirectStandardOutput = true,
             CreateNoWindow = true,
