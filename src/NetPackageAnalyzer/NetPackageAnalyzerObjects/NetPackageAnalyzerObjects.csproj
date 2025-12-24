@@ -10,13 +10,17 @@
 
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="generatedJson\**" />
+    <EmbeddedResource Remove="generatedJson\**" />
+    <None Remove="generatedJson\**" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="rscgutils" Version="2025.2412.724" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
 
   
-  <ItemGroup>
-    <AdditionalFiles Include="generatedJson/deprecatedV1.gen.json" />
-    <AdditionalFiles Include="generatedJson/includeV1.gen.json" />
-    <AdditionalFiles Include="generatedJson/outdatedV1.gen.json" />
-    <AdditionalFiles Include="generatedJson/vulnerablev1.gen.json" />	  
+  <ItemGroup>	  
     <AdditionalFiles Include="mixin/Packages.mixin" />
   </ItemGroup>
   
@@ -27,7 +31,6 @@
 		</PackageReference>
 		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.1.0" />
 		<PackageReference Include="Morris.Moxy" Version="1.10.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-		<!--<PackageReference Include="rscgutils" Version="2024.1859.1955" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
 		<!--<PackageReference Include="rscgutils" Version="2024.2000.2000" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
 
 	</ItemGroup>

@@ -70,7 +70,7 @@ public class GenerateHTML : GenerateFiles
         }
     }
 
-    private async Task<bool> GenerateStackTower(string where, string jsonStackTower)
+    private async Task<string> GenerateStackTower(string where, string jsonStackTower)
     {
         var temp = Path.GetTempPath();
         var pathZip = Path.Combine(temp, "stacktower" + DateTime.Now.ToString("yyyyMMdd"));
@@ -78,10 +78,11 @@ public class GenerateHTML : GenerateFiles
 
         var tower = Path.Combine(where, $"{NameSolution}_tower.json");
         await system.File.WriteAllTextAsync(tower, jsonStackTower);
-        string outputSvgFile = await ExecuteStackTower(pathZip, tower, "barycentric");
-        outputSvgFile = await ExecuteStackTower(pathZip, tower, "optimal");
+        string outputSvgFile1 = await ExecuteStackTower(pathZip, tower, "barycentric");
+        string outputSvgFile2 = await ExecuteStackTower(pathZip, tower, "optimal");
         //TODO : log the result
-        return File.Exists(outputSvgFile);
+        if (File.Exists(outputSvgFile1)) return outputSvgFile1;
+        return outputSvgFile2;
 
     }
 
@@ -89,13 +90,14 @@ public class GenerateHTML : GenerateFiles
     {
         //TODO: move to images_eShop_summary
         string nameSolution = GlobalsForGenerating.NameSolution;
-        var pathTower = Path.GetDirectoryName(tower);
-        var outputSvgFile = Path.Combine(pathTower!, $"images_{nameSolution}_summary");
+        var pathTower = Path.GetDirectoryName(tower)??"";
+        var outputSvgFile = Path.Combine(pathTower, $"images_{nameSolution}_summary");
         if(!Directory.Exists(outputSvgFile))
         {
             Directory.CreateDirectory(outputSvgFile);
         }
-        outputSvgFile  = Path.Combine(outputSvgFile, $"{tower}_{ordering}.svg");
+        var nameFile =Path.GetFileNameWithoutExtension(tower);
+        outputSvgFile  = Path.Combine(outputSvgFile, $"{nameFile}_{ordering}.svg");
         Console.WriteLine("!Writing output to " + outputSvgFile);
         ProcessStartInfo startInfo = new ProcessStartInfo
         {

@@ -1,6 +1,6 @@
 ﻿
 namespace NetPackageAnalyzerObjects;
-public class ProcessOutput
+public partial class ProcessOutput
 {
     public string ListSDKS(string folder)
     {
@@ -183,7 +183,7 @@ public class ProcessOutput
         }
         return output;
     }
-    public string OutputWhy(string pathToSln, string packageId)
+    public string OutputWhy_MemoPure(string pathToSln, string packageId)
     {
         string folder = Path.GetDirectoryName(pathToSln)??"";
         string nameSln = Path.GetFileName(pathToSln);
