@@ -4,15 +4,20 @@
     var nameSolution = "Sol_"+GlobalsForGenerating.NameSolution;
     var allProjects = projectDicts.ProjectByName().ToArray();
     int i = 0;
+    var nameProjects = allProjects
+        .Select(it => it.NameCSproj())
+        .Distinct()
+        .ToArray()
+        ;
 }
 
 {
   "nodes": [
 
-@foreach (var proj in allProjects)
+@foreach (var proj in nameProjects)
 {
     i++;
-    var nameCsproj = proj.NameCSproj();
+    var nameCsproj = proj;
     string id =(i==1)? "":",";
     id += "{ \"id\": \"" + nameCsproj +"\"";
     id += ",\"meta\": {";
