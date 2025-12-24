@@ -417,7 +417,7 @@ public class GenerateData
         return (ret,publicClassRefData,assemblyMSFTData);
     }
 
-    protected async Task<string?> GenerateDocsForClasses(string?[] projects, string folderResults)
+    protected async Task<string?> GenerateMetricsForClasses(string?[] projects, string folderResults)
     {
 
         var fldTemp = folderResults + "_Temp";

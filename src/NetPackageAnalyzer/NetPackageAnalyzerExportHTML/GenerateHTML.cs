@@ -19,7 +19,7 @@ public class GenerateHTML : GenerateFiles
                 Directory.CreateDirectory(where);
             var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
             var projectFiles = (projectsDict!.Select(it => it.Value?.PathProject).ToArray())??[];
-            tempFolder = await GenerateDocsForClasses(projectFiles, folderResults ?? "") ?? "";
+            tempFolder = await GenerateMetricsForClasses(projectFiles, folderResults ?? "") ?? "";
             var (refSummary, publicClassRefData, assemblyDataFromMSFT) = AnalyzeDiagrams(tempFolder);
             //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
             if (projectsDict == null || modelMore1Version == null)

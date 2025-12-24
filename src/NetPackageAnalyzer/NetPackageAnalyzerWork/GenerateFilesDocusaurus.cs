@@ -141,7 +141,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
         //await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsWithProblemsMarkdown(model));
         //var tempFolder = await GenerateDocsForClasses(GlobalsForGenerating.FullPathToSolution, folderResults);
         var projectFiles = (projectsDict!.Select(it => it.Value?.PathProject).ToArray()) ?? [];
-        var tempFolder = await GenerateDocsForClasses(projectFiles, folderResults);
+        var tempFolder = await GenerateMetricsForClasses(projectFiles, folderResults);
          
         ClassesRefData? refSummary = null;
         PublicClassRefData? publicClassRefData = null;
