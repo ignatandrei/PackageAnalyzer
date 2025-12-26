@@ -1,10 +1,9 @@
 
 namespace NetPackageAnalyzerTests;
 
-[TestClass]
 public class TestSolutionExists
 {
-    [TestMethod]
+    [Fact]
     public async Task TestDoesNotWorkWithoutSln()
     {
         var fileSystem = new MockFileSystem(new Dictionary<string, MockFileData>
@@ -13,6 +12,6 @@ public class TestSolutionExists
            });
         var g = new GenerateFilesDocusaurus(fileSystem);
         var res =await g.GenerateDataForSln(@"C:\");
-        Assert.IsFalse(res);
+        Assert.False(res);
     }
 }

@@ -1,5 +1,7 @@
+
 @inherits RazorBlade.PlainTextTemplate<Tuple<string,PackageWithVersion[]>>;
 @{
+    DotnetWhyExporter exporter = new();
     var name= Model.Item1;
     var packages = Model.Item2;
     string nameId= name.Replace(" ", "-");
@@ -15,15 +17,18 @@
     var tabledata = [
     @foreach (var item in packages)
     {
-        var childrenArr = item.Why.Select(x => $"{{ {nl} Name : '{x.ProjectName()}'  , {nl}  Why :`{nl} <pre>{x.WhyText}<pre>`}}");
-        var children = string.Join(",", childrenArr);
-        var projects = string.Join(",", item.ProjectIDsFromWhy());
+        var projWithVersion = item.Why!.ProjectNamesWithVersionPackage();
+        string sep = "=>";
+        var lines = exporter.ExportToLines(item.Why!,sep);
+        var lineArr = lines.Select(item => "{Name: 'Project " +item.Split(sep)[0] +"',Why:'" + item + "'}");
+        var childrenArr = string.Join(",", lineArr);
+        var projects = string.Join("<br />",projWithVersion.Select(it=>$"<b>{it.Item2}</b> {it.Item1}"));
 
         <text>
                 {
                     "Name": "@item.PackageId.Replace("\\", "\\\\")", 
                     "Why": "@projects",
-                    "_children":[@children]
+                    "_children":[@childrenArr]
 
                 },
         </text>

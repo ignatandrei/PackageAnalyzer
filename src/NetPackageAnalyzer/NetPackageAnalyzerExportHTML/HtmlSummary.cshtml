@@ -1,5 +1,7 @@
 @inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageProblemsDTO>>;
 @{
+    DotnetWhyExporter exporter = new();
+
     var prefix = GlobalsForGenerating.globalPrefix();
     var gitInfo = GlobalsForGenerating.gitInfo;
     string repUrl = gitInfo?.Repository??"";
@@ -1188,9 +1190,14 @@
                 nrVersionIterator++;
                 var pack = more1Version!.IDPackageWithProjects[key]!;
                 pack.VerifyWhy();
-                var childrenArr = pack.Why.Select(x => $"{{ {nl} Name : '{x.ProjectName()}'  , {nl}  Why :`{nl} <pre>{x.WhyText}<pre>`}}");
-                var children = string.Join(",", childrenArr);
+                //var childrenArr = pack.Why.Select(x => $"{{ {nl} Name : '{x.ProjectNames()}'  , {nl}  Why :`{nl} <pre>here will be why text<pre>`}}");
+                //var children = string.Join(",", childrenArr);
+                string sep = "=>";
+                var lines = exporter.ExportToLines(pack.Why!, sep);
+                var lineArr = lines.Select(item => "{Name: 'Project " + item.Split(sep)[0] + "',Why:'" + item + "'}");
+                var children = string.Join(",", lineArr);
 
+                //var children = "{Name:'andrei',Why:'test'}";
                 var vals = pack.VersionsPerProject;
                 var majorDiff = pack.MajorVersionDiffer();
                 string textReferences = vals.Count > 1 ? $" (References: {vals.Count}) " : "";

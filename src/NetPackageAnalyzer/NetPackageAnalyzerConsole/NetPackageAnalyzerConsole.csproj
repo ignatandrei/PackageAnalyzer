@@ -58,6 +58,8 @@
 
 	<ItemGroup>
 		<Watch Include="**\*.cshtml" />
+		<Watch Include="../NetPackageAnalyzerExportHTML/Templates/*.cshtml" />
+		<Watch Include="../NetPackageAnalyzerExportHTML/*.cshtml" />
 	</ItemGroup>
 
 

@@ -29,4 +29,7 @@
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
     </PropertyGroup>
+	<ItemGroup>
+		<Watch Include="**/Templates/*.cshtml" />
+	</ItemGroup>
 </Project>

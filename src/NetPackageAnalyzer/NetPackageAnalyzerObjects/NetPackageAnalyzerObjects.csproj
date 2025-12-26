@@ -40,6 +40,7 @@
 
 	</ItemGroup>-->
 	<ItemGroup>
+	  <ProjectReference Include="..\DotnetWhyParserObjects\DotnetWhyParserObjects.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzeHistory\NetPackageAnalyzeHistory.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerMetricsMSFT\NetPackageAnalyzerMetricsMSFT.csproj" />

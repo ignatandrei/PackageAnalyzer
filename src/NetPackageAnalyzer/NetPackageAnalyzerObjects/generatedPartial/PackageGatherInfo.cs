@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzerObjects;
+﻿using DotnetWhyParserObjects;
+
+namespace NetPackageAnalyzerObjects;
 
 public record PackageGatherInfo(string PackageId)
 {
@@ -10,68 +12,46 @@ public record PackageGatherInfo(string PackageId)
     public void VerifyWhy()
     {
         //if (PackageId == "Microsoft.NETCore.Platforms") return;
-        if (Why.Length > 0) return;
+        if (Why != null) return;
         if(_allPackages.ContainsKey(PackageId))
         {
-            CopyWhyFrom(_allPackages[PackageId]);
-            return;
+            if (_allPackages[PackageId].Why != null)
+            {
+                CopyWhyFrom(_allPackages[PackageId]);
+                return;
+            }
         }
-        List<WhyData> whyDatas = new();
+        DotnetWhyParser parser = new();
         ProcessOutput processOutput = new();
         try
         {
 
             var str = processOutput.OutputWhy(GlobalsForGenerating.FullPathToSolution, PackageId);
-            var arrStr = str.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries); ;
-            int tooManyLines = 5000;
-            bool StopTooManyLines = (arrStr.Length > tooManyLines);
-            WhyData? whyData = null;
-            foreach (var item in arrStr)
+            try
             {
-                if (string.IsNullOrWhiteSpace(item?.Trim()))
-                {
-                    continue;
-                }
-                if (item.Contains("does not have a dependency on"))
-                    continue;
-                if (string.IsNullOrWhiteSpace(item?.Trim()))
-                {
-                    continue;
-                }
-                if (item.Contains("has the following dependency"))
-                {
-                    if (whyData != null)
-                    {
-                        whyDatas.Add(whyData);
-                    }
-                    whyData = new();
-                    whyData.ProjectText = item;
-                    if (StopTooManyLines) break;
-                    continue;
-                }
-                whyData!.WhyText += Environment.NewLine + item;
+                Why = parser.Parse(str);
             }
-            if (whyData != null)
+            catch (Exception ex)
             {
-                if (StopTooManyLines)
-                {
-                    whyData.ProjectText = $"Too many lines {arrStr.Length} to show full dependency";
-                }
-                whyDatas.Add(whyData);
+                Console.WriteLine("======="+ex.Message);
+                throw;
             }
+            
         }
         catch (Exception ex)
         {
             Console.WriteLine($"!!!Error in  dependency {PackageId} : " + ex.Message);
         }
-        Why = whyDatas.ToArray();
+        
         _allPackages[PackageId] = this;
     }
-    public WhyData[] Why = [];
+    public DotnetWhyOutput? Why { get; private set; } =null;
 
-    public string[] ProjectIDsFromWhy() { 
+    public string[] ProjectIDsFromWhy() {
+        if (Why == null) return Array.Empty<string>();
         return Why
-            .Select(x => x.ProjectName())
+            .ProjectNames()
+            .Distinct()
             .Where(it=>it.Length > 0)
             .ToArray();
     }

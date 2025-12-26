@@ -183,7 +183,7 @@ public partial class ProcessOutput
         }
         return output;
     }
-    public string OutputWhy_MemoPure(string pathToSln, string packageId)
+    public string OutputWhy(string pathToSln, string packageId)
     {
         string folder = Path.GetDirectoryName(pathToSln)??"";
         string nameSln = Path.GetFileName(pathToSln);

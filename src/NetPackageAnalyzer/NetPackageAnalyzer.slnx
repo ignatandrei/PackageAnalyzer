@@ -1,5 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/" />
+  <Project Path="DotnetWhyParserObjects/DotnetWhyParserObjects.csproj" />
+  <Project Path="DotnetWhyParserTests/DotnetWhyParserTests.csproj" />
   <Project Path="NetPackageAnalyzeHistory/NetPackageAnalyzeHistory.csproj" />
   <Project Path="NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj" />
   <Project Path="NetPackageAnalyzerDiagram/NetPackageAnalyzerDiagram.csproj" />
