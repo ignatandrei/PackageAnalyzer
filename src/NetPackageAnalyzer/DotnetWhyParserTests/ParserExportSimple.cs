@@ -87,7 +87,7 @@ SkinnyControllerTest=>Microsoft.AspNetCore.Authentication.JwtBearer,5.0.0
         var result = parser.Parse(SampleOutput);
         DotnetWhyExporter exporter = new ();
         var strMermaid = exporter.ExportToMermaidSmallestProjects(result);
-        File.WriteAllText(@"D:\eu\GitHub\PackageAnalyzer\src\documentation1\exported_mermaid.json", strMermaid);
+        //File.WriteAllText(@"D:\eu\GitHub\PackageAnalyzer\src\documentation1\exported_mermaid.json", strMermaid);
         strMermaid = strMermaid.Replace("\r", "").Replace("\n", "");
         var res= mermaidSmallest.Replace("\r", "").Replace("\n", "");
         Assert.Equal(res,strMermaid,ignoreCase:true,ignoreAllWhiteSpace:true,ignoreLineEndingDifferences:true);
