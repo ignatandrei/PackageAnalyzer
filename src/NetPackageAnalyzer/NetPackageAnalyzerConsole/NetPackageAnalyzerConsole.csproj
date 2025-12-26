@@ -30,7 +30,7 @@
 	  <ProjectReference Include="..\NPA.GitInfo\NPA.GitInfo.csproj" />
 	</ItemGroup>
 	<PropertyGroup>
-		<Version>10.2025.1224.848</Version>
+		<Version>10.2025.1226.848</Version>
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>PackageAnalyzer</ToolCommandName>
 		<Authors>Andrei Ignat</Authors>
