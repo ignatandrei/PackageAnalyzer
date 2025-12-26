@@ -40,7 +40,8 @@ jobs:
       run: |
         dotnet tool install --global PowerShell
         cd src
-        cd NetPackageAnalyzer        
+        cd NetPackageAnalyzer
+        dotnet test        
         cd NetPackageAnalyzerConsole
         dotnet pack -o ../../nugetPackages       
     # - name: Build site

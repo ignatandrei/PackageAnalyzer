@@ -1180,6 +1180,7 @@
     @if (keysPackageMultiple.Length > 0)
     {
         var nl = Environment.NewLine;
+        Dictionary<string,string> flowchartsMore1Version = new();
         nrVersionIterator = 0;
         <div id="major-differs-table" title="image major-differs-table" )"></div>
         <script>
@@ -1193,6 +1194,7 @@
                 //var childrenArr = pack.Why.Select(x => $"{{ {nl} Name : '{x.ProjectNames()}'  , {nl}  Why :`{nl} <pre>here will be why text<pre>`}}");
                 //var children = string.Join(",", childrenArr);
                 string sep = "=>";
+                    flowchartsMore1Version.Add(key, exporter.ExportToMermaidSmallestProjects(pack.Why!));
                 var lines = exporter.ExportToLines(pack.Why!, sep);
                 var lineArr = lines.Select(item => "{Name: 'Project " + item.Split(sep)[0] + "',Why:'" + item + "'}");
                 var children = string.Join(",", lineArr);
@@ -1201,7 +1203,7 @@
                 var vals = pack.VersionsPerProject;
                 var majorDiff = pack.MajorVersionDiffer();
                 string textReferences = vals.Count > 1 ? $" (References: {vals.Count}) " : "";
-                string diffMajor = majorDiff ? $"<span style='color:red'> <b>Major differs</b> </span>" : "";
+                    string diffMajor = majorDiff ? $"<span style='color:red'> <b>Major differs. See <a href='#mermaid_major_differ_"+ key+"'>Chart</a> </span>" : "";
                 string refs = "";
                 @foreach (var vers in vals)
                 {
@@ -1251,7 +1253,12 @@
                 ]
             });
         </script>
-
+        @foreach(var flowchart in flowchartsMore1Version)
+        {
+            <div class="mermaid" id="mermaid_major_differ_@flowchart.Key" title="image major version @(flowchart.Key)">
+                @flowchart.Value
+            </div>
+        }
     }
     <h2 id="executable-lines">Executable lines</h2>
     <h3 id="executable-lines-per-assembly">Per assembly</h3>
