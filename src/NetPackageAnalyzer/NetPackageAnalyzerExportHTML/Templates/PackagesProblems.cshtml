@@ -1,6 +1,8 @@
 
 @inherits RazorBlade.PlainTextTemplate<Tuple<string,PackageWithVersion[]>>;
 @{
+    Dictionary<string, string> flowcharts = new();
+
     DotnetWhyExporter exporter = new();
     var name= Model.Item1;
     var packages = Model.Item2;
@@ -17,16 +19,22 @@
     var tabledata = [
     @foreach (var item in packages)
     {
+
+        string nameRow = item.PackageId.Replace("\\", "\\\\");
+        nameRow += ". See <a href='#mermaid_"+ nameId +"_"+ item.PackageId + "'>Chart</a>";
         var projWithVersion = item.Why!.ProjectNamesWithVersionPackage();
         string sep = "=>";
         var lines = exporter.ExportToLines(item.Why!,sep);
+        if(!flowcharts.ContainsKey(item.PackageId))
+            flowcharts.Add(item.PackageId, exporter.ExportToMermaidSmallestProjects(item.Why!));
+        
         var lineArr = lines.Select(item => "{Name: 'Project " +item.Split(sep)[0] +"',Why:'" + item + "'}");
         var childrenArr = string.Join(",", lineArr);
         var projects = string.Join("<br />",projWithVersion.Select(it=>$"<b>{it.Item2}</b> {it.Item1}"));
 
         <text>
                 {
-                    "Name": "@item.PackageId.Replace("\\", "\\\\")", 
+                        "Name": "@nameRow",
                     "Why": "@projects",
                     "_children":[@childrenArr]
 
@@ -47,7 +55,7 @@
         columns: [
             { formatter: "rownum", hozAlign: "center", width: 40 },
             {
-                title: "Name", field: "Name", cellClick: function(e, cell) {
+                title: "Name",formatter:"html", field: "Name", cellClick: function(e, cell) {
                     //window.alert('expand me');
                     cell.getRow().treeToggle();
 
@@ -67,3 +75,10 @@
     });
 
 </script>
+
+@foreach (var flowchart in flowcharts)
+{
+    <div class="mermaid" id="mermaid_@(nameId +"_"+ flowchart.Key)" title="image @(nameId) version @(flowchart.Key)">
+        @flowchart.Value
+    </div>
+}
