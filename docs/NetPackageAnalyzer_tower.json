@@ -1,0 +1,80 @@
+
+{
+  "nodes": [
+
+{ "id": "DotnetWhyParserObjects","meta": {"description": "DotnetWhyParserObjects"}}
+,{ "id": "DotnetWhyParserTests","meta": {"description": "DotnetWhyParserTests"}}
+,{ "id": "NetPackageAnalyzeHistory","meta": {"description": "NetPackageAnalyzeHistory"}}
+,{ "id": "NetPackageAnalyzerConsole","meta": {"description": "NetPackageAnalyzerConsole"}}
+,{ "id": "NetPackageAnalyzerDiagram","meta": {"description": "NetPackageAnalyzerDiagram"}}
+,{ "id": "NetPackageAnalyzerDocusaurus","meta": {"description": "NetPackageAnalyzerDocusaurus"}}
+,{ "id": "NetPackageAnalyzerExportHTML","meta": {"description": "NetPackageAnalyzerExportHTML"}}
+,{ "id": "NetPackageAnalyzerMetricsMSFT","meta": {"description": "NetPackageAnalyzerMetricsMSFT"}}
+,{ "id": "NetPackageAnalyzerObjects","meta": {"description": "NetPackageAnalyzerObjects"}}
+,{ "id": "NetPackageAnalyzerShowInConsole","meta": {"description": "NetPackageAnalyzerShowInConsole"}}
+,{ "id": "NetPackageAnalyzerTests","meta": {"description": "NetPackageAnalyzerTests"}}
+,{ "id": "NPA.BigResources","meta": {"description": "NPA.BigResources"}}
+,{ "id": "NPA.GitInfo","meta": {"description": "NPA.GitInfo"}}
+,{ "id": "NPA.HtmlData","meta": {"description": "NPA.HtmlData"}}
+,{ "id": "NPA.Resources","meta": {"description": "NPA.Resources"}}
+,{ "id": "NuGetInfo","meta": {"description": "NuGetInfo"}}
+,{ "id": "Statistical","meta": {"description": "Statistical"}}
+
+
+],
+"edges": [
+
+            { "from": "DotnetWhyParserTests", "to": "DotnetWhyParserObjects" }
+        ,
+            { "from": "NetPackageAnalyzerConsole", "to": "NetPackageAnalyzerDocusaurus" }
+        ,
+            { "from": "NetPackageAnalyzerConsole", "to": "NetPackageAnalyzerExportHTML" }
+        ,
+            { "from": "NetPackageAnalyzerConsole", "to": "NetPackageAnalyzerShowInConsole" }
+        ,
+            { "from": "NetPackageAnalyzerConsole", "to": "NPA.GitInfo" }
+        ,
+            { "from": "NetPackageAnalyzerDocusaurus", "to": "NetPackageAnalyzerDiagram" }
+        ,
+            { "from": "NetPackageAnalyzerDocusaurus", "to": "NetPackageAnalyzerObjects" }
+        ,
+            { "from": "NetPackageAnalyzerExportHTML", "to": "NetPackageAnalyzerObjects" }
+        ,
+            { "from": "NetPackageAnalyzerExportHTML", "to": "NPA.BigResources" }
+        ,
+            { "from": "NetPackageAnalyzerExportHTML", "to": "NPA.HtmlData" }
+        ,
+            { "from": "NetPackageAnalyzerExportHTML", "to": "NPA.Resources" }
+        ,
+            { "from": "NetPackageAnalyzerObjects", "to": "DotnetWhyParserObjects" }
+        ,
+            { "from": "NetPackageAnalyzerObjects", "to": "NetPackageAnalyzeHistory" }
+        ,
+            { "from": "NetPackageAnalyzerObjects", "to": "NetPackageAnalyzerDiagram" }
+        ,
+            { "from": "NetPackageAnalyzerObjects", "to": "NetPackageAnalyzerMetricsMSFT" }
+        ,
+            { "from": "NetPackageAnalyzerObjects", "to": "NPA.BigResources" }
+        ,
+            { "from": "NetPackageAnalyzerObjects", "to": "NPA.GitInfo" }
+        ,
+            { "from": "NetPackageAnalyzerObjects", "to": "NuGetInfo" }
+        ,
+            { "from": "NetPackageAnalyzerObjects", "to": "Statistical" }
+        ,
+            { "from": "NetPackageAnalyzerShowInConsole", "to": "NetPackageAnalyzerObjects" }
+        ,
+            { "from": "NetPackageAnalyzerTests", "to": "NetPackageAnalyzerDocusaurus" }
+        ,
+            { "from": "NetPackageAnalyzerTests", "to": "NuGetInfo" }
+        ,
+            { "from": "NetPackageAnalyzerTests", "to": "Statistical" }
+        
+
+
+
+
+
+
+]
+}
