@@ -606,6 +606,25 @@
             </table>
         </div>
     </div>
+
+    <ul data-tabs>
+        <li><a data-tabby-default href="#projectsTabs"><h1>Projects</h1></a></li>
+        <li><a href="#metricsTabs"><h1>Metrics</h1></a></li>
+        <li><a href="#packagesTabs"><h1>Packages</h1></a></li>
+        <li><a href="#commitsTabs"><h1>Commits</h1></a></li>
+        <li><a href="#licencesTabs"><h1>Licences</h1></a></li>
+        <li><a href="#radarTabs"><h1>Radar</h1></a></li>
+    </ul>
+
+    <div id="radarTabs">
+        <br />
+        <h1 id="radar-summary">Radar @nameSolution</h1>
+
+        @(await radar.RenderAsync())
+    
+</div>
+
+    <div id="projectsTabs">
     @*
      <br />     
      <img src="images_@(nameFolder + "/" + nameSolution + "_barycentric.svg")" />
@@ -613,60 +632,6 @@
      <br />
     <img src="images_@(nameFolder + "/" + nameSolution + "_tower_optimal.svg")" />
 
-    <br />
-    <h1 id="radar-summary">Radar @nameSolution</h1>
-
-    @(await radar.RenderAsync())
-
-
-    @*
-    <h1>Packages relations</h1>
-    <div id="solRelPackages" ></div>
-
-    <script type="text/javascript">
-    var dot='digraph { rankdir=TB ';
-    @foreach(var prj in projectDicts.Values)
-    {
-    <text>
-    dot+='"@prj.PathProject" [label="@prj.NameCSproj() : @prj.Packages.Count",color="red"]\r\n';
-    </text>
-    }
-    @foreach(var pack in topPackages)
-    {
-    <text>
-    dot+='"@pack.Name" [label="@pack.Name : @pack.Count" ,shape="box"]\r\n';
-    </text>
-    }
-
-    @foreach (var proj in projectDicts.Values)
-    {
-    foreach (var rel in proj.Packages)
-    {
-    if(!topPackages.Any(it=>it.Name==rel.packageVersionId))
-    {
-    continue;
-    }
-    <text>
-    dot+='"@proj.PathProject"  -> "@rel.packageVersionId"\r\n'
-    </text>
-
-    }
-
-    foreach (var rel in proj.ProjectsReferences)
-    {
-
-    <text>
-    dot+='"@proj.PathProject"  -> "@rel.PathProject"\r\n'
-    </text>
-
-    }
-    }
-    dot+="}";
-    var dom = document.getElementById('solRelPackages');
-    var data = vis.parseDOTNetwork(dot);
-    var network = new vis.Network(dom, data);
-    </script>
-    *@
     <br />
     <h2 id="matrix-projects">Matrix Projects</h2>
     @(await matrixProjects.RenderAsync())
@@ -734,36 +699,6 @@
             </text>
         }
     </div>
-
-    @*  <h2 id="play-with-solution-relations">Play with solution relations</h2>
-    <div id="solRel"></div>
-
-    <script type="text/javascript">
-    var dot = 'digraph {  ';
-    @foreach (var prj in projectDicts.Values)
-    {
-    <text>
-    dot+='"@prj.PathProject" [label="@prj.NameCSproj() : @prj.ProjectsReferences.Count"]\r\n';
-    </text>
-    }
-    @foreach (var proj in projectDicts.Values)
-    {
-
-    foreach (var rel in proj.ProjectsReferences)
-    {
-
-    <text>
-    dot+='"@proj.PathProject"  -> "@rel.PathProject"\r\n'
-    </text>
-
-    }
-    }
-    dot+="}";
-    var dom = document.getElementById('solRel');
-    var data = vis.parseDOTNetwork(dot);
-    var network = new vis.Network(dom, data);
-    </script>
-    *@
 
     <h2 id="building-blocks">Building Blocks : @bb0.Length </h2>
     @{
@@ -951,6 +886,39 @@
 
 
 
+    </div>
+
+    <div id="metricsTabs">
+        <h2 id="executable-lines">Executable lines</h2>
+        <h3 id="executable-lines-per-assembly">Per assembly</h3>
+        @{
+            tupleThreshold = new("Number exec lines per project", execAssLines, 1000, 2000, true);
+            namePerCountDisplayThreshold = new(tupleThreshold);
+        }
+        @(await namePerCountDisplayThreshold.RenderAsync())
+
+        <h3 id="executable-lines-per-class">Per class</h3>
+
+        @{
+            tupleThreshold = new("Number exec lines per class", execClassLines, 100, 200, true);
+
+            namePerCountDisplayThreshold = new(tupleThreshold);
+
+        }
+
+        @(await namePerCountDisplayThreshold.RenderAsync())
+
+
+        <h3 id="executable-lines-per-method">Per method</h3>
+
+        @{
+            tupleThreshold = new("Number exec lines per method", execMethodsLines, 50, 100, true);
+
+            namePerCountDisplayThreshold = new(tupleThreshold);
+
+        }
+
+        @(await namePerCountDisplayThreshold.RenderAsync())
 
 
 
@@ -1008,7 +976,8 @@
     }
 
     @(await namePerCountDisplayThreshold.RenderAsync())
-
+    </div>
+    <div id="licencesTabs">
     <h2 id="licences-summary-table-h2">Summary Licences</h2>
     <div id="licences-summary-table"></div>
 
@@ -1115,6 +1084,8 @@
 
 
     </script>
+    </div>
+    <div id="packagesTabs">
     <h2 id="packages-per-project">Packages : @projectDicts.Packages()?.Length </h2>
     <div id="packages-per-project-table"></div>
     <script>
@@ -1262,36 +1233,7 @@
             </div>
         }
     }
-    <h2 id="executable-lines">Executable lines</h2>
-    <h3 id="executable-lines-per-assembly">Per assembly</h3>
-    @{
-        tupleThreshold = new("Number exec lines per project", execAssLines, 1000, 2000, true);
-        namePerCountDisplayThreshold = new(tupleThreshold);
-    }
-    @(await namePerCountDisplayThreshold.RenderAsync())
-
-    <h3 id="executable-lines-per-class">Per class</h3>
-
-    @{
-        tupleThreshold = new("Number exec lines per class", execClassLines, 100, 200, true);
-
-        namePerCountDisplayThreshold = new(tupleThreshold);
-
-    }
-
-    @(await namePerCountDisplayThreshold.RenderAsync())
-
-
-    <h3 id="executable-lines-per-method">Per method</h3>
-
-    @{
-        tupleThreshold = new("Number exec lines per method", execMethodsLines, 50, 100, true);
-
-        namePerCountDisplayThreshold = new(tupleThreshold);
-
-    }
-
-    @(await namePerCountDisplayThreshold.RenderAsync())
+    </div>
 
     @if (mostPublicClasses != null)
     {
@@ -1355,7 +1297,7 @@
         </text>
 
     }
-    <h2 id="references-between-projects"> References between projects</h2>
+    @* <h2 id="references-between-projects"> References between projects</h2>
 
     <h3 id="assemblies-references"> Assemblies with References</h3>
     @{
@@ -1372,7 +1314,8 @@
     }
 
     @(await namePerCountDisplay.RenderAsync())
-
+ *@
+ <div id="commitsTabs">
     <h2 id="commits"> Commits</h2>
     <h3> Commits per year</h3>
     @if (yearCommitsFolder.Count > 0)
@@ -1452,7 +1395,7 @@
             }
         </tbody>
     </table>
-
+    </div>
     <script src="mermaid.min.js"></script>
     <script>mermaid.initialize({ startOnLoad: true });</script>
 
