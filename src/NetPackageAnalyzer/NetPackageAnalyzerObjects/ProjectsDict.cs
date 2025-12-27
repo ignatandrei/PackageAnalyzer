@@ -175,6 +175,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
             .GroupBy(it => it.Key)
             .ToDictionary(it => it.Key, it => it.Sum(it => (long)(it.Value?.nrCommits ?? 0)))
             ;
+        
         return data;
     }
     public Dictionary<int, NamePerCount[]> CommitsYearFolders()

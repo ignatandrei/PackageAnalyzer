@@ -1,5 +1,7 @@
 ﻿
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting
 {
@@ -278,6 +280,8 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
                 break;
             case WhatToGenerate.HtmlSummary:
                 WriteLine($"start {data}");
+                
+                await ReplaceHtmlSummary(data);
                 LaunchBrowser(data);
                 break;
             default:
@@ -285,5 +289,44 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
         }
 
 
+    }
+    private static async Task<bool> ReplaceHtmlSummary(string filePath)
+    {
+        string nameSol = GlobalsForGenerating.NameSolution;
+        if(!File.Exists(filePath)) return false;
+        File.Copy(filePath, filePath + ".bak",true);
+        var content = await File.ReadAllTextAsync(filePath);
+        content = content.Replace("driverObj.drive();", "driverObj.drive();var tabs = new Tabby('[data-tabs]');");
+        var lines = content.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        string?[] outputLine = new string[lines.Length];
+        for(int i=0; i<lines.Length; i++)
+        {
+            var line = lines[i];
+            #region replace all extracted images
+            var titleToReplace = """title="image """;
+            if (line.Contains(titleToReplace) && !line.Contains(" stay "))
+            {
+                //find title
+                var index = line.IndexOf(titleToReplace);
+                var next = line.IndexOf('"', index + titleToReplace.Length + 1);
+                var title = line.Substring(index + titleToReplace.Length, next - titleToReplace.Length - index);
+                var nameFile = title.Replace(" ", "-");
+                nameFile += ".png";
+                outputLine[i] = $"<img title='{title}' src='images_{nameSol}_summary/{nameFile}' />";
+                while (!line.Contains("</div>")){
+                    i++ ;
+                    line = lines[i];
+                    outputLine[i] = null;
+                }
+                continue;
+            }
+            #endregion  
+            outputLine[i] = line;
+        }
+
+        content = string.Join(Environment.NewLine, outputLine.Where(it => !string.IsNullOrWhiteSpace(it)));
+        await File.WriteAllTextAsync(filePath, content);
+        
+        return true;
     }
 }

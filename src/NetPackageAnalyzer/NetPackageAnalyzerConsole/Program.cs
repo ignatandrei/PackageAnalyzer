@@ -5,19 +5,19 @@
     if (args.Length == 0)
     {
         args = new[] { "-h" };
-        //args = new[] { "generateFiles",
-        //    "--folder", @"D:\eu\GitHub\SkinnyControllersGenerator\src\SkinnyControllers",
-        //    "-wg","HtmlSummary",
-        //    "--where", @"D:\eu\GitHub\PackageAnalyzer\src\documentation1\",
-        //    "--verbose","true"
-        //};
-
         args = new[] { "generateFiles",
-            "--folder", @"D:\eu\GitHub\eShop",
+            "--folder", @"D:\eu\GitHub\SkinnyControllersGenerator\src\SkinnyControllers",
             "-wg","HtmlSummary",
             "--where", @"D:\eu\GitHub\PackageAnalyzer\src\documentation1\",
             "--verbose","true"
         };
+
+        //args = new[] { "generateFiles",
+        //    "--folder", @"D:\eu\GitHub\eShop",
+        //    "-wg","HtmlSummary",
+        //    "--where", @"D:\eu\GitHub\PackageAnalyzer\src\documentation1\",
+        //    "--verbose","true"
+        //};
 
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\eu\GitHub\XpertContract-\src\XpertContract",

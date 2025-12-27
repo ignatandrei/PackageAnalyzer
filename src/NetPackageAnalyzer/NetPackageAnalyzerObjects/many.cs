@@ -58,6 +58,12 @@ public record NamePerCountArray(NamePerCount[]? NamePerCounts,bool Descending)
             this.DataOrdered().Select(it => it.Count).ToArray() ?? []            
             );
     }
+    public long Sum()
+    {
+        if((this.NamePerCounts?.Length??0)==0) return 0;
+        var max = this.NamePerCounts!.Sum(it => (long)it.Count);
+        return max;
+    }
     public NamePerCount? First1()
     {
         if (Descending)
