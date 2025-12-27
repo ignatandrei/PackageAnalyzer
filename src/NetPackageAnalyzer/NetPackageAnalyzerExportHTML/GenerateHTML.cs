@@ -159,6 +159,14 @@ public class GenerateHTML : GenerateFiles
         nameFileJs = Path.Combine(where, "driver.js.iife.js");
         system.File.WriteAllBytes(nameFileJs, res.ToArray());
 
+        res = MyResource.GetTabbyJS();
+        nameFileJs = Path.Combine(where, "tabby.polyfills.min.js");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+
+        res = MyResource.GetTabbyCss();
+        nameFileJs = Path.Combine(where, "tabby-ui.min.css");
+        system.File.WriteAllBytes(nameFileJs, res.ToArray());
+
     }
 }
 

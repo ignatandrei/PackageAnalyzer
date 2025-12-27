@@ -24,4 +24,11 @@ public partial class MyResource
     [EmbedResourceCSharp.FileEmbed("driver.js.iife.js")]
     public static partial System.ReadOnlySpan<byte> GetDriverJS();
 
+    //https://github.com/cferdinandi/tabby
+    [EmbedResourceCSharp.FileEmbed("tabby.polyfills.min.js")]
+    public static partial System.ReadOnlySpan<byte> GetTabbyJS();
+
+    [EmbedResourceCSharp.FileEmbed("tabby-ui.min.css")]
+    public static partial System.ReadOnlySpan<byte> GetTabbyCss();
+
 }
