@@ -5,12 +5,12 @@
     if (args.Length == 0)
     {
         args = new[] { "-h" };
-        args = new[] { "generateFiles",
-            "--folder", @"D:\eu\GitHub\SkinnyControllersGenerator\src\SkinnyControllers",
-            "-wg","HtmlSummary",
-            "--where", @"D:\eu\GitHub\PackageAnalyzer\src\documentation1\",
-            "--verbose","true"
-        };
+        //args = new[] { "generateFiles",
+        //    "--folder", @"D:\eu\GitHub\SkinnyControllersGenerator\src\SkinnyControllers",
+        //    "-wg","HtmlSummary",
+        //    "--where", @"D:\eu\GitHub\PackageAnalyzer\src\documentation1\",
+        //    "--verbose","true"
+        //};
 
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\eu\GitHub\eShop",
