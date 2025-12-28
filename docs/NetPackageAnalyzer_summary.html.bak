@@ -217,7 +217,7 @@
                             <tr>
                                 <td>2</td>
                                 <td>
-                                    branch <i>main</i> , commit <i>88270dba154fb78ec6b30f465bf57fb73010fa14</i>
+                                    branch <i>main</i> , commit <i>fc3c9ab0930d34c1db8b305da34b7fbdfaba902c</i>
                                 </td>
                             </tr>
 
@@ -225,7 +225,7 @@
                             <td>3</td>
                             <td>
                                 <a href="#commits">
-                                    Total Commits : 343
+                                    Total Commits : 346
                             </td>
                         </tr>
 
@@ -463,8 +463,8 @@
         radar: {
             // shape: 'circle',
             indicator: [
-                { name: 'Total Commits', max: 91 },
-                { name: 'Commits 2025', max: 8 },
+                { name: 'Total Commits', max: 92 },
+                { name: 'Commits 2025', max: 9 },
                 { name: 'Packages', max: 46 },
                 { name: 'References', max: 8 },
                 { name: 'Number Classes',max:56},
@@ -495,7 +495,7 @@ name: 'NetPackageAnalyzeHistory'
     },
 
     {
-                                value: [91,7, 22, 4, 12, 460, 60,53],
+                                value: [92,8, 22, 4, 12, 460, 60,53],
 name: 'NetPackageAnalyzerConsole'
     },
 
@@ -510,7 +510,7 @@ name: 'NetPackageAnalyzerDocusaurus'
     },
 
     {
-                                value: [41,8, 9, 4, 8, 175, 49,47],
+                                value: [42,9, 9, 4, 8, 175, 49,47],
 name: 'NetPackageAnalyzerExportHTML'
     },
 
@@ -545,7 +545,7 @@ name: 'NPA.GitInfo'
     },
 
     {
-                                value: [8,2, 3, 0, 1, 82, 9,33],
+                                value: [9,3, 3, 0, 1, 85, 9,33],
 name: 'NPA.HtmlData'
     },
 
@@ -585,537 +585,132 @@ name: 'Statistical'
         <img src="images_NetPackageAnalyzer_summary/NetPackageAnalyzer_tower_optimal.svg" />
 
         <br />
-        <h2 id="matrix-projects">Matrix Projects</h2>
-            <div title="image matrix projects">
+        <h2 id="matrix-projects">Number of Projects references</h2>
+            <div title="image stay matrix projects">
         <table border="1">
             <tr>
-                <td>Projects</td>
-                    <td>DotnetWhyParserObjects</td>
-                    <td>DotnetWhyParserTests</td>
-                    <td>NetPackageAnalyzeHistory</td>
-                    <td>NetPackageAnalyzerConsole</td>
-                    <td>NetPackageAnalyzerDiagram</td>
-                    <td>NetPackageAnalyzerDocusaurus</td>
-                    <td>NetPackageAnalyzerExportHTML</td>
-                    <td>NetPackageAnalyzerMetricsMSFT</td>
-                    <td>NetPackageAnalyzerObjects</td>
-                    <td>NetPackageAnalyzerShowInConsole</td>
-                    <td>NetPackageAnalyzerTests</td>
-                    <td>NPA.BigResources</td>
-                    <td>NPA.GitInfo</td>
-                    <td>NPA.HtmlData</td>
-                    <td>NPA.Resources</td>
-                    <td>NuGetInfo</td>
-                    <td>Statistical</td>
+                <td>Nr</td>
+                <td>Project</td>
+                <td>Upstream number</td>
+                <td>Downstream number</td>
             </tr>
                 <tr>
-                    <td>
-                        1 ) DotnetWhyParserObjects
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>1</td>
+                <td>DotnetWhyParserObjects</td>
+                    <td>2</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        2 ) DotnetWhyParserTests
-                        <br />
-                        Direct ref: 1
-                        <br />
-                        Total ref: 1
-                    </td>
-
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>2</td>
+                <td>DotnetWhyParserTests</td>
+                    <td>0</td>
+                <td>1</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        3 ) NetPackageAnalyzeHistory
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>3</td>
+                <td>NetPackageAnalyzeHistory</td>
+                    <td>1</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        4 ) NetPackageAnalyzerConsole
-                        <br />
-                        Direct ref: 4
-                        <br />
-                        Total ref: 35
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>4</td>
+                <td>NetPackageAnalyzerConsole</td>
+                    <td>0</td>
+                <td>4</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        5 ) NetPackageAnalyzerDiagram
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>5</td>
+                <td>NetPackageAnalyzerDiagram</td>
+                    <td>2</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        6 ) NetPackageAnalyzerDocusaurus
-                        <br />
-                        Direct ref: 2
-                        <br />
-                        Total ref: 10
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>6</td>
+                <td>NetPackageAnalyzerDocusaurus</td>
+                    <td>2</td>
+                <td>2</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        7 ) NetPackageAnalyzerExportHTML
-                        <br />
-                        Direct ref: 4
-                        <br />
-                        Total ref: 12
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>7</td>
+                <td>NetPackageAnalyzerExportHTML</td>
+                    <td>1</td>
+                <td>4</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        8 ) NetPackageAnalyzerMetricsMSFT
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>8</td>
+                <td>NetPackageAnalyzerMetricsMSFT</td>
+                    <td>1</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        9 ) NetPackageAnalyzerObjects
-                        <br />
-                        Direct ref: 8
-                        <br />
-                        Total ref: 8
-                    </td>
-
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-
-
+                <td>9</td>
+                <td>NetPackageAnalyzerObjects</td>
+                    <td>3</td>
+                <td>8</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        10 ) NetPackageAnalyzerShowInConsole
-                        <br />
-                        Direct ref: 1
-                        <br />
-                        Total ref: 9
-                    </td>
-
-                            <td style='text-align:center;background-color: red;color: blue;'>2</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: red;color: blue;'>2</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: red;color: blue;'>2</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: red;color: blue;'>2</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: red;color: blue;'>2</td>
-                            <td style='text-align:center;background-color: red;color: blue;'>2</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: red;color: blue;'>2</td>
-                            <td style='text-align:center;background-color: red;color: blue;'>2</td>
-
-
+                <td>10</td>
+                <td>NetPackageAnalyzerShowInConsole</td>
+                    <td>1</td>
+                <td>1</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        11 ) NetPackageAnalyzerTests
-                        <br />
-                        Direct ref: 3
-                        <br />
-                        Total ref: 13
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-                            <td style='text-align:center;background-color: tomato;color: blue;'>1</td>
-
-
+                <td>11</td>
+                <td>NetPackageAnalyzerTests</td>
+                    <td>0</td>
+                <td>3</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        12 ) NPA.BigResources
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>12</td>
+                <td>NPA.BigResources</td>
+                    <td>2</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        13 ) NPA.GitInfo
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>13</td>
+                <td>NPA.GitInfo</td>
+                    <td>2</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        14 ) NPA.HtmlData
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>14</td>
+                <td>NPA.HtmlData</td>
+                    <td>1</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        15 ) NPA.Resources
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>15</td>
+                <td>NPA.Resources</td>
+                    <td>1</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        16 ) NuGetInfo
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-
-
+                <td>16</td>
+                <td>NuGetInfo</td>
+                    <td>2</td>
+                <td>0</td>
 
                 </tr>
                 <tr>
-                    <td>
-                        17 ) Statistical
-                        <br />
-                        Direct ref: 0
-                        <br />
-                        Total ref: 0
-                    </td>
-
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>&nbsp;</td>
-                            <td style='text-align:center;'>X</td>
-
-
+                <td>17</td>
+                <td>Statistical</td>
+                    <td>2</td>
+                <td>0</td>
 
                 </tr>
         </table>
@@ -9529,7 +9124,7 @@ end
     </div>
 
     <div id="commitsTabs">
-        <h2 id="commitsLink"> Commits: 343 </h2>
+        <h2 id="commitsLink"> Commits: 346 </h2>
         <h3> Commits per year</h3>
 
                 <div class="mermaid" title="image Commits per year">
@@ -9537,8 +9132,8 @@ end
                     title "Commits per year (folder and csproj)"
                     x-axis [2023,2024,2025]
                     y-axis "" 0--> 277
-                    bar [20,277,46]
-                    bar [10,149,33]
+                    bar [20,277,49]
+                    bar [10,149,34]
                 </div>
 
             
@@ -9734,7 +9329,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [10,74,7],
+data: [10,74,8],
 },
 
 
@@ -9758,7 +9353,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,33,8],
+data: [null,33,9],
 },
 
 
@@ -9854,7 +9449,7 @@ label: labelOption,
 emphasis: {
     focus: 'series'
         },
-data: [null,6,2],
+data: [null,6,3],
 },
 
 
@@ -9920,7 +9515,7 @@ tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2023,"Nr": "10" })
                     
 tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2024,"Nr": "74" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2025,"Nr": "7" });
+tabledata.push({"folder": "NetPackageAnalyzerConsole", "year":2025,"Nr": "8" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2024,"Nr": "10" });
                     
@@ -9928,7 +9523,7 @@ tabledata.push({"folder": "NetPackageAnalyzerDiagram", "year":2025,"Nr": "3" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2024,"Nr": "33" });
                     
-tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2025,"Nr": "8" });
+tabledata.push({"folder": "NetPackageAnalyzerExportHTML", "year":2025,"Nr": "9" });
                     
 tabledata.push({"folder": "NetPackageAnalyzerMetricsMSFT", "year":2024,"Nr": "8" });
                     
@@ -9960,7 +9555,7 @@ tabledata.push({"folder": "NPA.GitInfo", "year":2025,"Nr": "1" });
                     
 tabledata.push({"folder": "NPA.HtmlData", "year":2024,"Nr": "6" });
                     
-tabledata.push({"folder": "NPA.HtmlData", "year":2025,"Nr": "2" });
+tabledata.push({"folder": "NPA.HtmlData", "year":2025,"Nr": "3" });
                     
 tabledata.push({"folder": "NPA.Resources", "year":2024,"Nr": "4" });
                     
@@ -10002,9 +9597,9 @@ tabledata.push({"folder": "Statistical", "year":2025,"Nr": "1" });
     ;Max Value: 141
     ;Math average: 58 
     ;Math median: 36
-    ;Standard Dev: 43.08
+    ;Standard Dev: 43.34
 
-        ;Coefficient of Variation: 0.74
+        ;Coefficient of Variation: 0.75
         
         <br />
         Math mode: The most encountered value (1 times) is 33
@@ -10039,8 +9634,8 @@ tabledata.push({"folder": "Statistical", "year":2025,"Nr": "1" });
                 {
                     data: [
     {value:141},
-{value:139},
-{value:100},
+{value:140},
+{value:101},
 {value:38},
 {value:37},
 {value:36},
@@ -10074,9 +9669,9 @@ tabledata.push({"folder": "Statistical", "year":2025,"Nr": "1" });
 
                 {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\Program.cs", "Nr": "141" },
         
-                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\NetPackageAnalyzerConsole.csproj", "Nr": "139" },
+                {"Name": "..\\NetPackageAnalyzerConsole\\src\\NetPackageAnalyzer\\NetPackageAnalyzerConsole\\NetPackageAnalyzerConsole.csproj", "Nr": "140" },
         
-                {"Name": "..\\NetPackageAnalyzerExportHTML\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\HtmlSummary.cshtml", "Nr": "100" },
+                {"Name": "..\\NetPackageAnalyzerExportHTML\\src\\NetPackageAnalyzer\\NetPackageAnalyzerExportHTML\\HtmlSummary.cshtml", "Nr": "101" },
         
                 {"Name": "..\\NetPackageAnalyzerObjects\\src\\NetPackageAnalyzer\\NetPackageAnalyzerObjects\\ProjectsDict.cs", "Nr": "38" },
         
@@ -10154,9 +9749,9 @@ tabledata.push({"folder": "Statistical", "year":2025,"Nr": "1" });
             https://www.nuget.org/packages/NetPackageAnalyzerConsole
         </a>
     </small>
-    <small>10.2025.1227.2008</small>
-    <small> Nadine Gordimer is feeling rational in Seoul </small>
-    <small> Generated on 2025-12-27 19:04:31 </small>
+    <small>10.2025.1228.1606</small>
+    <small> Aleksandr Solzhenitsyn is feeling acid in Beijing </small>
+    <small> Generated on 2025-12-28 14:28:37 </small>
     <script>
 
         const steps = [
@@ -10184,7 +9779,7 @@ tabledata.push({"folder": "Statistical", "year":2025,"Nr": "1" });
             {
                 element: '#Commits-per-year-and-folder',
                 popover: {
-                    title: 'Total Commits for NetPackageAnalyzer : 343',
+                    title: 'Total Commits for NetPackageAnalyzer : 346',
                     description: 'Here are the commits per year and project',
                 }
             }
