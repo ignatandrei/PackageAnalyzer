@@ -3,63 +3,86 @@
     var projects = Model.AlphabeticOrderedProjects;
     ProjectData[] projects2 = new List<ProjectData>(projects).ToArray();
     var maxRef = Model.MaxMatrixRef();
+    var nr = projects.Length;
 }
 @{
-    <div title="image matrix projects">
+    <div title="image stay matrix projects">
         <table border="1">
             <tr>
-                <td>Projects</td>
-                @foreach (var prj in projects)
-                {
-                    <td>@prj.NameCSproj()</td>
-
-                }
+                <td>Nr</td>
+                <td>Project</td>
+                <td>Upstream number</td>
+                <td>Downstream number</td>
             </tr>
-            @{
-                int i = 1;
-            }
-            @foreach (var prj in projects)
+            @for(int index=0;index<nr;index++)
             {
+                var prj = projects[index];
+
                 <tr>
-                    <td>
-                        @(i++) ) @prj.NameCSproj()
-                        <br />
-                        Direct ref: @prj.ProjectsReferences.Count
-                        <br />
-                        Total ref: @prj.TotalReferences()
-                    </td>
-
-                    @foreach (var prj2 in projects2)
-                    {
-                        if (prj2 == prj)
-                        {
-                            <td style='text-align:center;'>X</td>
-                        }
-                        else
-                        {
-                            string style = "style='text-align:center;'";
-                            int found = prj.FindReferenceRec(prj2);
-                            if (found == 1)
-                            {
-                                style = "style='text-align:center;background-color: yellow;color: red;'";
-                            }
-                            if (found == maxRef)
-                            {
-                                style = "style='text-align:center;background-color: red;color: blue;'";
-                            }
-                            if (found == maxRef - 1)
-                            {
-                                style = "style='text-align:center;background-color: tomato;color: blue;'";
-                            }
-                            <td @style>@(found == 0 ? "&nbsp;" : found)</td>
-                        }
-                    }
-
-
+                <td>@(index+1)</td>
+                <td>@prj.NameCSproj()</td>
+                    <td>@prj.UpStreamProjectReferences.Count</td>
+                <td>@prj.AlphabeticalProjectsReferences().Count()</td>
 
                 </tr>
             }
         </table>
     </div>
+    // <div title="image matrix projects">
+    //     <table border="1">
+    //         <tr>
+    //             <td>Projects</td>
+    //             @foreach (var prj in projects)
+    //             {
+    //                 <td>@prj.NameCSproj()</td>
+
+    //             }
+    //         </tr>
+    //         @{
+    //             int i = 1;
+    //         }
+    //         @foreach (var prj in projects)
+    //         {
+    //             <tr>
+    //                 <td>
+    //                     @(i++) ) @prj.NameCSproj()
+    //                     <br />
+    //                     Direct ref: @prj.ProjectsReferences.Count
+    //                     <br />
+    //                     Total ref: @prj.TotalReferences()
+    //                 </td>
+
+    //                 @foreach (var prj2 in projects2)
+    //                 {
+    //                     if (prj2 == prj)
+    //                     {
+    //                         <td style='text-align:center;'>X</td>
+    //                     }
+    //                     else
+    //                     {
+    //                         string style = "style='text-align:center;'";
+    //                         int found = prj.FindReferenceRec(prj2);
+    //                         if (found == 1)
+    //                         {
+    //                             style = "style='text-align:center;background-color: yellow;color: red;'";
+    //                         }
+    //                         if (found == maxRef)
+    //                         {
+    //                             style = "style='text-align:center;background-color: red;color: blue;'";
+    //                         }
+    //                         if (found == maxRef - 1)
+    //                         {
+    //                             style = "style='text-align:center;background-color: tomato;color: blue;'";
+    //                         }
+    //                         <td @style>@(found == 0 ? "&nbsp;" : found)</td>
+    //                     }
+    //                 }
+
+
+
+    //             </tr>
+    //         }
+    //     </table>
+    // </div>
 
 }

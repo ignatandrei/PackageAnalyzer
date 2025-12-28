@@ -62,7 +62,10 @@ public class ExtractImages
             var name = await title.GetAttributeAsync("title");
             if (string.IsNullOrWhiteSpace(name))
                 continue;
-            var newName = name.Replace("image", "").Trim();
+            var newName = name
+                .Replace("image", "")
+                .Replace(" stay ","")
+                .Trim();
             newName = newName.Replace(" ", "-");
             try
             {
