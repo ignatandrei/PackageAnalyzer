@@ -17,12 +17,26 @@
             @for(int index=0;index<nr;index++)
             {
                 var prj = projects[index];
+                var name = prj.NameCSproj();
+                var upStream = ""+prj.UpStreamProjectReferences.Count;
+                var downStream = ""+prj.AlphabeticalProjectsReferences().Count();
+                if (upStream == "0")
+                {
+                    name = $"<b><span style='color: DodgerBlue;'>{name}</span></b>";
+                    upStream = $"<b><span style='color: DodgerBlue;'>0</span></b>";
+                }
+                
+                if(downStream == "0")
+                {
+                    name = $"<i><span style='color: Tomato;'>{name}</span></i>";
+                    downStream = $"<i><span style='color: Tomato;'>0</span></i>";
+                }
 
                 <tr>
-                <td>@(index+1)</td>
-                <td>@prj.NameCSproj()</td>
-                    <td>@prj.UpStreamProjectReferences.Count</td>
-                <td>@prj.AlphabeticalProjectsReferences().Count()</td>
+                 <td>@(index+1)</td>
+                 <td>@name</td>
+                <td>@upStream</td>
+                <td>@downStream</td>
 
                 </tr>
             }
