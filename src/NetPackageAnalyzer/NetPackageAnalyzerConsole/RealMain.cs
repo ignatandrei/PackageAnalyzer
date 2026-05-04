@@ -1,10 +1,12 @@
 ﻿
 
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using NPA.ProcessRunner;
 
 namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting
 {
+    internal static IProcessRunner ProcessRunner { get; set; } = new SystemProcessRunner();
     static Option<bool> verbose = new("--verbose", "-v");
     static Option<string> folderToHaveSln = new
             (name: "--folder","-f"            
@@ -189,15 +191,7 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
             if (runProduct)
             {
                 WriteLine("running product");
-                var p = new ProcessStartInfo
-                {
-                    FileName = "cmd",
-                    Arguments = $"/c npm i && npm run start",
-                    WorkingDirectory = where,
-                    UseShellExecute = false,
-                    CreateNoWindow = false
-                };
-                Process.Start(p);
+                ProcessRunner.Start(CreateRunProductStartInfo(where));
             }
         }
         catch (Exception ex)
@@ -207,29 +201,54 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
 
         }
     }
-    private static void LaunchBrowser(string url)
+    internal static ProcessStartInfo CreateRunProductStartInfo(string where) =>
+        new()
+        {
+            FileName = "cmd",
+            Arguments = "/c npm i && npm run start",
+            WorkingDirectory = where,
+            UseShellExecute = false,
+            CreateNoWindow = false
+        };
+    internal static void LaunchBrowser(string url)
     {
-        // Windows
+        ProcessRunner.Start(CreateBrowserLaunchStartInfo(url));
+    }
+    internal static ProcessStartInfo CreateBrowserLaunchStartInfo(string url)
+    {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            Process.Start("cmd", new[] { "/C", "start", url });
-            return;
+            var startInfo = new ProcessStartInfo("cmd")
+            {
+                UseShellExecute = false
+            };
+            startInfo.ArgumentList.Add("/C");
+            startInfo.ArgumentList.Add("start");
+            startInfo.ArgumentList.Add(url);
+            return startInfo;
         }
 
-        // Linux
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            Process.Start("xdg-open", url);
-            return;
+            var startInfo = new ProcessStartInfo("xdg-open")
+            {
+                UseShellExecute = false
+            };
+            startInfo.ArgumentList.Add(url);
+            return startInfo;
         }
 
-        // OSX
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
-            Process.Start("open", url);
-            return;
+            var startInfo = new ProcessStartInfo("open")
+            {
+                UseShellExecute = false
+            };
+            startInfo.ArgumentList.Add(url);
+            return startInfo;
         }
 
+        throw new PlatformNotSupportedException("Browser launch is not supported on this platform.");
     }
 
     

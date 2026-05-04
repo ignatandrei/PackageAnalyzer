@@ -55,4 +55,7 @@
 		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
 		<InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);RSCG_InterceptorTemplate</InterceptorsPreviewNamespaces>
 	</PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NPA.ProcessRunner\NPA.ProcessRunner.csproj" />
+  </ItemGroup>
 </Project>

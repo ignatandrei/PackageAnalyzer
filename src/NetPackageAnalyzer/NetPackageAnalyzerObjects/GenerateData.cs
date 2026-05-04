@@ -1,16 +1,20 @@
 ﻿using NPA.BigResources;
 
+using NPA.ProcessRunner;
+
 namespace NetPackageAnalyzerObjects;
 public class GenerateData
 {
-    public GenerateData(IFileSystem system)
+    public GenerateData(IFileSystem system, IProcessRunner? processRunner = null)
     {
         this.system = system;
+        this.processRunner = processRunner ?? new SystemProcessRunner();
     }
     protected string NameSolution = "";
     protected internal Dictionary<string, PackageData> packagedDict = new();
     protected internal ProjectsDict? projectsDict;
     protected readonly IFileSystem system;
+    protected readonly IProcessRunner processRunner;
     protected DisplayDataMoreThan1Version? modelMore1Version;
     protected PackageProblemsDTO packDTO = new();
     public InfoSolution infoSol
@@ -58,9 +62,10 @@ public class GenerateData
     public async Task<bool> GenerateDataForSln(string folder)
     {
         var sln = system.Directory.GetFiles(folder, "*.sln*");
+        sln = sln.Where(it => it.EndsWith(".slnx")|| it.EndsWith(".sln")).ToArray();
         if (sln.Length != 1)
         {
-            WriteLine($"Must be 1 sln in the {folder}");
+            WriteLine($"Must be 1 sln in the {folder} : {sln.Length} found");
             //throw new ArgumentException($"Must be 1 sln in the {folder}");
             return false;
         }
@@ -444,25 +449,16 @@ public class GenerateData
                 CreateNoWindow = true
             };
             Console.WriteLine($"executing in folder {startInfo.WorkingDirectory} : {startInfo.FileName} with args {startInfo.Arguments}");
-            using (Process process = new Process())
+            try
             {
-                try
-                {
-                    process.StartInfo = startInfo;
-                    process.Start();
-                    await process.WaitForExitAsync();
-
-                    string output = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();
-                    if (!string.IsNullOrWhiteSpace(error))
-                        throw new ArgumentException($"error for {proj} metrics {error}");
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    throw;
-                }
-
+                var result = await processRunner.RunAsync(startInfo);
+                if (!string.IsNullOrWhiteSpace(result.StandardError))
+                    throw new ArgumentException($"error for {proj} metrics {result.StandardError}");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
             }
         }
         return fldTemp;

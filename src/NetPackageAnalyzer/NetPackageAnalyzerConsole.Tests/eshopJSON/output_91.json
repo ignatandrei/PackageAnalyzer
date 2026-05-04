@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "dotnet.exe",
+    "arguments": "list \u0022D:/eu/GitHub/eShop/src/Webhooks.API/Webhooks.API.csproj\u0022 reference ",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\Webhooks.API"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Project reference(s)\r\n--------------------\r\n..\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj\r\n..\\IntegrationEventLogEF\\IntegrationEventLogEF.csproj\r\n..\\eShop.ServiceDefaults\\eShop.ServiceDefaults.csproj\r\n",
+    "StandardError": ""
+  }
+}

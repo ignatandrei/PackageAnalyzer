@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504\\Metrics.exe",
+    "arguments": "/p:D:/eu/GitHub/eShop/src/ClientApp/ClientApp.csproj /out:D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\ClientApp.xml",
+    "workingDirectory": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Loading ClientApp.csproj...\r\nComputing code metrics for ClientApp.csproj...\r\nWriting output to \u0027D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\ClientApp.xml\u0027...\r\nCompleted Successfully.\r\n",
+    "StandardError": ""
+  }
+}

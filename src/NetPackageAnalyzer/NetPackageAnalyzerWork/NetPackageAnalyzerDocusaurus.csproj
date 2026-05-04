@@ -134,6 +134,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\NetPackageAnalyzerDiagram\NetPackageAnalyzerDiagram.csproj" />
 	  <ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
+	  <ProjectReference Include="..\NPA.ProcessRunner\NPA.ProcessRunner.csproj" />
 	</ItemGroup>
 
 	<!--<ItemGroup>

@@ -1,10 +1,12 @@
-﻿namespace NetPackageAnalyzerDocusaurus;
+﻿using NPA.ProcessRunner;
+
+namespace NetPackageAnalyzerDocusaurus;
 
 
 
 public class GenerateFilesDocusaurus:GenerateFiles
 {
-    public GenerateFilesDocusaurus(IFileSystem system):base(system)
+    public GenerateFilesDocusaurus(IFileSystem system, IProcessRunner? processRunner = null):base(system, processRunner)
     {
         
     }
@@ -165,7 +167,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
                 var fileDest = Path.Combine(folderResults,"Projects",nameCsproj );
                 if(!Directory.Exists(fileDest))
                 {
-                    //TB:2026-01-01 solve wrong the name of the csproj 
+                    //TB:2027-01-01 solve wrong the name of the csproj 
                     //Console.WriteLine($"Directory {fileDest} does not exist");
                     File.Delete(fileMd);
                     continue;

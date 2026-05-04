@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504\\Metrics.exe",
+    "arguments": "/p:D:/eu/GitHub/eShop/src/Ordering.Domain/Ordering.Domain.csproj /out:D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\Ordering.Domain.xml",
+    "workingDirectory": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Loading Ordering.Domain.csproj...\r\nComputing code metrics for Ordering.Domain.csproj...\r\nWriting output to \u0027D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\Ordering.Domain.xml\u0027...\r\nCompleted Successfully.\r\n",
+    "StandardError": ""
+  }
+}

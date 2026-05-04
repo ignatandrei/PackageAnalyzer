@@ -1,4 +1,5 @@
-﻿
+﻿using NPA.ProcessRunner;
+
 namespace NetPackageAnalyzeHistory;
 public class Commit
 {
@@ -60,10 +61,12 @@ public class CommitsData : List<Commit>
 public class FolderHistoryCommits
 {
     private readonly string nameFolder;
+    private readonly IProcessRunner processRunner;
     public CommitsData commit = new();
-    public FolderHistoryCommits(string nameFolder)
+    public FolderHistoryCommits(string nameFolder, IProcessRunner? processRunner = null)
     {
         this.nameFolder = nameFolder;
+        this.processRunner = processRunner ?? new SystemProcessRunner();
     }
     public void Initialize()
     {
@@ -77,15 +80,8 @@ public class FolderHistoryCommits
             WorkingDirectory = nameFolder
         };
 
-        // Create and start the process
-        Process process = new Process { StartInfo = startInfo };
-        process.Start();
-
-        // Read the output from the command
-        string output = process.StandardOutput.ReadToEnd();
-
-        // Wait for the process to finish
-        process.WaitForExit();
+        var result = processRunner.Run(startInfo);
+        string output = result.StandardOutput;
         var lines = output.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
         string format = "yyyy-MM-dd HH:mm:ss";
         

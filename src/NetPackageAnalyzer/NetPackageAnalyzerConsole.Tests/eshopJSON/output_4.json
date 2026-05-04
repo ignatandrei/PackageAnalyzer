@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "dotnet.exe",
+    "arguments": "--list-sdks",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "10.0.203 [C:\\Program Files\\dotnet\\sdk]\r\n",
+    "StandardError": ""
+  }
+}

@@ -1,0 +1,54 @@
+namespace NPA.GitSummary;
+
+public sealed record GitFileFrequency(string FilePath, int Count);
+
+public sealed record GitContributorFrequency(string Contributor, int CommitCount)
+{
+    public double ShareOfCommits(int totalCommits)
+        => totalCommits == 0 ? 0 : (double)CommitCount / totalCommits;
+}
+
+public sealed record GitMonthlyCommitFrequency(int Year, int Month, int CommitCount)
+{
+    public string YearMonth => $"{Year:D4}-{Month:D2}";
+}
+
+public sealed record GitFirefightingCommit(DateTimeOffset CommitDate, string Sha, string Subject);
+
+public sealed record GitChurnHotspotReport(string Since, IReadOnlyList<GitFileFrequency> Files);
+
+public sealed record GitBusFactorReport(IReadOnlyList<GitContributorFrequency> Contributors)
+{
+    public int TotalCommits => Contributors.Sum(it => it.CommitCount);
+
+    public GitContributorFrequency? TopContributor => Contributors.FirstOrDefault();
+
+    public double? TopContributorRatio
+        => TopContributor is null || TotalCommits == 0
+            ? null
+            : TopContributor.ShareOfCommits(TotalCommits);
+}
+
+public sealed record GitBugHotspotReport(string? Since, IReadOnlyList<GitFileFrequency> Files);
+
+public sealed record GitCommitVelocityReport(IReadOnlyList<GitMonthlyCommitFrequency> Months);
+
+public sealed record GitFirefightingReport(string Since, IReadOnlyList<GitFirefightingCommit> Commits);
+
+public sealed record GitRepositorySummaryReport(
+    GitChurnHotspotReport ChurnHotspots,
+    GitBusFactorReport BusFactor,
+    GitBugHotspotReport BugHotspots,
+    GitCommitVelocityReport CommitVelocity,
+    GitFirefightingReport Firefighting);
+
+public sealed record GitRepositorySummaryOptions
+{
+    public int TopCount { get; init; } = 20;
+
+    public string ChurnSince { get; init; } = "1 year ago";
+
+    public string? BugSince { get; init; }
+
+    public string FirefightingSince { get; init; } = "1 year ago";
+}

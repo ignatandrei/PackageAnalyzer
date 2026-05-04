@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504\\Metrics.exe",
+    "arguments": "/p:D:/eu/GitHub/eShop/src/IntegrationEventLogEF/IntegrationEventLogEF.csproj /out:D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\IntegrationEventLogEF.xml",
+    "workingDirectory": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Loading IntegrationEventLogEF.csproj...\r\nComputing code metrics for IntegrationEventLogEF.csproj...\r\nWriting output to \u0027D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\IntegrationEventLogEF.xml\u0027...\r\nCompleted Successfully.\r\n",
+    "StandardError": ""
+  }
+}

@@ -3,6 +3,7 @@
   <Project Path="DotnetWhyParserObjects/DotnetWhyParserObjects.csproj" />
   <Project Path="DotnetWhyParserTests/DotnetWhyParserTests.csproj" />
   <Project Path="NetPackageAnalyzeHistory/NetPackageAnalyzeHistory.csproj" />
+  <Project Path="NetPackageAnalyzerConsole.Tests/NetPackageAnalyzerConsole.Tests.csproj" />
   <Project Path="NetPackageAnalyzerConsole/NetPackageAnalyzerConsole.csproj" />
   <Project Path="NetPackageAnalyzerDiagram/NetPackageAnalyzerDiagram.csproj" />
   <Project Path="NetPackageAnalyzerExportHTML/NetPackageAnalyzerExportHTML.csproj" />
@@ -13,7 +14,10 @@
   <Project Path="NetPackageAnalyzerWork/NetPackageAnalyzerDocusaurus.csproj" />
   <Project Path="NPA.BigResources/NPA.BigResources.csproj" Id="1fe28c4e-a48e-4eb0-8d23-2babac199dcf" />
   <Project Path="NPA.GitInfo/NPA.GitInfo.csproj" />
+  <Project Path="NPA.GitSummary.Tests/NPA.GitSummary.Tests.csproj" />
+  <Project Path="NPA.GitSummary/NPA.GitSummary.csproj" />
   <Project Path="NPA.HtmlData/NPA.HtmlData.csproj" />
+  <Project Path="NPA.ProcessRunner/NPA.ProcessRunner.csproj" />
   <Project Path="NPA.Resources/NPA.Resources.csproj" />
   <Project Path="NuGetInfo/NuGetInfo.csproj" />
   <Project Path="Statistical/Statistical.csproj" />

@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "git",
+    "arguments": "log --name-status --date=iso-strict --pretty=\u0022%ad %H\u0022 .",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\PaymentProcessor"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "2025-09-26T09:43:25-07:00 318e03744f3fab19a5bd44ed37411489bc8f4c1d\n\nM\tsrc/PaymentProcessor/PaymentProcessor.csproj\n2024-09-26T17:25:46-07:00 20cb6b9fa1c5eb69586d1b41704e6b9892ec96e9\n\nM\tsrc/PaymentProcessor/PaymentProcessor.csproj\n2023-11-15T22:40:03\u002B03:00 2e7babf48167ab4ab5e40b36166c9362a7536fc1\n\nA\tsrc/PaymentProcessor/GlobalUsings.cs\nA\tsrc/PaymentProcessor/IntegrationEvents/EventHandling/OrderStatusChangedToStockConfirmedIntegrationEventHandler.cs\nA\tsrc/PaymentProcessor/IntegrationEvents/Events/OrderPaymentFailedIntegrationEvent.cs\nA\tsrc/PaymentProcessor/IntegrationEvents/Events/OrderPaymentSucceededIntegrationEvent.cs\nA\tsrc/PaymentProcessor/IntegrationEvents/Events/OrderStatusChangedToStockConfirmedIntegrationEvent.cs\nA\tsrc/PaymentProcessor/PaymentOptions.cs\nA\tsrc/PaymentProcessor/PaymentProcessor.csproj\nA\tsrc/PaymentProcessor/Program.cs\nA\tsrc/PaymentProcessor/Properties/launchSettings.json\nA\tsrc/PaymentProcessor/appsettings.Development.json\nA\tsrc/PaymentProcessor/appsettings.json\n",
+    "StandardError": ""
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504\\Metrics.exe",
+    "arguments": "/p:D:/eu/GitHub/eShop/src/Webhooks.API/Webhooks.API.csproj /out:D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\Webhooks.API.xml",
+    "workingDirectory": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Loading Webhooks.API.csproj...\r\nComputing code metrics for Webhooks.API.csproj...\r\nWriting output to \u0027D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\Webhooks.API.xml\u0027...\r\nCompleted Successfully.\r\n",
+    "StandardError": ""
+  }
+}

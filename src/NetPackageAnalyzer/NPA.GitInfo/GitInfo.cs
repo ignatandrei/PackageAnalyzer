@@ -1,9 +1,12 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
+using NPA.ProcessRunner;
 
 namespace NPA.GitInfo;
 
 public class GitInfo
 {
+    public static IProcessRunner ProcessRunner { get; set; } = new SystemProcessRunner();
+
     private GitInfo()
     {
     }
@@ -49,19 +52,9 @@ public class GitInfo
             Arguments = args
         };
 
-        // Create and start the process
-        Process process = new Process
-        {
-            StartInfo = startInfo
-        };
-        process.Start();
-
-        // Read the output
-        string output = process.StandardOutput.ReadToEnd();
-        string errorOutput = process.StandardError.ReadToEnd();
-
-        // Wait for the process to exit
-        process.WaitForExit();
+        var result = ProcessRunner.Run(startInfo);
+        string output = result.StandardOutput;
+        string errorOutput = result.StandardError;
         if (errorOutput.Length > 0)
         {
             throw new ArgumentException(errorOutput);

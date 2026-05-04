@@ -1,4 +1,5 @@
-﻿using NPA.BigResources;
+using NPA.BigResources;
+using NPA.ProcessRunner;
 using System.Diagnostics;
 using System.IO.Compression;
 
@@ -6,7 +7,7 @@ namespace NetPackageAnalyzerExportHTML;
 
 public class GenerateHTML : GenerateFiles
 {
-    public GenerateHTML(IFileSystem system) : base(system)
+    public GenerateHTML(IFileSystem system, IProcessRunner? processRunner = null) : base(system, processRunner)
     {
 
     }
@@ -86,7 +87,7 @@ public class GenerateHTML : GenerateFiles
 
     }
 
-    private static async Task<string> ExecuteStackTower(string pathZip, string tower ,string ordering)
+    private async Task<string> ExecuteStackTower(string pathZip, string tower ,string ordering)
     {
         //TODO: move to images_eShop_summary
         string nameSolution = GlobalsForGenerating.NameSolution;
@@ -110,11 +111,7 @@ public class GenerateHTML : GenerateFiles
         };
         try
         {
-            // Create and start the process
-            Process process = new Process { StartInfo = startInfo };
-            process.Start();
-            // Wait for the process to finish
-            await process.WaitForExitAsync();
+            await processRunner.RunAsync(startInfo);
         }
         catch (Exception ex)
         {

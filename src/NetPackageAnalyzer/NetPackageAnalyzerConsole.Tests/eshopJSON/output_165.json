@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "git",
+    "arguments": "log --name-status --date=iso-strict --pretty=\u0022%ad %H\u0022 .",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\IntegrationEventLogEF"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "2025-09-26T09:43:25-07:00 318e03744f3fab19a5bd44ed37411489bc8f4c1d\n\nM\tsrc/IntegrationEventLogEF/IntegrationEventLogEF.csproj\n2024-09-26T17:25:46-07:00 20cb6b9fa1c5eb69586d1b41704e6b9892ec96e9\n\nM\tsrc/IntegrationEventLogEF/IntegrationEventLogEF.csproj\n2023-10-30T15:22:04-07:00 fc61f9091f6abb6983bb0aaa03a5f086e7c0a66d\n\nA\tsrc/IntegrationEventLogEF/EventStateEnum.cs\nA\tsrc/IntegrationEventLogEF/GlobalUsings.cs\nA\tsrc/IntegrationEventLogEF/IntegrationEventLogEF.csproj\nA\tsrc/IntegrationEventLogEF/IntegrationEventLogEntry.cs\nA\tsrc/IntegrationEventLogEF/IntegrationLogExtensions.cs\nA\tsrc/IntegrationEventLogEF/Services/IIntegrationEventLogService.cs\nA\tsrc/IntegrationEventLogEF/Services/IntegrationEventLogService.cs\nA\tsrc/IntegrationEventLogEF/Utilities/ResilientTransaction.cs\n",
+    "StandardError": ""
+  }
+}

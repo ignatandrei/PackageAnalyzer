@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "git.exe",
+    "arguments": "rev-parse HEAD",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "9b4f9434f46fdc5c1a6e9e936af2868340cdbc48\n",
+    "StandardError": ""
+  }
+}
