@@ -75,7 +75,7 @@ public class GenerateData
         GlobalsForGenerating.NameSolution = NameSolution;
         await Task.Delay(100);
         WriteLine($"Start analyzing {folder} for solution {NameSolution}");
-        var p = new ProcessOutput();
+        var p = new ProcessOutput(processRunner);
         Console.WriteLine("List SDKs");
         var listSDKs = p.ListSDKS(folder);
         WriteLine(listSDKs);
@@ -126,7 +126,7 @@ public class GenerateData
                 .Where(it => it != null)
                 .Select(it => it!)
                 .Where(it => it.Id != null && it.RequestedVersion !=null)
-                .Select(it=> new PackageWithVersionOutdated(it.Id??"",it.RequestedVersion??""))
+                .Select(it=> new PackageWithVersionOutdated(it.Id??"",it.RequestedVersion??"",processRunner))
                 .ToArray();
         }
         if(deprecatedPackages?.TopLevelPackagesIDs()?.Length > 0)
@@ -136,7 +136,7 @@ public class GenerateData
                 .Where(it=>it!=null)
                 .Select(it=>it!)
                 .Where(it => it.Id != null && it.RequestedVersion != null)
-                .Select(it => new PackageWithVersionDeprecated(it.Id??"", it.RequestedVersion ?? ""))
+                .Select(it => new PackageWithVersionDeprecated(it.Id??"", it.RequestedVersion ?? "", processRunner))
                 .ToArray();
         }
 
@@ -147,7 +147,7 @@ public class GenerateData
                 .Where(it => it != null)
                 .Select(it => it!)
                 .Where(it => it.Id != null && it.RequestedVersion != null)
-                .Select(it => new PackageWithVersionVulnerable(it.Id ?? "", it.RequestedVersion ?? ""))
+                .Select(it => new PackageWithVersionVulnerable(it.Id ?? "", it.RequestedVersion ?? ""   , processRunner))
                 .ToArray();
         }
         build = p.Build(folder);
@@ -190,7 +190,8 @@ public class GenerateData
         projectsDict = new ProjectsDict(
             arrDataProjectsPath
             .Distinct()
-            .ToDictionary(it => it, it => new ProjectData(it, folder))
+            .ToDictionary(it => it, it => new ProjectData(it, folder)),
+            processRunner
             );
 
         WriteLine($"Number projects : {projectsDict.Count}");
@@ -206,7 +207,7 @@ public class GenerateData
         }
 
         packagedDict = arrData.Distinct()
-            .ToDictionary(it => it, it => new PackageData(it));
+            .ToDictionary(it => it, it => new PackageData(it,processRunner));
 
 
         WriteLine($"Number references : {packagedDict.Count}");

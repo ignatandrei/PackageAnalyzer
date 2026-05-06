@@ -6,7 +6,7 @@ using NPA.ProcessRunner;
 namespace NetPackageAnalyzerConsole;
 internal class RealMainExecuting
 {
-    internal static IProcessRunner ProcessRunner { get; set; } = new SystemProcessRunner();
+    internal static IProcessRunner ProcessRunner { get; set; }=default!;
     static Option<bool> verbose = new("--verbose", "-v");
     static Option<string> folderToHaveSln = new
             (name: "--folder","-f"            
@@ -99,7 +99,7 @@ internal class RealMainExecuting
         //    Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
         //}
         var fs = new FileSystem();
-        GenerateData? g = new(fs);
+        GenerateData? g = new(fs,ProcessRunner);
         bool b = await g.GenerateDataForSln(folder);
         if (!b)
         {
@@ -114,6 +114,7 @@ internal class RealMainExecuting
     [InterceptMethod(WhatToIntercept.Timing)]
     public static async Task<int> RealMain(string[] args)
     {
+        ProcessRunner??= new SystemProcessRunner();
         GlobalsForGenerating.Version = ThisAssembly.Info.Version.ToString();
         GlobalsForGenerating.NameVersion = TheAssemblyInfo.GeneratedNameNice;
         WriteLine("Version:" + ThisAssembly.Info.Version.ToString());
@@ -187,7 +188,7 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
             //{
             //    Console.WriteLine("Please see verbose file at " + DisplayData.VerboseFile());
             //}
-            await RealGenerateHandler(folder, where, what);
+            await RealGenerateHandler(folder, where, what, ProcessRunner);
             if (runProduct)
             {
                 WriteLine("running product");
@@ -252,13 +253,14 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
     }
 
     
-    private static async Task RealGenerateHandler(string folder, string where, WhatToGenerate what)
+    private static async Task RealGenerateHandler(string folder, string where, WhatToGenerate what, IProcessRunner? processRunner = null)
     {
+        processRunner = processRunner ?? new SystemProcessRunner();
 
         where = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
         try
         {
-            var s = GitInfo.Construct(folder);
+            var s = GitInfo.Construct(folder,processRunner);
 
             Console.WriteLine($"Repository:{s.Repository}");
             Console.WriteLine($"Branch:{s.Branch}");
@@ -277,7 +279,7 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
                 g = new GenerateFilesDocusaurus(new FileSystem());
                 break;
             case WhatToGenerate.HtmlSummary:
-                g = new GenerateHTML(new FileSystem());
+                g = new GenerateHTML(new FileSystem(), ProcessRunner);
                 break;
             default:
                 throw new NotImplementedException($"what={what}");

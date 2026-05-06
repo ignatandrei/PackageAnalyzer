@@ -1,5 +1,7 @@
-﻿namespace NetPackageAnalyzerObjects;
-public partial record PackageData(string packageVersionId): PackageGatherInfo(packageVersionId)
+﻿using NPA.ProcessRunner;
+
+namespace NetPackageAnalyzerObjects;
+public partial record PackageData(string packageVersionId, IProcessRunner? processRunner = null): PackageGatherInfo(packageVersionId, processRunner ?? new SystemProcessRunner())
 {
     public bool IsTest()
     {

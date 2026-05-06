@@ -5,6 +5,11 @@ namespace NPA.ProcessRunner;
  
 public sealed class SystemProcessRunner : IProcessRunner
 {
+    public SystemProcessRunner()
+    {
+        int i=0;
+        Console.WriteLine(i);
+    }
     //static int  nr=0;
     public Process? Start(ProcessStartInfo startInfo) => Process.Start(startInfo);
 

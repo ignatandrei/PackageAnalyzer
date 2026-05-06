@@ -6,11 +6,19 @@ namespace NetPackageAnalyzerConsole.Tests;
 public class TestProcessStarter
 {
     [Fact]
-    public void DeserializeEshop()
+    public async Task DeserializeEshop()
     {
         FakeProcessRunner fakeProcessRunner = new ();
         fakeProcessRunner.DeserializeFromFolder("eShopJSON");
-        string s = ";";
+        RealMainExecuting.ProcessRunner = fakeProcessRunner;
+        var args = new[] { "generateFiles",
+            "--folder", @"D:\eu\GitHub\eShop",
+            "-wg","HtmlSummary",
+            "--where", @"D:\eu\GitHub\PackageAnalyzer\src\documentation1\",
+            "--verbose","true"
+        };
+
+        await RealMainExecuting.RealMain(args);
     }
     [Fact]
     public void CreateRunProductStartInfo_ConfiguresExpectedCommand()
