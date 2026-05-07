@@ -45,7 +45,19 @@ public sealed class FakeProcessRunner : IProcessRunner
         }
         else
         {
-            throw new ArgumentException("Cannot find output for "+ p);
+            var existing = results
+                .Where(it=>Path.GetFileName(it.Key.file) == Path.GetFileName(p.file) && it.Key.arguments == p.arguments)
+                .ToArray();
+            if (existing.Length == 0)
+            {
+                throw new ArgumentException("Cannot find output for " + p);
+            }
+            else
+            {
+                if(existing.Length == 1)return existing[0].Value.result ?? throw new InvalidOperationException("Deserialized object missing ProcessExecutionResult");
+                throw new ArgumentException("Cannot find output for " + p);
+
+            }
         }
     }
 

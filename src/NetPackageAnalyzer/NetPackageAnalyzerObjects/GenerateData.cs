@@ -213,11 +213,11 @@ public class GenerateData
         WriteLine($"Number references : {packagedDict.Count}");
 
         var allProjectPathWithVersion = operations
-            .SelectMany(it => it.PerProjectPathWithVersion())
+            .SelectMany(it => it.PerProjectPathWithVersion(processRunner))
             .ToArray();
         if (allPackages != null)
             allProjectPathWithVersion = allProjectPathWithVersion
-                .Union(allPackages.PerProjectPathWithVersionTransitive())
+                .Union(allPackages.PerProjectPathWithVersionTransitive(processRunner))
                 .ToArray();
 
         foreach (var pathPackage in allProjectPathWithVersion)
@@ -238,9 +238,9 @@ public class GenerateData
         }
 
         var problems =
-            (outdatedPackages?.PerProjectPathWithVersion() ?? [])
-            .Union((deprecatedPackages?.PerProjectPathWithVersion() ?? []))
-            .Union((vulnerablePackages?.PerProjectPathWithVersion() ?? []))
+            (outdatedPackages?.PerProjectPathWithVersion(processRunner) ?? [])
+            .Union((deprecatedPackages?.PerProjectPathWithVersion(processRunner) ?? []))
+            .Union((vulnerablePackages?.PerProjectPathWithVersion(processRunner) ?? []))
             .ToArray();
 
         foreach (var pathPackage in problems)

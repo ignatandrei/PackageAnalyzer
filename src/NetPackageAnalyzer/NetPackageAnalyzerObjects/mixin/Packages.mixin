@@ -119,24 +119,24 @@ namespace {{ moxy.Class.Namespace }}
         
     }
     {{if IncludeTransitive == true }}
-    public Dictionary<string, PackageWithVersion[]> PerProjectPathWithVersionTransitive(){
+    public Dictionary<string, PackageWithVersion[]> PerProjectPathWithVersionTransitive(NPA.ProcessRunner.IProcessRunner processRunner){
          var data= PerProjectPathTransitive()
         .ToDictionary(
         it => it.Key,
         it => it.Value
-            .Select(it=>new PackageWithVersion(it.Id!,it.ResolvedVersion!))
+            .Select(it=>new PackageWithVersion(it.Id!,it.ResolvedVersion!, PackageOptions.None,processRunner))
             .ToArray()
             );
         return data;
     }
 
     {{end}}
-    public Dictionary<string, PackageWithVersion[]> PerProjectPathWithVersion(){
+    public Dictionary<string, PackageWithVersion[]> PerProjectPathWithVersion(NPA.ProcessRunner.IProcessRunner processRunner){
          var data= PerProjectPath()
         .ToDictionary(
         it => it.Key,
         it => it.Value
-            .Select(it=>new PackageWithVersion(it.Id!,it.RequestedVersion!))
+            .Select(it=>new PackageWithVersion(it.Id!,it.RequestedVersion!, PackageOptions.None,processRunner))
             .ToArray()
             );
         return data;

@@ -403,7 +403,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         {
             try
             {
-                FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
+                FileFolderHistorySimple fileHistorySimple = new(project.PathProject, processRunner);
                 fileHistorySimple.Initialize(true);
                 string dirName = Path.GetDirectoryName(project.PathProject)??"";
                 FolderHistoryCommits folderHistoryCommits = new(dirName,processRunner);
