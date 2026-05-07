@@ -256,6 +256,7 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
     private static async Task RealGenerateHandler(string folder, string where, WhatToGenerate what, IProcessRunner? processRunner = null)
     {
         processRunner = processRunner ?? new SystemProcessRunner();
+        var fileSystem = new FileSystem();
 
         where = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
         try
@@ -276,10 +277,10 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
         switch (what)
         {
             case WhatToGenerate.Docusaurus:
-                g = new GenerateFilesDocusaurus(new FileSystem());
+                g = new GenerateFilesDocusaurus(fileSystem);
                 break;
             case WhatToGenerate.HtmlSummary:
-                g = new GenerateHTML(new FileSystem(), ProcessRunner);
+                g = new GenerateHTML(fileSystem, ProcessRunner);
                 break;
             default:
                 throw new NotImplementedException($"what={what}");
@@ -302,7 +303,7 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
             case WhatToGenerate.HtmlSummary:
                 WriteLine($"start {data}");
                 
-                await ReplaceHtmlSummary(data);
+                await ReplaceHtmlSummary(data, fileSystem);
                 LaunchBrowser(data);
                 break;
             default:
@@ -311,12 +312,12 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
 
 
     }
-    private static async Task<bool> ReplaceHtmlSummary(string filePath)
+    private static async Task<bool> ReplaceHtmlSummary(string filePath, IFileSystem fileSystem)
     {
         string nameSol = GlobalsForGenerating.NameSolution;
-        if(!File.Exists(filePath)) return false;
-        File.Copy(filePath, filePath + ".bak",true);
-        var content = await File.ReadAllTextAsync(filePath);
+        if(!fileSystem.File.Exists(filePath)) return false;
+        fileSystem.File.Copy(filePath, filePath + ".bak",true);
+        var content = await fileSystem.File.ReadAllTextAsync(filePath);
         content = content.Replace("driverObj.drive();", "driverObj.drive();var tabs = new Tabby('[data-tabs]');");
         var lines = content.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
         string?[] outputLine = new string[lines.Length];
@@ -346,7 +347,7 @@ See documentation at https://github.com/ignatandrei/PackageAnalyzer
         }
 
         content = string.Join(Environment.NewLine, outputLine.Where(it => !string.IsNullOrWhiteSpace(it)));
-        await File.WriteAllTextAsync(filePath, content);
+        await fileSystem.File.WriteAllTextAsync(filePath, content);
         
         return true;
     }

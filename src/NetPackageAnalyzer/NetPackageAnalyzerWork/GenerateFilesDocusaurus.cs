@@ -16,19 +16,19 @@ public class GenerateFilesDocusaurus:GenerateFiles
         
 
         var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
-        if(!Directory.Exists(folderResults))
-            Directory.CreateDirectory(folderResults);
+        if(!system.Directory.Exists(folderResults))
+            system.Directory.CreateDirectory(folderResults);
         var zip = Path.Combine(folderResults, "docusaurus.zip");
         Console.WriteLine("generate docusaurus at " + zip);
-        await File.WriteAllBytesAsync(zip, MyResource.GetDocusaurusZip().ToArray());
+        await system.File.WriteAllBytesAsync(zip, MyResource.GetDocusaurusZip().ToArray());
         ZipFile.ExtractToDirectory(zip, folderResults,true);
 
         //generate copyright
         var fileConfig = Path.Combine(folderResults, "docusaurus.config.ts");
-        var data=await File.ReadAllTextAsync(fileConfig);
+        var data=await system.File.ReadAllTextAsync(fileConfig);
         data = data.Replace("My Project, Inc", "SolutionAnalyzer");
         data=data.Replace("Built with Docusaurus", "version "+GlobalsForGenerating.Version);
-        await File.WriteAllTextAsync(fileConfig, data);
+        await system.File.WriteAllTextAsync(fileConfig, data);
         string generalSolution = $$"""
 {
   "label": "Solutions",
@@ -40,36 +40,36 @@ public class GenerateFilesDocusaurus:GenerateFiles
 """;
         folderResults = Path.Combine(folderResults, "docs");
         var fileRoot = Path.Combine(folderResults, "_category_.json");
-        await File.WriteAllTextAsync(fileRoot, generalSolution);
+        await system.File.WriteAllTextAsync(fileRoot, generalSolution);
 
 
         folderResults = Path.Combine(folderResults,"Analysis", NameSolution);
         WriteLine($"generate documentation in {folderResults}");
-        if (!Directory.Exists(folderResults))
-            Directory.CreateDirectory(folderResults);
+        if (!system.Directory.Exists(folderResults))
+            system.Directory.CreateDirectory(folderResults);
         
         TemplateGenerator generator = new();
 
         var file = Path.Combine(folderResults, "DisplayAllVersions.html");
-        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersions(modelMore1Version));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersions(modelMore1Version));
 
         file = Path.Combine(folderResults, "DisplayOutdatedDeprecated.md");
 
-        await File.WriteAllTextAsync(file, await generator.Generate_OutDeprMarkdown(Problems()));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_OutDeprMarkdown(Problems()));
 
         file = Path.Combine(folderResults, "DisplayAllVersions.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsMarkdown(modelMore1Version));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_DisplayAllVersionsMarkdown(modelMore1Version));
 
         file = Path.Combine(folderResults, $"MermaidVisualizerMajorDiffer.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_MermaidVisualizerMajorDiffer(modelMore1Version));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_MermaidVisualizerMajorDiffer(modelMore1Version));
 
         file = Path.Combine(folderResults, "ProjectRelation.md");
         ArgumentNullException.ThrowIfNull(projectsDict);
-        await File.WriteAllTextAsync(file, await generator.Generate_SolutionRelations(projectsDict));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_SolutionRelations(projectsDict));
 
         var folderProjects = Path.Combine(folderResults, "Projects");
-        if (!Directory.Exists(folderProjects))
-            Directory.CreateDirectory(folderProjects);
+        if (!system.Directory.Exists(folderProjects))
+            system.Directory.CreateDirectory(folderProjects);
 
         var projects = $$"""
 {
@@ -81,13 +81,13 @@ public class GenerateFilesDocusaurus:GenerateFiles
 }
 """;
 
-        await File.WriteAllTextAsync(Path.Combine(folderProjects, "_category_.json"), projects);
+        await system.File.WriteAllTextAsync(Path.Combine(folderProjects, "_category_.json"), projects);
 
         foreach (var projData in projectsDict.AlphabeticOrderedProjects)
         {
             var folderProject = Path.Combine(folderProjects, projData.NameCSproj());
-            if (!Directory.Exists(folderProject))
-                Directory.CreateDirectory(folderProject);
+            if (!system.Directory.Exists(folderProject))
+                system.Directory.CreateDirectory(folderProject);
 
             var project = $$"""
 {
@@ -99,16 +99,16 @@ public class GenerateFilesDocusaurus:GenerateFiles
 }
 """;
 
-            await File.WriteAllTextAsync(Path.Combine(folderProject, "_category_.json"), project);
+            await system.File.WriteAllTextAsync(Path.Combine(folderProject, "_category_.json"), project);
 
             file = Path.Combine(folderProject, "ProjectReferences.md");
-            await File.WriteAllTextAsync(file, await generator.Generate_ProjectRelations(projData));
+            await system.File.WriteAllTextAsync(file, await generator.Generate_ProjectRelations(projData));
 
             file = Path.Combine(folderProject, "Packages.md");
-            await File.WriteAllTextAsync(file, await generator.Generate_ProjectPackages(projData));
+            await system.File.WriteAllTextAsync(file, await generator.Generate_ProjectPackages(projData));
 
             file = Path.Combine(folderProject, "Commits.md");
-            await File.WriteAllTextAsync(file, await generator.Generate_ProjectCommits(projData));
+            await system.File.WriteAllTextAsync(file, await generator.Generate_ProjectCommits(projData));
 
 
         }
@@ -120,23 +120,23 @@ public class GenerateFilesDocusaurus:GenerateFiles
   "position": 1
 }
 """;
-        await File.WriteAllTextAsync(file, categoryGenerated);
+        await system.File.WriteAllTextAsync(file, categoryGenerated);
 
         file = Path.Combine(folderResults, "index.md");
         
-        await File.WriteAllTextAsync(file, await generator.Generate_SolutionIntroduction(infoSol));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_SolutionIntroduction(infoSol));
         file = Path.Combine(folderResults, "BuildingBlocks.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_BuildingBlocks(projectsDict));
 
         file = Path.Combine(folderResults, "Commits.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_Commits(projectsDict));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_Commits(projectsDict));
 
 
         file = Path.Combine(folderResults, "TestProjects.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_TestProjects(projectsDict));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_TestProjects(projectsDict));
 
         file = Path.Combine(folderResults, "RootProjects.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_RootProjects(projectsDict));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_RootProjects(projectsDict));
 
         //file = Path.Combine(folderResults, "DisplayAllVersionsWithProblems.md");
         //ArgumentNullException.ThrowIfNull(projectsDict);
@@ -152,30 +152,30 @@ public class GenerateFilesDocusaurus:GenerateFiles
         {
             (refSummary,publicClassRefData, assemblyDataFromMSFT) = AnalyzeDiagrams(tempFolder);
             file = Path.Combine(folderResults, "ReferencesSummaryProjects.md");
-            await File.WriteAllTextAsync(file, await generator.Generate_ReferencesSummaryProjects(refSummary));
+            await system.File.WriteAllTextAsync(file, await generator.Generate_ReferencesSummaryProjects(refSummary));
 
             file = Path.Combine(folderResults, "PublicClassesProject.md");
-            await File.WriteAllTextAsync(file, await generator.Generate_PublicClasses(publicClassRefData));
-            
+            await system.File.WriteAllTextAsync(file, await generator.Generate_PublicClasses(publicClassRefData));
+             
             //move .md files to the right place
-            var files = Directory.GetFiles(tempFolder, "*.md");
+            var files = system.Directory.GetFiles(tempFolder, "*.md");
             foreach (var fileMd in files)
             {
                 string nameCsproj = Path.GetFileNameWithoutExtension(fileMd);
                 nameCsproj = nameCsproj.Replace("_rel_csproj", "");
 
                 var fileDest = Path.Combine(folderResults,"Projects",nameCsproj );
-                if(!Directory.Exists(fileDest))
+                if(!system.Directory.Exists(fileDest))
                 {
                     //TB:2027-01-01 solve wrong the name of the csproj 
                     //Console.WriteLine($"Directory {fileDest} does not exist");
-                    File.Delete(fileMd);
+                    system.File.Delete(fileMd);
                     continue;
                 }
                 fileDest = Path.Combine(fileDest, Path.GetFileName(fileMd));
                 try
                 {
-                    File.Move(fileMd, fileDest,true);
+                    system.File.Move(fileMd, fileDest,true);
                 }
                 catch (Exception ex)
                 {
@@ -187,7 +187,7 @@ public class GenerateFilesDocusaurus:GenerateFiles
             }
         }
         file = Path.Combine(folderResults, "BlogPost.md");
-        await File.WriteAllTextAsync(file, await generator.Generate_BlogPost(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData));
+        await system.File.WriteAllTextAsync(file, await generator.Generate_BlogPost(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData));
 
         return "";
     }

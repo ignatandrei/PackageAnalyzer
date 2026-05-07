@@ -12,4 +12,7 @@
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GX</CompilerGeneratedFilesOutputPath>
 	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.1.0" />
+	</ItemGroup>
 </Project>

@@ -289,7 +289,7 @@ public class GenerateData
 
     public (ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) AnalyzeDiagrams(string tempFolder)
     {
-        var xmlFiles = Directory.GetFiles(tempFolder, "*.xml");
+        var xmlFiles = system.Directory.GetFiles(tempFolder, "*.xml");
         List<GenericMetricsAssembly> msftMetrics = new();
         foreach (var file in xmlFiles)
         {
@@ -306,11 +306,11 @@ public class GenerateData
 
         List<ExportAssembly> expAss = new ();
         Dictionary<string,ExportPublicClass[]> expPublicClasses = new ();
-        var files = Directory.GetFiles(tempFolder, "*.json");
+        var files = system.Directory.GetFiles(tempFolder, "*.json");
         foreach (var fileJson in files)
         {
 
-            var json = File.ReadAllText(fileJson);
+            var json = system.File.ReadAllText(fileJson);
             if (fileJson.EndsWith("_public_csproj.json"))
             {
                 string nameCsproj = Path.GetFileNameWithoutExtension(fileJson);
@@ -427,11 +427,11 @@ public class GenerateData
     {
 
         var fldTemp = folderResults + "_Temp";
-        if (!Directory.Exists(fldTemp))
-            Directory.CreateDirectory(fldTemp);
+        if (!system.Directory.Exists(fldTemp))
+            system.Directory.CreateDirectory(fldTemp);
         var temp = Path.GetTempPath();
         var pathZip = Path.Combine(temp, "metrics" + DateTime.Now.ToString("yyyyMMdd"));
-        await ZipBigFiles.SaveToFile(pathZip,EmbeddedResource.metrics_exe_zip);
+        await ZipBigFiles.SaveToFile(pathZip,EmbeddedResource.metrics_exe_zip, system);
         foreach (var proj in projects)
         {
             if (string.IsNullOrWhiteSpace(proj))

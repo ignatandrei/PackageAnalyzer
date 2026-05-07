@@ -1,19 +1,22 @@
-﻿using System.IO.Compression;
+﻿using System.IO.Abstractions;
+using System.IO.Compression;
 
 namespace NPA.BigResources;
 
 public class ZipBigFiles
 {
     //TODO : should contain files for Windows, Linux, MacOS
-    public static async Task SaveToFile(string folderPath, EmbeddedResource embeddedResource)
+    public static async Task SaveToFile(string folderPath, EmbeddedResource embeddedResource, IFileSystem? fileSystem = null)
     {
-        if(Directory.Exists(folderPath) && Directory.EnumerateFiles(folderPath).Any())
+        fileSystem ??= new FileSystem();
+
+        if(fileSystem.Directory.Exists(folderPath) && fileSystem.Directory.EnumerateFiles(folderPath).Any())
         {
             return;
         }
-        if(!Directory.Exists(folderPath))
+        if(!fileSystem.Directory.Exists(folderPath))
         {
-            Directory.CreateDirectory(folderPath);
+            fileSystem.Directory.CreateDirectory(folderPath);
         }
         using var stream = EmbeddedResources.GetStream(embeddedResource);
         

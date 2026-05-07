@@ -1,11 +1,15 @@
-﻿namespace AnalyzeMerge;
+﻿using System.IO.Abstractions;
+
+namespace AnalyzeMerge;
 public class AnalyzeMergeData
 {
     private readonly string folder;
+    private readonly IFileSystem fileSystem;
     private string folderRoot;
-    public AnalyzeMergeData(string folder)
+    public AnalyzeMergeData(string folder, IFileSystem? fileSystem = null)
     {
         this.folder = folder;
+        this.fileSystem = fileSystem ?? new FileSystem();
         folderRoot=folder;
     }
 
@@ -79,13 +83,13 @@ public class AnalyzeMergeData
             data.Analyze();
             var g = new TemplateGenerator();
             var folderResults = Path.Combine(folderRoot, "changes");
-            if(!Path.Exists(folderResults))
-                Directory.CreateDirectory(folderResults);
+            if(!fileSystem.Directory.Exists(folderResults))
+                fileSystem.Directory.CreateDirectory(folderResults);
             var file = Path.Combine(folderResults, $"Changes_{currentBranch1.FriendlyName}.html");
-            await File.WriteAllTextAsync(file, await g.Generate_DisplayAllFiles (data));
+            await fileSystem.File.WriteAllTextAsync(file, await g.Generate_DisplayAllFiles (data));
             
             file = Path.Combine(folderResults, $"Changes_{currentBranch1.FriendlyName}.md");
-            await File.WriteAllTextAsync(file, await g.Generate_DisplayAllFilesMD(data));
+            await fileSystem.File.WriteAllTextAsync(file, await g.Generate_DisplayAllFilesMD(data));
 
             //Console.WriteLine("=>"+name);
             //Branch? currentBranch = null;

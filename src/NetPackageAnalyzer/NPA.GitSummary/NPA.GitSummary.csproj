@@ -10,4 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NPA.ProcessRunner\NPA.ProcessRunner.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.1.0" />
+  </ItemGroup>
 </Project>

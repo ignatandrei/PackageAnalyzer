@@ -1,7 +1,10 @@
-﻿namespace NPA.HtmlData;
+﻿using System.IO.Abstractions;
+
+namespace NPA.HtmlData;
 
 public class ExtractImages
 {
+    private readonly IFileSystem fileSystem;
 
     static ExtractImages()
     {
@@ -12,9 +15,10 @@ public class ExtractImages
         }
 
     }
-    public ExtractImages(string htmlPath)
+    public ExtractImages(string htmlPath, IFileSystem? fileSystem = null)
     {
         HtmlPath = htmlPath;
+        this.fileSystem = fileSystem ?? new FileSystem();
     }
 
     public string HtmlPath { get; private set; }
@@ -25,9 +29,9 @@ public class ExtractImages
         var dir = Path.GetDirectoryName(HtmlPath)!;
         var nameFile= Path.GetFileNameWithoutExtension(HtmlPath);
         var imagesDir = Path.Combine(dir, "images_"+ nameFile);
-        if (!Directory.Exists(imagesDir))
+        if (!fileSystem.Directory.Exists(imagesDir))
         {
-            Directory.CreateDirectory(imagesDir);
+            fileSystem.Directory.CreateDirectory(imagesDir);
         }
         
         using var playwright = await Playwright.CreateAsync();
@@ -71,7 +75,7 @@ public class ExtractImages
             {
                 var buffer = await title.ScreenshotAsync();
 
-                await File.WriteAllBytesAsync(Path.Combine(imagesDir, $"{newName}.png"), buffer);
+                await fileSystem.File.WriteAllBytesAsync(Path.Combine(imagesDir, $"{newName}.png"), buffer);
             }
             catch(Exception ex)
             {

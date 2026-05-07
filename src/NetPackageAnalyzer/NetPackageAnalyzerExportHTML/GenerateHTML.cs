@@ -16,8 +16,8 @@ public class GenerateHTML : GenerateFiles
         string tempFolder = string.Empty;
         try
         {
-            if (!Directory.Exists(where))
-                Directory.CreateDirectory(where);
+            if (!system.Directory.Exists(where))
+                system.Directory.CreateDirectory(where);
             var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
             var projectFiles = (projectsDict!.Select(it => it.Value?.PathProject).ToArray())??[];
             tempFolder = await GenerateMetricsForClasses(projectFiles, folderResults ?? "") ?? "";
@@ -41,7 +41,7 @@ public class GenerateHTML : GenerateFiles
             await system.File.WriteAllTextAsync(nameFile, html);
             var okTower = await GenerateStackTower(where, jsonStackTower);
             WriteJs(where);
-            var ex = new ExtractImages(nameFile);
+            var ex = new ExtractImages(nameFile, system);
             await ex.GetImagesAsync();
             MDSummaryData md = new();
             md.nameSolution = GlobalsForGenerating.NameSolution;
@@ -56,12 +56,12 @@ public class GenerateHTML : GenerateFiles
         }
         finally
         {
-            if ((!string.IsNullOrWhiteSpace(tempFolder)) && Directory.Exists(tempFolder))
+            if ((!string.IsNullOrWhiteSpace(tempFolder)) && system.Directory.Exists(tempFolder))
             {
                 try
                 {
                     Console.WriteLine($"Deleting {tempFolder}");
-                    Directory.Delete(tempFolder, true);
+                    system.Directory.Delete(tempFolder, true);
                 }
                 catch (Exception)
                 {
@@ -75,14 +75,14 @@ public class GenerateHTML : GenerateFiles
     {
         var temp = Path.GetTempPath();
         var pathZip = Path.Combine(temp, "stacktower" + DateTime.Now.ToString("yyyyMMdd"));
-        await ZipBigFiles.SaveToFile(pathZip, EmbeddedResource.stacktower_exe_zip);
+        await ZipBigFiles.SaveToFile(pathZip, EmbeddedResource.stacktower_exe_zip, system);
 
         var tower = Path.Combine(where, $"{NameSolution}_tower.json");
         await system.File.WriteAllTextAsync(tower, jsonStackTower);
         string outputSvgFile1 = await ExecuteStackTower(pathZip, tower, "barycentric");
         string outputSvgFile2 = await ExecuteStackTower(pathZip, tower, "optimal");
         //TODO : log the result
-        if (File.Exists(outputSvgFile1)) return outputSvgFile1;
+        if (system.File.Exists(outputSvgFile1)) return outputSvgFile1;
         return outputSvgFile2;
 
     }
@@ -93,9 +93,9 @@ public class GenerateHTML : GenerateFiles
         string nameSolution = GlobalsForGenerating.NameSolution;
         var pathTower = Path.GetDirectoryName(tower)??"";
         var outputSvgFile = Path.Combine(pathTower, $"images_{nameSolution}_summary");
-        if(!Directory.Exists(outputSvgFile))
+        if(!system.Directory.Exists(outputSvgFile))
         {
-            Directory.CreateDirectory(outputSvgFile);
+            system.Directory.CreateDirectory(outputSvgFile);
         }
         var nameFile =Path.GetFileNameWithoutExtension(tower);
         outputSvgFile  = Path.Combine(outputSvgFile, $"{nameFile}_{ordering}.svg");

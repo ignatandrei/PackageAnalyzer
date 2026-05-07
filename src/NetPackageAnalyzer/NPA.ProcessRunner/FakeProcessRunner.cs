@@ -1,18 +1,25 @@
 using System.Diagnostics;
+using System.IO.Abstractions;
 
 namespace NPA.ProcessRunner;
 
 public sealed class FakeProcessRunner : IProcessRunner
 {
+    private readonly IFileSystem fileSystem;
     private readonly Queue<ProcessExecutionResult> runResults = new();
     Dictionary<ProcessToSerialize, ProcessExecutionResultToSerialize> results = new();
+
+    public FakeProcessRunner(IFileSystem? fileSystem = null)
+    {
+        this.fileSystem = fileSystem ?? new FileSystem();
+    }
 
     public void DeserializeFromFolder(string folder)
     {
         results.Clear();
-        foreach (var item in Directory.GetFiles(folder, "*.json"))
+        foreach (var item in fileSystem.Directory.GetFiles(folder, "*.json"))
         {
-            var content = File.ReadAllText(item);
+            var content = fileSystem.File.ReadAllText(item);
             var deserialized = ProcessExecutionResultToSerialize.Deserialize(content);
             var pso = deserialized.pso ?? throw new InvalidOperationException("Deserialized object missing ProcessStartInfo");
             if (results.ContainsKey(pso))

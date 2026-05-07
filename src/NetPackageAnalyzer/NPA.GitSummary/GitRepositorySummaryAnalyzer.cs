@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Globalization;
+using System.IO.Abstractions;
 using System.Text.RegularExpressions;
 using NPA.ProcessRunner;
 
@@ -8,13 +9,15 @@ namespace NPA.GitSummary;
 public sealed partial class GitRepositorySummaryAnalyzer
 {
     private readonly string gitExecutable;
+    private readonly IFileSystem fileSystem;
     private readonly IProcessRunner processRunner;
 
-    public GitRepositorySummaryAnalyzer(string gitExecutable = "git", IProcessRunner? processRunner = null)
+    public GitRepositorySummaryAnalyzer(string gitExecutable = "git", IProcessRunner? processRunner = null, IFileSystem? fileSystem = null)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(gitExecutable);
         this.gitExecutable = gitExecutable;
         this.processRunner = processRunner ?? new SystemProcessRunner();
+        this.fileSystem = fileSystem ?? new FileSystem();
     }
 
     public async Task<GitRepositorySummaryReport> AnalyzeAsync(
@@ -24,7 +27,7 @@ public sealed partial class GitRepositorySummaryAnalyzer
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(repositoryPath);
 
-        if (!Directory.Exists(repositoryPath))
+        if (!fileSystem.Directory.Exists(repositoryPath))
         {
             throw new DirectoryNotFoundException($"Repository path '{repositoryPath}' does not exist.");
         }
