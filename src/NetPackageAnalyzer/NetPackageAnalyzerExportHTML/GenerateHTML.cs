@@ -1,4 +1,5 @@
 using NPA.BigResources;
+using NPA.GitSummary;
 using NPA.ProcessRunner;
 using System.Diagnostics;
 using System.IO.Compression;
@@ -22,11 +23,28 @@ public class GenerateHTML : GenerateFiles
             var projectFiles = (projectsDict!.Select(it => it.Value?.PathProject).ToArray())??[];
             tempFolder = await GenerateMetricsForClasses(projectFiles, folderResults ?? "") ?? "";
             var (refSummary, publicClassRefData, assemblyDataFromMSFT) = AnalyzeDiagrams(tempFolder);
+
+            
             //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
             if (projectsDict == null || modelMore1Version == null)
                 return string.Empty;
+
+            var gitSummary = new GitRepositorySummaryAnalyzer("git", processRunner, new FileSystem());
+            //var gitSummary = new GitRepositorySummaryAnalyzer("git", new SystemProcessRunner(), new FileSystem());
+            var gitInfo = await gitSummary.AnalyzeAsync(GlobalsForGenerating.FullPathToSolution);
+            
             var packDTO = base.packDTO;
-            var modelData = Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData, assemblyDataFromMSFT, packDTO);
+            var modelData = Tuple.Create
+                (
+                infoSol
+                , projectsDict
+                , modelMore1Version
+                , refSummary
+                , publicClassRefData
+                , assemblyDataFromMSFT
+                , packDTO
+                , gitInfo
+                );
             if (modelData == null)
                 return string.Empty;
             
@@ -53,6 +71,11 @@ public class GenerateHTML : GenerateFiles
             var nameFileMD = Path.Combine(where, $"{NameSolution}_summary.md");
             await system.File.WriteAllTextAsync(nameFileMD, mdHtml);
             return nameFile;
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
         }
         finally
         {

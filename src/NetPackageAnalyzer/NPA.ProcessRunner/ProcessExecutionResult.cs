@@ -7,7 +7,12 @@ public sealed record ProcessExecutionResult(int ExitCode, string StandardOutput,
 
 public sealed record ProcessToSerialize(string file,string arguments, string workingDirectory)
 {
-    public static ProcessToSerialize FromProcessStartInfo(ProcessStartInfo psi) => new(psi.FileName, psi.Arguments, psi.WorkingDirectory);
+    public static ProcessToSerialize FromProcessStartInfo(ProcessStartInfo psi) {
+
+        var args = (psi.ArgumentList?.Count > 0) ? string.Join(' ', psi.ArgumentList) : psi.Arguments ?? string.Empty;
+
+        return new(psi.FileName,args,psi.WorkingDirectory);
+         }
     public ProcessStartInfo ToProcessStartInfo()
     {
         return new ProcessStartInfo

@@ -6,3 +6,4 @@ global using NPA.Resources;
 global using Statistical;
 global using NPA.HtmlData;
 global using DotnetWhyParserObjects;
+global using NPA.GitSummary;

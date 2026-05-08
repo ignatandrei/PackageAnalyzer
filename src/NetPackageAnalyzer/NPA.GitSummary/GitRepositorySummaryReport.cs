@@ -44,11 +44,11 @@ public sealed record GitRepositorySummaryReport(
 
 public sealed record GitRepositorySummaryOptions
 {
-    public int TopCount { get; init; } = 20;
+    public int TopCount { get; init; } = 100;
 
-    public string ChurnSince { get; init; } = "1 year ago";
+    public string ChurnSince { get; init; } = "2 years ago";
 
-    public string? BugSince { get; init; }
+    public string? BugSince { get; init; } = "2 years ago";
 
-    public string FirefightingSince { get; init; } = "1 year ago";
+    public string FirefightingSince { get; init; } = "2 years ago";
 }

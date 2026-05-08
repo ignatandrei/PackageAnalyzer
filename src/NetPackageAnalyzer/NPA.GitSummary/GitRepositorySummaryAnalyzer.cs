@@ -27,6 +27,10 @@ public sealed partial class GitRepositorySummaryAnalyzer
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(repositoryPath);
 
+        if(fileSystem.File.Exists(repositoryPath))
+        {
+            repositoryPath = fileSystem.Path.GetDirectoryName(repositoryPath) ?? string.Empty;
+        }
         if (!fileSystem.Directory.Exists(repositoryPath))
         {
             throw new DirectoryNotFoundException($"Repository path '{repositoryPath}' does not exist.");
