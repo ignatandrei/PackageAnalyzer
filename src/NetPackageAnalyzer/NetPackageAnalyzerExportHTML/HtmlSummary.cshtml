@@ -17,6 +17,8 @@
     var assemblyDataFromMSFT = Model.Item6;
     var dtoPackages = Model.Item7;
     var namePerCountPackages = dtoPackages.NamePerCounts();
+    var lastItem =Model.Rest;
+    var gitRepositorySummaryReport = lastItem!.Item1 ;
     var publicClasses = new NamePerCountArray(publicClassRefData.Assemblies_PublicClasses, true);
     var mostPublicClasses = publicClasses.First1();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
@@ -202,6 +204,7 @@
         <li><a href="#commitsTabs"><h1>Commits</h1></a></li>
         <li><a href="#licencesTabs"><h1>Licences</h1></a></li>
         <li><a href="#radarTabs"><h1>Radar</h1></a></li>
+        <li><a href="#gitSummaryTabs"><h1>Git Summary</h1></a></li>
         <li><a href="#aboutTabs"><h2>AboutSoftware</h2></a></li>
     </ul>
     <div id="aboutTabs">
@@ -652,7 +655,11 @@
         @(await radar.RenderAsync())
 
     </div>
-
+    <div id="gitSummaryTabs">
+        <br />
+        @gitRepositorySummaryReport.ChurnHotspots.Files.Count()
+        <h2 id="gitSummaryLink">Git Summary @nameSolution</h2>
+    </div>
     <div id="projectsTabs">
         <h2 id="projectsLink">@nameSolution has @info.nrProjects projects </h2>
         @*
