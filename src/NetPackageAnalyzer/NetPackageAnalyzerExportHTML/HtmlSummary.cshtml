@@ -657,13 +657,45 @@
     </div>
     <div id="gitSummaryTabs">
         <br />
+
         @{
             var res = NamePerCountArray.FromData(gitRepositorySummaryReport.ChurnHotspots.Files,it=>it.FilePath,it=>it.Count,true) ;
-            var nc= new NamePerCountDisplay(Tuple.Create(res,"Churn hotspots - files with most commits"));
+            var nc= new NamePerCountDisplay(Tuple.Create(res,"ChurnHotspots"));
         }
-        @gitRepositorySummaryReport.ChurnHotspots.Files.Count()
-        <h2 id="gitSummaryLink">Git Summary @nameSolution</h2>
+        <h1 id="gitSummaryLink">Git Summary @nameSolution</h1>
+        <h2>1. Churn hotspots - files with most commits</h2>
         @(await nc.RenderAsync())
+        @{
+            res = NamePerCountArray.FromData(gitRepositorySummaryReport.BusFactor.Contributors,it=>it.Contributor,it=>it.CommitCount,true) ;
+            nc= new NamePerCountDisplay(Tuple.Create(res,"BusFactor"));
+        }
+        <h2>2. Bus factor - contributors with most commits</h2>
+        @(await nc.RenderAsync())
+
+        @{
+            res = NamePerCountArray.FromData(gitRepositorySummaryReport.BugHotspots.Files,it=>it.FilePath,it=>it.Count,true) ;
+            nc= new NamePerCountDisplay(Tuple.Create(res,"BugHotspots"));
+        }
+        <h2>3. Bug Hotspots</h2>
+        @(await nc.RenderAsync())
+
+        @{
+            bool HasMoreThanOneYear  = gitRepositorySummaryReport.CommitVelocity.HasMoreThanOneYear;
+            if(HasMoreThanOneYear){
+                 res = NamePerCountArray.FromData(gitRepositorySummaryReport.CommitVelocity.Years,it=>"Year "+it.Year+":",it=>it.CommitCount,true) ;
+            }
+            else{
+                res = NamePerCountArray.FromData(gitRepositorySummaryReport.CommitVelocity.Months,it=>it.YearMonth,it=>it.CommitCount,true) ;
+            }
+            nc= new NamePerCountDisplay(Tuple.Create(res,"CommitVelocity"));
+        }
+        <h2>4. Commit Velocity</h2>
+        @(await nc.RenderAsync())
+
+      
+        
+
+        
 
     </div>
     <div id="projectsTabs">

@@ -7,10 +7,12 @@ public sealed record GitContributorFrequency(string Contributor, int CommitCount
     public double ShareOfCommits(int totalCommits)
         => totalCommits == 0 ? 0 : (double)CommitCount / totalCommits;
 }
-
+public sealed record GitYearCommitFrequency(int Year,int CommitCount)
+{
+}
 public sealed record GitMonthlyCommitFrequency(int Year, int Month, int CommitCount)
 {
-    public string YearMonth => $"{Year:D4}-{Month:D2}";
+    public string YearMonth => $"Year {Year:D4}-Month {Month:D2}:";
 }
 
 public sealed record GitFirefightingCommit(DateTimeOffset CommitDate, string Sha, string Subject);
@@ -31,7 +33,15 @@ public sealed record GitBusFactorReport(IReadOnlyList<GitContributorFrequency> C
 
 public sealed record GitBugHotspotReport(string? Since, IReadOnlyList<GitFileFrequency> Files);
 
-public sealed record GitCommitVelocityReport(IReadOnlyList<GitMonthlyCommitFrequency> Months);
+public sealed record GitCommitVelocityReport(IReadOnlyList<GitMonthlyCommitFrequency> Months)
+{
+    public bool HasMoreThanOneYear => Months.Select(it=>it.Year).Distinct().Count() > 1;
+
+    public IReadOnlyList<GitYearCommitFrequency> Years=> Months
+        .GroupBy(it => it.Year)
+        .Select(g => new GitYearCommitFrequency(g.Key, g.Sum(it => it.CommitCount)))
+        .ToList();
+}
 
 public sealed record GitFirefightingReport(string Since, IReadOnlyList<GitFirefightingCommit> Commits);
 
