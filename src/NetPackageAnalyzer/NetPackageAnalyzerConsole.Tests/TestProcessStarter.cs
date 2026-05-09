@@ -9,7 +9,7 @@ public class TestProcessStarter
     public async Task DeserializeEshop()
     {
         FakeProcessRunner fakeProcessRunner = new ();
-        fakeProcessRunner.DeserializeFromFolder("eShopJSON");
+        fakeProcessRunner.DeserializeFromFolder("eshopJSON");
         RealMainExecuting.ProcessRunner = fakeProcessRunner;
         var args = new[] { "generateFiles",
             "--folder", @"D:\eu\GitHub\eShop",

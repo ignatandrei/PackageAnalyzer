@@ -12,7 +12,7 @@ public sealed record GitYearCommitFrequency(int Year,int CommitCount)
 }
 public sealed record GitMonthlyCommitFrequency(int Year, int Month, int CommitCount)
 {
-    public string YearMonth => $"Year {Year:D4}-Month {Month:D2}:";
+    public string YearMonth => $"{Year:D4}-{Month:D2}";
 }
 
 public sealed record GitFirefightingCommit(DateTimeOffset CommitDate, string Sha, string Subject);

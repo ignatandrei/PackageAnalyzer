@@ -4,8 +4,7 @@ namespace NuGetInfo;
 
 public record NugetInfoData(string PackageId, IFileSystem? fileSystem = null)
 {
-    private readonly IFileSystem fileSystem = fileSystem ?? new FileSystem();
-
+    
     private  static string GetNuGetLocation()
     {
         var envPath = Environment.GetEnvironmentVariable("NUGET_PACKAGES");
@@ -35,22 +34,22 @@ public record NugetInfoData(string PackageId, IFileSystem? fileSystem = null)
     public AnswersFindNuget GetNugetInfoLicence(string PackageVersion)
     {
         string folderPackage = Path.Combine(GetNuGetLocation(), PackageId.ToLower());
-        
-        if (!fileSystem.Directory.Exists(folderPackage))
+        var fs= fileSystem ??new FileSystem();
+        if (!fs.Directory.Exists(folderPackage))
         {
             return new FolderNotFound(folderPackage);
         }
         folderPackage = Path.Combine(folderPackage, PackageVersion);
-        if (!fileSystem.Directory.Exists(folderPackage))
+        if (!fs.Directory.Exists(folderPackage))
         {
             return new FolderNotFound(folderPackage);
         }
         var fileNuspec= Path.Combine(folderPackage, $"{PackageId}.nuspec");
-        if (!fileSystem.File.Exists(fileNuspec))
+        if (!fs.File.Exists(fileNuspec))
         {
             return new FileNotFound(fileNuspec);
         }
-        var nuspec = fileSystem.File.ReadAllText(fileNuspec);
+        var nuspec = fs.File.ReadAllText(fileNuspec);
         var doc = XDocument.Parse(nuspec);
         var license = doc.Descendants().FirstOrDefault(x => x.Name.LocalName == "license");
         if (license != null)
@@ -62,7 +61,7 @@ public record NugetInfoData(string PackageId, IFileSystem? fileSystem = null)
                 return new NoLicenseFound();
             }
             string fileLicense = Path.Combine(folderPackage, value);
-            if (fileSystem.File.Exists(fileLicense))
+            if (fs.File.Exists(fileLicense))
             {
                 value = fileLicense;
             }

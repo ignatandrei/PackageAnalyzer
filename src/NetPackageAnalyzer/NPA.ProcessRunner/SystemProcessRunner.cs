@@ -8,7 +8,7 @@ public sealed class SystemProcessRunner : IProcessRunner
     public SystemProcessRunner()
     {
         
-        Console.WriteLine(nr);
+        //Console.WriteLine(nr);
     }
     static int  nr=250;
     public Process? Start(ProcessStartInfo startInfo) => Process.Start(startInfo);
@@ -42,10 +42,10 @@ public sealed class SystemProcessRunner : IProcessRunner
             output,
             error);
         ProcessExecutionResultToSerialize p = new ProcessExecutionResultToSerialize(startInfo, ret);
-        string foldedOutput = @"D:\eu\GitHub\PackageAnalyzer\src\NetPackageAnalyzer\NetPackageAnalyzerConsole.Tests\eshopJSON";
-        var serialize= p.Serialize();
-        nr=Interlocked.Increment(ref nr);
-        await File.WriteAllTextAsync(Path.Combine(foldedOutput, $"output_{nr}.json"), serialize);
+        //string foldedOutput = @"D:\eu\GitHub\PackageAnalyzer\src\NetPackageAnalyzer\NetPackageAnalyzerConsole.Tests\eshopJSON";
+        //var serialize= p.Serialize();
+        //nr=Interlocked.Increment(ref nr);
+        //await File.WriteAllTextAsync(Path.Combine(foldedOutput, $"output_{nr}.json"), serialize);
         return ret;
     }
 }
