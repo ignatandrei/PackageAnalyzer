@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "git.exe",
+    "arguments": "log --date=iso-strict --pretty=\u0022%ad\u0022 -- D:/eu/GitHub/eShop/tests/Basket.UnitTests/Basket.UnitTests.csproj",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\tests\\Basket.UnitTests"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "2025-12-03T17:29:29\u002B01:00\n2025-09-26T09:43:25-07:00\n2025-07-01T12:40:10-06:00\n2024-09-26T17:25:46-07:00\n2024-06-11T22:24:39\u002B05:30\n2023-10-30T15:22:04-07:00\n",
+    "StandardError": ""
+  }
+}

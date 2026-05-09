@@ -19,6 +19,9 @@
 	<ItemGroup>
 		
 		<PackageReference Include="RazorBlade" Version="0.6.0" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+		
+		<ProjectReference Include="..\NPA.GitSummary\NPA.GitSummary.csproj" />
+		<ProjectReference Include="..\NPA.ProcessRunner\NPA.ProcessRunner.csproj" />
 		<ProjectReference Include="..\NetPackageAnalyzerObjects\NetPackageAnalyzerObjects.csproj" />
 		<ProjectReference Include="..\NPA.BigResources\NPA.BigResources.csproj" />
 		<ProjectReference Include="..\NPA.HtmlData\NPA.HtmlData.csproj" />

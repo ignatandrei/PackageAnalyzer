@@ -1,7 +1,9 @@
-﻿namespace NetPackageAnalyzerObjects;
+﻿using NPA.ProcessRunner;
+
+namespace NetPackageAnalyzerObjects;
 public abstract class GenerateFiles: GenerateData
 {
-    public GenerateFiles(IFileSystem system):base(system)
+    public GenerateFiles(IFileSystem system, IProcessRunner? processRunner = null):base(system, processRunner)
     {
         
     }

@@ -12,5 +12,6 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Playwright" Version="1.57.0" />
 		<!--<PackageReference Include="System.Text.Json" Version="9.0.0" />-->
+		<PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.1.0" />
 	</ItemGroup>
 </Project>

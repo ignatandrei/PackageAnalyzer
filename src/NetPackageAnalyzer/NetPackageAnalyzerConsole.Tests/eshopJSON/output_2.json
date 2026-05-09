@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "git.exe",
+    "arguments": "config --get remote.origin.url",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "https://github.com/dotnet/eShop.git\n",
+    "StandardError": ""
+  }
+}

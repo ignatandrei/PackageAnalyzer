@@ -1,9 +1,12 @@
-﻿namespace NetPackageAnalyzerObjects;
+﻿using NPA.ProcessRunner;
+
+namespace NetPackageAnalyzerObjects;
 public partial class ProjectsDict : Dictionary<string, ProjectData>
 {
-    public ProjectsDict(Dictionary<string, ProjectData> data) : base(data)
+    private readonly IProcessRunner processRunner;
+    public ProjectsDict(Dictionary<string, ProjectData> data, IProcessRunner? processRunner = null) : base(data)
     {
-
+        this.processRunner = processRunner?? new SystemProcessRunner();
     }
     public int MaxMatrixRef()
     {
@@ -400,10 +403,10 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
         {
             try
             {
-                FileFolderHistorySimple fileHistorySimple = new(project.PathProject);
+                FileFolderHistorySimple fileHistorySimple = new(project.PathProject, processRunner);
                 fileHistorySimple.Initialize(true);
                 string dirName = Path.GetDirectoryName(project.PathProject)??"";
-                FolderHistoryCommits folderHistoryCommits = new(dirName);
+                FolderHistoryCommits folderHistoryCommits = new(dirName,processRunner);
                 folderHistoryCommits.Initialize();
                 project.AllHistoryFile = fileHistorySimple.AllHistoryFile;
                 project.AllHistoryFolder = fileHistorySimple.AllHistoryFolder;
@@ -419,7 +422,7 @@ public partial class ProjectsDict : Dictionary<string, ProjectData>
     }
     public void FindReferences()
     {
-        ProcessOutput po = new();
+        ProcessOutput po = new(processRunner);
         foreach (var project in this.Values)
         {
             try

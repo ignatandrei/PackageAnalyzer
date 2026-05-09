@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "git",
+    "arguments": "log --name-status --date=iso-strict --pretty=\u0022%ad %H\u0022 .",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\EventBusRabbitMQ"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "2025-11-26T15:50:40-06:00 74f15b15cda981e22c04f2ee43a3b56028f1f932\n\nM\tsrc/EventBusRabbitMQ/RabbitMQEventBus.cs\nM\tsrc/EventBusRabbitMQ/RabbitMqDependencyInjectionExtensions.cs\n2025-09-26T09:43:25-07:00 318e03744f3fab19a5bd44ed37411489bc8f4c1d\n\nM\tsrc/EventBusRabbitMQ/EventBusRabbitMQ.csproj\nM\tsrc/EventBusRabbitMQ/RabbitMqDependencyInjectionExtensions.cs\n2025-07-29T16:26:32-05:00 1c90ec9ca81049409cf887291f455a33d2a7a8f5\n\nM\tsrc/EventBusRabbitMQ/EventBusRabbitMQ.csproj\n2024-09-26T17:25:46-07:00 20cb6b9fa1c5eb69586d1b41704e6b9892ec96e9\n\nM\tsrc/EventBusRabbitMQ/EventBusRabbitMQ.csproj\n2024-04-18T05:03:06\u002B01:00 d484a40a4795f306492c8b48fd715d441bf23ef0\n\nM\tsrc/EventBusRabbitMQ/EventBusRabbitMQ.csproj\nM\tsrc/EventBusRabbitMQ/RabbitMQEventBus.cs\n2024-04-11T18:11:11-07:00 0618455473bcd8783597e203ceb6354bf994db45\n\nM\tsrc/EventBusRabbitMQ/EventBusRabbitMQ.csproj\nM\tsrc/EventBusRabbitMQ/RabbitMqDependencyInjectionExtensions.cs\n2024-03-01T18:30:28Z 636909119330f3084b6384f9c5058529e1a14686\n\nM\tsrc/EventBusRabbitMQ/RabbitMQEventBus.cs\n2023-11-24T18:02:50-06:00 37cd432a9c1ff7975d34a92dacd95db4c9ef806d\n\nM\tsrc/EventBusRabbitMQ/RabbitMQEventBus.cs\n2023-10-30T15:22:04-07:00 fc61f9091f6abb6983bb0aaa03a5f086e7c0a66d\n\nA\tsrc/EventBusRabbitMQ/EventBusOptions.cs\nA\tsrc/EventBusRabbitMQ/EventBusRabbitMQ.csproj\nA\tsrc/EventBusRabbitMQ/GlobalUsings.cs\nA\tsrc/EventBusRabbitMQ/RabbitMQEventBus.cs\nA\tsrc/EventBusRabbitMQ/RabbitMQTelemetry.cs\nA\tsrc/EventBusRabbitMQ/RabbitMqDependencyInjectionExtensions.cs\n",
+    "StandardError": ""
+  }
+}

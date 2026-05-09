@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "dotnet.exe",
+    "arguments": "list \u0022D:/eu/GitHub/eShop/tests/Catalog.FunctionalTests/Catalog.FunctionalTests.csproj\u0022 reference ",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\tests\\Catalog.FunctionalTests"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Project reference(s)\r\n--------------------\r\n..\\..\\src\\Catalog.API\\Catalog.API.csproj\r\n",
+    "StandardError": ""
+  }
+}

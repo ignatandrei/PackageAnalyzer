@@ -10,4 +10,7 @@
 
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NPA.ProcessRunner\NPA.ProcessRunner.csproj" />
+  </ItemGroup>
 </Project>

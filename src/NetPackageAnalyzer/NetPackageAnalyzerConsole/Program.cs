@@ -5,6 +5,15 @@
     if (args.Length == 0)
     {
         args = new[] { "-h" };
+
+        //args = new[] { "generateFiles",
+        //    "--folder", @"D:\eu\GitHub\aspire",
+        //    "-wg","HtmlSummary",
+        //    "--where", @"D:\eu\GitHub\aspire\documentation1\",
+        //    "--verbose","true"
+        //};
+
+
         //args = new[] { "generateFiles",
         //    "--folder", @"D:\eu\GitHub\SkinnyControllersGenerator\src\SkinnyControllers",
         //    "-wg","HtmlSummary",

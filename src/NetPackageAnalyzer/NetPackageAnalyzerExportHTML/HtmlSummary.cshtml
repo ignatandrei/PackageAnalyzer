@@ -1,4 +1,4 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageProblemsDTO>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageProblemsDTO,Tuple<GitRepositorySummaryReport>>>;
 @{
     DotnetWhyExporter exporter = new();
 
@@ -17,6 +17,8 @@
     var assemblyDataFromMSFT = Model.Item6;
     var dtoPackages = Model.Item7;
     var namePerCountPackages = dtoPackages.NamePerCounts();
+    var lastItem =Model.Rest;
+    var gitRepositorySummaryReport = lastItem!.Item1 ;
     var publicClasses = new NamePerCountArray(publicClassRefData.Assemblies_PublicClasses, true);
     var mostPublicClasses = publicClasses.First1();
     var maxAssemblyRef = refSummary.AssembliesReferences?.FirstOrDefault();
@@ -202,6 +204,7 @@
         <li><a href="#commitsTabs"><h1>Commits</h1></a></li>
         <li><a href="#licencesTabs"><h1>Licences</h1></a></li>
         <li><a href="#radarTabs"><h1>Radar</h1></a></li>
+        <li><a href="#gitSummaryTabs"><h1>Git Summary</h1></a></li>
         <li><a href="#aboutTabs"><h2>AboutSoftware</h2></a></li>
     </ul>
     <div id="aboutTabs">
@@ -652,7 +655,49 @@
         @(await radar.RenderAsync())
 
     </div>
+    <div id="gitSummaryTabs">
+        <br />
 
+        @{
+            var res = NamePerCountArray.FromData(gitRepositorySummaryReport.ChurnHotspots.Files,it=>it.FilePath,it=>it.Count,true) ;
+            var nc= new NamePerCountDisplay(Tuple.Create(res,"ChurnHotspots"));
+        }
+        <h1 id="gitSummaryLink">Git Summary @nameSolution</h1>
+        <h2>1. Churn hotspots - files with most commits</h2>
+        @(await nc.RenderAsync())
+        @{
+            res = NamePerCountArray.FromData(gitRepositorySummaryReport.BusFactor.Contributors,it=>it.Contributor,it=>it.CommitCount,true) ;
+            nc= new NamePerCountDisplay(Tuple.Create(res,"BusFactor"));
+        }
+        <h2>2. Bus factor - contributors with most commits</h2>
+        @(await nc.RenderAsync())
+
+        @{
+            res = NamePerCountArray.FromData(gitRepositorySummaryReport.BugHotspots.Files,it=>it.FilePath,it=>it.Count,true) ;
+            nc= new NamePerCountDisplay(Tuple.Create(res,"BugHotspots"));
+        }
+        <h2>3. Bug Hotspots</h2>
+        @(await nc.RenderAsync())
+
+        @{
+            bool HasMoreThanOneYear  = gitRepositorySummaryReport.CommitVelocity.HasMoreThanOneYear;
+            if(HasMoreThanOneYear){
+                 res = NamePerCountArray.FromData(gitRepositorySummaryReport.CommitVelocity.Years,it=>"Year "+it.Year+":",it=>it.CommitCount,true) ;
+            }
+            else{
+                res = NamePerCountArray.FromData(gitRepositorySummaryReport.CommitVelocity.Months,it=>it.YearMonth,it=>it.CommitCount,true) ;
+            }
+            nc= new NamePerCountDisplay(Tuple.Create(res,"CommitVelocity"));
+        }
+        <h2>4. Commit Velocity</h2>
+        @(await nc.RenderAsync())
+
+      
+        
+
+        
+
+    </div>
     <div id="projectsTabs">
         <h2 id="projectsLink">@nameSolution has @info.nrProjects projects </h2>
         @*

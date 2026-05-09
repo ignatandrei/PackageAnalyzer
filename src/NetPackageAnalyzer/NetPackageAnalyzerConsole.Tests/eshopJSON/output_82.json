@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "dotnet.exe",
+    "arguments": "list \u0022D:/eu/GitHub/eShop/src/EventBusRabbitMQ/EventBusRabbitMQ.csproj\u0022 reference ",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\EventBusRabbitMQ"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Project reference(s)\r\n--------------------\r\n..\\EventBus\\EventBus.csproj\r\n",
+    "StandardError": ""
+  }
+}

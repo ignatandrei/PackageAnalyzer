@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "dotnet.exe",
+    "arguments": "list \u0022D:/eu/GitHub/eShop/src/Ordering.Domain/Ordering.Domain.csproj\u0022 reference ",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\Ordering.Domain"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "There are no Project to Project references in project D:/eu/GitHub/eShop/src/Ordering.Domain/Ordering.Domain.csproj.\r\n",
+    "StandardError": ""
+  }
+}

@@ -1,4 +1,6 @@
-﻿namespace NetPackageAnalyzeHistory;
+﻿using NPA.ProcessRunner;
+
+namespace NetPackageAnalyzeHistory;
 
 public record History(int? nrCommits, DateTime? FirstCommit, DateTime? LastCommit)
 {
@@ -73,12 +75,14 @@ public class HistoryPerYear : Dictionary<int, History>
 public class FileFolderHistorySimple
 {
     public readonly string nameFile;
+    private readonly IProcessRunner processRunner;
     public HistoryPerYear? AllHistoryFile { get;private set; }
     public HistoryPerYear? AllHistoryFolder { get; private set; }
 
-    public FileFolderHistorySimple(string nameFile)
+    public FileFolderHistorySimple(string nameFile, IProcessRunner? processRunner = null)
     {
         this.nameFile = nameFile;
+        this.processRunner = processRunner ?? new SystemProcessRunner();
     }
     private HistoryPerYear NrCommits(string folder,string what)
     {
@@ -96,19 +100,9 @@ public class FileFolderHistorySimple
             Arguments= "log --date=iso-strict --pretty=\"%ad\" -- "+ what
         };
 
-        // Create and start the process
-        Process process = new Process
-        {
-            StartInfo = startInfo
-        };
-        process.Start();
-
-        // Read the output
-        string output = process.StandardOutput.ReadToEnd();
-        string errorOutput = process.StandardError.ReadToEnd();
-
-        // Wait for the process to exit
-        process.WaitForExit();
+        var result = processRunner.Run(startInfo);
+        string output = result.StandardOutput;
+        string errorOutput = result.StandardError;
         if (errorOutput.Length > 0)
         {
             throw new ArgumentException(errorOutput);

@@ -1,4 +1,4 @@
-@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageProblemsDTO>>;
+@inherits RazorBlade.PlainTextTemplate<Tuple<InfoSolution,ProjectsDict, DisplayDataMoreThan1Version, ClassesRefData,PublicClassRefData,AssemblyDataFromMSFT, PackageProblemsDTO,Tuple<GitRepositorySummaryReport>>>;
 @{
     var projectDicts = Model.Item2;
     var nameSolution = "Sol_"+GlobalsForGenerating.NameSolution;

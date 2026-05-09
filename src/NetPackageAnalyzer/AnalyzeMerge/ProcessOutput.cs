@@ -1,6 +1,15 @@
-﻿namespace AnalyzeMerge;
+﻿using NPA.ProcessRunner;
+
+namespace AnalyzeMerge;
 class ProcessOutput
 {
+    private readonly IProcessRunner processRunner;
+
+    public ProcessOutput(IProcessRunner? processRunner = null)
+    {
+        this.processRunner = processRunner ?? new SystemProcessRunner();
+    }
+
     public string ExecuteGit(string folder, GitData gitData)
     {
         var args = gitData switch
@@ -24,19 +33,9 @@ class ProcessOutput
             Arguments = args
         };
 
-        // Create and start the process
-        Process process = new Process
-        {
-            StartInfo = startInfo
-        };
-        process.Start();
-
-        // Read the output
-        string output = process.StandardOutput.ReadToEnd();
-        string errorOutput = process.StandardError.ReadToEnd();
-
-        // Wait for the process to exit
-        process.WaitForExit();
+        var result = processRunner.Run(startInfo);
+        string output = result.StandardOutput;
+        string errorOutput = result.StandardError;
         if (errorOutput.Length > 0)
         {
             throw new ArgumentException(errorOutput);

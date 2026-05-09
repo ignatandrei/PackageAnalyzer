@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "git.exe",
+    "arguments": "branch --show-current",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "main\n",
+    "StandardError": ""
+  }
+}

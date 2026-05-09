@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504\\Metrics.exe",
+    "arguments": "/p:D:/eu/GitHub/eShop/src/eShop.AppHost/eShop.AppHost.csproj /out:D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\eShop.AppHost.xml",
+    "workingDirectory": "C:\\Users\\ignat\\AppData\\Local\\Temp\\metrics20260504"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Loading eShop.AppHost.csproj...\r\nComputing code metrics for eShop.AppHost.csproj...\r\nWriting output to \u0027D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\_Temp\\eShop.AppHost.xml\u0027...\r\nCompleted Successfully.\r\n",
+    "StandardError": ""
+  }
+}

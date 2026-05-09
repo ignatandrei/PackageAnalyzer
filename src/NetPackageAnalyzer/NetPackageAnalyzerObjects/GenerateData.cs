@@ -1,16 +1,20 @@
 ﻿using NPA.BigResources;
 
+using NPA.ProcessRunner;
+
 namespace NetPackageAnalyzerObjects;
 public class GenerateData
 {
-    public GenerateData(IFileSystem system)
+    public GenerateData(IFileSystem system, IProcessRunner? processRunner = null)
     {
         this.system = system;
+        this.processRunner = processRunner ?? new SystemProcessRunner();
     }
     protected string NameSolution = "";
     protected internal Dictionary<string, PackageData> packagedDict = new();
     protected internal ProjectsDict? projectsDict;
     protected readonly IFileSystem system;
+    protected readonly IProcessRunner processRunner;
     protected DisplayDataMoreThan1Version? modelMore1Version;
     protected PackageProblemsDTO packDTO = new();
     public InfoSolution infoSol
@@ -58,9 +62,10 @@ public class GenerateData
     public async Task<bool> GenerateDataForSln(string folder)
     {
         var sln = system.Directory.GetFiles(folder, "*.sln*");
+        sln = sln.Where(it => it.EndsWith(".slnx")|| it.EndsWith(".sln")).ToArray();
         if (sln.Length != 1)
         {
-            WriteLine($"Must be 1 sln in the {folder}");
+            WriteLine($"Must be 1 sln in the {folder} : {sln.Length} found");
             //throw new ArgumentException($"Must be 1 sln in the {folder}");
             return false;
         }
@@ -70,7 +75,7 @@ public class GenerateData
         GlobalsForGenerating.NameSolution = NameSolution;
         await Task.Delay(100);
         WriteLine($"Start analyzing {folder} for solution {NameSolution}");
-        var p = new ProcessOutput();
+        var p = new ProcessOutput(processRunner);
         Console.WriteLine("List SDKs");
         var listSDKs = p.ListSDKS(folder);
         WriteLine(listSDKs);
@@ -121,7 +126,7 @@ public class GenerateData
                 .Where(it => it != null)
                 .Select(it => it!)
                 .Where(it => it.Id != null && it.RequestedVersion !=null)
-                .Select(it=> new PackageWithVersionOutdated(it.Id??"",it.RequestedVersion??""))
+                .Select(it=> new PackageWithVersionOutdated(it.Id??"",it.RequestedVersion??"",processRunner))
                 .ToArray();
         }
         if(deprecatedPackages?.TopLevelPackagesIDs()?.Length > 0)
@@ -131,7 +136,7 @@ public class GenerateData
                 .Where(it=>it!=null)
                 .Select(it=>it!)
                 .Where(it => it.Id != null && it.RequestedVersion != null)
-                .Select(it => new PackageWithVersionDeprecated(it.Id??"", it.RequestedVersion ?? ""))
+                .Select(it => new PackageWithVersionDeprecated(it.Id??"", it.RequestedVersion ?? "", processRunner))
                 .ToArray();
         }
 
@@ -142,7 +147,7 @@ public class GenerateData
                 .Where(it => it != null)
                 .Select(it => it!)
                 .Where(it => it.Id != null && it.RequestedVersion != null)
-                .Select(it => new PackageWithVersionVulnerable(it.Id ?? "", it.RequestedVersion ?? ""))
+                .Select(it => new PackageWithVersionVulnerable(it.Id ?? "", it.RequestedVersion ?? ""   , processRunner))
                 .ToArray();
         }
         build = p.Build(folder);
@@ -185,7 +190,8 @@ public class GenerateData
         projectsDict = new ProjectsDict(
             arrDataProjectsPath
             .Distinct()
-            .ToDictionary(it => it, it => new ProjectData(it, folder))
+            .ToDictionary(it => it, it => new ProjectData(it, folder)),
+            processRunner
             );
 
         WriteLine($"Number projects : {projectsDict.Count}");
@@ -201,17 +207,17 @@ public class GenerateData
         }
 
         packagedDict = arrData.Distinct()
-            .ToDictionary(it => it, it => new PackageData(it));
+            .ToDictionary(it => it, it => new PackageData(it,processRunner));
 
 
         WriteLine($"Number references : {packagedDict.Count}");
 
         var allProjectPathWithVersion = operations
-            .SelectMany(it => it.PerProjectPathWithVersion())
+            .SelectMany(it => it.PerProjectPathWithVersion(processRunner))
             .ToArray();
         if (allPackages != null)
             allProjectPathWithVersion = allProjectPathWithVersion
-                .Union(allPackages.PerProjectPathWithVersionTransitive())
+                .Union(allPackages.PerProjectPathWithVersionTransitive(processRunner))
                 .ToArray();
 
         foreach (var pathPackage in allProjectPathWithVersion)
@@ -232,9 +238,9 @@ public class GenerateData
         }
 
         var problems =
-            (outdatedPackages?.PerProjectPathWithVersion() ?? [])
-            .Union((deprecatedPackages?.PerProjectPathWithVersion() ?? []))
-            .Union((vulnerablePackages?.PerProjectPathWithVersion() ?? []))
+            (outdatedPackages?.PerProjectPathWithVersion(processRunner) ?? [])
+            .Union((deprecatedPackages?.PerProjectPathWithVersion(processRunner) ?? []))
+            .Union((vulnerablePackages?.PerProjectPathWithVersion(processRunner) ?? []))
             .ToArray();
 
         foreach (var pathPackage in problems)
@@ -283,7 +289,7 @@ public class GenerateData
 
     public (ClassesRefData, PublicClassRefData, AssemblyDataFromMSFT) AnalyzeDiagrams(string tempFolder)
     {
-        var xmlFiles = Directory.GetFiles(tempFolder, "*.xml");
+        var xmlFiles = system.Directory.GetFiles(tempFolder, "*.xml");
         List<GenericMetricsAssembly> msftMetrics = new();
         foreach (var file in xmlFiles)
         {
@@ -300,11 +306,11 @@ public class GenerateData
 
         List<ExportAssembly> expAss = new ();
         Dictionary<string,ExportPublicClass[]> expPublicClasses = new ();
-        var files = Directory.GetFiles(tempFolder, "*.json");
+        var files = system.Directory.GetFiles(tempFolder, "*.json");
         foreach (var fileJson in files)
         {
 
-            var json = File.ReadAllText(fileJson);
+            var json = system.File.ReadAllText(fileJson);
             if (fileJson.EndsWith("_public_csproj.json"))
             {
                 string nameCsproj = Path.GetFileNameWithoutExtension(fileJson);
@@ -421,11 +427,11 @@ public class GenerateData
     {
 
         var fldTemp = folderResults + "_Temp";
-        if (!Directory.Exists(fldTemp))
-            Directory.CreateDirectory(fldTemp);
+        if (!system.Directory.Exists(fldTemp))
+            system.Directory.CreateDirectory(fldTemp);
         var temp = Path.GetTempPath();
         var pathZip = Path.Combine(temp, "metrics" + DateTime.Now.ToString("yyyyMMdd"));
-        await ZipBigFiles.SaveToFile(pathZip,EmbeddedResource.metrics_exe_zip);
+        await ZipBigFiles.SaveToFile(pathZip,EmbeddedResource.metrics_exe_zip, system);
         foreach (var proj in projects)
         {
             if (string.IsNullOrWhiteSpace(proj))
@@ -444,25 +450,16 @@ public class GenerateData
                 CreateNoWindow = true
             };
             Console.WriteLine($"executing in folder {startInfo.WorkingDirectory} : {startInfo.FileName} with args {startInfo.Arguments}");
-            using (Process process = new Process())
+            try
             {
-                try
-                {
-                    process.StartInfo = startInfo;
-                    process.Start();
-                    await process.WaitForExitAsync();
-
-                    string output = process.StandardOutput.ReadToEnd();
-                    string error = process.StandardError.ReadToEnd();
-                    if (!string.IsNullOrWhiteSpace(error))
-                        throw new ArgumentException($"error for {proj} metrics {error}");
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    throw;
-                }
-
+                var result = await processRunner.RunAsync(startInfo);
+                if (!string.IsNullOrWhiteSpace(result.StandardError))
+                    throw new ArgumentException($"error for {proj} metrics {result.StandardError}");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
             }
         }
         return fldTemp;

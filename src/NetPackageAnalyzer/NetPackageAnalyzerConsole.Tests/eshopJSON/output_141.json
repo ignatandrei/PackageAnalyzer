@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "git",
+    "arguments": "log --name-status --date=iso-strict --pretty=\u0022%ad %H\u0022 .",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\WebAppComponents"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "2025-09-26T09:43:25-07:00 318e03744f3fab19a5bd44ed37411489bc8f4c1d\n\nM\tsrc/WebAppComponents/WebAppComponents.csproj\n2025-01-10T12:48:04-06:00 b3b115bd902be68fee0bbd1f58ea4986202f8729\n\nM\tsrc/WebAppComponents/Services/CatalogService.cs\n2024-09-26T17:25:46-07:00 20cb6b9fa1c5eb69586d1b41704e6b9892ec96e9\n\nM\tsrc/WebAppComponents/WebAppComponents.csproj\n2024-04-30T10:41:39-07:00 d052bab01059e7e72bd0736fc63336d12a981551\n\nM\tsrc/WebAppComponents/Services/CatalogService.cs\nA\tsrc/WebAppComponents/Services/ICatalogService.cs\n2024-04-24T11:55:27-07:00 6872d4f539f52d68849c442075437370e7e4e5f5\n\nM\tsrc/WebAppComponents/Services/CatalogService.cs\n2024-04-04T14:12:54-04:00 57b73de1972c36dfbd3bc3d9d55413b1f4f07780\n\nM\tsrc/WebAppComponents/Catalog/CatalogItem.cs\n2023-11-27T17:03:55Z 1e764bac317b73eefd886ad160fb32378425b1d2\n\nM\tsrc/WebAppComponents/Catalog/CatalogListItem.razor\nA\tsrc/WebAppComponents/Services/IProductImageUrlProvider.cs\n2023-11-10T08:50:38-08:00 197568e8e11e9eb97504b28ad76802d5e110003b\n\nM\tsrc/WebAppComponents/Catalog/CatalogListItem.razor.css\nM\tsrc/WebAppComponents/Catalog/CatalogSearch.razor\nM\tsrc/WebAppComponents/Catalog/CatalogSearch.razor.css\n2023-11-08T22:22:12-08:00 9fcc45780da35986c6cd399a24b044476f5fd2d2\n\nM\tsrc/WebAppComponents/Catalog/CatalogListItem.razor\nM\tsrc/WebAppComponents/Catalog/CatalogSearch.razor\n2023-10-30T15:22:04-07:00 fc61f9091f6abb6983bb0aaa03a5f086e7c0a66d\n\nA\tsrc/WebAppComponents/Catalog/CatalogItem.cs\nA\tsrc/WebAppComponents/Catalog/CatalogListItem.razor\nA\tsrc/WebAppComponents/Catalog/CatalogListItem.razor.css\nA\tsrc/WebAppComponents/Catalog/CatalogSearch.razor\nA\tsrc/WebAppComponents/Catalog/CatalogSearch.razor.css\nA\tsrc/WebAppComponents/Item/ItemHelper.cs\nA\tsrc/WebAppComponents/Services/CatalogService.cs\nA\tsrc/WebAppComponents/WebAppComponents.csproj\nA\tsrc/WebAppComponents/_Imports.razor\n",
+    "StandardError": ""
+  }
+}

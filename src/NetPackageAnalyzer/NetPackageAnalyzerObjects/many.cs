@@ -51,6 +51,11 @@ public record NamePerCount(string Name, long Count)
 }
 public record NamePerCountArray(NamePerCount[]? NamePerCounts,bool Descending)
 { 
+    public static NamePerCountArray FromData<T>(IEnumerable<T> data, Func<T,string> nameSelector, Func<T,long> countSelector, bool descending)
+    {
+        var namePerCounts = data.Select(item => new NamePerCount(nameSelector(item), countSelector(item))).ToArray();
+        return new NamePerCountArray(namePerCounts, descending);
+    }
     public static NamePerCountArray Empty = new NamePerCountArray([], false);
     public Statistics<long> Statistics()
     {

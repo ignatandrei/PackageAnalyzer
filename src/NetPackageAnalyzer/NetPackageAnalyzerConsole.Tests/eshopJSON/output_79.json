@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "dotnet.exe",
+    "arguments": "list \u0022D:/eu/GitHub/eShop/src/eShop.AppHost/eShop.AppHost.csproj\u0022 reference ",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\eShop.AppHost"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Project reference(s)\r\n--------------------\r\n..\\Basket.API\\Basket.API.csproj\r\n..\\Catalog.API\\Catalog.API.csproj\r\n..\\Identity.API\\Identity.API.csproj\r\n..\\Ordering.API\\Ordering.API.csproj\r\n..\\OrderProcessor\\OrderProcessor.csproj\r\n..\\PaymentProcessor\\PaymentProcessor.csproj\r\n..\\Webhooks.API\\Webhooks.API.csproj\r\n..\\WebApp\\WebApp.csproj\r\n..\\WebhookClient\\WebhookClient.csproj\r\n",
+    "StandardError": ""
+  }
+}

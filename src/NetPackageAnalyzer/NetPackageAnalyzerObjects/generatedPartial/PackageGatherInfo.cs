@@ -1,10 +1,12 @@
 ﻿using DotnetWhyParserObjects;
+using NPA.ProcessRunner;
 
 namespace NetPackageAnalyzerObjects;
 
-public record PackageGatherInfo(string PackageId)
+public record PackageGatherInfo(string PackageId,IProcessRunner processRunner)
 {
     static Dictionary<string, PackageGatherInfo> _allPackages = new();
+    
     public void CopyWhyFrom(PackageGatherInfo from)
     {
         this.Why = from.Why;
@@ -22,7 +24,7 @@ public record PackageGatherInfo(string PackageId)
             }
         }
         DotnetWhyParser parser = new();
-        ProcessOutput processOutput = new();
+        ProcessOutput processOutput = new(processRunner);
         try
         {
 

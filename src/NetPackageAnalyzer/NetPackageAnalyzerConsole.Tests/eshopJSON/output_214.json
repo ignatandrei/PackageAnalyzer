@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "C:\\Users\\ignat\\AppData\\Local\\Temp\\stacktower20260504\\stacktower.exe",
+    "arguments": "render D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\eShop_tower.json -t tower  --randomize=false --style handdrawn --popups --ordering barycentric -o D:\\eu\\GitHub\\PackageAnalyzer\\src\\documentation1\\images_eShop_summary\\eShop_tower_barycentric.svg",
+    "workingDirectory": "C:\\Users\\ignat\\AppData\\Local\\Temp\\stacktower20260504"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "",
+    "StandardError": ""
+  }
+}

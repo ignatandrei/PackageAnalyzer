@@ -1,4 +1,6 @@
-﻿using NPA.BigResources;
+using NPA.BigResources;
+using NPA.GitSummary;
+using NPA.ProcessRunner;
 using System.Diagnostics;
 using System.IO.Compression;
 
@@ -6,7 +8,7 @@ namespace NetPackageAnalyzerExportHTML;
 
 public class GenerateHTML : GenerateFiles
 {
-    public GenerateHTML(IFileSystem system) : base(system)
+    public GenerateHTML(IFileSystem system, IProcessRunner? processRunner = null) : base(system, processRunner)
     {
 
     }
@@ -15,17 +17,34 @@ public class GenerateHTML : GenerateFiles
         string tempFolder = string.Empty;
         try
         {
-            if (!Directory.Exists(where))
-                Directory.CreateDirectory(where);
+            if (!system.Directory.Exists(where))
+                system.Directory.CreateDirectory(where);
             var folderResults = string.IsNullOrWhiteSpace(where) ? Path.Combine(folder, "Analysis") : where;
             var projectFiles = (projectsDict!.Select(it => it.Value?.PathProject).ToArray())??[];
             tempFolder = await GenerateMetricsForClasses(projectFiles, folderResults ?? "") ?? "";
             var (refSummary, publicClassRefData, assemblyDataFromMSFT) = AnalyzeDiagrams(tempFolder);
+
+            
             //var x = new HtmlSummary(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData);
             if (projectsDict == null || modelMore1Version == null)
                 return string.Empty;
+
+            var gitSummary = new GitRepositorySummaryAnalyzer("git", processRunner, new FileSystem());
+            //var gitSummary = new GitRepositorySummaryAnalyzer("git", new SystemProcessRunner(), new FileSystem());
+            var gitInfo = await gitSummary.AnalyzeAsync(GlobalsForGenerating.FullPathToSolution);
+            
             var packDTO = base.packDTO;
-            var modelData = Tuple.Create(infoSol, projectsDict, modelMore1Version, refSummary, publicClassRefData, assemblyDataFromMSFT, packDTO);
+            var modelData = Tuple.Create
+                (
+                infoSol
+                , projectsDict
+                , modelMore1Version
+                , refSummary
+                , publicClassRefData
+                , assemblyDataFromMSFT
+                , packDTO
+                , gitInfo
+                );
             if (modelData == null)
                 return string.Empty;
             
@@ -40,7 +59,7 @@ public class GenerateHTML : GenerateFiles
             await system.File.WriteAllTextAsync(nameFile, html);
             var okTower = await GenerateStackTower(where, jsonStackTower);
             WriteJs(where);
-            var ex = new ExtractImages(nameFile);
+            var ex = new ExtractImages(nameFile, system);
             await ex.GetImagesAsync();
             MDSummaryData md = new();
             md.nameSolution = GlobalsForGenerating.NameSolution;
@@ -53,14 +72,19 @@ public class GenerateHTML : GenerateFiles
             await system.File.WriteAllTextAsync(nameFileMD, mdHtml);
             return nameFile;
         }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
         finally
         {
-            if ((!string.IsNullOrWhiteSpace(tempFolder)) && Directory.Exists(tempFolder))
+            if ((!string.IsNullOrWhiteSpace(tempFolder)) && system.Directory.Exists(tempFolder))
             {
                 try
                 {
                     Console.WriteLine($"Deleting {tempFolder}");
-                    Directory.Delete(tempFolder, true);
+                    system.Directory.Delete(tempFolder, true);
                 }
                 catch (Exception)
                 {
@@ -74,27 +98,27 @@ public class GenerateHTML : GenerateFiles
     {
         var temp = Path.GetTempPath();
         var pathZip = Path.Combine(temp, "stacktower" + DateTime.Now.ToString("yyyyMMdd"));
-        await ZipBigFiles.SaveToFile(pathZip, EmbeddedResource.stacktower_exe_zip);
+        await ZipBigFiles.SaveToFile(pathZip, EmbeddedResource.stacktower_exe_zip, system);
 
         var tower = Path.Combine(where, $"{NameSolution}_tower.json");
         await system.File.WriteAllTextAsync(tower, jsonStackTower);
         string outputSvgFile1 = await ExecuteStackTower(pathZip, tower, "barycentric");
         string outputSvgFile2 = await ExecuteStackTower(pathZip, tower, "optimal");
         //TODO : log the result
-        if (File.Exists(outputSvgFile1)) return outputSvgFile1;
+        if (system.File.Exists(outputSvgFile1)) return outputSvgFile1;
         return outputSvgFile2;
 
     }
 
-    private static async Task<string> ExecuteStackTower(string pathZip, string tower ,string ordering)
+    private async Task<string> ExecuteStackTower(string pathZip, string tower ,string ordering)
     {
         //TODO: move to images_eShop_summary
         string nameSolution = GlobalsForGenerating.NameSolution;
         var pathTower = Path.GetDirectoryName(tower)??"";
         var outputSvgFile = Path.Combine(pathTower, $"images_{nameSolution}_summary");
-        if(!Directory.Exists(outputSvgFile))
+        if(!system.Directory.Exists(outputSvgFile))
         {
-            Directory.CreateDirectory(outputSvgFile);
+            system.Directory.CreateDirectory(outputSvgFile);
         }
         var nameFile =Path.GetFileNameWithoutExtension(tower);
         outputSvgFile  = Path.Combine(outputSvgFile, $"{nameFile}_{ordering}.svg");
@@ -110,11 +134,7 @@ public class GenerateHTML : GenerateFiles
         };
         try
         {
-            // Create and start the process
-            Process process = new Process { StartInfo = startInfo };
-            process.Start();
-            // Wait for the process to finish
-            await process.WaitForExitAsync();
+            await processRunner.RunAsync(startInfo);
         }
         catch (Exception ex)
         {

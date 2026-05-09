@@ -1,0 +1,12 @@
+{
+  "pso": {
+    "file": "dotnet.exe",
+    "arguments": "list \u0022D:/eu/GitHub/eShop/src/WebApp/WebApp.csproj\u0022 reference ",
+    "workingDirectory": "D:\\eu\\GitHub\\eShop\\src\\WebApp"
+  },
+  "result": {
+    "ExitCode": 0,
+    "StandardOutput": "Project reference(s)\r\n--------------------\r\n..\\eShop.ServiceDefaults\\eShop.ServiceDefaults.csproj\r\n..\\EventBusRabbitMQ\\EventBusRabbitMQ.csproj\r\n..\\WebAppComponents\\WebAppComponents.csproj\r\n",
+    "StandardError": ""
+  }
+}
