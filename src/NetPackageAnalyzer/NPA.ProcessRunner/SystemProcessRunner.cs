@@ -10,7 +10,7 @@ public sealed class SystemProcessRunner : IProcessRunner
         
         //Console.WriteLine(nr);
     }
-    static int  nr=250;
+    //static int  nr=250;
     public Process? Start(ProcessStartInfo startInfo) => Process.Start(startInfo);
 
     public ProcessExecutionResult Run(ProcessStartInfo startInfo) =>
