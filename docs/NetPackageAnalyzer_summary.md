@@ -74,6 +74,6 @@
 
 Generated  by https://www.nuget.org/packages/NetPackageAnalyzerConsole</a>
     
-version 10.2025.1228.1606 with Aleksandr Solzhenitsyn is feeling acid in Beijing 
+version 10.2026.509.1606 with Aleksandr Solzhenitsyn is feeling acid in Beijing 
 
 Generated on 2025-12-28 14:29:09 
